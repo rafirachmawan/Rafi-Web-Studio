@@ -41,7 +41,7 @@ export default function Home() {
         {/* HEADER */}
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
-            Demo Website <span className="text-amber-500">UMKM</span>
+            Demo Website <span className="text-amber-500">Bisnis</span>
           </h1>
 
           <p className="text-gray-400 mt-4 text-lg max-w-xl mx-auto">
