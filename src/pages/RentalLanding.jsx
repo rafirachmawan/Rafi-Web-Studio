@@ -22,10 +22,9 @@ export default function RentalLanding() {
         </div>
       </nav>
 
-      {/* HERO (JUALAN LANGSUNG) */}
+      {/* HERO */}
       <section className="pt-32 pb-20 px-6">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-          {/* TEXT */}
           <div>
             <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
               Sewa Mobil
@@ -52,7 +51,6 @@ export default function RentalLanding() {
               </a>
             </div>
 
-            {/* TRUST BADGE */}
             <div className="flex gap-6 mt-8 text-sm text-gray-400">
               <span>✔ 100+ Pelanggan</span>
               <span>✔ Respon Cepat</span>
@@ -60,7 +58,6 @@ export default function RentalLanding() {
             </div>
           </div>
 
-          {/* IMAGE */}
           <div>
             <img
               src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2"
@@ -70,7 +67,37 @@ export default function RentalLanding() {
         </div>
       </section>
 
-      {/* BENEFIT 🔥 */}
+      {/* 🔥 QUICK BOOKING */}
+      <section className="px-6 -mt-10 relative z-10">
+        <div className="max-w-5xl mx-auto bg-[#1a1a1a] rounded-2xl p-6 shadow-xl border border-white/10">
+          <div className="grid md:grid-cols-4 gap-4">
+            <input
+              type="text"
+              placeholder="Lokasi"
+              className="bg-black px-4 py-3 rounded-lg text-sm outline-none"
+            />
+
+            <input
+              type="date"
+              className="bg-black px-4 py-3 rounded-lg text-sm outline-none"
+            />
+
+            <input
+              type="date"
+              className="bg-black px-4 py-3 rounded-lg text-sm outline-none"
+            />
+
+            <a
+              href={`https://wa.me/${phone}`}
+              className="bg-amber-500 text-black flex items-center justify-center rounded-lg font-semibold"
+            >
+              Cari Mobil
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* BENEFIT */}
       <section className="px-6 py-16 bg-[#1a1a1a]">
         <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 text-center">
           <div>
@@ -96,10 +123,68 @@ export default function RentalLanding() {
         </div>
       </section>
 
+      {/* WHY US */}
+      <section className="px-6 py-20 text-center">
+        <h2 className="text-3xl font-bold mb-10">Kenapa Pilih Kami?</h2>
+
+        <div className="grid md:grid-cols-3 gap-10">
+          <div>
+            <h3 className="text-amber-400 mb-2">Unit Terawat</h3>
+            <p className="text-gray-400 text-sm">Mobil selalu prima</p>
+          </div>
+
+          <div>
+            <h3 className="text-amber-400 mb-2">Respon Cepat</h3>
+            <p className="text-gray-400 text-sm">Admin 24 jam</p>
+          </div>
+
+          <div>
+            <h3 className="text-amber-400 mb-2">Harga Transparan</h3>
+            <p className="text-gray-400 text-sm">Tanpa biaya tersembunyi</p>
+          </div>
+        </div>
+      </section>
+
       {/* MOBIL */}
       <RentalSection />
 
-      {/* CTA BOTTOM 🔥 */}
+      {/* TESTIMONIAL */}
+      <section className="px-6 py-20 bg-[#1a1a1a] text-center">
+        <h2 className="text-3xl font-bold mb-10">Testimoni</h2>
+
+        <div className="grid md:grid-cols-3 gap-8">
+          <div className="bg-black p-6 rounded-2xl">
+            <p>"Mobil bersih dan nyaman banget!"</p>
+          </div>
+
+          <div className="bg-black p-6 rounded-2xl">
+            <p>"Pelayanan cepat, recommended!"</p>
+          </div>
+
+          <div className="bg-black p-6 rounded-2xl">
+            <p>"Harga murah tapi kualitas bagus"</p>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="px-6 py-20">
+        <h2 className="text-3xl font-bold mb-10 text-center">FAQ</h2>
+
+        <div className="max-w-3xl mx-auto space-y-4">
+          <div className="bg-[#1a1a1a] p-4 rounded-lg">
+            <p className="font-semibold">Apakah bisa lepas kunci?</p>
+            <p className="text-gray-400 text-sm">Ya, dengan syarat tertentu</p>
+          </div>
+
+          <div className="bg-[#1a1a1a] p-4 rounded-lg">
+            <p className="font-semibold">Apakah include sopir?</p>
+            <p className="text-gray-400 text-sm">Tersedia opsi dengan sopir</p>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
       <section className="px-6 py-20 text-center bg-amber-500 text-black">
         <h2 className="text-3xl font-bold mb-4">Butuh Mobil Sekarang?</h2>
 
@@ -165,7 +250,7 @@ function RentalSection() {
             return (
               <div
                 key={i}
-                className="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition duration-300 hover:-translate-y-2"
+                className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-500 hover:-translate-y-3 border border-gray-100"
               >
                 <div className="absolute top-3 left-3 bg-amber-400 text-black text-xs px-3 py-1 rounded-full font-semibold">
                   Ready
@@ -182,7 +267,9 @@ function RentalSection() {
                   <h3 className="text-xl font-semibold mb-2">{car.name}</h3>
 
                   <div className="mb-5">
-                    <span className="text-2xl font-bold">{car.price}</span>
+                    <span className="text-2xl font-bold text-amber-500">
+                      {car.price}
+                    </span>
                     <span className="text-gray-400 text-sm ml-1">/ hari</span>
                   </div>
 
