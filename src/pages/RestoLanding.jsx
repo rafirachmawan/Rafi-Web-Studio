@@ -2,86 +2,108 @@ import { resto } from "../data/resto";
 
 export default function RestoLanding() {
   const data = resto;
-
   const phone = "628123456789";
 
   return (
-    <div className="bg-[#0f0f0f] text-white min-h-screen font-sans pt-20">
+    <div className="bg-[#0f0f0f] text-white min-h-screen font-sans">
       {/* NAVBAR */}
-      <nav className="fixed top-0 w-full z-50 bg-black/70 backdrop-blur-md border-b border-white/10">
+      <nav className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
         <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-          <h1 className="text-xl font-bold text-red-400">{data.name}</h1>
+          <h1 className="text-xl font-bold text-red-500 tracking-wide">
+            {data.name}
+          </h1>
 
           <a
             href={`https://wa.me/${phone}`}
-            className="bg-red-500 px-5 py-2 rounded-lg hover:bg-red-600 transition"
+            className="bg-red-500 px-5 py-2 rounded-lg hover:bg-red-600 transition font-medium"
           >
-            Order
+            Order Now
           </a>
         </div>
       </nav>
 
-      {/* HERO */}
-      <section className="relative h-[90vh] flex items-center justify-center text-center px-6 overflow-hidden">
+      {/* HERO (FOOD FOCUS) */}
+      <section className="relative h-[100vh] flex items-center px-6 overflow-hidden">
         <img
           src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d"
-          className="absolute inset-0 w-full h-full object-cover scale-105"
+          className="absolute inset-0 w-full h-full object-cover scale-110"
         />
 
         <div className="absolute inset-0 bg-black/70"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent"></div>
 
-        <div className="relative z-10 max-w-2xl">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
+        <div className="relative z-10 max-w-xl">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
             {data.hero.title}
           </h1>
 
           <p className="text-gray-300 mb-8 text-lg">{data.hero.subtitle}</p>
 
-          <a
-            href="#menu"
-            className="bg-red-500 px-8 py-3 rounded-xl hover:bg-red-600 transition"
-          >
-            Lihat Menu
-          </a>
+          <div className="flex gap-4">
+            <a
+              href="#menu"
+              className="bg-red-500 px-8 py-3 rounded-xl hover:bg-red-600 transition font-medium"
+            >
+              Lihat Menu
+            </a>
+
+            <a
+              href={`https://wa.me/${phone}`}
+              className="border border-white/20 px-8 py-3 rounded-xl hover:bg-white hover:text-black transition"
+            >
+              Pesan Sekarang
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* BEST SELLER 🔥 */}
+      <section className="px-6 py-20 bg-[#111]">
+        <div className="max-w-6xl mx-auto text-center mb-12">
+          <h2 className="text-3xl font-bold mb-3 text-red-400">
+            Best Seller 🔥
+          </h2>
+          <p className="text-gray-400">
+            Menu favorit yang paling banyak dipesan
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-8">
+          <img
+            src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d"
+            className="rounded-2xl h-64 w-full object-cover"
+          />
+          <img
+            src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092"
+            className="rounded-2xl h-64 w-full object-cover"
+          />
+          <img
+            src="https://images.unsplash.com/photo-1617191519009-5d0f5c9b5c2c"
+            className="rounded-2xl h-64 w-full object-cover"
+          />
         </div>
       </section>
 
       {/* MENU */}
       <RestoSection />
 
+      {/* CTA 🔥 */}
+      <section className="px-6 py-24 text-center bg-red-500">
+        <h2 className="text-3xl font-bold mb-4">Lapar? Pesan Sekarang!</h2>
+
+        <p className="mb-6">Nikmati hidangan terbaik tanpa menunggu lama</p>
+
+        <a
+          href={`https://wa.me/${phone}`}
+          className="bg-black text-white px-8 py-3 rounded-xl font-medium"
+        >
+          Order via WhatsApp
+        </a>
+      </section>
+
       {/* FOOTER */}
-      <footer className="bg-black border-t border-white/10 mt-20">
-        <div className="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-3 gap-10">
-          <div>
-            <h2 className="text-xl font-bold mb-4 text-red-400">{data.name}</h2>
-            <p className="text-gray-400 text-sm">
-              Menyajikan hidangan terbaik dengan cita rasa khas Nusantara.
-            </p>
-          </div>
-
-          <div>
-            <h3 className="mb-4 font-semibold">Menu</h3>
-            <ul className="text-gray-400 text-sm space-y-2">
-              <li>Home</li>
-              <li>Menu</li>
-              <li>Contact</li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="mb-4 font-semibold">Contact</h3>
-            <p className="text-gray-400 text-sm mb-4">📞 {phone}</p>
-
-            <a
-              href={`https://wa.me/${phone}`}
-              className="bg-red-500 px-5 py-2 rounded-lg hover:bg-red-600 transition"
-            >
-              WhatsApp
-            </a>
-          </div>
-        </div>
-
-        <div className="text-center text-gray-500 text-sm py-6 border-t border-white/5">
+      <footer className="bg-black border-t border-white/10">
+        <div className="text-center text-gray-500 text-sm py-6">
           © {new Date().getFullYear()} {data.name}
         </div>
       </footer>
@@ -90,7 +112,7 @@ export default function RestoLanding() {
 }
 
 /* ========================= */
-/* 🍽️ RESTO SECTION */
+/* 🍽️ MENU SECTION (JUICY) */
 /* ========================= */
 
 function RestoSection() {
@@ -117,15 +139,11 @@ function RestoSection() {
   return (
     <section id="menu" className="px-6 py-24 bg-[#0f0f0f]">
       <div className="max-w-6xl mx-auto">
-        {/* TITLE */}
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-3">Menu Favorit</h2>
-          <p className="text-gray-400">
-            Pilihan terbaik yang paling disukai pelanggan
-          </p>
+          <p className="text-gray-400">Pilih makanan favoritmu sekarang</p>
         </div>
 
-        {/* GRID */}
         <div className="grid md:grid-cols-3 gap-10">
           {menus.map((menu, i) => {
             const wa = `https://wa.me/${phone}?text=${encodeURIComponent(
@@ -135,27 +153,25 @@ function RestoSection() {
             return (
               <div
                 key={i}
-                className="group bg-[#141414] rounded-2xl overflow-hidden border border-white/10 hover:border-white/20 transition duration-300"
+                className="group overflow-hidden rounded-2xl bg-[#141414] hover:scale-[1.03] transition duration-300"
               >
                 <div className="overflow-hidden">
                   <img
                     src={menu.img}
-                    className="h-52 w-full object-cover group-hover:scale-110 transition duration-500"
+                    className="h-64 w-full object-cover group-hover:scale-110 transition duration-700"
                   />
                 </div>
 
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-2">{menu.name}</h3>
+                  <h3 className="text-xl font-bold mb-2">{menu.name}</h3>
 
-                  <div className="mb-5">
-                    <span className="text-2xl font-bold text-red-400">
-                      {menu.price}
-                    </span>
-                  </div>
+                  <p className="text-red-400 text-lg font-semibold mb-4">
+                    {menu.price}
+                  </p>
 
                   <a
                     href={wa}
-                    className="block text-center bg-white text-black py-3 rounded-xl font-medium hover:bg-gray-200 transition"
+                    className="block text-center bg-red-500 py-3 rounded-xl font-medium hover:bg-red-600 transition"
                   >
                     Pesan Sekarang
                   </a>

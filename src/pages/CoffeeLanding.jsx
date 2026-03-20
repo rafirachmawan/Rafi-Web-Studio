@@ -10,20 +10,27 @@ export default function CoffeeLanding() {
   return (
     <div className="bg-[#0b0b0b] text-white min-h-screen font-sans pt-20">
       {/* NAVBAR */}
-      <nav className="fixed top-0 w-full z-50 bg-black/50 backdrop-blur-lg border-b border-white/10">
+      <nav className="fixed top-0 w-full z-50 bg-black/40 backdrop-blur-xl border-b border-white/10">
         <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-          <h1 className="text-xl font-serif text-amber-400 tracking-wide">
-            Coffee
+          <h1 className="text-xl font-serif text-amber-400 tracking-widest">
+            COFFEE
           </h1>
 
           <div className="hidden md:flex gap-10 text-gray-300 text-sm">
-            <a href="#">Home</a>
-            <a href="#menu">Menu</a>
+            <a href="#" className="hover:text-white transition">
+              Home
+            </a>
+            <a href="#menu" className="hover:text-white transition">
+              Menu
+            </a>
+            <a href="#about" className="hover:text-white transition">
+              About
+            </a>
           </div>
 
           <a
             href={waLink}
-            className="bg-amber-500 hover:bg-amber-600 px-5 py-2 rounded-xl text-sm font-medium transition"
+            className="bg-amber-500 hover:bg-amber-600 px-5 py-2 rounded-xl text-sm font-medium transition shadow-lg hover:scale-105"
           >
             Order
           </a>
@@ -38,28 +45,28 @@ export default function CoffeeLanding() {
         />
 
         <div className="absolute inset-0 bg-black/70"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
 
         <div className="relative z-10 max-w-2xl">
-          <h1 className="text-5xl md:text-6xl font-bold mb-4 font-serif">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 font-serif leading-tight tracking-wide">
             {data.hero.title}
           </h1>
 
-          <p className="text-gray-300 mb-8 text-lg">{data.hero.subtitle}</p>
+          <p className="text-gray-300 mb-10 text-lg">{data.hero.subtitle}</p>
 
           <div className="flex justify-center gap-4">
             <a
               href={waLink}
-              className="bg-amber-500 px-6 py-3 rounded-xl hover:bg-amber-600 transition shadow-lg"
+              className="bg-amber-500 px-7 py-3 rounded-xl hover:bg-amber-600 transition shadow-lg hover:scale-105"
             >
               Order Coffee
             </a>
 
             <a
               href="#menu"
-              className="border border-white/30 px-6 py-3 rounded-xl hover:bg-white/10 transition"
+              className="border border-white/30 px-7 py-3 rounded-xl hover:bg-white/10 transition"
             >
-              Lihat Menu
+              Explore Menu
             </a>
           </div>
         </div>
@@ -89,7 +96,7 @@ export default function CoffeeLanding() {
             <ul className="text-gray-400 text-sm space-y-2">
               <li>Home</li>
               <li>Menu</li>
-              <li>Contact</li>
+              <li>About</li>
             </ul>
           </div>
 
@@ -115,7 +122,7 @@ export default function CoffeeLanding() {
 }
 
 /* ========================= */
-/* ☕ MENU SECTION */
+/* ☕ MENU (UPGRADE) */
 /* ========================= */
 
 function CoffeeSection() {
@@ -141,23 +148,37 @@ function CoffeeSection() {
     <section id="menu" className="px-6 py-24 bg-[#0d0d0d]">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-3 font-serif">Our Coffee</h2>
+          <h2 className="text-4xl font-bold mb-3 font-serif tracking-wide">
+            Our Coffee
+          </h2>
           <p className="text-gray-400">Crafted with passion & premium beans</p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-10">
           {menu.map((item, i) => (
-            <div key={i} className="group relative rounded-2xl overflow-hidden">
-              <img
-                src={item.img}
-                className="h-80 w-full object-cover group-hover:scale-110 transition duration-700"
-              />
+            <div
+              key={i}
+              className="group bg-[#141414] rounded-2xl overflow-hidden border border-white/10 hover:border-amber-500/40 transition duration-300 hover:-translate-y-2"
+            >
+              {/* IMAGE */}
+              <div className="overflow-hidden">
+                <img
+                  src={item.img}
+                  className="h-72 w-full object-cover group-hover:scale-110 transition duration-700"
+                />
+              </div>
 
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+              {/* CONTENT */}
+              <div className="p-6">
+                <h3 className="text-xl font-semibold mb-2">{item.name}</h3>
 
-              <div className="absolute bottom-0 p-6">
-                <h3 className="text-xl font-semibold">{item.name}</h3>
-                <p className="text-amber-400 font-bold text-lg">{item.price}</p>
+                <p className="text-amber-400 text-lg font-bold mb-4">
+                  {item.price}
+                </p>
+
+                <button className="w-full bg-amber-500 py-2 rounded-lg hover:bg-amber-600 transition text-sm">
+                  Order Now
+                </button>
               </div>
             </div>
           ))}
@@ -168,27 +189,38 @@ function CoffeeSection() {
 }
 
 /* ========================= */
-/* 🌿 AMBIENCE */
+/* 🌿 AMBIENCE (UPGRADE) */
 /* ========================= */
 
 function CoffeeAmbience() {
   return (
-    <section className="px-6 py-24 bg-black">
+    <section id="about" className="px-6 py-24 bg-black">
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-        <img
-          src="https://images.unsplash.com/photo-1554118811-1e0d58224f24"
-          className="rounded-2xl h-[400px] w-full object-cover"
-        />
+        <div className="relative">
+          <img
+            src="https://images.unsplash.com/photo-1554118811-1e0d58224f24"
+            className="rounded-2xl object-cover h-[400px] w-full"
+          />
+
+          <div className="absolute inset-0 rounded-2xl bg-black/30"></div>
+        </div>
 
         <div>
-          <h2 className="text-4xl font-bold mb-4">Cozy Place to Relax</h2>
+          <h2 className="text-4xl font-bold mb-4 font-serif">
+            Cozy & Aesthetic Space
+          </h2>
 
-          <p className="text-gray-400 mb-6">
-            Nikmati kopi terbaik dengan suasana nyaman, cocok untuk kerja,
-            nongkrong, atau sekadar menikmati waktu santai.
+          <p className="text-gray-400 mb-6 leading-relaxed">
+            Nikmati kopi terbaik dengan suasana hangat dan nyaman. Tempat yang
+            sempurna untuk bekerja, bersantai, dan menikmati waktu berkualitas.
           </p>
 
-          <a className="bg-amber-500 px-6 py-3 rounded-xl">Kunjungi Kami</a>
+          <a
+            href="#"
+            className="bg-amber-500 px-6 py-3 rounded-xl hover:bg-amber-600 transition shadow-md"
+          >
+            Visit Us
+          </a>
         </div>
       </div>
     </section>
