@@ -22,7 +22,7 @@ export default function HotelLanding() {
         </div>
       </nav>
 
-      {/* HERO (CINEMATIC) */}
+      {/* HERO */}
       <section className="relative h-[100vh] flex items-center px-6 overflow-hidden">
         <img
           src="https://images.unsplash.com/photo-1566665797739-1674de7a421a"
@@ -48,7 +48,35 @@ export default function HotelLanding() {
         </div>
       </section>
 
-      {/* EXPERIENCE 🔥 */}
+      {/* 🔥 QUICK BOOKING */}
+      <section className="px-6 -mt-12 relative z-10">
+        <div className="max-w-5xl mx-auto bg-[#111] border border-white/10 rounded-2xl p-6 shadow-xl">
+          <div className="grid md:grid-cols-4 gap-4">
+            <input
+              type="date"
+              className="bg-black px-4 py-3 rounded-lg text-sm outline-none"
+            />
+            <input
+              type="date"
+              className="bg-black px-4 py-3 rounded-lg text-sm outline-none"
+            />
+            <input
+              type="number"
+              placeholder="Guests"
+              className="bg-black px-4 py-3 rounded-lg text-sm outline-none"
+            />
+
+            <a
+              href={`https://wa.me/${phone}`}
+              className="bg-amber-400 text-black flex items-center justify-center rounded-lg font-semibold"
+            >
+              Check Availability
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* EXPERIENCE */}
       <section className="px-6 py-24 bg-[#111]">
         <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-10 text-center">
           <div>
@@ -83,7 +111,83 @@ export default function HotelLanding() {
       {/* ROOM */}
       <HotelSection />
 
-      {/* CTA (SOFT SELL) */}
+      {/* 🖼️ GALLERY */}
+      <section className="px-6 py-24 bg-black">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-light text-center mb-12">
+            Hotel Ambience
+          </h2>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            <img
+              src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa"
+              className="rounded-xl object-cover h-64 w-full"
+            />
+            <img
+              src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b"
+              className="rounded-xl object-cover h-64 w-full"
+            />
+            <img
+              src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2"
+              className="rounded-xl object-cover h-64 w-full"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* 💬 TESTIMONIAL */}
+      <section className="px-6 py-24 bg-[#111] text-center">
+        <h2 className="text-4xl font-light mb-12">Guest Experience</h2>
+
+        <div className="grid md:grid-cols-3 gap-10">
+          <div className="bg-black p-8 rounded-2xl border border-white/10">
+            <p className="italic">"Pelayanan sangat memuaskan!"</p>
+          </div>
+
+          <div className="bg-black p-8 rounded-2xl border border-white/10">
+            <p className="italic">"Kamar bersih & nyaman"</p>
+          </div>
+
+          <div className="bg-black p-8 rounded-2xl border border-white/10">
+            <p className="italic">"Lokasi strategis banget"</p>
+          </div>
+        </div>
+      </section>
+
+      {/* 📍 LOCATION */}
+      <section className="px-6 py-24 bg-black">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 className="text-4xl font-light mb-4">Visit Our Hotel</h2>
+
+            <p className="text-gray-400 mb-6">
+              Nikmati pengalaman menginap terbaik di lokasi strategis dengan
+              fasilitas lengkap.
+            </p>
+
+            <p className="text-gray-300 text-sm mb-2">
+              📍 Jl. Hotel No. 123, Indonesia
+            </p>
+            <p className="text-gray-300 text-sm mb-6">
+              🕒 Check-in: 14.00 | Check-out: 12.00
+            </p>
+
+            <a
+              href="https://maps.google.com"
+              className="border border-white/30 px-6 py-3 rounded-full hover:bg-white hover:text-black transition"
+            >
+              Open Maps
+            </a>
+          </div>
+
+          <iframe
+            className="w-full h-[350px] rounded-2xl"
+            src="https://maps.google.com/maps?q=jakarta&t=&z=13&ie=UTF8&iwloc=&output=embed"
+          />
+        </div>
+      </section>
+
+      {/* CTA */}
       <section className="px-6 py-24 text-center">
         <h2 className="text-3xl font-light mb-6">
           Experience Comfort & Luxury
@@ -107,10 +211,7 @@ export default function HotelLanding() {
   );
 }
 
-/* ========================= */
-/* 🏨 ROOM SECTION (LUXURY) */
-/* ========================= */
-
+/* ROOM SECTION (TETAP PUNYA KAMU) */
 function HotelSection() {
   const phone = "628123456789";
 
@@ -148,7 +249,6 @@ function HotelSection() {
 
             return (
               <div key={i} className="group overflow-hidden rounded-2xl">
-                {/* IMAGE */}
                 <div className="overflow-hidden">
                   <img
                     src={room.img}
@@ -156,7 +256,6 @@ function HotelSection() {
                   />
                 </div>
 
-                {/* CONTENT */}
                 <div className="mt-4">
                   <h3 className="text-xl font-light mb-1">{room.name}</h3>
 

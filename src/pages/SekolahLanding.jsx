@@ -20,10 +20,9 @@ export default function SekolahLanding() {
         </div>
       </nav>
 
-      {/* HERO (LEFT RIGHT) 🔥 */}
+      {/* HERO */}
       <section className="pt-32 pb-20 px-6">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-          {/* TEXT */}
           <div>
             <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
               {data.hero.title}
@@ -48,7 +47,6 @@ export default function SekolahLanding() {
             </div>
           </div>
 
-          {/* IMAGE */}
           <div>
             <img
               src="https://images.unsplash.com/photo-1588072432836-e10032774350"
@@ -58,7 +56,7 @@ export default function SekolahLanding() {
         </div>
       </section>
 
-      {/* STATS 🔥 */}
+      {/* STATS */}
       <section className="px-6 py-16 bg-[#0f172a]">
         <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 text-center">
           <div>
@@ -79,41 +77,129 @@ export default function SekolahLanding() {
       {/* PROGRAM */}
       <SekolahSection />
 
-      {/* WHY US 🔥 */}
-      <section className="px-6 py-24">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
-          <div className="bg-[#1e293b] p-6 rounded-2xl">
-            <h3 className="text-lg font-semibold mb-2">Kurikulum Modern</h3>
-            <p className="text-gray-400 text-sm">
-              Disesuaikan dengan kebutuhan industri saat ini
-            </p>
+      {/* 🎓 ALUR PENDAFTARAN */}
+      <section className="px-6 py-24 bg-[#020617]">
+        <div className="max-w-6xl mx-auto text-center mb-12">
+          <h2 className="text-4xl font-bold mb-3">Alur Pendaftaran</h2>
+        </div>
+
+        <div className="grid md:grid-cols-4 gap-6 text-center">
+          <div className="bg-[#1e293b] p-6 rounded-xl">Isi Form</div>
+          <div className="bg-[#1e293b] p-6 rounded-xl">Verifikasi</div>
+          <div className="bg-[#1e293b] p-6 rounded-xl">Tes / Interview</div>
+          <div className="bg-[#1e293b] p-6 rounded-xl">Diterima 🎉</div>
+        </div>
+      </section>
+
+      {/* 👨‍🏫 TEACHER */}
+      <section className="px-6 py-24 bg-[#0f172a]">
+        <div className="max-w-6xl mx-auto text-center mb-12">
+          <h2 className="text-4xl font-bold">Guru & Mentor</h2>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-8">
+          <div className="text-center">
+            <img
+              src="https://randomuser.me/api/portraits/men/32.jpg"
+              className="w-32 h-32 mx-auto rounded-full mb-4"
+            />
+            <h3>Pak Budi</h3>
+            <p className="text-gray-400 text-sm">Programmer</p>
           </div>
 
-          <div className="bg-[#1e293b] p-6 rounded-2xl">
-            <h3 className="text-lg font-semibold mb-2">Siap Kerja</h3>
-            <p className="text-gray-400 text-sm">
-              Fokus pada skill nyata & praktik langsung
-            </p>
+          <div className="text-center">
+            <img
+              src="https://randomuser.me/api/portraits/women/44.jpg"
+              className="w-32 h-32 mx-auto rounded-full mb-4"
+            />
+            <h3>Bu Rina</h3>
+            <p className="text-gray-400 text-sm">Akuntan</p>
           </div>
 
-          <div className="bg-[#1e293b] p-6 rounded-2xl">
-            <h3 className="text-lg font-semibold mb-2">Mentor Berpengalaman</h3>
-            <p className="text-gray-400 text-sm">
-              Dibimbing oleh praktisi profesional
-            </p>
+          <div className="text-center">
+            <img
+              src="https://randomuser.me/api/portraits/men/65.jpg"
+              className="w-32 h-32 mx-auto rounded-full mb-4"
+            />
+            <h3>Pak Andi</h3>
+            <p className="text-gray-400 text-sm">Digital Marketing</p>
           </div>
         </div>
       </section>
 
-      {/* CTA 🔥 */}
+      {/* 🏫 GALLERY */}
+      <section className="px-6 py-24 bg-[#020617]">
+        <div className="max-w-6xl mx-auto text-center mb-12">
+          <h2 className="text-4xl font-bold">Kegiatan Sekolah</h2>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-6">
+          <img
+            src="https://images.unsplash.com/photo-1588072432836-e10032774350"
+            className="rounded-xl"
+          />
+          <img
+            src="https://images.unsplash.com/photo-1584697964353-7e6f1fdb5e57"
+            className="rounded-xl"
+          />
+          <img
+            src="https://images.unsplash.com/photo-1596495577886-d920f1fb7238"
+            className="rounded-xl"
+          />
+        </div>
+      </section>
+
+      {/* 💬 TESTIMONI */}
+      <section className="px-6 py-24 bg-[#0f172a] text-center">
+        <h2 className="text-4xl font-bold mb-10">Apa Kata Mereka?</h2>
+
+        <div className="grid md:grid-cols-3 gap-8">
+          <div className="bg-[#1e293b] p-6 rounded-xl">
+            <p>"Belajar jadi menyenangkan!"</p>
+          </div>
+          <div className="bg-[#1e293b] p-6 rounded-xl">
+            <p>"Langsung siap kerja!"</p>
+          </div>
+          <div className="bg-[#1e293b] p-6 rounded-xl">
+            <p>"Mentornya keren!"</p>
+          </div>
+        </div>
+      </section>
+
+      {/* 📍 LOCATION */}
+      <section className="px-6 py-24 bg-[#020617]">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 className="text-4xl font-bold mb-4">Lokasi Sekolah</h2>
+
+            <p className="text-gray-400 mb-6">
+              Lokasi strategis dan mudah dijangkau
+            </p>
+
+            <p className="text-sm text-gray-300 mb-2">📍 Jl. Sekolah No. 123</p>
+
+            <a
+              href="https://maps.google.com"
+              className="bg-blue-500 px-6 py-3 rounded-xl"
+            >
+              Buka Maps
+            </a>
+          </div>
+
+          <iframe
+            className="w-full h-[300px] rounded-xl"
+            src="https://maps.google.com/maps?q=jakarta&t=&z=13&ie=UTF8&iwloc=&output=embed"
+          />
+        </div>
+      </section>
+
+      {/* CTA */}
       <section className="px-6 py-20 text-center bg-blue-600">
         <h2 className="text-3xl font-bold mb-4">
           Siap Bergabung Bersama Kami?
         </h2>
 
-        <p className="mb-6">
-          Daftar sekarang dan mulai perjalanan masa depanmu
-        </p>
+        <p className="mb-6">Daftar sekarang dan mulai masa depanmu</p>
 
         <a
           href={`https://wa.me/${phone}`}
@@ -133,7 +219,7 @@ export default function SekolahLanding() {
   );
 }
 
-/* PROGRAM */
+/* PROGRAM (PUNYA KAMU) */
 function SekolahSection() {
   const programs = [
     {

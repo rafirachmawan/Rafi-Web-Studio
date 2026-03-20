@@ -22,7 +22,7 @@ export default function RestoLanding() {
         </div>
       </nav>
 
-      {/* HERO (FOOD FOCUS) */}
+      {/* HERO */}
       <section className="relative h-[100vh] flex items-center px-6 overflow-hidden">
         <img
           src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d"
@@ -57,7 +57,30 @@ export default function RestoLanding() {
         </div>
       </section>
 
-      {/* BEST SELLER 🔥 */}
+      {/* 🔥 QUICK ORDER */}
+      <section className="px-6 -mt-10 relative z-10">
+        <div className="max-w-5xl mx-auto bg-[#1a1a1a] rounded-2xl p-6 border border-white/10">
+          <div className="grid md:grid-cols-3 gap-4">
+            <input
+              placeholder="Nama Menu"
+              className="bg-black px-4 py-3 rounded-lg text-sm outline-none"
+            />
+            <input
+              placeholder="Jumlah"
+              className="bg-black px-4 py-3 rounded-lg text-sm outline-none"
+            />
+
+            <a
+              href={`https://wa.me/${phone}`}
+              className="bg-red-500 flex items-center justify-center rounded-lg font-semibold"
+            >
+              Pesan Cepat
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* BEST SELLER */}
       <section className="px-6 py-20 bg-[#111]">
         <div className="max-w-6xl mx-auto text-center mb-12">
           <h2 className="text-3xl font-bold mb-3 text-red-400">
@@ -87,7 +110,55 @@ export default function RestoLanding() {
       {/* MENU */}
       <RestoSection />
 
-      {/* CTA 🔥 */}
+      {/* ⭐ TESTIMONIAL */}
+      <section className="px-6 py-24 bg-[#111] text-center">
+        <h2 className="text-4xl font-bold mb-12">Customer Review</h2>
+
+        <div className="grid md:grid-cols-3 gap-10">
+          <div className="bg-black p-6 rounded-2xl">
+            <p>"Enak banget, nagih!"</p>
+          </div>
+
+          <div className="bg-black p-6 rounded-2xl">
+            <p>"Cepat & murah!"</p>
+          </div>
+
+          <div className="bg-black p-6 rounded-2xl">
+            <p>"Favorit keluarga 🔥"</p>
+          </div>
+        </div>
+      </section>
+
+      {/* 📍 LOCATION */}
+      <section className="px-6 py-24 bg-black">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 className="text-4xl font-bold mb-4">Visit Our Resto</h2>
+
+            <p className="text-gray-400 mb-6">
+              Nikmati makanan lezat langsung di tempat kami dengan suasana
+              nyaman.
+            </p>
+
+            <p className="text-sm text-gray-300 mb-2">📍 Jl. Resto No. 123</p>
+            <p className="text-sm text-gray-300 mb-6">🕒 10.00 - 22.00</p>
+
+            <a
+              href="https://maps.google.com"
+              className="bg-red-500 px-6 py-3 rounded-xl"
+            >
+              Buka Maps
+            </a>
+          </div>
+
+          <iframe
+            className="w-full h-[300px] rounded-2xl"
+            src="https://maps.google.com/maps?q=jakarta&t=&z=13&ie=UTF8&iwloc=&output=embed"
+          />
+        </div>
+      </section>
+
+      {/* CTA */}
       <section className="px-6 py-24 text-center bg-red-500">
         <h2 className="text-3xl font-bold mb-4">Lapar? Pesan Sekarang!</h2>
 
@@ -111,10 +182,7 @@ export default function RestoLanding() {
   );
 }
 
-/* ========================= */
-/* 🍽️ MENU SECTION (JUICY) */
-/* ========================= */
-
+/* MENU */
 function RestoSection() {
   const phone = "628123456789";
 
