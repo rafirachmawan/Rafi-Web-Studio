@@ -1,83 +1,149 @@
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { useState } from "react";
 
 export default function Home() {
+  const [filter, setFilter] = useState("all");
+
   const demos = [
     {
       name: "Coffee",
       path: "/coffee",
       desc: "Website cafe aesthetic & modern",
       icon: "☕",
+      category: "food",
+      image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93",
     },
     {
       name: "Rental",
       path: "/rental",
       desc: "Sistem sewa mobil cepat & praktis",
       icon: "🚗",
+      category: "service",
+      image: "https://images.unsplash.com/photo-1502877338535-766e1452684a",
     },
     {
       name: "Hotel",
       path: "/hotel",
       desc: "Landing page hotel elegan & premium",
       icon: "🏨",
+      category: "service",
+      image: "https://images.unsplash.com/photo-1566073771259-6a8506099945",
     },
     {
       name: "Resto",
       path: "/resto",
       desc: "Website menu & booking restoran",
       icon: "🍽️",
+      category: "food",
+      image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5",
     },
     {
       name: "Sekolah",
       path: "/sekolah",
       desc: "Profil sekolah profesional",
       icon: "🏫",
+      category: "education",
+      image: "https://images.unsplash.com/photo-1588072432836-e10032774350",
+    },
+    {
+      name: "Laundry",
+      path: "/laundry",
+      desc: "Website laundry modern + tracking order",
+      icon: "🧺",
+      category: "service",
+      image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952",
+    },
+    {
+      name: "Umroh",
+      path: "/umroh",
+      desc: "Landing page travel umroh profesional",
+      icon: "🕋",
+      category: "religion",
+      image: "https://images.unsplash.com/photo-1542810634-71277d95dcbb",
     },
   ];
 
+  const filtered =
+    filter === "all" ? demos : demos.filter((item) => item.category === filter);
+
   return (
-    <div className="min-h-screen bg-[#0b0b0b] text-white">
-      {/* CONTAINER */}
-      <div className="max-w-6xl mx-auto px-6 py-20">
+    <div className="min-h-screen bg-[#0a0a0a] text-white relative overflow-hidden">
+      {/* BACKGROUND GLOW (OPTIMIZED) */}
+      <div className="absolute top-[-200px] left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-amber-500/10 blur-[80px] rounded-full"></div>
+
+      <div className="max-w-6xl mx-auto px-6 py-20 relative z-10">
         {/* HEADER */}
-        <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
-            Demo Website <span className="text-amber-500">Bisnis</span>
+        <div className="text-center mb-12">
+          <h1 className="text-4xl md:text-6xl font-bold">
+            Demo Website{" "}
+            <span className="bg-gradient-to-r from-amber-400 to-yellow-300 bg-clip-text text-transparent">
+              Bisnis
+            </span>
           </h1>
 
-          <p className="text-gray-400 mt-4 text-lg max-w-xl mx-auto">
-            Pilih jenis bisnis untuk melihat contoh website yang siap digunakan
+          <p className="text-gray-400 mt-4">
+            Pilih template sesuai bisnis kamu
           </p>
+        </div>
+
+        {/* FILTER */}
+        <div className="flex flex-wrap justify-center gap-3 mb-10">
+          {["all", "food", "service", "education", "religion"].map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setFilter(cat)}
+              className={`px-4 py-2 rounded-full text-sm transition ${
+                filter === cat
+                  ? "bg-amber-500 text-black"
+                  : "bg-white/10 text-gray-300 hover:bg-white/20"
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
         </div>
 
         {/* GRID */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {demos.map((demo, i) => (
-            <Link
+          {filtered.map((demo, i) => (
+            <motion.div
               key={i}
-              to={demo.path}
-              className="group relative bg-[#141414] border border-white/10 rounded-2xl p-6 transition-all duration-300 hover:border-amber-500/40 hover:-translate-y-1"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3 }}
             >
-              {/* ICON */}
-              <div className="text-3xl mb-4">{demo.icon}</div>
+              <Link
+                to={demo.path}
+                className="group block bg-white/[0.03] border border-white/10 rounded-2xl overflow-hidden hover:-translate-y-1 transition"
+              >
+                {/* IMAGE */}
+                <div className="h-40 overflow-hidden">
+                  <img
+                    src={demo.image}
+                    alt={demo.name}
+                    loading="lazy"
+                    className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                  />
+                </div>
 
-              {/* TITLE */}
-              <h2 className="text-xl font-semibold mb-2 group-hover:text-amber-400 transition">
-                {demo.name}
-              </h2>
+                <div className="p-5">
+                  {/* ICON */}
+                  <div className="text-2xl mb-2">{demo.icon}</div>
 
-              {/* DESC */}
-              <p className="text-gray-400 text-sm leading-relaxed mb-6">
-                {demo.desc}
-              </p>
+                  {/* TITLE */}
+                  <h2 className="text-lg font-semibold group-hover:text-amber-400">
+                    {demo.name}
+                  </h2>
 
-              {/* CTA */}
-              <div className="text-sm font-medium text-amber-500">
-                Lihat Demo →
-              </div>
+                  {/* DESC */}
+                  <p className="text-gray-400 text-sm mt-1 mb-4">{demo.desc}</p>
 
-              {/* HOVER GLOW */}
-              <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition pointer-events-none bg-gradient-to-br from-amber-500/10 to-transparent"></div>
-            </Link>
+                  {/* CTA */}
+                  <span className="text-amber-400 text-sm">Lihat Demo →</span>
+                </div>
+              </Link>
+            </motion.div>
           ))}
         </div>
 

@@ -6,6 +6,8 @@ import RentalLanding from "./pages/RentalLanding";
 import HotelLanding from "./pages/HotelLanding";
 import RestoLanding from "./pages/RestoLanding";
 import SekolahLanding from "./pages/SekolahLanding";
+import LaundryLanding from "./pages/LaundryLanding";
+import UmrohLanding from "./pages/UmrohLanding";
 
 export default function App() {
   return (
@@ -17,6 +19,8 @@ export default function App() {
         <Route path="/hotel" element={<HotelLanding />} />
         <Route path="/resto" element={<RestoLanding />} />
         <Route path="/sekolah" element={<SekolahLanding />} />
+        <Route path="/laundry" element={<LaundryLanding />} />
+        <Route path="/umroh" element={<UmrohLanding />} />
       </Routes>
     </Router>
   );
