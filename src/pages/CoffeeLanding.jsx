@@ -6,6 +6,7 @@ import heroImg from "../assets/Coffe-bg.jpg";
 import cappuccinoImg from "../assets/Cappucino.jpg";
 import latteImg from "../assets/CoffeLate.jpg";
 import espressoImg from "../assets/Expresso.jpg";
+import ambienceImg from "../assets/AmbienceCoffe.jpg";
 
 export default function CoffeeLanding() {
   const data = coffee;
@@ -81,7 +82,7 @@ export default function CoffeeLanding() {
     <div className="bg-[#0b0b0b] text-white min-h-screen font-sans">
       {/* NAVBAR */}
       {/* FLOATING NAVBAR */}
-      <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50">
+      <div className="fixed top-0 left-1/2 -translate-x-1/2 z-50">
         <div className="bg-black/40 backdrop-blur-xl border border-white/10 px-6 py-3 rounded-full flex items-center gap-6 shadow-lg">
           <h1 className="text-sm font-serif text-amber-300 tracking-widest">
             COFFEE
@@ -111,7 +112,7 @@ export default function CoffeeLanding() {
       {/* HERO */}
       <section
         ref={heroRef}
-        className="relative h-[100vh] flex items-center justify-center text-center overflow-hidden"
+        className="relative min-h-screen flex items-center justify-center text-center overflow-hidden"
       >
         <img
           ref={imageRef}
@@ -121,7 +122,7 @@ export default function CoffeeLanding() {
 
         <div className="absolute inset-0 bg-black/70"></div>
 
-        <div className="relative z-10 max-w-2xl px-6">
+        <div className="relative z-10 max-w-2xl px-6 mx-auto -mt-10">
           <h1 ref={titleRef} className="text-5xl md:text-7xl font-serif mb-6">
             {data.hero.title}
           </h1>
@@ -282,13 +283,15 @@ function CoffeeAmbience() {
     return () => observer.disconnect();
   }, []);
 
+  // ⬇️ TAMBAHKAN INI
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <section ref={sectionRef} id="about" className="px-6 py-24 bg-black">
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-        <img
-          src="https://images.unsplash.com/photo-1554118811-1e0d58224f24"
-          className="rounded-2xl h-[400px] object-cover"
-        />
+        <img src={ambienceImg} className="rounded-2xl h-[400px] object-cover" />
 
         <div>
           <h2 className="text-4xl font-serif mb-4">Cozy & Aesthetic Space</h2>
