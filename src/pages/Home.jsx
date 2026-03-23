@@ -1,6 +1,13 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import coffeeImg from "../assets/Coffe.jpg";
+import rentalImg from "../assets/Rental.jpg";
+import hotelImg from "../assets/Hotel.jpg";
+import restoImg from "../assets/Resto.jpg";
+import sekolahImg from "../assets/Sekolah.jpg";
+import laundryImg from "../assets/Loundry.jpg";
+import umrohImg from "../assets/Umroh.jpg";
 
 export default function Home() {
   const [filter, setFilter] = useState("all");
@@ -12,7 +19,7 @@ export default function Home() {
       desc: "Website cafe aesthetic & modern",
       icon: "☕",
       category: "food",
-      image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93",
+      image: coffeeImg,
     },
     {
       name: "Rental",
@@ -20,7 +27,7 @@ export default function Home() {
       desc: "Sistem sewa mobil cepat & praktis",
       icon: "🚗",
       category: "service",
-      image: "https://images.unsplash.com/photo-1502877338535-766e1452684a",
+      image: rentalImg,
     },
     {
       name: "Hotel",
@@ -28,7 +35,7 @@ export default function Home() {
       desc: "Landing page hotel elegan & premium",
       icon: "🏨",
       category: "service",
-      image: "https://images.unsplash.com/photo-1566073771259-6a8506099945",
+      image: hotelImg,
     },
     {
       name: "Resto",
@@ -36,7 +43,7 @@ export default function Home() {
       desc: "Website menu & booking restoran",
       icon: "🍽️",
       category: "food",
-      image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5",
+      image: restoImg,
     },
     {
       name: "Sekolah",
@@ -44,7 +51,7 @@ export default function Home() {
       desc: "Profil sekolah profesional",
       icon: "🏫",
       category: "education",
-      image: "https://images.unsplash.com/photo-1588072432836-e10032774350",
+      image: sekolahImg,
     },
     {
       name: "Laundry",
@@ -52,7 +59,7 @@ export default function Home() {
       desc: "Website laundry modern + tracking order",
       icon: "🧺",
       category: "service",
-      image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952",
+      image: laundryImg,
     },
     {
       name: "Umroh",
@@ -60,7 +67,7 @@ export default function Home() {
       desc: "Landing page travel umroh profesional",
       icon: "🕋",
       category: "religion",
-      image: "https://images.unsplash.com/photo-1542810634-71277d95dcbb",
+      image: umrohImg,
     },
   ];
 
