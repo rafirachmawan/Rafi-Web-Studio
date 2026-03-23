@@ -2,6 +2,11 @@ import { useState, useEffect, useRef } from "react";
 import { coffee } from "../data/coffee";
 import gsap from "gsap";
 
+import heroImg from "../assets/Coffe-bg.jpg";
+import cappuccinoImg from "../assets/Cappucino.jpg";
+import latteImg from "../assets/CoffeLate.jpg";
+import espressoImg from "../assets/Expresso.jpg";
+
 export default function CoffeeLanding() {
   const data = coffee;
   const [open, setOpen] = useState(false);
@@ -110,7 +115,7 @@ export default function CoffeeLanding() {
       >
         <img
           ref={imageRef}
-          src="https://images.unsplash.com/photo-1509042239860-f550ce710b93"
+          src={heroImg}
           className="absolute inset-0 w-full h-full object-cover will-change-transform"
         />
 
@@ -203,17 +208,17 @@ function CoffeeSection({ waLink }) {
     {
       name: "Cappuccino",
       price: "18K",
-      img: "https://images.unsplash.com/photo-1509042239860-f550ce710b93",
+      img: cappuccinoImg,
     },
     {
       name: "Latte",
       price: "20K",
-      img: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085",
+      img: latteImg,
     },
     {
       name: "Espresso",
       price: "15K",
-      img: "https://images.unsplash.com/photo-1511920170033-f8396924c348",
+      img: espressoImg,
     },
   ];
 
