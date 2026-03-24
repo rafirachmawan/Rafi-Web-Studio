@@ -9,6 +9,8 @@ import sekolahImg from "../assets/Sekolah.jpg";
 import laundryImg from "../assets/Loundry.jpg";
 import umrohImg from "../assets/Umroh.jpg";
 
+import thinkingImg from "../assets/thinking.png";
+
 export default function Home() {
   const [filter, setFilter] = useState("all");
 
@@ -77,16 +79,16 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white relative overflow-hidden">
       {/* BACKGROUND GLOW */}
-      <div className="absolute top-[-200px] left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-amber-500/10 blur-[80px] rounded-full"></div>
+      <div className="absolute top-[-200px] left-1/2 -translate-x-1/2 w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-amber-500/10 blur-[100px] rounded-full"></div>
 
       {/* ===================== */}
       {/* 🔥 NAVBAR FLOATING */}
       {/* ===================== */}
-      <div className="fixed top-5 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-5xl">
-        <div className="backdrop-blur-lg bg-white/10 border border-white/10 rounded-full px-6 py-3 flex justify-between items-center shadow-lg">
+      <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-6xl">
+        <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-full px-4 md:px-6 py-3 flex justify-between items-center shadow-lg">
           <h1 className="font-semibold text-sm">RAFWEB</h1>
 
-          <div className="flex gap-6 text-sm text-gray-300">
+          <div className="hidden md:flex gap-6 text-sm text-gray-300">
             <a href="#" className="hover:text-amber-400">
               Home
             </a>
@@ -98,18 +100,18 @@ export default function Home() {
             </a>
           </div>
 
-          <button className="bg-amber-500 text-black px-4 py-1 rounded-full text-sm font-medium">
+          <button className="bg-amber-500 hover:bg-amber-400 text-black px-3 md:px-4 py-1.5 rounded-full text-xs md:text-sm font-medium transition">
             Konsultasi
           </button>
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-6 py-32 relative z-10">
+      <div className="max-w-6xl mx-auto px-4 md:px-6 pt-28 md:pt-36 pb-16 relative z-10">
         {/* ===================== */}
         {/* 🔥 HERO SECTION */}
         {/* ===================== */}
-        <div className="border border-white/10 rounded-[40px] p-6 md:p-10 bg-white/[0.02] backdrop-blur-lg mb-20">
-          <div className="grid md:grid-cols-2 gap-6 items-center">
+        <div className="border border-white/10 rounded-[30px] md:rounded-[40px] p-6 md:p-10 bg-white/[0.02] backdrop-blur-lg mb-16 md:mb-24">
+          <div className="grid md:grid-cols-2 gap-8 items-center">
             {/* TEXT */}
             <div>
               <h1 className="text-3xl md:text-5xl font-bold leading-tight">
@@ -117,18 +119,18 @@ export default function Home() {
                 <span className="text-amber-400">Bisnis Kamu</span>
               </h1>
 
-              <p className="text-gray-400 mt-4">
+              <p className="text-gray-400 mt-4 text-sm md:text-base">
                 Kami membantu bisnis tampil modern, cepat, dan siap closing
                 dengan website berkualitas tinggi.
               </p>
 
-              <button className="mt-6 bg-amber-500 text-black px-6 py-3 rounded-full font-semibold hover:scale-105 transition">
+              <button className="mt-6 bg-amber-500 hover:bg-amber-400 text-black px-5 py-2.5 md:px-6 md:py-3 rounded-full font-semibold transition">
                 Lihat Demo
               </button>
             </div>
 
             {/* VIDEO / IMAGE */}
-            <div className="h-[250px] md:h-[300px] bg-white/5 rounded-2xl flex items-center justify-center text-gray-500">
+            <div className="h-[200px] md:h-[300px] bg-white/5 rounded-2xl flex items-center justify-center text-gray-500">
               VIDEO AI
             </div>
           </div>
@@ -137,11 +139,11 @@ export default function Home() {
         {/* ===================== */}
         {/* 🔥 TAMBAHKAN DI SINI */}
         {/* ===================== */}
-        <div className="text-center mb-20">
+        <div className="text-center mb-16 md:mb-24">
           {/* STATS */}
-          <div className="flex flex-wrap justify-center gap-10 mb-10">
+          <div className="flex flex-wrap justify-center gap-8 md:gap-12 mb-10">
             <div>
-              <h2 className="text-3xl font-bold text-white">50+</h2>
+              <h2 className="text-2xl md:text-3xl font-bold text-white">50+</h2>
               <p className="text-gray-400 text-sm mt-1">Proyek Selesai</p>
             </div>
 
@@ -177,54 +179,83 @@ export default function Home() {
         {/* 🔥 PROBLEM DETAIL SECTION */}
         {/* ===================== */}
         <div className="mb-24">
-          <div className="grid md:grid-cols-3 gap-6 items-center">
+          <div className="grid md:grid-cols-3 gap-10 items-center">
             {/* LEFT */}
-            <div className="space-y-4">
-              <div className="border border-red-400/20 bg-red-400/5 rounded-xl px-4 py-3 flex justify-between items-center">
-                <span className="text-sm text-gray-300">
+            <div className="space-y-4 order-2 md:order-1">
+              {/* ITEM 1 */}
+              <div className="group relative flex items-start gap-4 p-4 rounded-xl bg-white/[0.02] border border-white/5 hover:border-red-400/30 transition hover:-translate-y-0.5 overflow-hidden">
+                {/* GLOW LINE */}
+                <div className="absolute left-0 top-0 h-full w-[2px] bg-gradient-to-b from-transparent via-red-400/50 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
+
+                {/* ICON */}
+                <div className="w-6 h-6 flex items-center justify-center rounded-full bg-red-400/10 text-red-400 text-xs mt-1">
+                  ✖
+                </div>
+
+                {/* TEXT */}
+                <p className="text-gray-300 text-sm md:text-base leading-relaxed group-hover:text-white transition">
                   Terlihat kurang meyakinkan
-                </span>
-                <span className="text-red-400">✖</span>
+                </p>
               </div>
 
-              <div className="border border-red-400/20 bg-red-400/5 rounded-xl px-4 py-3 flex justify-between items-center">
-                <span className="text-sm text-gray-300">
+              {/* ITEM 2 */}
+              <div className="group relative flex items-start gap-4 p-4 rounded-xl bg-white/[0.02] border border-white/5 hover:border-red-400/30 transition hover:-translate-y-0.5 overflow-hidden">
+                <div className="absolute left-0 top-0 h-full w-[2px] bg-gradient-to-b from-transparent via-red-400/50 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
+
+                <div className="w-6 h-6 flex items-center justify-center rounded-full bg-red-400/10 text-red-400 text-xs mt-1">
+                  ✖
+                </div>
+
+                <p className="text-gray-300 text-sm md:text-base leading-relaxed group-hover:text-white transition">
                   Kalah dari kompetitor yang tampil lebih modern
-                </span>
-                <span className="text-red-400">✖</span>
+                </p>
               </div>
             </div>
 
-            {/* IMAGE */}
-            <div className="flex justify-center">
-              <div className="w-[220px] h-[220px] bg-white/5 rounded-2xl flex items-center justify-center text-gray-500">
-                IMAGE
-              </div>
+            {/* AVATAR (NO BOX) */}
+            <div className="flex justify-center order-1 md:order-2 relative">
+              <img
+                src={thinkingImg}
+                alt="thinking"
+                className="w-[260px] md:w-[360px] object-contain drop-shadow-[0_20px_60px_rgba(255,180,0,0.2)]"
+              />
             </div>
 
             {/* RIGHT */}
-            <div className="space-y-4">
-              <div className="border border-red-400/20 bg-red-400/5 rounded-xl px-4 py-3 flex justify-between items-center">
-                <span className="text-sm text-gray-300">
+            <div className="space-y-4 order-3">
+              {/* ITEM 1 */}
+              <div className="group relative flex items-start gap-4 p-4 rounded-xl bg-white/[0.02] border border-white/5 hover:border-red-400/30 transition hover:-translate-y-0.5 overflow-hidden">
+                <div className="absolute left-0 top-0 h-full w-[2px] bg-gradient-to-b from-transparent via-red-400/50 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
+
+                <div className="w-6 h-6 flex items-center justify-center rounded-full bg-red-400/10 text-red-400 text-xs mt-1">
+                  ✖
+                </div>
+
+                <p className="text-gray-300 text-sm md:text-base leading-relaxed group-hover:text-white transition">
                   Sulit ditemukan di Google
-                </span>
-                <span className="text-red-400">✖</span>
+                </p>
               </div>
 
-              <div className="border border-red-400/20 bg-red-400/5 rounded-xl px-4 py-3 flex justify-between items-center">
-                <span className="text-sm text-gray-300">
+              {/* ITEM 2 */}
+              <div className="group relative flex items-start gap-4 p-4 rounded-xl bg-white/[0.02] border border-white/5 hover:border-red-400/30 transition hover:-translate-y-0.5 overflow-hidden">
+                <div className="absolute left-0 top-0 h-full w-[2px] bg-gradient-to-b from-transparent via-red-400/50 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
+
+                <div className="w-6 h-6 flex items-center justify-center rounded-full bg-red-400/10 text-red-400 text-xs mt-1">
+                  ✖
+                </div>
+
+                <p className="text-gray-300 text-sm md:text-base leading-relaxed group-hover:text-white transition">
                   Pelanggan ragu untuk menghubungi
-                </span>
-                <span className="text-red-400">✖</span>
+                </p>
               </div>
             </div>
           </div>
 
           {/* BOTTOM TEXT */}
-          <div className="mt-10 max-w-3xl mx-auto bg-white/5 border border-white/10 rounded-2xl px-6 py-6 text-center">
-            <p className="text-gray-300">
+          <div className="mt-12 max-w-3xl mx-auto bg-white/5 border border-white/10 rounded-2xl px-6 py-6 text-center">
+            <p className="text-gray-300 text-sm md:text-base leading-relaxed">
               Padahal produk kamu mungkin lebih bagus.{" "}
-              <span className="text-red-400 font-semibold">
+              <span className="text-amber-400 font-semibold">
                 Masalahnya bukan di kualitas.
               </span>{" "}
               Masalahnya di{" "}
@@ -240,7 +271,7 @@ export default function Home() {
         {/* ===================== */}
         <div className="text-center mb-24">
           {/* BADGE */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-400/10 border border-emerald-400/20 text-emerald-400 text-sm mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-400/10 border border-amber-400/20 text-amber-400 text-sm mb-6">
             ✔ Solusi Kami
           </div>
 
@@ -249,7 +280,7 @@ export default function Home() {
             Kami Tidak Hanya Membuat Website.
           </h2>
 
-          <h3 className="text-2xl md:text-4xl font-bold mt-3 bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
+          <h3 className="text-2xl md:text-4xl font-bold mt-3 bg-gradient-to-r from-amber-400 to-yellow-300 bg-clip-text text-transparent">
             Kami Membuat Bisnis Kamu Terlihat Profesional.
           </h3>
 
@@ -295,7 +326,7 @@ export default function Home() {
         <div className="grid md:grid-cols-3 gap-6 mt-10">
           {/* 1 */}
           <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-6">
-            <div className="w-12 h-12 mb-4 rounded-xl bg-white/10 flex items-center justify-center text-amber-400 text-xl">
+            <div className="w-12 h-12 mb-4 rounded-xl bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-amber-400 text-xl">
               🛡️
             </div>
             <h4 className="font-semibold text-lg mb-2">
@@ -309,7 +340,7 @@ export default function Home() {
 
           {/* 2 */}
           <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-6">
-            <div className="w-12 h-12 mb-4 rounded-xl bg-white/10 flex items-center justify-center text-amber-400 text-xl">
+            <div className="w-12 h-12 mb-4 rounded-xl bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-amber-400 text-xl">
               💬
             </div>
             <h4 className="font-semibold text-lg mb-2">
@@ -323,7 +354,7 @@ export default function Home() {
 
           {/* 3 */}
           <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-6">
-            <div className="w-12 h-12 mb-4 rounded-xl bg-white/10 flex items-center justify-center text-amber-400 text-xl">
+            <div className="w-12 h-12 mb-4 rounded-xl bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-amber-400 text-xl">
               📱
             </div>
             <h4 className="font-semibold text-lg mb-2">Mobile Friendly 100%</h4>
@@ -335,7 +366,7 @@ export default function Home() {
 
           {/* 4 */}
           <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-6">
-            <div className="w-12 h-12 mb-4 rounded-xl bg-white/10 flex items-center justify-center text-amber-400 text-xl">
+            <div className="w-12 h-12 mb-4 rounded-xl bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-amber-400 text-xl">
               🔍
             </div>
             <h4 className="font-semibold text-lg mb-2">
@@ -348,7 +379,7 @@ export default function Home() {
 
           {/* 5 */}
           <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-6">
-            <div className="w-12 h-12 mb-4 rounded-xl bg-white/10 flex items-center justify-center text-amber-400 text-xl">
+            <div className="w-12 h-12 mb-4 rounded-xl bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-amber-400 text-xl">
               ⚡
             </div>
             <h4 className="font-semibold text-lg mb-2">Loading Cepat & Aman</h4>
@@ -366,7 +397,7 @@ export default function Home() {
             Kami tidak menggunakan template asal jadi.
           </p>
 
-          <p className="text-xl md:text-2xl font-semibold mt-2 bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
+          <p className="text-xl md:text-2xl font-semibold mt-2 bg-gradient-to-r from-amber-400 to-yellow-300 bg-clip-text text-transparent">
             Setiap website disesuaikan dengan identitas bisnis kamu.
           </p>
         </div>
@@ -459,15 +490,124 @@ export default function Home() {
               href="https://wa.me/6285707185783?text=Halo%20saya%20ingin%20konsultasi%20website"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-400 to-yellow-300 text-black px-6 py-3 rounded-full font-semibold hover:scale-105 transition shadow-lg hover:shadow-amber-400/30"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-400 to-yellow-300 text-black px-5 py-2.5 md:px-6 md:py-3 rounded-full font-semibold hover:scale-105 transition"
             >
               Diskusikan Project Kamu ↗
             </a>
           </div>
         </div>
 
+        {/* ===================== */}
+        {/* 🔥 PROCESS SECTION */}
+        {/* ===================== */}
+        <div className="mt-32 grid md:grid-cols-2 gap-10 items-start">
+          {/* LEFT (STICKY) */}
+          <div className="md:sticky md:top-32 h-fit">
+            <p className="text-amber-400 text-sm tracking-widest mb-4">
+              CARA KAMI BEKERJA
+            </p>
+
+            <h2 className="text-4xl md:text-5xl font-bold leading-tight">
+              Proses <br />
+              Pembuatan yang <span className="text-amber-400">Transparan.</span>
+            </h2>
+
+            <p className="text-gray-400 mt-6 max-w-md">
+              Kami memecah proyek kompleks menjadi langkah-langkah sederhana
+              agar Anda selalu tahu apa yang sedang kami kerjakan.
+            </p>
+          </div>
+
+          {/* RIGHT (SCROLL CONTENT) */}
+          <div className="space-y-20">
+            {/* STEP 1 */}
+            <div className="flex gap-6 items-start">
+              <div className="flex flex-col items-center">
+                <div className="w-10 h-10 rounded-full bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-amber-400 font-bold">
+                  01
+                </div>
+                <div className="w-[2px] h-24 bg-white/10 mt-2"></div>
+              </div>
+
+              <div>
+                <h3 className="text-2xl font-semibold">Konsultasi Gratis</h3>
+                <p className="text-gray-400 mt-2">
+                  Kami dengarkan kebutuhan dan tujuan bisnis kamu.
+                </p>
+              </div>
+            </div>
+
+            {/* STEP 2 */}
+            <div className="flex gap-6 items-start">
+              <div className="flex flex-col items-center">
+                <div className="w-10 h-10 rounded-full bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-amber-400 font-bold">
+                  02
+                </div>
+                <div className="w-[2px] h-24 bg-white/10 mt-2"></div>
+              </div>
+
+              <div>
+                <h3 className="text-2xl font-semibold">Konsep & Desain</h3>
+                <p className="text-gray-400 mt-2">
+                  Kami kirim preview sebelum website online.
+                </p>
+              </div>
+            </div>
+
+            {/* STEP 3 */}
+            <div className="flex gap-6 items-start">
+              <div className="flex flex-col items-center">
+                <div className="w-10 h-10 rounded-full bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-amber-400 font-bold">
+                  03
+                </div>
+                <div className="w-[2px] h-24 bg-white/10 mt-2"></div>
+              </div>
+
+              <div>
+                <h3 className="text-2xl font-semibold">Revisi & Finalisasi</h3>
+                <p className="text-gray-400 mt-2">
+                  Pastikan semuanya sesuai dengan keinginan kamu.
+                </p>
+              </div>
+            </div>
+
+            {/* STEP 4 */}
+            <div className="flex gap-6 items-start">
+              <div className="flex flex-col items-center">
+                <div className="w-10 h-10 rounded-full bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-amber-400 font-bold">
+                  04
+                </div>
+                <div className="w-[2px] h-24 bg-white/10 mt-2"></div>
+              </div>
+
+              <div>
+                <h3 className="text-2xl font-semibold">Launching</h3>
+                <p className="text-gray-400 mt-2">
+                  Website aktif dan siap digunakan.
+                </p>
+              </div>
+            </div>
+
+            {/* STEP 5 */}
+            <div className="flex gap-6 items-start">
+              <div className="flex flex-col items-center">
+                <div className="w-10 h-10 rounded-full bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-amber-400 font-bold">
+                  05
+                </div>
+              </div>
+
+              <div>
+                <h3 className="text-2xl font-semibold">Support</h3>
+                <p className="text-gray-400 mt-2">
+                  Kami tetap membantu setelah website selesai.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* FOOTER */}
-        <div className="text-center mt-20 text-gray-500 text-sm">
+        <div className="text-center mt-10 text-gray-500 text-xs md:text-sm">
           © 2026 Rafi Web Studio
         </div>
       </div>
