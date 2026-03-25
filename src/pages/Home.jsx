@@ -9,6 +9,8 @@ import sekolahImg from "../assets/Sekolah.jpg";
 import laundryImg from "../assets/Loundry.jpg";
 import umrohImg from "../assets/Umroh.jpg";
 
+import heroVideo from "../assets/Video.mp4";
+
 import thinkingImg from "../assets/thinking.png";
 
 export default function Home() {
@@ -130,8 +132,18 @@ export default function Home() {
             </div>
 
             {/* VIDEO / IMAGE */}
-            <div className="h-[200px] md:h-[300px] bg-white/5 rounded-2xl flex items-center justify-center text-gray-500">
-              VIDEO AI
+            <div className="h-[200px] md:h-[300px] rounded-2xl overflow-hidden relative">
+              <video
+                src={heroVideo}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-full object-cover"
+              />
+
+              {/* overlay glow biar premium */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-amber-500/10 to-transparent"></div>
             </div>
           </div>
         </div>
