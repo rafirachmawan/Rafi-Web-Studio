@@ -15,6 +15,10 @@ import thinkingImg from "../assets/thinking.png";
 
 export default function Home() {
   const [filter, setFilter] = useState("all");
+  const [pricingTab, setPricingTab] = useState("landing");
+
+  const waLink =
+    "https://wa.me/6285707185783?text=Halo%20saya%20tertarik%20dengan%20paket%20website";
 
   const demos = [
     {
@@ -400,13 +404,18 @@ export default function Home() {
         </div>
 
         {/* HEADER */}
-        <div className="text-center mb-16 mt-10">
-          <h1 className="text-4xl md:text-6xl font-bold">
+        <div className="text-center mb-20 mt-14">
+          <h1 className="text-5xl md:text-7xl font-extrabold leading-tight tracking-tight">
             Hasil Nyata Yang Sudah{" "}
             <span className="bg-gradient-to-r from-amber-400 to-yellow-300 bg-clip-text text-transparent">
               Kami Kerjakan
             </span>
           </h1>
+
+          <p className="text-gray-400 mt-6 max-w-2xl mx-auto text-lg">
+            Beberapa project yang telah kami bantu untuk meningkatkan
+            kepercayaan dan penjualan bisnis klien.
+          </p>
         </div>
 
         {/* FILTER */}
@@ -415,10 +424,10 @@ export default function Home() {
             <button
               key={cat}
               onClick={() => setFilter(cat)}
-              className={`px-4 py-2 rounded-full text-sm transition ${
+              className={`px-6 py-3 rounded-full text-base md:text-lg font-semibold transition-all duration-300 border ${
                 filter === cat
-                  ? "bg-amber-500 text-black"
-                  : "bg-white/10 text-gray-300 hover:bg-white/20"
+                  ? "bg-amber-500 text-black border-amber-400 shadow-[0_0_20px_rgba(255,180,0,0.4)] scale-105"
+                  : "bg-white/10 text-gray-300 border-white/10 hover:bg-white/20 hover:text-white hover:scale-105"
               }`}
             >
               {cat}
@@ -603,9 +612,486 @@ export default function Home() {
           </div>
         </div>
 
-        {/* FOOTER */}
-        <div className="text-center mt-10 text-gray-500 text-xs md:text-sm">
-          © 2026 Rafi Web Studio
+        {/* ===================== */}
+        {/* 🔥 PRICING SECTION */}
+        {/* ===================== */}
+        <div className="mt-32 mb-24 max-w-6xl mx-auto text-center">
+          {/* TITLE */}
+          <h2 className="text-4xl md:text-6xl font-bold mb-6">
+            Paket Website{" "}
+            <span className="bg-gradient-to-r from-amber-400 to-yellow-300 bg-clip-text text-transparent">
+              Profesional
+            </span>
+          </h2>
+
+          <p className="text-gray-400 max-w-2xl mx-auto mb-10">
+            Pilih paket sesuai kebutuhan bisnis kamu. Semua sudah siap untuk
+            meningkatkan kepercayaan dan penjualan.
+          </p>
+
+          {/* TAB */}
+          <div className="flex flex-wrap justify-center gap-3 mb-12">
+            {[
+              { label: "Landing Page", value: "landing" },
+              { label: "Company Profile", value: "company" },
+              { label: "E-Commerce", value: "ecommerce" },
+              { label: "Custom", value: "custom" },
+            ].map((item) => (
+              <button
+                key={item.value}
+                onClick={() => setPricingTab(item.value)}
+                className={`px-6 py-3 rounded-full text-base font-semibold transition-all duration-300 border ${
+                  pricingTab === item.value
+                    ? "bg-amber-500 text-black border-amber-400 scale-105 shadow-[0_0_20px_rgba(255,180,0,0.4)]"
+                    : "bg-white/10 text-gray-300 border-white/10 hover:bg-white/20 hover:scale-105"
+                }`}
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
+
+          {/* CARD */}
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* LANDING */}
+            {pricingTab === "landing" && (
+              <>
+                <div className="bg-white/[0.03] border border-white/10 rounded-3xl p-8">
+                  <h3 className="text-2xl font-semibold mb-4">
+                    Landing Page Starter
+                  </h3>
+                  <h2 className="text-4xl font-bold text-amber-400 mb-6">
+                    Rp 600.000
+                  </h2>
+                  <ul className="text-gray-400 text-sm space-y-2 mb-6">
+                    <li>✔ 1 Halaman</li>
+                    <li>✔ Desain Modern</li>
+                    <li>✔ Mobile Friendly</li>
+                  </ul>
+
+                  <a
+                    href={`${waLink}%20Landing%20Page%20Starter`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block text-center bg-amber-500 hover:bg-amber-400 text-black py-2.5 rounded-full font-semibold transition"
+                  >
+                    Konsultasi Sekarang
+                  </a>
+                </div>
+
+                <div className="bg-white/[0.05] border border-amber-400/40 rounded-3xl p-8">
+                  <h3 className="text-2xl font-semibold mb-4">
+                    Landing Page Pro
+                  </h3>
+                  <h2 className="text-4xl font-bold text-amber-400 mb-6">
+                    Rp 1.300.000
+                  </h2>
+                  <ul className="text-gray-400 text-sm space-y-2 mb-6">
+                    <li>✔ Multi Section</li>
+                    <li>✔ SEO Basic</li>
+                    <li>✔ WhatsApp + Form</li>
+                  </ul>
+
+                  <a
+                    href={`${waLink}%20Landing%20Page%20Pro`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block text-center bg-gradient-to-r from-amber-400 to-yellow-300 text-black py-2.5 rounded-full font-semibold hover:scale-105 transition"
+                  >
+                    Konsultasi Sekarang
+                  </a>
+                </div>
+              </>
+            )}
+
+            {/* COMPANY */}
+            {pricingTab === "company" && (
+              <>
+                <div className="bg-white/[0.03] border border-white/10 rounded-3xl p-8">
+                  <h3 className="text-2xl font-semibold mb-4">Company Basic</h3>
+                  <h2 className="text-4xl font-bold text-amber-400 mb-6">
+                    Rp 1.500.000
+                  </h2>
+                  <ul className="text-gray-400 text-sm space-y-2 mb-6">
+                    <li>✔ 3-5 Halaman</li>
+                    <li>✔ Profil Perusahaan</li>
+                  </ul>
+
+                  <a
+                    href={`${waLink}%20Company%20Basic`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block text-center bg-amber-500 hover:bg-amber-400 text-black py-2.5 rounded-full font-semibold transition"
+                  >
+                    Konsultasi Sekarang
+                  </a>
+                </div>
+
+                <div className="bg-white/[0.05] border border-amber-400/40 rounded-3xl p-8">
+                  <h3 className="text-2xl font-semibold mb-4">Company Pro</h3>
+                  <h2 className="text-4xl font-bold text-amber-400 mb-6">
+                    Rp 3.000.000
+                  </h2>
+                  <ul className="text-gray-400 text-sm space-y-2 mb-6">
+                    <li>✔ Unlimited Page</li>
+                    <li>✔ SEO + Speed</li>
+                  </ul>
+
+                  <a
+                    href={`${waLink}%20Company%20Pro`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block text-center bg-gradient-to-r from-amber-400 to-yellow-300 text-black py-2.5 rounded-full font-semibold hover:scale-105 transition"
+                  >
+                    Konsultasi Sekarang
+                  </a>
+                </div>
+              </>
+            )}
+
+            {/* ECOMMERCE */}
+            {pricingTab === "ecommerce" && (
+              <>
+                <div className="bg-white/[0.03] border border-white/10 rounded-3xl p-8">
+                  <h3 className="text-2xl font-semibold mb-4">
+                    Toko Online Basic
+                  </h3>
+                  <h2 className="text-4xl font-bold text-amber-400 mb-6">
+                    Rp 2.500.000
+                  </h2>
+                  <ul className="text-gray-400 text-sm space-y-2 mb-6">
+                    <li>✔ Produk Catalog</li>
+                    <li>✔ WhatsApp Order</li>
+                  </ul>
+
+                  <a
+                    href={`${waLink}%20Ecommerce%20Basic`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block text-center bg-amber-500 hover:bg-amber-400 text-black py-2.5 rounded-full font-semibold transition"
+                  >
+                    Konsultasi Sekarang
+                  </a>
+                </div>
+
+                <div className="bg-white/[0.05] border border-amber-400/40 rounded-3xl p-8">
+                  <h3 className="text-2xl font-semibold mb-4">
+                    Toko Online Pro
+                  </h3>
+                  <h2 className="text-4xl font-bold text-amber-400 mb-6">
+                    Rp 5.000.000
+                  </h2>
+                  <ul className="text-gray-400 text-sm space-y-2 mb-6">
+                    <li>✔ Payment Gateway</li>
+                    <li>✔ Dashboard Admin</li>
+                  </ul>
+
+                  <a
+                    href={`${waLink}%20Ecommerce%20Pro`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block text-center bg-gradient-to-r from-amber-400 to-yellow-300 text-black py-2.5 rounded-full font-semibold hover:scale-105 transition"
+                  >
+                    Konsultasi Sekarang
+                  </a>
+                </div>
+              </>
+            )}
+
+            {/* CUSTOM */}
+            {pricingTab === "custom" && (
+              <div className="col-span-2 bg-white/[0.03] border border-white/10 rounded-3xl p-10 text-center">
+                <h3 className="text-2xl font-semibold mb-4">Custom Project</h3>
+
+                <p className="text-gray-400 mb-6">
+                  Punya kebutuhan khusus? Kami siap bantu sesuai kebutuhan kamu.
+                </p>
+
+                <h2 className="text-4xl font-bold text-amber-400 mb-6">
+                  Mulai dari Rp 1.000.000+
+                </h2>
+
+                <a
+                  href={`${waLink}%20Custom%20Project`}
+                  target="_blank"
+                  className="inline-block bg-gradient-to-r from-amber-400 to-yellow-300 text-black px-6 py-3 rounded-full font-semibold"
+                >
+                  Konsultasi Sekarang
+                </a>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* ===================== */}
+        {/* 🔥 TESTIMONI SECTION */}
+        {/* ===================== */}
+        <div className="mt-32 mb-24 max-w-6xl mx-auto text-center">
+          {/* TITLE */}
+          <h2 className="text-4xl md:text-6xl font-bold mb-4">
+            Kisah Sukses{" "}
+            <span className="bg-gradient-to-r from-amber-400 to-yellow-300 bg-clip-text text-transparent">
+              Klien Kami
+            </span>
+          </h2>
+
+          <p className="text-gray-400 max-w-2xl mx-auto mb-16">
+            Website bukan cuma gaya-gayaan, tapi senjata rahasia untuk bisnis
+            maju.
+          </p>
+
+          {/* GRID TESTIMONI */}
+          <div className="grid md:grid-cols-3 gap-6">
+            {/* CARD 1 */}
+            <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-6 text-left hover:border-amber-400/30 transition">
+              <div className="text-amber-400 mb-3">★★★★★</div>
+
+              <p className="text-gray-300 text-sm leading-relaxed mb-6">
+                "Website travel agency saya jadi rujukan utama pelanggan.
+                Tampilan di HP sangat smooth!"
+              </p>
+
+              <div className="flex items-center gap-3">
+                <img
+                  src="https://i.pravatar.cc/40?img=1"
+                  className="w-10 h-10 rounded-full"
+                />
+                <div>
+                  <h4 className="text-sm font-semibold">Lestari Budi</h4>
+                  <p className="text-xs text-gray-400">Lancar Jaya Travel</p>
+                </div>
+              </div>
+            </div>
+
+            {/* CARD 2 */}
+            <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-6 text-left hover:border-amber-400/30 transition">
+              <div className="text-amber-400 mb-3">★★★★★</div>
+
+              <p className="text-gray-300 text-sm leading-relaxed mb-6">
+                "Custom project dikerjakan dengan sangat detail. Fitur yang saya
+                minta semuanya berfungsi sempurna."
+              </p>
+
+              <div className="flex items-center gap-3">
+                <img
+                  src="https://i.pravatar.cc/40?img=2"
+                  className="w-10 h-10 rounded-full"
+                />
+                <div>
+                  <h4 className="text-sm font-semibold">Budi Kusuma</h4>
+                  <p className="text-xs text-gray-400">E-Learning Platform</p>
+                </div>
+              </div>
+            </div>
+
+            {/* CARD 3 */}
+            <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-6 text-left hover:border-amber-400/30 transition">
+              <div className="text-amber-400 mb-3">★★★★★</div>
+
+              <p className="text-gray-300 text-sm leading-relaxed mb-6">
+                "Awalnya ragu, tapi setelah jadi hasilnya jauh melampaui
+                ekspektasi. TOP!"
+              </p>
+
+              <div className="flex items-center gap-3">
+                <img
+                  src="https://i.pravatar.cc/40?img=3"
+                  className="w-10 h-10 rounded-full"
+                />
+                <div>
+                  <h4 className="text-sm font-semibold">Agus Salim</h4>
+                  <p className="text-xs text-gray-400">Catering Berkah</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ===================== */}
+        {/* 🔥 FINAL CTA SECTION */}
+        {/* ===================== */}
+        <div className="mb-24">
+          <div className="max-w-5xl mx-auto px-6 py-6 md:py-8 rounded-3xl bg-white/[0.03] border border-white/10 flex flex-col md:flex-row items-center justify-between gap-6">
+            {/* LEFT */}
+            <div className="flex items-center gap-4">
+              {/* AVATAR GROUP */}
+              <div className="flex -space-x-3">
+                <img
+                  src="https://i.pravatar.cc/40?img=11"
+                  className="w-10 h-10 rounded-full border-2 border-black"
+                />
+                <img
+                  src="https://i.pravatar.cc/40?img=12"
+                  className="w-10 h-10 rounded-full border-2 border-black"
+                />
+                <img
+                  src="https://i.pravatar.cc/40?img=13"
+                  className="w-10 h-10 rounded-full border-2 border-black"
+                />
+                <div className="w-10 h-10 rounded-full bg-amber-400 text-black flex items-center justify-center text-xs font-bold border-2 border-black">
+                  100+
+                </div>
+              </div>
+
+              {/* TEXT */}
+              <div>
+                <h3 className="text-lg md:text-xl font-semibold">
+                  Siap Melejitkan Bisnis Anda?
+                </h3>
+                <p className="text-gray-400 text-sm">
+                  Bergabunglah dengan{" "}
+                  <span className="text-amber-400 font-medium">
+                    ratusan pengusaha
+                  </span>{" "}
+                  yang telah naik kelas.
+                </p>
+              </div>
+            </div>
+
+            {/* BUTTON */}
+            <a
+              href="https://wa.me/6285707185783?text=Halo%20saya%20ingin%20konsultasi%20website"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-gradient-to-r from-amber-400 to-yellow-300 text-black px-6 py-3 rounded-full font-semibold shadow-lg hover:scale-105 transition"
+            >
+              Konsultasi Gratis
+            </a>
+          </div>
+        </div>
+
+        {/* ===================== */}
+        {/* 🔥 BIG CTA SECTION (BLUE) */}
+        {/* ===================== */}
+        <div className="mb-24 px-4">
+          <div className="max-w-6xl mx-auto rounded-[30px] md:rounded-[40px]bg-gradient-to-br from-[#111] via-[#0a0a0a] to-black border border-amber-400/10 py-16 md:py-20 px-6 text-center relative overflow-hidden">
+            {/* GLOW BACKGROUND */}
+            <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[400px] h-[400px] bg-amber-500/10 blur-[120px] rounded-full"></div>
+
+            {/* CONTENT */}
+            <div className="relative z-10 max-w-3xl mx-auto">
+              {/* TITLE */}
+              <h2 className="text-3xl md:text-5xl font-bold text-white leading-tight">
+                Bisnis Kamu Sudah Siap{" "}
+                <span className="italic text-gray-400">Naik Level?</span>
+              </h2>
+
+              {/* DESC */}
+              <p className="text-blue-100 mt-6 text-sm md:text-lg">
+                Kalau kompetitor kamu sudah punya website profesional, kamu
+                tidak bisa terus menunda.{" "}
+                <span className="font-semibold text-white">
+                  Bangun kepercayaan. Dapatkan pelanggan baru.
+                </span>
+              </p>
+
+              {/* BUTTON */}
+              <div className="mt-10">
+                <a
+                  href="https://wa.me/6285707185783?text=Halo%20saya%20ingin%20konsultasi%20website"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-400 to-yellow-300 text-black px-6 py-3 md:px-8 md:py-4 rounded-full font-semibold text-sm md:text-base shadow-lg hover:scale-105 transition"
+                >
+                  Konsultasi Gratis Sekarang →
+                </a>
+              </div>
+
+              {/* NOTE */}
+              <p className="text-gray-400 text-xs md:text-sm mt-6">
+                Gratis, tanpa komitmen, tanpa syarat tersembunyi.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* ===================== */}
+        {/* 🔥 FOOTER PREMIUM */}
+        {/* ===================== */}
+        <div className="mt-32 border-t border-white/10 pt-16 pb-10">
+          <div className="max-w-6xl mx-auto px-4 md:px-6 grid md:grid-cols-3 gap-10 text-left">
+            {/* LEFT */}
+            <div>
+              <h2 className="text-xl font-semibold text-white mb-3">
+                RAFWEB<span className="text-amber-400">.</span>
+              </h2>
+
+              <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
+                Jasa pembuatan website profesional untuk UMKM, bisnis lokal, dan
+                personal branding agar tampil lebih terpercaya dan modern.
+              </p>
+            </div>
+
+            {/* MENU */}
+            <div>
+              <h3 className="text-white font-semibold mb-4">Menu</h3>
+              <ul className="space-y-2 text-gray-400 text-sm">
+                <li>
+                  <a href="#" className="hover:text-amber-400 transition">
+                    Home
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-amber-400 transition">
+                    Demo
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-amber-400 transition">
+                    Proses
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-amber-400 transition">
+                    Harga
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-amber-400 transition">
+                    Testimoni
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* CONTACT */}
+            <div>
+              <h3 className="text-white font-semibold mb-4">Hubungi Kami</h3>
+
+              <ul className="space-y-3 text-gray-400 text-sm">
+                <li className="flex items-center gap-2">
+                  <span className="text-amber-400">💬</span>
+                  <a
+                    href="https://wa.me/6285707185783"
+                    target="_blank"
+                    className="hover:text-amber-400 transition"
+                  >
+                    WhatsApp
+                  </a>
+                </li>
+
+                <li className="flex items-center gap-2">
+                  <span className="text-amber-400">📷</span>
+                  <span className="hover:text-amber-400 transition cursor-pointer">
+                    Instagram
+                  </span>
+                </li>
+
+                <li className="flex items-center gap-2">
+                  <span className="text-amber-400">✉️</span>
+                  <span className="text-gray-500">rafwebstudio@gmail.com</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* LINE */}
+          <div className="max-w-6xl mx-auto px-4 md:px-6 mt-10 pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-gray-500 text-xs md:text-sm">
+            <p>© 2026 RafWeb Studio. All rights reserved.</p>
+            <p className="mt-2 md:mt-0">
+              Website Profesional untuk Bisnis Modern 🚀
+            </p>
+          </div>
         </div>
       </div>
     </div>
