@@ -117,8 +117,8 @@ export default function Home() {
             {/* TEXT */}
             <div>
               <h1 className="text-3xl md:text-5xl font-bold leading-tight">
-                Website Profesional untuk{" "}
-                <span className="text-amber-400">Bisnis Kamu</span>
+                WEBSITE PROFESIONAL UNTUK{" "}
+                <span className="text-amber-400">BISNIS KAMU</span>
               </h1>
 
               <p className="text-gray-400 mt-4 text-sm md:text-base">
@@ -126,9 +126,14 @@ export default function Home() {
                 dengan website berkualitas tinggi.
               </p>
 
-              <button className="mt-6 bg-amber-500 hover:bg-amber-400 text-black px-5 py-2.5 md:px-6 md:py-3 rounded-full font-semibold transition">
-                Lihat Demo
-              </button>
+              <a
+                href="https://wa.me/6285707185783?text=Halo%20saya%20ingin%20konsultasi%20website"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-6 inline-block bg-amber-500 hover:bg-amber-400 text-black px-5 py-2.5 md:px-6 md:py-3 rounded-full font-semibold transition"
+              >
+                Konsultasi Gratis
+              </a>
             </div>
 
             {/* VIDEO / IMAGE */}
@@ -151,27 +156,38 @@ export default function Home() {
         {/* ===================== */}
         {/* 🔥 TAMBAHKAN DI SINI */}
         {/* ===================== */}
-        <div className="text-center mb-16 md:mb-24">
+        <div className="text-center mt-10 md:mt-16 mb-16 md:mb-24">
           {/* STATS */}
-          <div className="flex flex-wrap justify-center gap-8 md:gap-12 mb-10">
-            <div>
-              <h2 className="text-2xl md:text-3xl font-bold text-white">50+</h2>
-              <p className="text-gray-400 text-sm mt-1">Proyek Selesai</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-16 max-w-5xl mx-auto">
+            {/* ITEM 1 */}
+            <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-8 text-center hover:border-amber-400/30 transition">
+              <h2 className="text-4xl md:text-5xl font-bold text-white">50+</h2>
+              <p className="text-gray-400 mt-2 text-sm md:text-base">
+                Proyek Selesai
+              </p>
             </div>
 
-            <div>
-              <h2 className="text-3xl font-bold text-white">99%</h2>
-              <p className="text-gray-400 text-sm mt-1">Kepuasan Klien</p>
+            {/* ITEM 2 */}
+            <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-8 text-center hover:border-amber-400/30 transition">
+              <h2 className="text-4xl md:text-5xl font-bold text-white">99%</h2>
+              <p className="text-gray-400 mt-2 text-sm md:text-base">
+                Kepuasan Klien
+              </p>
             </div>
 
-            <div>
-              <h2 className="text-3xl font-bold text-white">24/7</h2>
-              <p className="text-gray-400 text-sm mt-1">Dukungan Teknis</p>
+            {/* ITEM 3 */}
+            <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-8 text-center hover:border-amber-400/30 transition">
+              <h2 className="text-4xl md:text-5xl font-bold text-white">
+                24/7
+              </h2>
+              <p className="text-gray-400 mt-2 text-sm md:text-base">
+                Dukungan Teknis
+              </p>
             </div>
           </div>
 
           {/* BADGE */}
-          <div className="inline-block px-4 py-2 rounded-full border border-amber-400/30 bg-amber-400/10 text-amber-400 text-sm mb-6">
+          <div className="inline-block px-6 py-3 rounded-full border border-amber-400/40 bg-amber-400/10 text-amber-400 text-base md:text-lg font-medium mb-8 shadow-[0_0_20px_rgba(255,180,0,0.15)]">
             ⚠️ Realita Pasar Digital
           </div>
 
@@ -283,8 +299,9 @@ export default function Home() {
         {/* ===================== */}
         <div className="text-center mb-24">
           {/* BADGE */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-400/10 border border-amber-400/20 text-amber-400 text-sm mb-6">
-            ✔ Solusi Kami
+          <div className="inline-flex items-center gap-3 px-6 py-3 md:px-8 md:py-4 rounded-full bg-amber-400/10 border border-amber-400/30 text-amber-400 text-base md:text-lg font-semibold mb-8 shadow-[0_0_25px_rgba(255,180,0,0.2)] backdrop-blur-md">
+            <span className="text-lg md:text-xl">✔</span>
+            Solusi Kami
           </div>
 
           {/* TITLE */}
@@ -300,38 +317,6 @@ export default function Home() {
           <p className="text-gray-400 mt-6">
             Setiap website yang kami buat dirancang untuk:
           </p>
-
-          {/* LIST BENEFIT */}
-          <div className="grid md:grid-cols-3 gap-6 mt-10">
-            <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-6">
-              <h4 className="font-semibold text-lg mb-2 text-amber-400">
-                🔥 Meningkatkan Kepercayaan
-              </h4>
-              <p className="text-gray-400 text-sm">
-                Tampilan modern membuat bisnis kamu terlihat profesional dan
-                terpercaya.
-              </p>
-            </div>
-
-            <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-6">
-              <h4 className="font-semibold text-lg mb-2 text-amber-400">
-                🚀 Mudah Ditemukan
-              </h4>
-              <p className="text-gray-400 text-sm">
-                Website dioptimalkan agar muncul di Google dan mudah dicari
-                pelanggan.
-              </p>
-            </div>
-
-            <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-6">
-              <h4 className="font-semibold text-lg mb-2 text-amber-400">
-                💰 Meningkatkan Penjualan
-              </h4>
-              <p className="text-gray-400 text-sm">
-                Desain dibuat untuk convert pengunjung jadi pembeli.
-              </p>
-            </div>
-          </div>
         </div>
 
         {/* LIST BENEFIT */}
