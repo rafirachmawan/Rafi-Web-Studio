@@ -4,6 +4,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/* SMOOTH SCROLL */
+html {
+  scroll-behavior: smooth;
+}
+
 /* GLOBAL STYLE */
 body {
   font-family: "Inter", sans-serif;
