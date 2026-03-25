@@ -83,7 +83,7 @@ export default function Home() {
     filter === "all" ? demos : demos.filter((item) => item.category === filter);
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white relative overflow-hidden">
+    <div className="min-h-screen bg-[#0a0a0a] text-white font-sans relative overflow-hidden">
       {/* BACKGROUND GLOW */}
       <div className="absolute top-[-200px] left-1/2 -translate-x-1/2 w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-amber-500/10 blur-[100px] rounded-full"></div>
 
@@ -92,7 +92,9 @@ export default function Home() {
       {/* ===================== */}
       <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-6xl">
         <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-full px-4 md:px-6 py-3 flex justify-between items-center shadow-lg">
-          <h1 className="font-semibold text-sm">RAFWEB</h1>
+          <h1 className="font-heading font-semibold text-sm tracking-wide">
+            RAFWEB
+          </h1>
 
           <div className="hidden md:flex gap-6 text-sm text-gray-300">
             <a href="#" className="hover:text-amber-400">
@@ -120,7 +122,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-8 items-center">
             {/* TEXT */}
             <div>
-              <h1 className="text-3xl md:text-5xl font-bold leading-tight">
+              <h1 className="text-3xl md:text-6xl font-heading font-extrabold tracking-tight leading-tight">
                 WEBSITE PROFESIONAL UNTUK{" "}
                 <span className="text-amber-400">BISNIS KAMU</span>
               </h1>
@@ -196,7 +198,7 @@ export default function Home() {
           </div>
 
           {/* TITLE */}
-          <h2 className="text-3xl md:text-5xl font-bold leading-tight max-w-3xl mx-auto">
+          <h2 className="text-3xl md:text-5xl font-heading font-bold tracking-tight leading-tight max-w-3xl mx-auto">
             Kenapa Banyak UMKM Kalah Saing Secara Online?
           </h2>
 
@@ -309,7 +311,7 @@ export default function Home() {
           </div>
 
           {/* TITLE */}
-          <h2 className="text-3xl md:text-5xl font-bold leading-tight max-w-4xl mx-auto">
+          <h2 className="text-3xl md:text-5xl font-heading font-bold tracking-tight leading-tight max-w-4xl mx-auto">
             Kami Tidak Hanya Membuat Website.
           </h2>
 
@@ -330,7 +332,7 @@ export default function Home() {
             <div className="w-12 h-12 mb-4 rounded-xl bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-amber-400 text-xl">
               🛡️
             </div>
-            <h4 className="font-semibold text-lg mb-2">
+            <h4 className="font-heading font-semibold text-lg mb-2 tracking-tight">
               Meningkatkan Kepercayaan
             </h4>
             <p className="text-gray-400 text-sm">
@@ -344,7 +346,7 @@ export default function Home() {
             <div className="w-12 h-12 mb-4 rounded-xl bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-amber-400 text-xl">
               💬
             </div>
-            <h4 className="font-semibold text-lg mb-2">
+            <h4 className="font-heading font-semibold text-lg mb-2 tracking-tight">
               Mempermudah Pelanggan Menghubungi
             </h4>
             <p className="text-gray-400 text-sm">
@@ -358,7 +360,9 @@ export default function Home() {
             <div className="w-12 h-12 mb-4 rounded-xl bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-amber-400 text-xl">
               📱
             </div>
-            <h4 className="font-semibold text-lg mb-2">Mobile Friendly 100%</h4>
+            <h4 className="font-heading font-semibold text-lg mb-2 tracking-tight">
+              Mobile Friendly 100%
+            </h4>
             <p className="text-gray-400 text-sm">
               Mayoritas pelanggan membuka dari HP. Website kamu akan tampil
               sempurna di semua perangkat.
@@ -370,7 +374,7 @@ export default function Home() {
             <div className="w-12 h-12 mb-4 rounded-xl bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-amber-400 text-xl">
               🔍
             </div>
-            <h4 className="font-semibold text-lg mb-2">
+            <h4 className="font-heading font-semibold text-lg mb-2 tracking-tight">
               Siap Tampil di Google
             </h4>
             <p className="text-gray-400 text-sm">
@@ -383,7 +387,9 @@ export default function Home() {
             <div className="w-12 h-12 mb-4 rounded-xl bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-amber-400 text-xl">
               ⚡
             </div>
-            <h4 className="font-semibold text-lg mb-2">Loading Cepat & Aman</h4>
+            <h4 className="font-heading font-semibold text-lg mb-2 tracking-tight">
+              Loading Cepat & Aman
+            </h4>
             <p className="text-gray-400 text-sm">
               Website ringan, cepat, dan stabil.
             </p>
@@ -536,7 +542,9 @@ export default function Home() {
               </div>
 
               <div>
-                <h3 className="text-2xl font-semibold">Konsultasi Gratis</h3>
+                <h3 className="text-2xl font-heading font-semibold tracking-tight">
+                  Konsultasi Gratis
+                </h3>
                 <p className="text-gray-400 mt-2">
                   Kami dengarkan kebutuhan dan tujuan bisnis kamu.
                 </p>
@@ -553,7 +561,9 @@ export default function Home() {
               </div>
 
               <div>
-                <h3 className="text-2xl font-semibold">Konsep & Desain</h3>
+                <h3 className="text-2xl font-heading font-semibold tracking-tight">
+                  Konsep & Desain
+                </h3>
                 <p className="text-gray-400 mt-2">
                   Kami kirim preview sebelum website online.
                 </p>
@@ -570,7 +580,9 @@ export default function Home() {
               </div>
 
               <div>
-                <h3 className="text-2xl font-semibold">Revisi & Finalisasi</h3>
+                <h3 className="text-2xl font-heading font-semibold tracking-tight">
+                  Revisi & Finalisasi
+                </h3>
                 <p className="text-gray-400 mt-2">
                   Pastikan semuanya sesuai dengan keinginan kamu.
                 </p>
@@ -587,7 +599,9 @@ export default function Home() {
               </div>
 
               <div>
-                <h3 className="text-2xl font-semibold">Launching</h3>
+                <h3 className="text-2xl font-heading font-semibold tracking-tight">
+                  Launching
+                </h3>
                 <p className="text-gray-400 mt-2">
                   Website aktif dan siap digunakan.
                 </p>
@@ -603,7 +617,9 @@ export default function Home() {
               </div>
 
               <div>
-                <h3 className="text-2xl font-semibold">Support</h3>
+                <h3 className="text-2xl font-heading font-semibold tracking-tight">
+                  Support
+                </h3>
                 <p className="text-gray-400 mt-2">
                   Kami tetap membantu setelah website selesai.
                 </p>
@@ -617,7 +633,7 @@ export default function Home() {
         {/* ===================== */}
         <div className="mt-32 mb-24 max-w-6xl mx-auto text-center">
           {/* TITLE */}
-          <h2 className="text-4xl md:text-6xl font-bold mb-6">
+          <h2 className="text-4xl md:text-6xl font-heading font-bold tracking-tight mb-6">
             Paket Website{" "}
             <span className="bg-gradient-to-r from-amber-400 to-yellow-300 bg-clip-text text-transparent">
               Profesional
