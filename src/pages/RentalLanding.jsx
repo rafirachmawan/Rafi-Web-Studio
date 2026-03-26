@@ -1,4 +1,5 @@
 import { rental } from "../data/rental";
+import { useState } from "react";
 import mobilImg from "../assets/RentalMobil2.png";
 import mobil1 from "../assets/mobil1.png";
 
@@ -168,40 +169,108 @@ export default function RentalLanding() {
       <RentalSection />
 
       {/* TESTIMONIAL */}
-      <section className="px-6 py-20 bg-white text-black text-center">
-        <h2 className="text-3xl font-bold mb-10">Testimoni</h2>
+      <section className="px-6 py-28 bg-gradient-to-b from-white to-gray-50 text-center">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl font-bold mb-4">Apa Kata Mereka?</h2>
+          <p className="text-gray-500 mb-12">
+            Pengalaman pelanggan yang sudah menggunakan layanan kami
+          </p>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          <div className="bg-gray-100 p-6 rounded-2xl border border-gray-200">
-            <p className="text-gray-700 italic">
-              "Mobil bersih dan nyaman banget!"
-            </p>
-          </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                name: "Andi Pratama",
+                text: "Mobil bersih dan nyaman banget, bakal langganan!",
+                rating: 5,
+                img: "https://randomuser.me/api/portraits/men/32.jpg",
+              },
+              {
+                name: "Siti Rahma",
+                text: "Pelayanan cepat dan admin sangat responsif!",
+                rating: 5,
+                img: "https://randomuser.me/api/portraits/women/44.jpg",
+                highlight: true,
+              },
+              {
+                name: "Budi Santoso",
+                text: "Harga murah tapi kualitas mobil top banget!",
+                rating: 5,
+                img: "https://randomuser.me/api/portraits/men/65.jpg",
+              },
+            ].map((item, i) => (
+              <div
+                key={i}
+                className={`p-6 rounded-3xl border transition duration-500 backdrop-blur-lg ${
+                  item.highlight
+                    ? "bg-gradient-to-br from-blue-500 to-blue-400 text-white scale-105 shadow-2xl"
+                    : "bg-white border-gray-200 hover:shadow-xl hover:-translate-y-2"
+                }`}
+              >
+                {/* AVATAR */}
+                <div className="flex justify-center mb-4">
+                  <img
+                    src={item.img}
+                    className="w-14 h-14 rounded-full object-cover border-2 border-white shadow"
+                  />
+                </div>
 
-          <div className="bg-gray-100 p-6 rounded-2xl border border-gray-200">
-            <p>"Pelayanan cepat, recommended!"</p>
-          </div>
+                {/* TEXT */}
+                <p
+                  className={`text-sm mb-4 italic ${
+                    item.highlight ? "text-white" : "text-gray-600"
+                  }`}
+                >
+                  "{item.text}"
+                </p>
 
-          <div className="bg-gray-100 p-6 rounded-2xl border border-gray-200">
-            <p>"Harga murah tapi kualitas bagus"</p>
+                {/* RATING */}
+                <div className="flex justify-center mb-2 text-yellow-400">
+                  {"★★★★★"}
+                </div>
+
+                {/* NAME */}
+                <h4
+                  className={`font-semibold ${
+                    item.highlight ? "text-white" : "text-gray-800"
+                  }`}
+                >
+                  {item.name}
+                </h4>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* FAQ */}
-      <section className="px-6 py-20 bg-white text-black">
-        <h2 className="text-3xl font-bold mb-10 text-center">FAQ</h2>
+      <section className="px-6 py-28 bg-gradient-to-b from-white to-gray-50 text-black">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-4">
+            Pertanyaan Umum
+          </h2>
+          <p className="text-center text-gray-500 mb-12">
+            Jawaban cepat untuk pertanyaan yang sering ditanyakan
+          </p>
 
-        <div className="max-w-3xl mx-auto space-y-4">
-          <div className="bg-gray-100 p-4 rounded-lg border border-gray-200">
-            <p className="font-semibold">Apakah bisa lepas kunci?</p>
-            <p className="text-gray-600 text-sm">Ya, dengan syarat tertentu</p>
-          </div>
+          <FAQItem
+            question="Apakah bisa lepas kunci?"
+            answer="Ya, bisa lepas kunci dengan syarat memiliki KTP, SIM, dan verifikasi data."
+          />
 
-          <div className="bg-gray-100 p-4 rounded-lg border border-gray-200">
-            <p className="font-semibold">Apakah include sopir?</p>
-            <p className="text-gray-600 text-sm">Tersedia opsi dengan sopir</p>
-          </div>
+          <FAQItem
+            question="Apakah include sopir?"
+            answer="Kami menyediakan opsi dengan sopir atau lepas kunci sesuai kebutuhan Anda."
+          />
+
+          <FAQItem
+            question="Bagaimana sistem pembayaran?"
+            answer="Pembayaran bisa dilakukan via transfer bank atau cash saat serah terima kendaraan."
+          />
+
+          <FAQItem
+            question="Apakah bisa booking mendadak?"
+            answer="Bisa, selama unit tersedia kami siap melayani booking kapan saja."
+          />
         </div>
       </section>
 
@@ -237,35 +306,74 @@ export default function RentalLanding() {
 
 function RentalSection() {
   const phone = "628123456789";
+  const [activeCategory, setActiveCategory] = useState("penumpang");
 
   const cars = [
     {
       name: "Toyota Avanza",
       price: "300K",
+      category: "penumpang",
       img: "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2",
     },
     {
       name: "Toyota Innova",
       price: "500K",
+      category: "penumpang",
       img: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d",
     },
     {
-      name: "Honda Brio",
-      price: "250K",
-      img: "https://images.unsplash.com/photo-1549924231-f129b911e442",
+      name: "Bus Pariwisata",
+      price: "1.5JT",
+      category: "bus",
+      img: "https://images.unsplash.com/photo-1502877338535-766e1452684a",
+    },
+    {
+      name: "Hiace",
+      price: "800K",
+      category: "travel",
+      img: "https://images.unsplash.com/photo-1593941707882-a56bbc8c8df9",
+    },
+    {
+      name: "BMW Sport",
+      price: "2JT",
+      category: "sport",
+      img: "https://images.unsplash.com/photo-1542362567-b07e54358753",
     },
   ];
+
+  const filteredCars = cars.filter((car) => car.category === activeCategory);
 
   return (
     <section id="mobil" className="px-6 py-24 bg-white text-black">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-2">Pilih Mobil Anda</h2>
-          <p className="text-gray-500">Siap digunakan kapan saja</p>
+          <p className="text-gray-500 mb-6">Siap digunakan kapan saja</p>
+
+          <div className="inline-flex flex-wrap justify-center gap-3 p-2 bg-white/60 backdrop-blur-md rounded-full shadow-md">
+            {[
+              { label: "Mobil Penumpang", value: "penumpang" },
+              { label: "Bus", value: "bus" },
+              { label: "Travel", value: "travel" },
+              { label: "Mobil Sport", value: "sport" },
+            ].map((cat, i) => (
+              <button
+                key={i}
+                onClick={() => setActiveCategory(cat.value)}
+                className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 border ${
+                  activeCategory === cat.value
+                    ? "bg-gradient-to-r from-blue-500 to-blue-400 text-white shadow-lg scale-105"
+                    : "bg-white text-gray-600 border-gray-200 hover:border-blue-400 hover:text-blue-500 hover:scale-105"
+                }`}
+              >
+                {cat.label}
+              </button>
+            ))}
+          </div>
         </div>
 
         <div className="grid md:grid-cols-3 gap-10">
-          {cars.map((car, i) => {
+          {filteredCars.map((car, i) => {
             const wa = `https://wa.me/${phone}?text=${encodeURIComponent(
               `Halo, saya ingin sewa ${car.name}`,
             )}`;
@@ -318,5 +426,29 @@ function RentalSection() {
         </div>
       </div>
     </section>
+  );
+}
+
+function FAQItem({ question, answer }) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div className="mb-4 border border-gray-200 rounded-2xl overflow-hidden bg-white shadow-sm">
+      <button
+        onClick={() => setOpen(!open)}
+        className="w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-gray-50 transition"
+      >
+        <span>{question}</span>
+        <span className="text-blue-500 text-xl">{open ? "−" : "+"}</span>
+      </button>
+
+      <div
+        className={`px-6 overflow-hidden transition-all duration-300 ${
+          open ? "max-h-40 py-2" : "max-h-0"
+        }`}
+      >
+        <p className="text-gray-600 text-sm">{answer}</p>
+      </div>
+    </div>
   );
 }
