@@ -3,7 +3,13 @@ import { useState } from "react";
 import mobilImg from "../assets/RentalMobil2.png";
 import mobil1 from "../assets/mobil1.png";
 
+import { useEffect } from "react";
+
 export default function RentalLanding() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const data = rental;
   const phone = "628123456789";
 
@@ -275,25 +281,98 @@ export default function RentalLanding() {
       </section>
 
       {/* CTA */}
-      <section className="px-6 py-20 text-center bg-blue-600 text-white">
+      <section className="px-6 py-20 text-center bg-white text-black">
         <h2 className="text-3xl font-bold mb-4">Mau Jalan Hari Ini? 🚗</h2>
 
-        <p className="mb-6">
+        <p className="mb-6 text-gray-600">
           Booking sekarang, mobil siap dalam hitungan menit
         </p>
 
         <a
           href={`https://wa.me/${phone}`}
-          className="bg-white text-blue-600 px-8 py-3 rounded-xl font-semibold hover:bg-gray-100 transition"
+          className="bg-blue-600 text-white px-8 py-3 rounded-xl font-semibold hover:bg-blue-700 transition shadow-lg hover:scale-105"
         >
           Booking via WhatsApp
         </a>
       </section>
 
       {/* FOOTER */}
-      <footer className="bg-black border-t border-white/10">
-        <div className="text-center text-gray-500 text-sm py-6">
-          © {new Date().getFullYear()} {data.name}
+      <footer className="relative bg-gradient-to-b from-[#0b1220] to-black border-t border-white/10">
+        {/* GLOW EFFECT */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[300px] h-[200px] bg-blue-500/10 blur-[100px] rounded-full"></div>
+
+        <div className="max-w-6xl mx-auto px-6 py-14 relative z-10 grid md:grid-cols-3 gap-10">
+          {/* BRAND */}
+          <div>
+            <h2 className="text-xl font-bold mb-3">
+              <span className="text-blue-400">RENTAL</span> JAYA
+            </h2>
+
+            <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
+              Solusi sewa mobil cepat, aman, dan terpercaya untuk kebutuhan
+              perjalanan Anda.
+            </p>
+          </div>
+
+          {/* MENU */}
+          <div>
+            <h3 className="font-semibold text-white mb-4">Menu</h3>
+            <ul className="space-y-2 text-gray-400 text-sm">
+              <li>
+                <a href="#" className="hover:text-blue-400 transition">
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="#mobil" className="hover:text-blue-400 transition">
+                  Mobil
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-blue-400 transition">
+                  Testimoni
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-blue-400 transition">
+                  FAQ
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* CONTACT */}
+          <div>
+            <h3 className="font-semibold text-white mb-4">Kontak</h3>
+
+            <ul className="space-y-3 text-gray-400 text-sm">
+              <li className="flex items-center gap-2">
+                <span className="text-blue-400">💬</span>
+                <a
+                  href={`https://wa.me/${phone}`}
+                  target="_blank"
+                  className="hover:text-blue-400 transition"
+                >
+                  WhatsApp
+                </a>
+              </li>
+
+              <li className="flex items-center gap-2">
+                <span className="text-blue-400">📍</span>
+                <span>Indonesia</span>
+              </li>
+
+              <li className="flex items-center gap-2">
+                <span className="text-blue-400">✉️</span>
+                <span>rentaljaya@gmail.com</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* BOTTOM */}
+        <div className="border-t border-white/10 text-center py-6 text-gray-500 text-sm">
+          © {new Date().getFullYear()} Rental Jaya. All rights reserved.
         </div>
       </footer>
     </div>
