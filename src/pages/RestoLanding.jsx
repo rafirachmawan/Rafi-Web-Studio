@@ -1,8 +1,13 @@
 import { resto } from "../data/resto";
+import { useEffect } from "react";
 
 export default function RestoLanding() {
   const data = resto;
   const phone = "628123456789";
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="bg-[#0f0f0f] text-white min-h-screen font-sans">
@@ -23,7 +28,7 @@ export default function RestoLanding() {
       </nav>
 
       {/* HERO */}
-      <section className="relative h-[100vh] flex items-center px-6 overflow-hidden">
+      <section className="relative min-h-screen flex items-center px-6 overflow-hidden">
         <img
           src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d"
           className="absolute inset-0 w-full h-full object-cover scale-110"
@@ -58,7 +63,7 @@ export default function RestoLanding() {
       </section>
 
       {/* 🔥 QUICK ORDER */}
-      <section className="px-6 -mt-10 relative z-10">
+      <section className="px-6 mt-10 relative z-10">
         <div className="max-w-5xl mx-auto bg-[#1a1a1a] rounded-2xl p-6 border border-white/10">
           <div className="grid md:grid-cols-3 gap-4">
             <input

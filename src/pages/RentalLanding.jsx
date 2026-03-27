@@ -76,8 +76,6 @@ export default function RentalLanding() {
               src={mobilImg}
               className="w-full h-[400px] object-contain rounded-2xl shadow-lg"
             />
-
-            <div className="absolute inset-0 bg-gradient-to-tr from-black/60 via-transparent to-black/30 rounded-2xl"></div>
           </div>
         </div>
       </section>
@@ -460,7 +458,7 @@ function RentalSection() {
             return (
               <div
                 key={i}
-                className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-500 hover:-translate-y-3 border border-gray-100"
+                className="group bg-white/5 backdrop-blur-xl rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-500 hover:-translate-y-3 border border-white/10 hover:border-blue-400"
               >
                 <div className="absolute top-3 left-3 bg-green-500 text-white text-xs px-3 py-1 rounded-full font-semibold">
                   Tersedia

@@ -468,7 +468,6 @@ export default function Home() {
             >
               <Link
                 to={demo.path}
-                state={{ preserveScroll: true }}
                 className="group block bg-white/[0.03] border border-white/10 rounded-2xl overflow-hidden hover:-translate-y-1 transition"
               >
                 {/* IMAGE */}
