@@ -1,13 +1,18 @@
 import { hotel } from "../data/hotel";
+import { useEffect } from "react";
 
 export default function HotelLanding() {
   const data = hotel;
   const phone = "628123456789";
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
   return (
-    <div className="bg-[#0b0b0b] text-white min-h-screen font-sans">
+    <div className="bg-gradient-to-b from-[#0a0f1a] via-[#0f172a] to-black text-white min-h-screen font-sans">
       {/* NAVBAR */}
-      <nav className="fixed top-0 w-full z-50 bg-black/50 backdrop-blur-xl border-b border-white/10">
+      <nav className="fixed top-0 w-full z-50 bg-[#0a0f1a]/70 backdrop-blur-xl border-b border-white/10">
         <div className="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
           <h1 className="text-lg tracking-[0.2em] font-light">
             <span className="text-amber-400">HOTEL</span> LUXURY
@@ -15,7 +20,7 @@ export default function HotelLanding() {
 
           <a
             href={`https://wa.me/${phone}`}
-            className="border border-white/20 px-5 py-2 rounded-full text-sm hover:bg-white hover:text-black transition"
+            className="border border-white/20 px-5 py-2 rounded-full text-sm hover:bg-amber-400 hover:text-black transition"
           >
             Booking
           </a>
@@ -29,11 +34,12 @@ export default function HotelLanding() {
           className="absolute inset-0 w-full h-full object-cover scale-105"
         />
 
-        <div className="absolute inset-0 bg-black/70"></div>
+        <div className="absolute inset-0 bg-black/30"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-[#0a0f1a]/70 to-[#0a0f1a]"></div>
         <div className="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent"></div>
 
         <div className="relative z-10 max-w-xl">
-          <h1 className="text-5xl md:text-6xl font-light leading-tight mb-6">
+          <h1 className="text-5xl md:text-6xl font-light leading-[1.2] pb-2 mb-6 bg-gradient-to-r from-white to-amber-300 bg-clip-text text-transparent">
             {data.hero.title}
           </h1>
 
@@ -41,7 +47,7 @@ export default function HotelLanding() {
 
           <a
             href="#room"
-            className="bg-white text-black px-8 py-3 rounded-full font-medium hover:bg-gray-200 transition"
+            className="bg-amber-400 text-black px-8 py-3 rounded-full font-semibold hover:bg-amber-300 transition shadow-lg"
           >
             Explore Rooms
           </a>
@@ -49,21 +55,21 @@ export default function HotelLanding() {
       </section>
 
       {/* 🔥 QUICK BOOKING */}
-      <section className="px-6 -mt-12 relative z-10">
-        <div className="max-w-5xl mx-auto bg-[#111] border border-white/10 rounded-2xl p-6 shadow-xl">
+      <section className="px-6 mt-[-80px] md:mt-[-120px] relative z-10">
+        <div className="max-w-5xl mx-auto bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 shadow-xl">
           <div className="grid md:grid-cols-4 gap-4">
             <input
               type="date"
-              className="bg-black px-4 py-3 rounded-lg text-sm outline-none"
+              className="bg-white/10 px-4 py-3 rounded-lg text-sm outline-none focus:ring-2 focus:ring-amber-400"
             />
             <input
               type="date"
-              className="bg-black px-4 py-3 rounded-lg text-sm outline-none"
+              className="bg-white/10 px-4 py-3 rounded-lg text-sm outline-none focus:ring-2 focus:ring-amber-400"
             />
             <input
               type="number"
               placeholder="Guests"
-              className="bg-black px-4 py-3 rounded-lg text-sm outline-none"
+              className="bg-white/10 px-4 py-3 rounded-lg text-sm outline-none focus:ring-2 focus:ring-amber-400"
             />
 
             <a
@@ -77,7 +83,7 @@ export default function HotelLanding() {
       </section>
 
       {/* EXPERIENCE */}
-      <section className="px-6 py-24 bg-[#111]">
+      <section className="px-6 py-24 bg-[#0f172a]">
         <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-10 text-center">
           <div>
             <h3 className="text-lg font-light mb-3 text-amber-400">
@@ -112,7 +118,7 @@ export default function HotelLanding() {
       <HotelSection />
 
       {/* 🖼️ GALLERY */}
-      <section className="px-6 py-24 bg-black">
+      <section className="px-6 py-24 bg-[#0a0f1a]">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-light text-center mb-12">
             Hotel Ambience
@@ -136,26 +142,26 @@ export default function HotelLanding() {
       </section>
 
       {/* 💬 TESTIMONIAL */}
-      <section className="px-6 py-24 bg-[#111] text-center">
+      <section className="px-6 py-24 bg-[#0f172a] text-center">
         <h2 className="text-4xl font-light mb-12">Guest Experience</h2>
 
         <div className="grid md:grid-cols-3 gap-10">
-          <div className="bg-black p-8 rounded-2xl border border-white/10">
+          <div className="bg-white/5 backdrop-blur-xl p-8 rounded-2xl border border-white/10 hover:border-amber-400/40 transition">
             <p className="italic">"Pelayanan sangat memuaskan!"</p>
           </div>
 
-          <div className="bg-black p-8 rounded-2xl border border-white/10">
+          <div className="bg-white/5 backdrop-blur-xl p-8 rounded-2xl border border-white/10 hover:border-amber-400/40 transition">
             <p className="italic">"Kamar bersih & nyaman"</p>
           </div>
 
-          <div className="bg-black p-8 rounded-2xl border border-white/10">
+          <div className="bg-white/5 backdrop-blur-xl p-8 rounded-2xl border border-white/10 hover:border-amber-400/40 transition">
             <p className="italic">"Lokasi strategis banget"</p>
           </div>
         </div>
       </section>
 
       {/* 📍 LOCATION */}
-      <section className="px-6 py-24 bg-black">
+      <section className="px-6 py-24 bg-[#0a0f1a]">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
           <div>
             <h2 className="text-4xl font-light mb-4">Visit Our Hotel</h2>
@@ -188,21 +194,21 @@ export default function HotelLanding() {
       </section>
 
       {/* CTA */}
-      <section className="px-6 py-24 text-center">
-        <h2 className="text-3xl font-light mb-6">
+      <section className="px-6 py-24 text-center bg-gradient-to-r from-[#0a0f1a] via-[#0f172a] to-black">
+        <h2 className="text-3xl font-light mb-6 text-white">
           Experience Comfort & Luxury
         </h2>
 
         <a
           href={`https://wa.me/${phone}`}
-          className="border border-white/30 px-8 py-3 rounded-full hover:bg-white hover:text-black transition"
+          className="bg-amber-400 text-black px-8 py-3 rounded-full font-semibold hover:bg-amber-300 transition shadow-lg"
         >
           Book Your Stay
         </a>
       </section>
 
       {/* FOOTER */}
-      <footer className="bg-[#050505] border-t border-white/10">
+      <footer className="bg-[#020617] border-t border-white/10">
         <div className="text-center text-gray-500 text-sm py-6">
           © {new Date().getFullYear()} {data.name}
         </div>
@@ -234,7 +240,7 @@ function HotelSection() {
   ];
 
   return (
-    <section id="room" className="px-6 py-24 bg-[#0b0b0b]">
+    <section id="room" className="px-6 py-24 bg-[#0a0f1a]">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-20">
           <h2 className="text-4xl font-light mb-4 tracking-wide">Our Rooms</h2>
@@ -248,11 +254,14 @@ function HotelSection() {
             )}`;
 
             return (
-              <div key={i} className="group overflow-hidden rounded-2xl">
+              <div
+                key={i}
+                className="group bg-white/5 backdrop-blur-xl p-4 rounded-2xl border border-white/10 hover:border-amber-400/40 transition hover:-translate-y-2"
+              >
                 <div className="overflow-hidden">
                   <img
                     src={room.img}
-                    className="h-72 w-full object-cover group-hover:scale-110 transition duration-700"
+                    className="h-72 w-full object-cover rounded-xl group-hover:scale-110 transition duration-700"
                   />
                 </div>
 
