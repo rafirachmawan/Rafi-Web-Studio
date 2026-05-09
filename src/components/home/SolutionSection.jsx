@@ -10,7 +10,7 @@ export default function SolutionSection() {
         </div>
 
         {/* TITLE */}
-        <h2 className="text-2xl md:text-4xl font-heading font-bold tracking-tight leading-snug max-w-2xl mx-auto">
+        <h2 className="text-2xl md:text-4xl font-heading font-bold tracking-tight leading-snug max-w-2xl mx-auto text-black dark:text-white">
           Kami Tidak Hanya Membuat Website.
           <br />
           <span className="text-amber-400">
@@ -19,7 +19,7 @@ export default function SolutionSection() {
         </h2>
 
         {/* DESC */}
-        <p className="text-gray-400 mt-6">
+        <p className="text-gray-600 dark:text-gray-400 mt-6">
           Setiap website yang kami buat dirancang untuk:
         </p>
       </div>
@@ -27,87 +27,87 @@ export default function SolutionSection() {
       {/* BENEFIT */}
       <div className="grid md:grid-cols-3 gap-6 mt-10">
         {/* CARD 1 */}
-        <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-6">
+        <div className="bg-black/[0.03] dark:bg-white/[0.03] border border-black/10 dark:border-white/10 rounded-2xl p-6">
           <div className="w-12 h-12 mb-4 rounded-xl bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-amber-400 text-xl">
             🛡️
           </div>
 
-          <h4 className="font-heading font-semibold text-lg mb-2 tracking-tight">
+          <h4 className="font-heading font-semibold text-lg mb-2 tracking-tight text-black dark:text-white">
             Meningkatkan Kepercayaan
           </h4>
 
-          <p className="text-gray-400 text-sm">
+          <p className="text-gray-600 dark:text-gray-400 text-sm">
             Desain modern dan bersih yang membuat bisnis kamu terlihat serius
             dan terpercaya.
           </p>
         </div>
 
         {/* CARD 2 */}
-        <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-6">
+        <div className="bg-black/[0.03] dark:bg-white/[0.03] border border-black/10 dark:border-white/10 rounded-2xl p-6">
           <div className="w-12 h-12 mb-4 rounded-xl bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-amber-400 text-xl">
             💬
           </div>
 
-          <h4 className="font-heading font-semibold text-lg mb-2 tracking-tight">
+          <h4 className="font-heading font-semibold text-lg mb-2 tracking-tight text-black dark:text-white">
             Mempermudah Pelanggan Menghubungi
           </h4>
 
-          <p className="text-gray-400 text-sm">
+          <p className="text-gray-600 dark:text-gray-400 text-sm">
             Tombol WhatsApp langsung, Google Maps terintegrasi, dan navigasi
             yang simpel.
           </p>
         </div>
 
         {/* CARD 3 */}
-        <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-6">
+        <div className="bg-black/[0.03] dark:bg-white/[0.03] border border-black/10 dark:border-white/10 rounded-2xl p-6">
           <div className="w-12 h-12 mb-4 rounded-xl bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-amber-400 text-xl">
             📱
           </div>
 
-          <h4 className="font-heading font-semibold text-lg mb-2 tracking-tight">
+          <h4 className="font-heading font-semibold text-lg mb-2 tracking-tight text-black dark:text-white">
             Mobile Friendly 100%
           </h4>
 
-          <p className="text-gray-400 text-sm">
+          <p className="text-gray-600 dark:text-gray-400 text-sm">
             Mayoritas pelanggan membuka dari HP. Website kamu akan tampil
             sempurna di semua perangkat.
           </p>
         </div>
 
         {/* CARD 4 */}
-        <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-6">
+        <div className="bg-black/[0.03] dark:bg-white/[0.03] border border-black/10 dark:border-white/10 rounded-2xl p-6">
           <div className="w-12 h-12 mb-4 rounded-xl bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-amber-400 text-xl">
             🔍
           </div>
 
-          <h4 className="font-heading font-semibold text-lg mb-2 tracking-tight">
+          <h4 className="font-heading font-semibold text-lg mb-2 tracking-tight text-black dark:text-white">
             Siap Tampil di Google
           </h4>
 
-          <p className="text-gray-400 text-sm">
+          <p className="text-gray-600 dark:text-gray-400 text-sm">
             Struktur SEO dasar agar bisnis kamu lebih mudah ditemukan.
           </p>
         </div>
 
         {/* CARD 5 */}
-        <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-6">
+        <div className="bg-black/[0.03] dark:bg-white/[0.03] border border-black/10 dark:border-white/10 rounded-2xl p-6">
           <div className="w-12 h-12 mb-4 rounded-xl bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-amber-400 text-xl">
             ⚡
           </div>
 
-          <h4 className="font-heading font-semibold text-lg mb-2 tracking-tight">
+          <h4 className="font-heading font-semibold text-lg mb-2 tracking-tight text-black dark:text-white">
             Loading Cepat & Aman
           </h4>
 
-          <p className="text-gray-400 text-sm">
+          <p className="text-gray-600 dark:text-gray-400 text-sm">
             Website ringan, cepat, dan stabil.
           </p>
         </div>
       </div>
 
       {/* CUSTOM MESSAGE */}
-      <div className="mt-16 mb-24 max-w-4xl mx-auto bg-white/[0.03] border border-white/10 rounded-3xl px-6 py-8 text-center">
-        <p className="text-base md:text-lg text-gray-300">
+      <div className="mt-16 mb-24 max-w-4xl mx-auto bg-black/[0.03] dark:bg-white/[0.03] border border-black/10 dark:border-white/10 rounded-3xl px-6 py-8 text-center">
+        <p className="text-base md:text-lg text-gray-700 dark:text-gray-300">
           Kami tidak menggunakan template asal jadi.
         </p>
 

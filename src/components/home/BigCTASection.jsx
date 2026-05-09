@@ -1,23 +1,25 @@
 export default function BigCTASection() {
   return (
     <div className="mb-24 px-4">
-      <div className="max-w-6xl mx-auto rounded-[30px] md:rounded-[40px] bg-gradient-to-br from-[#111] via-[#0a0a0a] to-black border border-amber-400/10 py-16 md:py-20 px-6 text-center relative overflow-hidden">
+      <div className="max-w-6xl mx-auto rounded-[30px] md:rounded-[40px] bg-gradient-to-br from-white via-[#f8f6ef] to-[#f3f3f3] dark:from-[#111] dark:via-[#0a0a0a] dark:to-black border border-black/10 dark:border-amber-400/10 py-16 md:py-20 px-6 text-center relative overflow-hidden transition-colors duration-300">
         {/* GLOW */}
         <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[400px] h-[400px] bg-amber-500/10 blur-[120px] rounded-full"></div>
 
         {/* CONTENT */}
         <div className="relative z-10 max-w-3xl mx-auto">
           {/* TITLE */}
-          <h2 className="text-3xl md:text-5xl font-bold text-white leading-tight">
+          <h2 className="text-3xl md:text-5xl font-bold text-black dark:text-white leading-tight">
             Bisnis Kamu Sudah Siap{" "}
-            <span className="italic text-gray-400">Naik Level?</span>
+            <span className="italic text-gray-500 dark:text-gray-400">
+              Naik Level?
+            </span>
           </h2>
 
           {/* DESC */}
-          <p className="text-blue-100 mt-6 text-sm md:text-lg">
+          <p className="text-gray-700 dark:text-blue-100 mt-6 text-sm md:text-lg leading-relaxed">
             Kalau kompetitor kamu sudah punya website profesional, kamu tidak
             bisa terus menunda.{" "}
-            <span className="font-semibold text-white">
+            <span className="font-semibold text-black dark:text-white">
               Bangun kepercayaan. Dapatkan pelanggan baru.
             </span>
           </p>
@@ -35,7 +37,7 @@ export default function BigCTASection() {
           </div>
 
           {/* NOTE */}
-          <p className="text-gray-400 text-xs md:text-sm mt-6">
+          <p className="text-gray-500 dark:text-gray-400 text-xs md:text-sm mt-6">
             Gratis, tanpa komitmen, tanpa syarat tersembunyi.
           </p>
         </div>

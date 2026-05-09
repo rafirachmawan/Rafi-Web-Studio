@@ -5,12 +5,12 @@ export default function DemoSection({ filter, setFilter, filtered }) {
     <>
       {/* HEADER */}
       <div id="demo" className="text-center mb-16 mt-10">
-        <h2 className="text-2xl md:text-4xl font-heading font-bold tracking-tight leading-snug max-w-2xl mx-auto">
+        <h2 className="text-2xl md:text-4xl font-heading font-bold tracking-tight leading-snug max-w-2xl mx-auto text-black dark:text-white">
           Hasil Nyata Yang Sudah{" "}
           <span className="text-amber-400">Kami Kerjakan</span>
         </h2>
 
-        <p className="text-gray-400 mt-4 max-w-2xl mx-auto text-sm md:text-base">
+        <p className="text-gray-600 dark:text-gray-400 mt-4 max-w-2xl mx-auto text-sm md:text-base">
           Beberapa project yang telah kami bantu untuk meningkatkan kepercayaan
           dan penjualan bisnis klien.
         </p>
@@ -25,7 +25,7 @@ export default function DemoSection({ filter, setFilter, filtered }) {
             className={`px-4 py-1.5 rounded-full text-xs md:text-sm font-medium transition-all duration-300 border ${
               filter === cat
                 ? "bg-amber-500 text-black border-amber-400 shadow-[0_0_20px_rgba(255,180,0,0.4)] scale-105"
-                : "bg-white/10 text-gray-300 border-white/10 hover:bg-white/20 hover:text-white hover:scale-105"
+                : "bg-black/[0.03] dark:bg-white/10 text-gray-700 dark:text-gray-300 border-black/10 dark:border-white/10 hover:bg-black/[0.06] dark:hover:bg-white/20 hover:text-black dark:hover:text-white hover:scale-105"
             }`}
           >
             {cat}

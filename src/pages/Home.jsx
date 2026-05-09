@@ -1,33 +1,23 @@
-import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
 import { useState } from "react";
-import coffeeImg from "../assets/Coffe.jpg";
-import rentalImg from "../assets/Rental.jpg";
-import hotelImg from "../assets/Hotel.jpg";
-import restoImg from "../assets/Resto.jpg";
-import sekolahImg from "../assets/Sekolah.jpg";
-import laundryImg from "../assets/Loundry.jpg";
-import umrohImg from "../assets/Umroh.jpg";
 
-import heroVideo from "../assets/Video.mp4";
-
-import thinkingImg from "../assets/thinking.png";
-
-// import baru Refactor clean code
+// COMPONENTS
 import Navbar from "../components/common/Navbar";
+import Footer from "../components/common/Footer";
+
 import HeroSection from "../components/home/HeroSection";
 import StatsSection from "../components/home/StatsSection";
 import ProblemSection from "../components/home/ProblemSection";
 import SolutionSection from "../components/home/SolutionSection";
-import { demos } from "../constants/demos";
 import DemoSection from "../components/home/DemoSection";
+import CTASection from "../components/home/CTASection";
 import ProcessSection from "../components/home/ProcessSection";
 import PricingSection from "../components/home/PricingSection";
 import TestimoniSection from "../components/home/TestimoniSection";
-import CTASection from "../components/home/CTASection";
 import FinalCTASection from "../components/home/FinalCTASection";
 import BigCTASection from "../components/home/BigCTASection";
-import Footer from "../components/common/Footer";
+
+// DATA
+import { demos } from "../constants/demos";
 
 export default function Home() {
   const [filter, setFilter] = useState("all");
@@ -40,101 +30,119 @@ export default function Home() {
     filter === "all" ? demos : demos.filter((item) => item.category === filter);
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white font-sans relative overflow-hidden">
+    <div className="min-h-screen bg-white text-black dark:bg-[#0a0a0a] dark:text-white font-sans relative overflow-hidden transition-colors duration-300">
       {/* BACKGROUND GLOW */}
-      <div className="absolute top-[-200px] left-1/2 -translate-x-1/2 w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-amber-500/10 blur-[100px] rounded-full"></div>
+      <div className="absolute top-[-200px] left-1/2 -translate-x-1/2 w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-amber-500/10 dark:bg-amber-500/10 bg-amber-300/20 blur-[100px] rounded-full" />
 
-      {/* 🔥 NAVBAR FLOATING */}
+      {/* NAVBAR */}
       <Navbar />
 
       <div className="max-w-6xl mx-auto px-4 md:px-6 pt-28 md:pt-36 pb-16 relative z-10">
-        {/* 🔥 HERO SECTION */}
+        {/* HERO */}
         <HeroSection />
 
-        {/* 🔥 TAMBAHKAN DI SINI */}
+        {/* STATS */}
         <StatsSection />
 
-        {/* 🔥 PROBLEM DETAIL SECTION */}
+        {/* PROBLEM */}
         <ProblemSection />
 
-        {/* 🔥 SOLUSI SECTION */}
+        {/* SOLUTION */}
         <SolutionSection />
 
-        {/* LIST BENEFIT */}
+        {/* BENEFIT LIST */}
         <div className="grid md:grid-cols-3 gap-6 mt-10">
-          {/* 1 */}
-          <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-6">
+          <div
+            className="bg-black/[0.03] dark:bg-white/[0.03]
+border border-black/10 dark:border-white/10 rounded-2xl p-6"
+          >
             <div className="w-12 h-12 mb-4 rounded-xl bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-amber-400 text-xl">
               🛡️
             </div>
+
             <h4 className="font-heading font-semibold text-lg mb-2 tracking-tight">
               Meningkatkan Kepercayaan
             </h4>
-            <p className="text-gray-400 text-sm">
+
+            <p className="text-gray-600 dark:text-gray-400 text-sm">
               Desain modern dan bersih yang membuat bisnis kamu terlihat serius
               dan terpercaya.
             </p>
           </div>
 
-          {/* 2 */}
-          <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-6">
+          <div
+            className="bg-black/[0.03] dark:bg-white/[0.03]
+border border-black/10 dark:border-white/10 rounded-2xl p-6"
+          >
             <div className="w-12 h-12 mb-4 rounded-xl bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-amber-400 text-xl">
               💬
             </div>
+
             <h4 className="font-heading font-semibold text-lg mb-2 tracking-tight">
               Mempermudah Pelanggan Menghubungi
             </h4>
-            <p className="text-gray-400 text-sm">
+
+            <p className="text-gray-600 dark:text-gray-400 text-sm">
               Tombol WhatsApp langsung, Google Maps terintegrasi, dan navigasi
               yang simpel.
             </p>
           </div>
 
-          {/* 3 */}
-          <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-6">
+          <div
+            className="bg-black/[0.03] dark:bg-white/[0.03]
+border border-black/10 dark:border-white/10 rounded-2xl p-6"
+          >
             <div className="w-12 h-12 mb-4 rounded-xl bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-amber-400 text-xl">
               📱
             </div>
+
             <h4 className="font-heading font-semibold text-lg mb-2 tracking-tight">
               Mobile Friendly 100%
             </h4>
+
             <p className="text-gray-400 text-sm">
               Mayoritas pelanggan membuka dari HP. Website kamu akan tampil
               sempurna di semua perangkat.
             </p>
           </div>
 
-          {/* 4 */}
-          <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-6">
+          <div
+            className="bg-black/[0.03] dark:bg-white/[0.03]
+border border-black/10 dark:border-white/10 rounded-2xl p-6"
+          >
             <div className="w-12 h-12 mb-4 rounded-xl bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-amber-400 text-xl">
               🔍
             </div>
+
             <h4 className="font-heading font-semibold text-lg mb-2 tracking-tight">
               Siap Tampil di Google
             </h4>
-            <p className="text-gray-400 text-sm">
+
+            <p className="text-gray-600 dark:text-gray-400text-sm">
               Struktur SEO dasar agar bisnis kamu lebih mudah ditemukan.
             </p>
           </div>
 
-          {/* 5 */}
-          <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-6">
+          <div
+            className="bg-black/[0.03] dark:bg-white/[0.03]
+border border-black/10 dark:border-white/10 rounded-2xl p-6"
+          >
             <div className="w-12 h-12 mb-4 rounded-xl bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-amber-400 text-xl">
               ⚡
             </div>
+
             <h4 className="font-heading font-semibold text-lg mb-2 tracking-tight">
               Loading Cepat & Aman
             </h4>
-            <p className="text-gray-400 text-sm">
+
+            <p className="text-gray-600 dark:text-gray-400 text-sm">
               Website ringan, cepat, dan stabil.
             </p>
           </div>
         </div>
 
-        {/* ===================== */}
-        {/* 🔥 CUSTOM MESSAGE */}
-        {/* ===================== */}
-        <div className="mt-16 mb-24 max-w-4xl mx-auto bg-white/[0.03] border border-white/10 rounded-3xl px-6 py-8 text-center">
+        {/* CUSTOM MESSAGE */}
+        <div className="mt-16 mb-24 max-w-4xl mx-auto bg-black/[0.03] dark:bg-white/[0.03] border border-black/10 dark:border-white/10 rounded-3xl px-6 py-8 text-center">
           <p className="text-base md:text-lg text-gray-300">
             Kami tidak menggunakan template asal jadi.
           </p>
@@ -144,36 +152,36 @@ export default function Home() {
           </p>
         </div>
 
-        {/* HEADER */}
+        {/* DEMO */}
         <DemoSection
           filter={filter}
           setFilter={setFilter}
           filtered={filtered}
         />
 
-        {/* 🔥 CTA SECTION */}
+        {/* CTA */}
         <CTASection />
 
-        {/* 🔥 PROCESS SECTION */}
+        {/* PROCESS */}
         <ProcessSection />
 
-        {/* 🔥 PRICING SECTION */}
+        {/* PRICING */}
         <PricingSection
           pricingTab={pricingTab}
           setPricingTab={setPricingTab}
           waLink={waLink}
         />
 
-        {/* 🔥 TESTIMONI SECTION */}
+        {/* TESTIMONI */}
         <TestimoniSection />
 
-        {/* 🔥 FINAL CTA SECTION */}
+        {/* FINAL CTA */}
         <FinalCTASection />
 
-        {/* 🔥 BIG CTA SECTION (BLUE) */}
+        {/* BIG CTA */}
         <BigCTASection />
 
-        {/* 🔥 FOOTER PREMIUM */}
+        {/* FOOTER */}
         <Footer />
       </div>
     </div>

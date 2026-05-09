@@ -7,12 +7,12 @@ export default function ProcessSection() {
           CARA KAMI BEKERJA
         </p>
 
-        <h2 className="text-4xl md:text-5xl font-bold leading-tight">
+        <h2 className="text-4xl md:text-5xl font-bold leading-tight text-black dark:text-white">
           Proses <br />
           Pembuatan yang <span className="text-amber-400">Transparan.</span>
         </h2>
 
-        <p className="text-gray-400 mt-6 max-w-md">
+        <p className="text-gray-600 dark:text-gray-400 mt-6 max-w-md">
           Kami memecah proyek kompleks menjadi langkah-langkah sederhana agar
           Anda selalu tahu apa yang sedang kami kerjakan.
         </p>
@@ -27,15 +27,15 @@ export default function ProcessSection() {
               01
             </div>
 
-            <div className="w-[2px] h-24 bg-white/10 mt-2"></div>
+            <div className="w-[2px] h-24 bg-black/10 dark:bg-white/10 mt-2"></div>
           </div>
 
           <div>
-            <h3 className="text-2xl font-heading font-semibold tracking-tight">
+            <h3 className="text-2xl font-heading font-semibold tracking-tight text-black dark:text-white">
               Konsultasi Gratis
             </h3>
 
-            <p className="text-gray-400 mt-2">
+            <p className="text-gray-600 dark:text-gray-400 mt-2">
               Kami dengarkan kebutuhan dan tujuan bisnis kamu.
             </p>
           </div>
@@ -48,15 +48,15 @@ export default function ProcessSection() {
               02
             </div>
 
-            <div className="w-[2px] h-24 bg-white/10 mt-2"></div>
+            <div className="w-[2px] h-24 bg-black/10 dark:bg-white/10 mt-2"></div>
           </div>
 
           <div>
-            <h3 className="text-2xl font-heading font-semibold tracking-tight">
+            <h3 className="text-2xl font-heading font-semibold tracking-tight text-black dark:text-white">
               Konsep & Desain
             </h3>
 
-            <p className="text-gray-400 mt-2">
+            <p className="text-gray-600 dark:text-gray-400 mt-2">
               Kami kirim preview sebelum website online.
             </p>
           </div>
@@ -69,15 +69,15 @@ export default function ProcessSection() {
               03
             </div>
 
-            <div className="w-[2px] h-24 bg-white/10 mt-2"></div>
+            <div className="w-[2px] h-24 bg-black/10 dark:bg-white/10 mt-2"></div>
           </div>
 
           <div>
-            <h3 className="text-2xl font-heading font-semibold tracking-tight">
+            <h3 className="text-2xl font-heading font-semibold tracking-tight text-black dark:text-white">
               Revisi & Finalisasi
             </h3>
 
-            <p className="text-gray-400 mt-2">
+            <p className="text-gray-600 dark:text-gray-400 mt-2">
               Pastikan semuanya sesuai dengan keinginan kamu.
             </p>
           </div>
@@ -90,15 +90,15 @@ export default function ProcessSection() {
               04
             </div>
 
-            <div className="w-[2px] h-24 bg-white/10 mt-2"></div>
+            <div className="w-[2px] h-24 bg-black/10 dark:bg-white/10 mt-2"></div>
           </div>
 
           <div>
-            <h3 className="text-2xl font-heading font-semibold tracking-tight">
+            <h3 className="text-2xl font-heading font-semibold tracking-tight text-black dark:text-white">
               Launching
             </h3>
 
-            <p className="text-gray-400 mt-2">
+            <p className="text-gray-600 dark:text-gray-400 mt-2">
               Website aktif dan siap digunakan.
             </p>
           </div>
@@ -113,11 +113,11 @@ export default function ProcessSection() {
           </div>
 
           <div>
-            <h3 className="text-2xl font-heading font-semibold tracking-tight">
+            <h3 className="text-2xl font-heading font-semibold tracking-tight text-black dark:text-white">
               Support
             </h3>
 
-            <p className="text-gray-400 mt-2">
+            <p className="text-gray-600 dark:text-gray-400 mt-2">
               Kami tetap membantu setelah website selesai.
             </p>
           </div>
