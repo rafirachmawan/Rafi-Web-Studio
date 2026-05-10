@@ -1,58 +1,86 @@
 export default function StatsSection() {
+  const stats = [
+    {
+      value: "50+",
+      label: "Project Delivered",
+    },
+    {
+      value: "99%",
+      label: "Client Satisfaction",
+    },
+    {
+      value: "24/7",
+      label: "Technical Support",
+    },
+  ];
+
   return (
-    <div className="text-center mt-10 md:mt-16 mb-16 md:mb-24">
-      {/* STATS */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-16 max-w-5xl mx-auto">
-        {/* ITEM 1 */}
-        <div className="bg-black/[0.03] dark:bg-white/[0.03] border border-black/10 dark:border-white/10 rounded-2xl p-8 text-center hover:border-amber-400/30 transition">
-          <h2 className="text-4xl md:text-5xl font-bold text-black dark:text-white">
-            50+
+    <section className="relative mt-20 md:mt-28 mb-24 md:mb-32 overflow-hidden">
+      {/* GLOW */}
+      <div className="absolute right-0 top-0 w-[300px] h-[300px] bg-amber-500/10 blur-3xl rounded-full pointer-events-none" />
+
+      <div className="grid lg:grid-cols-2 gap-12 md:gap-16 items-center">
+        {/* LEFT */}
+        <div>
+          {/* BADGE */}
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-amber-500/20 bg-amber-500/10 text-amber-500 text-sm font-medium">
+            ⚡ Digital Business Growth
+          </div>
+
+          {/* TITLE */}
+          <h2 className="mt-6 text-4xl md:text-6xl font-black tracking-tight leading-[1.05] text-black dark:text-white">
+            Website Bukan Lagi <span className="text-amber-500">Pilihan</span>
           </h2>
 
-          <p className="text-gray-600 dark:text-gray-400 mt-2 text-sm md:text-base">
-            Proyek Selesai
+          {/* DESC */}
+          <p className="mt-6 text-base md:text-lg leading-relaxed text-zinc-600 dark:text-zinc-400 max-w-xl">
+            Bisnis modern membutuhkan website dan sistem yang cepat,
+            profesional, dan mudah diakses pelanggan kapan saja.
           </p>
+
+          {/* MINI INFO */}
+          <div className="flex flex-wrap gap-3 mt-8">
+            {["Modern UI", "Custom System", "Mobile Friendly"].map((item) => (
+              <div
+                key={item}
+                className="px-4 py-2 rounded-full border border-black/5 dark:border-white/10 bg-black/[0.03] dark:bg-white/[0.03] text-sm text-zinc-700 dark:text-zinc-300"
+              >
+                {item}
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* ITEM 2 */}
-        <div className="bg-black/[0.03] dark:bg-white/[0.03] border border-black/10 dark:border-white/10 rounded-2xl p-8 text-center hover:border-amber-400/30 transition">
-          <h2 className="text-4xl md:text-5xl font-bold text-black dark:text-white">
-            99%
-          </h2>
+        {/* RIGHT */}
+        <div className="grid gap-5">
+          {stats.map((item, index) => (
+            <div
+              key={item.label}
+              className={`
+                rounded-[28px]
+                border border-black/5 dark:border-white/10
+                bg-black/[0.02] dark:bg-white/[0.03]
+                p-6 md:p-8
+                transition-all duration-300
+                hover:border-amber-500/20
+                hover:-translate-y-1
 
-          <p className="text-gray-600 dark:text-gray-400 mt-2 text-sm md:text-base">
-            Kepuasan Klien
-          </p>
-        </div>
+                ${index === 1 ? "lg:ml-10" : index === 2 ? "lg:ml-20" : ""}
+              `}
+            >
+              {/* VALUE */}
+              <h3 className="text-5xl md:text-6xl font-black tracking-tight text-black dark:text-white">
+                {item.value}
+              </h3>
 
-        {/* ITEM 3 */}
-        <div className="bg-black/[0.03] dark:bg-white/[0.03] border border-black/10 dark:border-white/10 rounded-2xl p-8 text-center hover:border-amber-400/30 transition">
-          <h2 className="text-4xl md:text-5xl font-bold text-black dark:text-white">
-            24/7
-          </h2>
-
-          <p className="text-gray-600 dark:text-gray-400 mt-2 text-sm md:text-base">
-            Dukungan Teknis
-          </p>
+              {/* LABEL */}
+              <p className="mt-3 text-zinc-600 dark:text-zinc-400 text-sm md:text-base">
+                {item.label}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
-
-      {/* BADGE */}
-      <div className="inline-block px-6 py-3 rounded-full border border-amber-400/40 bg-amber-400/10 text-amber-500 dark:text-amber-400 text-base md:text-lg font-medium mb-8 shadow-[0_0_20px_rgba(255,180,0,0.15)]">
-        ⚠️ Realita Pasar Digital
-      </div>
-
-      {/* TITLE */}
-      <h2 className="text-2xl md:text-4xl font-heading font-bold tracking-tight leading-snug max-w-2xl mx-auto text-black dark:text-white">
-        Kenapa Banyak <span className="text-amber-400">UMKM</span>
-        Kalah Saing Secara Online?
-      </h2>
-
-      {/* DESC */}
-      <p className="text-gray-600 dark:text-gray-400 mt-6 max-w-2xl mx-auto">
-        Hari ini pelanggan tidak langsung datang ke toko. Mereka cari di Google
-        dulu. Mereka cek Instagram. Mereka lihat review.
-      </p>
-    </div>
+    </section>
   );
 }
