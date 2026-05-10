@@ -12,7 +12,7 @@ export const demos = [
     path: "/coffee",
     desc: "Website cafe aesthetic & modern",
     icon: "☕",
-    category: "food",
+    category: "landing page",
     image: coffeeImg,
   },
   {
@@ -20,7 +20,7 @@ export const demos = [
     path: "/rental",
     desc: "Sistem sewa mobil cepat & praktis",
     icon: "🚗",
-    category: "service",
+    category: "landing page",
     image: rentalImg,
   },
   {
@@ -28,7 +28,7 @@ export const demos = [
     path: "/hotel",
     desc: "Landing page hotel elegan & premium",
     icon: "🏨",
-    category: "service",
+    category: "landing page",
     image: hotelImg,
   },
   {
@@ -36,7 +36,7 @@ export const demos = [
     path: "/resto",
     desc: "Website menu & booking restoran",
     icon: "🍽️",
-    category: "food",
+    category: "landing page",
     image: restoImg,
   },
   {
@@ -44,7 +44,7 @@ export const demos = [
     path: "/sekolah",
     desc: "Profil sekolah profesional",
     icon: "🏫",
-    category: "education",
+    category: "landing page",
     image: sekolahImg,
   },
   {
@@ -52,7 +52,7 @@ export const demos = [
     path: "/laundry",
     desc: "Website laundry modern + tracking order",
     icon: "🧺",
-    category: "service",
+    category: "landing page",
     image: laundryImg,
   },
   {
@@ -60,7 +60,7 @@ export const demos = [
     path: "/umroh",
     desc: "Landing page travel umroh profesional",
     icon: "🕋",
-    category: "religion",
+    category: "landing page",
     image: umrohImg,
   },
 ];

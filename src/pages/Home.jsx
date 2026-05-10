@@ -27,7 +27,18 @@ export default function Home() {
     "https://wa.me/6285707185783?text=Halo%20saya%20tertarik%20dengan%20paket%20website";
 
   const filtered =
-    filter === "all" ? demos : demos.filter((item) => item.category === filter);
+    filter === "all"
+      ? demos
+      : demos.filter((item) => {
+          // support old category "website"
+          if (filter === "landing page") {
+            return (
+              item.category === "landing page" || item.category === "website"
+            );
+          }
+
+          return item.category === filter;
+        });
 
   return (
     <div className="min-h-screen bg-white text-black dark:bg-[#0a0a0a] dark:text-white font-sans relative overflow-hidden transition-colors duration-300">
