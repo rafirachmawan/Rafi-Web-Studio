@@ -1,13 +1,14 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home";
-import CoffeeLanding from "./pages/CoffeeLanding";
-import RentalLanding from "./pages/RentalLanding";
-import HotelLanding from "./pages/HotelLanding";
-import RestoLanding from "./pages/RestoLanding";
-import SekolahLanding from "./pages/SekolahLanding";
-import LaundryLanding from "./pages/LaundryLanding";
-import UmrohLanding from "./pages/UmrohLanding";
+
+import CoffeeLanding from "./apps/landing-page/coffee/CoffeeLanding";
+import RentalLanding from "./apps/landing-page/rental/RentalLanding";
+import HotelLanding from "./apps/landing-page/hotel/HotelLanding";
+import RestoLanding from "./apps/landing-page/resto/RestoLanding";
+import SekolahLanding from "./apps/landing-page/sekolah/SekolahLanding";
+import LaundryLanding from "./apps/landing-page/loundry/LaundryLanding";
+import UmrohLanding from "./apps/landing-page/umroh/UmrohLanding";
 
 export default function App() {
   return (

@@ -1,4 +1,4 @@
-import { resto } from "../data/resto";
+import { resto } from "../../../data/resto";
 import { useEffect } from "react";
 
 export default function RestoLanding() {

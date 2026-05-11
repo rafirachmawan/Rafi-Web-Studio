@@ -1,7 +1,7 @@
-import { rental } from "../data/rental";
+import { rental } from "../../../data/rental";
 import { useState } from "react";
-import mobilImg from "../assets/RentalMobil2.png";
-import mobil1 from "../assets/mobil1.png";
+import mobilImg from "./assets/RentalMobil2.png";
+import mobil1 from "./assets/mobil1.png";
 
 import { useEffect } from "react";
 

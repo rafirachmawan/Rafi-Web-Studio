@@ -1,4 +1,4 @@
-import { hotel } from "../data/hotel";
+import { hotel } from "../../../data/hotel";
 import { useEffect } from "react";
 
 export default function HotelLanding() {

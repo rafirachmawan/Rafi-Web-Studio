@@ -1,4 +1,4 @@
-import { sekolah } from "../data/sekolah";
+import { sekolah } from "../../../data/sekolah";
 
 export default function SekolahLanding() {
   const data = sekolah;
