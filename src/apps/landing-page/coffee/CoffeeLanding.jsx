@@ -2,6 +2,10 @@ import { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
 import { Menu, X, Star, MapPin, Clock3, Phone } from "lucide-react";
 
+// Import image
+import bgHero from "./assets/bgHero.png";
+import coffe1 from "./assets/coffee1.png";
+
 export default function CoffeeLanding() {
   const [open, setOpen] = useState(false);
 
@@ -73,8 +77,27 @@ export default function CoffeeLanding() {
   return (
     <div className="bg-black text-white overflow-hidden">
       {/* ================= NAVBAR ================= */}
-      <div className="fixed top-0 left-1/2 -translate-x-1/2 z-50 w-full">
-        <div className="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
+      <div className="
+  fixed
+  top-0
+  left-1/2
+  -translate-x-1/2
+  z-50
+  w-full
+  border-b
+  border-white/5
+  backdrop-blur-xl
+  bg-black/20
+">
+        <div className="
+  max-w-7xl
+  mx-auto
+  px-6
+  h-[90px]
+  flex
+  items-center
+  justify-between
+">
           <h1 className="text-2xl tracking-widest font-serif text-[#d6a16b]">
             NOIR BREW
           </h1>
@@ -119,156 +142,404 @@ export default function CoffeeLanding() {
         )}
       </div>
 
-      {/* ================= HERO ================= */}
-      <section
-        ref={heroRef}
-        className="relative min-h-screen flex items-center justify-center"
+     {/* ================= HERO ================= */}
+<section
+  ref={heroRef}
+  className="
+    relative
+    min-h-screen
+    overflow-hidden
+    flex
+    items-center
+    justify-center
+    bg-black
+  "
+>
+  {/* BG IMAGE */}
+  <img
+    ref={imageRef}
+    src={bgHero}
+    className="
+      absolute
+      inset-0
+      w-full
+      h-full
+      object-cover
+      opacity-70
+      scale-105
+      will-change-transform
+    "
+  />
+
+  {/* DARK OVERLAY */}
+  <div
+    className="
+      absolute
+      inset-0
+      bg-gradient-to-b
+  from-black/75
+via-black/60
+to-black
+    "
+  />
+
+
+
+  {/* HERO CONTENT */}
+  <div className="relative z-10 text-center px-6 pt-20">
+    {/* SUBTITLE */}
+    <p
+      ref={subtitleRef}
+      className="
+        text-[#d6a16b]
+        uppercase
+        tracking-[6px]
+        text-xs
+        mb-8
+      "
+    >
+      Luxury Coffee Experience
+    </p>
+
+    {/* TITLE */}
+    <h1
+      ref={titleRef}
+      className="
+        text-5xl
+        sm:text-6xl
+        md:text-8xl
+        font-serif
+        leading-[0.95]
+        max-w-5xl
+        mx-auto
+        text-[#f5e7da]
+      "
+    >
+      Artisanship in Every
+      <span className="block">
+        Drop
+      </span>
+    </h1>
+
+    {/* BUTTON */}
+    <div
+      ref={btnRef}
+      className="
+        flex
+        flex-col
+        sm:flex-row
+        justify-center
+        gap-4
+        mt-12
+      "
+    >
+      <a
+        href={waLink}
+        className="
+          bg-[#d6a16b]
+          text-black
+          px-10
+          py-4
+          text-sm
+          font-medium
+          hover:scale-105
+          transition
+        "
       >
-        {/* background */}
-        <div
-          ref={imageRef}
+        Order Now
+      </a>
+
+      <a
+        href="#menu"
+        className="
+          bg-white/10
+          backdrop-blur-md
+          border
+          border-white/10
+          px-10
+          py-4
+          text-sm
+          hover:bg-white/20
+          transition
+        "
+      >
+        Explore Menu
+      </a>
+    </div>
+  </div>
+
+{/* CINEMATIC TRANSITION */}
+<div
+  className="
+    absolute
+    bottom-[-1px]
+    left-0
+    w-full
+    h-[420px]
+    pointer-events-none
+  "
+>
+  {/* BLACK FADE */}
+  <div
+    className="
+      absolute
+      inset-0
+      bg-gradient-to-b
+      from-transparent
+  via-black
+to-black
+    "
+  />
+
+
+
+</div>
+</section>
+
+     {/* ================= SOUL ================= */}
+<section
+  id="beans"
+className="
+  relative
+  py-52
+  px-6
+  overflow-hidden
+bg-black
+
+  "
+>
+  {/* TOP GRADIENT */}
+  <div
+    className="
+      absolute
+      top-0
+      left-0
+      w-full
+      h-[200px]
+      bg-gradient-to-b
+      from-white/[0.02]
+      to-transparent
+      pointer-events-none
+    "
+  />
+
+
+
+  <div
+    className="
+      max-w-7xl
+      mx-auto
+      grid
+      md:grid-cols-2
+      gap-24
+      items-center
+      relative
+      z-10
+    "
+  >
+    {/* LEFT IMAGE */}
+    <div className="relative">
+      {/* VERTICAL TEXT */}
+      <div
+        className="
+          absolute
+          -left-10
+          top-1/2
+          -translate-y-1/2
+          rotate-180
+          hidden
+          lg:block
+        "
+      >
+        <p
           className="
-            absolute inset-0
-            bg-[radial-gradient(circle_at_top,rgba(214,161,107,0.12),transparent_35%)]
-            will-change-transform
+            text-[10px]
+            tracking-[8px]
+            text-[#8f6a47]
+            [writing-mode:vertical-rl]
           "
-        />
+        >
+          EST. MMXIV — ROASTING LAB
+        </p>
+      </div>
 
-        {/* smoke */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 opacity-20">
-          <div className="w-[400px] h-[700px] rounded-full bg-gradient-to-b from-white/20 to-transparent blur-3xl"></div>
-        </div>
+     {/* IMAGE */}
+<div className="relative group">
+  {/* IMAGE GLOW */}
+  <div
+    className="
+      absolute
+      inset-0
+      bg-[#d6a16b]/10
+      blur-[80px]
+      scale-90
+      opacity-60
+    "
+  />
 
-        <div className="relative z-10 text-center px-6">
-          <p className="text-xs tracking-[6px] text-[#d6a16b] uppercase mb-6">
-            Luxury Coffee Experience
-          </p>
+  {/* IMAGE WRAPPER */}
+  <div
+    className="
+      relative
+      overflow-hidden
+      border
+      border-white/10
+      bg-black
+      shadow-[0_20px_80px_rgba(0,0,0,0.7)]
+    "
+  >
+    {/* LIGHT OVERLAY */}
+    <div
+      className="
+        absolute
+        inset-0
+        bg-gradient-to-br
+     from-black/10
+via-transparent
+to-black/50
+        z-10
+      "
+    />
 
-          <h1
-            ref={titleRef}
-            className="
-              text-5xl
-              md:text-8xl
-              font-serif
-              leading-tight
-              max-w-5xl
-              mx-auto
-            "
-          >
-            Artisanship in Every Drop
-          </h1>
+    {/* IMAGE */}
+    <img
+      src={coffe1}
+      className="
+        w-full
+        h-[600px]
+        object-cover
+     brightness-[0.75]
+contrast-[1.15]
+        group-hover:scale-105
+        transition
+        duration-700
+      "
+    />
+  </div>
 
-          <p
-            ref={subtitleRef}
-            className="
-              text-gray-400
-              mt-8
-              max-w-xl
-              mx-auto
-              leading-relaxed
-            "
-          >
-            Crafted for those who appreciate bold flavor,
-            luxurious ambience, and timeless coffee rituals.
-          </p>
+  {/* FRAME */}
+  <div
+    className="
+      absolute
+      -bottom-10
+      right-[-40px]
+      w-[220px]
+      h-[220px]
+      border
+      border-[#d6a16b]/20
+    "
+  />
 
-          <div
-            ref={btnRef}
-            className="flex flex-col md:flex-row gap-4 justify-center mt-10"
-          >
-            <a
-              href={waLink}
-              className="
-                bg-[#d6a16b]
-                text-black
-                px-8
-                py-4
-                text-sm
-                hover:opacity-80
-                transition
-              "
-            >
-              Order Now
-            </a>
+  {/* SMALL LIGHT */}
+  <div
+    className="
+      absolute
+      top-[-30px]
+      left-[10%]
+      w-[140px]
+      h-[140px]
+      bg-[#d6a16b]/20
+      blur-[90px]
+      rounded-full
+    "
+  />
+</div>
+    </div>
 
-            <a
-              href="#menu"
-              className="
-                border
-                border-white/20
-                px-8
-                py-4
-                text-sm
-                hover:border-[#d6a16b]
-                transition
-              "
-            >
-              Explore Menu
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* ================= SOUL ================= */}
-      <section
-        id="beans"
-        className="py-32 px-6 border-t border-white/5"
+    {/* RIGHT CONTENT */}
+    <div>
+      <p
+        className="
+          uppercase
+          tracking-[6px]
+          text-xs
+          text-[#d6a16b]
+          mb-6
+        "
       >
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-20 items-center">
-          {/* IMAGE PLACEHOLDER */}
-          <div className="relative">
-            <div
-              className="
-                h-[500px]
-                border
-                border-white/10
-                bg-[#0b0b0b]
-              "
-            />
+        Artisan Coffee Philosophy
+      </p>
 
-            <div
-              className="
-                absolute
-                -bottom-10
-                -right-10
-                w-[200px]
-                h-[200px]
-                border
-                border-[#d6a16b]/20
-              "
-            />
-          </div>
+      <h2
+        className="
+          text-5xl
+          md:text-6xl
+          font-serif
+          leading-tight
+          mb-10
+          text-[#f5e7da]
+        "
+      >
+        The Soul of
+        <span className="block">
+          Our Beans
+        </span>
+      </h2>
 
-          {/* CONTENT */}
-          <div>
-            <p className="text-xs tracking-[4px] text-[#d6a16b] mb-6 uppercase">
-              The Soul Of Our Beans
-            </p>
+      <p
+        className="
+          text-gray-400
+          leading-[2]
+          mb-8
+          text-lg
+        "
+      >
+        At NOIR BREW, we view roasting as a precise dialogue
+        between heat and bean. Every batch is traced to its
+        origin, ensuring that the farmers who nurture these
+        crops are rewarded for their exceptional dedication.
+      </p>
 
-            <h2 className="text-5xl font-serif mb-8">
-              The Soul of Our Beans
-            </h2>
+      <p
+        className="
+          text-gray-500
+          italic
+          leading-[2]
+          mb-12
+        "
+      >
+        “We don’t just brew coffee; we curate a sensory
+        journey that begins in the high-altitude hills
+        of Ethiopia and ends in your porcelain cup.”
+      </p>
 
-            <p className="text-gray-400 leading-loose mb-6">
-              At Noir Brew, we don’t just roast beans —
-              we honor their journey. Every bean tells
-              a story of craftsmanship, care, and passion.
-            </p>
+      <a
+        href="#"
+        className="
+          inline-flex
+          items-center
+          gap-3
+          text-[#d6a16b]
+          uppercase
+          tracking-[4px]
+          text-xs
+          border-b
+          border-[#d6a16b]
+          pb-2
+          hover:gap-5
+          transition-all
+        "
+      >
+        Read Our Manifesto
+      </a>
+    </div>
+  </div>
 
-            <p className="text-gray-400 leading-loose mb-10">
-              We carefully select, roast, and serve every
-              cup to deliver a luxurious coffee experience.
-            </p>
-
-            <a
-              href="#"
-              className="text-[#d6a16b] border-b border-[#d6a16b]"
-            >
-              Read Our Manifesto
-            </a>
-          </div>
-        </div>
-      </section>
+  {/* BOTTOM FADE */}
+  <div
+    className="
+      absolute
+      bottom-0
+      left-0
+      w-full
+      h-[250px]
+      bg-gradient-to-t
+      from-black
+      to-transparent
+      pointer-events-none
+    "
+  />
+</section>
 
       {/* ================= MENU ================= */}
       <section
