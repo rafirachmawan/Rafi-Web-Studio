@@ -5,7 +5,6 @@ import Navbar from "../components/common/Navbar";
 import Footer from "../components/common/Footer";
 
 import HeroSection from "../components/home/HeroSection";
-import TechMarquee from "../components/home/TechMarquee";
 import StatsSection from "../components/home/StatsSection";
 import ProblemSection from "../components/home/ProblemSection";
 import SolutionSection from "../components/home/SolutionSection";
@@ -52,8 +51,6 @@ export default function Home() {
       <div className="max-w-6xl mx-auto px-4 md:px-6 pt-28 md:pt-36 pb-16 relative z-10">
         {/* HERO */}
         <HeroSection />
-        {/* TECH MARQUEE */}
-        <TechMarquee />
         {/* STATS */}
         <StatsSection />
         {/* PROBLEM */}

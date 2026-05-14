@@ -1,126 +1,114 @@
+import { motion } from "framer-motion";
+import { MessageSquare, PenTool, Code, Rocket, HeadphonesIcon } from "lucide-react";
+
 export default function ProcessSection() {
+  const steps = [
+    {
+      id: "01",
+      title: "Konsultasi Gratis",
+      desc: "Kami dengarkan kebutuhan dan tujuan bisnis Anda. Diskusi santai untuk menemukan solusi terbaik.",
+      icon: MessageSquare,
+    },
+    {
+      id: "02",
+      title: "Konsep & Desain",
+      desc: "Pembuatan wireframe dan desain visual (UI/UX). Anda akan menerima preview sebelum mulai coding.",
+      icon: PenTool,
+    },
+    {
+      id: "03",
+      title: "Development & Revisi",
+      desc: "Mulai proses coding dan perakitan fitur. Anda dapat melihat progres dan mengajukan revisi.",
+      icon: Code,
+    },
+    {
+      id: "04",
+      title: "Launching",
+      desc: "Testing akhir, optimasi kecepatan, dan website siap diakses oleh seluruh dunia.",
+      icon: Rocket,
+    },
+    {
+      id: "05",
+      title: "Maintenance & Support",
+      desc: "Kami tetap mendampingi Anda setelah rilis untuk memastikan semuanya berjalan lancar.",
+      icon: HeadphonesIcon,
+    },
+  ];
+
   return (
-    <div id="proses" className="mt-32 grid md:grid-cols-2 gap-10 items-start">
+    <div id="proses" className="mt-32 mb-24 grid lg:grid-cols-2 gap-16 lg:gap-10 items-start max-w-6xl mx-auto px-4">
       {/* LEFT */}
-      <div className="md:sticky md:top-32 h-fit">
-        <p className="text-amber-400 text-sm tracking-widest mb-4">
+      <div className="lg:sticky lg:top-32 h-fit">
+        <motion.div 
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-amber-500/20 bg-amber-500/10 text-amber-500 text-xs md:text-sm font-bold mb-6"
+        >
           CARA KAMI BEKERJA
-        </p>
+        </motion.div>
 
-        <h2 className="text-4xl md:text-5xl font-bold leading-tight text-black dark:text-white">
-          Proses <br />
-          Pembuatan yang <span className="text-amber-400">Transparan.</span>
-        </h2>
+        <motion.h2 
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+          className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight text-black dark:text-white"
+        >
+          Proses yang <br />
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-500">
+            Transparan & Cepat.
+          </span>
+        </motion.h2>
 
-        <p className="text-gray-600 dark:text-gray-400 mt-6 max-w-md">
-          Kami memecah proyek kompleks menjadi langkah-langkah sederhana agar
-          Anda selalu tahu apa yang sedang kami kerjakan.
-        </p>
+        <motion.p 
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="text-zinc-600 dark:text-zinc-400 mt-6 max-w-md text-lg leading-relaxed"
+        >
+          Kami memecah proyek kompleks menjadi langkah-langkah sederhana agar Anda selalu memegang kendali atas apa yang sedang kami kerjakan.
+        </motion.p>
       </div>
 
       {/* RIGHT */}
-      <div className="space-y-20">
-        {/* STEP 1 */}
-        <div className="flex gap-6 items-start">
-          <div className="flex flex-col items-center">
-            <div className="w-10 h-10 rounded-full bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-amber-400 font-bold">
-              01
-            </div>
+      <div className="relative">
+        {/* Continuous Line Background */}
+        <div className="absolute left-6 md:left-[2.1rem] top-8 bottom-8 w-[2px] bg-black/5 dark:bg-white/5 rounded-full" />
 
-            <div className="w-[2px] h-24 bg-black/10 dark:bg-white/10 mt-2"></div>
-          </div>
+        <div className="space-y-12 relative z-10">
+          {steps.map((step, i) => (
+            <motion.div 
+              key={step.id}
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ delay: i * 0.1 }}
+              className="flex gap-6 md:gap-10 items-start group"
+            >
+              <div className="flex flex-col items-center relative z-20">
+                <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-white dark:bg-zinc-900 border border-black/10 dark:border-white/10 flex items-center justify-center text-amber-500 font-bold group-hover:bg-amber-500 group-hover:text-white transition-colors duration-300 shadow-xl shadow-black/5 dark:shadow-none">
+                  <step.icon className="w-5 h-5 md:w-7 md:h-7" />
+                </div>
+              </div>
 
-          <div>
-            <h3 className="text-2xl font-heading font-semibold tracking-tight text-black dark:text-white">
-              Konsultasi Gratis
-            </h3>
+              <div className="pt-2 md:pt-3 pb-8 border-b border-black/5 dark:border-white/5 flex-1 group-hover:border-amber-500/30 transition-colors">
+                <div className="flex items-center gap-3 mb-2">
+                  <span className="text-amber-500 font-black text-sm md:text-base">
+                    {step.id}
+                  </span>
+                  <h3 className="text-xl md:text-2xl font-black tracking-tight text-black dark:text-white group-hover:text-amber-500 transition-colors">
+                    {step.title}
+                  </h3>
+                </div>
 
-            <p className="text-gray-600 dark:text-gray-400 mt-2">
-              Kami dengarkan kebutuhan dan tujuan bisnis kamu.
-            </p>
-          </div>
-        </div>
-
-        {/* STEP 2 */}
-        <div className="flex gap-6 items-start">
-          <div className="flex flex-col items-center">
-            <div className="w-10 h-10 rounded-full bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-amber-400 font-bold">
-              02
-            </div>
-
-            <div className="w-[2px] h-24 bg-black/10 dark:bg-white/10 mt-2"></div>
-          </div>
-
-          <div>
-            <h3 className="text-2xl font-heading font-semibold tracking-tight text-black dark:text-white">
-              Konsep & Desain
-            </h3>
-
-            <p className="text-gray-600 dark:text-gray-400 mt-2">
-              Kami kirim preview sebelum website online.
-            </p>
-          </div>
-        </div>
-
-        {/* STEP 3 */}
-        <div className="flex gap-6 items-start">
-          <div className="flex flex-col items-center">
-            <div className="w-10 h-10 rounded-full bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-amber-400 font-bold">
-              03
-            </div>
-
-            <div className="w-[2px] h-24 bg-black/10 dark:bg-white/10 mt-2"></div>
-          </div>
-
-          <div>
-            <h3 className="text-2xl font-heading font-semibold tracking-tight text-black dark:text-white">
-              Revisi & Finalisasi
-            </h3>
-
-            <p className="text-gray-600 dark:text-gray-400 mt-2">
-              Pastikan semuanya sesuai dengan keinginan kamu.
-            </p>
-          </div>
-        </div>
-
-        {/* STEP 4 */}
-        <div className="flex gap-6 items-start">
-          <div className="flex flex-col items-center">
-            <div className="w-10 h-10 rounded-full bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-amber-400 font-bold">
-              04
-            </div>
-
-            <div className="w-[2px] h-24 bg-black/10 dark:bg-white/10 mt-2"></div>
-          </div>
-
-          <div>
-            <h3 className="text-2xl font-heading font-semibold tracking-tight text-black dark:text-white">
-              Launching
-            </h3>
-
-            <p className="text-gray-600 dark:text-gray-400 mt-2">
-              Website aktif dan siap digunakan.
-            </p>
-          </div>
-        </div>
-
-        {/* STEP 5 */}
-        <div className="flex gap-6 items-start">
-          <div className="flex flex-col items-center">
-            <div className="w-10 h-10 rounded-full bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-amber-400 font-bold">
-              05
-            </div>
-          </div>
-
-          <div>
-            <h3 className="text-2xl font-heading font-semibold tracking-tight text-black dark:text-white">
-              Support
-            </h3>
-
-            <p className="text-gray-600 dark:text-gray-400 mt-2">
-              Kami tetap membantu setelah website selesai.
-            </p>
-          </div>
+                <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed font-medium text-sm md:text-base">
+                  {step.desc}
+                </p>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </div>
