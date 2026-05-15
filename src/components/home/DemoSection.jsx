@@ -1,3 +1,4 @@
+import { motion, AnimatePresence } from "framer-motion";
 import DemoCard from "../cards/DemoCard";
 import {
   LayoutGrid,
@@ -5,267 +6,171 @@ import {
   Globe,
   MonitorSmartphone,
   Code2,
-  PlayCircle,
   ArrowRight,
+  Sparkles
 } from "lucide-react";
 
 export default function DemoSection({ filter, setFilter, filtered }) {
-  // CATEGORY
+  // CATEGORY CONFIG
   const categories = [
-    { label: "all", icon: LayoutGrid },
-    { label: "landing page", icon: Globe },
-    { label: "mobile app", icon: Smartphone },
-    { label: "sistem berbasis web", icon: MonitorSmartphone },
-    { label: "software", icon: Code2 },
+    { id: "all", label: "All Works", icon: LayoutGrid },
+    { id: "landing page", label: "Websites", icon: Globe },
+    { id: "mobile app", label: "Mobile Apps", icon: Smartphone },
+    { id: "sistem berbasis web", label: "Web Systems", icon: MonitorSmartphone },
+    { id: "software", label: "Software", icon: Code2 },
   ];
 
-  // MOBILE DEMO
-  const mobileApps = [
-    {
-      title: "Attendance App",
-      image:
-        "https://images.unsplash.com/photo-1551288049-bbbda536ad0a?q=80&w=1200&auto=format&fit=crop",
-      desc: "Advanced mobile attendance system with GPS.",
-    },
-    {
-      title: "POS Mobile",
-      image:
-        "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1200&auto=format&fit=crop",
-      desc: "Mobile cashier app for UMKM business.",
-    },
-  ];
-
-  // FILTER DATA
-  const landingPageProjects = filtered.filter(
-    (item) => item.category === "landing page",
-  );
-  const mobileAppsFiltered = filtered.filter((item) => item.category === "mobile app");
-  const sistemWebProjects = filtered.filter(
-    (item) => item.category === "sistem berbasis web",
-  );
+  // Helper for category descriptions
+  const getCategoryInfo = (id) => {
+    switch(id) {
+      case "landing page": 
+        return "Landing pages modern dengan desain profesional, responsive, dan fokus pada konversi.";
+      case "mobile app":
+        return "Aplikasi mobile & PWA untuk operasional bisnis, inventory, dan monitoring.";
+      case "sistem berbasis web":
+        return "Dashboard interaktif, ERP, CRM, dan sistem manajemen internal perusahaan.";
+      case "software":
+        return "Software custom & aplikasi desktop untuk solusi otomatisasi bisnis spesifik.";
+      default:
+        return "Koleksi karya digital terbaik kami dari berbagai industri dan platform.";
+    }
+  };
 
   return (
-    <section id="demo" className="relative py-16 md:py-24 overflow-hidden">
-      {/* HEADER */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-        <div className="max-w-2xl">
-          <h2 className="text-3xl md:text-5xl font-black text-black dark:text-white leading-[1.1] tracking-tight">
-            Explore Our <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-500">
-              Digital Masterpieces
-            </span>
-          </h2>
-          <p className="mt-4 text-zinc-600 dark:text-zinc-400 text-sm md:text-base leading-relaxed">
-            Dari landing page yang memukau hingga sistem manajemen perusahaan
-            yang kompleks. Temukan solusi yang tepat untuk akselerasi bisnis
-            Anda.
-          </p>
-        </div>
-
-        {/* FILTER BUTTONS */}
-        <div className="flex flex-wrap items-center gap-2">
-          {categories.map((cat) => {
-            const Icon = cat.icon;
-            const isActive = filter === cat.label;
-            return (
-              <button
-                key={cat.label}
-                onClick={() => setFilter(cat.label)}
-                className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold transition-all duration-300 ${
-                  isActive
-                    ? "bg-amber-500 text-white shadow-lg shadow-amber-500/20 scale-105"
-                    : "bg-white dark:bg-zinc-900 border border-black/5 dark:border-white/5 text-zinc-600 dark:text-zinc-400 hover:border-amber-500/30"
-                }`}
-              >
-                <Icon size={16} />
-                <span className="capitalize">{cat.label}</span>
-              </button>
-            );
-          })}
-        </div>
+    <section id="demo" className="relative py-20 md:py-32 overflow-hidden">
+      {/* BACKGROUND DECOR */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none opacity-30 dark:opacity-20">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-amber-500/10 blur-[120px] rounded-full" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-orange-500/10 blur-[120px] rounded-full" />
       </div>
 
-      {/* LANDING PAGE SECTION */}
-      {(filter === "all" || filter === "landing page") && (
-        <div className="relative mt-12 md:mt-14 px-4">
-          {/* HEADER */}
-          <div className="mb-6 md:mb-8">
-            {/* BADGE */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-amber-500/20 bg-amber-500/10 text-amber-500 text-xs font-medium">
-              🌐 Landing Page & Website
-            </div>
+      <div className="relative z-10 container mx-auto">
+        {/* HEADER */}
+        <div className="max-w-3xl mx-auto text-center mb-16 px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-600 dark:text-amber-400 text-xs font-bold mb-6 uppercase tracking-widest"
+          >
+            <Sparkles className="w-3 h-3" /> Portfolio
+          </motion.div>
+          
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-4xl md:text-6xl font-black text-black dark:text-white leading-[1.1] tracking-tight mb-6"
+          >
+            Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600">Digital Catalog</span>
+          </motion.h2>
 
-            {/* TITLE */}
-            <h3 className="mt-4 text-2xl md:text-3xl font-bold text-black dark:text-white leading-tight">
-              Landing Page, Company Profile & Website
-            </h3>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-zinc-600 dark:text-zinc-400 text-base md:text-lg leading-relaxed"
+          >
+            {getCategoryInfo(filter)}
+          </motion.p>
+        </div>
 
-            {/* DESCRIPTION */}
-            <p className="mt-3 max-w-2xl text-sm md:text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
-              Demo landing page modern untuk coffee shop, hotel, rental,
-              sekolah, UMKM, company profile, dan berbagai kebutuhan bisnis
-              lainnya dengan desain profesional, responsive, dan fokus pada
-              branding serta konversi client.
-            </p>
-          </div>
-
-          {/* GRID */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 md:gap-6">
-            {landingPageProjects.map((demo, i) => (
-              <DemoCard key={demo.id || i} demo={demo} index={i} />
-            ))}
+        {/* FILTER TABS - MODERN PILL STYLE */}
+        <div className="flex justify-center mb-16 px-4">
+          <div className="inline-flex p-1.5 bg-zinc-100 dark:bg-white/5 backdrop-blur-xl rounded-full border border-black/5 dark:border-white/10 overflow-x-auto no-scrollbar max-w-full">
+            {categories.map((cat) => {
+              const Icon = cat.icon;
+              const isActive = filter === cat.id;
+              return (
+                <button
+                  key={cat.id}
+                  onClick={() => setFilter(cat.id)}
+                  className={`relative flex items-center gap-2.5 px-5 md:px-7 py-2.5 rounded-full text-sm font-bold transition-all duration-500 whitespace-nowrap ${
+                    isActive ? "text-white" : "text-zinc-500 dark:text-zinc-400 hover:text-black dark:hover:text-white"
+                  }`}
+                >
+                  {isActive && (
+                    <motion.div
+                      layoutId="active-pill"
+                      className="absolute inset-0 bg-gradient-to-r from-amber-500 to-orange-500 shadow-lg shadow-amber-500/25"
+                      style={{ borderRadius: 9999 }}
+                      transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                    />
+                  )}
+                  <Icon size={16} className="relative z-10" />
+                  <span className="relative z-10 capitalize">{cat.label}</span>
+                </button>
+              );
+            })}
           </div>
         </div>
-      )}
 
-      {/* MOBILE APP SECTION */}
-      {(filter === "all" || filter === "mobile app") && (
-        <div className="relative mt-14 md:mt-16 px-4">
-          {/* HEADER */}
-          <div className="mb-6 md:mb-8">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-amber-500/20 bg-amber-500/10 text-amber-500 text-xs font-medium">
-              📱 Mobile Application
-            </div>
-
-            <h3 className="mt-4 text-2xl md:text-3xl font-bold text-black dark:text-white leading-tight">
-              Mobile App & PWA Preview
-            </h3>
-
-            <p className="mt-3 max-w-2xl text-sm md:text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
-              Demo aplikasi mobile dan Progressive Web App (PWA) yang dapat
-              digunakan untuk absensi, inventory, barcode scanning, monitoring,
-              dan kebutuhan operasional bisnis langsung dari perangkat mobile.
-            </p>
-          </div>
-
-          {/* MOBILE GRID */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
-            {mobileApps.map((app, index) => (
-              <div
-                key={index}
-                className="group relative overflow-hidden rounded-[24px] border border-black/5 dark:border-white/10 bg-white dark:bg-white/[0.03]"
+        {/* PROJECTS GRID */}
+        <div className="px-4">
+          <AnimatePresence mode="wait">
+            {filter === "software" ? (
+              <motion.div
+                key="coming-soon"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                className="max-w-2xl mx-auto py-20 px-8 rounded-[32px] border border-dashed border-zinc-200 dark:border-white/10 bg-zinc-50/50 dark:bg-white/[0.02] text-center"
               >
-                {/* IMAGE */}
-                <div className="relative aspect-[4/5] overflow-hidden">
-                  <img
-                    src={app.image}
-                    alt={app.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-
-                  {/* OVERLAY */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-
-                  {/* PLAY BUTTON */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <button className="w-14 h-14 rounded-full bg-white/90 flex items-center justify-center hover:scale-110 transition-all duration-300">
-                      <PlayCircle size={24} className="text-black ml-1" />
-                    </button>
-                  </div>
-
-                  {/* CONTENT */}
-                  <div className="absolute bottom-0 left-0 right-0 p-4 md:p-5">
-                    {/* BADGE */}
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500 text-black text-[11px] font-semibold">
-                      PWA READY
-                    </div>
-
-                    {/* TITLE */}
-                    <h4 className="mt-3 text-lg font-bold text-white">
-                      {app.title}
-                    </h4>
-
-                    {/* DESC */}
-                    <p className="mt-1 text-sm text-zinc-300 leading-relaxed">
-                      {app.desc}
-                    </p>
-
-                    {/* BUTTON */}
-                    <button className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-amber-400 hover:text-amber-300 transition-colors">
-                      Watch Demo
-                      <ArrowRight size={16} />
-                    </button>
-                  </div>
+                <div className="w-20 h-20 bg-amber-500/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Code2 className="w-10 h-10 text-amber-500" />
                 </div>
-              </div>
-            ))}
-          </div>
+                <h3 className="text-2xl font-bold text-black dark:text-white mb-4">Coming Soon</h3>
+                <p className="text-zinc-500 dark:text-zinc-400">
+                  Software custom & aplikasi desktop kami sedang dalam tahap kurasi untuk ditampilkan.
+                </p>
+              </motion.div>
+            ) : (
+              <motion.div
+                key={filter}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5 }}
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+              >
+                {filtered.map((demo, i) => (
+                  <DemoCard key={demo.id || i} demo={demo} />
+                ))}
+                
+                {/* Special Section for Mobile App if filter matches */}
+                {(filter === "all" || filter === "mobile app") && (
+                   // Adding mock mobile apps if they are not in the 'filtered' prop
+                   // but based on the code provided, they were hardcoded before.
+                   // For a cleaner look, I'll only show what's in 'filtered' 
+                   // unless we want to keep those hardcoded ones.
+                   // The USER mentioned it's too crowded, so I'll stick to filtered data.
+                   null
+                )}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
-      )}
 
-      {/* SISTEM BERBASIS WEB SECTION */}
-      {(filter === "all" || filter === "sistem berbasis web") && (
-        <div className="relative mt-14 md:mt-16 px-4">
-          <div className="mb-6 md:mb-8">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-amber-500/20 bg-amber-500/10 text-amber-500 text-xs font-medium">
-              🖥️ Sistem Berbasis Web
-            </div>
-
-            <h3 className="mt-4 text-2xl md:text-3xl font-bold text-black dark:text-white leading-tight">
-              Sistem Berbasis Web & Dashboard
-            </h3>
-
-            <p className="mt-3 max-w-2xl text-sm md:text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
-              Demo sistem informasi berbasis web seperti dashboard admin,
-              manajemen inventaris, sistem kasir (POS), ERP, CRM, dan berbagai
-              platform internal yang terintegrasi untuk mendukung operasional
-              bisnis secara efisien.
-            </p>
+        {/* BOTTOM CTA */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-24 text-center px-4"
+        >
+          <p className="text-zinc-500 dark:text-zinc-400 text-sm md:text-base font-medium mb-8">
+            Punya kebutuhan sistem khusus? Kami siap membantu mewujudkannya.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <div className="h-px w-12 bg-zinc-200 dark:bg-white/10 hidden sm:block" />
+            <button className="group flex items-center gap-2 text-black dark:text-white font-bold hover:text-amber-500 dark:hover:text-amber-400 transition-colors">
+              Konsultasi Custom Project <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </button>
+            <div className="h-px w-12 bg-zinc-200 dark:bg-white/10 hidden sm:block" />
           </div>
-
-          {/* GRID */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 md:gap-6">
-            {sistemWebProjects.map((demo, i) => (
-              <DemoCard key={demo.id || i} demo={demo} index={i} />
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* SOFTWARE SECTION */}
-      {(filter === "all" || filter === "software") && (
-        <div className="relative mt-14 md:mt-16 px-4">
-          <div className="mb-6 md:mb-8">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-amber-500/20 bg-amber-500/10 text-amber-500 text-xs font-medium">
-              💻 Software
-            </div>
-
-            <h3 className="mt-4 text-2xl md:text-3xl font-bold text-black dark:text-white leading-tight">
-              Software & Aplikasi Desktop
-            </h3>
-
-            <p className="mt-3 max-w-2xl text-sm md:text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
-              Demo software dan aplikasi desktop custom yang dirancang untuk
-              kebutuhan spesifik bisnis, termasuk sistem antrian, kasir desktop,
-              manajemen stok, dan solusi otomatisasi proses bisnis lainnya.
-            </p>
-          </div>
-
-          <div className="rounded-[24px] border border-dashed border-black/10 dark:border-white/10 bg-black/[0.02] dark:bg-white/[0.03] px-6 py-12 text-center">
-            <div className="text-4xl">💻</div>
-
-            <h3 className="mt-4 text-lg md:text-xl font-semibold text-black dark:text-white">
-              Project Akan Segera Ditambahkan
-            </h3>
-
-            <p className="mt-3 max-w-lg mx-auto text-sm md:text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
-              Demo software sedang dalam tahap pengembangan dan akan segera
-              tersedia untuk demo client.
-            </p>
-          </div>
-        </div>
-      )}
-
-      {/* FOOTER TEXT */}
-      <div className="relative mt-16 md:mt-20 max-w-2xl mx-auto text-center px-4">
-        <p className="text-sm md:text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
-          Setiap sistem dirancang dengan pendekatan berbeda sesuai kebutuhan
-          bisnis, efisiensi workflow, dan identitas brand perusahaan.
-        </p>
-
-        <div className="mt-8 flex justify-center">
-          <div className="w-24 h-px bg-gradient-to-r from-transparent via-amber-500/40 to-transparent" />
-        </div>
+        </motion.div>
       </div>
     </section>
   );

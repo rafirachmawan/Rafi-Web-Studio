@@ -71,4 +71,20 @@ export const demos = [
     category: "sistem berbasis web",
     image: sekolahImg,
   },
+  {
+    name: "Attendance App",
+    path: "#",
+    desc: "Advanced mobile attendance system with GPS.",
+    icon: "📱",
+    category: "mobile app",
+    image: "https://images.unsplash.com/photo-1551288049-bbbda536ad0a?q=80&w=1200&auto=format&fit=crop",
+  },
+  {
+    name: "POS Mobile",
+    path: "#",
+    desc: "Mobile cashier app for UMKM business.",
+    icon: "💰",
+    category: "mobile app",
+    image: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1200&auto=format&fit=crop",
+  },
 ];
