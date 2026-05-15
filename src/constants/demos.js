@@ -63,4 +63,12 @@ export const demos = [
     category: "landing page",
     image: umrohImg,
   },
+  {
+    name: "Sistem Akademik",
+    path: "/akademik",
+    desc: "Management sekolah + absensi geolocation",
+    icon: "🎓",
+    category: "sistem berbasis web",
+    image: sekolahImg,
+  },
 ];

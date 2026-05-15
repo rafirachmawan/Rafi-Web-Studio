@@ -46,6 +46,11 @@ export default function DemoSection({ filter, setFilter, filtered }) {
     (item) => item.category === "landing page" || item.category === "website",
   );
 
+  // FILTER SISTEM BERBASIS WEB
+  const sistemWebProjects = filtered.filter(
+    (item) => item.category === "sistem berbasis web",
+  );
+
   return (
     <section className="relative mb-24 md:mb-32 overflow-hidden">
       {/* BACKGROUND GLOW */}
@@ -235,17 +240,11 @@ export default function DemoSection({ filter, setFilter, filtered }) {
             </p>
           </div>
 
-          <div className="rounded-[24px] border border-dashed border-black/10 dark:border-white/10 bg-black/[0.02] dark:bg-white/[0.03] px-6 py-12 text-center">
-            <div className="text-4xl">🖥️</div>
-
-            <h3 className="mt-4 text-lg md:text-xl font-semibold text-black dark:text-white">
-              Project Akan Segera Ditambahkan
-            </h3>
-
-            <p className="mt-3 max-w-lg mx-auto text-sm md:text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
-              Demo sistem berbasis web sedang dalam tahap pengembangan dan akan
-              segera tersedia untuk demo client.
-            </p>
+          {/* GRID */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 md:gap-6">
+            {sistemWebProjects.map((demo, i) => (
+              <DemoCard key={demo.id || i} demo={demo} index={i} />
+            ))}
           </div>
         </div>
       )}

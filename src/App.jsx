@@ -9,6 +9,7 @@ import RestoLanding from "./apps/landing-page/resto/RestoLanding";
 import SekolahLanding from "./apps/landing-page/sekolah/SekolahLanding";
 import LaundryLanding from "./apps/landing-page/loundry/LaundryLanding";
 import UmrohLanding from "./apps/landing-page/umroh/UmrohLanding";
+import AkademikApp from "./apps/sistem-web/akademik/AkademikApp";
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
         <Route path="/sekolah" element={<SekolahLanding />} />
         <Route path="/laundry" element={<LaundryLanding />} />
         <Route path="/umroh" element={<UmrohLanding />} />
+        <Route path="/akademik/*" element={<AkademikApp />} />
       </Routes>
     </Router>
   );
