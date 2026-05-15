@@ -27,35 +27,35 @@ export default function DataTable({
   const paged = filtered.slice(page * pageSize, (page + 1) * pageSize);
 
   return (
-    <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] overflow-hidden">
+    <div className="rounded-[24px] border border-white/[0.06] bg-white/[0.02] overflow-hidden backdrop-blur-md">
       {/* SEARCH */}
       {searchable && (
-        <div className="p-4 border-b border-white/[0.06]">
-          <div className="flex items-center gap-2 bg-white/[0.04] border border-white/[0.06] rounded-xl px-3 py-2 max-w-xs">
-            <Search size={14} className="text-zinc-500" />
+        <div className="p-6 border-b border-white/[0.06]">
+          <div className="flex items-center gap-3 bg-white/[0.04] border border-white/[0.08] rounded-2xl px-4 py-2.5 max-w-xs transition-all focus-within:border-cyan-500/40 focus-within:bg-white/[0.06]">
+            <Search size={15} className="text-zinc-500" />
             <input
               type="text"
-              placeholder="Cari data..."
+              placeholder="Search records..."
               value={search}
               onChange={(e) => {
                 setSearch(e.target.value);
                 setPage(0);
               }}
-              className="bg-transparent text-xs text-zinc-300 placeholder:text-zinc-600 outline-none w-full"
+              className="bg-transparent text-xs text-zinc-300 placeholder:text-zinc-600 outline-none w-full font-medium"
             />
           </div>
         </div>
       )}
 
       {/* TABLE */}
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto custom-scrollbar">
         <table className="w-full text-xs">
           <thead>
-            <tr className="border-b border-white/[0.06]">
+            <tr className="border-b border-white/[0.06] bg-white/[0.01]">
               {columns.map((col) => (
                 <th
                   key={col.key}
-                  className="text-left px-4 py-3 text-zinc-500 font-semibold uppercase tracking-wider"
+                  className="text-left px-6 py-4 text-zinc-500 font-black uppercase tracking-widest"
                   style={{ width: col.width }}
                 >
                   {col.label}
@@ -63,12 +63,12 @@ export default function DataTable({
               ))}
             </tr>
           </thead>
-          <tbody>
+          <tbody className="divide-y divide-white/[0.03]">
             {paged.length === 0 ? (
               <tr>
                 <td
                   colSpan={columns.length}
-                  className="px-4 py-12 text-center text-zinc-500 text-sm"
+                  className="px-6 py-16 text-center text-zinc-500 text-sm font-medium"
                 >
                   {emptyMessage}
                 </td>
@@ -78,10 +78,10 @@ export default function DataTable({
                 <tr
                   key={row.id || i}
                   onClick={() => onRowClick?.(row)}
-                  className={`border-b border-white/[0.03] transition-colors hover:bg-white/[0.03] ${onRowClick ? "cursor-pointer" : ""}`}
+                  className={`transition-all duration-300 hover:bg-white/[0.04] ${onRowClick ? "cursor-pointer active:bg-white/[0.06]" : ""}`}
                 >
                   {columns.map((col) => (
-                    <td key={col.key} className="px-4 py-3 text-zinc-300">
+                    <td key={col.key} className="px-6 py-4 text-zinc-300 font-medium whitespace-nowrap">
                       {col.render ? col.render(row[col.key], row) : row[col.key]}
                     </td>
                   ))}
@@ -94,24 +94,35 @@ export default function DataTable({
 
       {/* PAGINATION */}
       {totalPages > 1 && (
-        <div className="flex items-center justify-between px-4 py-3 border-t border-white/[0.06]">
-          <p className="text-xs text-zinc-500">
-            {filtered.length} data — Halaman {page + 1} dari {totalPages}
+        <div className="flex items-center justify-between px-6 py-4 border-t border-white/[0.06] bg-black/10">
+          <p className="text-[11px] text-zinc-500 font-bold uppercase tracking-wider">
+            Showing {paged.length} of {filtered.length} entries
           </p>
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-2">
             <button
               onClick={() => setPage((p) => Math.max(0, p - 1))}
               disabled={page === 0}
-              className="p-1.5 rounded-lg hover:bg-white/5 text-zinc-400 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+              className="p-2 rounded-xl bg-white/5 border border-white/5 hover:border-white/10 text-zinc-400 disabled:opacity-20 transition-all"
             >
-              <ChevronLeft size={14} />
+              <ChevronLeft size={16} />
             </button>
+            <div className="flex items-center gap-1">
+              {[...Array(totalPages)].map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setPage(i)}
+                  className={`w-8 h-8 rounded-lg text-[10px] font-black transition-all ${page === i ? "bg-cyan-500 text-white shadow-lg shadow-cyan-500/20" : "text-zinc-500 hover:text-white hover:bg-white/5"}`}
+                >
+                  {i + 1}
+                </button>
+              ))}
+            </div>
             <button
               onClick={() => setPage((p) => Math.min(totalPages - 1, p + 1))}
               disabled={page >= totalPages - 1}
-              className="p-1.5 rounded-lg hover:bg-white/5 text-zinc-400 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+              className="p-2 rounded-xl bg-white/5 border border-white/5 hover:border-white/10 text-zinc-400 disabled:opacity-20 transition-all"
             >
-              <ChevronRight size={14} />
+              <ChevronRight size={16} />
             </button>
           </div>
         </div>

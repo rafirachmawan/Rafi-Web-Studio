@@ -53,35 +53,38 @@ export default function AdminDashboard() {
 
   return (
     <>
-      <TopBar title="Dashboard" subtitle="Selamat datang, Administrator" user={user} />
+      <TopBar title="Dashboard Overview" subtitle="School System Analytics" user={user} />
 
-      <div className="p-6 space-y-6">
+      <div className="p-4 md:p-8 space-y-8">
         {/* STATS */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
-          <StatCard icon={GraduationCap} label="Total Siswa" value={SISWA_LIST.length} change="+5" color="violet" />
-          <StatCard icon={Users} label="Total Guru" value={GURU_LIST.length} color="emerald" />
-          <StatCard icon={School} label="Total Kelas" value={KELAS_LIST.length} color="amber" />
-          <StatCard icon={ClipboardCheck} label="Hadir Hari Ini" value={hadirToday || SISWA_LIST.length - 3} color="indigo" />
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
+          <StatCard icon={GraduationCap} label="Total Students" value={SISWA_LIST.length} change="+12" color="fuchsia" />
+          <StatCard icon={Users} label="Total Teachers" value={GURU_LIST.length} color="emerald" />
+          <StatCard icon={School} label="Total Classes" value={KELAS_LIST.length} color="amber" />
+          <StatCard icon={ClipboardCheck} label="Attendance Today" value={hadirToday || SISWA_LIST.length - 3} color="cyan" />
         </div>
 
         {/* CHARTS ROW */}
-        <div className="grid grid-cols-1 xl:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
           {/* BAR CHART */}
-          <div className="xl:col-span-2 rounded-2xl border border-white/[0.06] bg-white/[0.02] p-5">
-            <h3 className="text-sm font-semibold text-white mb-1">Kehadiran Mingguan</h3>
-            <p className="text-xs text-zinc-500 mb-4">Jumlah siswa hadir per hari</p>
-            <BarChart data={chartData} color="indigo" height={140} />
+          <div className="xl:col-span-2 rounded-[24px] border border-white/[0.06] bg-white/[0.02] p-6 backdrop-blur-md">
+            <div className="flex items-center justify-between mb-8">
+              <div>
+                <h3 className="text-sm font-black text-white uppercase tracking-widest">Weekly Attendance</h3>
+                <p className="text-[10px] text-zinc-500 font-bold uppercase mt-1">Average students present per day</p>
+              </div>
+            </div>
+            <BarChart data={chartData} color="cyan" height={160} />
           </div>
 
           {/* DONUT CHARTS */}
-          <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-5">
-            <h3 className="text-sm font-semibold text-white mb-1">Status Absensi</h3>
-            <p className="text-xs text-zinc-500 mb-5">Rekap minggu ini</p>
-            <div className="grid grid-cols-2 gap-4">
-              <DonutChart value={hadirCount} total={weekRecords.length} color="emerald" label="Hadir" />
-              <DonutChart value={izinCount} total={weekRecords.length} color="amber" label="Izin" />
-              <DonutChart value={sakitCount} total={weekRecords.length} color="violet" label="Sakit" />
-              <DonutChart value={alphaCount} total={weekRecords.length} color="rose" label="Alpha" />
+          <div className="rounded-[24px] border border-white/[0.06] bg-white/[0.02] p-6 backdrop-blur-md">
+            <h3 className="text-sm font-black text-white uppercase tracking-widest mb-6">Attendance Status</h3>
+            <div className="grid grid-cols-2 gap-6">
+              <DonutChart value={hadirCount} total={weekRecords.length} color="emerald" label="Present" />
+              <DonutChart value={izinCount} total={weekRecords.length} color="amber" label="Permit" />
+              <DonutChart value={sakitCount} total={weekRecords.length} color="fuchsia" label="Sick" />
+              <DonutChart value={alphaCount} total={weekRecords.length} color="rose" label="Absent" />
             </div>
           </div>
         </div>

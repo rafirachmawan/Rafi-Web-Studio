@@ -49,21 +49,21 @@ function RolePicker() {
       id: "admin",
       icon: ShieldCheck,
       title: "Super Admin",
-      desc: "Kelola seluruh data sekolah, guru, siswa, kelas, dan rekap absensi.",
-      color: "from-indigo-500 to-blue-600",
-      shadow: "shadow-indigo-500/20",
-      ring: "ring-indigo-500/30",
-      bg: "bg-indigo-500/10",
-      text: "text-indigo-400",
+      desc: "Manage school infrastructure, teachers, and total academic overview.",
+      color: "from-cyan-500 to-blue-600",
+      shadow: "shadow-cyan-500/20",
+      ring: "ring-cyan-500/30",
+      bg: "bg-cyan-500/10",
+      text: "text-cyan-400",
       path: "/akademik/admin",
       user: DEMO_USERS.admin,
     },
     {
       id: "guru",
       icon: BookOpen,
-      title: "Guru",
-      desc: "Absensi kelas dengan geolocation, input nilai, dan jadwal mengajar.",
-      color: "from-emerald-500 to-teal-600",
+      title: "Teacher Portal",
+      desc: "Attendance verify with geolocation, grades management, and schedule.",
+      color: "from-emerald-400 to-teal-600",
       shadow: "shadow-emerald-500/20",
       ring: "ring-emerald-500/30",
       bg: "bg-emerald-500/10",
@@ -74,13 +74,13 @@ function RolePicker() {
     {
       id: "siswa",
       icon: GraduationCap,
-      title: "Siswa",
-      desc: "Absen dengan geolocation, lihat nilai, jadwal pelajaran, dan profil.",
-      color: "from-violet-500 to-purple-600",
-      shadow: "shadow-violet-500/20",
-      ring: "ring-violet-500/30",
-      bg: "bg-violet-500/10",
-      text: "text-violet-400",
+      title: "Student Hub",
+      desc: "Daily attendance check-in, grade history, and personal schedule.",
+      color: "from-fuchsia-500 to-purple-600",
+      shadow: "shadow-fuchsia-500/20",
+      ring: "ring-fuchsia-500/30",
+      bg: "bg-fuchsia-500/10",
+      text: "text-fuchsia-400",
       path: "/akademik/siswa",
       user: DEMO_USERS.siswa,
     },
@@ -90,55 +90,55 @@ function RolePicker() {
     <div className="min-h-screen bg-[#08080f] text-white relative overflow-hidden">
       {/* BG EFFECTS */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] bg-indigo-600/8 rounded-full blur-[150px]" />
-        <div className="absolute bottom-[-20%] right-[-10%] w-[60%] h-[60%] bg-violet-600/8 rounded-full blur-[150px]" />
+        <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] bg-cyan-600/10 rounded-full blur-[150px]" />
+        <div className="absolute bottom-[-20%] right-[-10%] w-[60%] h-[60%] bg-fuchsia-600/10 rounded-full blur-[150px]" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40%] h-[40%] bg-emerald-600/5 rounded-full blur-[120px]" />
       </div>
 
       {/* GRID */}
-      <div className="absolute inset-0 opacity-[0.03]" style={{
+      <div className="absolute inset-0 opacity-[0.02] mix-blend-overlay" style={{
         backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
-        backgroundSize: "60px 60px",
+        backgroundSize: "80px 80px",
       }} />
 
       {/* CONTENT */}
-      <div className="relative z-10 max-w-6xl mx-auto px-6 py-12 min-h-screen flex flex-col justify-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-20 min-h-screen flex flex-col justify-center">
         {/* BACK */}
         <motion.button
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           onClick={() => navigate("/")}
-          className="absolute top-6 left-6 flex items-center gap-2 text-zinc-500 hover:text-white text-sm font-medium transition-colors"
+          className="absolute top-8 left-6 md:left-12 flex items-center gap-2 text-zinc-500 hover:text-white text-[11px] font-black uppercase tracking-widest transition-all group"
         >
-          <ArrowLeft size={16} />
-          Kembali
+          <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
+          Back Home
         </motion.button>
 
         {/* HEADER */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="text-center mb-20"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.04] border border-white/[0.08] text-xs font-semibold text-zinc-400 mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.04] border border-white/[0.1] text-[10px] font-black uppercase tracking-[0.2em] text-cyan-400 mb-8 shadow-xl">
             <Sparkles size={12} className="text-amber-400" />
-            DEMO MODE — Pilih role untuk masuk
+            Interactive Demo Mode
           </div>
 
-          <h1 className="text-4xl md:text-6xl font-black tracking-tight mb-4">
-            {SCHOOL_INFO.name}
+          <h1 className="text-5xl md:text-8xl font-black tracking-tighter mb-6 bg-gradient-to-b from-white to-white/40 bg-clip-text text-transparent">
+            ACADEMIC <span className="text-cyan-500">OS</span>
           </h1>
 
-          <p className="text-base md:text-lg text-zinc-500 max-w-xl mx-auto leading-relaxed">
-            Sistem Management Akademik & Absensi Geolocation.
-            <br />
-            Pilih salah satu role untuk melihat demo dashboard.
+          <p className="text-sm md:text-lg text-zinc-500 max-w-2xl mx-auto leading-relaxed font-medium">
+            A high-performance management system for modern educational institutions. 
+            <br className="hidden md:block" />
+            Select a role below to explore the specialized dashboard environments.
           </p>
         </motion.div>
 
         {/* ROLE CARDS */}
-        <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto w-full">
           {roles.map((role, i) => {
             const Icon = role.icon;
 

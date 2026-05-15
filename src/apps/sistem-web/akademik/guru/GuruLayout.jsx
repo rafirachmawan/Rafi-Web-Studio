@@ -6,7 +6,7 @@ export default function GuruLayout() {
   return (
     <div className="min-h-screen bg-[#0a0a12] text-white">
       <Sidebar role="guru" user={DEMO_USERS.guru} />
-      <div className="ml-[260px] transition-all duration-300">
+      <div className="lg:ml-[260px] pt-16 lg:pt-0 transition-all duration-300">
         <Outlet />
       </div>
     </div>
