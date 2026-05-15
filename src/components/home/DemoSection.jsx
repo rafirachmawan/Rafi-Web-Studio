@@ -24,14 +24,8 @@ export default function DemoSection({ filter, setFilter, filtered }) {
     {
       title: "Attendance App",
       image:
-        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop",
-      desc: "QR attendance & realtime monitoring.",
-    },
-    {
-      title: "Warehouse Mobile",
-      image:
-        "https://images.unsplash.com/photo-1556740749-887f6717d7e4?q=80&w=1200&auto=format&fit=crop",
-      desc: "Inventory & barcode scanning system.",
+        "https://images.unsplash.com/photo-1551288049-bbbda536ad0a?q=80&w=1200&auto=format&fit=crop",
+      desc: "Advanced mobile attendance system with GPS.",
     },
     {
       title: "POS Mobile",
@@ -41,70 +35,49 @@ export default function DemoSection({ filter, setFilter, filtered }) {
     },
   ];
 
-  // FILTER LANDING PAGE
+  // FILTER DATA
   const landingPageProjects = filtered.filter(
-    (item) => item.category === "landing page" || item.category === "website",
+    (item) => item.category === "landing page",
   );
-
-  // FILTER SISTEM BERBASIS WEB
+  const mobileAppsFiltered = filtered.filter((item) => item.category === "mobile app");
   const sistemWebProjects = filtered.filter(
     (item) => item.category === "sistem berbasis web",
   );
 
   return (
-    <section className="relative mb-24 md:mb-32 overflow-hidden">
-      {/* BACKGROUND GLOW */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[280px] md:w-[500px] h-[280px] md:h-[500px] bg-amber-500/10 blur-3xl rounded-full pointer-events-none" />
-
+    <section id="demo" className="relative py-16 md:py-24 overflow-hidden">
       {/* HEADER */}
-      <div id="demo" className="relative max-w-4xl mx-auto text-center px-4">
-        {/* BADGE */}
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-amber-500/20 bg-amber-500/10 text-amber-500 text-xs md:text-sm font-medium">
-          🚀 Digital Project Showcase
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        <div className="max-w-2xl">
+          <h2 className="text-3xl md:text-5xl font-black text-black dark:text-white leading-[1.1] tracking-tight">
+            Explore Our <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-500">
+              Digital Masterpieces
+            </span>
+          </h2>
+          <p className="mt-4 text-zinc-600 dark:text-zinc-400 text-sm md:text-base leading-relaxed">
+            Dari landing page yang memukau hingga sistem manajemen perusahaan
+            yang kompleks. Temukan solusi yang tepat untuk akselerasi bisnis
+            Anda.
+          </p>
         </div>
 
-        {/* TITLE */}
-        <h2 className="mt-6 text-3xl sm:text-4xl md:text-6xl font-black tracking-tight leading-[1.05] text-black dark:text-white">
-          Demo Project &<span className="text-amber-500"> Solusi Digital</span>
-        </h2>
-
-        {/* DESCRIPTION */}
-        <p className="mt-5 max-w-2xl mx-auto text-sm sm:text-base md:text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
-          Kumpulan website, dashboard, sistem internal, aplikasi mobile, dan
-          solusi digital yang dirancang untuk membantu workflow bisnis menjadi
-          lebih modern, efisien, dan terintegrasi.
-        </p>
-      </div>
-
-      {/* FILTER */}
-      <div className="relative mt-10 md:mt-14 px-4">
-        <div className="flex flex-wrap items-center justify-center gap-2 md:gap-3">
+        {/* FILTER BUTTONS */}
+        <div className="flex flex-wrap items-center gap-2">
           {categories.map((cat) => {
             const Icon = cat.icon;
-
+            const isActive = filter === cat.label;
             return (
               <button
                 key={cat.label}
                 onClick={() => setFilter(cat.label)}
-                className={`
-                  flex items-center gap-2
-                  px-4 md:px-5
-                  py-2.5
-                  rounded-full
-                  text-xs md:text-sm
-                  font-medium
-                  border
-                  transition-all duration-300
-
-                  ${
-                    filter === cat.label
-                      ? "bg-amber-500 border-amber-500 text-black shadow-lg shadow-amber-500/20"
-                      : "bg-white dark:bg-white/[0.03] border-black/5 dark:border-white/10 text-zinc-700 dark:text-zinc-300 hover:border-amber-500/30 hover:bg-black/[0.02] dark:hover:bg-white/[0.05]"
-                  }
-                `}
+                className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold transition-all duration-300 ${
+                  isActive
+                    ? "bg-amber-500 text-white shadow-lg shadow-amber-500/20 scale-105"
+                    : "bg-white dark:bg-zinc-900 border border-black/5 dark:border-white/5 text-zinc-600 dark:text-zinc-400 hover:border-amber-500/30"
+                }`}
               >
-                <Icon size={15} />
-
+                <Icon size={16} />
                 <span className="capitalize">{cat.label}</span>
               </button>
             );

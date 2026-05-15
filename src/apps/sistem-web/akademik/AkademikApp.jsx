@@ -42,168 +42,122 @@ import SiswaProfil from "./siswa/SiswaProfil";
 // =============================================
 function RolePicker() {
   const navigate = useNavigate();
-  const [hoveredRole, setHoveredRole] = useState(null);
-
-  const roles = [
-    {
-      id: "admin",
-      icon: ShieldCheck,
-      title: "Super Admin",
-      desc: "Manage school infrastructure, teachers, and total academic overview.",
-      color: "from-cyan-500 to-blue-600",
-      shadow: "shadow-cyan-500/20",
-      ring: "ring-cyan-500/30",
-      bg: "bg-cyan-500/10",
-      text: "text-cyan-400",
-      path: "/akademik/admin",
-      user: DEMO_USERS.admin,
-    },
-    {
-      id: "guru",
-      icon: BookOpen,
-      title: "Teacher Portal",
-      desc: "Attendance verify with geolocation, grades management, and schedule.",
-      color: "from-emerald-400 to-teal-600",
-      shadow: "shadow-emerald-500/20",
-      ring: "ring-emerald-500/30",
-      bg: "bg-emerald-500/10",
-      text: "text-emerald-400",
-      path: "/akademik/guru",
-      user: DEMO_USERS.guru,
-    },
-    {
-      id: "siswa",
-      icon: GraduationCap,
-      title: "Student Hub",
-      desc: "Daily attendance check-in, grade history, and personal schedule.",
-      color: "from-fuchsia-500 to-purple-600",
-      shadow: "shadow-fuchsia-500/20",
-      ring: "ring-fuchsia-500/30",
-      bg: "bg-fuchsia-500/10",
-      text: "text-fuchsia-400",
-      path: "/akademik/siswa",
-      user: DEMO_USERS.siswa,
-    },
-  ];
-
   return (
-    <div className="min-h-screen bg-[#08080f] text-white relative overflow-hidden">
-      {/* BG EFFECTS */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] bg-cyan-600/10 rounded-full blur-[150px]" />
-        <div className="absolute bottom-[-20%] right-[-10%] w-[60%] h-[60%] bg-fuchsia-600/10 rounded-full blur-[150px]" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40%] h-[40%] bg-emerald-600/5 rounded-full blur-[120px]" />
-      </div>
+    <div className="min-h-screen bg-zinc-950 text-white relative overflow-hidden font-sans">
+      {/* BG GLOW */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-gradient-to-b from-indigo-500/10 via-transparent to-transparent opacity-50" />
+      <div className="absolute -top-24 -left-24 w-96 h-96 bg-indigo-600/20 rounded-full blur-[120px]" />
+      <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-cyan-600/20 rounded-full blur-[120px]" />
 
-      {/* GRID */}
-      <div className="absolute inset-0 opacity-[0.02] mix-blend-overlay" style={{
-        backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
-        backgroundSize: "80px 80px",
-      }} />
-
-      {/* CONTENT */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-20 min-h-screen flex flex-col justify-center">
-        {/* BACK */}
-        <motion.button
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          onClick={() => navigate("/")}
-          className="absolute top-8 left-6 md:left-12 flex items-center gap-2 text-zinc-500 hover:text-white text-[11px] font-black uppercase tracking-widest transition-all group"
-        >
-          <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
-          Back Home
-        </motion.button>
-
-        {/* HEADER */}
+      <div className="relative z-10 max-w-6xl mx-auto px-6 py-20 min-h-screen flex flex-col items-center justify-center">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-center mb-20"
+          className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.04] border border-white/[0.1] text-[10px] font-black uppercase tracking-[0.2em] text-cyan-400 mb-8 shadow-xl">
-            <Sparkles size={12} className="text-amber-400" />
-            Interactive Demo Mode
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-sm font-bold mb-6">
+            <GraduationCap size={18} />
+            Demo Akses Sistem
           </div>
-
-          <h1 className="text-5xl md:text-8xl font-black tracking-tighter mb-6 bg-gradient-to-b from-white to-white/40 bg-clip-text text-transparent">
-            ACADEMIC <span className="text-cyan-500">OS</span>
+          <h1 className="text-4xl md:text-6xl font-black tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-white/50">
+            Sistem Management <br />
+            <span className="text-indigo-400">Akademik Sekolah</span>
           </h1>
-
-          <p className="text-sm md:text-lg text-zinc-500 max-w-2xl mx-auto leading-relaxed font-medium">
-            A high-performance management system for modern educational institutions. 
-            <br className="hidden md:block" />
-            Select a role below to explore the specialized dashboard environments.
+          <p className="text-zinc-400 max-w-2xl mx-auto text-lg leading-relaxed">
+            Pilih portal akses untuk mencoba fitur-fitur utama sistem manajemen
+            sekolah kami. Setiap role memiliki dashboard dan fungsionalitas
+            khusus.
           </p>
         </motion.div>
 
-        {/* ROLE CARDS */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto w-full">
-          {roles.map((role, i) => {
-            const Icon = role.icon;
-
-            return (
-              <motion.div
-                key={role.id}
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 + i * 0.15, duration: 0.5 }}
-                onMouseEnter={() => setHoveredRole(role.id)}
-                onMouseLeave={() => setHoveredRole(null)}
-                onClick={() => navigate(role.path)}
-                className={`relative group cursor-pointer rounded-3xl border border-white/[0.06] bg-white/[0.02] p-8 transition-all duration-500
-                  hover:border-white/[0.12] hover:bg-white/[0.04] hover:-translate-y-2 hover:${role.shadow}
-                  ${hoveredRole === role.id ? `ring-1 ${role.ring}` : ""}
-                `}
-              >
-                {/* GLOW */}
-                <div className={`absolute -top-12 -right-12 w-32 h-32 bg-gradient-to-br ${role.color} rounded-full blur-3xl opacity-0 group-hover:opacity-20 transition-opacity duration-700`} />
-
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
+          {[
+            {
+              id: "admin",
+              title: "Super Admin",
+              desc: "Kelola data guru, siswa, kelas, mapel, dan monitoring seluruh sistem.",
+              icon: ShieldCheck,
+              color: "bg-indigo-500",
+              lightColor: "text-indigo-400",
+              bgLight: "bg-indigo-500/10",
+              path: "/akademik/admin",
+              user: DEMO_USERS.admin,
+            },
+            {
+              id: "guru",
+              title: "Portal Guru",
+              desc: "Input nilai, absensi siswa, kelola jadwal mengajar, dan materi pembelajaran.",
+              icon: BookOpen,
+              color: "bg-cyan-500",
+              lightColor: "text-cyan-400",
+              bgLight: "bg-cyan-500/10",
+              path: "/akademik/guru",
+              user: DEMO_USERS.guru,
+            },
+            {
+              id: "siswa",
+              title: "Portal Siswa",
+              desc: "Lihat jadwal pelajaran, nilai, riwayat absensi, dan profil akademik.",
+              icon: GraduationCap,
+              color: "bg-fuchsia-500",
+              lightColor: "text-fuchsia-400",
+              bgLight: "bg-fuchsia-500/10",
+              path: "/akademik/siswa",
+              user: DEMO_USERS.siswa,
+            },
+          ].map((role, i) => (
+            <motion.div
+              key={role.id}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 * i }}
+              onClick={() => navigate(role.path)}
+              className="group cursor-pointer"
+            >
+              <div className="h-full p-8 rounded-3xl bg-zinc-900/50 border border-white/5 backdrop-blur-sm transition-all duration-300 hover:bg-zinc-800/80 hover:border-white/10 hover:-translate-y-2 relative overflow-hidden">
                 {/* ICON */}
-                <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${role.color} flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                  <Icon size={24} className="text-white" />
+                <div
+                  className={`w-16 h-16 rounded-2xl ${role.bgLight} flex items-center justify-center ${role.lightColor} mb-8 group-hover:scale-110 transition-transform`}
+                >
+                  <role.icon size={32} />
                 </div>
 
-                {/* USER PREVIEW */}
-                <div className="flex items-center gap-3 mb-5">
-                  <img
-                    src={role.user.avatar}
-                    alt={role.user.nama}
-                    className="w-10 h-10 rounded-xl object-cover ring-2 ring-white/10"
+                <h3 className="text-2xl font-bold mb-4">{role.title}</h3>
+                <p className="text-zinc-500 leading-relaxed mb-8">{role.desc}</p>
+
+                <div
+                  className={`inline-flex items-center gap-2 ${role.lightColor} font-bold text-sm`}
+                >
+                  Masuk Portal
+                  <ArrowRight
+                    size={18}
+                    className="group-hover:translate-x-2 transition-transform"
                   />
-                  <div>
-                    <p className="text-sm font-semibold text-white">{role.user.nama}</p>
-                    <p className={`text-xs font-medium ${role.text}`}>{role.title}</p>
-                  </div>
                 </div>
 
-                {/* TEXT */}
-                <h3 className="text-xl font-bold text-white mb-2">
-                  Login sebagai {role.title}
-                </h3>
-                <p className="text-sm text-zinc-500 leading-relaxed mb-6">
-                  {role.desc}
-                </p>
-
-                {/* BUTTON */}
-                <div className={`flex items-center gap-2 text-sm font-semibold ${role.text} group-hover:gap-3 transition-all`}>
-                  Masuk Dashboard
-                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                </div>
-              </motion.div>
-            );
-          })}
+                {/* DECOR */}
+                <div
+                  className={`absolute -bottom-8 -right-8 w-32 h-32 ${role.color} opacity-[0.03] rounded-full blur-2xl group-hover:opacity-[0.08] transition-opacity`}
+                />
+              </div>
+            </motion.div>
+          ))}
         </div>
 
-        {/* FOOTER */}
-        <motion.p
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1 }}
-          className="text-center mt-12 text-xs text-zinc-600"
+          transition={{ delay: 0.5 }}
+          className="mt-20 flex flex-col items-center gap-4"
         >
-          Demo ini menggunakan data simulasi. Semua data bersifat fiktif untuk keperluan showcase.
-        </motion.p>
+          <button
+            onClick={() => navigate("/")}
+            className="flex items-center gap-2 text-zinc-500 hover:text-white transition-colors text-sm font-bold"
+          >
+            <ArrowLeft size={18} />
+            Kembali ke Landing Page
+          </button>
+        </motion.div>
       </div>
     </div>
   );
