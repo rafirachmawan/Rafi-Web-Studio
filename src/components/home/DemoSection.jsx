@@ -1,12 +1,10 @@
 import DemoCard from "../cards/DemoCard";
 import {
   LayoutGrid,
-  Building2,
-  GraduationCap,
-  Boxes,
   Smartphone,
-  ShieldCheck,
   Globe,
+  MonitorSmartphone,
+  Code2,
   PlayCircle,
   ArrowRight,
 } from "lucide-react";
@@ -16,11 +14,9 @@ export default function DemoSection({ filter, setFilter, filtered }) {
   const categories = [
     { label: "all", icon: LayoutGrid },
     { label: "landing page", icon: Globe },
-    { label: "company", icon: Building2 },
-    { label: "school", icon: GraduationCap },
-    { label: "inventory", icon: Boxes },
-    { label: "system", icon: ShieldCheck },
     { label: "mobile app", icon: Smartphone },
+    { label: "sistem berbasis web", icon: MonitorSmartphone },
+    { label: "software", icon: Code2 },
   ];
 
   // MOBILE DEMO
@@ -112,7 +108,7 @@ export default function DemoSection({ filter, setFilter, filtered }) {
       </div>
 
       {/* LANDING PAGE SECTION */}
-      {filter !== "mobile app" && (
+      {(filter === "all" || filter === "landing page") && (
         <div className="relative mt-12 md:mt-14 px-4">
           {/* HEADER */}
           <div className="mb-6 md:mb-8">
@@ -219,19 +215,70 @@ export default function DemoSection({ filter, setFilter, filtered }) {
         </div>
       )}
 
-      {/* EMPTY */}
-      {landingPageProjects.length === 0 && filter !== "mobile app" && (
-        <div className="mt-10 px-4">
+      {/* SISTEM BERBASIS WEB SECTION */}
+      {(filter === "all" || filter === "sistem berbasis web") && (
+        <div className="relative mt-14 md:mt-16 px-4">
+          <div className="mb-6 md:mb-8">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-amber-500/20 bg-amber-500/10 text-amber-500 text-xs font-medium">
+              🖥️ Sistem Berbasis Web
+            </div>
+
+            <h3 className="mt-4 text-2xl md:text-3xl font-bold text-black dark:text-white leading-tight">
+              Sistem Berbasis Web & Dashboard
+            </h3>
+
+            <p className="mt-3 max-w-2xl text-sm md:text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
+              Demo sistem informasi berbasis web seperti dashboard admin,
+              manajemen inventaris, sistem kasir (POS), ERP, CRM, dan berbagai
+              platform internal yang terintegrasi untuk mendukung operasional
+              bisnis secara efisien.
+            </p>
+          </div>
+
           <div className="rounded-[24px] border border-dashed border-black/10 dark:border-white/10 bg-black/[0.02] dark:bg-white/[0.03] px-6 py-12 text-center">
-            <div className="text-4xl">🚀</div>
+            <div className="text-4xl">🖥️</div>
 
             <h3 className="mt-4 text-lg md:text-xl font-semibold text-black dark:text-white">
               Project Akan Segera Ditambahkan
             </h3>
 
             <p className="mt-3 max-w-lg mx-auto text-sm md:text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
-              Saat ini kategori ini masih dalam tahap pengembangan dan akan
+              Demo sistem berbasis web sedang dalam tahap pengembangan dan akan
               segera tersedia untuk demo client.
+            </p>
+          </div>
+        </div>
+      )}
+
+      {/* SOFTWARE SECTION */}
+      {(filter === "all" || filter === "software") && (
+        <div className="relative mt-14 md:mt-16 px-4">
+          <div className="mb-6 md:mb-8">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-amber-500/20 bg-amber-500/10 text-amber-500 text-xs font-medium">
+              💻 Software
+            </div>
+
+            <h3 className="mt-4 text-2xl md:text-3xl font-bold text-black dark:text-white leading-tight">
+              Software & Aplikasi Desktop
+            </h3>
+
+            <p className="mt-3 max-w-2xl text-sm md:text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
+              Demo software dan aplikasi desktop custom yang dirancang untuk
+              kebutuhan spesifik bisnis, termasuk sistem antrian, kasir desktop,
+              manajemen stok, dan solusi otomatisasi proses bisnis lainnya.
+            </p>
+          </div>
+
+          <div className="rounded-[24px] border border-dashed border-black/10 dark:border-white/10 bg-black/[0.02] dark:bg-white/[0.03] px-6 py-12 text-center">
+            <div className="text-4xl">💻</div>
+
+            <h3 className="mt-4 text-lg md:text-xl font-semibold text-black dark:text-white">
+              Project Akan Segera Ditambahkan
+            </h3>
+
+            <p className="mt-3 max-w-lg mx-auto text-sm md:text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
+              Demo software sedang dalam tahap pengembangan dan akan segera
+              tersedia untuk demo client.
             </p>
           </div>
         </div>
