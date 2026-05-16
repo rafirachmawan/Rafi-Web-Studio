@@ -12,6 +12,7 @@ import UmrohLanding from "./apps/landing-page/umroh/UmrohLanding";
 import AkademikApp from "./apps/sistem-web/akademik/AkademikApp";
 import WarungOSApp from "./apps/sistem-web/warungos/WarungOSApp";
 import ExamOSApp from "./apps/sistem-web/examos/ExamOSApp";
+import AbsenOSApp from "./apps/mobile-app/absenos/AbsenOSApp";
 
 export default function App() {
   return (
@@ -28,6 +29,7 @@ export default function App() {
         <Route path="/akademik/*" element={<AkademikApp />} />
         <Route path="/warungos/*" element={<WarungOSApp />} />
         <Route path="/examos/*" element={<ExamOSApp />} />
+        <Route path="/absenos/*" element={<AbsenOSApp />} />
       </Routes>
     </Router>
   );

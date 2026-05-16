@@ -88,9 +88,9 @@ export const demos = [
     image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=1200&auto=format&fit=crop",
   },
   {
-    name: "Attendance App",
-    path: "#",
-    desc: "Advanced mobile attendance system with GPS.",
+    name: "AbsenOS",
+    path: "/absenos",
+    desc: "Mobile Attendance with Biometric & Geolocation",
     icon: "📱",
     category: "mobile app",
     image: "https://images.unsplash.com/photo-1551288049-bbbda536ad0a?q=80&w=1200&auto=format&fit=crop",
