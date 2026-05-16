@@ -72,6 +72,14 @@ export const demos = [
     image: sekolahImg,
   },
   {
+    name: "WarungOS",
+    path: "/warungos",
+    desc: "Sistem Kasir & Stok Toko Klontong Modern",
+    icon: "🏪",
+    category: "sistem berbasis web",
+    image: "https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=1200&auto=format&fit=crop",
+  },
+  {
     name: "Attendance App",
     path: "#",
     desc: "Advanced mobile attendance system with GPS.",

@@ -10,6 +10,7 @@ import SekolahLanding from "./apps/landing-page/sekolah/SekolahLanding";
 import LaundryLanding from "./apps/landing-page/loundry/LaundryLanding";
 import UmrohLanding from "./apps/landing-page/umroh/UmrohLanding";
 import AkademikApp from "./apps/sistem-web/akademik/AkademikApp";
+import WarungOSApp from "./apps/sistem-web/warungos/WarungOSApp";
 
 export default function App() {
   return (
@@ -24,6 +25,7 @@ export default function App() {
         <Route path="/laundry" element={<LaundryLanding />} />
         <Route path="/umroh" element={<UmrohLanding />} />
         <Route path="/akademik/*" element={<AkademikApp />} />
+        <Route path="/warungos/*" element={<WarungOSApp />} />
       </Routes>
     </Router>
   );
