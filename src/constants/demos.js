@@ -80,6 +80,14 @@ export const demos = [
     image: "https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=1200&auto=format&fit=crop",
   },
   {
+    name: "ExamOS",
+    path: "/examos",
+    desc: "Platform Ujian Online & Bank Soal Modern",
+    icon: "📝",
+    category: "sistem berbasis web",
+    image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=1200&auto=format&fit=crop",
+  },
+  {
     name: "Attendance App",
     path: "#",
     desc: "Advanced mobile attendance system with GPS.",
