@@ -46,16 +46,16 @@ export default function HeroSection() {
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="group relative overflow-hidden border border-zinc-200/50 dark:border-white/5 rounded-[32px] md:rounded-[48px] p-6 sm:p-8 md:p-16 bg-white/40 dark:bg-zinc-950/40 backdrop-blur-xl mb-16 shadow-[0_30px_80px_rgba(0,0,0,0.03)] dark:shadow-none transition-colors duration-500"
+      className="group relative overflow-hidden border border-zinc-200/50 dark:border-white/5 rounded-[32px] md:rounded-[40px] p-5 sm:p-6 md:p-10 bg-white/40 dark:bg-zinc-950/40 backdrop-blur-xl mb-16 shadow-[0_20px_50px_rgba(0,0,0,0.02)] dark:shadow-none transition-colors duration-500"
     >
       {/* MOUSE GLOW */}
       <motion.div
-        className="pointer-events-none absolute -inset-px rounded-[32px] md:rounded-[48px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0"
+        className="pointer-events-none absolute -inset-px rounded-[32px] md:rounded-[40px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0"
         style={{
           background: useMotionTemplate`
             radial-gradient(
-              700px circle at ${mouseX}px ${mouseY}px,
-              rgba(245, 158, 11, 0.05),
+              600px circle at ${mouseX}px ${mouseY}px,
+              rgba(245, 158, 11, 0.04),
               transparent 80%
             )
           `,
@@ -66,35 +66,35 @@ export default function HeroSection() {
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div 
           animate={{ 
-            x: [0, 40, 0], 
-            y: [0, 20, 0],
-            scale: [1, 1.15, 1]
+            x: [0, 30, 0], 
+            y: [0, 15, 0],
+            scale: [1, 1.1, 1]
           }}
           transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -top-40 -right-40 w-96 h-96 bg-amber-500/5 blur-[120px] rounded-full" 
+          className="absolute -top-40 -right-40 w-80 h-80 bg-amber-500/5 blur-[100px] rounded-full" 
         />
         <motion.div 
           animate={{ 
-            x: [0, -20, 0], 
-            y: [0, -40, 0],
-            scale: [1, 1.08, 1]
+            x: [0, -15, 0], 
+            y: [0, -30, 0],
+            scale: [1, 1.05, 1]
           }}
           transition={{ duration: 15, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className="absolute -bottom-40 -left-40 w-96 h-96 bg-orange-500/5 blur-[120px] rounded-full" 
+          className="absolute -bottom-40 -left-40 w-80 h-80 bg-orange-500/5 blur-[100px] rounded-full" 
         />
       </div>
 
       <div className="relative z-10 flex flex-col items-center">
         {/* TEXT & CTA - CENTERED */}
-        <div className="text-center max-w-4xl mx-auto flex flex-col items-center pb-10 md:pb-14">
+        <div className="text-center max-w-3xl mx-auto flex flex-col items-center pb-8 md:pb-12">
           {/* BADGE */}
           <motion.div 
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-amber-500/20 bg-amber-500/5 text-amber-600 dark:text-amber-400 text-xs md:text-sm font-bold mb-6 shadow-sm group/badge relative overflow-hidden"
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-amber-500/20 bg-amber-500/5 text-amber-600 dark:text-amber-400 text-xs font-bold mb-5 shadow-sm group/badge relative overflow-hidden"
           >
-            <Zap className="w-4 h-4 fill-amber-500/20 group-hover:scale-110 transition-transform" /> 
+            <Zap className="w-3.5 h-3.5 fill-amber-500/20 group-hover:scale-110 transition-transform" /> 
             <span>Startup Digitalisasi Indonesia</span>
             <motion.div 
               animate={{ x: ["-100%", "200%"] }}
@@ -105,62 +105,62 @@ export default function HeroSection() {
 
           {/* HEADLINE */}
           <motion.h1 
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-4xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-black tracking-tight leading-[1.05] text-zinc-900 dark:text-white flex flex-col items-center gap-1 sm:gap-2 text-center"
+            className="text-2xl sm:text-4xl md:text-5xl lg:text-[2.75rem] font-black tracking-tight leading-[1.1] text-zinc-900 dark:text-white flex flex-col items-center gap-1 text-center"
           >
             <span className="opacity-90">Digitalisasi Apapun</span>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 pb-2 drop-shadow-sm font-black">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 pb-1 drop-shadow-sm font-black">
               Bisnis Anda.
             </span>
           </motion.h1>
 
           {/* DESC */}
           <motion.p 
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="mt-6 text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed text-zinc-600 dark:text-zinc-400 max-w-2xl text-center"
+            className="mt-4 text-xs md:text-sm leading-relaxed text-zinc-600 dark:text-zinc-400 max-w-xl text-center font-medium"
           >
             GapaiDigital adalah startup digitalisasi modern yang membantu membangun <span className="font-semibold text-zinc-900 dark:text-white">Landing Page</span>, <span className="font-semibold text-zinc-900 dark:text-white">Aplikasi Mobile</span>, hingga <span className="font-semibold text-zinc-900 dark:text-white">Sistem Web Custom</span> untuk mempercepat pertumbuhan bisnis Anda.
           </motion.p>
 
           {/* CTA BUTTONS */}
           <motion.div 
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
-            className="flex flex-col sm:flex-row gap-4 mt-8 md:mt-10 justify-center w-full sm:w-auto"
+            className="flex flex-col sm:flex-row gap-3 mt-5 md:mt-7 justify-center w-full sm:w-auto"
           >
             <a
               href="https://wa.me/6285707185783?text=Halo%20saya%20ingin%20konsultasi"
               target="_blank"
               rel="noopener noreferrer"
-              className="group/btn relative bg-gradient-to-r from-amber-500 to-orange-500 text-white px-8 py-4 rounded-full text-sm md:text-base font-bold transition-all duration-300 hover:scale-[1.05] shadow-xl shadow-amber-500/20 active:scale-95 overflow-hidden flex items-center justify-center gap-2"
+              className="group/btn relative bg-gradient-to-r from-amber-500 to-orange-500 text-white px-6 py-2.5 rounded-full text-xs md:text-sm font-bold transition-all duration-300 hover:scale-[1.03] shadow-lg shadow-amber-500/15 active:scale-95 overflow-hidden flex items-center justify-center gap-2"
             >
               <span className="relative z-10 flex items-center gap-2">
-                Konsultasi Gratis <Sparkles className="w-4 h-4" />
+                Konsultasi Gratis <Sparkles className="w-3.5 h-3.5" />
               </span>
               <div className="absolute inset-0 bg-white/20 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300" />
             </a>
 
             <a
               href="#demo"
-              className="group/btn2 border border-zinc-200 dark:border-white/10 px-8 py-4 rounded-full text-sm md:text-base font-bold text-zinc-800 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-white/5 transition-all duration-300 active:scale-95 flex items-center justify-center gap-2"
+              className="group/btn2 border border-zinc-200 dark:border-white/10 px-6 py-2.5 rounded-full text-xs md:text-sm font-bold text-zinc-800 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-white/5 transition-all duration-300 active:scale-95 flex items-center justify-center gap-2"
             >
               Lihat Portofolio
             </a>
           </motion.div>
         </div>
 
-        {/* CINEMATIC VIDEO SHOWCASE */}
+        {/* CINEMATIC VIDEO SHOWCASE - SHRUNK TO max-w-3xl */}
         <motion.div 
           style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-          className="relative w-full max-w-4xl mx-auto rounded-2xl md:rounded-[32px] border border-zinc-200/60 dark:border-white/10 bg-zinc-950 group shadow-[0_30px_100px_rgba(0,0,0,0.12)] dark:shadow-none"
+          className="relative w-full max-w-3xl mx-auto rounded-2xl md:rounded-[28px] border border-zinc-200/60 dark:border-white/10 bg-zinc-950 group shadow-[0_20px_50px_rgba(0,0,0,0.1)] dark:shadow-none"
         >
           {/* ASPECT RATIO HOLDER */}
           <div className="aspect-[16/9] w-full rounded-2xl md:rounded-[32px] overflow-hidden">

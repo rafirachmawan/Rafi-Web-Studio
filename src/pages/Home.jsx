@@ -45,7 +45,7 @@ export default function Home() {
       {/* NAVBAR */}
       <Navbar />
 
-      <div className="max-w-6xl mx-auto px-4 md:px-6 pt-28 md:pt-36 pb-16 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 md:pt-32 pb-16 relative z-10">
         {/* HERO */}
         <HeroSection />
         

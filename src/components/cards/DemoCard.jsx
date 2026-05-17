@@ -38,19 +38,19 @@ export default function DemoCard({ demo }) {
         </div>
 
         {/* CONTENT */}
-        <div className="p-6 md:p-8 relative z-10">
+        <div className="p-5 md:p-6 relative z-10">
           {/* ICON & TITLE */}
-          <div className="flex items-center gap-4 mb-4">
-            <div className="text-2xl bg-amber-500/10 w-12 h-12 flex items-center justify-center rounded-2xl shadow-inner group-hover:bg-amber-500 group-hover:text-white transition-all duration-500">
+          <div className="flex items-center gap-3 mb-3">
+            <div className="text-xl bg-amber-500/10 w-10 h-10 flex items-center justify-center rounded-xl shadow-inner group-hover:bg-amber-500 group-hover:text-white transition-all duration-500">
               {demo.icon}
             </div>
-            <h3 className="text-xl md:text-2xl font-black text-black dark:text-white group-hover:text-amber-500 transition-colors">
+            <h3 className="text-base md:text-lg font-bold text-zinc-900 dark:text-white group-hover:text-amber-500 transition-colors">
               {demo.name}
             </h3>
           </div>
 
           {/* DESC */}
-          <p className="text-zinc-500 dark:text-zinc-400 text-sm md:text-base leading-relaxed line-clamp-2">
+          <p className="text-zinc-500 dark:text-zinc-400 text-xs md:text-sm leading-relaxed line-clamp-2">
             {demo.desc}
           </p>
         </div>

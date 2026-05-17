@@ -7,11 +7,11 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-4 md:px-6 grid md:grid-cols-3 gap-10 text-left">
         {/* LEFT */}
         <div>
-          <h2 className="text-xl font-extrabold text-black dark:text-white mb-3">
+          <h2 className="text-lg font-extrabold text-black dark:text-white mb-2">
             Gapai<span className="text-amber-500">Digital</span>
           </h2>
 
-          <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed max-w-xs">
+          <p className="text-gray-600 dark:text-gray-400 text-xs md:text-[13px] leading-relaxed max-w-xs font-semibold">
             Jasa pembuatan website profesional untuk UMKM, bisnis lokal, dan
             personal branding agar tampil lebih terpercaya dan modern.
           </p>
@@ -19,11 +19,11 @@ export default function Footer() {
 
         {/* MENU */}
         <div>
-          <h3 className="text-black dark:text-white font-semibold mb-4">
+          <h3 className="text-black dark:text-white font-bold text-xs md:text-sm mb-3">
             Menu
           </h3>
 
-          <ul className="space-y-2 text-gray-600 dark:text-gray-400 text-sm">
+          <ul className="space-y-2 text-gray-600 dark:text-gray-400 text-xs md:text-[13px] font-semibold">
             <li>
               <a href="#home" className="hover:text-amber-400 transition">
                 Home
@@ -58,11 +58,11 @@ export default function Footer() {
 
         {/* CONTACT */}
         <div>
-          <h3 className="text-black dark:text-white font-semibold mb-4">
+          <h3 className="text-black dark:text-white font-bold text-xs md:text-sm mb-3">
             Hubungi Kami
           </h3>
 
-          <ul className="space-y-3 text-gray-600 dark:text-gray-400 text-sm">
+          <ul className="space-y-2.5 text-gray-600 dark:text-gray-400 text-xs md:text-[13px] font-semibold">
             <li className="flex items-center gap-2">
               <span className="text-amber-400">💬</span>
 
@@ -96,7 +96,7 @@ export default function Footer() {
       </div>
 
       {/* LINE */}
-      <div className="max-w-6xl mx-auto px-4 md:px-6 mt-10 pt-6 border-t border-black/10 dark:border-white/10 flex flex-col md:flex-row justify-between items-center text-gray-500 text-xs md:text-sm">
+      <div className="max-w-6xl mx-auto px-4 md:px-6 mt-8 pt-6 border-t border-black/10 dark:border-white/10 flex flex-col md:flex-row justify-between items-center text-gray-500 text-[11px] md:text-xs font-semibold">
         <p>© 2026 GapaiDigital. All rights reserved.</p>
 
         <p className="mt-2 md:mt-0">

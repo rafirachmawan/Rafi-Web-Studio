@@ -43,7 +43,7 @@ export default function ProcessSection() {
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-amber-500/20 bg-amber-500/10 text-amber-500 text-xs md:text-sm font-bold mb-6"
+          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-amber-500/20 bg-amber-500/10 text-amber-500 text-[10px] md:text-xs font-bold mb-5"
         >
           CARA KAMI BEKERJA
         </motion.div>
@@ -53,7 +53,7 @@ export default function ProcessSection() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight text-black dark:text-white"
+          className="text-xl sm:text-2xl md:text-3xl font-black leading-tight text-black dark:text-white"
         >
           Proses yang <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-500">
@@ -66,7 +66,7 @@ export default function ProcessSection() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="text-zinc-600 dark:text-zinc-400 mt-6 max-w-md text-lg leading-relaxed"
+          className="text-zinc-600 dark:text-zinc-400 mt-4 max-w-md text-sm md:text-base leading-relaxed"
         >
           Kami memecah proyek kompleks menjadi langkah-langkah sederhana agar Anda selalu memegang kendali atas apa yang sedang kami kerjakan.
         </motion.p>
@@ -95,15 +95,15 @@ export default function ProcessSection() {
 
               <div className="pt-2 md:pt-3 pb-8 border-b border-black/5 dark:border-white/5 flex-1 group-hover:border-amber-500/30 transition-colors">
                 <div className="flex items-center gap-3 mb-2">
-                  <span className="text-amber-500 font-black text-sm md:text-base">
+                  <span className="text-amber-500 font-black text-xs md:text-sm">
                     {step.id}
                   </span>
-                  <h3 className="text-xl md:text-2xl font-black tracking-tight text-black dark:text-white group-hover:text-amber-500 transition-colors">
+                  <h3 className="text-base md:text-lg font-bold tracking-tight text-black dark:text-white group-hover:text-amber-500 transition-colors">
                     {step.title}
                   </h3>
                 </div>
 
-                <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed font-medium text-sm md:text-base">
+                <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed font-medium text-xs md:text-sm">
                   {step.desc}
                 </p>
               </div>

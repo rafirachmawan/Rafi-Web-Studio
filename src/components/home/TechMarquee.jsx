@@ -35,7 +35,7 @@ export default function TechMarquee() {
           {marqueeItems.map((tech, i) => (
             <div
               key={i}
-              className="text-lg md:text-xl font-bold text-zinc-400 dark:text-zinc-600 whitespace-nowrap"
+              className="text-[10px] md:text-xs font-bold tracking-wider uppercase text-zinc-400 dark:text-zinc-600 whitespace-nowrap"
             >
               {tech}
             </div>

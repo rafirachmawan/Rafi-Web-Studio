@@ -53,7 +53,7 @@ export default function WhyUsSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
-                className="text-3xl md:text-5xl font-black tracking-tight leading-[1.1] text-zinc-900 dark:text-white"
+                className="text-xl sm:text-2xl md:text-3xl font-black tracking-tight leading-[1.15] text-zinc-900 dark:text-white"
               >
                 Bukan Sekadar <br className="hidden md:inline" />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600">Website Biasa</span>
@@ -65,7 +65,7 @@ export default function WhyUsSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
-                className="mt-4 text-sm md:text-base leading-relaxed text-zinc-600 dark:text-zinc-400"
+                className="mt-3 text-xs md:text-sm leading-relaxed text-zinc-600 dark:text-zinc-400"
               >
                 Kami membantu bisnis lokal dan UMKM naik tingkat melalui digitalisasi yang dirancang secara matang, responsif, dan fokus pada peningkatan penjualan.
               </motion.p>
@@ -82,10 +82,10 @@ export default function WhyUsSection() {
                   transition={{ delay: index * 0.1 }}
                   className="text-center md:text-left"
                 >
-                  <h3 className="text-2xl md:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-500">
+                  <h3 className="text-xl md:text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-500">
                     {item.value}
                   </h3>
-                  <p className="text-[10px] md:text-xs text-zinc-500 dark:text-zinc-400 font-bold uppercase tracking-wide mt-1">
+                  <p className="text-[9px] md:text-[10px] text-zinc-500 dark:text-zinc-400 font-bold uppercase tracking-wide mt-1">
                     {item.label}
                   </p>
                 </motion.div>
@@ -113,10 +113,10 @@ export default function WhyUsSection() {
                   
                   {/* DETAILS */}
                   <div className="space-y-1">
-                    <h4 className="text-base md:text-lg font-bold text-zinc-900 dark:text-white group-hover:text-amber-500 transition-colors">
+                    <h4 className="text-sm md:text-base font-bold text-zinc-900 dark:text-white group-hover:text-amber-500 transition-colors">
                       {feat.title}
                     </h4>
-                    <p className="text-xs md:text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+                    <p className="text-[11px] md:text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
                       {feat.desc}
                     </p>
                   </div>
