@@ -1,17 +1,9 @@
-import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence, useMotionValue, useTransform, useSpring, useMotionTemplate } from "framer-motion";
+import { useEffect, useRef } from "react";
+import { motion, useMotionValue, useSpring, useMotionTemplate } from "framer-motion";
 import heroVideo from "../../assets/Video.mp4";
 import { Star, CheckCircle, Zap, Sparkles } from "lucide-react";
 
-const phrases = [
-  "Website yang Menjual",
-  "Sistem Kasir Efisien",
-  "Mobile App Modern",
-  "Landing Page Premium"
-];
-
 export default function HeroSection() {
-  const [index, setIndex] = useState(0);
   const containerRef = useRef(null);
 
   // Mouse Glow Position
@@ -30,7 +22,7 @@ export default function HeroSection() {
     mouseX.set(e.clientX - rect.left);
     mouseY.set(e.clientY - rect.top);
 
-    // For 3D Tilt
+    // For 3D Tilt (applies to the cinematic showcase wrapper)
     const width = rect.width;
     const height = rect.height;
     const centerX = rect.left + width / 2;
@@ -39,8 +31,8 @@ export default function HeroSection() {
     const mouseXPos = e.clientX - centerX;
     const mouseYPos = e.clientY - centerY;
 
-    rotateY.set((mouseXPos / (width / 2)) * 10); // Max 10deg
-    rotateX.set((mouseYPos / (height / 2)) * -10); // Max 10deg
+    rotateY.set((mouseXPos / (width / 2)) * 6); // Max 6deg
+    rotateX.set((mouseYPos / (height / 2)) * -6); // Max 6deg
   };
 
   const handleMouseLeave = () => {
@@ -48,29 +40,22 @@ export default function HeroSection() {
     rotateY.set(0);
   };
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % phrases.length);
-    }, 3500);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <div
       id="home"
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="group relative overflow-hidden border border-black/10 dark:border-white/10 rounded-[24px] md:rounded-[40px] p-5 sm:p-6 md:p-10 bg-white dark:bg-zinc-950 backdrop-blur-xl mb-16 shadow-[0_20px_50px_rgba(0,0,0,0.05)] dark:shadow-none transition-colors duration-500"
+      className="group relative overflow-hidden border border-zinc-200/50 dark:border-white/5 rounded-[32px] md:rounded-[48px] p-6 sm:p-8 md:p-16 bg-white/40 dark:bg-zinc-950/40 backdrop-blur-xl mb-16 shadow-[0_30px_80px_rgba(0,0,0,0.03)] dark:shadow-none transition-colors duration-500"
     >
       {/* MOUSE GLOW */}
       <motion.div
-        className="pointer-events-none absolute -inset-px rounded-[24px] md:rounded-[40px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0"
+        className="pointer-events-none absolute -inset-px rounded-[32px] md:rounded-[48px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0"
         style={{
           background: useMotionTemplate`
             radial-gradient(
-              600px circle at ${mouseX}px ${mouseY}px,
-              rgba(245, 158, 11, 0.08),
+              700px circle at ${mouseX}px ${mouseY}px,
+              rgba(245, 158, 11, 0.05),
               transparent 80%
             )
           `,
@@ -81,36 +66,36 @@ export default function HeroSection() {
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div 
           animate={{ 
-            x: [0, 50, 0], 
-            y: [0, 30, 0],
-            scale: [1, 1.2, 1]
+            x: [0, 40, 0], 
+            y: [0, 20, 0],
+            scale: [1, 1.15, 1]
           }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -top-20 -right-20 w-80 h-80 bg-amber-500/5 blur-[100px] rounded-full" 
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute -top-40 -right-40 w-96 h-96 bg-amber-500/5 blur-[120px] rounded-full" 
         />
         <motion.div 
           animate={{ 
-            x: [0, -30, 0], 
-            y: [0, -50, 0],
-            scale: [1, 1.1, 1]
+            x: [0, -20, 0], 
+            y: [0, -40, 0],
+            scale: [1, 1.08, 1]
           }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className="absolute -bottom-20 -left-20 w-80 h-80 bg-orange-500/5 blur-[100px] rounded-full" 
+          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          className="absolute -bottom-40 -left-40 w-96 h-96 bg-orange-500/5 blur-[120px] rounded-full" 
         />
       </div>
 
-      <div className="relative grid md:grid-cols-2 gap-10 md:gap-16 items-center z-10">
-        {/* TEXT */}
-        <div className="order-2 md:order-1 relative">
+      <div className="relative z-10 flex flex-col items-center">
+        {/* TEXT & CTA - CENTERED */}
+        <div className="text-center max-w-4xl mx-auto flex flex-col items-center pb-10 md:pb-14">
           {/* BADGE */}
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-3 md:px-4 py-2 rounded-full border border-amber-500/20 bg-amber-500/5 text-amber-600 dark:text-amber-400 text-xs md:text-sm font-bold mb-5 md:mb-6 shadow-sm group/badge relative overflow-hidden"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-amber-500/20 bg-amber-500/5 text-amber-600 dark:text-amber-400 text-xs md:text-sm font-bold mb-6 shadow-sm group/badge relative overflow-hidden"
           >
             <Zap className="w-4 h-4 fill-amber-500/20 group-hover:scale-110 transition-transform" /> 
-            <span>Solusi Digital All-in-One</span>
+            <span>Startup Digitalisasi Indonesia</span>
             <motion.div 
               animate={{ x: ["-100%", "200%"] }}
               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
@@ -118,54 +103,44 @@ export default function HeroSection() {
             />
           </motion.div>
 
+          {/* HEADLINE */}
           <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-4xl sm:text-5xl md:text-7xl font-black tracking-tight leading-[1.05] text-black dark:text-white flex flex-col gap-1 sm:gap-2 min-h-[140px] sm:min-h-[160px] md:min-h-[210px]"
+            className="text-4xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-black tracking-tight leading-[1.05] text-zinc-900 dark:text-white flex flex-col items-center gap-1 sm:gap-2 text-center"
           >
-            <span className="opacity-90">Bangun</span>
-            <div className="relative w-full h-[90px] sm:h-[110px] md:h-[120px]">
-              <AnimatePresence mode="popLayout">
-                <motion.div
-                  key={index}
-                  initial={{ y: 40, opacity: 0, filter: "blur(8px)" }}
-                  animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
-                  exit={{ y: -40, opacity: 0, filter: "blur(8px)" }}
-                  transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-                  className="absolute left-0 top-0 w-full text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 pb-2 drop-shadow-sm"
-                >
-                  {phrases[index]}
-                </motion.div>
-              </AnimatePresence>
-            </div>
+            <span className="opacity-90">Digitalisasi Apapun</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 pb-2 drop-shadow-sm font-black">
+              Bisnis Anda.
+            </span>
           </motion.h1>
 
           {/* DESC */}
           <motion.p 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="mt-4 md:mt-6 text-sm sm:text-base md:text-lg leading-relaxed text-zinc-600 dark:text-zinc-400 max-w-lg"
+            className="mt-6 text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed text-zinc-600 dark:text-zinc-400 max-w-2xl text-center"
           >
-            Rafi Web Studio hadir untuk mendigitalisasi bisnis Anda dengan website cepat, dashboard interaktif, dan aplikasi mobile yang memukau.
+            GapaiDigital adalah startup digitalisasi modern yang membantu membangun <span className="font-semibold text-zinc-900 dark:text-white">Landing Page</span>, <span className="font-semibold text-zinc-900 dark:text-white">Aplikasi Mobile</span>, hingga <span className="font-semibold text-zinc-900 dark:text-white">Sistem Web Custom</span> untuk mempercepat pertumbuhan bisnis Anda.
           </motion.p>
 
-          {/* BUTTON */}
+          {/* CTA BUTTONS */}
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
-            className="flex flex-wrap gap-4 mt-8 md:mt-10"
+            className="flex flex-col sm:flex-row gap-4 mt-8 md:mt-10 justify-center w-full sm:w-auto"
           >
             <a
               href="https://wa.me/6285707185783?text=Halo%20saya%20ingin%20konsultasi"
               target="_blank"
               rel="noopener noreferrer"
-              className="group/btn relative bg-gradient-to-r from-amber-500 to-orange-500 text-white px-8 py-4 rounded-full text-sm md:text-base font-bold transition-all duration-300 hover:scale-[1.05] shadow-xl shadow-amber-500/25 active:scale-95 overflow-hidden"
+              className="group/btn relative bg-gradient-to-r from-amber-500 to-orange-500 text-white px-8 py-4 rounded-full text-sm md:text-base font-bold transition-all duration-300 hover:scale-[1.05] shadow-xl shadow-amber-500/20 active:scale-95 overflow-hidden flex items-center justify-center gap-2"
             >
               <span className="relative z-10 flex items-center gap-2">
                 Konsultasi Gratis <Sparkles className="w-4 h-4" />
@@ -175,63 +150,63 @@ export default function HeroSection() {
 
             <a
               href="#demo"
-              className="group/btn2 border border-black/10 dark:border-white/10 px-8 py-4 rounded-full text-sm md:text-base font-bold text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/5 transition-all duration-300 active:scale-95 flex items-center gap-2"
+              className="group/btn2 border border-zinc-200 dark:border-white/10 px-8 py-4 rounded-full text-sm md:text-base font-bold text-zinc-800 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-white/5 transition-all duration-300 active:scale-95 flex items-center justify-center gap-2"
             >
               Lihat Portofolio
             </a>
           </motion.div>
         </div>
 
-        {/* VIDEO & FLOATING BADGES */}
+        {/* CINEMATIC VIDEO SHOWCASE */}
         <motion.div 
           style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-          className="order-1 md:order-2 relative h-[300px] sm:h-[350px] md:h-[480px] rounded-[32px] overflow-hidden border border-black/5 dark:border-white/10 bg-zinc-900 group shadow-2xl"
+          className="relative w-full max-w-4xl mx-auto rounded-2xl md:rounded-[32px] border border-zinc-200/60 dark:border-white/10 bg-zinc-950 group shadow-[0_30px_100px_rgba(0,0,0,0.12)] dark:shadow-none"
         >
-          <video
-            src={heroVideo}
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-110 transition-all duration-1000"
-          />
+          {/* ASPECT RATIO HOLDER */}
+          <div className="aspect-[16/9] w-full rounded-2xl md:rounded-[32px] overflow-hidden">
+            <video
+              src={heroVideo}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover opacity-70 group-hover:opacity-85 transition-all duration-1000"
+            />
+          </div>
 
-          <div className="absolute inset-0 bg-gradient-to-tr from-black/80 via-black/20 to-amber-500/20" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/10 pointer-events-none rounded-2xl md:rounded-[32px]" />
 
-          {/* Floating Badge 1 */}
+          {/* Floating Badge 1 - Left */}
           <motion.div 
-            style={{ transform: "translateZ(50px)" }}
-            animate={{ y: [-10, 10, -10] }}
+            style={{ transform: "translateZ(40px)" }}
+            animate={{ y: [-8, 8, -8] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-8 left-8 bg-white/10 dark:bg-black/60 backdrop-blur-xl border border-white/20 p-4 rounded-2xl flex items-center gap-4 shadow-2xl group/badge1 cursor-default"
+            className="absolute -top-6 -left-6 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-xl border border-zinc-200/50 dark:border-white/10 p-4 rounded-2xl items-center gap-3.5 shadow-xl group/badge1 cursor-default hidden lg:flex"
           >
-            <div className="w-12 h-12 bg-amber-500 rounded-full flex items-center justify-center text-white shadow-lg shadow-amber-500/30 group-hover/badge1:scale-110 transition-transform">
-              <Star className="w-6 h-6 fill-current" />
+            <div className="w-10 h-10 bg-amber-500 rounded-full flex items-center justify-center text-white shadow-lg shadow-amber-500/30 group-hover/badge1:scale-110 transition-transform">
+              <Star className="w-5 h-5 fill-current" />
             </div>
             <div>
-              <p className="text-white font-black text-base">Rating 5.0</p>
-              <p className="text-white/60 text-xs font-semibold uppercase tracking-wider">Klien Puas</p>
+              <p className="text-zinc-900 dark:text-white font-black text-sm">Rating 5.0</p>
+              <p className="text-zinc-500 dark:text-zinc-400 text-[10px] font-bold uppercase tracking-wider">Klien Puas</p>
             </div>
           </motion.div>
 
-          {/* Floating Badge 2 */}
+          {/* Floating Badge 2 - Right */}
           <motion.div 
             style={{ transform: "translateZ(30px)" }}
-            animate={{ y: [10, -10, 10] }}
+            animate={{ y: [8, -8, 8] }}
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-            className="absolute bottom-8 right-8 bg-white/10 dark:bg-black/60 backdrop-blur-xl border border-white/20 p-4 rounded-2xl flex items-center gap-4 shadow-2xl group/badge2 cursor-default"
+            className="absolute -bottom-6 -right-6 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-xl border border-zinc-200/50 dark:border-white/10 p-4 rounded-2xl items-center gap-3.5 shadow-xl group/badge2 cursor-default hidden lg:flex"
           >
-            <div className="w-12 h-12 bg-emerald-500 rounded-full flex items-center justify-center text-white shadow-lg shadow-emerald-500/30 group-hover/badge2:scale-110 transition-transform">
-              <CheckCircle className="w-6 h-6" />
+            <div className="w-10 h-10 bg-emerald-500 rounded-full flex items-center justify-center text-white shadow-lg shadow-emerald-500/30 group-hover/badge2:scale-110 transition-transform">
+              <CheckCircle className="w-5 h-5" />
             </div>
             <div>
-              <p className="text-white font-black text-base">100+ Proyek</p>
-              <p className="text-white/60 text-xs font-semibold uppercase tracking-wider">Selesai Tepat Waktu</p>
+              <p className="text-zinc-900 dark:text-white font-black text-sm">100+ Proyek</p>
+              <p className="text-zinc-500 dark:text-zinc-400 text-[10px] font-bold uppercase tracking-wider">Tepat Waktu</p>
             </div>
           </motion.div>
-
-          {/* DECORATIVE LIGHT */}
-          <div className="absolute -inset-2 bg-amber-500/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
         </motion.div>
       </div>
     </div>

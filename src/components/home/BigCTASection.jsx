@@ -24,13 +24,12 @@ export default function BigCTASection() {
             </span>
           </p>
 
-          {/* BUTTON */}
           <div className="mt-10">
             <a
-              href="https://wa.me/6285707185783?text=Halo%20saya%20ingin%20konsultasi%20website"
+              href="https://wa.me/6285707185783?text=Halo%20GapaiDigital%2C%20saya%20ingin%20konsultasi%20mengenai%20layanan%20pembuatan%20website%2Faplikasi%20bisnis."
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-400 to-yellow-300 text-black px-6 py-3 md:px-8 md:py-4 rounded-full font-semibold text-sm md:text-base shadow-lg hover:scale-105 transition"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-500 text-white px-6 py-3.5 md:px-8 md:py-4 rounded-full font-bold text-sm md:text-base shadow-xl shadow-amber-500/20 hover:scale-[1.05] hover:shadow-amber-500/35 active:scale-95 transition-all duration-300"
             >
               Konsultasi Gratis Sekarang →
             </a>

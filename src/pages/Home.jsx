@@ -6,15 +6,11 @@ import Footer from "../components/common/Footer";
 
 import HeroSection from "../components/home/HeroSection";
 import TechMarquee from "../components/home/TechMarquee";
-import StatsSection from "../components/home/StatsSection";
-import ProblemSection from "../components/home/ProblemSection";
-import SolutionSection from "../components/home/SolutionSection";
 import DemoSection from "../components/home/DemoSection";
-import CTASection from "../components/home/CTASection";
+import WhyUsSection from "../components/home/WhyUsSection";
 import ProcessSection from "../components/home/ProcessSection";
 import PricingSection from "../components/home/PricingSection";
 import TestimoniSection from "../components/home/TestimoniSection";
-import FinalCTASection from "../components/home/FinalCTASection";
 import BigCTASection from "../components/home/BigCTASection";
 
 // DATA
@@ -42,7 +38,7 @@ export default function Home() {
         });
 
   return (
-    <div className="min-h-screen bg-white text-black dark:bg-[#0a0a0a] dark:text-white font-sans relative overflow-hidden transition-colors duration-300">
+    <div className="min-h-screen bg-[#fafafc] text-zinc-900 dark:bg-[#050508] dark:text-zinc-100 font-sans relative overflow-hidden transition-colors duration-300">
       {/* BACKGROUND GLOW */}
       <div className="absolute top-[-200px] left-1/2 -translate-x-1/2 w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-amber-500/10 dark:bg-amber-500/10 bg-amber-300/20 blur-[100px] rounded-full" />
 
@@ -52,14 +48,9 @@ export default function Home() {
       <div className="max-w-6xl mx-auto px-4 md:px-6 pt-28 md:pt-36 pb-16 relative z-10">
         {/* HERO */}
         <HeroSection />
+        
         {/* TECH MARQUEE */}
         <TechMarquee />
-        {/* STATS */}
-        <StatsSection />
-        {/* PROBLEM */}
-        <ProblemSection />
-        {/* SOLUTION */}
-        <SolutionSection />
 
         {/* DEMO */}
         <DemoSection
@@ -67,22 +58,26 @@ export default function Home() {
           setFilter={setFilter}
           filtered={filtered}
         />
-        {/* CTA */}
-        <CTASection />
+
+        {/* WHY US (STATS & SOLUTIONS) */}
+        <WhyUsSection />
+
         {/* PROCESS */}
         <ProcessSection />
+
         {/* PRICING */}
         <PricingSection
           pricingTab={pricingTab}
           setPricingTab={setPricingTab}
           waLink={waLink}
         />
+
         {/* TESTIMONI */}
         <TestimoniSection />
-        {/* FINAL CTA */}
-        <FinalCTASection />
+
         {/* BIG CTA */}
         <BigCTASection />
+
         {/* FOOTER */}
         <Footer />
       </div>

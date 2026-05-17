@@ -18,9 +18,8 @@ export default function Navbar() {
   return (
     <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-6xl">
       <div className="backdrop-blur-xl bg-white/70 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-full px-4 md:px-6 py-3 flex justify-between items-center shadow-lg transition-colors duration-300">
-        {/* LOGO */}
-        <h1 className="font-heading font-semibold text-sm tracking-wide text-black dark:text-white">
-          RAFWEB
+        <h1 className="font-heading font-extrabold text-base tracking-tight text-black dark:text-white">
+          Gapai<span className="text-amber-500">Digital</span>
         </h1>
 
         {/* MENU */}
