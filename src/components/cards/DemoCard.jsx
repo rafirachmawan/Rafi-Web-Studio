@@ -13,13 +13,13 @@ export default function DemoCard({ demo }) {
         to={demo.path}
         className="group block bg-white dark:bg-zinc-900/50 border border-zinc-200 dark:border-white/10 rounded-[32px] overflow-hidden hover:-translate-y-2 transition-all duration-500 shadow-sm hover:shadow-2xl hover:shadow-amber-500/10 hover:border-amber-500/30 relative"
       >
-        {/* IMAGE WITH AUTO-SCROLL EFFECT */}
+        {/* IMAGE WITH PREMIUM HOVER SCALE EFFECT */}
         <div className="h-52 md:h-64 overflow-hidden relative border-b border-zinc-100 dark:border-white/5 bg-zinc-50 dark:bg-zinc-900">
           <img
             src={demo.image}
             alt={demo.name}
             loading="lazy"
-            className="w-full h-auto object-top transition-transform duration-[6s] ease-in-out group-hover:-translate-y-[calc(100%-16rem)] md:group-hover:-translate-y-[calc(100%-16rem)]"
+            className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
           />
           
           {/* CATEGORY BADGE ON IMAGE */}

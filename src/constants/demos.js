@@ -77,7 +77,7 @@ export const demos = [
     desc: "Sistem Kasir & Stok Toko Klontong Modern",
     icon: "🏪",
     category: "sistem berbasis web",
-    image: "https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=1200&auto=format&fit=crop",
+    image: restoImg,
   },
   {
     name: "ExamOS",
@@ -85,7 +85,7 @@ export const demos = [
     desc: "Platform Ujian Online & Bank Soal Modern",
     icon: "📝",
     category: "sistem berbasis web",
-    image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=1200&auto=format&fit=crop",
+    image: sekolahImg,
   },
   {
     name: "AbsenOS",
@@ -93,7 +93,7 @@ export const demos = [
     desc: "Mobile Attendance with Biometric & Geolocation",
     icon: "📱",
     category: "mobile app",
-    image: "https://images.unsplash.com/photo-1551288049-bbbda536ad0a?q=80&w=1200&auto=format&fit=crop",
+    image: laundryImg,
   },
   {
     name: "POS Mobile",
@@ -101,6 +101,6 @@ export const demos = [
     desc: "Mobile cashier app for UMKM business.",
     icon: "💰",
     category: "mobile app",
-    image: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1200&auto=format&fit=crop",
+    image: coffeeImg,
   },
 ];
