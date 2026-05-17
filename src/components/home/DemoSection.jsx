@@ -50,7 +50,7 @@ export default function DemoSection({ filter, setFilter, filtered }) {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-600 dark:text-amber-400 text-xs font-bold mb-6 uppercase tracking-widest"
           >
             <Sparkles className="w-3 h-3" /> Portfolio
@@ -59,7 +59,7 @@ export default function DemoSection({ filter, setFilter, filtered }) {
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             transition={{ delay: 0.1 }}
             className="text-xl sm:text-2xl md:text-3xl font-black text-black dark:text-white tracking-tight mb-4"
           >
@@ -69,7 +69,7 @@ export default function DemoSection({ filter, setFilter, filtered }) {
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             transition={{ delay: 0.2 }}
             className="text-zinc-600 dark:text-zinc-400 text-xs md:text-sm leading-relaxed"
           >
@@ -157,7 +157,7 @@ export default function DemoSection({ filter, setFilter, filtered }) {
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           className="mt-24 text-center px-4"
         >
           <p className="text-zinc-500 dark:text-zinc-400 text-sm md:text-base font-medium mb-8">

@@ -41,7 +41,7 @@ export default function WhyUsSection() {
               <motion.div
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false }}
                 className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-amber-500/20 bg-amber-500/5 text-amber-600 dark:text-amber-400 text-xs font-bold uppercase tracking-wider mb-5"
               >
                 ⚡ Mitra Digital Anda
@@ -51,7 +51,7 @@ export default function WhyUsSection() {
               <motion.h2
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false }}
                 transition={{ delay: 0.1 }}
                 className="text-xl sm:text-2xl md:text-3xl font-black tracking-tight leading-[1.15] text-zinc-900 dark:text-white"
               >
@@ -63,7 +63,7 @@ export default function WhyUsSection() {
               <motion.p
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false }}
                 transition={{ delay: 0.2 }}
                 className="mt-3 text-xs md:text-sm leading-relaxed text-zinc-600 dark:text-zinc-400"
               >
@@ -78,7 +78,7 @@ export default function WhyUsSection() {
                   key={index}
                   initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: false }}
                   transition={{ delay: index * 0.1 }}
                   className="text-center md:text-left"
                 >
@@ -102,7 +102,7 @@ export default function WhyUsSection() {
                   key={index}
                   initial={{ opacity: 0, x: 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: false }}
                   transition={{ delay: index * 0.1 }}
                   className="group relative flex gap-4 md:gap-5 p-5 md:p-6 rounded-[24px] border border-black/5 dark:border-white/5 bg-white dark:bg-zinc-900/40 hover:border-amber-500/20 dark:hover:border-amber-500/10 hover:bg-white dark:hover:bg-zinc-900/60 shadow-sm hover:shadow-md dark:shadow-none transition-all duration-300"
                 >
