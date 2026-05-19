@@ -44,7 +44,7 @@ export default function Dashboard() {
       {/* WELCOME BANNER */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-black text-white tracking-tight">Selamat Datang, Rafi! 👋</h1>
+          <h1 className="text-3xl font-black text-white tracking-tight">Selamat Datang, Rafi! </h1>
           <p className="text-zinc-500 mt-1">Berikut adalah ringkasan performa toko Anda hari ini.</p>
         </div>
         <div className="flex items-center gap-3">
@@ -108,10 +108,10 @@ export default function Dashboard() {
             </select>
           </div>
           
-          <div className="h-[300px] flex items-end justify-between gap-4 pt-10">
+          <div className="h-[300px] flex items-stretch justify-between gap-4 pt-10">
             {[40, 70, 45, 90, 65, 80, 55].map((height, i) => (
               <div key={i} className="flex-1 flex flex-col items-center gap-4 group">
-                <div className="relative w-full flex justify-center items-end h-full">
+                <div className="relative w-full flex-1 flex justify-center items-end">
                    <motion.div 
                     initial={{ height: 0 }}
                     animate={{ height: `${height}%` }}

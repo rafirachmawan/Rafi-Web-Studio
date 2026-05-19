@@ -18,7 +18,7 @@ import { demos } from "../constants/demos";
 
 export default function Home() {
   const [filter, setFilter] = useState("all");
-  const [pricingTab, setPricingTab] = useState("landing");
+  const [pricingTab, setPricingTab] = useState("landingpage");
 
   const waLink =
     "https://wa.me/6285707185783?text=Halo%20saya%20tertarik%20dengan%20paket%20website";
