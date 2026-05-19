@@ -1,4 +1,6 @@
 import coffeeImg from "../assets/Coffe.jpg";
+import starbucksCoverImg from "../assets/StarbucksCover.png";
+import hotelCoverImg from "../assets/HotelCover.png";
 import rentalImg from "../assets/Rental.jpg";
 import hotelImg from "../assets/Hotel.jpg";
 import restoImg from "../assets/Resto.jpg";
@@ -8,12 +10,12 @@ import umrohImg from "../assets/Umroh.jpg";
 
 export const demos = [
   {
-    name: "Coffee",
+    name: "Starbucks",
     path: "/coffee",
-    desc: "Website cafe aesthetic & modern",
+    desc: "Website Starbucks Tribute + Simulator Rewards",
     icon: "☕",
     category: "landing page",
-    image: coffeeImg,
+    image: starbucksCoverImg,
   },
   {
     name: "Rental",
@@ -24,20 +26,20 @@ export const demos = [
     image: rentalImg,
   },
   {
-    name: "Hotel",
+    name: "Crown Victoria",
     path: "/hotel",
-    desc: "Landing page hotel elegan & premium",
+    desc: "Website Hotel Bintang 4 Tulungagung + Planner Event",
     icon: "🏨",
     category: "landing page",
-    image: hotelImg,
+    image: hotelCoverImg,
   },
   {
-    name: "Resto",
+    name: "Niko-Niko Ramen",
     path: "/resto",
-    desc: "Website menu & booking restoran",
-    icon: "🍽️",
+    desc: "Website Ramen Jepang Kediri + Custom Order",
+    icon: "🍜",
     category: "landing page",
-    image: restoImg,
+    image: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&q=80&w=800",
   },
   {
     name: "Sekolah",

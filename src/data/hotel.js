@@ -1,13 +1,13 @@
 export const hotel = {
   type: "hotel", // ⚠️ WAJIB ini
-  name: "Hotel Santika",
+  name: "Crown Victoria Hotel Tulungagung",
   hero: {
-    title: "Penginapan Nyaman & Elegan",
-    subtitle: "Nikmati pengalaman menginap terbaik",
+    title: "Crown Victoria Hotel",
+    subtitle: "The Premier Victorian Luxury 4-Star Experience in Tulungagung",
   },
   theme: {
     bg: "bg-black",
-    primary: "text-yellow-400",
-    button: "bg-yellow-500 text-black",
+    primary: "text-amber-500",
+    button: "bg-amber-500 text-black",
   },
 };
