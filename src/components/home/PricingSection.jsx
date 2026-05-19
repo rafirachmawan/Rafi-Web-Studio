@@ -37,6 +37,7 @@ export default function PricingSection({ pricingTab, setPricingTab, waLink }) {
             { label: "Landing Page", value: "landingpage" },
             { label: "Mobile Apps", value: "mobileapps" },
             { label: "Web System", value: "websystem" },
+            { label: "Custom", value: "custom" },
           ].map((item) => (
             <button
               key={item.value}
@@ -445,6 +446,134 @@ export default function PricingSection({ pricingTab, setPricingTab, waLink }) {
                   className="block text-center bg-gradient-to-r from-amber-500 to-orange-500 text-white py-4 rounded-2xl text-xs sm:text-sm font-black transition-all shadow-lg hover:scale-[1.02]"
                 >
                   Mulai Buat Sekarang
+                </a>
+              </motion.div>
+            </>
+          )}
+
+          {/* CUSTOM TAB */}
+          {pricingTab === "custom" && (
+            <>
+              {/* CUSTOM INTEGRATION */}
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }} 
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="bg-white dark:bg-zinc-900/40 border border-black/5 dark:border-white/5 rounded-[2.5rem] p-8 flex flex-col justify-between shadow-xl min-h-[480px] relative overflow-hidden group hover:border-zinc-300 dark:hover:border-zinc-800 transition-all duration-300"
+              >
+                <div className="text-left">
+                  <div className="flex justify-between items-center mb-3">
+                    <span className="text-xs font-bold text-zinc-500 uppercase tracking-widest">Custom Integration</span>
+                    <span className="text-[10px] font-black text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded-md uppercase tracking-wider">Hemat 50%</span>
+                  </div>
+                  <h3 className="text-xl font-bold mb-4 text-zinc-900 dark:text-white">API & Custom Integration</h3>
+
+                  {/* PRICING AREA */}
+                  <div className="mb-6">
+                    <span className="text-xs font-bold text-zinc-400 line-through dark:text-zinc-500 block mb-1">Rp 4.000.000</span>
+                    <h2 className="text-4xl md:text-5xl font-black text-amber-500 tracking-tight">
+                      Rp 1.999<span className="text-lg text-zinc-500">.000+</span>
+                    </h2>
+                  </div>
+
+                  <hr className="border-zinc-200 dark:border-zinc-800 my-6" />
+
+                  <ul className="text-zinc-600 dark:text-zinc-400 text-xs sm:text-sm space-y-3 mb-8 font-semibold">
+                    <li className="flex items-start gap-2.5">
+                      <Check size={16} className="text-emerald-500 shrink-0 mt-0.5" />
+                      <span>Integrasi Payment Gateway Resmi (Midtrans / Xendit)</span>
+                    </li>
+                    <li className="flex items-start gap-2.5">
+                      <Check size={16} className="text-emerald-500 shrink-0 mt-0.5" />
+                      <span>Integrasi API Kurir & Logistik (RajaOngkir / Biteship)</span>
+                    </li>
+                    <li className="flex items-start gap-2.5">
+                      <Check size={16} className="text-emerald-500 shrink-0 mt-0.5" />
+                      <span>Sistem Pengiriman Notifikasi WhatsApp Otomatis</span>
+                    </li>
+                    <li className="flex items-start gap-2.5">
+                      <Check size={16} className="text-emerald-500 shrink-0 mt-0.5" />
+                      <span>Setup & Migrasi VPS Cloud Server (DigitalOcean / AWS)</span>
+                    </li>
+                    <li className="flex items-start gap-2.5">
+                      <Check size={16} className="text-emerald-500 shrink-0 mt-0.5" />
+                      <span>Pembersihan Malware, Bug Fixing, & Optimasi Speed</span>
+                    </li>
+                    <li className="flex items-start gap-2.5">
+                      <Check size={16} className="text-emerald-500 shrink-0 mt-0.5" />
+                      <span>Garansi Fungsional & Maintenance selama 1 Bulan</span>
+                    </li>
+                  </ul>
+                </div>
+                <a 
+                  href={`${waLink}%20Custom%20Integration%20API`} 
+                  className="block text-center bg-zinc-100 dark:bg-white/5 hover:bg-black hover:text-white dark:hover:bg-white/10 text-black dark:text-white py-3.5 rounded-2xl text-xs sm:text-sm font-black transition-all"
+                >
+                  Hubungi Integrasi
+                </a>
+              </motion.div>
+
+              {/* BESPOKE DEVELOPMENT */}
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }} 
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 }} 
+                className="relative bg-white dark:bg-zinc-900 border-2 border-amber-400 rounded-[2.5rem] p-8 md:-translate-y-4 shadow-2xl shadow-amber-500/20 flex flex-col justify-between min-h-[500px]"
+              >
+                <div className="absolute top-5 right-5 bg-amber-500 text-black text-[9px] font-black px-3 py-1 rounded-full uppercase tracking-wider animate-pulse flex items-center gap-1">
+                  <Flame size={10} />
+                  Paling Fleksibel
+                </div>
+                <div className="text-left">
+                  <div className="flex justify-between items-center mb-3">
+                    <span className="text-xs font-bold text-amber-500 uppercase tracking-widest">Enterprise Solution</span>
+                    <span className="text-[10px] font-black text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded-md uppercase tracking-wider font-bold">Best Value</span>
+                  </div>
+                  <h3 className="text-xl sm:text-2xl font-black mb-4 text-zinc-900 dark:text-white">Bespoke Development</h3>
+
+                  {/* PRICING AREA */}
+                  <div className="mb-6">
+                    <span className="text-xs font-bold text-zinc-400 line-through dark:text-zinc-500 block mb-1">Mulai Rp 15.000.000</span>
+                    <h2 className="text-4xl md:text-5xl font-black text-zinc-900 dark:text-white tracking-tight">
+                      Hubungi Kami
+                    </h2>
+                  </div>
+
+                  <hr className="border-zinc-200 dark:border-zinc-800 my-6" />
+
+                  <ul className="text-zinc-600 dark:text-zinc-300 text-xs sm:text-sm space-y-3 mb-8 font-semibold">
+                    <li className="flex items-start gap-2.5 text-amber-600 dark:text-amber-400 font-bold">
+                      <Zap size={16} className="shrink-0 mt-0.5" />
+                      <span>Rancang Bangun Software dari Nol Sesuai Kebutuhan Bisnis</span>
+                    </li>
+                    <li className="flex items-start gap-2.5">
+                      <Check size={16} className="text-emerald-500 shrink-0 mt-0.5" />
+                      <span>Dedicated Developer Team & Desainer Figma Khusus</span>
+                    </li>
+                    <li className="flex items-start gap-2.5">
+                      <Check size={16} className="text-emerald-500 shrink-0 mt-0.5" />
+                      <span>Konsultasi Bisnis Mendalam & Dokumen Alur Kerja (BRD)</span>
+                    </li>
+                    <li className="flex items-start gap-2.5">
+                      <Check size={16} className="text-emerald-500 shrink-0 mt-0.5" />
+                      <span>Integrasi AI, Automation Bot, & Scraping Skala Besar</span>
+                    </li>
+                    <li className="flex items-start gap-2.5">
+                      <Check size={16} className="text-emerald-500 shrink-0 mt-0.5" />
+                      <span>Source Code 100% Milik Anda (Hak Milik Penuh Klien)</span>
+                    </li>
+                    <li className="flex items-start gap-2.5">
+                      <Check size={16} className="text-emerald-500 shrink-0 mt-0.5" />
+                      <span>Perjanjian Hukum Resmi (MoU) & Jaminan Kerahasiaan (NDA)</span>
+                    </li>
+                  </ul>
+                </div>
+                <a 
+                  href={`${waLink}%20Enterprise%20Bespoke%20Development`} 
+                  className="block text-center bg-gradient-to-r from-amber-500 to-orange-500 text-white py-4 rounded-2xl text-xs sm:text-sm font-black transition-all shadow-lg hover:scale-[1.02]"
+                >
+                  Konsultasi Custom Gratis
                 </a>
               </motion.div>
             </>

@@ -11,6 +11,7 @@ import WhyUsSection from "../components/home/WhyUsSection";
 import ProcessSection from "../components/home/ProcessSection";
 import PricingSection from "../components/home/PricingSection";
 import TestimoniSection from "../components/home/TestimoniSection";
+import FounderSection from "../components/home/FounderSection";
 import BigCTASection from "../components/home/BigCTASection";
 
 // DATA
@@ -74,6 +75,9 @@ export default function Home() {
 
         {/* TESTIMONI */}
         <TestimoniSection />
+
+        {/* FOUNDER */}
+        <FounderSection />
 
         {/* BIG CTA */}
         <BigCTASection />
