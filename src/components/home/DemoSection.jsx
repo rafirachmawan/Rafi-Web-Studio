@@ -165,9 +165,14 @@ export default function DemoSection({ filter, setFilter, filtered }) {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <div className="h-px w-12 bg-zinc-200 dark:bg-white/10 hidden sm:block" />
-            <button className="group flex items-center gap-2 text-black dark:text-white font-bold hover:text-amber-500 dark:hover:text-amber-400 transition-colors">
-              Konsultasi Custom Project <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </button>
+            <a 
+              href="https://wa.me/6285707185783?text=Halo%20saya%20ingin%20konsultasi%20project"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-2 text-black dark:text-white font-bold hover:text-amber-500 dark:hover:text-amber-400 transition-colors"
+            >
+              Konsultasi Project <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </a>
             <div className="h-px w-12 bg-zinc-200 dark:bg-white/10 hidden sm:block" />
           </div>
         </motion.div>
