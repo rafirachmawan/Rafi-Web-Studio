@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 
+
 export default function Navbar() {
   const [darkMode, setDarkMode] = useState(() => {
     return localStorage.getItem("theme") === "dark";
@@ -57,11 +58,6 @@ export default function Navbar() {
             className="w-10 h-10 rounded-full border border-black/10 dark:border-white/10 bg-black/[0.03] dark:bg-white/[0.05] flex items-center justify-center text-lg transition hover:scale-105"
           >
             {darkMode ? "☀️" : "🌙"}
-          </button>
-
-          {/* CTA BUTTON */}
-          <button className="bg-amber-500 hover:bg-amber-400 text-black px-3 md:px-4 py-1.5 rounded-full text-xs md:text-sm font-medium transition">
-            Konsultasi
           </button>
         </div>
       </div>

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ExternalLink, Send } from "lucide-react";
-import founderPortrait from "../../assets/founder_portrait.png";
+import founderPortrait from "../../assets/foto formal.png";
 
 export default function FounderSection() {
   // CONFIGURABLE LINKS - Silakan ubah URL di bawah ini sesuai keinginan Anda
@@ -62,11 +62,11 @@ export default function FounderSection() {
               <div className="absolute inset-0 rounded-[2.5rem] bg-gradient-to-r from-amber-500 to-orange-500 opacity-0 group-hover:opacity-10 blur-xl transition-opacity duration-500" />
               
               {/* Portrait container */}
-              <div className="relative rounded-[2rem] overflow-hidden aspect-square border border-black/5 dark:border-white/5">
+              <div className="relative rounded-[2rem] overflow-hidden aspect-[4/5] border border-black/5 dark:border-white/5">
                 <img 
                   src={founderPortrait} 
                   alt="Rafi Rachmawan" 
-                  className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
+                  className="w-full h-full object-cover object-top grayscale-[20%] group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
                 />
                 
                 {/* Overlay gradient */}
