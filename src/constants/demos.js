@@ -10,6 +10,10 @@ import umrohImg from "../assets/Umroh.jpg";
 import unitaCoverImg from "../assets/UNITACover.png";
 import aryaMotorCoverImg from "../assets/AryaMotorCover.png";
 import nikoNikoCoverImg from "../assets/NikoNikoCover.png";
+import aioLaundryCoverImg from "../assets/AioLaundryCover.png";
+import umrohCoverImg from "../assets/UmrohCover.png";
+
+
 
 export const demos = [
   {
@@ -53,20 +57,20 @@ export const demos = [
     image: unitaCoverImg,
   },
   {
-    name: "Laundry",
+    name: "Aio Laundry Express",
     path: "/laundry",
-    desc: "Website laundry modern + tracking order",
+    desc: "Aio Laundry Express Antar Jemput Tulungagung",
     icon: "🧺",
     category: "landing page",
-    image: laundryImg,
+    image: aioLaundryCoverImg,
   },
   {
-    name: "Umroh",
+    name: "Jabal Noor.official",
     path: "/umroh",
-    desc: "Landing page travel umroh profesional",
+    desc: "Biro Perjalanan Haji & Umroh Terpercaya di Trenggalek",
     icon: "🕋",
     category: "landing page",
-    image: umrohImg,
+    image: umrohCoverImg,
   },
   {
     name: "Sistem Akademik",

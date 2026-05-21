@@ -69,7 +69,7 @@ export default function LaundryLanding() {
               <Droplets className="w-6 h-6 fill-current" />
             </div>
             <h1 className="text-2xl font-black tracking-tight text-slate-900">
-              Fresh<span className="text-blue-600">Wash</span>
+              Aio<span className="text-blue-600">Laundry</span>
             </h1>
           </motion.div>
 
@@ -130,7 +130,7 @@ export default function LaundryLanding() {
             <motion.div initial="hidden" animate="visible" variants={STAGGER} className="relative z-10">
               <motion.div variants={FADE_UP} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-sm font-bold mb-6 shadow-sm">
                 <Sparkles className="w-4 h-4" />
-                Laundry Premium Tanpa Repot
+                Aio Laundry Express Antar Jemput
               </motion.div>
 
               <motion.h1 variants={FADE_UP} className="text-5xl md:text-7xl font-black mb-6 leading-[1.1] text-slate-900 tracking-tight">
@@ -262,9 +262,9 @@ export default function LaundryLanding() {
 
             <div className="grid md:grid-cols-3 gap-8">
               {[
-                { name: "Cuci Kering", price: "Rp 5.000", unit: "/kg", icon: Wind, desc: "Pakaian dicuci bersih dan dikeringkan secara optimal. Siap disetrika di rumah.", color: "text-sky-500", bg: "bg-sky-50" },
-                { name: "Cuci + Setrika", price: "Rp 7.000", unit: "/kg", icon: Shirt, desc: "Layanan komplit. Pakaian bersih, wangi, rapi, dan langsung siap dipakai.", color: "text-blue-600", bg: "bg-blue-50", popular: true },
-                { name: "Express 24 Jam", price: "Rp 12.000", unit: "/kg", icon: Zap, desc: "Sangat cepat. Selesai dalam 24 jam dengan kualitas hasil yang sama sempurnanya.", color: "text-indigo-600", bg: "bg-indigo-50" },
+                { name: "Cuci Pakaian Kiloan", price: "Mulai Rp 5k", unit: "/kg", icon: Wind, desc: "Layanan cuci, kering, dan setrika pakaian harian Anda dengan hasil rapi dan wangi.", color: "text-sky-500", bg: "bg-sky-50" },
+                { name: "Cuci Bedding", price: "Mulai Rp 15k", unit: "/pcs", icon: Shirt, desc: "Cuci bersih berbagai macam sprei, selimut, dan bed cover untuk kenyamanan tidur maksimal.", color: "text-blue-600", bg: "bg-blue-50", popular: true },
+                { name: "Cuci Sepatu & Tas", price: "Mulai Rp 25k", unit: "/pcs", icon: Zap, desc: "Perawatan khusus cuci sepatu, tas, dan stroller kesayangan Anda agar tampak seperti baru.", color: "text-indigo-600", bg: "bg-indigo-50" },
               ].map((item, i) => (
                 <motion.div 
                   key={i}
@@ -307,7 +307,7 @@ export default function LaundryLanding() {
           
           <div className="max-w-7xl mx-auto py-20 md:py-32 px-6 lg:px-16 text-white grid md:grid-cols-2 gap-16 items-center">
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-              <h2 className="text-4xl md:text-5xl font-black mb-6 leading-tight">Kenapa Harus Memilih <span className="text-blue-200">FreshWash?</span></h2>
+              <h2 className="text-4xl md:text-5xl font-black mb-6 leading-tight">Kenapa Harus Memilih <span className="text-blue-200">Aio Laundry?</span></h2>
               <p className="text-blue-100 text-lg mb-10 leading-relaxed font-medium">Kami tidak sekadar mencuci pakaian Anda. Kami merawatnya menggunakan teknologi modern dan deterjen ramah lingkungan yang menjaga warna dan serat kain.</p>
               
               <div className="space-y-6">
@@ -367,7 +367,7 @@ export default function LaundryLanding() {
           <div>
             <div className="flex items-center gap-2 mb-4">
               <Droplets className="text-blue-600 w-6 h-6" />
-              <span className="text-xl font-black text-slate-900">FreshWash</span>
+              <span className="text-xl font-black text-slate-900">Aio Laundry</span>
             </div>
             <p className="text-slate-500 font-medium leading-relaxed">Solusi cerdas untuk pakaian bersih, wangi, dan rapi tanpa perlu membuang waktu berharga Anda.</p>
           </div>
@@ -375,10 +375,10 @@ export default function LaundryLanding() {
           <div>
             <h4 className="font-black text-slate-900 mb-4 uppercase tracking-wider text-sm">Layanan</h4>
             <div className="flex flex-col gap-3 text-slate-500 font-medium">
-              <a href="#" className="hover:text-blue-600 transition-colors">Cuci Kering</a>
-              <a href="#" className="hover:text-blue-600 transition-colors">Cuci & Setrika</a>
-              <a href="#" className="hover:text-blue-600 transition-colors">Express 24 Jam</a>
-              <a href="#" className="hover:text-blue-600 transition-colors">Cuci Sepatu</a>
+              <a href="#" className="hover:text-blue-600 transition-colors">Cuci Pakaian Kiloan</a>
+              <a href="#" className="hover:text-blue-600 transition-colors">Cuci Sprei & Selimut</a>
+              <a href="#" className="hover:text-blue-600 transition-colors">Cuci Sepatu & Tas</a>
+              <a href="#" className="hover:text-blue-600 transition-colors">Cuci Stroller</a>
             </div>
           </div>
 
@@ -387,7 +387,7 @@ export default function LaundryLanding() {
             <div className="flex flex-col gap-4 text-slate-500 font-medium">
               <div className="flex items-center gap-3">
                 <MapPin className="w-5 h-5 text-blue-500 shrink-0" />
-                <span>Jl. Bersih Indah No. 12, Jakarta</span>
+                <span>Jl. Ahmad Yani Timur No. 29, Tamanan, Kec. Tulungagung</span>
               </div>
               <div className="flex items-center gap-3">
                 <Zap className="w-5 h-5 text-blue-500 shrink-0" />
@@ -398,7 +398,7 @@ export default function LaundryLanding() {
         </div>
         
         <div className="text-center text-slate-400 font-medium text-sm pt-8 border-t border-slate-100">
-          © {new Date().getFullYear()} FreshWash Laundry. All Rights Reserved.
+          © {new Date().getFullYear()} Aio Laundry Tulungagung. All Rights Reserved.
         </div>
       </footer>
     </div>
