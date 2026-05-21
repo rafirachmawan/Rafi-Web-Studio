@@ -7,6 +7,7 @@ import restoImg from "../assets/Resto.jpg";
 import sekolahImg from "../assets/Sekolah.jpg";
 import laundryImg from "../assets/Loundry.jpg";
 import umrohImg from "../assets/Umroh.jpg";
+import unitaCoverImg from "../assets/UNITACover.png";
 
 export const demos = [
   {
@@ -42,12 +43,12 @@ export const demos = [
     image: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&q=80&w=800",
   },
   {
-    name: "Sekolah",
-    path: "/sekolah",
-    desc: "Profil sekolah profesional",
-    icon: "🏫",
+    name: "Universitas Tulungagung",
+    path: "/unita",
+    desc: "Landing page kampus UNITA — Akreditasi B, Est. 1984",
+    icon: "🎓",
     category: "landing page",
-    image: sekolahImg,
+    image: unitaCoverImg,
   },
   {
     name: "Laundry",

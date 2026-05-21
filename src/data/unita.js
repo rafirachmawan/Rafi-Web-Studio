@@ -1,0 +1,101 @@
+export const unita = {
+  name: "Universitas Tulungagung",
+  shortName: "UNITA",
+  tagline: "Mewujudkan Insan Akademik Berkualitas & Berdaya Saing",
+  established: "1984",
+  accreditation: "B",
+  address: "Jl. Ki Mangunsarkoro, Beji, Kec. Boyolangu, Kab. Tulungagung, Jawa Timur 66233",
+  phone: "(0355) 322145",
+  wa: "6281333170070",
+  email: "info@unita.ac.id",
+  website: "https://unita.ac.id",
+  pmb: "https://pmb.unita.ac.id",
+  mapsEmbed:
+    "https://maps.google.com/maps?q=Universitas+Tulungagung&t=&z=15&ie=UTF8&iwloc=&output=embed",
+  vision:
+    "Mewujudkan insan akademik yang berkualitas dan mampu berkompetisi di tingkat nasional maupun global.",
+  missions: [
+    "Membina dan mengembangkan Tri Dharma Perguruan Tinggi yang berkualitas",
+    "Meningkatkan kualitas Sumber Daya Manusia tenaga pendidik dan kependidikan",
+    "Meningkatkan sarana dan prasarana akademik berstandar tinggi",
+    "Menghasilkan lulusan yang mandiri dan bermanfaat bagi masyarakat",
+  ],
+  stats: [
+    { label: "Tahun Berdiri", value: "1984" },
+    { label: "Mahasiswa Aktif", value: "3.000+" },
+    { label: "Alumni Tersebar", value: "15.000+" },
+    { label: "Akreditasi BAN-PT", value: "B" },
+  ],
+  faculties: [
+    {
+      name: "Fakultas Ekonomi",
+      programs: ["S1 Manajemen", "S1 Akuntansi"],
+      color: "from-blue-600 to-blue-400",
+      desc: "Menghasilkan sarjana ekonomi yang kompeten di bidang manajemen bisnis dan akuntansi modern berbasis teknologi.",
+    },
+    {
+      name: "Fakultas Hukum",
+      programs: ["S1 Ilmu Hukum"],
+      color: "from-red-700 to-red-500",
+      desc: "Membentuk ahli hukum yang berintegritas, mampu menganalisis dan memberikan solusi hukum yang tepat.",
+    },
+    {
+      name: "Fakultas ISIP",
+      programs: ["S1 Administrasi Publik"],
+      color: "from-blue-800 to-indigo-500",
+      desc: "Mencetak administrator publik yang inovatif dan profesional untuk pelayanan pemerintahan yang lebih baik.",
+    },
+    {
+      name: "Fakultas Pertanian",
+      programs: ["S1 Agribisnis"],
+      color: "from-green-700 to-emerald-500",
+      desc: "Memadukan ilmu pertanian dengan bisnis untuk menghasilkan wirausahawan agribisnis yang tangguh.",
+    },
+    {
+      name: "Fakultas Teknik",
+      programs: ["S1 Teknik Sipil", "S1 Teknik Elektro"],
+      color: "from-orange-700 to-amber-500",
+      desc: "Mengembangkan insinyur teknik yang mampu merancang infrastruktur dan sistem elektronik masa depan.",
+    },
+    {
+      name: "Program Vokasi",
+      programs: ["D3 Kebidanan"],
+      color: "from-rose-600 to-pink-400",
+      desc: "Mendidik bidan profesional yang kompeten, berkarakter, dan siap melayani kesehatan ibu dan anak.",
+    },
+  ],
+  facilities: [
+    { name: "Gedung Graha Krida Wiyada", icon: "🏛️", desc: "Gedung serbaguna megah untuk kegiatan akademik dan kemahasiswaan skala besar." },
+    { name: "Laboratorium Komputer", icon: "💻", desc: "Fasilitas komputer modern dengan koneksi internet cepat untuk mendukung proses pembelajaran digital." },
+    { name: "Perpustakaan Digital", icon: "📚", desc: "Koleksi buku fisik dan akses jurnal digital nasional maupun internasional yang lengkap." },
+    { name: "Radio Kampus UNITA FM", icon: "📻", desc: "Sarana kreativitas mahasiswa di bidang penyiaran dan komunikasi massa." },
+    { name: "Lapangan Olahraga", icon: "⚽", desc: "Lapangan basket dan futsal untuk mendukung kegiatan olahraga dan pengembangan minat bakat." },
+    { name: "Hotspot Area", icon: "📡", desc: "Akses Wi-Fi gratis di seluruh area kampus untuk mendukung pembelajaran berbasis digital." },
+  ],
+  admissionSteps: [
+    { step: "01", title: "Daftar Online", desc: "Isi formulir pendaftaran di pmb.unita.ac.id dengan data diri yang lengkap dan benar." },
+    { step: "02", title: "Verifikasi Berkas", desc: "Unggah dokumen persyaratan. Tim PMB akan memverifikasi kelengkapan berkas Anda." },
+    { step: "03", title: "Tes & Wawancara", desc: "Ikuti tes potensi akademik dan wawancara singkat secara online maupun tatap muka." },
+    { step: "04", title: "Diterima 🎓", desc: "Selamat! Anda resmi menjadi mahasiswa baru Universitas Tulungagung!" },
+  ],
+  testimonials: [
+    {
+      text: "Kuliah di UNITA membuka wawasan saya. Dosen-dosennya sangat berpengalaman dan selalu mendukung mahasiswa untuk berkembang.",
+      author: "Rizky Aditya",
+      prodi: "S1 Manajemen",
+      year: "Alumni 2022",
+    },
+    {
+      text: "Fasilitas lengkap dan biaya kuliah yang terjangkau. UNITA benar-benar kampus yang ramah mahasiswa dari berbagai latar belakang.",
+      author: "Dewi Kartika",
+      prodi: "S1 Akuntansi",
+      year: "Alumni 2021",
+    },
+    {
+      text: "Program Teknik Sipil di UNITA sangat praktis. Saya langsung terserap kerja sebulan setelah wisuda berkat jaringan alumni yang solid.",
+      author: "Budi Santoso",
+      prodi: "S1 Teknik Sipil",
+      year: "Alumni 2023",
+    },
+  ],
+};

@@ -9,6 +9,7 @@ import RestoLanding from "./apps/landing-page/resto/RestoLanding";
 import SekolahLanding from "./apps/landing-page/sekolah/SekolahLanding";
 import LaundryLanding from "./apps/landing-page/loundry/LaundryLanding";
 import UmrohLanding from "./apps/landing-page/umroh/UmrohLanding";
+import UNITALanding from "./apps/landing-page/unita/UNITALanding";
 import AkademikApp from "./apps/sistem-web/akademik/AkademikApp";
 import WarungOSApp from "./apps/sistem-web/warungos/WarungOSApp";
 import ExamOSApp from "./apps/sistem-web/examos/ExamOSApp";
@@ -26,6 +27,7 @@ export default function App() {
         <Route path="/sekolah" element={<SekolahLanding />} />
         <Route path="/laundry" element={<LaundryLanding />} />
         <Route path="/umroh" element={<UmrohLanding />} />
+        <Route path="/unita" element={<UNITALanding />} />
         <Route path="/akademik/*" element={<AkademikApp />} />
         <Route path="/warungos/*" element={<WarungOSApp />} />
         <Route path="/examos/*" element={<ExamOSApp />} />
