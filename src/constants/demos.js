@@ -8,6 +8,7 @@ import sekolahImg from "../assets/Sekolah.jpg";
 import laundryImg from "../assets/Loundry.jpg";
 import umrohImg from "../assets/Umroh.jpg";
 import unitaCoverImg from "../assets/UNITACover.png";
+import aryaMotorCoverImg from "../assets/AryaMotorCover.png";
 
 export const demos = [
   {
@@ -19,12 +20,12 @@ export const demos = [
     image: starbucksCoverImg,
   },
   {
-    name: "Rental",
+    name: "UD Arya Motor",
     path: "/rental",
-    desc: "Sistem sewa mobil cepat & praktis",
-    icon: "🚗",
+    desc: "Jual Beli Motor Bekas Berkualitas di Tulungagung",
+    icon: "🏍️",
     category: "landing page",
-    image: rentalImg,
+    image: aryaMotorCoverImg,
   },
   {
     name: "Crown Victoria",

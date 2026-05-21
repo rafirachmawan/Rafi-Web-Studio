@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { rental } from "../../../data/rental";
 import {
   MapPin,
   Calendar,
@@ -14,11 +15,9 @@ import {
   Menu,
   X,
   ChevronRight,
-  Car
+  Car,
+  Settings
 } from "lucide-react";
-
-import mobilImg from "./assets/RentalMobil2.png";
-import mobil1 from "./assets/mobil1.png";
 
 const FADE_DOWN = {
   hidden: { opacity: 0, y: -20 },
@@ -43,23 +42,23 @@ export default function RentalLanding() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const phone = "628123456789";
-  const defaultMsg = encodeURIComponent("Halo, saya ingin sewa mobil. Mohon info lebih lanjut.");
+  const phone = rental.wa;
+  const defaultMsg = encodeURIComponent("Halo UD Arya Motor, saya ingin info tentang motor bekas.");
 
   return (
-    <div className="bg-[#030712] text-slate-200 min-h-screen font-sans selection:bg-indigo-500/30 overflow-x-hidden">
+    <div className="bg-[#0f0f0f] text-zinc-200 min-h-screen font-sans selection:bg-red-500/30 overflow-x-hidden">
       
       {/* BACKGROUND EFFECTS */}
       <div className="fixed inset-0 z-0 pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-indigo-600/10 blur-[120px]" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-violet-600/10 blur-[120px]" />
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-red-600/10 blur-[120px]" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-rose-600/10 blur-[120px]" />
       </div>
 
       {/* NAVBAR */}
       <nav 
         className={`fixed top-0 w-full z-50 transition-all duration-300 ${
           isScrolled 
-            ? "bg-[#030712]/80 backdrop-blur-xl border-b border-white/5 py-4" 
+            ? "bg-[#0f0f0f]/90 backdrop-blur-xl border-b border-white/5 py-4" 
             : "bg-transparent py-6"
         }`}
       >
@@ -69,34 +68,33 @@ export default function RentalLanding() {
             animate={{ opacity: 1, x: 0 }}
             className="flex items-center gap-2"
           >
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center shadow-lg shadow-indigo-500/20">
-              <Car className="text-white w-6 h-6" />
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-red-500 to-rose-600 flex items-center justify-center shadow-lg shadow-red-500/20">
+              <Settings className="text-black w-6 h-6" />
             </div>
-            <h1 className="text-2xl font-bold tracking-tight text-white">
-              Rental<span className="text-indigo-400">Jaya</span>
+            <h1 className="text-2xl font-black tracking-tight text-white uppercase">
+              Arya<span className="text-red-500">Motor</span>
             </h1>
           </motion.div>
 
-          <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
-            <a href="#mobil" className="hover:text-white transition-colors">Armada</a>
-            <a href="#benefit" className="hover:text-white transition-colors">Keunggulan</a>
-            <a href="#testimoni" className="hover:text-white transition-colors">Testimoni</a>
-            <a href="#faq" className="hover:text-white transition-colors">FAQ</a>
+          <div className="hidden md:flex items-center gap-8 text-sm font-bold text-zinc-400">
+            <a href="#katalog" className="hover:text-red-500 transition-colors uppercase">Katalog Motor</a>
+            <a href="#layanan" className="hover:text-red-500 transition-colors uppercase">Layanan</a>
+            <a href="#testimoni" className="hover:text-red-500 transition-colors uppercase">Testimoni</a>
           </div>
 
           <motion.a
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             href={`https://wa.me/${phone}?text=${defaultMsg}`}
-            className="hidden md:flex items-center gap-2 bg-white text-slate-950 px-5 py-2.5 rounded-full font-semibold hover:bg-slate-200 transition-all hover:scale-105 active:scale-95"
+            className="hidden md:flex items-center gap-2 bg-red-500 text-black px-6 py-2.5 rounded-full font-bold hover:bg-red-400 transition-all hover:scale-105 active:scale-95 shadow-lg shadow-red-500/25"
           >
             <MessageCircle className="w-4 h-4" />
-            Booking
+            Hubungi Kami
           </motion.a>
 
           {/* MOBILE TOGGLE */}
           <button 
-            className="md:hidden text-slate-300 hover:text-white relative z-50"
+            className="md:hidden text-zinc-300 hover:text-white relative z-50"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? <X /> : <Menu />}
@@ -110,19 +108,18 @@ export default function RentalLanding() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "100vh" }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden absolute top-0 left-0 w-full bg-[#030712] z-40 flex flex-col pt-24 px-6"
+              className="md:hidden absolute top-0 left-0 w-full bg-[#0f0f0f] z-40 flex flex-col pt-24 px-6 border-b border-white/5"
             >
-              <div className="flex flex-col gap-6 text-xl font-medium">
-                <a href="#mobil" onClick={() => setMobileMenuOpen(false)} className="text-slate-300 hover:text-white border-b border-white/5 pb-4">Armada</a>
-                <a href="#benefit" onClick={() => setMobileMenuOpen(false)} className="text-slate-300 hover:text-white border-b border-white/5 pb-4">Keunggulan</a>
-                <a href="#testimoni" onClick={() => setMobileMenuOpen(false)} className="text-slate-300 hover:text-white border-b border-white/5 pb-4">Testimoni</a>
-                <a href="#faq" onClick={() => setMobileMenuOpen(false)} className="text-slate-300 hover:text-white border-b border-white/5 pb-4">FAQ</a>
+              <div className="flex flex-col gap-6 text-xl font-bold uppercase">
+                <a href="#katalog" onClick={() => setMobileMenuOpen(false)} className="text-zinc-300 hover:text-red-500 border-b border-white/5 pb-4">Katalog Motor</a>
+                <a href="#layanan" onClick={() => setMobileMenuOpen(false)} className="text-zinc-300 hover:text-red-500 border-b border-white/5 pb-4">Layanan</a>
+                <a href="#testimoni" onClick={() => setMobileMenuOpen(false)} className="text-zinc-300 hover:text-red-500 border-b border-white/5 pb-4">Testimoni</a>
                 <a
                   href={`https://wa.me/${phone}?text=${defaultMsg}`}
-                  className="flex items-center justify-center gap-2 bg-indigo-500 text-white px-5 py-4 rounded-xl font-semibold mt-4"
+                  className="flex items-center justify-center gap-2 bg-gradient-to-r from-red-500 to-rose-500 text-black px-5 py-4 rounded-xl font-black mt-4"
                 >
                   <MessageCircle className="w-5 h-5" />
-                  Booking Sekarang
+                  Hubungi Sekarang
                 </a>
               </div>
             </motion.div>
@@ -141,84 +138,85 @@ export default function RentalLanding() {
               variants={FADE_UP}
               className="relative z-10"
             >
-              <motion.div variants={FADE_DOWN} className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-sm font-medium mb-6">
+              <motion.div variants={FADE_DOWN} className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-500 text-sm font-bold mb-6">
                 <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
                 </span>
-                Tersedia untuk disewa hari ini
+                Unit Ready & Siap Pakai
               </motion.div>
 
-              <motion.h1 variants={FADE_UP} className="text-5xl md:text-7xl font-extrabold mb-6 leading-[1.1] text-white">
-                Perjalanan <br/>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-violet-400 to-fuchsia-400">
-                  Tanpa Batas
+              <motion.h1 variants={FADE_UP} className="text-5xl md:text-7xl font-black mb-6 leading-[1.1] text-white uppercase tracking-tighter">
+                {rental.tagline.split(" di ")[0]} <br/>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-rose-500">
+                  Di Tulungagung
                 </span>
               </motion.h1>
 
-              <motion.p variants={FADE_UP} className="text-lg text-slate-400 mb-10 max-w-lg leading-relaxed">
-                Nikmati kebebasan berkendara dengan koleksi mobil premium kami. Proses cepat, harga transparan, dan jaminan kualitas terbaik.
+              <motion.p variants={FADE_UP} className="text-lg text-zinc-400 mb-10 max-w-lg leading-relaxed font-medium">
+                {rental.vision}
               </motion.p>
 
               <motion.div variants={FADE_UP} className="flex flex-wrap gap-4">
                 <a
-                  href="#mobil"
-                  className="bg-white text-slate-950 px-8 py-4 rounded-xl font-bold hover:bg-slate-200 transition-all hover:scale-105 active:scale-95 flex items-center gap-2"
+                  href="#katalog"
+                  className="bg-red-500 text-black px-8 py-4 rounded-xl font-black hover:bg-red-400 transition-all hover:scale-105 active:scale-95 flex items-center gap-2 shadow-lg shadow-red-500/20"
                 >
-                  Jelajahi Armada
+                  Lihat Katalog Motor
                   <ChevronRight className="w-5 h-5" />
                 </a>
                 <a
                   href={`https://wa.me/${phone}`}
-                  className="group bg-white/5 border border-white/10 backdrop-blur-md text-white px-8 py-4 rounded-xl font-bold hover:bg-white/10 transition-all flex items-center gap-2"
+                  className="group bg-zinc-900/50 border border-white/10 backdrop-blur-md text-white px-8 py-4 rounded-xl font-bold hover:bg-zinc-800 transition-all flex items-center gap-2"
                 >
-                  Tanya Admin
+                  Tanya Harga Cash/Kredit
                 </a>
               </motion.div>
 
-              <motion.div variants={FADE_UP} className="mt-12 flex items-center gap-8 text-sm text-slate-400">
+              <motion.div variants={FADE_UP} className="mt-12 flex items-center gap-8 text-sm text-zinc-400 font-medium">
                 <div className="flex -space-x-3">
-                  {[1, 2, 3, 4].map((i) => (
-                    <img key={i} src={`https://randomuser.me/api/portraits/women/${40+i}.jpg`} className="w-10 h-10 rounded-full border-2 border-[#030712]" alt="User" />
+                  {[1, 2, 3].map((i) => (
+                    <img key={i} src={`https://randomuser.me/api/portraits/men/${30+i}.jpg`} className="w-10 h-10 rounded-full border-2 border-[#0f0f0f]" alt="User" />
                   ))}
-                  <div className="w-10 h-10 rounded-full border-2 border-[#030712] bg-indigo-500 flex items-center justify-center text-white font-bold text-xs z-10">
-                    +2k
+                  <div className="w-10 h-10 rounded-full border-2 border-[#0f0f0f] bg-zinc-800 flex items-center justify-center text-red-500 font-bold text-xs z-10">
+                    5k+
                   </div>
                 </div>
                 <div>
-                  <div className="flex text-yellow-400 mb-1">
+                  <div className="flex text-red-500 mb-1">
                     {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 fill-current" />)}
                   </div>
-                  <p>Dipercaya oleh 2,000+ pelanggan</p>
+                  <p>Dipercaya oleh 5.000+ pelanggan</p>
                 </div>
               </motion.div>
             </motion.div>
 
             <motion.div 
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, ease: "easeOut" }}
               className="relative lg:h-[600px] flex items-center justify-center"
             >
-              <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/20 to-fuchsia-500/20 rounded-full blur-[100px]" />
+              <div className="absolute inset-0 bg-gradient-to-tr from-red-500/20 to-rose-500/20 rounded-full blur-[100px]" />
               <img
-                src={mobilImg}
-                alt="Luxury Car"
-                className="relative z-10 w-full max-w-[600px] object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-700"
+                src="https://images.unsplash.com/photo-1568772585407-9361fa11484c?auto=format&fit=crop&q=80&w=800"
+                alt="Motor Sport Bekas"
+                className="relative z-10 w-full max-w-[600px] object-cover rounded-3xl drop-shadow-2xl hover:scale-[1.02] transition-transform duration-700 border border-white/5"
+                onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1558981420-c532902e58b4?auto=format&fit=crop&q=80&w=800'; }}
               />
               
               {/* Floating badges */}
               <motion.div 
                 animate={{ y: [-10, 10, -10] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-1/4 right-0 md:-right-10 bg-[#0f172a]/80 backdrop-blur-xl border border-white/10 p-4 rounded-2xl flex items-center gap-4 z-20 shadow-2xl hidden md:flex"
+                className="absolute top-1/4 right-0 md:-right-10 bg-[#18181b]/90 backdrop-blur-xl border border-white/10 p-4 rounded-2xl flex items-center gap-4 z-20 shadow-2xl"
               >
-                <div className="w-12 h-12 bg-emerald-500/20 rounded-full flex items-center justify-center text-emerald-400">
+                <div className="w-12 h-12 bg-red-500/20 rounded-xl flex items-center justify-center text-red-500">
                   <ShieldCheck className="w-6 h-6" />
                 </div>
                 <div>
-                  <p className="text-white font-bold">Asuransi Penuh</p>
-                  <p className="text-xs text-slate-400">Perjalanan aman</p>
+                  <p className="text-white font-bold">Garansi Mesin</p>
+                  <p className="text-xs text-zinc-400">1 Bulan Penuh</p>
                 </div>
               </motion.div>
 
@@ -226,165 +224,171 @@ export default function RentalLanding() {
           </div>
         </section>
 
-        {/* QUICK SEARCH WIDGET */}
+        {/* STATS WIDGET */}
         <section className="px-6 relative z-20 -mt-10 mb-20">
           <motion.div 
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="max-w-5xl mx-auto bg-[#0f172a]/80 backdrop-blur-2xl border border-white/10 rounded-3xl p-2 shadow-2xl shadow-black/50"
+            className="max-w-5xl mx-auto bg-[#18181b]/90 backdrop-blur-2xl border border-white/10 rounded-3xl p-8 shadow-2xl shadow-black/50"
           >
-            <div className="flex flex-col md:flex-row gap-2">
-              <div className="flex-1 bg-white/5 rounded-2xl p-4 flex items-center gap-3 border border-transparent hover:border-white/10 transition-colors">
-                <MapPin className="text-indigo-400 w-5 h-5" />
-                <div className="flex-1">
-                  <p className="text-xs text-slate-400 mb-1">Lokasi Jemput</p>
-                  <input type="text" placeholder="Masukkan lokasi" className="bg-transparent w-full text-white outline-none placeholder:text-slate-500 font-medium" />
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-white/5 text-center">
+              {rental.stats.map((s, i) => (
+                <div key={i} className="px-4">
+                  <h3 className="text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-rose-500 mb-2">{s.value}</h3>
+                  <p className="text-sm font-bold text-zinc-400 uppercase tracking-wide">{s.label}</p>
                 </div>
-              </div>
-              <div className="w-px bg-white/10 hidden md:block my-4" />
-              <div className="flex-1 bg-white/5 rounded-2xl p-4 flex items-center gap-3 border border-transparent hover:border-white/10 transition-colors">
-                <Calendar className="text-indigo-400 w-5 h-5" />
-                <div className="flex-1">
-                  <p className="text-xs text-slate-400 mb-1">Tanggal Mulai</p>
-                  <input type="date" className="bg-transparent w-full text-white outline-none font-medium [color-scheme:dark]" />
-                </div>
-              </div>
-              <div className="w-px bg-white/10 hidden md:block my-4" />
-              <div className="flex-1 bg-white/5 rounded-2xl p-4 flex items-center gap-3 border border-transparent hover:border-white/10 transition-colors">
-                <Calendar className="text-indigo-400 w-5 h-5" />
-                <div className="flex-1">
-                  <p className="text-xs text-slate-400 mb-1">Tanggal Kembali</p>
-                  <input type="date" className="bg-transparent w-full text-white outline-none font-medium [color-scheme:dark]" />
-                </div>
-              </div>
-              
-              <button className="bg-indigo-500 hover:bg-indigo-600 text-white rounded-2xl px-8 py-4 flex items-center justify-center gap-2 font-bold transition-all hover:scale-[1.02] active:scale-95 shadow-lg shadow-indigo-500/25">
-                <Search className="w-5 h-5" />
-                <span>Cari</span>
-              </button>
+              ))}
             </div>
           </motion.div>
         </section>
 
-        {/* BENTO BENEFITS */}
-        <section id="benefit" className="py-24 px-6 relative">
+        {/* BENTO BENEFITS (LAYANAN) */}
+        <section id="layanan" className="py-24 px-6 relative">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-5xl font-bold mb-4">Mengapa Memilih <span className="text-indigo-400">Kami</span>?</h2>
-              <p className="text-slate-400 max-w-2xl mx-auto text-lg">Kombinasi sempurna antara kenyamanan, keamanan, dan gaya untuk perjalanan Anda.</p>
+              <h2 className="text-3xl md:text-5xl font-black mb-4 uppercase tracking-tight">Kenapa Harus di <span className="text-red-500">{rental.shortName}</span>?</h2>
+              <p className="text-zinc-400 max-w-2xl mx-auto text-lg font-medium">Kami menjamin kualitas setiap unit motor yang dijual dengan pengecekan ketat.</p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <motion.div 
-                whileHover={{ y: -5 }}
-                className="md:col-span-2 bg-gradient-to-br from-[#0f172a] to-[#0a0f1a] border border-white/5 rounded-3xl p-8 relative overflow-hidden group"
-              >
-                <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/10 rounded-full blur-[80px] group-hover:bg-indigo-500/20 transition-colors duration-500" />
-                <Zap className="w-12 h-12 text-indigo-400 mb-6" />
-                <h3 className="text-2xl font-bold text-white mb-3">Proses Booking Kilat</h3>
-                <p className="text-slate-400 max-w-md text-lg">Hanya butuh 3 menit dari memilih mobil hingga konfirmasi. Tanpa dokumen rumit, langsung jalan.</p>
-              </motion.div>
-
-              <motion.div 
-                whileHover={{ y: -5 }}
-                className="bg-gradient-to-br from-[#0f172a] to-[#0a0f1a] border border-white/5 rounded-3xl p-8 relative overflow-hidden group"
-              >
-                <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-fuchsia-500/10 rounded-full blur-[50px] group-hover:bg-fuchsia-500/20 transition-colors duration-500" />
-                <ShieldCheck className="w-12 h-12 text-fuchsia-400 mb-6" />
-                <h3 className="text-xl font-bold text-white mb-3">Kondisi Prima</h3>
-                <p className="text-slate-400">Setiap armada melalui 50+ titik inspeksi sebelum diserahkan ke Anda.</p>
-              </motion.div>
-
-              <motion.div 
-                whileHover={{ y: -5 }}
-                className="bg-gradient-to-br from-[#0f172a] to-[#0a0f1a] border border-white/5 rounded-3xl p-8 relative overflow-hidden group"
-              >
-                <div className="absolute -top-10 -left-10 w-40 h-40 bg-emerald-500/10 rounded-full blur-[50px] group-hover:bg-emerald-500/20 transition-colors duration-500" />
-                <Clock className="w-12 h-12 text-emerald-400 mb-6" />
-                <h3 className="text-xl font-bold text-white mb-3">Layanan 24/7</h3>
-                <p className="text-slate-400">Tim kami siap membantu Anda kapanpun, dimanapun.</p>
-              </motion.div>
-
-              <motion.div 
-                whileHover={{ y: -5 }}
-                className="md:col-span-2 bg-[#0f172a] border border-white/5 rounded-3xl p-0 relative overflow-hidden group flex flex-col md:flex-row items-center"
-              >
-                <div className="p-8 flex-1 z-10">
-                  <h3 className="text-2xl font-bold text-white mb-3">Transparan Tanpa Biaya Tersembunyi</h3>
-                  <p className="text-slate-400 text-lg mb-6">Harga yang Anda lihat adalah harga yang Anda bayar. Termasuk asuransi dasar dan pajak.</p>
-                  <ul className="space-y-3">
-                    {["Gratis antar-jemput bandara", "Batal gratis H-1", "Harga final"].map((item, i) => (
-                      <li key={i} className="flex items-center gap-3 text-slate-300">
-                        <CheckCircle2 className="w-5 h-5 text-indigo-400" />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="w-full md:w-1/2 h-full min-h-[250px] relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-l from-transparent to-[#0f172a] z-10" />
-                  <img src={mobil1} alt="Car Detail" className="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-luminosity group-hover:mix-blend-normal transition-all duration-700" />
-                </div>
-              </motion.div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {rental.services.map((srv, i) => (
+                <motion.div 
+                  key={i}
+                  whileHover={{ y: -5 }}
+                  className="bg-zinc-900 border border-white/5 rounded-3xl p-8 relative overflow-hidden group hover:border-red-500/50 transition-colors"
+                >
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-red-500/5 rounded-full blur-[40px] group-hover:bg-red-500/10 transition-colors duration-500" />
+                  <div className="text-4xl mb-6 bg-zinc-800 w-16 h-16 flex items-center justify-center rounded-2xl group-hover:scale-110 transition-transform">{srv.icon}</div>
+                  <h3 className="text-xl font-bold text-white mb-3">{srv.title}</h3>
+                  <p className="text-zinc-400 font-medium">{srv.desc}</p>
+                </motion.div>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* FLEET SECTION */}
-        <RentalSection />
+        {/* KATALOG SECTION */}
+        <section id="katalog" className="py-24 px-6 relative z-10 bg-zinc-900/30 border-y border-white/5">
+          <div className="max-w-7xl mx-auto">
+            <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-8">
+              <div>
+                <h2 className="text-3xl md:text-5xl font-black mb-4 uppercase tracking-tight">Katalog <span className="text-red-500">Motor Ready</span></h2>
+                <p className="text-zinc-400 text-lg font-medium">Temukan motor impian Anda. Kondisi istimewa, harga bersahabat.</p>
+              </div>
+            </div>
+
+            <motion.div layout className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <AnimatePresence mode="popLayout">
+                {rental.inventory.map((motor) => {
+                  const wa = `https://wa.me/${phone}?text=${encodeURIComponent(`Halo ${rental.shortName}, saya tertarik dengan motor ${motor.name} tahun ${motor.year}. Apakah masih ready?`)}`;
+
+                  return (
+                    <motion.div
+                      layout
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.4 }}
+                      key={motor.id}
+                      className="group bg-zinc-900 border border-white/5 hover:border-red-500/50 rounded-3xl overflow-hidden transition-all duration-500 flex flex-col"
+                    >
+                      <div className="relative h-64 overflow-hidden bg-black">
+                        <img
+                          src={motor.image}
+                          alt={motor.name}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-90 group-hover:opacity-100"
+                          onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1558981420-c532902e58b4?auto=format&fit=crop&q=80&w=800'; }}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-transparent to-transparent opacity-90" />
+                        <div className="absolute top-4 left-4 bg-red-500 text-black text-xs px-3 py-1.5 rounded-full font-black uppercase tracking-wider flex items-center gap-1.5">
+                          Tahun {motor.year}
+                        </div>
+                      </div>
+
+                      <div className="p-6 flex-1 flex flex-col">
+                        <div className="mb-4">
+                          <h3 className="text-2xl font-black text-white mb-2 group-hover:text-red-500 transition-colors">{motor.name}</h3>
+                          <div className="flex items-baseline gap-2 mt-1">
+                            <span className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-red-600">{motor.price}</span>
+                          </div>
+                          <p className="text-emerald-400 text-sm font-bold mt-1">DP {motor.dp}</p>
+                        </div>
+
+                        <div className="flex flex-wrap gap-2 mb-8 mt-2">
+                          {motor.specs.map((spec, i) => (
+                            <span key={i} className="bg-zinc-800 text-zinc-300 text-xs px-2.5 py-1 rounded-md font-medium border border-white/5">
+                              {spec}
+                            </span>
+                          ))}
+                        </div>
+
+                        <a
+                          href={wa}
+                          className="mt-auto block w-full text-center bg-zinc-800 hover:bg-red-500 text-white hover:text-black border border-white/5 hover:border-transparent py-3.5 rounded-xl font-bold transition-all duration-300"
+                        >
+                          Tanya Unit Ini
+                        </a>
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </AnimatePresence>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* GALLERY */}
+        <section className="py-24 px-6 relative">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-5xl font-black mb-4 uppercase tracking-tight">Galeri <span className="text-red-500">Showroom</span></h2>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+              {rental.gallery.map((img, i) => (
+                <motion.div 
+                  key={i}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="rounded-2xl overflow-hidden aspect-video border border-white/5 bg-zinc-900"
+                >
+                  <img src={img} className="w-full h-full object-cover hover:scale-110 transition-transform duration-700 opacity-80 hover:opacity-100" alt="Showroom" onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1558981420-c532902e58b4?auto=format&fit=crop&q=80&w=800'; }} />
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
 
         {/* TESTIMONIALS */}
-        <section id="testimoni" className="py-32 px-6 relative overflow-hidden">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-indigo-600/5 rounded-full blur-[120px] pointer-events-none" />
+        <section id="testimoni" className="py-24 px-6 relative overflow-hidden bg-zinc-900/50 border-t border-white/5">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-red-600/5 rounded-full blur-[120px] pointer-events-none" />
           
           <div className="max-w-7xl mx-auto relative z-10">
             <div className="text-center mb-20">
-              <h2 className="text-3xl md:text-5xl font-bold mb-4">Pengalaman <span className="text-indigo-400">Mereka</span></h2>
-              <p className="text-slate-400 max-w-2xl mx-auto text-lg">Ratusan pelanggan telah membuktikan kualitas layanan kami.</p>
+              <h2 className="text-3xl md:text-5xl font-black mb-4 uppercase tracking-tight">Kata <span className="text-red-500">Pelanggan</span></h2>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
-              {[
-                {
-                  name: "Andi Pratama",
-                  role: "Pengusaha",
-                  text: "Sangat impresif! Mobil dikirim tepat waktu ke bandara, kondisi sangat bersih seperti baru keluar dealer. Proses pengembalian juga sangat mudah.",
-                  img: "https://randomuser.me/api/portraits/men/32.jpg",
-                },
-                {
-                  name: "Siti Rahma",
-                  role: "Traveler",
-                  text: "Liburan keluarga di Bali jadi super nyaman. Hiace yang kami sewa sangat lega dan supir yang disediakan (Pak Budi) sangat ramah & tau tempat bagus.",
-                  img: "https://randomuser.me/api/portraits/women/44.jpg",
-                  featured: true
-                },
-                {
-                  name: "Budi Santoso",
-                  role: "Eksekutif",
-                  text: "Sering dinas luar kota dan RentalJaya selalu jadi pilihan pertama. Respon admin WA super cepat, sangat bisa diandalkan untuk urusan mendadak.",
-                  img: "https://randomuser.me/api/portraits/men/65.jpg",
-                },
-              ].map((item, i) => (
+              {rental.testimonials.map((item, i) => (
                 <motion.div
                   key={i}
                   whileHover={{ y: -10 }}
-                  className={`relative p-8 rounded-3xl border transition-all duration-300 ${
-                    item.featured
-                      ? "bg-gradient-to-b from-indigo-900/50 to-[#0f172a] border-indigo-500/30 shadow-[0_0_40px_rgba(99,102,241,0.15)]"
-                      : "bg-[#0f172a]/50 border-white/5 hover:border-white/10"
-                  }`}
+                  className="relative p-8 rounded-3xl border transition-all duration-300 bg-zinc-900 border-white/5 hover:border-red-500/30"
                 >
-                  <div className="flex gap-1 text-yellow-400 mb-6">
+                  <div className="flex gap-1 text-red-500 mb-6">
                     {[...Array(5)].map((_, i) => <Star key={i} className="w-5 h-5 fill-current" />)}
                   </div>
-                  <p className="text-slate-300 mb-8 text-lg leading-relaxed">"{item.text}"</p>
+                  <p className="text-zinc-300 mb-8 text-lg font-medium leading-relaxed">"{item.text}"</p>
                   
                   <div className="flex items-center gap-4 mt-auto">
-                    <img src={item.img} alt={item.name} className="w-12 h-12 rounded-full ring-2 ring-indigo-500/30" />
+                    <div className="w-12 h-12 rounded-full bg-zinc-800 flex items-center justify-center text-red-500 font-bold text-xl">
+                      {item.author[0]}
+                    </div>
                     <div>
-                      <h4 className="text-white font-bold">{item.name}</h4>
-                      <p className="text-sm text-slate-400">{item.role}</p>
+                      <h4 className="text-white font-bold">{item.author}</h4>
+                      <p className="text-sm text-zinc-500">{item.role} · {item.date}</p>
                     </div>
                   </div>
                 </motion.div>
@@ -393,51 +397,22 @@ export default function RentalLanding() {
           </div>
         </section>
 
-        {/* FAQ */}
-        <section id="faq" className="py-24 px-6 relative">
-          <div className="max-w-3xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-5xl font-bold mb-4">Pertanyaan <span className="text-indigo-400">Umum</span></h2>
-            </div>
-
-            <div className="space-y-4">
-              <FAQItem
-                question="Apa saja syarat untuk sewa lepas kunci?"
-                answer="Untuk WNI: E-KTP asli, SIM A/C yang masih berlaku, dan jaminan (bisa berupa motor+STNK atau deposit dana). Untuk WNA: Paspor, KITAS (jika ada), dan SIM Internasional."
-              />
-              <FAQItem
-                question="Apakah harga sewa sudah termasuk bensin dan tol?"
-                answer="Harga yang tertera adalah untuk unit mobil saja (dan supir jika memilih paket with driver). Bensin, tol, parkir, dan tiket masuk wisata menjadi tanggungan penyewa."
-              />
-              <FAQItem
-                question="Bisa antar jemput ke Bandara/Stasiun?"
-                answer="Sangat bisa! Kami menyediakan layanan antar-jemput gratis untuk area dalam kota dan bandara terdekat selama jam kerja (06:00 - 22:00)."
-              />
-              <FAQItem
-                question="Bagaimana jika terjadi kerusakan atau kecelakaan?"
-                answer="Semua unit kami dilindungi asuransi all-risk. Namun, ada biaya own-risk/klaim asuransi maksimal Rp 300.000 - Rp 500.000 per titik kerusakan."
-              />
-            </div>
-          </div>
-        </section>
-
         {/* CTA */}
         <section className="py-24 px-6">
-          <div className="max-w-5xl mx-auto relative rounded-3xl overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-violet-600" />
-            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1449965408869-eaa3f722e40d')] opacity-10 bg-cover bg-center mix-blend-overlay" />
+          <div className="max-w-5xl mx-auto relative rounded-3xl overflow-hidden border border-white/10">
+            <div className="absolute inset-0 bg-gradient-to-r from-zinc-900 to-black" />
             
             <div className="relative z-10 py-16 px-8 md:px-16 text-center md:text-left flex flex-col md:flex-row items-center justify-between gap-8">
               <div>
-                <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">Siap untuk Perjalanan Anda?</h2>
-                <p className="text-indigo-100 text-lg max-w-lg">Booking sekarang dan dapatkan diskon 10% untuk penyewaan pertama Anda via WhatsApp.</p>
+                <h2 className="text-3xl md:text-5xl font-black text-white mb-4 uppercase tracking-tight">Cari Motor Bekas?</h2>
+                <p className="text-zinc-400 text-lg max-w-lg font-medium">Datang langsung ke showroom kami atau hubungi via WhatsApp untuk cek stok terbaru.</p>
               </div>
               
               <a
                 href={`https://wa.me/${phone}`}
-                className="whitespace-nowrap bg-white text-indigo-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-slate-100 transition-all hover:scale-105 active:scale-95 shadow-xl shadow-black/20"
+                className="whitespace-nowrap bg-red-500 text-black px-8 py-4 rounded-xl font-black text-lg hover:bg-red-400 transition-all hover:scale-105 active:scale-95 shadow-xl shadow-red-500/20"
               >
-                Booking Sekarang
+                Chat WhatsApp
               </a>
             </div>
           </div>
@@ -446,264 +421,49 @@ export default function RentalLanding() {
       </main>
 
       {/* FOOTER */}
-      <footer className="bg-[#030712] border-t border-white/5 pt-20 pb-10 px-6 relative overflow-hidden">
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-64 bg-indigo-500/5 rounded-full blur-[100px] pointer-events-none" />
+      <footer className="bg-[#0f0f0f] border-t border-white/5 pt-20 pb-10 px-6 relative overflow-hidden">
         
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 relative z-10 mb-16">
           <div className="lg:col-span-2">
             <div className="flex items-center gap-2 mb-6">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center">
-                <Car className="text-white w-5 h-5" />
+              <div className="w-8 h-8 rounded-lg bg-red-500 flex items-center justify-center">
+                <Settings className="text-black w-5 h-5" />
               </div>
-              <h2 className="text-2xl font-bold text-white">Rental<span className="text-indigo-400">Jaya</span></h2>
+              <h2 className="text-2xl font-black text-white uppercase tracking-tight">Arya<span className="text-red-500">Motor</span></h2>
             </div>
-            <p className="text-slate-400 max-w-md leading-relaxed mb-8">
-              Penyedia layanan sewa mobil premium terpercaya. Kami berkomitmen memberikan pengalaman berkendara terbaik dengan armada terawat dan layanan profesional.
+            <p className="text-zinc-400 max-w-md font-medium leading-relaxed mb-8">
+              {rental.tagline}. Solusi kendaraan impian dengan harga terbaik dan terpercaya.
             </p>
-            <div className="flex gap-4">
-              {/* Social icons placeholders */}
-              {['Instagram', 'Facebook', 'Twitter'].map((social) => (
-                <a key={social} href="#" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:text-white hover:bg-indigo-500 hover:border-transparent transition-all">
-                  <span className="text-xs">{social[0]}</span>
-                </a>
-              ))}
-            </div>
           </div>
 
           <div>
-            <h3 className="text-white font-bold mb-6">Layanan</h3>
-            <ul className="space-y-4 text-slate-400">
-              <li><a href="#" className="hover:text-indigo-400 transition-colors">Sewa Lepas Kunci</a></li>
-              <li><a href="#" className="hover:text-indigo-400 transition-colors">Sewa dengan Supir</a></li>
-              <li><a href="#" className="hover:text-indigo-400 transition-colors">Antar Jemput Bandara</a></li>
-              <li><a href="#" className="hover:text-indigo-400 transition-colors">Sewa Mobil Pengantin</a></li>
+            <h3 className="text-white font-bold mb-6 uppercase">Menu</h3>
+            <ul className="space-y-4 text-zinc-400 font-medium">
+              <li><a href="#katalog" className="hover:text-red-500 transition-colors">Katalog Motor</a></li>
+              <li><a href="#layanan" className="hover:text-red-500 transition-colors">Layanan Kami</a></li>
+              <li><a href="#testimoni" className="hover:text-red-500 transition-colors">Testimoni</a></li>
             </ul>
           </div>
 
           <div>
-            <h3 className="text-white font-bold mb-6">Kontak</h3>
-            <ul className="space-y-4 text-slate-400">
+            <h3 className="text-white font-bold mb-6 uppercase">Kontak</h3>
+            <ul className="space-y-4 text-zinc-400 font-medium">
               <li className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-indigo-400 shrink-0 mt-0.5" />
-                <span>Jl. Sudirman No. 123, Jakarta Selatan, Indonesia</span>
+                <MapPin className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
+                <span>{rental.address}</span>
               </li>
               <li className="flex items-center gap-3">
-                <MessageCircle className="w-5 h-5 text-indigo-400 shrink-0" />
-                <span>+62 812-3456-789</span>
+                <MessageCircle className="w-5 h-5 text-red-500 shrink-0" />
+                <span>{rental.phone}</span>
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto border-t border-white/5 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-slate-500 relative z-10">
-          <p>© {new Date().getFullYear()} RentalJaya. All rights reserved.</p>
-          <div className="flex gap-6">
-            <a href="#" className="hover:text-white transition-colors">Kebijakan Privasi</a>
-            <a href="#" className="hover:text-white transition-colors">Syarat & Ketentuan</a>
-          </div>
+        <div className="max-w-7xl mx-auto border-t border-white/5 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-zinc-600 font-medium relative z-10">
+          <p>© {new Date().getFullYear()} {rental.name}. All rights reserved.</p>
         </div>
       </footer>
-    </div>
-  );
-}
-
-/* ========================= */
-/* 🚗 FLEET SECTION */
-/* ========================= */
-
-function RentalSection() {
-  const phone = "628123456789";
-  const [activeCategory, setActiveCategory] = useState("semua");
-
-  const categories = [
-    { id: "semua", label: "Semua Armada" },
-    { id: "city", label: "City Car" },
-    { id: "mpv", label: "MPV Keluarga" },
-    { id: "suv", label: "SUV Premium" },
-    { id: "luxury", label: "Luxury & Sport" },
-  ];
-
-  const cars = [
-    {
-      name: "Honda Brio RS",
-      price: "350.000",
-      category: "city",
-      seats: 5,
-      trans: "Automatic",
-      img: "https://images.unsplash.com/photo-1619682817481-e994891cd1f5?auto=format&fit=crop&q=80&w=800",
-    },
-    {
-      name: "Toyota Innova Zenix",
-      price: "850.000",
-      category: "mpv",
-      seats: 7,
-      trans: "Automatic",
-      img: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&q=80&w=800",
-    },
-    {
-      name: "Mitsubishi Pajero Sport",
-      price: "1.200.000",
-      category: "suv",
-      seats: 7,
-      trans: "Automatic",
-      img: "https://images.unsplash.com/photo-1506015391300-415ea27b8764?auto=format&fit=crop&q=80&w=800",
-    },
-    {
-      name: "Toyota Alphard",
-      price: "2.500.000",
-      category: "luxury",
-      seats: 6,
-      trans: "Automatic",
-      img: "https://images.unsplash.com/photo-1623910344583-b78cc73693fb?auto=format&fit=crop&q=80&w=800",
-    },
-    {
-      name: "Mercedes Benz C300",
-      price: "3.000.000",
-      category: "luxury",
-      seats: 5,
-      trans: "Automatic",
-      img: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&q=80&w=800",
-    },
-    {
-      name: "Honda HRV",
-      price: "600.000",
-      category: "suv",
-      seats: 5,
-      trans: "Automatic",
-      img: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&q=80&w=800",
-    }
-  ];
-
-  const filteredCars = activeCategory === "semua" 
-    ? cars 
-    : cars.filter((car) => car.category === activeCategory);
-
-  return (
-    <section id="mobil" className="py-24 px-6 relative z-10">
-      <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-8">
-          <div>
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">Armada <span className="text-indigo-400">Pilihan</span></h2>
-            <p className="text-slate-400 text-lg">Pilih kendaraan yang paling sesuai dengan kebutuhan perjalanan Anda.</p>
-          </div>
-
-          <div className="flex flex-wrap gap-2 p-1.5 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-md">
-            {categories.map((cat) => (
-              <button
-                key={cat.id}
-                onClick={() => setActiveCategory(cat.id)}
-                className={`relative px-5 py-2.5 rounded-xl text-sm font-medium transition-colors ${
-                  activeCategory === cat.id ? "text-white" : "text-slate-400 hover:text-white"
-                }`}
-              >
-                {activeCategory === cat.id && (
-                  <motion.div
-                    layoutId="activeCategory"
-                    className="absolute inset-0 bg-indigo-500 rounded-xl"
-                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                  />
-                )}
-                <span className="relative z-10">{cat.label}</span>
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <motion.div layout className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <AnimatePresence mode="popLayout">
-            {filteredCars.map((car) => {
-              const wa = `https://wa.me/${phone}?text=${encodeURIComponent(`Halo, saya ingin info sewa ${car.name}`)}`;
-
-              return (
-                <motion.div
-                  layout
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.3 }}
-                  key={car.name}
-                  className="group bg-[#0f172a]/60 backdrop-blur-xl border border-white/5 hover:border-indigo-500/50 rounded-3xl overflow-hidden transition-all duration-500 hover:shadow-[0_0_40px_rgba(99,102,241,0.15)] flex flex-col"
-                >
-                  <div className="relative h-60 overflow-hidden bg-slate-800">
-                    <img
-                      src={car.img}
-                      alt={car.name}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-90 group-hover:opacity-100"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a] via-transparent to-transparent opacity-80" />
-                    <div className="absolute top-4 left-4 bg-[#0f172a]/80 backdrop-blur-md border border-white/10 text-white text-xs px-3 py-1.5 rounded-full font-medium flex items-center gap-1.5">
-                      <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                      Tersedia
-                    </div>
-                  </div>
-
-                  <div className="p-6 flex-1 flex flex-col">
-                    <div className="mb-4">
-                      <h3 className="text-xl font-bold text-white mb-1 group-hover:text-indigo-400 transition-colors">{car.name}</h3>
-                      <p className="text-slate-400 text-sm">Mulai dari</p>
-                      <div className="flex items-baseline gap-1 mt-1">
-                        <span className="text-2xl font-bold text-white">Rp {car.price}</span>
-                        <span className="text-slate-500 text-sm">/hari</span>
-                      </div>
-                    </div>
-
-                    <div className="grid grid-cols-2 gap-4 mb-8">
-                      <div className="flex items-center gap-2 text-slate-300 text-sm bg-white/5 px-3 py-2 rounded-lg">
-                        <Car className="w-4 h-4 text-indigo-400" />
-                        {car.seats} Kursi
-                      </div>
-                      <div className="flex items-center gap-2 text-slate-300 text-sm bg-white/5 px-3 py-2 rounded-lg">
-                        <Zap className="w-4 h-4 text-indigo-400" />
-                        {car.trans}
-                      </div>
-                    </div>
-
-                    <a
-                      href={wa}
-                      className="mt-auto block w-full text-center bg-white/5 hover:bg-indigo-500 text-white border border-white/10 hover:border-transparent py-3.5 rounded-xl font-semibold transition-all duration-300"
-                    >
-                      Booking Unit Ini
-                    </a>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </AnimatePresence>
-        </motion.div>
-      </div>
-    </section>
-  );
-}
-
-function FAQItem({ question, answer }) {
-  const [open, setOpen] = useState(false);
-
-  return (
-    <div className="border border-white/10 rounded-2xl overflow-hidden bg-[#0f172a]/40 backdrop-blur-sm transition-colors hover:bg-[#0f172a]/80">
-      <button
-        onClick={() => setOpen(!open)}
-        className="w-full flex justify-between items-center px-6 py-5 text-left text-white font-medium focus:outline-none"
-      >
-        <span className="pr-8 text-lg">{question}</span>
-        <motion.div animate={{ rotate: open ? 180 : 0 }} className="shrink-0 text-indigo-400">
-          <ChevronDown className="w-5 h-5" />
-        </motion.div>
-      </button>
-
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            className="overflow-hidden"
-          >
-            <div className="px-6 pb-6 text-slate-400 leading-relaxed border-t border-white/5 pt-4">
-              {answer}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   );
 }
