@@ -3,6 +3,7 @@ import { useState } from "react";
 // COMPONENTS
 import Navbar from "../components/common/Navbar";
 import Footer from "../components/common/Footer";
+import FloatingWAButton from "../components/common/FloatingWAButton";
 
 import HeroSection from "../components/home/HeroSection";
 import TechMarquee from "../components/home/TechMarquee";
@@ -84,6 +85,9 @@ export default function Home() {
 
         {/* FOOTER */}
         <Footer />
+        
+        {/* FLOATING WA BUTTON */}
+        <FloatingWAButton waLink={waLink} />
       </div>
     </div>
   );

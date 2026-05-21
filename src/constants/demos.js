@@ -9,6 +9,7 @@ import laundryImg from "../assets/Loundry.jpg";
 import umrohImg from "../assets/Umroh.jpg";
 import unitaCoverImg from "../assets/UNITACover.png";
 import aryaMotorCoverImg from "../assets/AryaMotorCover.png";
+import nikoNikoCoverImg from "../assets/NikoNikoCover.png";
 
 export const demos = [
   {
@@ -41,7 +42,7 @@ export const demos = [
     desc: "Website Ramen Jepang Kediri + Custom Order",
     icon: "🍜",
     category: "landing page",
-    image: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&q=80&w=800",
+    image: nikoNikoCoverImg,
   },
   {
     name: "Universitas Tulungagung",
