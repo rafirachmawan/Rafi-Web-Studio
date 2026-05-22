@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import DemoCard from "../cards/DemoCard";
 import {
@@ -11,6 +12,13 @@ import {
 } from "lucide-react";
 
 export default function DemoSection({ filter, setFilter, filtered }) {
+  const [showAll, setShowAll] = useState(false);
+
+  // Reset showAll when filter category changes
+  useEffect(() => {
+    setShowAll(false);
+  }, [filter]);
+
   // CATEGORY CONFIG
   const categories = [
     { id: "all", label: "All Works", icon: LayoutGrid },
@@ -35,6 +43,9 @@ export default function DemoSection({ filter, setFilter, filtered }) {
         return "Koleksi karya digital terbaik kami dari berbagai industri dan platform.";
     }
   };
+
+  const initialItemsCount = 6;
+  const displayItems = showAll ? filtered : filtered.slice(0, initialItemsCount);
 
   return (
     <section id="demo" className="relative py-20 md:py-32 overflow-hidden">
@@ -135,7 +146,7 @@ export default function DemoSection({ filter, setFilter, filtered }) {
                 transition={{ duration: 0.5 }}
                 className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
               >
-                {filtered.map((demo, i) => (
+                {displayItems.map((demo, i) => (
                   <DemoCard key={demo.id || i} demo={demo} />
                 ))}
                 
@@ -151,6 +162,21 @@ export default function DemoSection({ filter, setFilter, filtered }) {
               </motion.div>
             )}
           </AnimatePresence>
+
+          {filter !== "software" && filtered.length > initialItemsCount && (
+            <div className="flex justify-center mt-12 relative z-20">
+              <button
+                onClick={() => setShowAll(!showAll)}
+                className="group/btn relative px-8 py-3.5 rounded-full overflow-hidden border border-amber-500/20 bg-amber-500/5 dark:bg-amber-500/5 hover:border-amber-500/30 text-amber-600 dark:text-amber-400 hover:text-white dark:hover:text-white text-xs font-bold transition-all duration-300 shadow-md shadow-amber-500/5 hover:shadow-lg hover:shadow-amber-500/10 active:scale-95"
+              >
+                <span className="absolute inset-0 bg-gradient-to-r from-amber-500 to-orange-500 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300 -z-10" />
+                <span className="relative z-10 flex items-center gap-2">
+                  {showAll ? "Tampilkan Lebih Sedikit" : `Lihat Semua Portofolio (${filtered.length})`}
+                  <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
+                </span>
+              </button>
+            </div>
+          )}
         </div>
 
         {/* BOTTOM CTA */}
