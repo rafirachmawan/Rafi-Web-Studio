@@ -1,17 +1,15 @@
-import coffeeImg from "../assets/Coffe.jpg";
 import starbucksCoverImg from "../assets/StarbucksCover.png";
 import hotelCoverImg from "../assets/HotelCover.png";
-import rentalImg from "../assets/Rental.jpg";
-import hotelImg from "../assets/Hotel.jpg";
-import restoImg from "../assets/Resto.jpg";
-import sekolahImg from "../assets/Sekolah.jpg";
-import laundryImg from "../assets/Loundry.jpg";
-import umrohImg from "../assets/Umroh.jpg";
 import unitaCoverImg from "../assets/UNITACover.png";
 import aryaMotorCoverImg from "../assets/AryaMotorCover.png";
 import nikoNikoCoverImg from "../assets/NikoNikoCover.png";
 import aioLaundryCoverImg from "../assets/AioLaundryCover.png";
 import umrohCoverImg from "../assets/UmrohCover.png";
+import akademikCoverImg from "../assets/AkademikCover.png";
+import warungOSCoverImg from "../assets/WarungOSCover.png";
+import examOSCoverImg from "../assets/ExamOSCover.png";
+import absenOSCoverImg from "../assets/AbsenOSCover.png";
+import posMobileCoverImg from "../assets/POSMobileCover.png";
 
 
 
@@ -78,7 +76,7 @@ export const demos = [
     desc: "Management sekolah + absensi geolocation",
     icon: "🎓",
     category: "sistem berbasis web",
-    image: sekolahImg,
+    image: akademikCoverImg,
   },
   {
     name: "WarungOS",
@@ -86,7 +84,7 @@ export const demos = [
     desc: "Sistem Kasir & Stok Toko Klontong Modern",
     icon: "🏪",
     category: "sistem berbasis web",
-    image: restoImg,
+    image: warungOSCoverImg,
   },
   {
     name: "ExamOS",
@@ -94,7 +92,7 @@ export const demos = [
     desc: "Platform Ujian Online & Bank Soal Modern",
     icon: "📝",
     category: "sistem berbasis web",
-    image: sekolahImg,
+    image: examOSCoverImg,
   },
   {
     name: "AbsenOS",
@@ -102,7 +100,7 @@ export const demos = [
     desc: "Mobile Attendance with Biometric & Geolocation",
     icon: "📱",
     category: "mobile app",
-    image: laundryImg,
+    image: absenOSCoverImg,
   },
   {
     name: "POS Mobile",
@@ -110,6 +108,6 @@ export const demos = [
     desc: "Mobile cashier app for UMKM business.",
     icon: "💰",
     category: "mobile app",
-    image: coffeeImg,
+    image: posMobileCoverImg,
   },
 ];
