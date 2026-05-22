@@ -1,10 +1,19 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useMotionValue, useSpring, useMotionTemplate } from "framer-motion";
 import heroVideo from "../../assets/Video.mp4";
 import { Star, CheckCircle, Zap, Sparkles } from "lucide-react";
 
 export default function HeroSection() {
   const containerRef = useRef(null);
+  const [videoSrc, setVideoSrc] = useState(null);
+
+  useEffect(() => {
+    // Delay loading the heavy video until after mount to prevent lag
+    const timer = setTimeout(() => {
+      setVideoSrc(heroVideo);
+    }, 800);
+    return () => clearTimeout(timer);
+  }, []);
 
   // Mouse Glow Position
   const mouseX = useMotionValue(0);
@@ -164,14 +173,20 @@ export default function HeroSection() {
         >
           {/* ASPECT RATIO HOLDER */}
           <div className="aspect-[16/9] w-full rounded-2xl md:rounded-[32px] overflow-hidden">
-            <video
-              src={heroVideo}
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-full object-cover opacity-70 group-hover:opacity-85 transition-all duration-1000"
-            />
+            {videoSrc ? (
+              <video
+                src={videoSrc}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-full object-cover opacity-70 group-hover:opacity-85 transition-all duration-1000"
+              />
+            ) : (
+              <div className="w-full h-full bg-zinc-900/60 dark:bg-zinc-950/60 animate-pulse flex items-center justify-center">
+                <span className="text-zinc-500 text-xs">Loading preview...</span>
+              </div>
+            )}
           </div>
 
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/10 pointer-events-none rounded-2xl md:rounded-[32px]" />
