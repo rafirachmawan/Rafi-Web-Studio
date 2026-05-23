@@ -42,7 +42,7 @@ export default function ProcessSection() {
         <motion.div 
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: false }}
+          viewport={{ once: true }}
           className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-amber-500/20 bg-amber-500/10 text-amber-500 text-[10px] md:text-xs font-bold mb-5"
         >
           CARA KAMI BEKERJA
@@ -51,7 +51,7 @@ export default function ProcessSection() {
         <motion.h2 
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: false }}
+          viewport={{ once: true }}
           transition={{ delay: 0.1 }}
           className="text-xl sm:text-2xl md:text-3xl font-black leading-tight text-black dark:text-white"
         >
@@ -64,7 +64,7 @@ export default function ProcessSection() {
         <motion.p 
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: false }}
+          viewport={{ once: true }}
           transition={{ delay: 0.2 }}
           className="text-zinc-600 dark:text-zinc-400 mt-4 max-w-md text-sm md:text-base leading-relaxed"
         >
@@ -83,7 +83,7 @@ export default function ProcessSection() {
               key={step.id}
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: false, margin: "-100px" }}
+              viewport={{ once: true, margin: "-100px" }}
               transition={{ delay: i * 0.1 }}
               className="flex gap-6 md:gap-10 items-start group"
             >
