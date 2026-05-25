@@ -17,7 +17,7 @@ export const demos = [
   {
     name: "Starbucks",
     path: "/coffee",
-    desc: "Website Starbucks Tribute + Simulator Rewards",
+    desc: "Landing Page Informasi & Galeri Coffee Shop",
     icon: "☕",
     category: "landing page",
     image: starbucksCoverImg,
