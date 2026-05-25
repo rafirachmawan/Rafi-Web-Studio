@@ -1,111 +1,177 @@
+import { MessageCircle, Mail, ArrowRight, Code2, Smartphone, Globe } from "lucide-react";
+
+const InstagramIcon = ({ className }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+  </svg>
+);
+
 export default function Footer() {
   return (
     <div
       id="contact"
-      className="mt-32 border-t border-black/10 dark:border-white/10 pt-16 pb-10 transition-colors duration-300"
+      className="relative mt-32 border-t border-black/10 dark:border-white/10 pt-16 pb-10 transition-colors duration-300 overflow-hidden"
     >
-      <div className="max-w-6xl mx-auto px-4 md:px-6 grid md:grid-cols-3 gap-10 text-left">
-        {/* LEFT */}
-        <div className="space-y-4">
-          <h2 className="text-xl font-black text-black dark:text-white">
-            Gapai<span className="text-amber-500">Digital</span>
-          </h2>
+      {/* SUBTLE GLOW BACKGROUND */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-amber-500/5 dark:bg-amber-500/5 blur-[100px] rounded-full pointer-events-none" />
 
-          <p className="text-zinc-600 dark:text-zinc-400 text-xs md:text-[13px] leading-relaxed max-w-sm font-semibold">
-            Partner digitalisasi tepercaya untuk pembuatan landing page premium, pengembangan aplikasi mobile (Android & iOS), serta pembangunan sistem web kustom guna mengotomatisasi operasional dan meningkatkan pertumbuhan skala bisnis Anda.
+      <div className="max-w-7xl mx-auto px-4 md:px-6 relative z-10">
+        
+        {/* MINI CTA */}
+        <div className="mb-16 flex flex-col md:flex-row items-center justify-between gap-6 p-8 rounded-3xl bg-zinc-100 dark:bg-zinc-900 border border-black/5 dark:border-white/5">
+          <div>
+            <h3 className="text-xl md:text-2xl font-bold text-zinc-900 dark:text-white mb-2">
+              Siap Mendigitalisasi Bisnis Anda?
+            </h3>
+            <p className="text-zinc-600 dark:text-zinc-400 text-sm md:text-base">
+              Mari berdiskusi tentang bagaimana kami bisa membantu skala bisnis Anda berkembang.
+            </p>
+          </div>
+          <a
+            href="https://wa.me/6285707185783"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white rounded-full font-bold transition-all duration-300 hover:shadow-lg hover:shadow-amber-500/25 group whitespace-nowrap"
+          >
+            Konsultasi Gratis
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          </a>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 text-left">
+          {/* BRAND (LEFT) */}
+          <div className="space-y-4 lg:col-span-1">
+            <h2 className="text-2xl font-black text-black dark:text-white">
+              Gapai<span className="text-amber-500">Digital</span>
+            </h2>
+
+            <p className="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed font-medium">
+              Partner digitalisasi tepercaya untuk pembuatan landing page premium, pengembangan aplikasi mobile, serta sistem web kustom guna mengotomatisasi operasional Anda.
+            </p>
+          </div>
+
+          {/* LAYANAN KAMI */}
+          <div>
+            <h3 className="text-zinc-900 dark:text-white font-bold text-sm mb-5 uppercase tracking-wider">
+              Layanan Kami
+            </h3>
+
+            <ul className="space-y-3 text-zinc-600 dark:text-zinc-400 text-sm font-medium">
+              <li>
+                <a href="#harga" className="group flex items-center gap-2 hover:text-amber-500 transition-colors duration-300">
+                  <Globe className="w-4 h-4" />
+                  <span className="group-hover:translate-x-1 transition-transform duration-300">Landing Page Premium</span>
+                </a>
+              </li>
+              <li>
+                <a href="#harga" className="group flex items-center gap-2 hover:text-amber-500 transition-colors duration-300">
+                  <Smartphone className="w-4 h-4" />
+                  <span className="group-hover:translate-x-1 transition-transform duration-300">Aplikasi Mobile (iOS/Android)</span>
+                </a>
+              </li>
+              <li>
+                <a href="#harga" className="group flex items-center gap-2 hover:text-amber-500 transition-colors duration-300">
+                  <Code2 className="w-4 h-4" />
+                  <span className="group-hover:translate-x-1 transition-transform duration-300">Sistem Web Kustom</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* MENU UTAMA */}
+          <div>
+            <h3 className="text-zinc-900 dark:text-white font-bold text-sm mb-5 uppercase tracking-wider">
+              Menu Utama
+            </h3>
+
+            <ul className="space-y-3 text-zinc-600 dark:text-zinc-400 text-sm font-medium">
+              <li>
+                <a href="#home" className="group inline-flex items-center hover:text-amber-500 transition-colors duration-300">
+                  <span className="group-hover:translate-x-1 transition-transform duration-300">Home</span>
+                </a>
+              </li>
+              <li>
+                <a href="#demo" className="group inline-flex items-center hover:text-amber-500 transition-colors duration-300">
+                  <span className="group-hover:translate-x-1 transition-transform duration-300">Portofolio Demo</span>
+                </a>
+              </li>
+              <li>
+                <a href="#proses" className="group inline-flex items-center hover:text-amber-500 transition-colors duration-300">
+                  <span className="group-hover:translate-x-1 transition-transform duration-300">Alur Kerja</span>
+                </a>
+              </li>
+              <li>
+                <a href="#harga" className="group inline-flex items-center hover:text-amber-500 transition-colors duration-300">
+                  <span className="group-hover:translate-x-1 transition-transform duration-300">Paket Investasi</span>
+                </a>
+              </li>
+              <li>
+                <a href="#testimoni" className="group inline-flex items-center hover:text-amber-500 transition-colors duration-300">
+                  <span className="group-hover:translate-x-1 transition-transform duration-300">Kisah Sukses Klien</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* HUBUNGI KAMI */}
+          <div>
+            <h3 className="text-zinc-900 dark:text-white font-bold text-sm mb-5 uppercase tracking-wider">
+              Hubungi Kami
+            </h3>
+
+            <ul className="space-y-4 text-zinc-600 dark:text-zinc-400 text-sm font-medium">
+              <li>
+                <a
+                  href="https://wa.me/6285707185783"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-3 hover:text-amber-500 transition-colors duration-300"
+                >
+                  <div className="p-2 bg-zinc-100 dark:bg-zinc-800 rounded-full group-hover:bg-amber-500/10 group-hover:text-amber-500 transition-colors">
+                    <MessageCircle className="w-4 h-4" />
+                  </div>
+                  <span className="group-hover:translate-x-1 transition-transform duration-300">WhatsApp Resmi</span>
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="https://instagram.com/gapaidigital"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-3 hover:text-amber-500 transition-colors duration-300"
+                >
+                  <div className="p-2 bg-zinc-100 dark:bg-zinc-800 rounded-full group-hover:bg-amber-500/10 group-hover:text-amber-500 transition-colors">
+                    <InstagramIcon className="w-4 h-4" />
+                  </div>
+                  <span className="group-hover:translate-x-1 transition-transform duration-300">Instagram</span>
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="mailto:gapaidigital@gmail.com"
+                  className="group flex items-center gap-3 hover:text-amber-500 transition-colors duration-300"
+                >
+                  <div className="p-2 bg-zinc-100 dark:bg-zinc-800 rounded-full group-hover:bg-amber-500/10 group-hover:text-amber-500 transition-colors">
+                    <Mail className="w-4 h-4" />
+                  </div>
+                  <span className="group-hover:translate-x-1 transition-transform duration-300">gapaidigital@gmail.com</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* LINE & COPYRIGHT */}
+        <div className="mt-16 pt-8 border-t border-black/10 dark:border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-zinc-500 dark:text-zinc-500 text-xs font-medium">
+          <p>© {new Date().getFullYear()} GapaiDigital. All rights reserved.</p>
+          <p className="flex items-center gap-1.5">
+            Solusi Website & Aplikasi Profesional untuk Bisnis Modern 🚀
           </p>
         </div>
-
-        {/* MENU */}
-        <div>
-          <h3 className="text-zinc-900 dark:text-white font-extrabold text-xs md:text-sm mb-4 uppercase tracking-wider">
-            Menu Utama
-          </h3>
-
-          <ul className="space-y-2.5 text-zinc-600 dark:text-zinc-400 text-xs md:text-[13px] font-semibold">
-            <li>
-              <a href="#home" className="hover:text-amber-400 transition-colors duration-300">
-                Home
-              </a>
-            </li>
-
-            <li>
-              <a href="#demo" className="hover:text-amber-400 transition-colors duration-300">
-                Portofolio Demo
-              </a>
-            </li>
-
-            <li>
-              <a href="#proses" className="hover:text-amber-400 transition-colors duration-300">
-                Alur Kerja
-              </a>
-            </li>
-
-            <li>
-              <a href="#harga" className="hover:text-amber-400 transition-colors duration-300">
-                Paket Investasi
-              </a>
-            </li>
-
-            <li>
-              <a href="#testimoni" className="hover:text-amber-400 transition-colors duration-300">
-                Kisah Sukses Klien
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        {/* CONTACT */}
-        <div>
-          <h3 className="text-zinc-900 dark:text-white font-extrabold text-xs md:text-sm mb-4 uppercase tracking-wider">
-            Hubungi Kami
-          </h3>
-
-          <ul className="space-y-3 text-zinc-600 dark:text-zinc-400 text-xs md:text-[13px] font-semibold">
-            <li className="flex items-center gap-2">
-              <span className="text-amber-400 text-base">💬</span>
-              <a
-                href="https://wa.me/6285707185783"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-amber-400 transition-colors duration-300"
-              >
-                WhatsApp Resmi
-              </a>
-            </li>
-
-            <li className="flex items-center gap-2">
-              <span className="text-amber-400 text-base">📷</span>
-              <a
-                href="https://instagram.com/gapaidigital"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-amber-400 transition-colors duration-300"
-              >
-                Instagram
-              </a>
-            </li>
-
-            <li className="flex items-center gap-2">
-              <span className="text-amber-400 text-base">✉️</span>
-              <a
-                href="mailto:gapaidigital@gmail.com"
-                className="hover:text-amber-400 transition-colors duration-300"
-              >
-                gapaidigital@gmail.com
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      {/* LINE */}
-      <div className="max-w-6xl mx-auto px-4 md:px-6 mt-12 pt-6 border-t border-black/10 dark:border-white/10 flex flex-col md:flex-row justify-between items-center text-zinc-500 dark:text-zinc-500 text-[11px] md:text-xs font-semibold">
-        <p>© 2026 GapaiDigital. All rights reserved.</p>
-
-        <p className="mt-2 md:mt-0 flex items-center gap-1.5">
-          Solusi Website & Aplikasi Profesional untuk Bisnis Modern 🚀
-        </p>
       </div>
     </div>
   );

@@ -36,81 +36,88 @@ export default function ProcessSection() {
   ];
 
   return (
-    <div id="proses" className="mt-32 mb-24 grid lg:grid-cols-2 gap-16 lg:gap-10 items-start max-w-6xl mx-auto px-4">
-      {/* LEFT */}
-      <div className="lg:sticky lg:top-32 h-fit">
-        <motion.div 
-          initial={{ opacity: 0, x: -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-amber-500/20 bg-amber-500/10 text-amber-500 text-[10px] md:text-xs font-bold mb-5"
-        >
-          CARA KAMI BEKERJA
-        </motion.div>
-
-        <motion.h2 
-          initial={{ opacity: 0, x: -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
-          className="text-xl sm:text-2xl md:text-3xl font-black leading-tight text-black dark:text-white"
-        >
-          Proses yang <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-500">
-            Transparan & Cepat.
-          </span>
-        </motion.h2>
-
-        <motion.p 
-          initial={{ opacity: 0, x: -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
-          className="text-zinc-600 dark:text-zinc-400 mt-4 max-w-md text-sm md:text-base leading-relaxed"
-        >
-          Kami memecah proyek kompleks menjadi langkah-langkah sederhana agar Anda selalu memegang kendali atas apa yang sedang kami kerjakan.
-        </motion.p>
-      </div>
-
-      {/* RIGHT */}
-      <div className="relative">
-        {/* Continuous Line Background */}
-        <div className="absolute left-6 md:left-[2.1rem] top-8 bottom-8 w-[2px] bg-black/5 dark:bg-white/5 rounded-full" />
-
-        <div className="space-y-12 relative z-10">
-          {steps.map((step, i) => (
+    <section id="proses" className="relative py-24 bg-zinc-50 dark:bg-zinc-900/20 border-t border-black/5 dark:border-white/5">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-12 gap-16 items-start">
+          
+          {/* STICKY LEFT HEADER */}
+          <div className="lg:col-span-5 lg:sticky lg:top-32 space-y-6">
             <motion.div 
-              key={step.id}
-              initial={{ opacity: 0, x: 30 }}
+              initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ delay: i * 0.1 }}
-              className="flex gap-6 md:gap-10 items-start group"
+              viewport={{ once: true }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-amber-500/20 bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold uppercase tracking-wider"
             >
-              <div className="flex flex-col items-center relative z-20">
-                <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-white dark:bg-zinc-900 border border-black/10 dark:border-white/10 flex items-center justify-center text-amber-500 font-bold group-hover:bg-amber-500 group-hover:text-white transition-colors duration-300 shadow-xl shadow-black/5 dark:shadow-none">
-                  <step.icon className="w-5 h-5 md:w-7 md:h-7" />
-                </div>
-              </div>
-
-              <div className="pt-2 md:pt-3 pb-8 border-b border-black/5 dark:border-white/5 flex-1 group-hover:border-amber-500/30 transition-colors">
-                <div className="flex items-center gap-3 mb-2">
-                  <span className="text-amber-500 font-black text-xs md:text-sm">
-                    {step.id}
-                  </span>
-                  <h3 className="text-base md:text-lg font-bold tracking-tight text-black dark:text-white group-hover:text-amber-500 transition-colors">
-                    {step.title}
-                  </h3>
-                </div>
-
-                <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed font-medium text-xs md:text-sm">
-                  {step.desc}
-                </p>
-              </div>
+              🚀 Cara Kami Bekerja
             </motion.div>
-          ))}
+
+            <motion.h2 
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="text-3xl md:text-4xl lg:text-5xl font-black leading-[1.15] text-zinc-900 dark:text-white"
+            >
+              Proses yang <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-500">
+                Transparan & Cepat
+              </span>
+            </motion.h2>
+
+            <motion.p 
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="text-zinc-600 dark:text-zinc-400 text-sm md:text-base leading-relaxed max-w-md"
+            >
+              Kami memecah proyek kompleks menjadi langkah-langkah sederhana agar Anda selalu memegang kendali atas apa yang sedang kami kerjakan. Tanpa kebingungan teknis.
+            </motion.p>
+          </div>
+
+          {/* RIGHT SIDE TIMELINE CARDS */}
+          <div className="lg:col-span-7 relative mt-10 lg:mt-0">
+            {/* Dotted Connection Line */}
+            <div className="absolute left-7 md:left-[3.5rem] top-10 bottom-10 w-0.5 border-l-2 border-dashed border-amber-500/30 hidden md:block" />
+
+            <div className="space-y-6 md:space-y-8 relative z-10">
+              {steps.map((step, i) => (
+                <motion.div 
+                  key={step.id}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ delay: i * 0.1 }}
+                  className="group flex flex-col md:flex-row gap-4 md:gap-8 items-start bg-white dark:bg-zinc-900/60 p-6 md:p-8 rounded-3xl border border-black/5 dark:border-white/5 hover:border-amber-500/30 shadow-sm hover:shadow-xl transition-all duration-300"
+                >
+                  {/* ICON BLOCK */}
+                  <div className="flex-shrink-0 flex items-center justify-center w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-amber-500/10 text-amber-500 font-bold group-hover:bg-amber-500 group-hover:text-white transition-all duration-300">
+                    <step.icon className="w-6 h-6 md:w-8 md:h-8" />
+                  </div>
+
+                  {/* CONTENT */}
+                  <div className="flex-1">
+                    <div className="flex items-center gap-3 mb-2 md:mb-3">
+                      <span className="text-amber-500 font-black text-sm md:text-base">
+                        Tahap {step.id}
+                      </span>
+                      <div className="h-1 w-1 bg-zinc-300 dark:bg-zinc-700 rounded-full" />
+                      <h3 className="text-lg md:text-xl font-bold tracking-tight text-zinc-900 dark:text-white group-hover:text-amber-500 transition-colors">
+                        {step.title}
+                      </h3>
+                    </div>
+
+                    <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed text-sm md:text-base font-medium">
+                      {step.desc}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
         </div>
       </div>
-    </div>
+    </section>
   );
 }
