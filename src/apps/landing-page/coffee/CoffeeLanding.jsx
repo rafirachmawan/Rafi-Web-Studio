@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
-import { Menu, X, Star, MapPin, Clock3, Phone, Coffee, Gift, Sparkles, ChevronRight, Check } from "lucide-react";
+import { Menu, X, Star, MapPin, Clock3, Phone, Coffee, Gift, Sparkles, ChevronRight, Check, Leaf, Heart, Users, Award, Briefcase, ShoppingBag, Globe } from "lucide-react";
 
 // Import Starbucks-themed images
 import bgHero from "./assets/bgHero_starbucks.png";
@@ -13,6 +13,14 @@ import seasonalCupsImg from "./assets/seasonal_cups.png";
 import coffeeBeansBagImg from "./assets/coffee_beans_bag.png";
 import coffeeFarmersImg from "./assets/coffee_farmers.png";
 
+// New food & merch images
+import croissantImg from "./assets/croissant.png";
+import paniniImg from "./assets/panini.png";
+import cheesecakeImg from "./assets/cheesecake.png";
+import tumblerImg from "./assets/tumbler.png";
+import baliMugImg from "./assets/bali_mug.png";
+import frenchPressImg from "./assets/french_press.png";
+
 export default function CoffeeLanding() {
   const [open, setOpen] = useState(false);
 
@@ -24,6 +32,8 @@ export default function CoffeeLanding() {
 
   const phone = "6285707185783"; // Rafi's WhatsApp number
   const waLink = `https://wa.me/${phone}`;
+
+  const [menuTab, setMenuTab] = useState("beverages");
 
   // Interactive Menu Customizations state
   const [menuCustomizations, setMenuCustomizations] = useState({
@@ -54,36 +64,95 @@ export default function CoffeeLanding() {
 
   const rewardsList = getUnlockedRewards(starsEarned);
 
-  // Menu items config with base prices (in IDR)
-  const menuItems = [
-    {
-      id: 0,
-      name: "Double Shot Espresso",
-      desc: "Rich, full-bodied espresso with a caramel sweetness.",
-      basePrice: 35000,
-      badge: "Signature Reserve",
-      tag: "Intense & Bold",
-      image: espressoShotImg
-    },
-    {
-      id: 1,
-      name: "Caramel Macchiato",
-      desc: "Steamed milk with vanilla-flavored syrup, marked with espresso and drizzled with caramel.",
-      basePrice: 58000,
-      badge: "Best Seller",
-      tag: "Sweet & Creamy",
-      image: caramelMacchiatoImg
-    },
-    {
-      id: 2,
-      name: "Matcha Green Tea Latte",
-      desc: "Smooth Uji matcha green tea powder blended with steamed milk for a comforting classic.",
-      basePrice: 55000,
-      badge: "Classic Green",
-      tag: "Earthy & Smooth",
-      image: matchaLatteImg
-    }
-  ];
+  const menuItems = {
+    beverages: [
+      {
+        id: "b1",
+        name: "Double Shot Espresso",
+        desc: "Rich, full-bodied espresso with a caramel sweetness.",
+        basePrice: 35000,
+        badge: "Signature",
+        tag: "Intense",
+        image: espressoShotImg
+      },
+      {
+        id: "b2",
+        name: "Caramel Macchiato",
+        desc: "Steamed milk with vanilla-flavored syrup, marked with espresso and drizzled with caramel.",
+        basePrice: 58000,
+        badge: "Best Seller",
+        tag: "Sweet",
+        image: caramelMacchiatoImg
+      },
+      {
+        id: "b3",
+        name: "Matcha Green Tea Latte",
+        desc: "Smooth Uji matcha green tea powder blended with steamed milk.",
+        basePrice: 55000,
+        badge: "Classic",
+        tag: "Earthy",
+        image: matchaLatteImg
+      }
+    ],
+    food: [
+      {
+        id: "f1",
+        name: "Butter Croissant",
+        desc: "Classic buttery, flaky pastry. Perfect with your morning coffee.",
+        basePrice: 25000,
+        badge: "Core Menu",
+        tag: "Bakery",
+        image: croissantImg
+      },
+      {
+        id: "f2",
+        name: "Truffle Mushroom Panini",
+        desc: "Savory mushrooms with truffle oil, melted cheese on artisan bread.",
+        basePrice: 45000,
+        badge: "Reserve",
+        tag: "Savory",
+        image: paniniImg
+      },
+      {
+        id: "f3",
+        name: "New York Cheesecake",
+        desc: "Rich and creamy cheesecake with a graham cracker crust.",
+        basePrice: 40000,
+        badge: "Sweet",
+        tag: "Dessert",
+        image: cheesecakeImg
+      }
+    ],
+    merchandise: [
+      {
+        id: "m1",
+        name: "Siren Logo Tumbler",
+        desc: "16oz stainless steel tumbler to keep your drinks hot or cold.",
+        basePrice: 250000,
+        badge: "Classic",
+        tag: "Tumbler",
+        image: tumblerImg
+      },
+      {
+        id: "m2",
+        name: "Dewata Bali Mug",
+        desc: "Exclusive 12oz ceramic mug featuring Balinese motifs.",
+        basePrice: 180000,
+        badge: "Special Edition",
+        tag: "Mug",
+        image: baliMugImg
+      },
+      {
+        id: "m3",
+        name: "French Press Brewer",
+        desc: "Classic coffee press for the perfect home brew.",
+        basePrice: 350000,
+        badge: "Brewing Gear",
+        tag: "Equipment",
+        image: frenchPressImg
+      }
+    ]
+  };
 
   const handleCustomizationChange = (itemId, type, value) => {
     setMenuCustomizations(prev => ({
@@ -203,12 +272,11 @@ export default function CoffeeLanding() {
           </div>
 
           <div className="hidden md:flex items-center gap-10 text-sm font-bold text-zinc-300">
-            <a href="#" className="hover:text-emerald-400 transition-colors">Home</a>
-            <a href="#beans" className="hover:text-emerald-400 transition-colors">Heritage</a>
             <a href="#menu" className="hover:text-emerald-400 transition-colors">Menu</a>
+            <a href="#coffee" className="hover:text-emerald-400 transition-colors">Coffee</a>
             <a href="#rewards" className="hover:text-emerald-400 transition-colors">Rewards</a>
-            <a href="#gallery" className="hover:text-emerald-400 transition-colors">Stories</a>
-            <a href="#find" className="hover:text-emerald-400 transition-colors">Find Store</a>
+            <a href="#responsibility" className="hover:text-emerald-400 transition-colors">Responsibility</a>
+            <a href="#about" className="hover:text-emerald-400 transition-colors">About Us</a>
           </div>
 
           <a
@@ -230,12 +298,11 @@ export default function CoffeeLanding() {
 
         {open && (
           <div className="md:hidden bg-[#0B1512] border-t border-white/10 px-6 py-6 flex flex-col gap-5 text-sm font-semibold">
-            <a href="#" onClick={() => setOpen(false)} className="hover:text-emerald-400">Home</a>
-            <a href="#beans" onClick={() => setOpen(false)} className="hover:text-emerald-400">Heritage</a>
             <a href="#menu" onClick={() => setOpen(false)} className="hover:text-emerald-400">Menu</a>
+            <a href="#coffee" onClick={() => setOpen(false)} className="hover:text-emerald-400">Coffee</a>
             <a href="#rewards" onClick={() => setOpen(false)} className="hover:text-emerald-400">Rewards</a>
-            <a href="#gallery" onClick={() => setOpen(false)} className="hover:text-emerald-400">Stories</a>
-            <a href="#find" onClick={() => setOpen(false)} className="hover:text-emerald-400">Find Store</a>
+            <a href="#responsibility" onClick={() => setOpen(false)} className="hover:text-emerald-400">Responsibility</a>
+            <a href="#about" onClick={() => setOpen(false)} className="hover:text-emerald-400">About Us</a>
 
             <a
               href={waLink}
@@ -423,9 +490,9 @@ export default function CoffeeLanding() {
         </div>
       </section>
 
-      {/* ================= HERITAGE ================= */}
+      {/* ================= COFFEE EDUCATION ================= */}
       <section
-        id="beans"
+        id="coffee"
         className="
           relative
           py-36
@@ -438,191 +505,103 @@ export default function CoffeeLanding() {
           className="
             max-w-7xl
             mx-auto
-            grid
-            md:grid-cols-2
-            gap-16
-            items-center
             relative
             z-10
           "
         >
-          {/* LEFT IMAGE */}
-          <div className="relative">
-            {/* VERTICAL TEXT */}
-            <div
-              className="
-                absolute
-                -left-12
-                top-1/2
-                -translate-y-1/2
-                rotate-180
-                hidden
-                lg:block
-              "
-            >
-              <p
-                className="
-                  text-[10px]
-                  tracking-[8px]
-                  text-[#00704A]
-                  [writing-mode:vertical-rl]
-                  font-extrabold
-                "
-              >
-                100% ETHICALLY SOURCED ARABICA
-              </p>
-            </div>
+          <div className="text-center mb-20">
+            <p className="text-xs tracking-[4px] text-[#00704A] font-extrabold uppercase mb-3">
+              Informasi Kopi & Edukasi
+            </p>
+            <h2 className="text-3xl sm:text-5xl font-serif font-black text-white">
+              Seni Memanggang & Menyeduh
+            </h2>
+            <p className="text-zinc-400 text-sm mt-4 max-w-2xl mx-auto">
+              Dari biji kopi pilihan hingga ke cangkir Anda. Pelajari karakteristik unik dari setiap Roast Spectrum dan cara menyeduh kopi terbaik di rumah.
+            </p>
+          </div>
 
-            {/* IMAGE */}
-            <div className="relative group max-w-[420px] mx-auto md:max-w-none">
-              {/* IMAGE GLOW */}
-              <div
-                className="
-                  absolute
-                  inset-0
-                  bg-[#00704A]/10
-                  blur-[80px]
-                  scale-90
-                  opacity-60
-                "
-              />
-
-              {/* IMAGE WRAPPER */}
-              <div
-                className="
-                  relative
-                  overflow-hidden
-                  border
-                  border-white/10
-                  bg-zinc-900
-                  rounded-[2rem]
-                  shadow-[0_20px_80px_rgba(0,0,0,0.7)]
-                "
-              >
-                <div
-                  className="
-                    absolute
-                    inset-0
-                    bg-gradient-to-br
-                    from-black/10
-                    via-transparent
-                    to-black/50
-                    z-10
-                  "
-                />
-
-                <img
-                  src={coffe1}
-                  className="
-                    w-full
-                    h-[450px]
-                    object-cover
-                    brightness-[0.8]
-                    contrast-[1.1]
-                    group-hover:scale-105
-                    transition
-                    duration-700
-                  "
-                  alt="Starbucks Caramel Macchiato layered"
-                />
+          <div className="grid lg:grid-cols-2 gap-16 items-center mb-24">
+            {/* LEFT IMAGE */}
+            <div className="relative">
+              <div className="absolute -left-12 top-1/2 -translate-y-1/2 rotate-180 hidden lg:block">
+                <p className="text-[10px] tracking-[8px] text-[#00704A] [writing-mode:vertical-rl] font-extrabold">
+                  STARBUCKS ROAST SPECTRUM
+                </p>
               </div>
 
-              {/* FRAME */}
-              <div
-                className="
-                  absolute
-                  -bottom-6
-                  right-[-20px]
-                  w-[180px]
-                  h-[180px]
-                  border-2
-                  border-[#00704A]/30
-                  rounded-[2rem]
-                  pointer-events-none
-                "
-              />
+              <div className="relative group max-w-[420px] mx-auto lg:max-w-none">
+                <div className="absolute inset-0 bg-[#00704A]/10 blur-[80px] scale-90 opacity-60" />
+                <div className="relative overflow-hidden border border-white/10 bg-zinc-900 rounded-[2rem] shadow-2xl">
+                  <div className="absolute inset-0 bg-gradient-to-br from-black/10 via-transparent to-black/50 z-10" />
+                  <img
+                    src={coffeeBeansBagImg}
+                    className="w-full h-[450px] object-cover brightness-[0.8] contrast-[1.1] group-hover:scale-105 transition duration-700"
+                    alt="Starbucks Coffee Beans"
+                  />
+                </div>
+                <div className="absolute -bottom-6 right-[-20px] w-[180px] h-[180px] border-2 border-[#00704A]/30 rounded-[2rem] pointer-events-none" />
+              </div>
+            </div>
+
+            {/* RIGHT CONTENT */}
+            <div className="space-y-8 text-left">
+              <div>
+                <h3 className="text-2xl font-serif font-bold text-white mb-3">Jenis Kopi Pilihan</h3>
+                <p className="text-zinc-400 text-sm leading-relaxed">
+                  Kami menawarkan berbagai jenis kopi berkualitas tinggi untuk memenuhi selera Anda, mulai dari <strong>Whole Bean</strong> (biji kopi utuh) yang dipanggang dengan sempurna, kopi instan premium <strong>VIA Ready Brew</strong>, hingga koleksi eksklusif dan langka <strong>Starbucks Reserve®</strong>.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-2xl font-serif font-bold text-white mb-3">Karakteristik & Roast Spectrum</h3>
+                <p className="text-zinc-400 text-sm leading-relaxed mb-4">
+                  Setiap kopi membutuhkan profil pemanggangan yang berbeda untuk mencapai puncak aroma, keasaman, bentuk tubuh (body), dan rasanya.
+                </p>
+                <ul className="space-y-3">
+                  <li className="flex items-start gap-3 text-sm">
+                    <span className="w-2.5 h-2.5 rounded-full bg-amber-200 mt-1 shrink-0"></span>
+                    <div>
+                      <strong className="text-amber-200">Blonde Roast:</strong> <span className="text-zinc-400">Ringan, lembut, dan sedikit manis.</span>
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-3 text-sm">
+                    <span className="w-2.5 h-2.5 rounded-full bg-amber-600 mt-1 shrink-0"></span>
+                    <div>
+                      <strong className="text-amber-600">Medium Roast:</strong> <span className="text-zinc-400">Seimbang, halus, dan kaya rasa.</span>
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-3 text-sm">
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#3d2314] border border-white/20 mt-1 shrink-0"></span>
+                    <div>
+                      <strong className="text-[#D4E9E2]">Dark Roast:</strong> <span className="text-zinc-400">Kuat, tebal (full-bodied), dengan sentuhan rasa yang pekat. Highlight kami: Kopi Sumatra dengan tingkat keasaman rendah dan karakter yang earthy.</span>
+                    </div>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
 
-          {/* RIGHT CONTENT */}
-          <div className="space-y-6 text-left">
-            <p
-              className="
-                uppercase
-                tracking-[6px]
-                text-xs
-                text-[#00704A]
-                font-black
-              "
-            >
-              Coffee Mastery & Heritage
-            </p>
-
-            <h2
-              className="
-                text-4xl
-                md:text-5xl
-                font-serif
-                font-black
-                leading-tight
-                text-white
-              "
-            >
-              C.A.F.E. Practices & <br />
-              <span className="text-[#D4E9E2]">Sustained Farmers</span>
-            </h2>
-
-            <p
-              className="
-                text-zinc-400
-                leading-[1.8]
-                text-sm
-                md:text-base
-              "
-            >
-              At Starbucks, we believe in buying coffee that is grown ethically and responsibly. Our Coffee and Farmer Equity (C.A.F.E.) Practices evaluate economic, social, and environmental indicators to ensure that farms are producing high-quality coffee while supporting the wellbeing of farming communities.
-            </p>
-
-            <p
-              className="
-                text-zinc-500
-                italic
-                leading-relaxed
-                text-xs
-                border-l-2
-                border-[#00704A]
-                pl-4
-              "
-            >
-              “Our mission is simple: to roast the absolute finest Arabica beans with integrity, helping preserve agricultural forests and the livelihoods of over 400,000 farmers worldwide.”
-            </p>
-
-            <div className="pt-4">
-              <a
-                href={waLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="
-                  inline-flex
-                  items-center
-                  gap-3
-                  text-[#D4E9E2]
-                  hover:text-emerald-400
-                  uppercase
-                  tracking-[4px]
-                  text-xs
-                  font-extrabold
-                  border-b-2
-                  border-[#00704A]
-                  pb-2
-                  transition-all
-                "
-              >
-                Discover Our Impact
-                <ChevronRight size={14} />
-              </a>
+          {/* BREWING GUIDES */}
+          <div className="mt-20">
+            <h3 className="text-2xl text-center font-serif font-bold text-white mb-10">Panduan Menyeduh di Rumah</h3>
+            <div className="grid md:grid-cols-3 gap-6">
+              {[
+                { title: "Coffee Press", desc: "Metode klasik untuk menghasilkan kopi yang kental dan kaya rasa. Cocok untuk kopi Sumatra." },
+                { title: "Pour-Over", desc: "Menghasilkan secangkir kopi yang bersih dan menonjolkan aroma kompleks dari biji kopi pilihan." },
+                { title: "Iced Pour-Over", desc: "Cara terbaik untuk menikmati kopi dingin yang menyegarkan tanpa mengorbankan kualitas rasa." }
+              ].map((guide, idx) => (
+                <div key={idx} className="bg-zinc-900/50 border border-white/5 p-8 rounded-3xl hover:bg-[#00704A]/10 hover:border-[#00704A]/40 transition-all text-center">
+                  <div className="w-12 h-12 mx-auto rounded-full bg-[#00704A]/20 text-emerald-400 flex items-center justify-center mb-4">
+                    <Coffee size={24} />
+                  </div>
+                  <h4 className="text-lg font-bold text-white mb-2">{guide.title}</h4>
+                  <p className="text-xs text-zinc-400 leading-relaxed">{guide.desc}</p>
+                </div>
+              ))}
             </div>
           </div>
+
         </div>
       </section>
 
@@ -646,17 +625,46 @@ export default function CoffeeLanding() {
             </p>
           </div>
 
+          <div className="flex justify-center gap-4 mb-12">
+            {[
+              { id: "beverages", label: "Beverages", icon: <Coffee size={16} /> },
+              { id: "food", label: "Food", icon: <Heart size={16} /> },
+              { id: "merchandise", label: "Merchandise", icon: <ShoppingBag size={16} /> }
+            ].map(tab => (
+              <button
+                key={tab.id}
+                onClick={() => setMenuTab(tab.id)}
+                className={`flex items-center gap-2 px-6 py-3 rounded-full text-xs font-bold transition-all border ${
+                  menuTab === tab.id
+                    ? "bg-[#00704A] text-white border-transparent"
+                    : "bg-transparent text-zinc-400 border-white/20 hover:border-white/50 hover:text-white"
+                }`}
+              >
+                {tab.icon}
+                {tab.label}
+              </button>
+            ))}
+          </div>
+
           <div className="grid md:grid-cols-3 gap-8">
-            {menuItems.map((item) => {
-              const cust = menuCustomizations[item.id] || { size: "Grande", milk: "Whole Milk" };
-              const currentPrice = calculateItemPrice(item);
+            {menuItems[menuTab].map((item) => {
+              const cust = menuTab === "beverages" ? (menuCustomizations[item.id] || { size: "Grande", milk: "Whole Milk" }) : null;
+              
+              // Calculate price based on tab
+              let currentPrice = item.basePrice;
+              if (menuTab === "beverages" && cust) {
+                if (cust.size === "Tall") currentPrice -= 4000;
+                if (cust.size === "Venti") currentPrice += 6000;
+                if (cust.milk === "Oatmilk" || cust.milk === "Almondmilk") currentPrice += 8000;
+                if (cust.milk === "Soymilk") currentPrice += 5000;
+              }
 
               // Custom WhatsApp message link for this item
-              const checkoutMsg = `Halo Starbucks, saya ingin memesan:
-- *${item.name}*
-- Size: ${cust.size}
-- Milk Option: ${cust.milk}
-Total: Rp ${currentPrice.toLocaleString("id-ID")}`;
+              let checkoutMsg = `Halo Starbucks, saya ingin memesan:\n- *${item.name}*`;
+              if (menuTab === "beverages") {
+                checkoutMsg += `\n- Size: ${cust.size}\n- Milk Option: ${cust.milk}`;
+              }
+              checkoutMsg += `\nTotal: Rp ${currentPrice.toLocaleString("id-ID")}`;
               const waCheckoutUrl = `https://wa.me/${phone}?text=${encodeURIComponent(checkoutMsg)}`;
 
               return (
@@ -690,7 +698,7 @@ Total: Rp ${currentPrice.toLocaleString("id-ID")}`;
                       </span>
                     </div>
 
-                    {/* Drink Image */}
+                    {/* Drink/Item Image */}
                     <div
                       className="
                         h-[200px]
@@ -724,48 +732,50 @@ Total: Rp ${currentPrice.toLocaleString("id-ID")}`;
                       {item.desc}
                     </p>
 
-                    {/* INTERACTIVE SELECTORS */}
-                    <div className="space-y-4 border-t border-white/5 pt-4 mb-6">
-                      {/* Size selector */}
-                      <div>
-                        <p className="text-[10px] uppercase font-black tracking-widest text-[#D4E9E2] mb-2">Select Size:</p>
-                        <div className="grid grid-cols-3 gap-2">
-                          {["Tall", "Grande", "Venti"].map(sizeOpt => (
-                            <button
-                              key={sizeOpt}
-                              onClick={() => handleCustomizationChange(item.id, "size", sizeOpt)}
-                              className={`py-1.5 rounded-lg text-xs font-bold transition-all border ${
-                                cust.size === sizeOpt
-                                  ? "bg-[#00704A] text-white border-transparent"
-                                  : "bg-white/5 text-zinc-400 border-white/5 hover:bg-white/10"
-                              }`}
-                            >
-                              {sizeOpt}
-                            </button>
-                          ))}
+                    {/* INTERACTIVE SELECTORS (Beverages Only) */}
+                    {menuTab === "beverages" && (
+                      <div className="space-y-4 border-t border-white/5 pt-4 mb-6">
+                        {/* Size selector */}
+                        <div>
+                          <p className="text-[10px] uppercase font-black tracking-widest text-[#D4E9E2] mb-2">Select Size:</p>
+                          <div className="grid grid-cols-3 gap-2">
+                            {["Tall", "Grande", "Venti"].map(sizeOpt => (
+                              <button
+                                key={sizeOpt}
+                                onClick={() => handleCustomizationChange(item.id, "size", sizeOpt)}
+                                className={`py-1.5 rounded-lg text-xs font-bold transition-all border ${
+                                  cust.size === sizeOpt
+                                    ? "bg-[#00704A] text-white border-transparent"
+                                    : "bg-white/5 text-zinc-400 border-white/5 hover:bg-white/10"
+                                }`}
+                              >
+                                {sizeOpt}
+                              </button>
+                            ))}
+                          </div>
                         </div>
-                      </div>
 
-                      {/* Milk Selector */}
-                      <div>
-                        <p className="text-[10px] uppercase font-black tracking-widest text-[#D4E9E2] mb-2">Select Milk:</p>
-                        <div className="grid grid-cols-2 gap-2">
-                          {["Whole Milk", "Soymilk", "Oatmilk", "Almondmilk"].map(milkOpt => (
-                            <button
-                              key={milkOpt}
-                              onClick={() => handleCustomizationChange(item.id, "milk", milkOpt)}
-                              className={`py-1.5 rounded-lg text-[10px] font-bold transition-all border ${
-                                cust.milk === milkOpt
-                                  ? "bg-[#00704A] text-white border-transparent"
-                                  : "bg-white/5 text-zinc-400 border-white/5 hover:bg-white/10"
-                              }`}
-                            >
-                              {milkOpt}
-                            </button>
-                          ))}
+                        {/* Milk Selector */}
+                        <div>
+                          <p className="text-[10px] uppercase font-black tracking-widest text-[#D4E9E2] mb-2">Select Milk:</p>
+                          <div className="grid grid-cols-2 gap-2">
+                            {["Whole Milk", "Soymilk", "Oatmilk", "Almondmilk"].map(milkOpt => (
+                              <button
+                                key={milkOpt}
+                                onClick={() => handleCustomizationChange(item.id, "milk", milkOpt)}
+                                className={`py-1.5 rounded-lg text-[10px] font-bold transition-all border ${
+                                  cust.milk === milkOpt
+                                    ? "bg-[#00704A] text-white border-transparent"
+                                    : "bg-white/5 text-zinc-400 border-white/5 hover:bg-white/10"
+                                }`}
+                              >
+                                {milkOpt}
+                              </button>
+                            ))}
+                          </div>
                         </div>
                       </div>
-                    </div>
+                    )}
                   </div>
 
                   {/* WhatsApp Order Button */}
@@ -793,6 +803,7 @@ Total: Rp ${currentPrice.toLocaleString("id-ID")}`;
                       items-center
                       justify-center
                       gap-2
+                      mt-6
                     "
                   >
                     <Coffee size={14} />
@@ -805,325 +816,198 @@ Total: Rp ${currentPrice.toLocaleString("id-ID")}`;
         </div>
       </section>
 
-      {/* ================= STARBUCKS REWARDS SIMULATOR ================= */}
+      {/* ================= STARBUCKS REWARDS ================= */}
       <section
         id="rewards"
-        className="py-32 px-6 bg-[#0B1512] relative overflow-hidden"
+        className="py-32 px-6 bg-[#09100E] relative overflow-hidden"
       >
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#00704A]/5 blur-[120px] rounded-full pointer-events-none" />
 
-        <div className="max-w-4xl mx-auto relative z-10">
+        <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-500/10 border border-amber-500/20 text-amber-400 text-[10px] uppercase font-black rounded-full mb-3 tracking-widest animate-pulse">
-              ⭐ Starbucks Rewards Simulator
+              <Star size={12} fill="currentColor" /> Starbucks Rewards
             </div>
-            <h2 className="text-3xl sm:text-4xl font-serif font-black text-white">
-              Earn Free Coffee & Exclusive Merch
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-black text-white">
+              Satu Bintang untuk Setiap Tegukan
             </h2>
-            <p className="text-zinc-400 text-xs sm:text-sm mt-2">
-              Dapatkan 1 Star untuk setiap Rp 10.000 pengeluaran Anda. Geser simulator untuk melihat bonus hadiah Anda!
+            <p className="text-zinc-400 text-xs sm:text-sm mt-3 max-w-md mx-auto">
+              Bergabunglah dengan program loyalitas kami. Kelola kartu Anda, kumpulkan Bintang (Stars), dan tukarkan dengan minuman atau makanan gratis.
             </p>
           </div>
 
-          <div className="bg-[#09100E] border border-white/10 rounded-[2.5rem] p-8 md:p-12 shadow-2xl">
-            {/* Spending Slider */}
-            <div className="mb-10 text-center md:text-left">
-              <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-4">
-                <span className="text-sm font-bold text-zinc-400 uppercase tracking-widest">Estimasi Pengeluaran Bulanan:</span>
-                <span className="text-2xl font-black text-emerald-400">
-                  Rp {monthlySpend.toLocaleString("id-ID")}
-                </span>
-              </div>
-
-              <input
-                type="range"
-                min="50000"
-                max="2000000"
-                step="50000"
-                value={monthlySpend}
-                onChange={(e) => setMonthlySpend(parseInt(e.target.value))}
-                className="w-full h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-[#00704A]"
-              />
-
-              <div className="flex justify-between text-[10px] text-zinc-500 font-bold mt-2 uppercase tracking-wider">
-                <span>Rp 50.000</span>
-                <span>Rp 1.000.000</span>
-                <span>Rp 2.000.000+</span>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Card Management / Features */}
+            <div className="space-y-6">
+              {[
+                { title: "Manajemen Kartu", desc: "Daftarkan Starbucks Card Anda, cek saldo, dan kelola akun dengan mudah dalam satu tempat.", icon: <Award size={20} /> },
+                { title: "Kumpulkan Stars", desc: "Dapatkan 1 Star untuk setiap kelipatan Rp 10.000 menggunakan Starbucks Card Anda.", icon: <Star size={20} /> },
+                { title: "Perlindungan Saldo", desc: "Laporkan segera jika kartu Anda hilang. Saldo Anda aman dan dapat dipindahkan ke kartu baru.", icon: <Award size={20} /> },
+              ].map((feature, idx) => (
+                <div key={idx} className="bg-[#0B1512] border border-white/5 p-6 rounded-2xl flex items-start gap-4 hover:border-[#00704A]/30 transition-all">
+                  <div className="w-10 h-10 rounded-full bg-[#00704A]/20 flex items-center justify-center text-emerald-400 shrink-0">
+                    {feature.icon}
+                  </div>
+                  <div>
+                    <h4 className="text-white font-bold text-lg mb-1">{feature.title}</h4>
+                    <p className="text-zinc-400 text-xs leading-relaxed">{feature.desc}</p>
+                  </div>
+                </div>
+              ))}
+              
+              <div className="pt-4">
+                <a
+                  href={waLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 bg-[#00704A] hover:bg-[#00875a] text-white px-8 py-3 rounded-full text-sm font-extrabold transition-all"
+                >
+                  Daftar Sekarang
+                </a>
               </div>
             </div>
 
-            {/* Stars count */}
-            <div className="flex flex-col md:flex-row items-center justify-between gap-6 bg-[#0B1512] border border-white/5 rounded-2xl p-6 mb-10">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-amber-400 animate-spin-slow">
-                  <Star size={24} fill="currentColor" />
+            {/* Special Edition Card Visual */}
+            <div className="relative">
+              <div className="absolute inset-0 bg-amber-400/5 blur-[80px] rounded-full" />
+              <div className="bg-zinc-900 border border-white/10 rounded-[2.5rem] p-10 relative shadow-2xl overflow-hidden group">
+                <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
+                
+                <p className="text-[10px] tracking-widest uppercase text-amber-400 font-black mb-6">Starbucks Card Edisi Khusus</p>
+                <h3 className="text-2xl font-serif font-bold text-white mb-8">Koleksi Heritage Indonesia</h3>
+                
+                {/* 3D-like Card effect */}
+                <div className="relative w-full aspect-[1.58/1] rounded-2xl shadow-2xl bg-gradient-to-tr from-[#1a2e25] via-[#0B1512] to-[#00704A] p-6 flex flex-col justify-between transform transition-transform duration-500 group-hover:-translate-y-2 group-hover:rotate-1 overflow-hidden">
+                  <div 
+                    className="absolute inset-0 opacity-20 mix-blend-overlay rounded-2xl"
+                    style={{ backgroundImage: `url(${coffeeBeansBagImg})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+                  ></div>
+                  
+                  <div className="flex justify-between items-start relative z-10">
+                    <span className="text-xs font-bold tracking-widest text-white drop-shadow-md">STARBUCKS</span>
+                    <Star size={20} className="text-amber-400 fill-current drop-shadow-md" />
+                  </div>
+                  
+                  <div className="relative z-10">
+                    <div className="text-[10px] tracking-widest text-zinc-300 uppercase mb-1">Edisi Terbatas</div>
+                    <div className="text-sm font-mono text-white tracking-[0.2em] opacity-80">**** **** **** 8892</div>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="text-sm font-bold text-white uppercase tracking-wider">Estimasi Bintang Anda:</h4>
-                  <p className="text-xs text-zinc-500">Berdasarkan pembelanjaan bulanan</p>
-                </div>
+
+                <p className="text-zinc-400 text-xs leading-relaxed mt-8">
+                  Miliki Starbucks Card edisi khusus dengan desain tematik yang merayakan kekayaan budaya dan alam Indonesia. Tersedia dalam jumlah terbatas di gerai tertentu.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= RESPONSIBILITY ================= */}
+      <section id="responsibility" className="py-24 px-6 border-y border-white/5 bg-[#09100E]">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <p className="text-xs tracking-[4px] text-[#00704A] font-extrabold uppercase mb-3">
+              Tanggung Jawab Sosial & Lingkungan
+            </p>
+            <h2 className="text-3xl sm:text-4xl font-serif font-black text-white">
+              Komitmen Terhadap Bumi & Manusia
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-0 border border-white/10 rounded-[2rem] overflow-hidden bg-[#0B1512]">
+            {[
+              {
+                title: "Ethical Sourcing",
+                desc: "Kami memastikan seluruh pasokan kopi, teh, dan kakao diproses secara etis melalui C.A.F.E. Practices, mendukung langsung kesejahteraan petani kopi.",
+                icon: <Leaf className="text-amber-400 mb-6" size={32} />
+              },
+              {
+                title: "Environment",
+                desc: "Fokus pada pengurangan limbah, gerakan daur ulang, efisiensi penggunaan energi dan air, serta dukungan terhadap kampanye perubahan iklim global.",
+                icon: <Globe className="text-emerald-400 mb-6" size={32} />
+              },
+              {
+                title: "Community",
+                desc: "Mengajak karyawan (Partners) dan pelanggan untuk aktif berpartisipasi dalam aksi sosial kemasyarakatan dan mendukung komunitas lokal di seluruh Indonesia.",
+                icon: <Users className="text-amber-400 mb-6" size={32} />
+              },
+            ].map((item, i) => (
+              <div key={i} className="p-12 border-b md:border-b-0 md:border-r border-white/10 text-left hover:bg-white/5 transition-colors">
+                {item.icon}
+                <h3 className="text-2xl font-serif font-bold text-white mb-4">{item.title}</h3>
+                <p className="text-zinc-400 leading-relaxed text-sm">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ================= ABOUT US & CAREERS ================= */}
+      <section id="about" className="py-32 px-6 bg-[#0B1512] relative">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-16">
+            
+            {/* About & Certifications */}
+            <div>
+              <p className="text-xs tracking-[4px] text-[#00704A] font-extrabold uppercase mb-3">Tentang Perusahaan</p>
+              <h2 className="text-3xl sm:text-5xl font-serif font-black text-white mb-6">Misi & Nilai Kami</h2>
+              <p className="text-zinc-400 text-sm leading-relaxed mb-6">
+                Sejak hadir di Indonesia, Starbucks berkomitmen untuk menjadi lebih dari sekadar kedai kopi. Kami adalah tempat berkumpulnya komunitas. Misi kami: Menginspirasi dan memelihara semangat kemanusiaan — satu orang, satu cangkir, dan satu lingkungan pada satu waktu.
+              </p>
+              
+              <div className="bg-zinc-900 border border-white/10 p-6 rounded-2xl mb-8 relative overflow-hidden group">
+                <div className="absolute inset-0 bg-[#00704A]/5 group-hover:bg-[#00704A]/10 transition-colors" />
+                <h4 className="text-lg font-bold text-white mb-2 relative z-10">Starbucks Dewata Coffee Sanctuary</h4>
+                <p className="text-xs text-zinc-400 leading-relaxed relative z-10">
+                  Gerai konsep terbesar di Asia Tenggara yang berlokasi di Bali, menghadirkan pengalaman tak tertandingi tentang perjalanan kopi dari benih hingga cangkir (seed-to-cup).
+                </p>
               </div>
 
-              <div className="text-3xl font-black text-amber-400">
-                {starsEarned} <span className="text-sm font-bold text-zinc-400 uppercase">Stars</span>
+              <div className="flex gap-4 items-center border-t border-white/10 pt-8">
+                <div className="flex items-center gap-2 bg-emerald-500/10 text-emerald-400 px-4 py-2 rounded-full border border-emerald-500/20">
+                  <Check size={16} />
+                  <span className="text-xs font-bold uppercase tracking-wider">Sertifikasi Halal MUI</span>
+                </div>
+                <div className="flex items-center gap-2 bg-zinc-800 text-zinc-300 px-4 py-2 rounded-full border border-white/10">
+                  <Award size={16} />
+                  <span className="text-xs font-bold uppercase tracking-wider">ISO Certified</span>
+                </div>
               </div>
             </div>
 
-            {/* Reward Unlock Checklist */}
-            <div className="space-y-4">
-              <h4 className="text-xs uppercase font-black tracking-widest text-[#D4E9E2] mb-4">Daftar Hadiah Terbuka:</h4>
-              <div className="grid sm:grid-cols-2 gap-4">
-                {rewardsList.map((reward, index) => (
-                  <div
-                    key={index}
-                    className={`flex items-start gap-3 p-4 rounded-xl border transition-all duration-300 ${
-                      reward.unlocked
-                        ? "bg-[#00704A]/10 border-[#00704A] text-white"
-                        : "bg-zinc-900/50 border-white/5 text-zinc-500"
-                    }`}
-                  >
-                    <div className={`mt-0.5 w-5 h-5 rounded-full flex items-center justify-center shrink-0 ${
-                      reward.unlocked
-                        ? "bg-emerald-500 text-black"
-                        : "bg-zinc-800 text-zinc-600"
-                    }`}>
-                      {reward.unlocked ? <Check size={12} className="stroke-[3]" /> : <Gift size={10} />}
-                    </div>
+            {/* Careers */}
+            <div className="bg-[#09100E] border border-white/10 p-10 rounded-[2.5rem] shadow-2xl relative">
+              <div className="absolute top-0 right-0 w-[200px] h-[200px] bg-amber-400/5 blur-[80px] rounded-full pointer-events-none" />
+              
+              <div className="flex items-center gap-3 mb-8">
+                <Briefcase className="text-amber-400" size={24} />
+                <h3 className="text-2xl font-serif font-bold text-white">Peluang Karier</h3>
+              </div>
 
-                    <div className="text-left">
-                      <span className={`text-[10px] font-black uppercase tracking-widest ${
-                        reward.unlocked ? "text-amber-400" : "text-zinc-500"
-                      }`}>
-                        {reward.minStars} Stars Required
-                      </span>
-                      <p className="text-xs font-semibold mt-1">
-                        {reward.text}
-                      </p>
-                    </div>
+              <div className="space-y-4">
+                {[
+                  { role: "Retail Barista", desc: "Jadilah wajah Starbucks. Ciptakan pengalaman tak terlupakan bagi setiap pelanggan melalui kopi racikan Anda." },
+                  { role: "Retail Store Management", desc: "Pimpin tim, kelola operasional gerai, dan kembangkan komunitas kopi di lingkungan Anda." },
+                  { role: "Support Center", desc: "Bergabunglah di kantor pusat kami dan berikan dampak di berbagai divisi mulai dari Marketing, Supply Chain, hingga IT." }
+                ].map((job, idx) => (
+                  <div key={idx} className="p-5 border border-white/5 rounded-2xl bg-[#0B1512] hover:border-[#00704A]/40 transition-colors">
+                    <h4 className="text-sm font-bold text-white mb-2">{job.role}</h4>
+                    <p className="text-xs text-zinc-500 leading-relaxed">{job.desc}</p>
                   </div>
                 ))}
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* ================= FEATURES ================= */}
-      <section className="py-24 px-6 border-y border-white/5 bg-[#09100E]">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-0 border border-white/10 rounded-[2rem] overflow-hidden bg-[#0B1512]">
-          {[
-            {
-              title: "Ethical Sourcing",
-              desc: "Every single coffee bean is sourced ethically under C.A.F.E. practices supporting sustainable communities.",
-            },
-            {
-              title: "Coffee Masters",
-              desc: "Handcrafted beverages by highly trained baristas who know exactly how to pull the perfect espresso shot.",
-            },
-            {
-              title: "Modern Sanctuary",
-              desc: "Designed cozy tables, warm aesthetics, and comfortable spots to make you feel right at home.",
-            },
-          ].map((item, i) => (
-            <div
-              key={i}
-              className="
-                p-12
-                border-b
-                md:border-b-0
-                md:border-r
-                border-white/10
-                text-left
-              "
-            >
-              <Star className="text-amber-400 mb-6" fill="currentColor" size={20} />
-
-              <h3 className="text-2xl font-serif font-bold text-white mb-4">
-                {item.title}
-              </h3>
-
-              <p className="text-zinc-400 leading-relaxed text-sm">
-                {item.desc}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ================= GALLERY ================= */}
-      <section
-        id="gallery"
-        className="py-32 px-6"
-      >
-        <div className="max-w-7xl mx-auto">
-          <div className="flex items-center justify-between mb-16">
-            <h2 className="text-3xl sm:text-5xl font-serif font-black text-white">
-              Stories & Seasons
-            </h2>
-
-            <p className="text-xs tracking-[4px] uppercase text-[#00704A] font-extrabold">
-              Explore Our Journey
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-4 gap-6">
-            <div className="md:col-span-2 h-[500px] bg-zinc-900 border border-white/5 rounded-3xl overflow-hidden relative group">
-              <img
-                src={ecoCupImg}
-                alt="Eco Cup"
-                className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0B1512] via-transparent to-black/30 z-10" />
-              <div className="absolute bottom-6 left-6 right-6 text-left z-20">
-                <span className="text-[10px] font-black uppercase text-emerald-400 tracking-wider">Sustainable Cup</span>
-                <h4 className="text-lg font-bold text-white mt-1">Bring Your Own Cup Initiative</h4>
-              </div>
+              <a
+                href={waLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-8 block w-full text-center bg-white hover:bg-zinc-200 text-zinc-900 py-4 rounded-xl font-extrabold text-sm transition-all"
+              >
+                Lihat Lowongan via WA
+              </a>
             </div>
 
-            <div className="space-y-6">
-              <div className="h-[238px] bg-zinc-900 border border-white/5 rounded-3xl overflow-hidden relative group">
-                <img
-                  src={seasonalCupsImg}
-                  alt="Seasonal Cups"
-                  className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0B1512] via-transparent to-black/30 z-10" />
-                <div className="absolute bottom-4 left-4 right-4 text-left z-20">
-                  <h4 className="text-sm font-bold text-white">Seasonal Cups</h4>
-                </div>
-              </div>
-              <div className="h-[238px] bg-zinc-900 border border-white/5 rounded-3xl overflow-hidden relative group">
-                <img
-                  src={coffeeBeansBagImg}
-                  alt="Pike Place Roasters"
-                  className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0B1512] via-transparent to-black/30 z-10" />
-                <div className="absolute bottom-4 left-4 right-4 text-left z-20">
-                  <h4 className="text-sm font-bold text-white">Pike Place Roasters</h4>
-                </div>
-              </div>
-            </div>
-
-            <div className="space-y-6">
-              <div className="h-[238px] bg-zinc-900 border border-white/5 rounded-3xl overflow-hidden relative group">
-                <img
-                  src={coffeeFarmersImg}
-                  alt="Community Care"
-                  className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0B1512] via-transparent to-black/30 z-10" />
-                <div className="absolute bottom-4 left-4 right-4 text-left z-20">
-                  <h4 className="text-sm font-bold text-white">Community Care</h4>
-                </div>
-              </div>
-              <div className="h-[238px] bg-zinc-900 border border-white/5 rounded-3xl overflow-hidden relative group">
-                <img
-                  src={coffeeFarmersImg}
-                  alt="Coffee Farmers"
-                  className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0B1512] via-transparent to-black/30 z-10" />
-                <div className="absolute bottom-4 left-4 right-4 text-left z-20">
-                  <h4 className="text-sm font-bold text-white">Coffee Farmers</h4>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ================= MEMBERSHIP CTA ================= */}
-      <section className="py-24 px-6 bg-[#09100E]">
-        <div
-          className="
-            max-w-7xl
-            mx-auto
-            bg-gradient-to-r
-            from-[#1E3932]
-            to-[#0A201A]
-            p-12
-            md:p-20
-            rounded-[2.5rem]
-            grid
-            md:grid-cols-2
-            gap-10
-            items-center
-            relative
-            overflow-hidden
-            border
-            border-[#00704A]/20
-          "
-        >
-          {/* Decorative background glow */}
-          <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-amber-400/5 blur-[100px] rounded-full pointer-events-none" />
-
-          <div className="text-left">
-            <p className="uppercase tracking-[4px] text-xs font-black text-amber-400 mb-4">
-              Exclusive Access
-            </p>
-
-            <h2 className="text-4xl md:text-5xl font-serif font-black text-white mb-6">
-              Join the Starbucks Gold Society
-            </h2>
-
-            <p className="text-zinc-300 leading-relaxed text-sm md:text-base mb-8">
-              Become a Starbucks Rewards Gold Member. Earn Stars on every sip, unlock secret seasonal menus, get early access to exclusive merchandise, and enjoy free double-star days.
-            </p>
-
-            <a
-              href={waLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="
-                inline-block
-                bg-white
-                hover:bg-zinc-200
-                text-zinc-900
-                px-8
-                py-4
-                rounded-full
-                font-extrabold
-                text-sm
-                transition-all
-                hover:scale-[1.02]
-              "
-            >
-              Sign Up via WhatsApp
-            </a>
-          </div>
-
-          {/* Starbucks Gold Card Visual mock */}
-          <div
-            className="
-              h-[250px]
-              border
-              border-white/10
-              bg-zinc-900/60
-              backdrop-blur-md
-              rounded-3xl
-              flex
-              flex-col
-              justify-between
-              p-6
-              relative
-              shadow-2xl
-              overflow-hidden
-            "
-          >
-            {/* Decorative shining overlay */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent pointer-events-none" />
-
-            <div className="flex justify-between items-start">
-              <span className="text-xs font-bold tracking-widest text-[#D4E9E2]">STARBUCKS REWARDS</span>
-              <Star size={20} className="text-amber-400 fill-current" />
-            </div>
-
-            <div className="text-left">
-              <p className="text-[10px] tracking-wider text-zinc-500 uppercase">Card Holder</p>
-              <h3 className="text-lg font-bold text-white mt-1">RAFI RACHMAWAN</h3>
-              <p className="text-xs font-mono text-[#00704A] mt-2 tracking-widest">GOLD MEMBER ID: 8872-9901</p>
-            </div>
           </div>
         </div>
       </section>
@@ -1131,10 +1015,11 @@ Total: Rp ${currentPrice.toLocaleString("id-ID")}`;
       {/* ================= FOOTER ================= */}
       <footer
         id="find"
-        className="border-t border-white/10 py-24 px-6 bg-[#0B1512]"
+        className="border-t border-white/10 pt-24 pb-12 px-6 bg-[#09100E]"
       >
-        <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-14 text-left">
-          <div>
+        <div className="max-w-7xl mx-auto grid md:grid-cols-12 gap-12 text-left mb-16">
+          {/* Brand Col */}
+          <div className="md:col-span-4">
             <div className="flex items-center gap-2 mb-6">
               <svg className="w-8 h-8 text-[#00704A] fill-current" viewBox="0 0 24 24">
                 <path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm0 1.5c4.76 0 8.78 3.2 10.05 7.55A10.45 10.45 0 0 0 12 6.5a10.45 10.45 0 0 0-10.05 2.55C3.22 4.7 7.24 1.5 12 1.5zm0 10c1.38 0 2.5 1.12 2.5 2.5s-1.12 2.5-2.5 2.5-2.5-1.12-2.5-2.5 1.12-2.5 2.5-2.5zm0-2c-2.48 0-4.5 2.02-4.5 4.5s2.02 4.5 4.5 4.5 4.5-2.02 4.5-4.5-2.02-4.5-4.5-4.5zm0-5c-5.79 0-10.5 4.71-10.5 10.5 0 2.21.68 4.26 1.84 5.97A10.4 10.4 0 0 1 12 11.5a10.4 10.4 0 0 1 8.66 9.47c1.16-1.71 1.84-3.76 1.84-5.97 0-5.79-4.71-10.5-10.5-10.5z"/>
@@ -1143,93 +1028,78 @@ Total: Rp ${currentPrice.toLocaleString("id-ID")}`;
                 STARBUCKS
               </h2>
             </div>
-
-            <p className="text-zinc-400 text-sm leading-relaxed mb-8">
-              Crafting premium Arabica coffee since 1971. Bringing community, warmth, and excellent taste closer to your daily life.
+            <p className="text-zinc-400 text-sm leading-relaxed mb-8 max-w-xs">
+              Menginspirasi dan memelihara semangat kemanusiaan — satu orang, satu cangkir, dan satu lingkungan pada satu waktu.
             </p>
-
-            <div className="space-y-4 text-xs font-semibold text-zinc-500">
+            <div className="space-y-3 text-xs font-semibold text-zinc-500">
               <div className="flex gap-3 items-center">
                 <MapPin size={16} className="text-[#00704A]" />
                 <span>Jakarta, Indonesia</span>
               </div>
-
               <div className="flex gap-3 items-center">
                 <Clock3 size={16} className="text-[#00704A]" />
                 <span>08:00 — 22:00</span>
               </div>
-
-              <div className="flex gap-3 items-center">
-                <Phone size={16} className="text-[#00704A]" />
-                <span>+62 857-0718-5783</span>
-              </div>
             </div>
           </div>
 
-          {/* store locator mock map */}
-          <div className="h-[250px] bg-zinc-950 border border-white/5 rounded-3xl overflow-hidden relative p-4 flex flex-col justify-between">
-            <div className="absolute inset-0 bg-[#00704A]/5 mix-blend-overlay" />
-            <div className="relative z-10">
-              <span className="text-[10px] font-black uppercase text-emerald-400">Interactive Finder</span>
-              <h4 className="text-sm font-bold text-white mt-1">Jakarta Reserve Stores</h4>
-            </div>
-
-            <div className="relative z-10 text-xs text-zinc-400 flex flex-col gap-2">
-              <div className="p-2 rounded-lg bg-zinc-900 border border-white/5">
-                <p className="font-bold text-white text-[11px]">Plaza Indonesia Reserve</p>
-                <p className="text-[10px] mt-0.5 text-zinc-500">1.2 km away • Open</p>
-              </div>
+          {/* Links Col */}
+          <div className="md:col-span-2">
+            <h4 className="mb-6 font-extrabold uppercase tracking-widest text-[#D4E9E2] text-xs">
+              Navigasi
+            </h4>
+            <div className="space-y-4 text-xs font-semibold text-zinc-500">
+              <p className="hover:text-emerald-400 transition-colors cursor-pointer">Menu & Produk</p>
+              <p className="hover:text-emerald-400 transition-colors cursor-pointer">Coffee Education</p>
+              <p className="hover:text-emerald-400 transition-colors cursor-pointer">Starbucks Rewards</p>
+              <p className="hover:text-emerald-400 transition-colors cursor-pointer">Tanggung Jawab</p>
+              <p className="hover:text-emerald-400 transition-colors cursor-pointer">Tentang Kami</p>
             </div>
           </div>
 
-          <div>
-            <h3 className="mb-6 text-sm font-extrabold uppercase tracking-widest text-[#D4E9E2]">Newsletter</h3>
-            <p className="text-xs text-zinc-500 leading-relaxed mb-4">Dapatkan update menu musiman terbaru & promo double-star langsung ke email Anda.</p>
-            <div className="border border-white/10 flex items-center px-4 py-3 rounded-xl bg-zinc-950">
+          <div className="md:col-span-2">
+            <h4 className="mb-6 font-extrabold uppercase tracking-widest text-[#D4E9E2] text-xs">
+              Bantuan
+            </h4>
+            <div className="space-y-4 text-xs font-semibold text-zinc-500">
+              <p className="hover:text-emerald-400 transition-colors cursor-pointer flex items-center gap-2">
+                <Phone size={14} className="text-[#00704A]" /> Customer Care
+              </p>
+              <p className="hover:text-emerald-400 transition-colors cursor-pointer">FAQ</p>
+              <p className="hover:text-emerald-400 transition-colors cursor-pointer">Syarat & Ketentuan</p>
+              <p className="hover:text-emerald-400 transition-colors cursor-pointer">Kebijakan Privasi</p>
+            </div>
+          </div>
+
+          {/* Newsletter Col */}
+          <div className="md:col-span-4">
+            <h3 className="mb-6 text-xs font-extrabold uppercase tracking-widest text-[#D4E9E2]">Newsletter</h3>
+            <p className="text-xs text-zinc-500 leading-relaxed mb-4">
+              Dapatkan update menu musiman terbaru & promo double-star langsung ke email Anda.
+            </p>
+            <div className="flex items-center bg-zinc-900 border border-white/10 rounded-full overflow-hidden p-1">
               <input
-                placeholder="Enter Email Address"
-                className="
-                  bg-transparent
-                  outline-none
-                  flex-1
-                  text-xs
-                  text-white
-                "
+                type="email"
+                placeholder="Alamat Email Anda"
+                className="bg-transparent outline-none flex-1 text-xs text-white px-4 py-2"
               />
-            </div>
-          </div>
-
-          <div className="grid grid-cols-2 gap-10 text-xs font-semibold">
-            <div>
-              <h4 className="mb-6 font-extrabold uppercase tracking-widest text-[#D4E9E2]">
-                Links
-              </h4>
-
-              <div className="space-y-4 text-zinc-500">
-                <p className="hover:text-emerald-400 transition-colors cursor-pointer">Privacy Policy</p>
-                <p className="hover:text-emerald-400 transition-colors cursor-pointer">Terms</p>
-                <p className="hover:text-emerald-400 transition-colors cursor-pointer">Refund</p>
-                <p className="hover:text-emerald-400 transition-colors cursor-pointer">Careers</p>
-              </div>
-            </div>
-
-            <div>
-              <h4 className="mb-6 font-extrabold uppercase tracking-widest text-[#D4E9E2]">
-                Social
-              </h4>
-
-              <div className="space-y-4 text-zinc-500">
-                <p className="hover:text-emerald-400 transition-colors cursor-pointer">Instagram</p>
-                <p className="hover:text-emerald-400 transition-colors cursor-pointer">LinkedIn</p>
-                <p className="hover:text-emerald-400 transition-colors cursor-pointer">Twitter</p>
-              </div>
+              <button className="bg-[#00704A] hover:bg-[#00875a] text-white px-6 py-2 rounded-full text-xs font-bold transition-colors">
+                Kirim
+              </button>
             </div>
           </div>
         </div>
 
-        <p className="text-center text-zinc-600 text-xs mt-20">
-          © {new Date().getFullYear()} STARBUCKS TRIBUTE EXPERIENCE. ALL RIGHTS RESERVED.
-        </p>
+        <div className="max-w-7xl mx-auto border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-zinc-600 text-[10px] font-bold tracking-widest uppercase">
+            © {new Date().getFullYear()} STARBUCKS TRIBUTE EXPERIENCE. ALL RIGHTS RESERVED.
+          </p>
+          <div className="flex items-center gap-6 text-xs font-bold text-zinc-500 uppercase tracking-widest">
+            <span className="hover:text-white cursor-pointer transition-colors">Instagram</span>
+            <span className="hover:text-white cursor-pointer transition-colors">Twitter</span>
+            <span className="hover:text-white cursor-pointer transition-colors">Facebook</span>
+          </div>
+        </div>
       </footer>
     </div>
   );
