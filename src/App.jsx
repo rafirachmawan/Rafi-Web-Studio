@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 
 import Home from "./pages/Home";
+import ProjectDetail from "./pages/ProjectDetail";
 
 import CoffeeLanding from "./apps/landing-page/coffee/CoffeeLanding";
 import RentalLanding from "./apps/landing-page/rental/RentalLanding";
@@ -32,6 +33,7 @@ export default function App() {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/portfolio/:id" element={<ProjectDetail />} />
         <Route path="/coffee" element={<CoffeeLanding />} />
         <Route path="/rental" element={<RentalLanding />} />
         <Route path="/hotel" element={<HotelLanding />} />

@@ -10,8 +10,8 @@ export default function DemoCard({ demo }) {
       transition={{ duration: 0.5 }}
     >
       <Link
-        to={demo.path}
-        className="group block bg-white dark:bg-zinc-900/50 border border-zinc-200 dark:border-white/10 rounded-[32px] overflow-hidden hover:-translate-y-2 transition-all duration-500 shadow-sm hover:shadow-2xl hover:shadow-amber-500/10 hover:border-amber-500/30 relative"
+        to={`/portfolio/${demo.id}`}
+        className="group block w-full text-left bg-white dark:bg-zinc-900/50 border border-zinc-200 dark:border-white/10 rounded-[32px] overflow-hidden hover:-translate-y-2 transition-all duration-500 shadow-sm hover:shadow-2xl hover:shadow-amber-500/10 hover:border-amber-500/30 relative"
       >
         {/* IMAGE WITH PREMIUM HOVER SCALE EFFECT */}
         <div className="h-52 md:h-64 overflow-hidden relative border-b border-zinc-100 dark:border-white/5 bg-zinc-50 dark:bg-zinc-900">
