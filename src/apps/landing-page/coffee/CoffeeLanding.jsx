@@ -3,23 +3,23 @@ import gsap from "gsap";
 import { Menu, X, Star, MapPin, Clock3, Phone, Coffee, Gift, Sparkles, ChevronRight, Check, Leaf, Heart, Users, Award, Briefcase, ShoppingBag, Globe } from "lucide-react";
 
 // Import Starbucks-themed images
-import bgHero from "./assets/bgHero_starbucks.png";
-import coffe1 from "./assets/coffee1_starbucks.png";
-import espressoShotImg from "./assets/espresso_shot.png";
-import caramelMacchiatoImg from "./assets/coffee1_starbucks.png";
-import matchaLatteImg from "./assets/matcha_latte.png";
-import ecoCupImg from "./assets/eco_cup.png";
-import seasonalCupsImg from "./assets/seasonal_cups.png";
-import coffeeBeansBagImg from "./assets/coffee_beans_bag.png";
-import coffeeFarmersImg from "./assets/coffee_farmers.png";
+import bgHero from "./assets/bgHero_starbucks.jpg";
+import coffe1 from "./assets/coffee1_starbucks.jpg";
+import espressoShotImg from "./assets/espresso_shot.jpg";
+import caramelMacchiatoImg from "./assets/coffee1_starbucks.jpg";
+import matchaLatteImg from "./assets/matcha_latte.jpg";
+import ecoCupImg from "./assets/eco_cup.jpg";
+import seasonalCupsImg from "./assets/seasonal_cups.jpg";
+import coffeeBeansBagImg from "./assets/coffee_beans_bag.jpg";
+import coffeeFarmersImg from "./assets/coffee_farmers.jpg";
 
 // New food & merch images
-import croissantImg from "./assets/croissant.png";
-import paniniImg from "./assets/panini.png";
-import cheesecakeImg from "./assets/cheesecake.png";
-import tumblerImg from "./assets/tumbler.png";
-import baliMugImg from "./assets/bali_mug.png";
-import frenchPressImg from "./assets/french_press.png";
+import croissantImg from "./assets/croissant.jpg";
+import paniniImg from "./assets/panini.jpg";
+import cheesecakeImg from "./assets/cheesecake.jpg";
+import tumblerImg from "./assets/tumbler.jpg";
+import baliMugImg from "./assets/bali_mug.jpg";
+import frenchPressImg from "./assets/french_press.jpg";
 
 export default function CoffeeLanding() {
   const [open, setOpen] = useState(false);

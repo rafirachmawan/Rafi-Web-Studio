@@ -1,9 +1,9 @@
-import hondaBeat from "../apps/landing-page/rental/assets/honda_beat.png";
-import hondaVario from "../apps/landing-page/rental/assets/honda_vario.png";
-import hondaPcx from "../apps/landing-page/rental/assets/honda_pcx.png";
-import yamahaVega from "../apps/landing-page/rental/assets/yamaha_vega.png";
-import yamahaMio from "../apps/landing-page/rental/assets/yamaha_mio.png";
-import yamahaNmax from "../apps/landing-page/rental/assets/yamaha_nmax.png";
+import hondaBeat from "../apps/landing-page/rental/assets/honda_beat.jpg";
+import hondaVario from "../apps/landing-page/rental/assets/honda_vario.jpg";
+import hondaPcx from "../apps/landing-page/rental/assets/honda_pcx.jpg";
+import yamahaVega from "../apps/landing-page/rental/assets/yamaha_vega.jpg";
+import yamahaMio from "../apps/landing-page/rental/assets/yamaha_mio.jpg";
+import yamahaNmax from "../apps/landing-page/rental/assets/yamaha_nmax.jpg";
 
 export const rental = {
   type: "motor_dealer",

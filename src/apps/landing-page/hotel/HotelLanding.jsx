@@ -23,14 +23,14 @@ import {
 } from "lucide-react";
 
 // Import Local Images
-import hotelHeroImg from "./assets/hotel_hero.png";
-import roomSuperiorImg from "./assets/room_superior.png";
-import roomDeluxeImg from "./assets/room_deluxe.png";
-import roomSuiteImg from "./assets/room_suite.png";
-import roomSuiteRegularImg from "./assets/room_suite_regular.png";
-import roomVictoriaGrandSuiteImg from "./assets/victoria_grand_suite.png";
-import hotelBallroomImg from "./assets/hotel_ballroom.png";
-import hotelRestoImg from "./assets/hotel_resto.png";
+import hotelHeroImg from "./assets/hotel_hero.jpg";
+import roomSuperiorImg from "./assets/room_superior.jpg";
+import roomDeluxeImg from "./assets/room_deluxe.jpg";
+import roomSuiteImg from "./assets/room_suite.jpg";
+import roomSuiteRegularImg from "./assets/room_suite_regular.jpg";
+import roomVictoriaGrandSuiteImg from "./assets/victoria_grand_suite.jpg";
+import hotelBallroomImg from "./assets/hotel_ballroom.jpg";
+import hotelRestoImg from "./assets/hotel_resto.jpg";
 
 const FADE_UP = {
   hidden: { opacity: 0, y: 40 },
@@ -354,6 +354,7 @@ Mohon info harga paket dan tanggal kosong terdekat. Terima kasih.`;
                 <img
                   src={hotelBallroomImg}
                   alt="Victoria Grand Ballroom Setup"
+                  loading="lazy"
                   className="w-full h-[350px] object-cover group-hover:scale-105 transition-transform duration-700 brightness-[0.7]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/30" />
@@ -444,8 +445,8 @@ Mohon info harga paket dan tanggal kosong terdekat. Terima kasih.`;
               transition={{ duration: 0.8 }}
               className="grid grid-cols-2 gap-4"
             >
-              <img src={hotelRestoImg} className="w-full h-64 object-cover rounded-2xl mt-8 brightness-[0.8]" alt="Sultan Resto Table Setup" />
-              <img src={hotelHeroImg} className="w-full h-64 object-cover rounded-2xl brightness-[0.8]" alt="Crown Victoria Entrance Lobby" />
+              <img src={hotelRestoImg} loading="lazy" className="w-full h-64 object-cover rounded-2xl mt-8 brightness-[0.8]" alt="Sultan Resto Table Setup" />
+              <img src={hotelHeroImg} loading="lazy" className="w-full h-64 object-cover rounded-2xl brightness-[0.8]" alt="Crown Victoria Entrance Lobby" />
             </motion.div>
             
             <motion.div
@@ -489,12 +490,12 @@ Mohon info harga paket dan tanggal kosong terdekat. Terima kasih.`;
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <motion.img initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} src={hotelHeroImg} className="w-full h-48 md:h-64 object-cover rounded-xl brightness-[0.8] hover:brightness-100 transition-all duration-300" alt="Lobby" />
-              <motion.img initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.1 }} src={roomSuperiorImg} className="w-full h-48 md:h-64 object-cover rounded-xl brightness-[0.8] hover:brightness-100 transition-all duration-300" alt="Superior" />
-              <motion.img initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.2 }} src={roomDeluxeImg} className="w-full h-48 md:h-64 object-cover rounded-xl col-span-2 md:col-span-2 brightness-[0.8] hover:brightness-100 transition-all duration-300" alt="Deluxe Balcony" />
-              <motion.img initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.3 }} src={hotelBallroomImg} className="w-full h-48 md:h-64 object-cover rounded-xl col-span-2 md:col-span-2 brightness-[0.8] hover:brightness-100 transition-all duration-300" alt="Victoria Ballroom" />
-              <motion.img initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.4 }} src={roomSuiteImg} className="w-full h-48 md:h-64 object-cover rounded-xl brightness-[0.8] hover:brightness-100 transition-all duration-300" alt="Executive Suite" />
-              <motion.img initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.5 }} src={hotelRestoImg} className="w-full h-48 md:h-64 object-cover rounded-xl brightness-[0.8] hover:brightness-100 transition-all duration-300" alt="Dining Room" />
+              <motion.img initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} src={hotelHeroImg} loading="lazy" className="w-full h-48 md:h-64 object-cover rounded-xl brightness-[0.8] hover:brightness-100 transition-all duration-300" alt="Lobby" />
+              <motion.img initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.1 }} src={roomSuperiorImg} loading="lazy" className="w-full h-48 md:h-64 object-cover rounded-xl brightness-[0.8] hover:brightness-100 transition-all duration-300" alt="Superior" />
+              <motion.img initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.2 }} src={roomDeluxeImg} loading="lazy" className="w-full h-48 md:h-64 object-cover rounded-xl col-span-2 md:col-span-2 brightness-[0.8] hover:brightness-100 transition-all duration-300" alt="Deluxe Balcony" />
+              <motion.img initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.3 }} src={hotelBallroomImg} loading="lazy" className="w-full h-48 md:h-64 object-cover rounded-xl col-span-2 md:col-span-2 brightness-[0.8] hover:brightness-100 transition-all duration-300" alt="Victoria Ballroom" />
+              <motion.img initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.4 }} src={roomSuiteImg} loading="lazy" className="w-full h-48 md:h-64 object-cover rounded-xl brightness-[0.8] hover:brightness-100 transition-all duration-300" alt="Executive Suite" />
+              <motion.img initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.5 }} src={hotelRestoImg} loading="lazy" className="w-full h-48 md:h-64 object-cover rounded-xl brightness-[0.8] hover:brightness-100 transition-all duration-300" alt="Dining Room" />
             </div>
           </div>
         </section>
@@ -552,6 +553,7 @@ Mohon info harga paket dan tanggal kosong terdekat. Terima kasih.`;
                     <img 
                       src={spot.image} 
                       alt={spot.name} 
+                      loading="lazy"
                       className="w-20 h-20 object-cover rounded-xl shrink-0 brightness-75 hover:brightness-100 transition-all duration-300"
                     />
                     <div className="space-y-1">
@@ -752,6 +754,7 @@ function HotelSection({ phone }) {
                   <img
                     src={room.img}
                     alt={room.name}
+                    loading="lazy"
                     className="h-80 w-full object-cover group-hover:scale-105 transition duration-700 ease-out brightness-[0.9]"
                   />
                   <div className="absolute top-4 right-4 bg-[#050505]/75 backdrop-blur-md text-purple-400 text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full z-20 border border-purple-400/20">

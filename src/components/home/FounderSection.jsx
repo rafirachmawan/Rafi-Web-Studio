@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ExternalLink, Send } from "lucide-react";
-import founderPortrait from "../../assets/foto formal.png";
+import founderPortrait from "../../assets/foto formal.jpg";
 
 export default function FounderSection() {
   // CONFIGURABLE LINKS - Silakan ubah URL di bawah ini sesuai keinginan Anda

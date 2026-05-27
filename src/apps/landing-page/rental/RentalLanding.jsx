@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { rental } from "../../../data/rental";
-import showroomHero from "./assets/showroom_hero.png";
+import showroomHero from "./assets/showroom_hero.jpg";
 import {
   MapPin,
   Calendar,
@@ -280,6 +280,7 @@ export default function RentalLanding() {
                         <img
                           src={motor.image}
                           alt={motor.name}
+                          loading="lazy"
                           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-90 group-hover:opacity-100"
                           onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&q=80&w=800'; }}
                         />
@@ -337,7 +338,7 @@ export default function RentalLanding() {
                   transition={{ delay: i * 0.1 }}
                   className="rounded-2xl overflow-hidden aspect-video border border-white/5 bg-zinc-900"
                 >
-                  <img src={img} className="w-full h-full object-cover hover:scale-110 transition-transform duration-700 opacity-80 hover:opacity-100" alt="Showroom" onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&q=80&w=800'; }} />
+                  <img src={img} loading="lazy" className="w-full h-full object-cover hover:scale-110 transition-transform duration-700 opacity-80 hover:opacity-100" alt="Showroom" onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&q=80&w=800'; }} />
                 </motion.div>
               ))}
             </div>

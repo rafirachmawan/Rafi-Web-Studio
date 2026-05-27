@@ -1,15 +1,15 @@
-import starbucksCoverImg from "../assets/StarbucksCover.png";
-import hotelCoverImg from "../assets/HotelCover.png";
-import unitaCoverImg from "../assets/UNITACover.png";
-import aryaMotorCoverImg from "../assets/AryaMotorCover.png";
-import nikoNikoCoverImg from "../assets/NikoNikoCover.png";
-import aioLaundryCoverImg from "../assets/AioLaundryCover.png";
-import umrohCoverImg from "../assets/UmrohCover.png";
-import akademikCoverImg from "../assets/AkademikCover.png";
-import warungOSCoverImg from "../assets/WarungOSCover.png";
-import examOSCoverImg from "../assets/ExamOSCover.png";
-import absenOSCoverImg from "../assets/AbsenOSCover.png";
-import posMobileCoverImg from "../assets/POSMobileCover.png";
+import starbucksCoverImg from "../assets/StarbucksCover.jpg";
+import hotelCoverImg from "../assets/HotelCover.jpg";
+import unitaCoverImg from "../assets/UNITACover.jpg";
+import aryaMotorCoverImg from "../assets/AryaMotorCover.jpg";
+import nikoNikoCoverImg from "../assets/NikoNikoCover.jpg";
+import aioLaundryCoverImg from "../assets/AioLaundryCover.jpg";
+import umrohCoverImg from "../assets/UmrohCover.jpg";
+import akademikCoverImg from "../assets/AkademikCover.jpg";
+import warungOSCoverImg from "../assets/WarungOSCover.jpg";
+import examOSCoverImg from "../assets/ExamOSCover.jpg";
+import absenOSCoverImg from "../assets/AbsenOSCover.jpg";
+import posMobileCoverImg from "../assets/POSMobileCover.jpg";
 
 
 
