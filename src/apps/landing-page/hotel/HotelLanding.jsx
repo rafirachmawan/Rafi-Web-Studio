@@ -27,6 +27,8 @@ import hotelHeroImg from "./assets/hotel_hero.png";
 import roomSuperiorImg from "./assets/room_superior.png";
 import roomDeluxeImg from "./assets/room_deluxe.png";
 import roomSuiteImg from "./assets/room_suite.png";
+import roomSuiteRegularImg from "./assets/room_suite_regular.png";
+import roomVictoriaGrandSuiteImg from "./assets/victoria_grand_suite.png";
 import hotelBallroomImg from "./assets/hotel_ballroom.png";
 import hotelRestoImg from "./assets/hotel_resto.png";
 
@@ -108,7 +110,7 @@ Mohon info harga paket dan tanggal kosong terdekat. Terima kasih.`;
   };
 
   return (
-    <div className="bg-[#050505] text-[#e5e5e5] min-h-screen font-sans selection:bg-amber-500/30 overflow-x-hidden">
+    <div className="bg-[#050505] text-[#e5e5e5] min-h-screen font-sans selection:bg-purple-500/30 overflow-x-hidden">
       
       {/* NAVBAR */}
       <nav 
@@ -125,15 +127,16 @@ Mohon info harga paket dan tanggal kosong terdekat. Terima kasih.`;
             transition={{ duration: 0.8 }}
             className="text-lg md:text-xl tracking-[0.25em] font-light uppercase"
           >
-            <span className="text-amber-400 font-bold">CROWN VICTORIA</span> <span className="hidden sm:inline">HOTEL</span>
+            <span className="text-purple-400 font-bold">CROWN VICTORIA</span> <span className="hidden sm:inline">HOTEL</span>
           </motion.h1>
 
           <div className="hidden md:flex items-center gap-10 text-xs tracking-widest uppercase font-semibold text-zinc-400">
-            <a href="#experience" className="hover:text-amber-400 transition-colors">Experience</a>
-            <a href="#room" className="hover:text-amber-400 transition-colors">Rooms</a>
-            <a href="#ballroom" className="hover:text-amber-400 transition-colors">Ballrooms</a>
-            <a href="#facilities" className="hover:text-amber-400 transition-colors">Facilities</a>
-            <a href="#location" className="hover:text-amber-400 transition-colors">Location</a>
+            <a href="#experience" className="hover:text-purple-400 transition-colors">Experience</a>
+            <a href="#room" className="hover:text-purple-400 transition-colors">Rooms</a>
+            <a href="#ballroom" className="hover:text-purple-400 transition-colors">Ballrooms</a>
+            <a href="#promo-wisata" className="hover:text-purple-400 transition-colors">Promo & Wisata</a>
+            <a href="#facilities" className="hover:text-purple-400 transition-colors">Facilities</a>
+            <a href="#location" className="hover:text-purple-400 transition-colors">Location</a>
           </div>
 
           <motion.a
@@ -143,7 +146,7 @@ Mohon info harga paket dan tanggal kosong terdekat. Terima kasih.`;
             href={`https://wa.me/${phone}?text=Halo%20Crown%20Victoria%20Hotel%20Tulungagung%2C%20saya%20tertarik%20untuk%20booking%20kamar.`}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden md:inline-block border border-amber-400/50 text-amber-400 px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-amber-400 hover:text-black transition-all duration-300"
+            className="hidden md:inline-block border border-purple-400/50 text-purple-400 px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-purple-400 hover:text-black transition-all duration-300"
           >
             Reserve
           </motion.a>
@@ -166,16 +169,17 @@ Mohon info harga paket dan tanggal kosong terdekat. Terima kasih.`;
               exit={{ opacity: 0, y: -20 }}
               className="md:hidden absolute top-0 left-0 w-full h-screen bg-[#050505] flex flex-col items-center justify-center gap-8 z-40"
             >
-              <a href="#experience" onClick={() => setMobileMenuOpen(false)} className="text-xl font-light uppercase tracking-widest hover:text-amber-400">Experience</a>
-              <a href="#room" onClick={() => setMobileMenuOpen(false)} className="text-xl font-light uppercase tracking-widest hover:text-amber-400">Rooms</a>
-              <a href="#ballroom" onClick={() => setMobileMenuOpen(false)} className="text-xl font-light uppercase tracking-widest hover:text-amber-400">Ballrooms</a>
-              <a href="#facilities" onClick={() => setMobileMenuOpen(false)} className="text-xl font-light uppercase tracking-widest hover:text-amber-400">Facilities</a>
-              <a href="#location" onClick={() => setMobileMenuOpen(false)} className="text-xl font-light uppercase tracking-widest hover:text-amber-400">Location</a>
+              <a href="#experience" onClick={() => setMobileMenuOpen(false)} className="text-xl font-light uppercase tracking-widest hover:text-purple-400">Experience</a>
+              <a href="#room" onClick={() => setMobileMenuOpen(false)} className="text-xl font-light uppercase tracking-widest hover:text-purple-400">Rooms</a>
+              <a href="#ballroom" onClick={() => setMobileMenuOpen(false)} className="text-xl font-light uppercase tracking-widest hover:text-purple-400">Ballrooms</a>
+              <a href="#promo-wisata" onClick={() => setMobileMenuOpen(false)} className="text-xl font-light uppercase tracking-widest hover:text-purple-400">Promo & Wisata</a>
+              <a href="#facilities" onClick={() => setMobileMenuOpen(false)} className="text-xl font-light uppercase tracking-widest hover:text-purple-400">Facilities</a>
+              <a href="#location" onClick={() => setMobileMenuOpen(false)} className="text-xl font-light uppercase tracking-widest hover:text-purple-400">Location</a>
               <a
                 href={`https://wa.me/${phone}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-8 border border-amber-400 text-amber-400 px-8 py-3 rounded-full uppercase tracking-widest text-xs font-bold"
+                className="mt-8 border border-purple-400 text-purple-400 px-8 py-3 rounded-full uppercase tracking-widest text-xs font-bold"
               >
                 Reserve Now
               </a>
@@ -204,7 +208,7 @@ Mohon info harga paket dan tanggal kosong terdekat. Terima kasih.`;
             variants={STAGGER}
             className="relative z-10 text-center max-w-4xl mt-20"
           >
-            <motion.p variants={FADE_UP} className="text-amber-400 tracking-[0.4em] uppercase text-xs md:text-sm font-bold mb-6">
+            <motion.p variants={FADE_UP} className="text-purple-400 tracking-[0.4em] uppercase text-xs md:text-sm font-bold mb-6">
               ⭐ CROWN VICTORIA HOTEL TULUNGAGUNG
             </motion.p>
             <motion.h1 variants={FADE_UP} className="text-4xl sm:text-6xl md:text-7xl font-serif font-black leading-tight mb-8 text-white drop-shadow-xl">
@@ -226,7 +230,7 @@ Mohon info harga paket dan tanggal kosong terdekat. Terima kasih.`;
           >
             <form onSubmit={handleBookingRedirect} className="grid grid-cols-1 md:grid-cols-5 gap-4 items-end">
               <div className="bg-white/5 rounded-xl p-3 flex items-center gap-3 border border-white/5 hover:bg-white/10 transition-colors">
-                <Bed className="text-amber-400 w-5 h-5 shrink-0" />
+                <Bed className="text-purple-400 w-5 h-5 shrink-0" />
                 <div className="w-full text-left">
                   <p className="text-[10px] text-zinc-400 uppercase tracking-widest mb-1">Room Type</p>
                   <select 
@@ -236,13 +240,15 @@ Mohon info harga paket dan tanggal kosong terdekat. Terima kasih.`;
                   >
                     <option className="bg-[#0a0a0a]" value="Superior Room">Superior Room</option>
                     <option className="bg-[#0a0a0a]" value="Deluxe Room">Deluxe Room</option>
+                    <option className="bg-[#0a0a0a]" value="Suite Room">Suite Room</option>
                     <option className="bg-[#0a0a0a]" value="Executive Suite">Executive Suite</option>
+                    <option className="bg-[#0a0a0a]" value="Victoria Grand Suite">Victoria Grand Suite</option>
                   </select>
                 </div>
               </div>
 
               <div className="bg-white/5 rounded-xl p-3 flex items-center gap-3 border border-white/5 hover:bg-white/10 transition-colors">
-                <CalendarDays className="text-amber-400 w-5 h-5 shrink-0" />
+                <CalendarDays className="text-purple-400 w-5 h-5 shrink-0" />
                 <div className="w-full text-left">
                   <p className="text-[10px] text-zinc-400 uppercase tracking-widest mb-1">Check In</p>
                   <input 
@@ -255,7 +261,7 @@ Mohon info harga paket dan tanggal kosong terdekat. Terima kasih.`;
               </div>
 
               <div className="bg-white/5 rounded-xl p-3 flex items-center gap-3 border border-white/5 hover:bg-white/10 transition-colors">
-                <CalendarDays className="text-amber-400 w-5 h-5 shrink-0" />
+                <CalendarDays className="text-purple-400 w-5 h-5 shrink-0" />
                 <div className="w-full text-left">
                   <p className="text-[10px] text-zinc-400 uppercase tracking-widest mb-1">Check Out</p>
                   <input 
@@ -268,7 +274,7 @@ Mohon info harga paket dan tanggal kosong terdekat. Terima kasih.`;
               </div>
 
               <div className="bg-white/5 rounded-xl p-3 flex items-center gap-3 border border-white/5 hover:bg-white/10 transition-colors">
-                <Users className="text-amber-400 w-5 h-5 shrink-0" />
+                <Users className="text-purple-400 w-5 h-5 shrink-0" />
                 <div className="w-full text-left">
                   <p className="text-[10px] text-zinc-400 uppercase tracking-widest mb-1">Guests</p>
                   <select 
@@ -286,7 +292,7 @@ Mohon info harga paket dan tanggal kosong terdekat. Terima kasih.`;
               
               <button 
                 type="submit"
-                className="w-full bg-amber-400 hover:bg-amber-500 text-black rounded-xl py-4 font-bold tracking-widest transition-all uppercase text-xs flex items-center justify-center gap-2"
+                className="w-full bg-purple-400 hover:bg-purple-500 text-black rounded-xl py-4 font-bold tracking-widest transition-all uppercase text-xs flex items-center justify-center gap-2"
               >
                 Book Now
               </button>
@@ -298,7 +304,7 @@ Mohon info harga paket dan tanggal kosong terdekat. Terima kasih.`;
         <section id="experience" className="py-24 px-6 relative">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-20">
-              <h2 className="text-xs text-amber-400 uppercase tracking-[0.3em] font-extrabold mb-4">The Experience</h2>
+              <h2 className="text-xs text-purple-400 uppercase tracking-[0.3em] font-extrabold mb-4">The Experience</h2>
               <h3 className="text-3xl md:text-5xl font-serif font-black text-white">Redefining Tulungagung Comfort</h3>
             </div>
 
@@ -316,8 +322,8 @@ Mohon info harga paket dan tanggal kosong terdekat. Terima kasih.`;
                   transition={{ delay: i * 0.2, duration: 0.8 }}
                   className="group p-8 border border-white/5 rounded-2xl hover:bg-white/5 transition-colors duration-500 text-center"
                 >
-                  <div className="w-14 h-14 mx-auto border border-amber-400/30 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 group-hover:border-amber-400 transition-all duration-500">
-                    <Icon className="w-5 h-5 text-amber-400" />
+                  <div className="w-14 h-14 mx-auto border border-purple-400/30 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 group-hover:border-purple-400 transition-all duration-500">
+                    <Icon className="w-5 h-5 text-purple-400" />
                   </div>
                   <h4 className="text-lg font-bold text-white mb-4">{title}</h4>
                   <p className="text-zinc-400 text-xs sm:text-sm font-light leading-relaxed">{desc}</p>
@@ -332,10 +338,10 @@ Mohon info harga paket dan tanggal kosong terdekat. Terima kasih.`;
 
         {/* ================= BALLROOM SECTION [NEW] ================= */}
         <section id="ballroom" className="py-24 px-6 bg-[#0B0B0B] border-y border-white/5 relative">
-          <div className="absolute right-0 top-1/4 w-[300px] h-[300px] bg-amber-500/5 blur-[100px] rounded-full pointer-events-none" />
+          <div className="absolute right-0 top-1/4 w-[300px] h-[300px] bg-purple-500/5 blur-[100px] rounded-full pointer-events-none" />
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-xs text-amber-400 uppercase tracking-[0.3em] font-extrabold mb-4">Victoria Ballrooms</h2>
+              <h2 className="text-xs text-purple-400 uppercase tracking-[0.3em] font-extrabold mb-4">Victoria Ballrooms</h2>
               <h3 className="text-3xl md:text-5xl font-serif font-black text-white">Event & Wedding Space Planner</h3>
               <p className="text-zinc-400 text-xs sm:text-sm max-w-lg mx-auto mt-4">
                 Pilih kapasitas ballroom terbaik di Tulungagung dengan ornamen megah Victorian. Sesuaikan layout kursi tamu Anda di bawah.
@@ -352,7 +358,7 @@ Mohon info harga paket dan tanggal kosong terdekat. Terima kasih.`;
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/30" />
                 <div className="absolute bottom-6 left-6">
-                  <span className="text-[10px] uppercase font-bold tracking-wider px-2.5 py-1 bg-amber-400/10 text-amber-400 rounded-full border border-amber-400/20">
+                  <span className="text-[10px] uppercase font-bold tracking-wider px-2.5 py-1 bg-purple-400/10 text-purple-400 rounded-full border border-purple-400/20">
                     High Ceiling Victorian Design
                   </span>
                   <h4 className="text-lg font-bold text-white mt-2">Victoria Grand Ballroom</h4>
@@ -370,7 +376,7 @@ Mohon info harga paket dan tanggal kosong terdekat. Terima kasih.`;
                         onClick={() => setActiveBallroom(ballroom)}
                         className={`py-2 px-1 rounded-xl text-[9px] sm:text-[10px] font-bold transition-all border ${
                           activeBallroom === ballroom
-                            ? "bg-amber-400 text-black border-transparent"
+                            ? "bg-purple-400 text-black border-transparent"
                             : "bg-white/5 text-zinc-400 border-white/5 hover:bg-white/10"
                         }`}
                       >
@@ -389,7 +395,7 @@ Mohon info harga paket dan tanggal kosong terdekat. Terima kasih.`;
                         onClick={() => setActiveLayout(layout)}
                         className={`py-2 px-1 rounded-xl text-[9px] sm:text-[10px] font-bold transition-all border ${
                           activeLayout === layout
-                            ? "bg-amber-400 text-black border-transparent"
+                            ? "bg-purple-400 text-black border-transparent"
                             : "bg-white/5 text-zinc-400 border-white/5 hover:bg-white/10"
                         }`}
                       >
@@ -403,7 +409,7 @@ Mohon info harga paket dan tanggal kosong terdekat. Terima kasih.`;
                 <div className="bg-[#0C0C0C] border border-white/5 rounded-2xl p-6 flex items-center justify-between">
                   <div>
                     <p className="text-[10px] text-zinc-500 uppercase tracking-widest mb-1">Estimasi Maksimal Kapasitas</p>
-                    <h4 className="text-xl sm:text-2xl font-black text-amber-400">
+                    <h4 className="text-xl sm:text-2xl font-black text-purple-400">
                       {getCapacityDetails(activeBallroom, activeLayout)}
                     </h4>
                   </div>
@@ -418,7 +424,7 @@ Mohon info harga paket dan tanggal kosong terdekat. Terima kasih.`;
 
                 <button
                   onClick={handleBallroomInquiry}
-                  className="w-full bg-white/5 hover:bg-amber-400 text-zinc-300 hover:text-black font-extrabold text-xs tracking-widest py-4 rounded-xl border border-white/10 hover:border-transparent transition-all flex items-center justify-center gap-2"
+                  className="w-full bg-white/5 hover:bg-purple-400 text-zinc-300 hover:text-black font-extrabold text-xs tracking-widest py-4 rounded-xl border border-white/10 hover:border-transparent transition-all flex items-center justify-center gap-2"
                 >
                   <Phone size={14} />
                   Hubungi Sales & Marketing
@@ -449,7 +455,7 @@ Mohon info harga paket dan tanggal kosong terdekat. Terima kasih.`;
               transition={{ duration: 0.8 }}
               className="text-left"
             >
-              <h2 className="text-xs text-amber-400 uppercase tracking-[0.3em] font-extrabold mb-4">Amenities & Gastronomy</h2>
+              <h2 className="text-xs text-purple-400 uppercase tracking-[0.3em] font-extrabold mb-4">Amenities & Gastronomy</h2>
               <h3 className="text-3xl md:text-5xl font-serif font-black text-white mb-8">Hotel Facilities</h3>
               <p className="text-zinc-400 text-sm font-light leading-relaxed mb-10">
                 Kami menyediakan fasilitas lengkap kelas atas untuk mengoptimalkan pengalaman kunjungan dan relaksasi Anda selama berada di Tulungagung.
@@ -457,15 +463,15 @@ Mohon info harga paket dan tanggal kosong terdekat. Terima kasih.`;
               
               <div className="grid grid-cols-2 gap-6">
                 {[
-                  { icon: Waves, label: "Spacious Indoor Pool" },
+                  { icon: Waves, label: "Swimming Pool (Kolam Renang)" },
                   { icon: Utensils, label: "Sultan Cafe & Resto" },
                   { icon: GlassWater, label: "Venezia Second Bar" },
                   { icon: Wifi, label: "High-Speed Hotel WiFi" },
-                  { icon: Dumbbell, label: "Full-Equipped Gym" },
+                  { icon: Dumbbell, label: "Health Club (Pusat Kebugaran)" },
                   { icon: ShieldCheck, label: "24-Hour Room Service" },
                 ].map(({ icon: Icon, label }, i) => (
                   <div key={i} className="flex items-center gap-4">
-                    <Icon className="w-4 h-4 text-amber-400" />
+                    <Icon className="w-4 h-4 text-purple-400" />
                     <span className="text-zinc-300 text-xs sm:text-sm font-medium">{label}</span>
                   </div>
                 ))}
@@ -478,7 +484,7 @@ Mohon info harga paket dan tanggal kosong terdekat. Terima kasih.`;
         <section id="gallery" className="py-24 px-6 relative">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-xs text-amber-400 uppercase tracking-[0.3em] font-extrabold mb-4">Aesthetics</h2>
+              <h2 className="text-xs text-purple-400 uppercase tracking-[0.3em] font-extrabold mb-4">Aesthetics</h2>
               <h3 className="text-3xl md:text-5xl font-serif font-black text-white">Visual Journey</h3>
             </div>
 
@@ -493,9 +499,79 @@ Mohon info harga paket dan tanggal kosong terdekat. Terima kasih.`;
           </div>
         </section>
 
+        {/* PROMOTIONS & TOURIST SPOTS */}
+        <section id="promo-wisata" className="py-24 px-6 bg-[#070707] border-t border-white/5 relative">
+          <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-16">
+            
+            {/* Left: News & Promotions */}
+            <div className="lg:col-span-7 text-left space-y-8">
+              <div>
+                <h2 className="text-xs text-purple-400 uppercase tracking-[0.3em] font-extrabold mb-4">News & Promotion</h2>
+                <h3 className="text-3xl md:text-4xl font-serif font-black text-white">Promo & Paket Menginap</h3>
+                <p className="text-zinc-400 text-sm font-light mt-2 leading-relaxed">
+                  Dapatkan penawaran terbaik dan harga eksklusif untuk liburan atau perjalanan bisnis Anda di Tulungagung.
+                </p>
+              </div>
+
+              <div className="space-y-6">
+                {data.promotions?.map((promo) => (
+                  <motion.div 
+                    key={promo.id}
+                    whileHover={{ x: 5 }}
+                    className="p-6 bg-[#0a0a0a] border border-white/5 rounded-2xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4 transition-colors hover:border-purple-400/30"
+                  >
+                    <div className="space-y-2">
+                      <span className="text-[9px] uppercase font-bold tracking-wider px-2 py-0.5 bg-purple-400/10 text-purple-400 rounded-full border border-purple-400/20">
+                        {promo.period}
+                      </span>
+                      <h4 className="text-lg font-bold text-white">{promo.title}</h4>
+                      <p className="text-zinc-400 text-xs sm:text-sm font-light leading-relaxed">{promo.desc}</p>
+                    </div>
+                    <div className="bg-zinc-900 border border-white/10 px-4 py-3 rounded-xl text-center shrink-0 min-w-[120px]">
+                      <p className="text-[8px] text-zinc-500 uppercase tracking-widest">Gunakan Kode</p>
+                      <p className="text-sm font-mono font-black text-purple-400 mt-1">{promo.code}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right: Tourist Spots */}
+            <div className="lg:col-span-5 text-left space-y-8">
+              <div>
+                <h2 className="text-xs text-purple-400 uppercase tracking-[0.3em] font-extrabold mb-4">Tourist Spots</h2>
+                <h3 className="text-3xl md:text-4xl font-serif font-black text-white">Sekitar Tulungagung</h3>
+                <p className="text-zinc-400 text-sm font-light mt-2 leading-relaxed">
+                  Rekomendasi destinasi wisata populer yang berdekatan dengan Crown Victoria Hotel.
+                </p>
+              </div>
+
+              <div className="space-y-6">
+                {data.touristSpots?.map((spot, i) => (
+                  <div key={i} className="flex gap-4 items-center bg-[#0a0a0a] border border-white/5 p-4 rounded-2xl hover:border-purple-400/20 transition-colors">
+                    <img 
+                      src={spot.image} 
+                      alt={spot.name} 
+                      className="w-20 h-20 object-cover rounded-xl shrink-0 brightness-75 hover:brightness-100 transition-all duration-300"
+                    />
+                    <div className="space-y-1">
+                      <div className="flex justify-between items-baseline gap-2">
+                        <h4 className="font-bold text-white text-base">{spot.name}</h4>
+                        <span className="text-[9px] text-purple-400 font-bold shrink-0">{spot.distance}</span>
+                      </div>
+                      <p className="text-zinc-400 text-xs font-light leading-relaxed">{spot.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+          </div>
+        </section>
+
         {/* TESTIMONIALS */}
         <section className="py-32 px-6 bg-[#0a0a0a] relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-amber-950/10 blur-[120px] rounded-full pointer-events-none" />
+          <div className="absolute top-0 right-0 w-96 h-96 bg-purple-950/10 blur-[120px] rounded-full pointer-events-none" />
           
           <div className="max-w-6xl mx-auto relative z-10 text-center">
             <h2 className="text-3xl md:text-5xl font-serif font-black mb-16 text-white">Guest Reflections</h2>
@@ -514,7 +590,7 @@ Mohon info harga paket dan tanggal kosong terdekat. Terima kasih.`;
                   transition={{ delay: i * 0.2 }}
                   className="bg-[#050505] p-10 rounded-2xl border border-white/5 text-left"
                 >
-                  <div className="flex gap-1 text-amber-400 mb-6">
+                  <div className="flex gap-1 text-purple-400 mb-6">
                     {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 fill-current" />)}
                   </div>
                   <p className="text-zinc-400 text-xs sm:text-sm font-light italic leading-relaxed mb-8">"{item.text}"</p>
@@ -534,19 +610,19 @@ Mohon info harga paket dan tanggal kosong terdekat. Terima kasih.`;
               viewport={{ once: true }}
               className="text-left"
             >
-              <h2 className="text-xs text-amber-400 uppercase tracking-[0.3em] font-extrabold mb-4">Location</h2>
+              <h2 className="text-xs text-purple-400 uppercase tracking-[0.3em] font-extrabold mb-4">Location</h2>
               <h3 className="text-3xl md:text-5xl font-serif font-black mb-8 text-white">Find Your Sanctuary</h3>
               
               <div className="space-y-6 mb-10 text-zinc-400 font-light">
                 <p className="flex items-start gap-4">
-                  <MapPin className="text-amber-400 shrink-0 w-6 h-6 mt-1" />
+                  <MapPin className="text-purple-400 shrink-0 w-6 h-6 mt-1" />
                   <span className="text-xs sm:text-sm leading-relaxed">
                     Jl. K.H. Hasyim Asy'ari No. 17, Kampungdalem, Kec. Tulungagung,<br/>
                     Kabupaten Tulungagung, Jawa Timur 66212
                   </span>
                 </p>
                 <p className="flex items-center gap-4">
-                  <Phone className="text-amber-400 shrink-0 w-6 h-6" />
+                  <Phone className="text-purple-400 shrink-0 w-6 h-6" />
                   <span className="text-xs sm:text-sm font-bold">+62 355 331 321</span>
                 </p>
               </div>
@@ -555,7 +631,7 @@ Mohon info harga paket dan tanggal kosong terdekat. Terima kasih.`;
                 href="https://maps.app.goo.gl/KkG6uU4WjUjY6"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 border-b border-amber-400 text-amber-400 pb-1 hover:text-white hover:border-white transition-colors uppercase text-xs font-black tracking-widest"
+                className="inline-flex items-center gap-2 border-b border-purple-400 text-purple-400 pb-1 hover:text-white hover:border-white transition-colors uppercase text-xs font-black tracking-widest"
               >
                 Get Directions <ChevronRight className="w-4 h-4" />
               </a>
@@ -582,7 +658,7 @@ Mohon info harga paket dan tanggal kosong terdekat. Terima kasih.`;
       <footer className="bg-[#050505] border-t border-white/5 pt-20 pb-8 px-6">
         <div className="max-w-7xl mx-auto flex flex-col items-center justify-center text-center">
           <h2 className="text-lg tracking-[0.25em] font-light uppercase text-white mb-6">
-            <span className="text-amber-400 font-bold">CROWN VICTORIA</span> HOTEL
+            <span className="text-purple-400 font-bold">CROWN VICTORIA</span> HOTEL
           </h2>
           <div className="flex gap-8 mb-12 text-[10px] tracking-widest uppercase font-bold text-zinc-500">
             <a href="#experience" className="hover:text-white transition-colors">Experience</a>
@@ -621,11 +697,25 @@ function HotelSection({ phone }) {
       features: ["Pool View", "King Bed Only", "Private Balcony"]
     },
     {
+      name: "Suite Room",
+      size: "48 sqm",
+      price: "1.100.000",
+      img: roomSuiteRegularImg,
+      features: ["Living Room Area", "Bathtub", "Premium Toiletries"]
+    },
+    {
       name: "Executive Suite",
       size: "65 sqm",
       price: "1.500.000",
       img: roomSuiteImg,
-      features: ["Panoramic View", "Adjoining Living Room", "Mini Bar"]
+      features: ["Panoramic View", "Adjoining Dining Space", "Mini Bar Set"]
+    },
+    {
+      name: "Victoria Grand Suite",
+      size: "120 sqm",
+      price: "2.500.000",
+      img: roomVictoriaGrandSuiteImg,
+      features: ["Highest Luxury Tipe", "In-Room Jacuzzi", "Private Dining & Butler"]
     },
   ];
 
@@ -634,7 +724,7 @@ function HotelSection({ phone }) {
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6 text-left">
           <div>
-            <h2 className="text-xs text-amber-400 uppercase tracking-[0.3em] font-extrabold mb-4">Accommodations</h2>
+            <h2 className="text-xs text-purple-400 uppercase tracking-[0.3em] font-extrabold mb-4">Accommodations</h2>
             <h3 className="text-3xl md:text-5xl font-serif font-black text-white">Signature Rooms</h3>
           </div>
           <p className="text-zinc-400 text-xs sm:text-sm font-light max-w-md">
@@ -642,7 +732,7 @@ function HotelSection({ phone }) {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {rooms.map((room, i) => {
             const wa = `https://wa.me/${phone}?text=${encodeURIComponent(
               `Halo Crown Victoria Hotel Tulungagung, saya ingin reservasi tipe *${room.name}* (Mulai Rp ${room.price}/malam). Mohon informasikan ketersediaan kamar.`,
@@ -654,7 +744,7 @@ function HotelSection({ phone }) {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.2 }}
+                transition={{ delay: i * 0.15 }}
                 className="group relative text-left"
               >
                 <div className="overflow-hidden rounded-2xl mb-6 relative">
@@ -664,20 +754,20 @@ function HotelSection({ phone }) {
                     alt={room.name}
                     className="h-80 w-full object-cover group-hover:scale-105 transition duration-700 ease-out brightness-[0.9]"
                   />
-                  <div className="absolute top-4 right-4 bg-[#050505]/75 backdrop-blur-md text-amber-400 text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full z-20 border border-amber-400/20">
+                  <div className="absolute top-4 right-4 bg-[#050505]/75 backdrop-blur-md text-purple-400 text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full z-20 border border-purple-400/20">
                     {room.size}
                   </div>
                 </div>
 
                 <div className="px-2">
                   <div className="flex justify-between items-start mb-2">
-                    <h3 className="text-xl font-bold font-serif text-white group-hover:text-amber-400 transition-colors">{room.name}</h3>
+                    <h3 className="text-xl font-bold font-serif text-white group-hover:text-purple-400 transition-colors">{room.name}</h3>
                   </div>
                   
                   <div className="flex flex-wrap gap-x-4 gap-y-1 mb-4 text-xs text-zinc-500 font-medium">
                     {room.features.map((feat, idx) => (
                       <span key={idx} className="flex items-center gap-1.5">
-                        <span className="w-1.5 h-1.5 rounded-full bg-amber-400/50" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-purple-400/50" />
                         {feat}
                       </span>
                     ))}
@@ -692,7 +782,7 @@ function HotelSection({ phone }) {
                       href={wa}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-amber-400 hover:text-white uppercase tracking-widest text-xs font-bold shrink-0 flex items-center gap-1 transition-colors"
+                      className="text-purple-400 hover:text-white uppercase tracking-widest text-xs font-bold shrink-0 flex items-center gap-1 transition-colors"
                     >
                       Book <ChevronRight className="w-4 h-4" />
                     </a>
@@ -706,3 +796,4 @@ function HotelSection({ phone }) {
     </section>
   );
 }
+
