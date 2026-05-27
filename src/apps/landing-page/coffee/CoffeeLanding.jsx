@@ -35,12 +35,7 @@ export default function CoffeeLanding() {
 
   const [menuTab, setMenuTab] = useState("beverages");
 
-  // Interactive Menu Customizations state
-  const [menuCustomizations, setMenuCustomizations] = useState({
-    0: { size: "Grande", milk: "Whole Milk" }, // Obsidian Espresso
-    1: { size: "Grande", milk: "Whole Milk" }, // Caramel Macchiato
-    2: { size: "Grande", milk: "Whole Milk" }, // Matcha Green Tea Latte
-  });
+
 
   // Rewards simulator state
   const [monthlySpend, setMonthlySpend] = useState(250000); // default Rp 250.000
@@ -154,31 +149,7 @@ export default function CoffeeLanding() {
     ]
   };
 
-  const handleCustomizationChange = (itemId, type, value) => {
-    setMenuCustomizations(prev => ({
-      ...prev,
-      [itemId]: {
-        ...prev[itemId],
-        [type]: value
-      }
-    }));
-  };
 
-  const calculateItemPrice = (item) => {
-    const cust = menuCustomizations[item.id] || { size: "Grande", milk: "Whole Milk" };
-    let finalPrice = item.basePrice;
-
-    // Size pricing
-    if (cust.size === "Tall") finalPrice -= 4000;
-    if (cust.size === "Venti") finalPrice += 6000;
-
-    // Milk pricing
-    if (cust.milk === "Oatmilk") finalPrice += 8000;
-    if (cust.milk === "Almondmilk") finalPrice += 8000;
-    if (cust.milk === "Soymilk") finalPrice += 5000;
-
-    return finalPrice;
-  };
 
   /* HERO ANIMATION */
   const playHeroAnimation = () => {
@@ -280,12 +251,10 @@ export default function CoffeeLanding() {
           </div>
 
           <a
-            href={waLink}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#menu"
             className="hidden md:block border-2 border-[#00704A] bg-[#00704A]/10 hover:bg-[#00704A] hover:text-white text-[#D4E9E2] px-6 py-2.5 rounded-full text-xs font-black uppercase tracking-widest transition duration-300"
           >
-            Order Now
+            Jelajahi Menu
           </a>
 
           <button
@@ -305,12 +274,11 @@ export default function CoffeeLanding() {
             <a href="#about" onClick={() => setOpen(false)} className="hover:text-emerald-400">About Us</a>
 
             <a
-              href={waLink}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#menu"
+              onClick={() => setOpen(false)}
               className="border-2 border-[#00704A] bg-[#00704A] text-white py-3 text-center rounded-xl font-bold uppercase"
             >
-              Order Now
+              Jelajahi Menu
             </a>
           </div>
         )}
@@ -415,23 +383,18 @@ export default function CoffeeLanding() {
             ref={btnRef}
             className="
               flex
-              flex-col
-              sm:flex-row
               justify-center
-              gap-4
               mt-10
             "
           >
             <a
-              href={waLink}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#menu"
               className="
                 bg-[#00704A]
                 hover:bg-[#00875a]
                 text-white
-                px-8
-                py-3.5
+                px-10
+                py-4
                 rounded-full
                 text-sm
                 font-extrabold
@@ -441,27 +404,7 @@ export default function CoffeeLanding() {
                 shadow-[#00704A]/25
               "
             >
-              Order via WA
-            </a>
-
-            <a
-              href="#menu"
-              className="
-                bg-white/5
-                backdrop-blur-md
-                border
-                border-white/10
-                text-white
-                px-8
-                py-3.5
-                rounded-full
-                text-sm
-                font-extrabold
-                hover:bg-white/10
-                transition-all
-              "
-            >
-              Explore Menu
+              Jelajahi Menu Kami
             </a>
           </div>
         </div>
@@ -621,7 +564,7 @@ export default function CoffeeLanding() {
               Starbucks Classics & Reserve
             </h2>
             <p className="text-zinc-400 text-xs sm:text-sm mt-3 max-w-md mx-auto">
-              Setiap cangkir dibuat secara personal sesuai preferensi Anda. Sesuaikan ukuran gelas dan jenis susu di bawah.
+              Temukan berbagai pilihan menu minuman signature, makanan lezat, serta merchandise eksklusif yang tersedia di seluruh gerai Starbucks Indonesia.
             </p>
           </div>
 
@@ -648,25 +591,6 @@ export default function CoffeeLanding() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {menuItems[menuTab].map((item) => {
-              const cust = menuTab === "beverages" ? (menuCustomizations[item.id] || { size: "Grande", milk: "Whole Milk" }) : null;
-              
-              // Calculate price based on tab
-              let currentPrice = item.basePrice;
-              if (menuTab === "beverages" && cust) {
-                if (cust.size === "Tall") currentPrice -= 4000;
-                if (cust.size === "Venti") currentPrice += 6000;
-                if (cust.milk === "Oatmilk" || cust.milk === "Almondmilk") currentPrice += 8000;
-                if (cust.milk === "Soymilk") currentPrice += 5000;
-              }
-
-              // Custom WhatsApp message link for this item
-              let checkoutMsg = `Halo Starbucks, saya ingin memesan:\n- *${item.name}*`;
-              if (menuTab === "beverages") {
-                checkoutMsg += `\n- Size: ${cust.size}\n- Milk Option: ${cust.milk}`;
-              }
-              checkoutMsg += `\nTotal: Rp ${currentPrice.toLocaleString("id-ID")}`;
-              const waCheckoutUrl = `https://wa.me/${phone}?text=${encodeURIComponent(checkoutMsg)}`;
-
               return (
                 <div
                   key={item.id}
@@ -679,12 +603,14 @@ export default function CoffeeLanding() {
                     rounded-3xl
                     p-6
                     hover:border-[#00704A]/40
+                    hover:shadow-[0_10px_30px_rgba(0,112,74,0.1)]
                     transition-all
                     duration-500
                     flex
                     flex-col
                     justify-between
                     relative
+                    overflow-hidden
                   "
                 >
                   <div>
@@ -719,96 +645,28 @@ export default function CoffeeLanding() {
                       />
                     </div>
 
-                    <div className="flex justify-between items-start mb-2">
+                    <div className="flex justify-between items-start mb-2 gap-2">
                       <h3 className="text-xl font-bold font-serif text-white">
                         {item.name}
                       </h3>
-                      <span className="text-emerald-400 font-black text-sm">
-                        Rp {currentPrice.toLocaleString("id-ID")}
+                      <span className="text-[#D4E9E2] font-black text-sm shrink-0">
+                        Rp {item.basePrice.toLocaleString("id-ID")}
                       </span>
                     </div>
 
-                    <p className="text-zinc-500 text-xs leading-relaxed mb-6">
+                    <p className="text-zinc-500 text-xs leading-relaxed mb-4">
                       {item.desc}
                     </p>
-
-                    {/* INTERACTIVE SELECTORS (Beverages Only) */}
-                    {menuTab === "beverages" && (
-                      <div className="space-y-4 border-t border-white/5 pt-4 mb-6">
-                        {/* Size selector */}
-                        <div>
-                          <p className="text-[10px] uppercase font-black tracking-widest text-[#D4E9E2] mb-2">Select Size:</p>
-                          <div className="grid grid-cols-3 gap-2">
-                            {["Tall", "Grande", "Venti"].map(sizeOpt => (
-                              <button
-                                key={sizeOpt}
-                                onClick={() => handleCustomizationChange(item.id, "size", sizeOpt)}
-                                className={`py-1.5 rounded-lg text-xs font-bold transition-all border ${
-                                  cust.size === sizeOpt
-                                    ? "bg-[#00704A] text-white border-transparent"
-                                    : "bg-white/5 text-zinc-400 border-white/5 hover:bg-white/10"
-                                }`}
-                              >
-                                {sizeOpt}
-                              </button>
-                            ))}
-                          </div>
-                        </div>
-
-                        {/* Milk Selector */}
-                        <div>
-                          <p className="text-[10px] uppercase font-black tracking-widest text-[#D4E9E2] mb-2">Select Milk:</p>
-                          <div className="grid grid-cols-2 gap-2">
-                            {["Whole Milk", "Soymilk", "Oatmilk", "Almondmilk"].map(milkOpt => (
-                              <button
-                                key={milkOpt}
-                                onClick={() => handleCustomizationChange(item.id, "milk", milkOpt)}
-                                className={`py-1.5 rounded-lg text-[10px] font-bold transition-all border ${
-                                  cust.milk === milkOpt
-                                    ? "bg-[#00704A] text-white border-transparent"
-                                    : "bg-white/5 text-zinc-400 border-white/5 hover:bg-white/10"
-                                }`}
-                              >
-                                {milkOpt}
-                              </button>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                    )}
                   </div>
 
-                  {/* WhatsApp Order Button */}
-                  <a
-                    href={waCheckoutUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="
-                      w-full
-                      text-center
-                      bg-white/5
-                      hover:bg-[#00704A]
-                      text-zinc-300
-                      hover:text-white
-                      py-3
-                      rounded-xl
-                      font-bold
-                      text-xs
-                      transition-all
-                      duration-300
-                      border
-                      border-white/10
-                      hover:border-transparent
-                      flex
-                      items-center
-                      justify-center
-                      gap-2
-                      mt-6
-                    "
-                  >
-                    <Coffee size={14} />
-                    Order via WA
-                  </a>
+                  <div className="border-t border-white/5 pt-4 mt-2 flex items-center justify-between text-[10px] text-zinc-500 font-semibold uppercase tracking-wider">
+                    <span>
+                      {menuTab === "beverages" ? "Tersedia Hot / Iced" : menuTab === "food" ? "Penyajian Hangat" : "Koleksi Terbatas"}
+                    </span>
+                    <span className="text-[#00704A] font-bold">
+                      Original
+                    </span>
+                  </div>
                 </div>
               );
             })}
@@ -857,12 +715,10 @@ export default function CoffeeLanding() {
               
               <div className="pt-4">
                 <a
-                  href={waLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="#find"
                   className="inline-flex items-center justify-center gap-2 bg-[#00704A] hover:bg-[#00875a] text-white px-8 py-3 rounded-full text-sm font-extrabold transition-all"
                 >
-                  Daftar Sekarang
+                  Temukan Gerai Terdekat
                 </a>
               </div>
             </div>
@@ -999,12 +855,12 @@ export default function CoffeeLanding() {
               </div>
 
               <a
-                href={waLink}
+                href={`https://wa.me/${phone}?text=${encodeURIComponent("Halo Starbucks Indonesia, saya tertarik untuk mengetahui informasi lebih lanjut mengenai lowongan pekerjaan dan karier.")}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-8 block w-full text-center bg-white hover:bg-zinc-200 text-zinc-900 py-4 rounded-xl font-extrabold text-sm transition-all"
               >
-                Lihat Lowongan via WA
+                Hubungi Rekrutmen via WA
               </a>
             </div>
 
