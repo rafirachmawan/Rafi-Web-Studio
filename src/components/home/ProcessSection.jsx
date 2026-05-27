@@ -48,7 +48,7 @@ export default function ProcessSection() {
               viewport={{ once: true }}
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-amber-500/20 bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold uppercase tracking-wider"
             >
-              🚀 Cara Kami Bekerja
+               Cara Kami Bekerja
             </motion.div>
 
             <motion.h2 

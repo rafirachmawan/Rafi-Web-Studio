@@ -8,6 +8,7 @@ export default function Navbar() {
     return saved ? saved === "dark" : true;
   });
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
   const navRef = useRef(null);
 
   useEffect(() => {
@@ -57,6 +58,32 @@ export default function Navbar() {
     { label: "Contact", href: "#contact" }
   ];
 
+  // Track active section on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = navLinks.map(link => link.href.substring(1));
+      let current = "";
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = sections[i];
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          // Offset by 150px to account for the navbar and scroll padding
+          if (rect.top <= 150) {
+            current = section;
+            break;
+          }
+        }
+      }
+      setActiveSection(current);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll(); // Trigger on mount
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <div ref={navRef} className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-6xl flex flex-col gap-2">
       {/* MAIN BAR */}
@@ -68,7 +95,15 @@ export default function Navbar() {
         {/* MENU */}
         <div className="hidden md:flex gap-6 text-sm text-gray-700 dark:text-gray-300 font-semibold">
           {navLinks.map((link) => (
-            <a key={link.label} href={link.href} className="hover:text-amber-400 transition">
+            <a 
+              key={link.label} 
+              href={link.href} 
+              className={`transition ${
+                activeSection === link.href.substring(1) 
+                  ? "text-amber-500" 
+                  : "hover:text-amber-400"
+              }`}
+            >
               {link.label}
             </a>
           ))}
@@ -111,7 +146,11 @@ export default function Navbar() {
                 key={link.label}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="px-4 py-2.5 text-sm font-semibold text-gray-700 dark:text-gray-300 hover:text-amber-500 dark:hover:text-amber-400 hover:bg-black/[0.02] dark:hover:bg-white/[0.02] rounded-xl transition"
+                className={`px-4 py-2.5 text-sm font-semibold rounded-xl transition ${
+                  activeSection === link.href.substring(1)
+                    ? "text-amber-500 bg-amber-500/10 dark:text-amber-400 dark:bg-amber-500/10"
+                    : "text-gray-700 dark:text-gray-300 hover:text-amber-500 dark:hover:text-amber-400 hover:bg-black/[0.02] dark:hover:bg-white/[0.02]"
+                }`}
               >
                 {link.label}
               </a>

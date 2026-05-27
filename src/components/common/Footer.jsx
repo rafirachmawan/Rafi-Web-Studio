@@ -169,7 +169,7 @@ export default function Footer() {
         <div className="mt-16 pt-8 border-t border-black/10 dark:border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-zinc-500 dark:text-zinc-500 text-xs font-medium">
           <p>© {new Date().getFullYear()} GapaiDigital. All rights reserved.</p>
           <p className="flex items-center gap-1.5">
-            Solusi Website & Aplikasi Profesional untuk Bisnis Modern 🚀
+            Solusi Website & Aplikasi Profesional untuk Bisnis Modern 
           </p>
         </div>
       </div>
