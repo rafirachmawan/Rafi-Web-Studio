@@ -1,11 +1,39 @@
 import { motion } from "framer-motion";
-import { Quote, TrendingUp, Zap, Star } from "lucide-react";
+import { Quote, Star } from "lucide-react";
+
+import unitaImg from "../../assets/UNITACover.jpg";
+import nikoImg from "../../assets/NikoNikoCover.jpg";
+import starbucksImg from "../../assets/StarbucksCover.jpg";
+
+const testimonials = [
+  {
+    name: "Universitas Tulungagung",
+    role: "Institusi Pendidikan",
+    image: unitaImg,
+    text: "Sistem informasi akademik dan landing page yang dibangun sangat modern dan responsif. Sangat membantu digitalisasi kampus kami menjadi lebih profesional dan mudah diakses.",
+  },
+  {
+    name: "Niko Niko Ramen",
+    role: "F&B / Restoran",
+    image: nikoImg,
+    text: "Tampilan website sangat menggugah selera dan sistem pemesanan online berjalan mulus. Visibilitas brand dan interaksi pelanggan kami meningkat pesat sejak web baru diluncurkan!",
+  },
+  {
+    name: "Starbucks",
+    role: "Coffee Shop & Lifestyle",
+    image: starbucksImg,
+    text: "Desain UI/UX yang elegan, dinamis, dan sangat merepresentasikan brand premium kami. Pengalaman pelanggan dalam melihat katalog menu menjadi jauh lebih interaktif dan berkelas.",
+  }
+];
 
 export default function TestimoniSection() {
+  // Duplicate array multiple times for smooth infinite scrolling
+  const duplicatedTestimonials = [...testimonials, ...testimonials, ...testimonials];
+
   return (
-    <div id="testimoni" className="mt-32 mb-24 max-w-6xl mx-auto px-4 md:px-8">
+    <div id="testimoni" className="mt-32 mb-24 w-full overflow-hidden">
       {/* TITLE */}
-      <div className="text-center mb-10">
+      <div className="text-center mb-16 px-4 md:px-8">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-black mb-3 leading-tight text-zinc-900 dark:text-white">
           Kisah Sukses{" "}
           <span className="bg-gradient-to-r from-amber-500 to-yellow-400 bg-clip-text text-transparent">
@@ -13,128 +41,72 @@ export default function TestimoniSection() {
           </span>
         </h2>
         <p className="text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto text-sm md:text-base font-medium">
-          Website bukan cuma gaya-gayaan, tapi senjata rahasia untuk bisnis maju.
+          Kepercayaan mereka adalah bukti dedikasi kami dalam menghadirkan solusi digitalisasi bisnis modern yang berkualitas tinggi.
         </p>
       </div>
 
-      {/* BENTO GRID */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:auto-rows-[220px]">
-        {/* CARD 1 (BIG QUOTE) - Spans 2 cols, 2 rows */}
+      {/* MARQUEE SLIDER */}
+      <div className="relative w-full flex items-center">
+        {/* Left & Right gradient masks for smooth fade edges */}
+        <div className="absolute left-0 top-0 bottom-0 w-24 md:w-48 bg-gradient-to-r from-[#fafafc] dark:from-[#050508] to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-24 md:w-48 bg-gradient-to-l from-[#fafafc] dark:from-[#050508] to-transparent z-10 pointer-events-none" />
+
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="md:col-span-2 md:row-span-2 relative bg-white dark:bg-[#0a0a0a] border border-zinc-200 dark:border-white/10 rounded-3xl p-8 flex flex-col justify-between overflow-hidden group hover:border-amber-500/50 hover:shadow-[0_0_30px_rgba(245,158,11,0.15)] transition-all duration-300"
-        >
-          {/* Decorative blur */}
-          <div className="absolute -top-20 -right-20 w-40 h-40 bg-amber-500/20 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-          
-          <div>
-            <Quote className="w-10 h-10 text-amber-500 mb-6 opacity-80" />
-            <div className="flex gap-1 mb-4">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-4 h-4 fill-amber-500 text-amber-500" />
-              ))}
-            </div>
-            <p className="text-zinc-800 dark:text-zinc-200 text-lg md:text-xl font-semibold leading-relaxed mb-8 relative z-10">
-              "Website travel agency saya jadi rujukan utama pelanggan. Tampilan di HP sangat smooth dan reservasi online meningkat tajam sejak web baru diluncurkan!"
-            </p>
-          </div>
-
-          <div className="flex items-center gap-4 relative z-10">
-            <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-amber-500/30">
-              <img
-                src="https://i.pravatar.cc/100?img=1"
-                alt="Lestari Budi"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div>
-              <h4 className="text-base font-bold text-zinc-900 dark:text-white">
-                Lestari Budi
-              </h4>
-              <p className="text-sm text-zinc-500 dark:text-zinc-400 font-medium">
-                CEO, Lancar Jaya Travel
-              </p>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* CARD 2 (METRIC 1) */}
+          className="flex gap-6 md:gap-8 px-4 py-8 cursor-grab active:cursor-grabbing"
+          animate={{ x: [0, -1000] }} // Will be adjusted by CSS or framer motion width tracking if needed, but a simple percentage translation is better.
+          // Wait, animating x: ["0%", "-50%"] is safer if we duplicate 2 times. We duplicated 3 times, so "-33.33%" is 1 full set.
+          // Since the flex container holds all items, we can use x: ["0%", "-33.33%"] or let Framer track the inner width.
+          style={{ width: "max-content" }}
+        />
+        
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="md:col-span-1 md:row-span-1 bg-white dark:bg-[#0a0a0a] border border-zinc-200 dark:border-white/10 rounded-3xl p-6 flex flex-col justify-center items-center text-center group hover:border-amber-500/50 hover:shadow-[0_0_20px_rgba(245,158,11,0.1)] transition-all duration-300"
+          className="flex gap-6 md:gap-8 w-max pl-4 md:pl-8 hover:animation-pause"
+          animate={{ x: ["0%", "-33.333333%"] }}
+          transition={{ 
+            repeat: Infinity, 
+            ease: "linear", 
+            duration: 25 // Adjust speed here
+          }}
+          whileHover={{ animationPlayState: "paused" }} // Fallback approach
         >
-          <div className="w-12 h-12 rounded-full bg-amber-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-            <TrendingUp className="w-6 h-6 text-amber-500" />
-          </div>
-          <h3 className="text-4xl md:text-5xl font-black text-zinc-900 dark:text-white mb-2 tracking-tight">
-            +150<span className="text-amber-500">%</span>
-          </h3>
-          <p className="text-xs font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">
-            Lonjakan Trafik
-          </p>
-        </motion.div>
-
-        {/* CARD 3 (METRIC 2) */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="md:col-span-1 md:row-span-1 bg-white dark:bg-[#0a0a0a] border border-zinc-200 dark:border-white/10 rounded-3xl p-6 flex flex-col justify-center items-center text-center group hover:border-amber-500/50 hover:shadow-[0_0_20px_rgba(245,158,11,0.1)] transition-all duration-300"
-        >
-           <div className="w-12 h-12 rounded-full bg-amber-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-            <Zap className="w-6 h-6 text-amber-500" />
-          </div>
-          <h3 className="text-4xl md:text-5xl font-black text-zinc-900 dark:text-white mb-2 tracking-tight">
-            3<span className="text-amber-500">x</span>
-          </h3>
-          <p className="text-xs font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">
-            Lebih Cepat
-          </p>
-        </motion.div>
-
-        {/* CARD 4 (SECONDARY QUOTE / WIDE) */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="md:col-span-2 md:row-span-1 relative bg-zinc-900 border border-zinc-800 rounded-3xl p-6 md:p-8 overflow-hidden group hover:border-amber-500/50 transition-all duration-300 flex flex-col justify-center"
-        >
-          {/* Abstract dark mode glow background */}
-          <div className="absolute top-0 right-0 w-48 h-48 bg-amber-500/10 blur-[60px] rounded-full group-hover:bg-amber-500/20 transition-colors duration-500"></div>
-
-          <div className="relative z-10 flex flex-col md:flex-row items-center md:items-start gap-6">
-            <div className="w-16 h-16 shrink-0 rounded-2xl overflow-hidden border border-zinc-700 shadow-xl">
-               <img
-                src="https://i.pravatar.cc/100?img=2"
-                alt="Budi Kusuma"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="text-center md:text-left">
-              <div className="flex gap-1 justify-center md:justify-start mb-3">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-3 h-3 fill-amber-500 text-amber-500" />
-                ))}
-              </div>
-              <p className="text-zinc-300 text-sm md:text-base font-medium italic mb-4 leading-relaxed">
-                "Custom project e-learning kami dikerjakan dengan sangat detail. Fiturnya kompleks tapi UI/UX-nya tetap elegan dan mudah dimengerti user."
-              </p>
+          {duplicatedTestimonials.map((item, idx) => (
+            <div
+              key={idx}
+              className="w-[320px] md:w-[400px] shrink-0 bg-white dark:bg-[#0a0a0a] border border-zinc-200 dark:border-white/10 rounded-3xl p-6 md:p-8 flex flex-col justify-between group hover:border-amber-500/50 hover:shadow-[0_0_30px_rgba(245,158,11,0.15)] transition-all duration-300"
+            >
               <div>
-                <span className="text-white font-bold text-sm">Budi Kusuma</span>
-                <span className="text-zinc-500 text-xs ml-2 font-medium uppercase tracking-wider">— E-Learning Platform</span>
+                <Quote className="w-8 h-8 text-amber-500 mb-5 opacity-80" />
+                <div className="flex gap-1 mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-amber-500 text-amber-500" />
+                  ))}
+                </div>
+                <p className="text-zinc-800 dark:text-zinc-200 text-sm md:text-base font-medium leading-relaxed mb-8">
+                  "{item.text}"
+                </p>
+              </div>
+
+              <div className="flex items-center gap-4 pt-4 border-t border-zinc-100 dark:border-white/5">
+                <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-amber-500/30 bg-zinc-100 dark:bg-zinc-900 shrink-0">
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    loading="lazy"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div>
+                  <h4 className="text-sm md:text-base font-bold text-zinc-900 dark:text-white line-clamp-1">
+                    {item.name}
+                  </h4>
+                  <p className="text-xs text-amber-600 dark:text-amber-500 font-medium uppercase tracking-wider">
+                    {item.role}
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
+          ))}
         </motion.div>
-
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Sun, Moon } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 
 export default function Navbar() {
@@ -114,10 +114,26 @@ export default function Navbar() {
           {/* THEME TOGGLE */}
           <button
             onClick={() => setDarkMode(!darkMode)}
-            className="w-10 h-10 rounded-full border border-black/10 dark:border-white/10 bg-black/[0.03] dark:bg-white/[0.05] flex items-center justify-center text-lg transition hover:scale-105"
+            className="relative w-14 h-8 rounded-full border border-black/10 dark:border-white/10 bg-black/[0.05] dark:bg-white/[0.05] flex items-center px-1 transition-colors cursor-pointer"
             aria-label="Toggle dark mode"
           >
-            {darkMode ? "☀️" : "🌙"}
+            <motion.div
+              layout
+              className="w-6 h-6 rounded-full bg-white dark:bg-zinc-800 shadow-sm flex items-center justify-center z-10"
+              animate={{ x: darkMode ? 24 : 0 }}
+              transition={{ type: "spring", stiffness: 400, damping: 25 }}
+            >
+              {darkMode ? (
+                <Moon size={14} className="text-zinc-300" />
+              ) : (
+                <Sun size={14} className="text-amber-500" />
+              )}
+            </motion.div>
+            {/* Background Icons */}
+            <div className="absolute inset-0 flex justify-between items-center px-2 pointer-events-none">
+              <Sun size={12} className="text-amber-500/50" />
+              <Moon size={12} className="text-zinc-500/50" />
+            </div>
           </button>
 
           {/* HAMBURGER TOGGLE */}

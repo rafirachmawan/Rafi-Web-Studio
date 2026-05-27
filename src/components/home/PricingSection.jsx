@@ -32,7 +32,7 @@ export default function PricingSection({ pricingTab, setPricingTab, waLink }) {
         </p>
 
         {/* TAB */}
-        <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-16">
+        <div className="grid grid-cols-2 sm:flex sm:flex-wrap sm:justify-center gap-2 sm:gap-3 mb-16 w-full">
           {[
             { label: "Landing Page", value: "landingpage" },
             { label: "Mobile Apps", value: "mobileapps" },
@@ -42,10 +42,10 @@ export default function PricingSection({ pricingTab, setPricingTab, waLink }) {
             <button
               key={item.value}
               onClick={() => setPricingTab(item.value)}
-              className={`px-5 py-2.5 rounded-full text-xs md:text-sm font-bold transition-all duration-300 border ${
+              className={`w-full sm:w-auto px-4 py-2.5 sm:px-5 sm:py-2.5 rounded-xl sm:rounded-full text-[11px] sm:text-xs md:text-sm font-bold transition-all duration-300 border flex items-center justify-center ${
                 pricingTab === item.value
-                  ? "bg-amber-500 text-black border-amber-400 shadow-lg shadow-amber-500/30 scale-105"
-                  : "bg-black/[0.02] dark:bg-white/[0.02] text-zinc-600 dark:text-zinc-400 border-black/5 dark:border-white/5 hover:bg-black/[0.05] dark:hover:bg-white/[0.05] hover:scale-105"
+                  ? "bg-amber-500 text-black border-amber-400 shadow-lg shadow-amber-500/30 scale-[1.02] sm:scale-105"
+                  : "bg-black/[0.02] dark:bg-white/[0.02] text-zinc-600 dark:text-zinc-400 border-black/5 dark:border-white/5 hover:bg-black/[0.05] dark:hover:bg-white/[0.05] hover:scale-[1.02] sm:hover:scale-105"
               }`}
             >
               {item.label}
