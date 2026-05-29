@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft, ArrowRight, CheckCircle2, Layers, Tag, User } from "lucide-react";
+import { ArrowLeft, ArrowRight, CheckCircle2, Layers, Tag, User, ExternalLink } from "lucide-react";
 import { demos } from "../constants/demos";
 import Footer from "../components/common/Footer";
 
@@ -66,17 +66,34 @@ export default function ProjectDetail() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight mb-8"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight mb-6"
           >
             <span className="mr-4 inline-block">{project.icon}</span>
             {project.name}
           </motion.h1>
 
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.15 }}
+            className="flex justify-center mb-10"
+          >
+            <a
+              href={project.path}
+              target={project.path !== "#" ? "_blank" : "_self"}
+              rel="noopener noreferrer"
+              className="group flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-white px-8 py-3.5 rounded-full text-sm font-black transition-all shadow-lg hover:shadow-amber-500/25 hover:scale-[1.02] active:scale-95"
+            >
+              Kunjungi Live Website <ExternalLink size={18} className="group-hover:translate-x-1 transition-transform" />
+            </a>
+          </motion.div>
+
+          {/* GAMBAR DIPERKECIL: max-w-4xl & aspect-video (16:9) */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2 }}
-            className="relative w-full max-w-5xl mx-auto aspect-[16/9] md:aspect-[21/9] rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl border border-zinc-200/50 dark:border-white/10"
+            className="relative w-full max-w-4xl mx-auto aspect-video rounded-[2rem] overflow-hidden shadow-2xl border border-zinc-200/50 dark:border-white/10"
           >
             <img 
               src={project.image} 
