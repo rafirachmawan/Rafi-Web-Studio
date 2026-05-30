@@ -133,12 +133,12 @@ export default function ProjectDetail() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="w-full aspect-[4/3] sm:aspect-video rounded-3xl overflow-hidden shadow-2xl border border-zinc-200/50 dark:border-white/10 bg-zinc-100 dark:bg-zinc-900"
+              className="w-full rounded-3xl overflow-hidden shadow-2xl border border-zinc-200/50 dark:border-white/10 bg-zinc-100 dark:bg-zinc-900"
             >
               <img 
                 src={project.image} 
                 alt={project.name} 
-                className="w-full h-full object-cover object-top"
+                className="w-full h-auto block"
               />
             </motion.div>
 
