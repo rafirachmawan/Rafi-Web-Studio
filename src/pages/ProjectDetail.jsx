@@ -55,20 +55,14 @@ export default function ProjectDetail() {
             <span className="px-4 py-1.5 bg-amber-500/10 text-amber-600 dark:text-amber-500 border border-amber-500/20 text-xs font-black uppercase tracking-wider rounded-full flex items-center gap-1.5 shadow-sm">
               <Tag size={14} /> {project.category}
             </span>
-            {project.client && (
-              <span className="px-4 py-1.5 bg-zinc-100 dark:bg-white/5 text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-white/10 text-xs font-black uppercase tracking-wider rounded-full flex items-center gap-1.5 shadow-sm">
-                <User size={14} /> Klien: {project.client}
-              </span>
-            )}
           </motion.div>
 
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight mb-6"
           >
-            <span className="mr-4 inline-block">{project.icon}</span>
             {project.name}
           </motion.h1>
 
@@ -88,12 +82,12 @@ export default function ProjectDetail() {
             </a>
           </motion.div>
 
-          {/* GAMBAR DIPERKECIL: max-w-4xl & aspect-video (16:9) */}
+          {/* GAMBAR DIPERKECIL: max-w-3xl & aspect-video (16:9) */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2 }}
-            className="relative w-full max-w-4xl mx-auto aspect-video rounded-[2rem] overflow-hidden shadow-2xl border border-zinc-200/50 dark:border-white/10"
+            className="relative w-full max-w-3xl mx-auto aspect-video rounded-3xl overflow-hidden shadow-xl border border-zinc-200/50 dark:border-white/10"
           >
             <img 
               src={project.image} 
@@ -170,7 +164,15 @@ export default function ProjectDetail() {
               </div>
 
               <div className="pt-6 border-t border-zinc-100 dark:border-white/5">
-                <p className="text-sm text-zinc-500 font-medium mb-4">Ingin melihat hasil akhirnya secara langsung?</p>
+                <div className="mb-5 p-4 bg-amber-500/10 border border-amber-500/20 rounded-xl">
+                  <p className="text-xs text-amber-700 dark:text-amber-400 font-bold mb-1 flex items-center gap-1.5">
+                    <span className="text-base">⚠️</span> Perhatian
+                  </p>
+                  <p className="text-xs text-amber-700/80 dark:text-amber-400/80 leading-relaxed font-medium">
+                    Proyek ini hanyalah sebuah <strong className="text-amber-800 dark:text-amber-300">simulasi demo</strong>. Hasil akhir yang ditampilkan bukan merupakan real project atau entitas bisnis yang beroperasi.
+                  </p>
+                </div>
+                <p className="text-sm text-zinc-600 dark:text-zinc-400 font-bold mb-4">Ingin mencoba simulasi website ini?</p>
                 <a
                   href={project.path}
                   target={project.path !== "#" ? "_blank" : "_self"}
