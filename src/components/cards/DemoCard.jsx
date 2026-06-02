@@ -23,10 +23,15 @@ export default function DemoCard({ demo }) {
           />
           
           {/* CATEGORY BADGE ON IMAGE */}
-          <div className="absolute top-4 left-4 z-20">
+          <div className="absolute top-4 left-4 z-20 flex flex-wrap gap-2">
             <div className="px-3 py-1 rounded-full bg-black/50 backdrop-blur-md border border-white/20 text-white text-[10px] font-bold uppercase tracking-wider">
               {demo.category}
             </div>
+            {demo.isReal && (
+              <div className="px-3 py-1 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 backdrop-blur-md border border-white/10 text-white text-[10px] font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-md shadow-amber-500/20">
+                <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" /> Real Project
+              </div>
+            )}
           </div>
 
           {/* Overlay to hint it's interactive */}

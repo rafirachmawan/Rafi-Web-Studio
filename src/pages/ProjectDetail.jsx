@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, CheckCircle2, Layers, Tag, User, ExternalLink } from "lucide-react";
 import { demos } from "../constants/demos";
+import { realProjects } from "../constants/realProjects";
 import Footer from "../components/common/Footer";
 
 export default function ProjectDetail() {
@@ -11,7 +12,7 @@ export default function ProjectDetail() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    const foundProject = demos.find((d) => d.id === id);
+    const foundProject = realProjects.find((d) => d.id === id) || demos.find((d) => d.id === id);
     setProject(foundProject);
   }, [id]);
 
@@ -70,20 +71,36 @@ export default function ProjectDetail() {
                 </motion.h1>
               </div>
 
-              {/* Simulation Warning (Clean) */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.15 }}
-                className="pl-4 border-l-2 border-amber-500/50"
-              >
-                <p className="text-sm font-bold text-amber-700 dark:text-amber-500 mb-1 flex items-center gap-2">
-                  <span>⚠️</span> Peringatan Simulasi
-                </p>
-                <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                  Proyek ini hanyalah sebuah simulasi demo. Hasil akhir yang ditampilkan bukan merupakan real project atau entitas bisnis yang beroperasi.
-                </p>
-              </motion.div>
+              {/* Simulation Warning or Real Project Verification */}
+              {project.isReal ? (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.15 }}
+                  className="pl-4 border-l-2 border-emerald-500/50"
+                >
+                  <p className="text-sm font-bold text-emerald-700 dark:text-emerald-500 mb-1 flex items-center gap-2">
+                    <CheckCircle2 size={16} className="text-emerald-500" /> Proyek Rilis (Live)
+                  </p>
+                  <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                    Proyek ini telah dikembangkan secara resmi untuk klien kami dan sedang beroperasi secara aktif.
+                  </p>
+                </motion.div>
+              ) : (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.15 }}
+                  className="pl-4 border-l-2 border-amber-500/50"
+                >
+                  <p className="text-sm font-bold text-amber-700 dark:text-amber-500 mb-1 flex items-center gap-2">
+                    <span>⚠️</span> Peringatan Simulasi
+                  </p>
+                  <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                    Proyek ini hanyalah sebuah simulasi demo. Hasil akhir yang ditampilkan bukan merupakan real project atau entitas bisnis yang beroperasi.
+                  </p>
+                </motion.div>
+              )}
 
               {/* Action Button */}
               <motion.div
@@ -92,14 +109,20 @@ export default function ProjectDetail() {
                 transition={{ delay: 0.2 }}
                 className="pt-4"
               >
-                <a
-                  href={project.path}
-                  target={project.path !== "#" ? "_blank" : "_self"}
-                  rel="noopener noreferrer"
-                  className="group inline-flex items-center justify-center gap-2 bg-black dark:bg-white text-white dark:text-black px-8 py-4 rounded-full text-sm font-bold transition-all hover:scale-[1.02] active:scale-95 shadow-xl shadow-black/10 dark:shadow-white/10"
-                >
-                  Kunjungi Live Website <ExternalLink size={18} className="group-hover:translate-x-1 transition-transform" />
-                </a>
+                {project.path === "#" ? (
+                  <div className="inline-flex items-center justify-center gap-2 bg-zinc-200/50 dark:bg-zinc-800/50 border border-zinc-200 dark:border-white/5 text-zinc-500 dark:text-zinc-400 px-8 py-4 rounded-full text-sm font-bold cursor-not-allowed">
+                    Sistem Internal / Private
+                  </div>
+                ) : (
+                  <a
+                    href={project.path}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group inline-flex items-center justify-center gap-2 bg-black dark:bg-white text-white dark:text-black px-8 py-4 rounded-full text-sm font-bold transition-all hover:scale-[1.02] active:scale-95 shadow-xl shadow-black/10 dark:shadow-white/10"
+                  >
+                    {project.isReal ? "Kunjungi Website Klien" : "Kunjungi Live Website"} <ExternalLink size={18} className="group-hover:translate-x-1 transition-transform" />
+                  </a>
+                )}
               </motion.div>
 
               {/* Tech Stack (Minimalist) */}

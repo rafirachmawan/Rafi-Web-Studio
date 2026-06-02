@@ -51,7 +51,8 @@ export default function Navbar() {
 
   const navLinks = [
     { label: "Home", href: "#home" },
-    { label: "Demo", href: "#demo" },
+    { label: "Proyek", href: "#real-projects" },
+    { label: "Demo Template", href: "#demo" },
     { label: "Proses", href: "#proses" },
     { label: "Harga", href: "#harga" },
     { label: "Testimoni", href: "#testimoni" },

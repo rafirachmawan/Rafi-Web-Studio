@@ -7,6 +7,7 @@ import FloatingWAButton from "../components/common/FloatingWAButton";
 
 import HeroSection from "../components/home/HeroSection";
 import TechMarquee from "../components/home/TechMarquee";
+import RealProjectsSection from "../components/home/RealProjectsSection";
 import DemoSection from "../components/home/DemoSection";
 import WhyUsSection from "../components/home/WhyUsSection";
 import ProcessSection from "../components/home/ProcessSection";
@@ -53,6 +54,9 @@ export default function Home() {
         
         {/* TECH MARQUEE */}
         <TechMarquee />
+
+        {/* REAL PROJECTS */}
+        <RealProjectsSection />
 
         {/* DEMO */}
         <DemoSection

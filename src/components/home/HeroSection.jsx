@@ -158,7 +158,7 @@ export default function HeroSection() {
             </a>
 
             <a
-              href="#demo"
+              href="#real-projects"
               className="group/btn2 border border-zinc-200 dark:border-white/10 px-6 py-2.5 rounded-full text-xs md:text-sm font-bold text-zinc-800 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-white/5 transition-all duration-300 active:scale-95 flex items-center justify-center gap-2"
             >
               Lihat Portofolio

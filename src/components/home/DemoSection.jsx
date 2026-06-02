@@ -64,7 +64,7 @@ export default function DemoSection({ filter, setFilter, filtered }) {
             viewport={{ once: true }}
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-600 dark:text-amber-400 text-xs font-bold mb-6 uppercase tracking-widest"
           >
-            <Sparkles className="w-3.5 h-3.5" /> Portfolio
+            <Sparkles className="w-3.5 h-3.5" /> Demo Catalog
           </motion.div>
           
           <motion.h2 
@@ -74,7 +74,7 @@ export default function DemoSection({ filter, setFilter, filtered }) {
             transition={{ delay: 0.1 }}
             className="text-xl sm:text-2xl md:text-3xl font-black text-black dark:text-white tracking-tight mb-4"
           >
-            Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600">Digital Catalog</span>
+            Digitalization <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600">Demos & Templates</span>
           </motion.h2>
 
           <motion.p 
@@ -82,9 +82,9 @@ export default function DemoSection({ filter, setFilter, filtered }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-zinc-600 dark:text-zinc-400 text-xs md:text-sm leading-relaxed"
+            className="text-zinc-600 dark:text-zinc-400 text-xs md:text-sm leading-relaxed max-w-xl mx-auto"
           >
-            {getCategoryInfo(filter)}
+            {getCategoryInfo(filter)} Kami menyediakan opsi demo interaktif ini sebagai blueprint/katalog template yang siap dikustomisasi penuh sesuai dengan jenis usaha Anda.
           </motion.p>
         </div>
 
