@@ -254,7 +254,7 @@ export default function CoffeeLanding() {
             href="#menu"
             className="hidden md:block border-2 border-[#00704A] bg-[#00704A]/10 hover:bg-[#00704A] hover:text-white text-[#D4E9E2] px-6 py-2.5 rounded-full text-xs font-black uppercase tracking-widest transition duration-300"
           >
-            Jelajahi Menu
+            Explore Menu
           </a>
 
           <button
@@ -278,7 +278,7 @@ export default function CoffeeLanding() {
               onClick={() => setOpen(false)}
               className="border-2 border-[#00704A] bg-[#00704A] text-white py-3 text-center rounded-xl font-bold uppercase"
             >
-              Jelajahi Menu
+              Explore Menu
             </a>
           </div>
         )}
@@ -404,7 +404,7 @@ export default function CoffeeLanding() {
                 shadow-[#00704A]/25
               "
             >
-              Jelajahi Menu Kami
+              Explore Our Menu
             </a>
           </div>
         </div>
@@ -454,13 +454,13 @@ export default function CoffeeLanding() {
         >
           <div className="text-center mb-20">
             <p className="text-xs tracking-[4px] text-[#00704A] font-extrabold uppercase mb-3">
-              Informasi Kopi & Edukasi
+              Coffee Info & Education
             </p>
             <h2 className="text-3xl sm:text-5xl font-serif font-black text-white">
-              Seni Memanggang & Menyeduh
+              The Art of Roasting & Brewing
             </h2>
             <p className="text-zinc-400 text-sm mt-4 max-w-2xl mx-auto">
-              Dari biji kopi pilihan hingga ke cangkir Anda. Pelajari karakteristik unik dari setiap Roast Spectrum dan cara menyeduh kopi terbaik di rumah.
+              From selected coffee beans to your cup. Learn the unique characteristics of each Roast Spectrum and how to brew the best coffee at home.
             </p>
           </div>
 
@@ -490,34 +490,34 @@ export default function CoffeeLanding() {
             {/* RIGHT CONTENT */}
             <div className="space-y-8 text-left">
               <div>
-                <h3 className="text-2xl font-serif font-bold text-white mb-3">Jenis Kopi Pilihan</h3>
+                <h3 className="text-2xl font-serif font-bold text-white mb-3">Selected Coffee Varieties</h3>
                 <p className="text-zinc-400 text-sm leading-relaxed">
-                  Kami menawarkan berbagai jenis kopi berkualitas tinggi untuk memenuhi selera Anda, mulai dari <strong>Whole Bean</strong> (biji kopi utuh) yang dipanggang dengan sempurna, kopi instan premium <strong>VIA Ready Brew</strong>, hingga koleksi eksklusif dan langka <strong>Starbucks Reserve®</strong>.
+                  We offer a wide variety of high-quality coffees to satisfy your taste, ranging from <strong>Whole Bean</strong> (whole coffee beans) roasted to perfection, premium instant coffee <strong>VIA Ready Brew</strong>, to our exclusive and rare <strong>Starbucks Reserve®</strong> collections.
                 </p>
               </div>
 
               <div>
-                <h3 className="text-2xl font-serif font-bold text-white mb-3">Karakteristik & Roast Spectrum</h3>
+                <h3 className="text-2xl font-serif font-bold text-white mb-3">Characteristics & Roast Spectrum</h3>
                 <p className="text-zinc-400 text-sm leading-relaxed mb-4">
-                  Setiap kopi membutuhkan profil pemanggangan yang berbeda untuk mencapai puncak aroma, keasaman, bentuk tubuh (body), dan rasanya.
+                  Each coffee requires a different roasting profile to reach its peak aroma, acidity, body, and flavor.
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-start gap-3 text-sm">
                     <span className="w-2.5 h-2.5 rounded-full bg-amber-200 mt-1 shrink-0"></span>
                     <div>
-                      <strong className="text-amber-200">Blonde Roast:</strong> <span className="text-zinc-400">Ringan, lembut, dan sedikit manis.</span>
+                      <strong className="text-amber-200">Blonde Roast:</strong> <span className="text-zinc-400">Light, smooth, and slightly sweet.</span>
                     </div>
                   </li>
                   <li className="flex items-start gap-3 text-sm">
                     <span className="w-2.5 h-2.5 rounded-full bg-amber-600 mt-1 shrink-0"></span>
                     <div>
-                      <strong className="text-amber-600">Medium Roast:</strong> <span className="text-zinc-400">Seimbang, halus, dan kaya rasa.</span>
+                      <strong className="text-amber-600">Medium Roast:</strong> <span className="text-zinc-400">Balanced, smooth, and rich in flavor.</span>
                     </div>
                   </li>
                   <li className="flex items-start gap-3 text-sm">
                     <span className="w-2.5 h-2.5 rounded-full bg-[#3d2314] border border-white/20 mt-1 shrink-0"></span>
                     <div>
-                      <strong className="text-[#D4E9E2]">Dark Roast:</strong> <span className="text-zinc-400">Kuat, tebal (full-bodied), dengan sentuhan rasa yang pekat. Highlight kami: Kopi Sumatra dengan tingkat keasaman rendah dan karakter yang earthy.</span>
+                      <strong className="text-[#D4E9E2]">Dark Roast:</strong> <span className="text-zinc-400">Strong, full-bodied, with a touch of rich flavor. Our highlight: Sumatra coffee with low acidity and an earthy character.</span>
                     </div>
                   </li>
                 </ul>
@@ -527,12 +527,12 @@ export default function CoffeeLanding() {
 
           {/* BREWING GUIDES */}
           <div className="mt-20">
-            <h3 className="text-2xl text-center font-serif font-bold text-white mb-10">Panduan Menyeduh di Rumah</h3>
+            <h3 className="text-2xl text-center font-serif font-bold text-white mb-10">Home Brewing Guide</h3>
             <div className="grid md:grid-cols-3 gap-6">
               {[
-                { title: "Coffee Press", desc: "Metode klasik untuk menghasilkan kopi yang kental dan kaya rasa. Cocok untuk kopi Sumatra." },
-                { title: "Pour-Over", desc: "Menghasilkan secangkir kopi yang bersih dan menonjolkan aroma kompleks dari biji kopi pilihan." },
-                { title: "Iced Pour-Over", desc: "Cara terbaik untuk menikmati kopi dingin yang menyegarkan tanpa mengorbankan kualitas rasa." }
+                { title: "Coffee Press", desc: "Classic method for producing thick, full-flavored coffee. Perfect for Sumatra coffee." },
+                { title: "Pour-Over", desc: "Produces a clean cup of coffee and highlights the complex aromas of selected coffee beans." },
+                { title: "Iced Pour-Over", desc: "The best way to enjoy refreshing cold coffee without sacrificing flavor quality." }
               ].map((guide, idx) => (
                 <div key={idx} className="bg-zinc-900/50 border border-white/5 p-8 rounded-3xl hover:bg-[#00704A]/10 hover:border-[#00704A]/40 transition-all text-center">
                   <div className="w-12 h-12 mx-auto rounded-full bg-[#00704A]/20 text-emerald-400 flex items-center justify-center mb-4">
@@ -564,7 +564,7 @@ export default function CoffeeLanding() {
               Starbucks Classics & Reserve
             </h2>
             <p className="text-zinc-400 text-xs sm:text-sm mt-3 max-w-md mx-auto">
-              Temukan berbagai pilihan menu minuman signature, makanan lezat, serta merchandise eksklusif yang tersedia di seluruh gerai Starbucks Indonesia.
+              Discover a wide selection of signature beverages, delicious food, and exclusive merchandise available at all Starbucks Indonesia stores.
             </p>
           </div>
 
@@ -661,7 +661,7 @@ export default function CoffeeLanding() {
 
                   <div className="border-t border-white/5 pt-4 mt-2 flex items-center justify-between text-[10px] text-zinc-500 font-semibold uppercase tracking-wider">
                     <span>
-                      {menuTab === "beverages" ? "Tersedia Hot / Iced" : menuTab === "food" ? "Penyajian Hangat" : "Koleksi Terbatas"}
+                      {menuTab === "beverages" ? "Available Hot / Iced" : menuTab === "food" ? "Served Warm" : "Limited Collection"}
                     </span>
                     <span className="text-[#00704A] font-bold">
                       Original
@@ -687,10 +687,10 @@ export default function CoffeeLanding() {
               <Star size={12} fill="currentColor" /> Starbucks Rewards
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-black text-white">
-              Satu Bintang untuk Setiap Tegukan
+              One Star for Every Sip
             </h2>
             <p className="text-zinc-400 text-xs sm:text-sm mt-3 max-w-md mx-auto">
-              Bergabunglah dengan program loyalitas kami. Kelola kartu Anda, kumpulkan Bintang (Stars), dan tukarkan dengan minuman atau makanan gratis.
+              Join our loyalty program. Manage your card, collect Stars, and redeem them for free drinks or food.
             </p>
           </div>
 
@@ -698,9 +698,9 @@ export default function CoffeeLanding() {
             {/* Card Management / Features */}
             <div className="space-y-6">
               {[
-                { title: "Manajemen Kartu", desc: "Daftarkan Starbucks Card Anda, cek saldo, dan kelola akun dengan mudah dalam satu tempat.", icon: <Award size={20} /> },
-                { title: "Kumpulkan Stars", desc: "Dapatkan 1 Star untuk setiap kelipatan Rp 10.000 menggunakan Starbucks Card Anda.", icon: <Star size={20} /> },
-                { title: "Perlindungan Saldo", desc: "Laporkan segera jika kartu Anda hilang. Saldo Anda aman dan dapat dipindahkan ke kartu baru.", icon: <Award size={20} /> },
+                { title: "Card Management", desc: "Register your Starbucks Card, check balance, and manage your account easily in one place.", icon: <Award size={20} /> },
+                { title: "Collect Stars", desc: "Get 1 Star for every Rp 10.000 spent using your Starbucks Card.", icon: <Star size={20} /> },
+                { title: "Balance Protection", desc: "Report immediately if your card is lost. Your balance is safe and can be transferred to a new card.", icon: <Award size={20} /> },
               ].map((feature, idx) => (
                 <div key={idx} className="bg-[#0B1512] border border-white/5 p-6 rounded-2xl flex items-start gap-4 hover:border-[#00704A]/30 transition-all">
                   <div className="w-10 h-10 rounded-full bg-[#00704A]/20 flex items-center justify-center text-emerald-400 shrink-0">
@@ -718,7 +718,7 @@ export default function CoffeeLanding() {
                   href="#find"
                   className="inline-flex items-center justify-center gap-2 bg-[#00704A] hover:bg-[#00875a] text-white px-8 py-3 rounded-full text-sm font-extrabold transition-all"
                 >
-                  Temukan Gerai Terdekat
+                  Find Nearest Store
                 </a>
               </div>
             </div>
@@ -729,8 +729,8 @@ export default function CoffeeLanding() {
               <div className="bg-zinc-900 border border-white/10 rounded-[2.5rem] p-10 relative shadow-2xl overflow-hidden group">
                 <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
                 
-                <p className="text-[10px] tracking-widest uppercase text-amber-400 font-black mb-6">Starbucks Card Edisi Khusus</p>
-                <h3 className="text-2xl font-serif font-bold text-white mb-8">Koleksi Heritage Indonesia</h3>
+                <p className="text-[10px] tracking-widest uppercase text-amber-400 font-black mb-6">Special Edition Starbucks Card</p>
+                <h3 className="text-2xl font-serif font-bold text-white mb-8">Indonesia Heritage Collection</h3>
                 
                 {/* 3D-like Card effect */}
                 <div className="relative w-full aspect-[1.58/1] rounded-2xl shadow-2xl bg-gradient-to-tr from-[#1a2e25] via-[#0B1512] to-[#00704A] p-6 flex flex-col justify-between transform transition-transform duration-500 group-hover:-translate-y-2 group-hover:rotate-1 overflow-hidden">
@@ -745,13 +745,13 @@ export default function CoffeeLanding() {
                   </div>
                   
                   <div className="relative z-10">
-                    <div className="text-[10px] tracking-widest text-zinc-300 uppercase mb-1">Edisi Terbatas</div>
+                    <div className="text-[10px] tracking-widest text-zinc-300 uppercase mb-1">Limited Edition</div>
                     <div className="text-sm font-mono text-white tracking-[0.2em] opacity-80">**** **** **** 8892</div>
                   </div>
                 </div>
 
                 <p className="text-zinc-400 text-xs leading-relaxed mt-8">
-                  Miliki Starbucks Card edisi khusus dengan desain tematik yang merayakan kekayaan budaya dan alam Indonesia. Tersedia dalam jumlah terbatas di gerai tertentu.
+                  Own a special edition Starbucks Card with thematic designs celebrating the rich culture and nature of Indonesia. Available in limited quantities at selected stores.
                 </p>
               </div>
             </div>
@@ -764,10 +764,10 @@ export default function CoffeeLanding() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <p className="text-xs tracking-[4px] text-[#00704A] font-extrabold uppercase mb-3">
-              Tanggung Jawab Sosial & Lingkungan
+              Social & Environmental Responsibility
             </p>
             <h2 className="text-3xl sm:text-4xl font-serif font-black text-white">
-              Komitmen Terhadap Bumi & Manusia
+              Commitment to the Planet & People
             </h2>
           </div>
 
@@ -775,17 +775,17 @@ export default function CoffeeLanding() {
             {[
               {
                 title: "Ethical Sourcing",
-                desc: "Kami memastikan seluruh pasokan kopi, teh, dan kakao diproses secara etis melalui C.A.F.E. Practices, mendukung langsung kesejahteraan petani kopi.",
+                desc: "We ensure the entire supply of coffee, tea, and cocoa is ethically sourced and processed through C.A.F.E. Practices, directly supporting coffee farmers' livelihoods.",
                 icon: <Leaf className="text-amber-400 mb-6" size={32} />
               },
               {
                 title: "Environment",
-                desc: "Fokus pada pengurangan limbah, gerakan daur ulang, efisiensi penggunaan energi dan air, serta dukungan terhadap kampanye perubahan iklim global.",
+                desc: "Focus on waste reduction, recycling initiatives, energy and water efficiency, and supporting global climate change campaigns.",
                 icon: <Globe className="text-emerald-400 mb-6" size={32} />
               },
               {
                 title: "Community",
-                desc: "Mengajak karyawan (Partners) dan pelanggan untuk aktif berpartisipasi dalam aksi sosial kemasyarakatan dan mendukung komunitas lokal di seluruh Indonesia.",
+                desc: "Encouraging partners (employees) and customers to actively participate in social community actions and support local communities across Indonesia.",
                 icon: <Users className="text-amber-400 mb-6" size={32} />
               },
             ].map((item, i) => (
@@ -806,24 +806,24 @@ export default function CoffeeLanding() {
             
             {/* About & Certifications */}
             <div>
-              <p className="text-xs tracking-[4px] text-[#00704A] font-extrabold uppercase mb-3">Tentang Perusahaan</p>
-              <h2 className="text-3xl sm:text-5xl font-serif font-black text-white mb-6">Misi & Nilai Kami</h2>
+              <p className="text-xs tracking-[4px] text-[#00704A] font-extrabold uppercase mb-3">About Our Company</p>
+              <h2 className="text-3xl sm:text-5xl font-serif font-black text-white mb-6">Our Mission & Values</h2>
               <p className="text-zinc-400 text-sm leading-relaxed mb-6">
-                Sejak hadir di Indonesia, Starbucks berkomitmen untuk menjadi lebih dari sekadar kedai kopi. Kami adalah tempat berkumpulnya komunitas. Misi kami: Menginspirasi dan memelihara semangat kemanusiaan — satu orang, satu cangkir, dan satu lingkungan pada satu waktu.
+                Since establishing our presence in Indonesia, Starbucks has been committed to being more than just a coffee shop. We are a community gathering place. Our mission: To inspire and nurture the human spirit — one person, one cup, and one neighborhood at a time.
               </p>
               
               <div className="bg-zinc-900 border border-white/10 p-6 rounded-2xl mb-8 relative overflow-hidden group">
                 <div className="absolute inset-0 bg-[#00704A]/5 group-hover:bg-[#00704A]/10 transition-colors" />
                 <h4 className="text-lg font-bold text-white mb-2 relative z-10">Starbucks Dewata Coffee Sanctuary</h4>
                 <p className="text-xs text-zinc-400 leading-relaxed relative z-10">
-                  Gerai konsep terbesar di Asia Tenggara yang berlokasi di Bali, menghadirkan pengalaman tak tertandingi tentang perjalanan kopi dari benih hingga cangkir (seed-to-cup).
+                  Southeast Asia's largest concept store located in Bali, presenting an unparalleled experience of the coffee journey from seed to cup.
                 </p>
               </div>
 
               <div className="flex gap-4 items-center border-t border-white/10 pt-8">
                 <div className="flex items-center gap-2 bg-emerald-500/10 text-emerald-400 px-4 py-2 rounded-full border border-emerald-500/20">
                   <Check size={16} />
-                  <span className="text-xs font-bold uppercase tracking-wider">Sertifikasi Halal MUI</span>
+                  <span className="text-xs font-bold uppercase tracking-wider">MUI Halal Certified</span>
                 </div>
                 <div className="flex items-center gap-2 bg-zinc-800 text-zinc-300 px-4 py-2 rounded-full border border-white/10">
                   <Award size={16} />
@@ -838,14 +838,14 @@ export default function CoffeeLanding() {
               
               <div className="flex items-center gap-3 mb-8">
                 <Briefcase className="text-amber-400" size={24} />
-                <h3 className="text-2xl font-serif font-bold text-white">Peluang Karier</h3>
+                <h3 className="text-2xl font-serif font-bold text-white">Career Opportunities</h3>
               </div>
 
               <div className="space-y-4">
                 {[
-                  { role: "Retail Barista", desc: "Jadilah wajah Starbucks. Ciptakan pengalaman tak terlupakan bagi setiap pelanggan melalui kopi racikan Anda." },
-                  { role: "Retail Store Management", desc: "Pimpin tim, kelola operasional gerai, dan kembangkan komunitas kopi di lingkungan Anda." },
-                  { role: "Support Center", desc: "Bergabunglah di kantor pusat kami dan berikan dampak di berbagai divisi mulai dari Marketing, Supply Chain, hingga IT." }
+                  { role: "Retail Barista", desc: "Be the face of Starbucks. Create unforgettable experiences for every customer through your handcrafted coffee." },
+                  { role: "Retail Store Management", desc: "Lead a team, manage store operations, and grow the coffee community in your neighborhood." },
+                  { role: "Support Center", desc: "Join our support center and make an impact across departments, from Marketing and Supply Chain to IT." }
                 ].map((job, idx) => (
                   <div key={idx} className="p-5 border border-white/5 rounded-2xl bg-[#0B1512] hover:border-[#00704A]/40 transition-colors">
                     <h4 className="text-sm font-bold text-white mb-2">{job.role}</h4>
@@ -860,7 +860,7 @@ export default function CoffeeLanding() {
                 rel="noopener noreferrer"
                 className="mt-8 block w-full text-center bg-white hover:bg-zinc-200 text-zinc-900 py-4 rounded-xl font-extrabold text-sm transition-all"
               >
-                Hubungi Rekrutmen via WA
+                Contact Recruitment via WA
               </a>
             </div>
 
@@ -885,7 +885,7 @@ export default function CoffeeLanding() {
               </h2>
             </div>
             <p className="text-zinc-400 text-sm leading-relaxed mb-8 max-w-xs">
-              Menginspirasi dan memelihara semangat kemanusiaan — satu orang, satu cangkir, dan satu lingkungan pada satu waktu.
+              To inspire and nurture the human spirit — one person, one cup, and one neighborhood at a time.
             </p>
             <div className="space-y-3 text-xs font-semibold text-zinc-500">
               <div className="flex gap-3 items-center">
@@ -902,28 +902,28 @@ export default function CoffeeLanding() {
           {/* Links Col */}
           <div className="md:col-span-2">
             <h4 className="mb-6 font-extrabold uppercase tracking-widest text-[#D4E9E2] text-xs">
-              Navigasi
+              Navigation
             </h4>
             <div className="space-y-4 text-xs font-semibold text-zinc-500">
-              <p className="hover:text-emerald-400 transition-colors cursor-pointer">Menu & Produk</p>
+              <p className="hover:text-emerald-400 transition-colors cursor-pointer">Menu & Products</p>
               <p className="hover:text-emerald-400 transition-colors cursor-pointer">Coffee Education</p>
               <p className="hover:text-emerald-400 transition-colors cursor-pointer">Starbucks Rewards</p>
-              <p className="hover:text-emerald-400 transition-colors cursor-pointer">Tanggung Jawab</p>
-              <p className="hover:text-emerald-400 transition-colors cursor-pointer">Tentang Kami</p>
+              <p className="hover:text-emerald-400 transition-colors cursor-pointer">Responsibility</p>
+              <p className="hover:text-emerald-400 transition-colors cursor-pointer">About Us</p>
             </div>
           </div>
 
           <div className="md:col-span-2">
             <h4 className="mb-6 font-extrabold uppercase tracking-widest text-[#D4E9E2] text-xs">
-              Bantuan
+              Help
             </h4>
             <div className="space-y-4 text-xs font-semibold text-zinc-500">
               <p className="hover:text-emerald-400 transition-colors cursor-pointer flex items-center gap-2">
                 <Phone size={14} className="text-[#00704A]" /> Customer Care
               </p>
               <p className="hover:text-emerald-400 transition-colors cursor-pointer">FAQ</p>
-              <p className="hover:text-emerald-400 transition-colors cursor-pointer">Syarat & Ketentuan</p>
-              <p className="hover:text-emerald-400 transition-colors cursor-pointer">Kebijakan Privasi</p>
+              <p className="hover:text-emerald-400 transition-colors cursor-pointer">Terms & Conditions</p>
+              <p className="hover:text-emerald-400 transition-colors cursor-pointer">Privacy Policy</p>
             </div>
           </div>
 
@@ -931,16 +931,16 @@ export default function CoffeeLanding() {
           <div className="md:col-span-4">
             <h3 className="mb-6 text-xs font-extrabold uppercase tracking-widest text-[#D4E9E2]">Newsletter</h3>
             <p className="text-xs text-zinc-500 leading-relaxed mb-4">
-              Dapatkan update menu musiman terbaru & promo double-star langsung ke email Anda.
+              Get the latest seasonal menu updates & double-star promotions sent directly to your email.
             </p>
             <div className="flex items-center bg-zinc-900 border border-white/10 rounded-full overflow-hidden p-1">
               <input
                 type="email"
-                placeholder="Alamat Email Anda"
+                placeholder="Your Email Address"
                 className="bg-transparent outline-none flex-1 text-xs text-white px-4 py-2"
               />
               <button className="bg-[#00704A] hover:bg-[#00875a] text-white px-6 py-2 rounded-full text-xs font-bold transition-colors">
-                Kirim
+                Submit
               </button>
             </div>
           </div>
