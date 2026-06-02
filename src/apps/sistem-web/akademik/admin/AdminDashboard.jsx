@@ -9,20 +9,15 @@ import {
   TrendingUp,
   Clock,
 } from "lucide-react";
-import {
-  DEMO_USERS,
-  GURU_LIST,
-  SISWA_LIST,
-  KELAS_LIST,
-  ABSENSI_RECORDS,
-} from "../data/mockData";
+import { useAkademik } from "../context/AkademikContext";
 
 export default function AdminDashboard() {
-  const user = DEMO_USERS.admin;
+  const { guruList, siswaList, kelasList, absensiRecords, demoUsers } = useAkademik();
+  const user = demoUsers.admin;
   const today = new Date().toISOString().split("T")[0];
 
   // Stats
-  const todayAbsensi = ABSENSI_RECORDS.filter((a) => a.tanggal === today);
+  const todayAbsensi = absensiRecords.filter((a) => a.tanggal === today);
   const hadirToday = todayAbsensi.filter((a) => a.status === "hadir").length;
 
   // Chart: absensi per hari (last 5 days)
@@ -32,12 +27,12 @@ export default function AdminDashboard() {
     const d = new Date();
     d.setDate(d.getDate() - i);
     const dateStr = d.toISOString().split("T")[0];
-    const count = ABSENSI_RECORDS.filter((a) => a.tanggal === dateStr && a.status === "hadir").length;
+    const count = absensiRecords.filter((a) => a.tanggal === dateStr && a.status === "hadir").length;
     chartData.push({ label: days[d.getDay()], value: count });
   }
 
   // Donut: status absensi hari ini / minggu ini
-  const weekRecords = ABSENSI_RECORDS;
+  const weekRecords = absensiRecords;
   const hadirCount = weekRecords.filter((r) => r.status === "hadir").length;
   const izinCount = weekRecords.filter((r) => r.status === "izin").length;
   const sakitCount = weekRecords.filter((r) => r.status === "sakit").length;
@@ -58,10 +53,10 @@ export default function AdminDashboard() {
       <div className="p-4 md:p-8 space-y-8">
         {/* STATS */}
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
-          <StatCard icon={GraduationCap} label="Total Students" value={SISWA_LIST.length} change="+12" color="fuchsia" />
-          <StatCard icon={Users} label="Total Teachers" value={GURU_LIST.length} color="emerald" />
-          <StatCard icon={School} label="Total Classes" value={KELAS_LIST.length} color="amber" />
-          <StatCard icon={ClipboardCheck} label="Attendance Today" value={hadirToday || SISWA_LIST.length - 3} color="cyan" />
+          <StatCard icon={GraduationCap} label="Total Students" value={siswaList.length} change="+12" color="fuchsia" />
+          <StatCard icon={Users} label="Total Teachers" value={guruList.length} color="emerald" />
+          <StatCard icon={School} label="Total Classes" value={kelasList.length} color="amber" />
+          <StatCard icon={ClipboardCheck} label="Attendance Today" value={hadirToday || (siswaList.length > 0 ? siswaList.length - 3 : 0)} color="cyan" />
         </div>
 
         {/* CHARTS ROW */}

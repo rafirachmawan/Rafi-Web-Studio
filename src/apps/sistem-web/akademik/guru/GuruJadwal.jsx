@@ -1,16 +1,17 @@
 import TopBar from "../components/TopBar";
-import { DEMO_USERS, KELAS_LIST, MAPEL_LIST, getJadwalByGuru } from "../data/mockData";
+import { useAkademik } from "../context/AkademikContext";
 import { CalendarDays } from "lucide-react";
 
 const DAYS = ["Senin", "Selasa", "Rabu", "Kamis", "Jumat"];
 
 export default function GuruJadwal() {
-  const user = DEMO_USERS.guru;
+  const { kelasList, mapelList, getJadwalByGuru, demoUsers } = useAkademik();
+  const user = demoUsers.guru;
   const jadwal = getJadwalByGuru(user.id);
 
   return (
     <>
-      <TopBar title="Jadwal Mengajar" subtitle={user.mapel} user={user} />
+      <TopBar title="Jadwal Mengajar" subtitle={user.mapel || "Mata Pelajaran"} user={user} />
       <div className="p-6">
         <div className="space-y-4">
           {DAYS.map((day) => {
@@ -26,14 +27,14 @@ export default function GuruJadwal() {
                 </div>
                 <div className="divide-y divide-white/[0.03]">
                   {dayJadwal.map((j, i) => {
-                    const kelas = KELAS_LIST.find((k) => k.id === j.kelasId);
-                    const mapel = MAPEL_LIST.find((m) => m.id === j.mapelId);
+                    const kelas = kelasList.find((k) => k.id === j.kelasId);
+                    const mapel = mapelList.find((m) => m.id === j.mapelId);
                     return (
                       <div key={i} className="flex items-center gap-4 px-4 py-3 hover:bg-white/[0.03] transition-colors">
                         <span className="text-xs text-zinc-400 font-medium w-28">{j.jam}</span>
                         <div>
                           <p className="text-xs font-semibold text-white">{mapel?.nama}</p>
-                          <p className="text-[10px] text-zinc-500">{kelas?.nama}</p>
+                          <p className="text-[10px] text-zinc-500">{kelas?.nama || "Tidak ada kelas"}</p>
                         </div>
                       </div>
                     );

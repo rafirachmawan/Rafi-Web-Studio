@@ -1,23 +1,24 @@
 import TopBar from "../components/TopBar";
-import { DEMO_USERS, KELAS_LIST, SCHOOL_INFO } from "../data/mockData";
+import { useAkademik } from "../context/AkademikContext";
 import { User, Mail, Phone, MapPin, School, Hash } from "lucide-react";
 
 export default function SiswaProfil() {
-  const user = DEMO_USERS.siswa;
-  const kelas = KELAS_LIST.find((k) => k.id === user.kelasId);
+  const { schoolInfo, kelasList, demoUsers } = useAkademik();
+  const user = demoUsers.siswa;
+  const kelas = kelasList.find((k) => k.id === user.kelasId);
 
   const info = [
-    { icon: Hash, label: "NIS", value: user.nis },
-    { icon: User, label: "Nama Lengkap", value: user.nama },
-    { icon: School, label: "Kelas", value: `${user.kelas} — ${kelas?.jurusan}` },
-    { icon: Mail, label: "Email", value: user.email },
-    { icon: Phone, label: "Telepon", value: user.phone },
-    { icon: MapPin, label: "Alamat", value: user.alamat },
+    { icon: Hash, label: "NIS", value: user.nis || "—" },
+    { icon: User, label: "Nama Lengkap", value: user.nama || "—" },
+    { icon: School, label: "Kelas", value: `${user.kelas || "Belum ada kelas"} — ${kelas?.jurusan || ""}` },
+    { icon: Mail, label: "Email", value: user.email || "—" },
+    { icon: Phone, label: "Telepon", value: user.phone || "—" },
+    { icon: MapPin, label: "Alamat", value: user.alamat || "—" },
   ];
 
   return (
     <>
-      <TopBar title="Profil Saya" subtitle={user.kelas} user={user} />
+      <TopBar title="Profil Saya" subtitle={user.kelas || "Profil"} user={user} />
       <div className="p-6">
         <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-6 max-w-2xl">
           {/* AVATAR */}
@@ -25,7 +26,7 @@ export default function SiswaProfil() {
             <img src={user.avatar} alt={user.nama} className="w-16 h-16 rounded-2xl object-cover ring-2 ring-violet-500/20" />
             <div>
               <h3 className="text-lg font-bold text-white">{user.nama}</h3>
-              <p className="text-xs text-violet-400 font-medium">{user.kelas} — {SCHOOL_INFO.name}</p>
+              <p className="text-xs text-violet-400 font-medium">{user.kelas} — {schoolInfo.name}</p>
             </div>
           </div>
 
