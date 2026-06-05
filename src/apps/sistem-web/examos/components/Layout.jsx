@@ -19,17 +19,18 @@ import {
   FileText,
   Activity,
   UserCircle,
+  Lock,
 } from "lucide-react";
 
 const MENU_ITEMS = [
-  { icon: LayoutDashboard, label: "Dashboard", path: "/examos/dashboard" },
-  { icon: FileText, label: "Bank Soal", path: "/examos/questions" },
-  { icon: Activity, label: "Monitoring Ujian", path: "/examos/monitoring" },
-  { icon: Users, label: "Manajemen User", path: "/examos/users" },
-  { icon: GraduationCap, label: "Manajemen Kelas", path: "/examos/classes" },
-  { icon: BookOpen, label: "Mata Pelajaran", path: "/examos/subjects" },
-  { icon: BarChart3, label: "Laporan & Nilai", path: "/examos/reports" },
-  { icon: Settings, label: "Pengaturan", path: "/examos/settings" },
+  { icon: LayoutDashboard, label: "Dashboard", path: "/examos/dashboard", studentPath: "/examos/student-dashboard", roles: ["Super Admin", "Guru", "Siswa"] },
+  { icon: FileText, label: "Bank Soal", path: "/examos/questions", roles: ["Super Admin", "Guru"] },
+  { icon: Activity, label: "Monitoring Ujian", path: "/examos/monitoring", roles: ["Super Admin", "Guru"] },
+  { icon: Users, label: "Manajemen User", path: "/examos/users", roles: ["Super Admin"] },
+  { icon: GraduationCap, label: "Manajemen Kelas", path: "/examos/classes", roles: ["Super Admin"] },
+  { icon: BookOpen, label: "Mata Pelajaran", path: "/examos/subjects", roles: ["Super Admin", "Guru"] },
+  { icon: BarChart3, label: "Laporan & Nilai", path: "/examos/reports", roles: ["Super Admin", "Guru", "Siswa"] },
+  { icon: Settings, label: "Pengaturan", path: "/examos/settings", roles: ["Super Admin"] },
 ];
 
 function Sidebar({ collapsed, setCollapsed, mobileOpen, setMobileOpen }) {
@@ -99,23 +100,43 @@ function Sidebar({ collapsed, setCollapsed, mobileOpen, setMobileOpen }) {
 
         <nav className="flex-1 px-3 mt-4 space-y-1 overflow-y-auto no-scrollbar">
           {MENU_ITEMS.map((item) => {
-            const isActive = location.pathname === item.path;
+            const userRole = user?.role || "Super Admin";
+            const hasAccess = item.roles.includes(userRole);
+            const actualPath = (userRole === "Siswa" && item.studentPath) ? item.studentPath : item.path;
+            const isActive = location.pathname === actualPath;
+            
             return (
               <NavLink
                 key={item.path}
-                to={item.path}
-                onClick={() => setMobileOpen(false)}
-                className={`flex items-center gap-3 px-3 py-3 rounded-xl transition-all duration-200 group relative ${
-                  isActive 
-                  ? "bg-emerald-500/10 text-emerald-500 shadow-[inset_0_0_20px_rgba(16,185,129,0.05)]" 
-                  : "text-zinc-500 hover:bg-white/5 hover:text-zinc-200"
+                to={hasAccess ? actualPath : "#"}
+                onClick={(e) => {
+                  if (!hasAccess) {
+                    e.preventDefault();
+                    alert(`Akses Ditolak: Menu ini khusus untuk ${item.roles.join(' & ')}`);
+                  } else {
+                    setMobileOpen(false);
+                  }
+                }}
+                className={`flex items-center justify-between px-3 py-3 rounded-xl transition-all duration-200 group relative ${
+                  !hasAccess 
+                    ? "opacity-50 cursor-not-allowed text-zinc-600 hover:bg-zinc-900/50" 
+                    : isActive 
+                      ? "bg-emerald-500/10 text-emerald-500 shadow-[inset_0_0_20px_rgba(16,185,129,0.05)]" 
+                      : "text-zinc-500 hover:bg-white/5 hover:text-zinc-200"
                 }`}
               >
-                <item.icon size={20} className={`shrink-0 transition-transform duration-300 ${isActive ? "scale-110" : "group-hover:scale-110"}`} />
-                {(!collapsed || mobileOpen) && (
-                  <span className="text-[14px] font-medium whitespace-nowrap">{item.label}</span>
+                <div className="flex items-center gap-3">
+                  <item.icon size={20} className={`shrink-0 transition-transform duration-300 ${isActive ? "scale-110" : "group-hover:scale-110"}`} />
+                  {(!collapsed || mobileOpen) && (
+                    <span className="text-[14px] font-medium whitespace-nowrap">{item.label}</span>
+                  )}
+                </div>
+                
+                {(!collapsed || mobileOpen) && !hasAccess && (
+                  <Lock size={14} className="text-zinc-600 shrink-0" />
                 )}
-                {isActive && (
+
+                {isActive && hasAccess && (
                   <motion.div 
                     layoutId="active-pill-exam"
                     className="absolute left-0 w-1 h-6 bg-emerald-500 rounded-r-full"
