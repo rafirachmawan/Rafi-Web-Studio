@@ -31,7 +31,7 @@ export default function RealProjectsSection() {
             transition={{ delay: 0.1 }}
             className="text-2xl sm:text-3xl md:text-4xl font-black text-black dark:text-white tracking-tight mb-4"
           >
-            Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-500">Real Projects</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-500">Real Project</span>
           </motion.h2>
 
           <motion.p 

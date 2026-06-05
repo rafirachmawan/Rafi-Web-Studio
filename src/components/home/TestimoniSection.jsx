@@ -72,22 +72,22 @@ export default function TestimoniSection() {
           {duplicatedTestimonials.map((item, idx) => (
             <div
               key={idx}
-              className="w-[320px] md:w-[400px] shrink-0 bg-white dark:bg-[#0a0a0a] border border-zinc-200 dark:border-white/10 rounded-3xl p-6 md:p-8 flex flex-col justify-between group hover:border-amber-500/50 hover:shadow-[0_0_30px_rgba(245,158,11,0.15)] transition-all duration-300"
+              className="w-[260px] md:w-[320px] shrink-0 bg-white dark:bg-[#0a0a0a] border border-zinc-200 dark:border-white/10 rounded-2xl p-5 md:p-6 flex flex-col justify-between group hover:border-amber-500/50 hover:shadow-[0_0_30px_rgba(245,158,11,0.15)] transition-all duration-300"
             >
               <div>
-                <Quote className="w-8 h-8 text-amber-500 mb-5 opacity-80" />
-                <div className="flex gap-1 mb-4">
+                <Quote className="w-6 h-6 text-amber-500 mb-3 opacity-80" />
+                <div className="flex gap-1 mb-3">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-amber-500 text-amber-500" />
+                    <Star key={i} className="w-3.5 h-3.5 fill-amber-500 text-amber-500" />
                   ))}
                 </div>
-                <p className="text-zinc-800 dark:text-zinc-200 text-sm md:text-base font-medium leading-relaxed mb-8">
+                <p className="text-zinc-800 dark:text-zinc-200 text-xs md:text-sm font-medium leading-relaxed mb-6">
                   "{item.text}"
                 </p>
               </div>
 
-              <div className="flex items-center gap-4 pt-4 border-t border-zinc-100 dark:border-white/5">
-                <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-amber-500/30 bg-zinc-100 dark:bg-zinc-900 shrink-0">
+              <div className="flex items-center gap-3 pt-3 border-t border-zinc-100 dark:border-white/5">
+                <div className="w-9 h-9 rounded-full overflow-hidden border-2 border-amber-500/30 bg-zinc-100 dark:bg-zinc-900 shrink-0">
                   <img
                     src={item.image}
                     alt={item.name}
@@ -96,10 +96,10 @@ export default function TestimoniSection() {
                   />
                 </div>
                 <div>
-                  <h4 className="text-sm md:text-base font-bold text-zinc-900 dark:text-white line-clamp-1">
+                  <h4 className="text-xs md:text-sm font-bold text-zinc-900 dark:text-white line-clamp-1">
                     {item.name}
                   </h4>
-                  <p className="text-xs text-amber-600 dark:text-amber-500 font-medium uppercase tracking-wider">
+                  <p className="text-[10px] text-amber-600 dark:text-amber-500 font-medium uppercase tracking-wider">
                     {item.role}
                   </p>
                 </div>

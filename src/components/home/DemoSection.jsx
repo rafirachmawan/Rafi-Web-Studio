@@ -74,7 +74,7 @@ export default function DemoSection({ filter, setFilter, filtered }) {
             transition={{ delay: 0.1 }}
             className="text-xl sm:text-2xl md:text-3xl font-black text-black dark:text-white tracking-tight mb-4"
           >
-            Digitalization <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600">Demos & Templates</span>
+            Digitalisasi <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600">Demo & Template</span>
           </motion.h2>
 
           <motion.p 

@@ -6,8 +6,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Inter", "sans-serif"],
-        heading: ["Plus Jakarta Sans", "sans-serif"],
+        sans: ["Slika", "sans-serif"],
+        heading: ["Slika", "sans-serif"],
       },
     },
   },
