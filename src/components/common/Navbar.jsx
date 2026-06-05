@@ -53,7 +53,7 @@ export default function Navbar() {
 
   const navLinks = [
     { label: t("Home", "Home"), href: "#home" },
-    { label: t("Proyek", "Projects"), href: "#real-projects" },
+    { label: t("Project", "Projects"), href: "#real-projects" },
     { label: t("Demo Template", "Demo Catalog"), href: "#demo" },
     { label: t("Proses", "Process"), href: "#proses" },
     { label: t("Harga", "Pricing"), href: "#harga" },

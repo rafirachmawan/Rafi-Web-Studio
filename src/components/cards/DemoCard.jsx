@@ -39,7 +39,7 @@ export default function DemoCard({ demo }) {
             </div>
             {demo.isReal && (
               <div className="px-3 py-1 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 backdrop-blur-md border border-white/10 text-white text-[10px] font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-md shadow-amber-500/20">
-                <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" /> {t("Proyek Nyata", "Real Project")}
+                <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" /> {t("Real Project", "Real Project")}
               </div>
             )}
           </div>
@@ -47,7 +47,7 @@ export default function DemoCard({ demo }) {
           {/* Overlay to hint it's interactive */}
           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-500 flex items-center justify-center">
             <div className="opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-500 bg-white text-black px-6 py-2.5 rounded-full text-xs font-black shadow-2xl flex items-center gap-2">
-              {t("Lihat Proyek", "View Project")} <span className="text-amber-600">→</span>
+              {t("Lihat Project", "View Project")} <span className="text-amber-600">→</span>
             </div>
           </div>
         </div>

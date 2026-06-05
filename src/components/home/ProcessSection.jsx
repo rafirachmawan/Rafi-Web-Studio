@@ -74,7 +74,7 @@ export default function ProcessSection() {
               transition={{ delay: 0.2 }}
               className="text-zinc-600 dark:text-zinc-400 text-sm md:text-base leading-relaxed max-w-md"
             >
-              {t("Kami memecah proyek kompleks menjadi langkah-langkah sederhana agar Anda selalu memegang kendali atas apa yang sedang kami kerjakan. Tanpa kebingungan teknis.", "We break down complex projects into simple steps so you are always in control of what we are working on. No technical confusion.")}
+              {t("Kami memecah project kompleks menjadi langkah-langkah sederhana agar Anda selalu memegang kendali atas apa yang sedang kami kerjakan. Tanpa kebingungan teknis.", "We break down complex projects into simple steps so you are always in control of what we are working on. No technical confusion.")}
             </motion.p>
           </div>
 

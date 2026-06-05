@@ -33,7 +33,7 @@ export default function RealProjectsSection() {
             transition={{ delay: 0.1 }}
             className="text-2xl sm:text-3xl md:text-4xl font-black text-black dark:text-white tracking-tight mb-4"
           >
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-500">{t("Proyek Nyata", "Real Project")}</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-500">{t("Real Project", "Real Project")}</span>
           </motion.h2>
  
           <motion.p 
@@ -44,7 +44,7 @@ export default function RealProjectsSection() {
             className="text-zinc-600 dark:text-zinc-400 text-xs md:text-sm leading-relaxed max-w-xl mx-auto font-medium"
           >
             {t(
-              "Portofolio proyek nyata yang telah kami rancang, kembangkan, dan luncurkan secara resmi untuk menunjang performa operasional bisnis klien kami di lapangan.",
+              "Portofolio project nyata yang telah kami rancang, kembangkan, dan luncurkan secara resmi untuk menunjang performa operasional bisnis klien kami di lapangan.",
               "A portfolio of real-world projects we have designed, developed, and officially launched to support the field operational performance of our clients' businesses."
             )}
           </motion.p>
@@ -88,7 +88,7 @@ export default function RealProjectsSection() {
                         {project.category}
                       </span>
                       <span className="px-3 py-1 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 text-white text-[10px] font-bold uppercase tracking-wider flex items-center gap-1 shadow-md shadow-amber-500/10">
-                        <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" /> {t("Proyek Nyata", "Real Project")}
+                        <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" /> {t("Real Project", "Real Project")}
                       </span>
                     </div>
 
@@ -126,7 +126,7 @@ export default function RealProjectsSection() {
                         to={`/portfolio/${project.id}`}
                         className="group/btn inline-flex items-center justify-center gap-2 bg-zinc-900 dark:bg-white hover:bg-amber-500 dark:hover:bg-amber-500 text-white dark:text-black hover:text-white dark:hover:text-white px-6 py-3 rounded-full text-xs font-bold transition-all duration-300 shadow-lg shadow-black/5 active:scale-95"
                       >
-                        {t("Lihat Detail Proyek", "View Project Details")}
+                        {t("Lihat Detail Project", "View Project Details")}
                         <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
                       </Link>
                     </div>

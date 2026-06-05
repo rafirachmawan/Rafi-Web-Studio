@@ -21,7 +21,7 @@ export default function ProjectDetail() {
   if (!project) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-[#fafafc] dark:bg-[#050508] text-black dark:text-white">
-        <h1 className="text-4xl font-black mb-4">{t("Proyek Tidak Ditemukan", "Project Not Found")}</h1>
+        <h1 className="text-4xl font-black mb-4">{t("Project Tidak Ditemukan", "Project Not Found")}</h1>
         <Link to="/" className="text-amber-500 font-bold hover:underline">
           &larr; {t("Kembali ke Beranda", "Back to Home")}
         </Link>
@@ -102,11 +102,11 @@ export default function ProjectDetail() {
                   className="pl-4 border-l-2 border-emerald-500/50"
                 >
                   <p className="text-sm font-bold text-emerald-700 dark:text-emerald-500 mb-1 flex items-center gap-2">
-                    <CheckCircle2 size={16} className="text-emerald-500" /> {t("Proyek Rilis (Live)", "Live Project")}
+                    <CheckCircle2 size={16} className="text-emerald-500" /> {t("Project Rilis (Live)", "Live Project")}
                   </p>
                   <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
                     {t(
-                      "Proyek ini telah dikembangkan secara resmi untuk klien kami dan sedang beroperasi secara aktif.",
+                      "Project ini telah dikembangkan secara resmi untuk klien kami dan sedang beroperasi secara aktif.",
                       "This project has been officially developed for our client and is currently active."
                     )}
                   </p>
@@ -123,7 +123,7 @@ export default function ProjectDetail() {
                   </p>
                   <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
                     {t(
-                      "Proyek ini hanyalah sebuah simulasi demo. Hasil akhir yang ditampilkan bukan merupakan real project atau entitas bisnis yang beroperasi.",
+                      "Project ini hanyalah sebuah simulasi demo. Hasil akhir yang ditampilkan bukan merupakan real project atau entitas bisnis yang beroperasi.",
                       "This project is a simulation demo. The end result shown is not a real project or active business entity."
                     )}
                   </p>
@@ -203,7 +203,7 @@ export default function ProjectDetail() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
             >
-              <h2 className="text-2xl font-bold mb-6 text-black dark:text-white">{t("Gambaran Proyek", "Project Overview")}</h2>
+              <h2 className="text-2xl font-bold mb-6 text-black dark:text-white">{t("Gambaran Project", "Project Overview")}</h2>
               <div className="prose prose-zinc dark:prose-invert max-w-none text-zinc-600 dark:text-zinc-400 font-medium leading-relaxed text-lg">
                 <p>{t(project.fullDescription || project.desc)}</p>
               </div>

@@ -45,7 +45,7 @@ export default function FounderSection() {
             transition={{ delay: 0.2 }}
             className="mt-3 text-zinc-600 dark:text-zinc-400 text-xs sm:text-sm font-semibold max-w-lg mx-auto"
           >
-            {t("Orang di balik layar yang memastikan kualitas, kecepatan, dan keberhasilan digitalisasi proyek bisnis Anda.", "The person behind the scenes ensuring the quality, speed, and success of your business project digitalization.")}
+            {t("Orang di balik layar yang memastikan kualitas, kecepatan, dan keberhasilan digitalisasi project bisnis Anda.", "The person behind the scenes ensuring the quality, speed, and success of your business project digitalization.")}
           </motion.p>
         </div>
 
@@ -161,7 +161,7 @@ export default function FounderSection() {
               </a>
 
               <a
-                href="https://wa.me/6285707185783?text=Halo%20Rafi,%20saya%20ingin%20berdiskusi%20mengenai%20proyek%20custom"
+                href="https://wa.me/6285707185783?text=Halo%20Rafi,%20saya%20ingin%20berdiskusi%20mengenai%20project%20custom"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl border border-black/10 dark:border-white/10 hover:border-amber-500/30 bg-black/[0.02] dark:bg-white/5 hover:bg-black/[0.05] dark:hover:bg-white/10 text-zinc-800 dark:text-white font-bold text-xs sm:text-sm hover:scale-[1.02] transition-all"

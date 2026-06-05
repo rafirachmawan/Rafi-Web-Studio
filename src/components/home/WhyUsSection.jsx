@@ -1,4 +1,4 @@
-import { Star, Zap, Cpu, Compass } from "lucide-react";
+import { Star, XCircle, CheckCircle2, ShieldCheck, AlertCircle } from "lucide-react";
 import { useLanguage } from "../../context/LanguageContext";
 import { motion } from "framer-motion";
 
@@ -6,27 +6,42 @@ export default function WhyUsSection() {
   const { t } = useLanguage();
 
   const stats = [
-    { value: "50+", label: t("Proyek Selesai", "Projects Delivered") },
+    { value: "50+", label: t("Project Selesai", "Projects Delivered") },
     { value: "99%", label: t("Kepuasan Klien", "Client Satisfaction") },
     { value: "24/7", label: t("Dukungan Teknis", "Technical Support") },
   ];
 
-  const features = [
+  const comparisons = [
     {
-      icon: Zap,
-      title: t("Desain Premium & Modern", "Premium & Modern Design"),
-      desc: t("Tampilan website yang mewah, bersih, dan dinamis, dirancang khusus untuk meningkatkan kredibilitas brand Anda.", "A luxurious, clean, and dynamic website look, specifically designed to boost your brand credibility."),
+      type: "biasa",
+      title: t("Website Biasa", "Ordinary Website"),
+      icon: AlertCircle,
+      iconColor: "text-red-500",
+      bgClass: "bg-zinc-50 dark:bg-zinc-900/30 border-black/5 dark:border-white/5 opacity-80",
+      titleClass: "text-zinc-500 dark:text-zinc-400",
+      points: [
+        t("Template kaku, pasaran, dan membosankan", "Rigid, generic, and boring templates"),
+        t("Kinerja lambat & skor SEO rendah", "Slow performance & low SEO scores"),
+        t("Sistem berdiri sendiri (tidak terintegrasi)", "Standalone system (not integrated)"),
+        t("Pengelolaan data manual dan rumit", "Manual and complicated data management"),
+        t("Tanpa dukungan teknis purna jual", "No after-sales technical support"),
+      ]
     },
     {
-      icon: Cpu,
-      title: t("Kinerja & Kecepatan Tinggi", "High Performance & Speed"),
-      desc: t("Menggunakan teknologi modern untuk memastikan website Anda memiliki kecepatan loading super kilat dan ramah SEO.", "Using modern technologies to ensure your website has super fast load times and is SEO friendly."),
-    },
-    {
-      icon: Compass,
-      title: t("Solusi Terintegrasi Penuh", "Fully Integrated Solution"),
-      desc: t("Menghubungkan landing page promosi, dashboard manajemen berbasis web, dan aplikasi mobile dalam satu ekosistem.", "Connecting promotional landing pages, web-based management dashboards, and mobile apps in one ecosystem."),
-    },
+      type: "gapai",
+      title: t("GapaiDigital", "GapaiDigital"),
+      icon: ShieldCheck,
+      iconColor: "text-amber-500",
+      bgClass: "bg-[#0a0a0a] border-amber-500/30 shadow-2xl shadow-amber-500/10 z-10 relative overflow-hidden",
+      titleClass: "text-white",
+      points: [
+        t("Desain UI/UX eksklusif, dinamis & premium", "Exclusive, dynamic & premium UI/UX design"),
+        t("Super kilat dengan optimasi performa 99%", "Super fast with 99% performance optimization"),
+        t("Ekosistem terintegrasi (Web, App, Dashboard)", "Integrated ecosystem (Web, App, Dashboard)"),
+        t("Manajemen terpusat otomatis via cloud", "Automated centralized management via cloud"),
+        t("Garansi maintenance & dukungan 24/7", "Maintenance warranty & 24/7 support"),
+      ]
+    }
   ];
 
   return (
@@ -54,9 +69,9 @@ export default function WhyUsSection() {
             transition={{ delay: 0.1 }}
             className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight leading-[1.15] text-zinc-900 dark:text-white mb-6"
           >
-            {t("Bukan Sekadar", "Not Just an")} <br className="hidden md:block" />
+            {t("Standar Baru", "The New Standard")} <br className="hidden md:block" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600">
-              {t("Website Biasa", "Ordinary Website")}
+              {t("Ekosistem Digital", "of Digital Ecosystem")}
             </span>
           </motion.h2>
 
@@ -71,31 +86,52 @@ export default function WhyUsSection() {
           </motion.p>
         </div>
 
-        {/* FEATURES GRID */}
-        <div className="grid md:grid-cols-3 gap-6 md:gap-8 mb-16">
-          {features.map((feat, index) => {
-            const Icon = feat.icon;
-            return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="group p-8 rounded-3xl border border-black/5 dark:border-white/5 bg-zinc-50 dark:bg-zinc-900/40 hover:bg-white dark:hover:bg-zinc-900 shadow-sm hover:shadow-xl dark:shadow-none hover:border-amber-500/30 transition-all duration-300 flex flex-col items-center text-center"
-              >
-                <div className="w-16 h-16 mb-6 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-amber-500 flex items-center justify-center group-hover:scale-110 group-hover:bg-amber-500 group-hover:text-white transition-all duration-300">
-                  <Icon size={28} className="stroke-[2]" />
-                </div>
-                
-                <h4 className="text-lg font-bold text-zinc-900 dark:text-white mb-3 group-hover:text-amber-500 transition-colors">
-                  {feat.title}
-                </h4>
-                <p className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-                  {feat.desc}
-                </p>
-              </motion.div>
-            );
+        {/* COMPARISON CARDS */}
+        <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 mb-16 max-w-5xl mx-auto items-stretch">
+          {comparisons.map((item, idx) => {
+             const Icon = item.icon;
+             const isGapai = item.type === "gapai";
+             return (
+               <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.2 }}
+                  className={`p-8 md:p-10 rounded-3xl border transition-all duration-300 ${item.bgClass}`}
+               >
+                  {isGapai && (
+                     <>
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-amber-500/10 blur-[80px] rounded-full pointer-events-none" />
+                        <div className="absolute top-0 right-6 sm:right-10 bg-amber-500 text-black text-[10px] sm:text-xs font-black uppercase tracking-widest px-4 py-1.5 rounded-b-xl shadow-lg shadow-amber-500/20">
+                           {t("Solusi Kami", "Our Solution")}
+                        </div>
+                     </>
+                  )}
+                  
+                  <div className="flex items-center gap-4 mb-8 relative z-10 pb-6 border-b border-black/5 dark:border-white/5">
+                     <div className={`w-14 h-14 shrink-0 rounded-2xl flex items-center justify-center ${isGapai ? 'bg-amber-500/10 border border-amber-500/20' : 'bg-red-500/5 border border-red-500/10'} ${item.iconColor}`}>
+                        <Icon size={28} className={isGapai ? 'stroke-[2]' : 'stroke-[1.5]'} />
+                     </div>
+                     <h3 className={`text-2xl sm:text-3xl font-black ${item.titleClass}`}>{item.title}</h3>
+                  </div>
+
+                  <ul className="space-y-5 relative z-10">
+                     {item.points.map((point, i) => (
+                        <li key={i} className="flex items-start gap-3">
+                           {isGapai ? (
+                              <CheckCircle2 size={20} className="text-emerald-500 shrink-0 mt-0.5" />
+                           ) : (
+                              <XCircle size={20} className="text-red-500/40 shrink-0 mt-0.5" />
+                           )}
+                           <span className={`text-sm md:text-base leading-relaxed ${isGapai ? 'text-zinc-300 font-medium' : 'text-zinc-500 line-through decoration-red-500/30'}`}>
+                              {point}
+                           </span>
+                        </li>
+                     ))}
+                  </ul>
+               </motion.div>
+             )
           })}
         </div>
 

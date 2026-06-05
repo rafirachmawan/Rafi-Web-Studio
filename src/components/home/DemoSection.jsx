@@ -199,7 +199,7 @@ export default function DemoSection({ filter, setFilter, filtered }) {
               rel="noopener noreferrer"
               className="group flex items-center gap-2 text-black dark:text-white font-bold hover:text-amber-500 dark:hover:text-amber-400 transition-colors"
             >
-              {t("Konsultasi Proyek", "Project Consultation")} <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              {t("Konsultasi Project", "Project Consultation")} <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
             <div className="h-px w-12 bg-zinc-200 dark:bg-white/10 hidden sm:block" />
           </div>

@@ -223,7 +223,7 @@ export default function HeroSection() {
               <CheckCircle className="w-5 h-5" />
             </div>
             <div>
-              <p className="text-zinc-900 dark:text-white font-black text-sm">{t("100+ Proyek", "100+ Projects")}</p>
+              <p className="text-zinc-900 dark:text-white font-black text-sm">{t("100+ Project", "100+ Projects")}</p>
               <p className="text-zinc-500 dark:text-zinc-400 text-[10px] font-bold uppercase tracking-wider">{t("Tepat Waktu", "On Time")}</p>
             </div>
           </motion.div>
