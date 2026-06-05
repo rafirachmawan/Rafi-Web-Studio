@@ -2,8 +2,10 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { realProjects } from "../../constants/realProjects";
 import { ArrowRight, Trophy, User, Sparkles } from "lucide-react";
+import { useLanguage } from "../../context/LanguageContext";
 
 export default function RealProjectsSection() {
+  const { t } = useLanguage();
   return (
     <section id="real-projects" className="relative py-20 md:py-28 overflow-hidden">
       {/* BACKGROUND DECOR */}
@@ -21,7 +23,7 @@ export default function RealProjectsSection() {
             viewport={{ once: true }}
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-600 dark:text-amber-400 text-xs font-bold mb-6 uppercase tracking-widest"
           >
-            <Trophy className="w-3.5 h-3.5" /> Production Ready
+            <Trophy className="w-3.5 h-3.5" /> {t("Siap Produksi", "Production Ready")}
           </motion.div>
           
           <motion.h2 
@@ -31,9 +33,9 @@ export default function RealProjectsSection() {
             transition={{ delay: 0.1 }}
             className="text-2xl sm:text-3xl md:text-4xl font-black text-black dark:text-white tracking-tight mb-4"
           >
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-500">Real Project</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-500">{t("Proyek Nyata", "Real Project")}</span>
           </motion.h2>
-
+ 
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -41,7 +43,10 @@ export default function RealProjectsSection() {
             transition={{ delay: 0.2 }}
             className="text-zinc-600 dark:text-zinc-400 text-xs md:text-sm leading-relaxed max-w-xl mx-auto font-medium"
           >
-            Portofolio proyek nyata yang telah kami rancang, kembangkan, dan luncurkan secara resmi untuk menunjang performa operasional bisnis klien kami di lapangan.
+            {t(
+              "Portofolio proyek nyata yang telah kami rancang, kembangkan, dan luncurkan secara resmi untuk menunjang performa operasional bisnis klien kami di lapangan.",
+              "A portfolio of real-world projects we have designed, developed, and officially launched to support the field operational performance of our clients' businesses."
+            )}
           </motion.p>
         </div>
 
@@ -83,24 +88,24 @@ export default function RealProjectsSection() {
                         {project.category}
                       </span>
                       <span className="px-3 py-1 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 text-white text-[10px] font-bold uppercase tracking-wider flex items-center gap-1 shadow-md shadow-amber-500/10">
-                        <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" /> Real Project
+                        <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" /> {t("Proyek Nyata", "Real Project")}
                       </span>
                     </div>
 
                     {/* TITLE */}
                     <h3 className="text-xl md:text-2xl font-black text-zinc-900 dark:text-white group-hover:text-amber-500 transition-colors duration-300">
-                      {project.name}
+                      {t(project.name)}
                     </h3>
 
                     {/* CLIENT INFO */}
                     <div className="flex items-center gap-1.5 text-xs font-bold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest">
                       <User size={12} className="text-amber-500/70" />
-                      <span>Klien: {project.client}</span>
+                      <span>{t("Klien:", "Client:")} {project.client}</span>
                     </div>
 
                     {/* DESCRIPTION */}
                     <p className="text-zinc-500 dark:text-zinc-400 text-xs md:text-sm leading-relaxed font-medium">
-                      {project.desc}
+                      {t(project.desc)}
                     </p>
 
                     {/* TECH STACK */}
@@ -121,7 +126,7 @@ export default function RealProjectsSection() {
                         to={`/portfolio/${project.id}`}
                         className="group/btn inline-flex items-center justify-center gap-2 bg-zinc-900 dark:bg-white hover:bg-amber-500 dark:hover:bg-amber-500 text-white dark:text-black hover:text-white dark:hover:text-white px-6 py-3 rounded-full text-xs font-bold transition-all duration-300 shadow-lg shadow-black/5 active:scale-95"
                       >
-                        Lihat Detail Proyek
+                        {t("Lihat Detail Proyek", "View Project Details")}
                         <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
                       </Link>
                     </div>

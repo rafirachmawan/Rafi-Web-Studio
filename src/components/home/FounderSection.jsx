@@ -1,8 +1,10 @@
-import { motion } from "framer-motion";
 import { ExternalLink, Send } from "lucide-react";
+import { useLanguage } from "../../context/LanguageContext";
 import founderPortrait from "../../assets/foto formal.jpg";
+import { motion } from "framer-motion";
 
 export default function FounderSection() {
+  const { t } = useLanguage();
   // CONFIGURABLE LINKS - Silakan ubah URL di bawah ini sesuai keinginan Anda
   const portfolioUrl = "https://website-profile-react.vercel.app/?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQPOTM2NjE5NzQzMzkyNDU5AAGnUVJ8I1A5zVVGCgB5W7plomzM5RRp7ppn3IqwgT5QFrbQaI1jZmmVOwaB1As_aem_FeRrnkq3nQfVmpCoe8hsvw";
   const githubUrl = "https://github.com/rafirachmawan";
@@ -25,7 +27,7 @@ export default function FounderSection() {
             viewport={{ once: true }}
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-amber-500/20 bg-amber-500/5 text-amber-500 text-[10px] sm:text-xs font-extrabold uppercase tracking-widest mb-4"
           >
-            👤 Di Balik Layar
+            {t("👤 Di Balik Layar", "👤 Behind The Scenes")}
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 15 }}
@@ -43,7 +45,7 @@ export default function FounderSection() {
             transition={{ delay: 0.2 }}
             className="mt-3 text-zinc-600 dark:text-zinc-400 text-xs sm:text-sm font-semibold max-w-lg mx-auto"
           >
-            Orang di balik layar yang memastikan kualitas, kecepatan, dan keberhasilan digitalisasi proyek bisnis Anda.
+            {t("Orang di balik layar yang memastikan kualitas, kecepatan, dan keberhasilan digitalisasi proyek bisnis Anda.", "The person behind the scenes ensuring the quality, speed, and success of your business project digitalization.")}
           </motion.p>
         </div>
 
@@ -81,7 +83,7 @@ export default function FounderSection() {
 
               {/* Socials & Info inside card */}
               <div className="pt-5 pb-2 px-3 flex justify-between items-center relative z-10 border-t border-black/5 dark:border-white/5 mt-4">
-                <span className="text-[10px] font-bold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest">Temukan Saya:</span>
+                <span className="text-[10px] font-bold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest">{t("Temukan Saya:", "Find Me:")}</span>
                 <div className="flex gap-2">
                   <a 
                     href={githubUrl} 
@@ -131,19 +133,19 @@ export default function FounderSection() {
             className="md:col-span-7 space-y-6 text-left"
           >
             <h3 className="text-xl sm:text-2xl font-black text-zinc-900 dark:text-white">
-              "Komitmen Kami Adalah <br className="xs:hidden" />
-              <span className="text-amber-500">Kesuksesan Skala Bisnis Anda</span>."
+              "{t("Komitmen Kami Adalah", "Our Commitment Is")}{" "}<br className="xs:hidden" />
+              <span className="text-amber-500">{t("Kesuksesan Skala Bisnis Anda", "Your Business Scale's Success")}</span>."
             </h3>
 
             <div className="space-y-4 text-zinc-600 dark:text-zinc-300 text-xs sm:text-sm font-semibold leading-relaxed">
               <p>
-                Halo! Saya <span className="text-zinc-900 dark:text-white font-extrabold">Rafi Rachmawan</span>, orang di balik layar GapaiDigital. Sejak awal membangun agensi ini, misi saya adalah memberikan solusi digital berkualitas kelas enterprise untuk bisnis lokal, UMKM, dan personal branding tanpa membebani anggaran Anda.
+                {t("Halo! Saya Rafi Rachmawan, orang di balik layar GapaiDigital. Sejak awal membangun agensi ini, misi saya adalah memberikan solusi digital berkualitas kelas enterprise untuk bisnis lokal, UMKM, dan personal branding tanpa membebani anggaran Anda.", "Hello! I am Rafi Rachmawan, the person behind GapaiDigital. Since establishing this agency, my mission has been to provide enterprise-grade, high-quality digital solutions for local businesses, MSMEs, and personal branding without straining your budget.")}
               </p>
               <p>
-                Setiap baris kode, arsitektur database, desain antarmuka, hingga performa SEO saya awasi dan kembangkan secara personal bersama tim untuk memastikan website dan aplikasi Anda memiliki kualitas terbaik—cepat, responsif, dan aman.
+                {t("Setiap baris kode, arsitektur database, desain antarmuka, hingga performa SEO saya awasi dan kembangkan secara personal bersama tim untuk memastikan website dan aplikasi Anda memiliki kualitas terbaik—cepat, responsif, dan aman.", "Every line of code, database architecture, interface design, to SEO performance is personally supervised and developed by me alongside the team to ensure your website and app have the best quality—fast, responsive, and secure.")}
               </p>
               <p>
-                Bagi saya, digitalisasi bukan sekadar memiliki website atau aplikasi, melainkan membangun sistem yang bekerja 24/7 untuk meningkatkan kredibilitas brand Anda dan mendatangkan konversi penjualan yang nyata.
+                {t("Bagi saya, digitalisasi bukan sekadar memiliki website atau aplikasi, melainkan membangun sistem yang bekerja 24/7 untuk meningkatkan kredibilitas brand Anda dan mendatangkan konversi penjualan yang nyata.", "To me, digitalization is not just about having a website or an app, but building a system that works 24/7 to boost your brand credibility and drive real sales conversions.")}
               </p>
             </div>
 
@@ -154,7 +156,7 @@ export default function FounderSection() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-amber-500 hover:bg-amber-400 text-black font-black text-xs sm:text-sm shadow-lg shadow-amber-500/20 hover:scale-[1.02] transition-all"
               >
-                Kunjungi Portofolio Saya
+                {t("Kunjungi Portofolio Saya", "Visit My Portfolio")}
                 <ExternalLink size={16} />
               </a>
 
@@ -164,7 +166,7 @@ export default function FounderSection() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl border border-black/10 dark:border-white/10 hover:border-amber-500/30 bg-black/[0.02] dark:bg-white/5 hover:bg-black/[0.05] dark:hover:bg-white/10 text-zinc-800 dark:text-white font-bold text-xs sm:text-sm hover:scale-[1.02] transition-all"
               >
-                Diskusi Langsung via WA
+                {t("Diskusi Langsung via WA", "Direct Discussion via WA")}
                 <Send size={14} className="text-amber-500" />
               </a>
             </div>

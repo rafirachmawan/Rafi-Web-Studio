@@ -1,28 +1,31 @@
-import { motion } from "framer-motion";
 import { Star, Zap, Cpu, Compass } from "lucide-react";
+import { useLanguage } from "../../context/LanguageContext";
+import { motion } from "framer-motion";
 
 export default function WhyUsSection() {
+  const { t } = useLanguage();
+
   const stats = [
-    { value: "50+", label: "Project Delivered" },
-    { value: "99%", label: "Client Satisfaction" },
-    { value: "24/7", label: "Technical Support" },
+    { value: "50+", label: t("Proyek Selesai", "Projects Delivered") },
+    { value: "99%", label: t("Kepuasan Klien", "Client Satisfaction") },
+    { value: "24/7", label: t("Dukungan Teknis", "Technical Support") },
   ];
 
   const features = [
     {
       icon: Zap,
-      title: "Desain Premium & Modern",
-      desc: "Tampilan website yang mewah, bersih, dan dinamis, dirancang khusus untuk meningkatkan kredibilitas brand Anda.",
+      title: t("Desain Premium & Modern", "Premium & Modern Design"),
+      desc: t("Tampilan website yang mewah, bersih, dan dinamis, dirancang khusus untuk meningkatkan kredibilitas brand Anda.", "A luxurious, clean, and dynamic website look, specifically designed to boost your brand credibility."),
     },
     {
       icon: Cpu,
-      title: "Kinerja & Kecepatan Tinggi",
-      desc: "Menggunakan teknologi modern untuk memastikan website Anda memiliki kecepatan loading super kilat dan ramah SEO.",
+      title: t("Kinerja & Kecepatan Tinggi", "High Performance & Speed"),
+      desc: t("Menggunakan teknologi modern untuk memastikan website Anda memiliki kecepatan loading super kilat dan ramah SEO.", "Using modern technologies to ensure your website has super fast load times and is SEO friendly."),
     },
     {
       icon: Compass,
-      title: "Solusi Terintegrasi Penuh",
-      desc: "Menghubungkan landing page promosi, dashboard manajemen berbasis web, dan aplikasi mobile dalam satu ekosistem.",
+      title: t("Solusi Terintegrasi Penuh", "Fully Integrated Solution"),
+      desc: t("Menghubungkan landing page promosi, dashboard manajemen berbasis web, dan aplikasi mobile dalam satu ekosistem.", "Connecting promotional landing pages, web-based management dashboards, and mobile apps in one ecosystem."),
     },
   ];
 
@@ -41,7 +44,7 @@ export default function WhyUsSection() {
             viewport={{ once: true }}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-amber-500/20 bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold uppercase tracking-wider mb-6"
           >
-            ⚡ Mitra Digital Anda
+            {t("⚡ Mitra Digital Anda", "⚡ Your Digital Partner")}
           </motion.div>
 
           <motion.h2
@@ -51,9 +54,9 @@ export default function WhyUsSection() {
             transition={{ delay: 0.1 }}
             className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight leading-[1.15] text-zinc-900 dark:text-white mb-6"
           >
-            Bukan Sekadar <br className="hidden md:block" />
+            {t("Bukan Sekadar", "Not Just an")} <br className="hidden md:block" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600">
-              Website Biasa
+              {t("Website Biasa", "Ordinary Website")}
             </span>
           </motion.h2>
 
@@ -64,7 +67,7 @@ export default function WhyUsSection() {
             transition={{ delay: 0.2 }}
             className="text-sm md:text-base leading-relaxed text-zinc-600 dark:text-zinc-400"
           >
-            Kami membantu bisnis lokal dan UMKM naik tingkat melalui digitalisasi yang dirancang secara matang, responsif, dan fokus pada peningkatan penjualan.
+            {t("Kami membantu bisnis lokal dan UMKM naik tingkat melalui digitalisasi yang dirancang secara matang, responsif, dan fokus pada peningkatan penjualan.", "We help local businesses and MSMEs scale up through carefully planned, responsive, and conversion-focused digitalization.")}
           </motion.p>
         </div>
 

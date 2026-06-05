@@ -1,36 +1,39 @@
-import { motion } from "framer-motion";
 import { MessageSquare, PenTool, Code, Rocket, HeadphonesIcon } from "lucide-react";
+import { useLanguage } from "../../context/LanguageContext";
+import { motion } from "framer-motion";
 
 export default function ProcessSection() {
+  const { t } = useLanguage();
+
   const steps = [
     {
       id: "01",
-      title: "Konsultasi Gratis",
-      desc: "Kami dengarkan kebutuhan dan tujuan bisnis Anda. Diskusi santai untuk menemukan solusi terbaik.",
+      title: t("Konsultasi Gratis", "Free Consultation"),
+      desc: t("Kami dengarkan kebutuhan dan tujuan bisnis Anda. Diskusi santai untuk menemukan solusi terbaik.", "We listen to your business needs and goals. Relaxed discussion to find the best solutions."),
       icon: MessageSquare,
     },
     {
       id: "02",
-      title: "Konsep & Desain",
-      desc: "Pembuatan wireframe dan desain visual (UI/UX). Anda akan menerima preview sebelum mulai coding.",
+      title: t("Konsep & Desain", "Concept & Design"),
+      desc: t("Pembuatan wireframe dan desain visual (UI/UX). Anda akan menerima preview sebelum mulai coding.", "Creation of wireframe and visual design (UI/UX). You will receive a preview before coding begins."),
       icon: PenTool,
     },
     {
       id: "03",
-      title: "Development & Revisi",
-      desc: "Mulai proses coding dan perakitan fitur. Anda dapat melihat progres dan mengajukan revisi.",
+      title: t("Development & Revisi", "Development & Revisions"),
+      desc: t("Mulai proses coding dan perakitan fitur. Anda dapat melihat progres dan mengajukan revisi.", "Starting the coding process and feature building. You can track progress and request revisions."),
       icon: Code,
     },
     {
       id: "04",
-      title: "Launching",
-      desc: "Testing akhir, optimasi kecepatan, dan website siap diakses oleh seluruh dunia.",
+      title: t("Launching", "Launching"),
+      desc: t("Testing akhir, optimasi kecepatan, dan website siap diakses oleh seluruh dunia.", "Final testing, speed optimization, and the website is ready to be accessed by the whole world."),
       icon: Rocket,
     },
     {
       id: "05",
-      title: "Maintenance & Support",
-      desc: "Kami tetap mendampingi Anda setelah rilis untuk memastikan semuanya berjalan lancar.",
+      title: t("Maintenance & Support", "Maintenance & Support"),
+      desc: t("Kami tetap mendampingi Anda setelah rilis untuk memastikan semuanya berjalan lancar.", "We remain by your side after release to ensure everything runs smoothly."),
       icon: HeadphonesIcon,
     },
   ];
@@ -48,7 +51,7 @@ export default function ProcessSection() {
               viewport={{ once: true }}
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-amber-500/20 bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold uppercase tracking-wider"
             >
-               Cara Kami Bekerja
+               {t("Cara Kami Bekerja", "How We Work")}
             </motion.div>
 
             <motion.h2 
@@ -58,9 +61,9 @@ export default function ProcessSection() {
               transition={{ delay: 0.1 }}
               className="text-3xl md:text-4xl lg:text-5xl font-black leading-[1.15] text-zinc-900 dark:text-white"
             >
-              Proses yang <br />
+              {t("Proses yang", "A Process That Is")} <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-500">
-                Transparan & Cepat
+                {t("Transparan & Cepat", "Transparent & Fast")}
               </span>
             </motion.h2>
 
@@ -71,7 +74,7 @@ export default function ProcessSection() {
               transition={{ delay: 0.2 }}
               className="text-zinc-600 dark:text-zinc-400 text-sm md:text-base leading-relaxed max-w-md"
             >
-              Kami memecah proyek kompleks menjadi langkah-langkah sederhana agar Anda selalu memegang kendali atas apa yang sedang kami kerjakan. Tanpa kebingungan teknis.
+              {t("Kami memecah proyek kompleks menjadi langkah-langkah sederhana agar Anda selalu memegang kendali atas apa yang sedang kami kerjakan. Tanpa kebingungan teknis.", "We break down complex projects into simple steps so you are always in control of what we are working on. No technical confusion.")}
             </motion.p>
           </div>
 
@@ -99,7 +102,7 @@ export default function ProcessSection() {
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-2 md:mb-3">
                       <span className="text-amber-500 font-black text-sm md:text-base">
-                        Tahap {step.id}
+                        {t("Tahap", "Step")} {step.id}
                       </span>
                       <div className="h-1 w-1 bg-zinc-300 dark:bg-zinc-700 rounded-full" />
                       <h3 className="text-lg md:text-xl font-bold tracking-tight text-zinc-900 dark:text-white group-hover:text-amber-500 transition-colors">

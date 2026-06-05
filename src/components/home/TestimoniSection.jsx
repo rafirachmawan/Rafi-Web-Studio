@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Quote, Star } from "lucide-react";
+import { useLanguage } from "../../context/LanguageContext";
 
 import unitaImg from "../../assets/UNITACover.jpg";
 import nikoImg from "../../assets/NikoNikoCover.jpg";
@@ -8,25 +9,44 @@ import starbucksImg from "../../assets/StarbucksCover.jpg";
 const testimonials = [
   {
     name: "Universitas Tulungagung",
-    role: "Institusi Pendidikan",
+    role: {
+      id: "Institusi Pendidikan",
+      en: "Educational Institution"
+    },
     image: unitaImg,
-    text: "Sistem informasi akademik dan landing page yang dibangun sangat modern dan responsif. Sangat membantu digitalisasi kampus kami menjadi lebih profesional dan mudah diakses.",
+    text: {
+      id: "Sistem informasi akademik dan landing page yang dibangun sangat modern dan responsif. Sangat membantu digitalisasi kampus kami menjadi lebih profesional dan mudah diakses.",
+      en: "The academic information system and landing page built are highly modern and responsive. It greatly helps digitalize our campus to be more professional and easily accessible."
+    },
   },
   {
     name: "Niko Niko Ramen",
-    role: "F&B / Restoran",
+    role: {
+      id: "F&B / Restoran",
+      en: "F&B / Restaurant"
+    },
     image: nikoImg,
-    text: "Tampilan website sangat menggugah selera dan sistem pemesanan online berjalan mulus. Visibilitas brand dan interaksi pelanggan kami meningkat pesat sejak web baru diluncurkan!",
+    text: {
+      id: "Tampilan website sangat menggugah selera dan sistem pemesanan online berjalan mulus. Visibilitas brand dan interaksi pelanggan kami meningkat pesat sejak web baru diluncurkan!",
+      en: "The website visual is highly appetizing and the online ordering system works flawlessly. Our brand visibility and customer interaction have risen dramatically since the new web launched!"
+    },
   },
   {
     name: "Starbucks",
-    role: "Coffee Shop & Lifestyle",
+    role: {
+      id: "Coffee Shop & Lifestyle",
+      en: "Coffee Shop & Lifestyle"
+    },
     image: starbucksImg,
-    text: "Desain UI/UX yang elegan, dinamis, dan sangat merepresentasikan brand premium kami. Pengalaman pelanggan dalam melihat katalog menu menjadi jauh lebih interaktif dan berkelas.",
+    text: {
+      id: "Desain UI/UX yang elegan, dinamis, dan sangat merepresentasikan brand premium kami. Pengalaman pelanggan dalam melihat katalog menu menjadi jauh lebih interaktif dan berkelas.",
+      en: "Elegant, dynamic UI/UX design that truly represents our premium brand. The customer experience in viewing the menu catalog has become much more interactive and classy."
+    },
   }
 ];
 
 export default function TestimoniSection() {
+  const { t } = useLanguage();
   // Duplicate array multiple times for smooth infinite scrolling
   const duplicatedTestimonials = [...testimonials, ...testimonials, ...testimonials];
 
@@ -35,13 +55,13 @@ export default function TestimoniSection() {
       {/* TITLE */}
       <div className="text-center mb-16 px-4 md:px-8">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-black mb-3 leading-tight text-zinc-900 dark:text-white">
-          Kisah Sukses{" "}
+          {t("Kisah Sukses", "Success Stories of")}{" "}
           <span className="bg-gradient-to-r from-amber-500 to-yellow-400 bg-clip-text text-transparent">
-            Klien Kami
+            {t("Klien Kami", "Our Clients")}
           </span>
         </h2>
         <p className="text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto text-sm md:text-base font-medium">
-          Kepercayaan mereka adalah bukti dedikasi kami dalam menghadirkan solusi digitalisasi bisnis modern yang berkualitas tinggi.
+          {t("Kepercayaan mereka adalah bukti dedikasi kami dalam menghadirkan solusi digitalisasi bisnis modern yang berkualitas tinggi.", "Their trust is proof of our dedication to presenting high-quality modern business digitalization solutions.")}
         </p>
       </div>
 
@@ -82,7 +102,7 @@ export default function TestimoniSection() {
                   ))}
                 </div>
                 <p className="text-zinc-800 dark:text-zinc-200 text-xs md:text-sm font-medium leading-relaxed mb-6">
-                  "{item.text}"
+                  "{t(item.text)}"
                 </p>
               </div>
 
@@ -100,7 +120,7 @@ export default function TestimoniSection() {
                     {item.name}
                   </h4>
                   <p className="text-[10px] text-amber-600 dark:text-amber-500 font-medium uppercase tracking-wider">
-                    {item.role}
+                    {t(item.role)}
                   </p>
                 </div>
               </div>

@@ -1,8 +1,10 @@
 import { useEffect, useState, useRef } from "react";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
+import { useLanguage } from "../../context/LanguageContext";
 
 export default function Navbar() {
+  const { language, setLanguage, t } = useLanguage();
   const [darkMode, setDarkMode] = useState(() => {
     const saved = localStorage.getItem("theme");
     return saved ? saved === "dark" : true;
@@ -50,13 +52,13 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { label: "Home", href: "#home" },
-    { label: "Proyek", href: "#real-projects" },
-    { label: "Demo Template", href: "#demo" },
-    { label: "Proses", href: "#proses" },
-    { label: "Harga", href: "#harga" },
-    { label: "Testimoni", href: "#testimoni" },
-    { label: "Contact", href: "#contact" }
+    { label: t("Home", "Home"), href: "#home" },
+    { label: t("Proyek", "Projects"), href: "#real-projects" },
+    { label: t("Demo Template", "Demo Catalog"), href: "#demo" },
+    { label: t("Proses", "Process"), href: "#proses" },
+    { label: t("Harga", "Pricing"), href: "#harga" },
+    { label: t("Testimoni", "Testimonials"), href: "#testimoni" },
+    { label: t("Contact", "Contact"), href: "#contact" }
   ];
 
   // Track active section on scroll
@@ -112,6 +114,15 @@ export default function Navbar() {
 
         {/* RIGHT SECTION */}
         <div className="flex items-center gap-2">
+          {/* LANGUAGE TOGGLE */}
+          <button
+            onClick={() => setLanguage(language === "id" ? "en" : "id")}
+            className="w-10 h-8 rounded-full border border-black/10 dark:border-white/10 bg-black/[0.03] dark:bg-white/[0.05] flex items-center justify-center text-[10px] font-black tracking-wider text-zinc-700 dark:text-zinc-300 hover:scale-105 transition cursor-pointer"
+            title={language === "id" ? "Ganti ke Bahasa Inggris" : "Switch to Indonesian"}
+          >
+            {language === "id" ? "ID" : "EN"}
+          </button>
+
           {/* THEME TOGGLE */}
           <button
             onClick={() => setDarkMode(!darkMode)}

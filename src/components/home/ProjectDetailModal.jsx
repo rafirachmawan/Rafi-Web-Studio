@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
 import { X, CheckCircle2, ArrowRight, Layers, Tag, User } from "lucide-react";
 import { useEffect } from "react";
+import { useLanguage } from "../../context/LanguageContext";
 
 export default function ProjectDetailModal({ project, onClose }) {
+  const { t } = useLanguage();
   // Prevent body scroll when modal is open
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -57,11 +59,31 @@ export default function ProjectDetailModal({ project, onClose }) {
               <div>
                 <div className="flex flex-wrap gap-2 mb-2 sm:mb-3">
                   <span className="px-2.5 py-1 bg-amber-500 text-black text-[9px] sm:text-[10px] font-black uppercase tracking-wider rounded-full flex items-center gap-1">
-                    <Tag size={12} /> {project.category}
+                    <Tag size={12} />{" "}
+                    {t(
+                      project.category === "landing page"
+                        ? "Landing Page"
+                        : project.category === "mobile app"
+                        ? "Aplikasi Mobile"
+                        : project.category === "sistem berbasis web"
+                        ? "Sistem Berbasis Web"
+                        : project.category === "software"
+                        ? "Software"
+                        : project.category,
+                      project.category === "landing page"
+                        ? "Landing Page"
+                        : project.category === "mobile app"
+                        ? "Mobile App"
+                        : project.category === "sistem berbasis web"
+                        ? "Web-based System"
+                        : project.category === "software"
+                        ? "Software"
+                        : project.category
+                    )}
                   </span>
                   {project.client && (
                     <span className="px-2.5 py-1 bg-white/20 backdrop-blur-md text-white border border-white/20 text-[9px] sm:text-[10px] font-black uppercase tracking-wider rounded-full flex items-center gap-1">
-                      <User size={12} /> {project.client}
+                      <User size={12} /> {t("Klien:", "Client:")} {project.client}
                     </span>
                   )}
                 </div>
@@ -79,22 +101,22 @@ export default function ProjectDetailModal({ project, onClose }) {
               {/* Left Column (Description & Features) */}
               <div className="md:col-span-2 space-y-8">
                 <section>
-                  <h3 className="text-xl font-bold text-zinc-900 dark:text-white mb-4">Tentang Proyek</h3>
+                  <h3 className="text-xl font-bold text-zinc-900 dark:text-white mb-4">{t("Tentang Proyek", "About Project")}</h3>
                   <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed font-medium">
-                    {project.fullDescription || project.desc}
+                    {t(project.fullDescription || project.desc)}
                   </p>
                 </section>
 
                 <section>
-                  <h3 className="text-xl font-bold text-zinc-900 dark:text-white mb-4">Fitur Utama</h3>
+                  <h3 className="text-xl font-bold text-zinc-900 dark:text-white mb-4">{t("Fitur Utama", "Key Features")}</h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {project.features ? project.features.map((feature, idx) => (
                       <div key={idx} className="flex items-start gap-3 bg-zinc-50 dark:bg-white/[0.02] p-4 rounded-2xl border border-zinc-100 dark:border-white/5">
                         <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0" />
-                        <span className="text-sm font-semibold text-zinc-700 dark:text-zinc-300">{feature}</span>
+                        <span className="text-sm font-semibold text-zinc-700 dark:text-zinc-300">{t(feature)}</span>
                       </div>
                     )) : (
-                      <p className="text-sm text-zinc-500">Fitur sedang disiapkan...</p>
+                      <p className="text-sm text-zinc-500">{t("Fitur sedang disiapkan...", "Features are being prepared...")}</p>
                     )}
                   </div>
                 </section>
@@ -112,7 +134,7 @@ export default function ProjectDetailModal({ project, onClose }) {
                         {tech}
                       </span>
                     )) : (
-                      <span className="text-sm text-zinc-500">Mendata tech stack...</span>
+                      <span className="text-sm text-zinc-500">{t("Mendata tech stack...", "Loading tech stack...")}</span>
                     )}
                   </div>
                 </section>
@@ -128,17 +150,27 @@ export default function ProjectDetailModal({ project, onClose }) {
             onClick={onClose}
             className="w-full sm:w-auto px-6 py-3 rounded-xl font-bold text-sm text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors text-center"
           >
-            Tutup
+            {t("Tutup", "Close")}
           </button>
           
-          <a
-            href={project.path}
-            target={project.path !== "#" ? "_blank" : "_self"}
-            rel="noopener noreferrer"
-            className="w-full sm:w-auto group flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-white px-8 py-3.5 rounded-xl text-sm font-black transition-all shadow-lg hover:shadow-amber-500/25 hover:scale-[1.02] active:scale-95"
-          >
-            Lihat Live Website <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-          </a>
+          {project.path === "#" ? (
+            <div className="w-full sm:w-auto text-center bg-zinc-200/50 dark:bg-zinc-800/50 border border-zinc-200 dark:border-white/5 text-zinc-500 dark:text-zinc-400 px-8 py-3.5 rounded-xl text-sm font-bold cursor-not-allowed">
+              {t("Sistem Internal / Private", "Internal / Private System")}
+            </div>
+          ) : (
+            <a
+              href={project.path}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto group flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-white px-8 py-3.5 rounded-xl text-sm font-black transition-all shadow-lg hover:shadow-amber-500/25 hover:scale-[1.02] active:scale-95"
+            >
+              {t(
+                project.isReal ? "Kunjungi Website Klien" : "Kunjungi Live Website",
+                project.isReal ? "Visit Client Website" : "Visit Live Website"
+              )}{" "}
+              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            </a>
+          )}
         </div>
 
       </motion.div>

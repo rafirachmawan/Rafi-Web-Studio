@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
+import { useLanguage } from "../../context/LanguageContext";
 
 export default function FloatingWAButton({ waLink }) {
+  const { t } = useLanguage();
   return (
     <motion.a
       href={waLink}
@@ -12,7 +14,7 @@ export default function FloatingWAButton({ waLink }) {
       transition={{ type: "spring", stiffness: 260, damping: 20, delay: 1 }}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
-      aria-label="Chat di WhatsApp"
+      aria-label={t("Chat di WhatsApp", "Chat on WhatsApp")}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

@@ -1,7 +1,17 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useLanguage } from "../../context/LanguageContext";
 
 export default function DemoCard({ demo }) {
+  const { t } = useLanguage();
+
+  const categoryNames = {
+    "landing page": t("Website", "Website"),
+    "mobile app": t("Aplikasi Mobile", "Mobile App"),
+    "sistem berbasis web": t("Sistem Web", "Web System"),
+    "software": t("Software", "Software")
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -25,19 +35,19 @@ export default function DemoCard({ demo }) {
           {/* CATEGORY BADGE ON IMAGE */}
           <div className="absolute top-4 left-4 z-20 flex flex-wrap gap-2">
             <div className="px-3 py-1 rounded-full bg-black/50 backdrop-blur-md border border-white/20 text-white text-[10px] font-bold uppercase tracking-wider">
-              {demo.category}
+              {categoryNames[demo.category] || demo.category}
             </div>
             {demo.isReal && (
               <div className="px-3 py-1 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 backdrop-blur-md border border-white/10 text-white text-[10px] font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-md shadow-amber-500/20">
-                <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" /> Real Project
+                <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" /> {t("Proyek Nyata", "Real Project")}
               </div>
             )}
           </div>
-
+ 
           {/* Overlay to hint it's interactive */}
           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-500 flex items-center justify-center">
             <div className="opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-500 bg-white text-black px-6 py-2.5 rounded-full text-xs font-black shadow-2xl flex items-center gap-2">
-              View Project <span className="text-amber-600">→</span>
+              {t("Lihat Proyek", "View Project")} <span className="text-amber-600">→</span>
             </div>
           </div>
         </div>
@@ -56,7 +66,7 @@ export default function DemoCard({ demo }) {
 
           {/* DESC */}
           <p className="text-zinc-500 dark:text-zinc-400 text-xs md:text-sm leading-relaxed line-clamp-2">
-            {demo.desc}
+            {t(demo.desc)}
           </p>
         </div>
       </Link>

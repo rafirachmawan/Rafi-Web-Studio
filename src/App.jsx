@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { LanguageProvider } from "./context/LanguageContext";
 
 import Home from "./pages/Home";
 import ProjectDetail from "./pages/ProjectDetail";
@@ -29,24 +30,26 @@ function ScrollToTop() {
 
 export default function App() {
   return (
-    <Router>
-      <ScrollToTop />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/portfolio/:id" element={<ProjectDetail />} />
-        <Route path="/coffee" element={<CoffeeLanding />} />
-        <Route path="/rental" element={<RentalLanding />} />
-        <Route path="/hotel" element={<HotelLanding />} />
-        <Route path="/resto" element={<RestoLanding />} />
-        <Route path="/sekolah" element={<SekolahLanding />} />
-        <Route path="/laundry" element={<LaundryLanding />} />
-        <Route path="/umroh" element={<UmrohLanding />} />
-        <Route path="/unita" element={<UNITALanding />} />
-        <Route path="/akademik/*" element={<AkademikApp />} />
-        <Route path="/warungos/*" element={<WarungOSApp />} />
-        <Route path="/examos/*" element={<ExamOSApp />} />
-        <Route path="/absenos/*" element={<AbsenOSApp />} />
-      </Routes>
-    </Router>
+    <LanguageProvider>
+      <Router>
+        <ScrollToTop />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/portfolio/:id" element={<ProjectDetail />} />
+          <Route path="/coffee" element={<CoffeeLanding />} />
+          <Route path="/rental" element={<RentalLanding />} />
+          <Route path="/hotel" element={<HotelLanding />} />
+          <Route path="/resto" element={<RestoLanding />} />
+          <Route path="/sekolah" element={<SekolahLanding />} />
+          <Route path="/laundry" element={<LaundryLanding />} />
+          <Route path="/umroh" element={<UmrohLanding />} />
+          <Route path="/unita" element={<UNITALanding />} />
+          <Route path="/akademik/*" element={<AkademikApp />} />
+          <Route path="/warungos/*" element={<WarungOSApp />} />
+          <Route path="/examos/*" element={<ExamOSApp />} />
+          <Route path="/absenos/*" element={<AbsenOSApp />} />
+        </Routes>
+      </Router>
+    </LanguageProvider>
   );
 }

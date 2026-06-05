@@ -10,8 +10,10 @@ import {
   ArrowRight,
   Sparkles
 } from "lucide-react";
+import { useLanguage } from "../../context/LanguageContext";
 
 export default function DemoSection({ filter, setFilter, filtered }) {
+  const { t } = useLanguage();
   const [showAll, setShowAll] = useState(false);
 
   // Reset showAll when filter category changes
@@ -21,26 +23,26 @@ export default function DemoSection({ filter, setFilter, filtered }) {
 
   // CATEGORY CONFIG
   const categories = [
-    { id: "all", label: "All Works", icon: LayoutGrid },
-    { id: "landing page", label: "Websites", icon: Globe },
-    { id: "mobile app", label: "Mobile Apps", icon: Smartphone },
-    { id: "sistem berbasis web", label: "Web Systems", icon: MonitorSmartphone },
-    { id: "software", label: "Software", icon: Code2 },
+    { id: "all", label: t("Semua Karya", "All Works"), icon: LayoutGrid },
+    { id: "landing page", label: t("Website", "Websites"), icon: Globe },
+    { id: "mobile app", label: t("Aplikasi Mobile", "Mobile Apps"), icon: Smartphone },
+    { id: "sistem berbasis web", label: t("Sistem Web", "Web Systems"), icon: MonitorSmartphone },
+    { id: "software", label: t("Software", "Software"), icon: Code2 },
   ];
 
   // Helper for category descriptions
   const getCategoryInfo = (id) => {
     switch(id) {
       case "landing page": 
-        return "Landing pages modern dengan desain profesional, responsive, dan fokus pada konversi.";
+        return t("Landing pages modern dengan desain profesional, responsive, dan fokus pada konversi.", "Modern landing pages with professional design, responsive layout, and focus on conversions.");
       case "mobile app":
-        return "Aplikasi mobile & PWA untuk operasional bisnis, inventory, dan monitoring.";
+        return t("Aplikasi mobile & PWA untuk operasional bisnis, inventory, dan monitoring.", "Mobile apps & PWA for business operations, inventory, and monitoring.");
       case "sistem berbasis web":
-        return "Dashboard interaktif, ERP, CRM, dan sistem manajemen internal perusahaan.";
+        return t("Dashboard interaktif, ERP, CRM, dan sistem manajemen internal perusahaan.", "Interactive dashboard, ERP, CRM, and company internal management system.");
       case "software":
-        return "Software custom & aplikasi desktop untuk solusi otomatisasi bisnis spesifik.";
+        return t("Software custom & aplikasi desktop untuk solusi otomatisasi bisnis spesifik.", "Custom software & desktop applications for specific business automation solutions.");
       default:
-        return "Koleksi karya digital terbaik kami dari berbagai industri dan platform.";
+        return t("Koleksi karya digital terbaik kami dari berbagai industri dan platform.", "Our best digital collection across various industries and platforms.");
     }
   };
 
@@ -74,7 +76,7 @@ export default function DemoSection({ filter, setFilter, filtered }) {
             transition={{ delay: 0.1 }}
             className="text-xl sm:text-2xl md:text-3xl font-black text-black dark:text-white tracking-tight mb-4"
           >
-            Digitalisasi <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600">Demo & Template</span>
+            {t("Digitalisasi", "Digitalization")} <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600">{t("Demo & Template", "Demos & Templates")}</span>
           </motion.h2>
 
           <motion.p 
@@ -84,7 +86,7 @@ export default function DemoSection({ filter, setFilter, filtered }) {
             transition={{ delay: 0.2 }}
             className="text-zinc-600 dark:text-zinc-400 text-xs md:text-sm leading-relaxed max-w-xl mx-auto"
           >
-            {getCategoryInfo(filter)} Kami menyediakan opsi demo interaktif ini sebagai blueprint/katalog template yang siap dikustomisasi penuh sesuai dengan jenis usaha Anda.
+            {getCategoryInfo(filter)} {t("Kami menyediakan opsi demo interaktif ini sebagai blueprint/katalog template yang siap dikustomisasi penuh sesuai dengan jenis usaha Anda.", "We provide these interactive demo options as a blueprint/catalog of templates ready for full customization according to your business type.")}
           </motion.p>
         </div>
 
@@ -132,9 +134,9 @@ export default function DemoSection({ filter, setFilter, filtered }) {
                 <div className="w-20 h-20 bg-amber-500/10 rounded-full flex items-center justify-center mx-auto mb-6">
                   <Code2 className="w-10 h-10 text-amber-500" />
                 </div>
-                <h3 className="text-2xl font-bold text-black dark:text-white mb-4">Coming Soon</h3>
+                <h3 className="text-2xl font-bold text-black dark:text-white mb-4">{t("Segera Hadir", "Coming Soon")}</h3>
                 <p className="text-zinc-500 dark:text-zinc-400">
-                  Software custom & aplikasi desktop kami sedang dalam tahap kurasi untuk ditampilkan.
+                  {t("Software custom & aplikasi desktop kami sedang dalam tahap kurasi untuk ditampilkan.", "Our custom software & desktop applications are currently being curated for display.")}
                 </p>
               </motion.div>
             ) : (
@@ -171,7 +173,7 @@ export default function DemoSection({ filter, setFilter, filtered }) {
               >
                 <span className="absolute inset-0 bg-gradient-to-r from-amber-500 to-orange-500 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300 -z-10" />
                 <span className="relative z-10 flex items-center gap-2">
-                  {showAll ? "Tampilkan Lebih Sedikit" : `Lihat Semua Portofolio (${filtered.length})`}
+                  {showAll ? t("Tampilkan Lebih Sedikit", "Show Less") : `${t("Lihat Semua Portofolio", "View All Portfolio")} (${filtered.length})`}
                   <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
                 </span>
               </button>
@@ -187,7 +189,7 @@ export default function DemoSection({ filter, setFilter, filtered }) {
           className="mt-24 text-center px-4"
         >
           <p className="text-zinc-500 dark:text-zinc-400 text-sm md:text-base font-medium mb-8">
-            Punya kebutuhan sistem khusus? Kami siap membantu mewujudkannya.
+            {t("Punya kebutuhan sistem khusus? Kami siap membantu mewujudkannya.", "Have specific system requirements? We are ready to help make it happen.")}
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <div className="h-px w-12 bg-zinc-200 dark:bg-white/10 hidden sm:block" />
@@ -197,7 +199,7 @@ export default function DemoSection({ filter, setFilter, filtered }) {
               rel="noopener noreferrer"
               className="group flex items-center gap-2 text-black dark:text-white font-bold hover:text-amber-500 dark:hover:text-amber-400 transition-colors"
             >
-              Konsultasi Project <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              {t("Konsultasi Proyek", "Project Consultation")} <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
             <div className="h-px w-12 bg-zinc-200 dark:bg-white/10 hidden sm:block" />
           </div>
