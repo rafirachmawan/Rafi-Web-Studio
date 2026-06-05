@@ -22,6 +22,10 @@ import Dashboard from "./pages/Dashboard";
 import QuestionBank from "./pages/QuestionBank";
 import ExamRoom from "./pages/ExamRoom";
 import Monitoring from "./pages/Monitoring";
+import UserManagement from "./pages/UserManagement";
+import Subjects from "./pages/Subjects";
+import Reports from "./pages/Reports";
+import Classes from "./pages/Classes";
 
 // =============================================
 // ROLE PICKER (LOGIN SIMULATION)
@@ -159,11 +163,11 @@ export default function ExamOSApp() {
         <Route path="student-dashboard" element={<Dashboard role="siswa" />} />
         <Route path="questions" element={<QuestionBank />} />
         <Route path="monitoring" element={<Monitoring />} />
-        <Route path="users" element={<div className="p-8"><h1>User Management (Demo)</h1></div>} />
-        <Route path="classes" element={<div className="p-8"><h1>Class Management (Demo)</h1></div>} />
-        <Route path="subjects" element={<div className="p-8"><h1>Subject Management (Demo)</h1></div>} />
-        <Route path="reports" element={<div className="p-8"><h1>Exam Reports (Demo)</h1></div>} />
-        <Route path="settings" element={<div className="p-8"><h1>System Settings (Demo)</h1></div>} />
+        <Route path="users" element={<UserManagement />} />
+        <Route path="classes" element={<Classes />} />
+        <Route path="subjects" element={<Subjects />} />
+        <Route path="reports" element={<Reports />} />
+        <Route path="settings" element={<div className="p-8"><h1 className="text-3xl font-black text-white">System Settings (Demo)</h1></div>} />
       </Route>
 
       {/* SPECIAL ROUTE FOR EXAM TAKING (NO SIDEBAR) */}
