@@ -68,7 +68,7 @@ export default function PricingSection({ pricingTab, setPricingTab, waLink }) {
                 className="bg-white dark:bg-zinc-900/40 border border-black/5 dark:border-white/5 rounded-[2.5rem] p-8 flex flex-col justify-between shadow-xl shadow-black/[0.02] dark:shadow-none min-h-[480px] relative overflow-hidden group hover:border-zinc-300 dark:hover:border-zinc-800 transition-all duration-300"
               >
                 <div className="text-left">
-                  <div className="flex justify-between items-center mb-3">
+                  <div className="flex flex-wrap items-center gap-3 mb-3">
                     <span className="text-xs font-bold text-zinc-500 uppercase tracking-widest">{t("Paket Starter", "Starter Package")}</span>
                     <span className="text-[10px] font-black text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded-md uppercase tracking-wider">{t("Hemat 50%", "Save 50%")}</span>
                   </div>
@@ -136,7 +136,7 @@ export default function PricingSection({ pricingTab, setPricingTab, waLink }) {
                 </div>
 
                 <div className="text-left relative z-10">
-                  <div className="flex justify-between items-center mb-3">
+                  <div className="flex flex-wrap items-center gap-3 mb-3">
                     <span className="text-xs font-bold text-amber-500 uppercase tracking-widest">{t("Paket Pro", "Pro Package")}</span>
                     <span className="text-[10px] font-black text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded-md uppercase tracking-wider">{t("Hemat 50%", "Save 50%")}</span>
                   </div>
@@ -208,7 +208,7 @@ export default function PricingSection({ pricingTab, setPricingTab, waLink }) {
                 className="bg-white dark:bg-zinc-900/40 border border-black/5 dark:border-white/5 rounded-[2.5rem] p-8 flex flex-col justify-between shadow-xl min-h-[480px] relative overflow-hidden group hover:border-zinc-300 dark:hover:border-zinc-800 transition-all duration-300"
               >
                 <div className="text-left">
-                  <div className="flex justify-between items-center mb-3">
+                  <div className="flex flex-wrap items-center gap-3 mb-3">
                     <span className="text-xs font-bold text-zinc-500 uppercase tracking-widest">{t("Mobile Starter", "Mobile Starter")}</span>
                     <span className="text-[10px] font-black text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded-md uppercase tracking-wider">{t("Hemat 50%", "Save 50%")}</span>
                   </div>
@@ -272,7 +272,7 @@ export default function PricingSection({ pricingTab, setPricingTab, waLink }) {
                   {t("Paling Laris", "Best Seller")}
                 </div>
                 <div className="text-left">
-                  <div className="flex justify-between items-center mb-3">
+                  <div className="flex flex-wrap items-center gap-3 mb-3">
                     <span className="text-xs font-bold text-amber-500 uppercase tracking-widest">{t("Mobile Pro", "Mobile Pro")}</span>
                     <span className="text-[10px] font-black text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded-md uppercase tracking-wider">{t("Hemat 50%", "Save 50%")}</span>
                   </div>
@@ -336,7 +336,7 @@ export default function PricingSection({ pricingTab, setPricingTab, waLink }) {
                 className="bg-white dark:bg-zinc-900/40 border border-black/5 dark:border-white/5 rounded-[2.5rem] p-8 flex flex-col justify-between shadow-xl min-h-[480px] relative overflow-hidden group hover:border-zinc-300 dark:hover:border-zinc-800 transition-all duration-300"
               >
                 <div className="text-left">
-                  <div className="flex justify-between items-center mb-3">
+                  <div className="flex flex-wrap items-center gap-3 mb-3">
                     <span className="text-xs font-bold text-zinc-500 uppercase tracking-widest">{t("Web System Basic", "Web System Basic")}</span>
                     <span className="text-[10px] font-black text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded-md uppercase tracking-wider">{t("Hemat 50%", "Save 50%")}</span>
                   </div>
@@ -400,7 +400,7 @@ export default function PricingSection({ pricingTab, setPricingTab, waLink }) {
                   {t("Paling Komprehensif", "Most Comprehensive")}
                 </div>
                 <div className="text-left">
-                  <div className="flex justify-between items-center mb-3">
+                  <div className="flex flex-wrap items-center gap-3 mb-3">
                     <span className="text-xs font-bold text-amber-500 uppercase tracking-widest">{t("Web System Custom", "Custom Web System")}</span>
                     <span className="text-[10px] font-black text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded-md uppercase tracking-wider">{t("Hemat 50%", "Save 50%")}</span>
                   </div>
