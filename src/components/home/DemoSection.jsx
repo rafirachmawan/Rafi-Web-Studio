@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 import { useLanguage } from "../../context/LanguageContext";
 
-export default function DemoSection({ filter, setFilter, filtered }) {
+export default function DemoSection({ filter, setFilter, filtered, isStandalone = false }) {
   const { t } = useLanguage();
   const [showAll, setShowAll] = useState(false);
 
@@ -50,49 +50,32 @@ export default function DemoSection({ filter, setFilter, filtered }) {
   const displayItems = showAll ? filtered : filtered.slice(0, initialItemsCount);
 
   return (
-    <section id="demo" className="relative py-20 md:py-32 overflow-hidden">
-      {/* BACKGROUND DECOR */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none opacity-30 dark:opacity-20">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-amber-500/10 blur-[120px] rounded-full" />
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-orange-500/10 blur-[120px] rounded-full" />
-      </div>
-
-      <div className="relative z-10 container mx-auto">
+    <section 
+      id="demo" 
+      className={`${isStandalone ? "pb-20 md:pb-32" : "py-20 md:py-32"} bg-[#fafafc] dark:bg-[#050508] relative`}
+    >
+      <div className="container mx-auto px-4 md:px-6 max-w-7xl">
         {/* HEADER */}
-        <div className="max-w-3xl mx-auto text-center mb-16 px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-600 dark:text-amber-400 text-xs font-bold mb-6 uppercase tracking-widest"
-          >
-            <Sparkles className="w-3.5 h-3.5" /> Demo Catalog
-          </motion.div>
+        <div className="max-w-3xl mx-auto text-center mb-12 md:mb-16 flex flex-col items-center">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-600 dark:text-amber-400 text-xs font-bold mb-6 uppercase tracking-widest">
+            <Sparkles className="w-4 h-4" />
+            <span>Demo Catalog</span>
+          </div>
           
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-xl sm:text-2xl md:text-3xl font-black text-black dark:text-white tracking-tight mb-4"
-          >
-            {t("Digitalisasi", "Digitalization")} <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600">{t("Demo & Template", "Demos & Templates")}</span>
-          </motion.h2>
+          <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-6">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-500">
+              {t("Katalog Demo & Template", "Demo & Template Catalog")}
+            </span>
+          </h2>
 
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="text-zinc-600 dark:text-zinc-400 text-xs md:text-sm leading-relaxed max-w-xl mx-auto"
-          >
+          <p className="text-zinc-600 dark:text-zinc-400 text-base md:text-lg leading-relaxed mx-auto max-w-2xl">
             {getCategoryInfo(filter)} {t("Kami menyediakan opsi demo interaktif ini sebagai blueprint/katalog template yang siap dikustomisasi penuh sesuai dengan jenis usaha Anda.", "We provide these interactive demo options as a blueprint/catalog of templates ready for full customization according to your business type.")}
-          </motion.p>
+          </p>
         </div>
 
-        {/* FILTER TABS - MODERN PILL STYLE */}
-        <div className="flex justify-center mb-12 px-4">
-          <div className="inline-flex p-1 bg-zinc-100 dark:bg-white/5 backdrop-blur-xl rounded-full border border-black/5 dark:border-white/10 overflow-x-auto no-scrollbar max-w-full">
+        {/* FILTER TABS */}
+        <div className="flex justify-center mb-12">
+          <div className="inline-flex flex-wrap justify-center gap-2 max-w-full">
             {categories.map((cat) => {
               const Icon = cat.icon;
               const isActive = filter === cat.id;
@@ -100,20 +83,14 @@ export default function DemoSection({ filter, setFilter, filtered }) {
                 <button
                   key={cat.id}
                   onClick={() => setFilter(cat.id)}
-                  className={`relative flex items-center gap-2 px-4 md:px-5 py-2 rounded-full text-xs font-bold transition-all duration-500 whitespace-nowrap ${
-                    isActive ? "text-white" : "text-zinc-500 dark:text-zinc-400 hover:text-black dark:hover:text-white"
+                  className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-xs md:text-sm font-semibold transition-all duration-300 ${
+                    isActive 
+                      ? "bg-amber-500 text-white shadow-md shadow-amber-500/20 border border-amber-500" 
+                      : "bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 hover:border-amber-500/50 hover:text-amber-600 dark:hover:text-amber-500"
                   }`}
                 >
-                  {isActive && (
-                    <motion.div
-                      layoutId="active-pill"
-                      className="absolute inset-0 bg-gradient-to-r from-amber-500 to-orange-500 shadow-lg shadow-amber-500/25"
-                      style={{ borderRadius: 9999 }}
-                      transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                    />
-                  )}
-                  <Icon size={16} className="relative z-10" />
-                  <span className="relative z-10 capitalize">{cat.label}</span>
+                  <Icon size={16} />
+                  <span className="capitalize">{cat.label}</span>
                 </button>
               );
             })}

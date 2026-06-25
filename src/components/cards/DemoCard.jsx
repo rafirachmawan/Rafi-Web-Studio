@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
 import { useLanguage } from "../../context/LanguageContext";
+import { ArrowRight } from "lucide-react";
 
 export default function DemoCard({ demo }) {
   const { t } = useLanguage();
@@ -13,18 +13,13 @@ export default function DemoCard({ demo }) {
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
-    >
+    <div className="group flex flex-col bg-zinc-50 dark:bg-zinc-900/50 rounded-3xl overflow-hidden border border-zinc-200/60 dark:border-zinc-800/60 hover:border-amber-500/40 dark:hover:border-amber-500/40 transition-all duration-300 shadow-sm hover:shadow-xl hover:shadow-amber-500/5">
       <Link
         to={`/portfolio/${demo.id}`}
-        className="group block w-full text-left bg-white dark:bg-zinc-900/50 border border-zinc-200 dark:border-white/10 rounded-[32px] overflow-hidden hover:-translate-y-2 transition-all duration-500 shadow-sm hover:shadow-2xl hover:shadow-amber-500/10 hover:border-amber-500/30 relative"
+        className="block w-full text-left relative flex flex-col flex-grow"
       >
-        {/* IMAGE WITH PREMIUM HOVER SCALE EFFECT */}
-        <div className="h-52 md:h-64 overflow-hidden relative border-b border-zinc-100 dark:border-white/5 bg-zinc-50 dark:bg-zinc-900">
+        {/* IMAGE */}
+        <div className="h-52 md:h-64 overflow-hidden relative bg-zinc-200 dark:bg-black/50">
           <img
             src={demo.image}
             alt={demo.name}
@@ -32,44 +27,49 @@ export default function DemoCard({ demo }) {
             className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
           />
           
-          {/* CATEGORY BADGE ON IMAGE */}
-          <div className="absolute top-4 left-4 z-20 flex flex-wrap gap-2">
-            <div className="px-3 py-1 rounded-full bg-black/50 backdrop-blur-md border border-white/20 text-white text-[10px] font-bold uppercase tracking-wider">
-              {categoryNames[demo.category] || demo.category}
-            </div>
-            {demo.isReal && (
-              <div className="px-3 py-1 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 backdrop-blur-md border border-white/10 text-white text-[10px] font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-md shadow-amber-500/20">
-                <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" /> {t("Real Project", "Real Project")}
-              </div>
-            )}
-          </div>
- 
-          {/* Overlay to hint it's interactive */}
-          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-500 flex items-center justify-center">
-            <div className="opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-500 bg-white text-black px-6 py-2.5 rounded-full text-xs font-black shadow-2xl flex items-center gap-2">
-              {t("Lihat Project", "View Project")} <span className="text-amber-600">→</span>
-            </div>
-          </div>
+          {/* Overlay gradient on hover */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         </div>
 
         {/* CONTENT */}
-        <div className="p-5 md:p-6 relative z-10">
+        <div className="p-6 md:p-8 flex flex-col flex-grow">
+          {/* TAGS */}
+          <div className="flex items-center gap-3 mb-4">
+            <span className="px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-amber-600 dark:text-amber-400 bg-amber-500/10 rounded-full border border-amber-500/20">
+              {categoryNames[demo.category] || demo.category}
+            </span>
+            {demo.isReal && (
+              <>
+                <span className="w-1.5 h-1.5 rounded-full bg-zinc-300 dark:bg-zinc-700"></span>
+                <span className="px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 rounded-full border border-emerald-500/20">
+                  {t("Real Project", "Real Project")}
+                </span>
+              </>
+            )}
+          </div>
+
           {/* ICON & TITLE */}
           <div className="flex items-center gap-3 mb-3">
-            <div className="text-xl bg-amber-500/10 w-10 h-10 flex items-center justify-center rounded-xl shadow-inner group-hover:bg-amber-500 group-hover:text-white transition-all duration-500">
+            <div className="text-xl text-amber-600 dark:text-amber-500 bg-amber-500/10 w-8 h-8 flex items-center justify-center rounded-lg">
               {demo.icon}
             </div>
-            <h3 className="text-base md:text-lg font-bold text-zinc-900 dark:text-white group-hover:text-amber-500 transition-colors">
+            <h3 className="text-xl font-bold text-zinc-900 dark:text-white group-hover:text-amber-500 dark:group-hover:text-amber-400 transition-colors duration-300">
               {demo.name}
             </h3>
           </div>
 
           {/* DESC */}
-          <p className="text-zinc-500 dark:text-zinc-400 text-xs md:text-sm leading-relaxed line-clamp-2">
+          <p className="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed flex-grow">
             {t(demo.desc)}
           </p>
+          
+          {/* LINK */}
+          <div className="mt-6 flex items-center gap-1.5 text-sm font-semibold text-zinc-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-500 transition-colors">
+             {t("Lihat Demo", "View Demo")}
+             <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+          </div>
         </div>
       </Link>
-    </motion.div>
+    </div>
   );
 }

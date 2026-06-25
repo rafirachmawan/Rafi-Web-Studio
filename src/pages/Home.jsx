@@ -1,10 +1,5 @@
 import { useState } from "react";
 
-// COMPONENTS
-import Navbar from "../components/common/Navbar";
-import Footer from "../components/common/Footer";
-import FloatingWAButton from "../components/common/FloatingWAButton";
-
 import HeroSection from "../components/home/HeroSection";
 import TechMarquee from "../components/home/TechMarquee";
 import RealProjectsSection from "../components/home/RealProjectsSection";
@@ -16,7 +11,6 @@ import TestimoniSection from "../components/home/TestimoniSection";
 import FounderSection from "../components/home/FounderSection";
 import BigCTASection from "../components/home/BigCTASection";
 
-// DATA
 import { demos } from "../constants/demos";
 
 export default function Home() {
@@ -30,69 +24,26 @@ export default function Home() {
     filter === "all"
       ? demos
       : demos.filter((item) => {
-          // support old category "website"
           if (filter === "landing page") {
             return (
               item.category === "landing page" || item.category === "website"
             );
           }
-
           return item.category === filter;
         });
 
   return (
-    <div className="min-h-screen bg-[#fafafc] text-zinc-900 dark:bg-[#050508] dark:text-zinc-100 font-sans relative overflow-hidden transition-colors duration-300">
-      {/* BACKGROUND GLOW */}
-      <div className="absolute top-[-200px] left-1/2 -translate-x-1/2 w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-amber-500/10 dark:bg-amber-500/10 bg-amber-300/20 blur-[100px] rounded-full" />
-
-      {/* NAVBAR */}
-      <Navbar />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 md:pt-32 pb-16 relative z-10">
-        {/* HERO */}
-        <HeroSection />
-        
-        {/* TECH MARQUEE */}
-        <TechMarquee />
-
-        {/* REAL PROJECTS */}
-        <RealProjectsSection />
-
-        {/* DEMO */}
-        <DemoSection
-          filter={filter}
-          setFilter={setFilter}
-          filtered={filtered}
-        />
-
-        {/* WHY US (STATS & SOLUTIONS) */}
-        <WhyUsSection />
-
-        {/* PROCESS */}
-        <ProcessSection />
-
-        {/* PRICING */}
-        <PricingSection
-          pricingTab={pricingTab}
-          setPricingTab={setPricingTab}
-          waLink={waLink}
-        />
-
-        {/* TESTIMONI */}
-        <TestimoniSection />
-
-        {/* FOUNDER */}
-        <FounderSection />
-
-        {/* BIG CTA */}
-        <BigCTASection />
-
-        {/* FOOTER */}
-        <Footer />
-        
-        {/* FLOATING WA BUTTON */}
-        <FloatingWAButton waLink={waLink} />
-      </div>
-    </div>
+    <>
+      <HeroSection />
+      <TechMarquee />
+      <RealProjectsSection />
+      <DemoSection filter={filter} setFilter={setFilter} filtered={filtered} />
+      <WhyUsSection />
+      <ProcessSection />
+      <PricingSection pricingTab={pricingTab} setPricingTab={setPricingTab} waLink={waLink} />
+      <TestimoniSection />
+      <FounderSection />
+      <BigCTASection />
+    </>
   );
 }

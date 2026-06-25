@@ -1,10 +1,12 @@
 import { useEffect, useState, useRef } from "react";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
+import { Link, useLocation } from "react-router-dom";
 import { useLanguage } from "../../context/LanguageContext";
 
 export default function Navbar() {
   const { language, setLanguage, t } = useLanguage();
+  const location = useLocation();
   const [darkMode, setDarkMode] = useState(() => {
     const saved = localStorage.getItem("theme");
     return saved ? saved === "dark" : true;
@@ -52,40 +54,19 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { label: t("Home", "Home"), href: "#home" },
-    { label: t("Project", "Projects"), href: "#real-projects" },
-    { label: t("Demo Template", "Demo Catalog"), href: "#demo" },
-    { label: t("Proses", "Process"), href: "#proses" },
-    { label: t("Harga", "Pricing"), href: "#harga" },
-    { label: t("Testimoni", "Testimonials"), href: "#testimoni" },
-    { label: t("Contact", "Contact"), href: "#contact" }
+    { label: t("Home", "Home"), href: "/" },
+    { label: t("Project", "Projects"), href: "/project" },
+    { label: t("Demo Template", "Demo Catalog"), href: "/demo" },
+    { label: t("Proses", "Process"), href: "/proses" },
+    { label: t("Harga", "Pricing"), href: "/harga" },
+    { label: t("Testimoni", "Testimonials"), href: "/testimoni" },
+    { label: t("Contact", "Contact"), href: "/contact" }
   ];
 
-  // Track active section on scroll
+  // Track active section from URL
   useEffect(() => {
-    const handleScroll = () => {
-      const sections = navLinks.map(link => link.href.substring(1));
-      let current = "";
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const section = sections[i];
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          // Offset by 150px to account for the navbar and scroll padding
-          if (rect.top <= 150) {
-            current = section;
-            break;
-          }
-        }
-      }
-      setActiveSection(current);
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll(); // Trigger on mount
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    setActiveSection(location.pathname);
+  }, [location.pathname]);
 
   return (
     <div ref={navRef} className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-6xl flex flex-col gap-2">
@@ -98,17 +79,17 @@ export default function Navbar() {
         {/* MENU */}
         <div className="hidden md:flex gap-6 text-sm text-gray-700 dark:text-gray-300 font-semibold">
           {navLinks.map((link) => (
-            <a 
+            <Link 
               key={link.label} 
-              href={link.href} 
+              to={link.href} 
               className={`transition ${
-                activeSection === link.href.substring(1) 
+                activeSection === link.href 
                   ? "text-amber-500" 
                   : "hover:text-amber-400"
               }`}
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </div>
 
@@ -170,18 +151,18 @@ export default function Navbar() {
             className="md:hidden w-full backdrop-blur-xl bg-white/95 dark:bg-zinc-950/95 border border-black/10 dark:border-white/10 rounded-3xl p-4 shadow-xl flex flex-col gap-1 z-40"
           >
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.label}
-                href={link.href}
+                to={link.href}
                 onClick={() => setMobileMenuOpen(false)}
                 className={`px-4 py-2.5 text-sm font-semibold rounded-xl transition ${
-                  activeSection === link.href.substring(1)
+                  activeSection === link.href
                     ? "text-amber-500 bg-amber-500/10 dark:text-amber-400 dark:bg-amber-500/10"
                     : "text-gray-700 dark:text-gray-300 hover:text-amber-500 dark:hover:text-amber-400 hover:bg-black/[0.02] dark:hover:bg-white/[0.02]"
                 }`}
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </motion.div>
         )}
