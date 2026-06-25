@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
+import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Star, MapPin, Clock3, Phone, Coffee, Gift, Sparkles, ChevronRight, Check, Leaf, Heart, Users, Award, Briefcase, ShoppingBag, Globe } from "lucide-react";
 
 // Import Starbucks-themed images
@@ -589,87 +590,98 @@ export default function CoffeeLanding() {
             ))}
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {menuItems[menuTab].map((item) => {
-              return (
-                <div
-                  key={item.id}
-                  className="
-                    group
-                    border
-                    border-white/5
-                    bg-[#0B1512]/60
-                    backdrop-blur-md
-                    rounded-3xl
-                    p-6
-                    hover:border-[#00704A]/40
-                    hover:shadow-[0_10px_30px_rgba(0,112,74,0.1)]
-                    transition-all
-                    duration-500
-                    flex
-                    flex-col
-                    justify-between
-                    relative
-                    overflow-hidden
-                  "
-                >
-                  <div>
-                    {/* Badge */}
-                    <div className="flex justify-between items-center mb-4">
-                      <span className="text-[10px] uppercase tracking-wider font-extrabold px-2.5 py-1 bg-emerald-500/10 text-emerald-400 rounded-full">
-                        {item.badge}
-                      </span>
-                      <span className="text-[10px] text-zinc-500 font-bold uppercase">
-                        {item.tag}
-                      </span>
-                    </div>
-
-                    {/* Drink/Item Image */}
+          <div className="min-h-[450px]">
+            <AnimatePresence mode="wait">
+              <motion.div 
+                key={menuTab}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3 }}
+                className="grid md:grid-cols-3 gap-8"
+              >
+                {menuItems[menuTab].map((item) => {
+                  return (
                     <div
+                      key={item.id}
                       className="
-                        h-[200px]
-                        bg-[#0B1512]
+                        group
                         border
                         border-white/5
-                        mb-6
-                        rounded-2xl
+                        bg-[#0B1512]/60
+                        backdrop-blur-md
+                        rounded-3xl
+                        p-6
+                        hover:border-[#00704A]/40
+                        hover:shadow-[0_10px_30px_rgba(0,112,74,0.1)]
+                        transition-all
+                        duration-500
+                        flex
+                        flex-col
+                        justify-between
                         relative
                         overflow-hidden
                       "
                     >
-                      <div className="absolute inset-0 bg-[#00704A]/5 group-hover:bg-[#00704A]/10 transition-colors z-10" />
-                      <img
-                        src={item.image}
-                        alt={item.name}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
+                      <div>
+                        {/* Badge */}
+                        <div className="flex justify-between items-center mb-4">
+                          <span className="text-[10px] uppercase tracking-wider font-extrabold px-2.5 py-1 bg-emerald-500/10 text-emerald-400 rounded-full">
+                            {item.badge}
+                          </span>
+                          <span className="text-[10px] text-zinc-500 font-bold uppercase">
+                            {item.tag}
+                          </span>
+                        </div>
+
+                        {/* Drink/Item Image */}
+                        <div
+                          className="
+                            h-[200px]
+                            bg-[#0B1512]
+                            border
+                            border-white/5
+                            mb-6
+                            rounded-2xl
+                            relative
+                            overflow-hidden
+                          "
+                        >
+                          <div className="absolute inset-0 bg-[#00704A]/5 group-hover:bg-[#00704A]/10 transition-colors z-10" />
+                          <img
+                            src={item.image}
+                            alt={item.name}
+                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                          />
+                        </div>
+
+                        <div className="flex justify-between items-start mb-2 gap-2">
+                          <h3 className="text-xl font-bold font-serif text-white">
+                            {item.name}
+                          </h3>
+                          <span className="text-[#D4E9E2] font-black text-sm shrink-0">
+                            Rp {item.basePrice.toLocaleString("id-ID")}
+                          </span>
+                        </div>
+
+                        <p className="text-zinc-500 text-xs leading-relaxed mb-4">
+                          {item.desc}
+                        </p>
+                      </div>
+
+                      <div className="border-t border-white/5 pt-4 mt-2 flex items-center justify-between text-[10px] text-zinc-500 font-semibold uppercase tracking-wider">
+                        <span>
+                          {menuTab === "beverages" ? "Available Hot / Iced" : menuTab === "food" ? "Served Warm" : "Limited Collection"}
+                        </span>
+                        <span className="text-[#00704A] font-bold">
+                          Original
+                        </span>
+                      </div>
                     </div>
-
-                    <div className="flex justify-between items-start mb-2 gap-2">
-                      <h3 className="text-xl font-bold font-serif text-white">
-                        {item.name}
-                      </h3>
-                      <span className="text-[#D4E9E2] font-black text-sm shrink-0">
-                        Rp {item.basePrice.toLocaleString("id-ID")}
-                      </span>
-                    </div>
-
-                    <p className="text-zinc-500 text-xs leading-relaxed mb-4">
-                      {item.desc}
-                    </p>
-                  </div>
-
-                  <div className="border-t border-white/5 pt-4 mt-2 flex items-center justify-between text-[10px] text-zinc-500 font-semibold uppercase tracking-wider">
-                    <span>
-                      {menuTab === "beverages" ? "Available Hot / Iced" : menuTab === "food" ? "Served Warm" : "Limited Collection"}
-                    </span>
-                    <span className="text-[#00704A] font-bold">
-                      Original
-                    </span>
-                  </div>
-                </div>
-              );
-            })}
+                  );
+                })}
+              </motion.div>
+            </AnimatePresence>
           </div>
         </div>
       </section>
