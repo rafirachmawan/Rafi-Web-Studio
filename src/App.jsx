@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState, useRef } from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import { LanguageProvider } from "./context/LanguageContext";
 
@@ -11,7 +11,8 @@ import Harga from "./pages/Harga";
 import Testimoni from "./pages/Testimoni";
 import Contact from "./pages/Contact";
 import ProjectDetail from "./pages/ProjectDetail";
-
+import SplashScreen from "./components/common/SplashScreen";
+import PageLoader from "./components/common/PageLoader";
 import CoffeeLanding from "./apps/landing-page/coffee/CoffeeLanding";
 import RentalLanding from "./apps/landing-page/rental/RentalLanding";
 import HotelLanding from "./apps/landing-page/hotel/HotelLanding";
@@ -25,22 +26,43 @@ import WarungOSApp from "./apps/sistem-web/warungos/WarungOSApp";
 import ExamOSApp from "./apps/sistem-web/examos/ExamOSApp";
 import AbsenOSApp from "./apps/mobile-app/absenos/AbsenOSApp";
 
-function ScrollToTop() {
+let isAppInitialized = false;
+
+function RouteWatcher() {
   const { pathname } = useLocation();
+  const [isPageLoading, setIsPageLoading] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
+
+    if (!isAppInitialized) {
+      isAppInitialized = true;
+      return; // Skip initial load
+    }
+
+    setIsPageLoading(true);
+    
+    const timer = setTimeout(() => {
+      setIsPageLoading(false);
+    }, 500); // Tampilkan loading selama 0.5 detik saat pindah halaman
+
+    return () => clearTimeout(timer);
   }, [pathname]);
 
-  return null;
+  return <PageLoader isLoading={isPageLoading} />;
 }
 
 export default function App() {
+  const [showSplash, setShowSplash] = useState(true);
+
   return (
     <LanguageProvider>
-      <Router>
-        <ScrollToTop />
-        <Routes>
+      {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
+      
+      {!showSplash && (
+        <Router>
+          <RouteWatcher />
+          <Routes>
           {/* Main Website Routes */}
           <Route path="/" element={<MainLayout><Home /></MainLayout>} />
           <Route path="/project" element={<MainLayout><Project /></MainLayout>} />
@@ -69,6 +91,7 @@ export default function App() {
           <Route path="/absenos/*" element={<AbsenOSApp />} />
         </Routes>
       </Router>
+      )}
     </LanguageProvider>
   );
 }

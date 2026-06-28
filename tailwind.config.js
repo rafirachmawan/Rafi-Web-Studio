@@ -6,8 +6,10 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Slika", "sans-serif"],
-        heading: ["Slika", "sans-serif"],
+        sans: ["Inter", "sans-serif"],
+        heading: ["Inter", "sans-serif"],
+        playfair: ["'Playfair Display'", "serif"],
+        inter: ["Inter", "sans-serif"],
       },
     },
   },

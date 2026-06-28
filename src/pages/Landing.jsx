@@ -1,4 +1,20 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
+
+const fadeUpVariant = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15
+    }
+  }
+};
 
 export default function Landing({ data }) {
   const phone = "628123456789";
@@ -36,8 +52,14 @@ export default function Landing({ data }) {
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
 
           {/* CONTENT */}
-          <div className="relative z-10 max-w-2xl">
-            <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-4 font-serif tracking-wide">
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUpVariant}
+            className="relative z-10 max-w-2xl"
+          >
+            <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-4 font-playfair tracking-wide">
               {data.hero.title}
             </h1>
 
@@ -58,7 +80,7 @@ export default function Landing({ data }) {
                 Lihat Menu
               </a>
             </div>
-          </div>
+          </motion.div>
         </section>
       ) : data.type === "rental" ? (
         <section className="relative py-32 px-6 text-center text-white bg-[#0f0f0f] overflow-hidden">
@@ -313,19 +335,25 @@ function CoffeeSection() {
 
   return (
     <section id="menu" className="px-6 py-24 bg-[#0d0d0d]">
-      <div className="max-w-6xl mx-auto">
+      <motion.div 
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={staggerContainer}
+        className="max-w-6xl mx-auto"
+      >
         {/* TITLE */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-3 font-serif tracking-wide">
+        <motion.div variants={fadeUpVariant} className="text-center mb-16">
+          <h2 className="text-4xl font-bold mb-3 font-playfair tracking-wide">
             Our Coffee
           </h2>
           <p className="text-gray-400">Crafted with passion & premium beans</p>
-        </div>
+        </motion.div>
 
         {/* GRID */}
         <div className="grid md:grid-cols-3 gap-10">
           {menu.map((item, i) => (
-            <div key={i} className="group relative rounded-2xl overflow-hidden">
+            <motion.div variants={fadeUpVariant} key={i} className="group relative rounded-2xl overflow-hidden">
               {/* IMAGE */}
               <img
                 src={item.img}
@@ -340,10 +368,10 @@ function CoffeeSection() {
                 <h3 className="text-xl font-semibold">{item.name}</h3>
                 <p className="text-amber-400 text-lg font-bold">{item.price}</p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
@@ -352,16 +380,23 @@ function CoffeeSection() {
 function CoffeeAmbience() {
   return (
     <section className="px-6 py-24 bg-black">
-      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+      <motion.div 
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={staggerContainer}
+        className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center"
+      >
         {/* IMAGE */}
-        <img
+        <motion.img
+          variants={fadeUpVariant}
           src="https://images.unsplash.com/photo-1554118811-1e0d58224f24"
           className="rounded-2xl object-cover h-[400px] w-full"
         />
 
         {/* TEXT */}
-        <div>
-          <h2 className="text-4xl font-bold mb-4">Cozy Place to Relax</h2>
+        <motion.div variants={fadeUpVariant}>
+          <h2 className="text-4xl font-bold mb-4 font-playfair tracking-wide">Cozy Place to Relax</h2>
 
           <p className="text-gray-400 mb-6">
             Nikmati kopi terbaik dengan suasana nyaman, cocok untuk kerja,
@@ -371,8 +406,8 @@ function CoffeeAmbience() {
           <a href="#" className="bg-amber-500 px-6 py-3 rounded-xl font-medium">
             Kunjungi Kami
           </a>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 }
@@ -439,16 +474,22 @@ function RentalSection() {
 
   return (
     <section id="mobil" className="px-6 py-24 bg-[#f5f5f5]">
-      <div className="max-w-6xl mx-auto">
+      <motion.div 
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={staggerContainer}
+        className="max-w-6xl mx-auto"
+      >
         {/* TITLE */}
-        <div className="mb-12 text-center">
+        <motion.div variants={fadeUpVariant} className="mb-12 text-center">
           <h2 className="text-3xl font-bold mb-2 text-black">
             Pilihan Kendaraan
           </h2>
           <p className="text-gray-400">
             Unit terbaik siap digunakan kapan saja
           </p>
-        </div>
+        </motion.div>
 
         {/* GRID */}
         <div className="grid md:grid-cols-3 gap-10">
@@ -458,7 +499,8 @@ function RentalSection() {
             )}`;
 
             return (
-              <div
+              <motion.div
+                variants={fadeUpVariant}
                 key={i}
                 className="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition duration-300 hover:-translate-y-1"
               >
@@ -501,11 +543,11 @@ function RentalSection() {
                     Sewa Sekarang
                   </a>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
@@ -566,14 +608,20 @@ function HotelSection() {
 
   return (
     <section className="px-6 py-24 bg-[#0b0b0b]">
-      <div className="max-w-6xl mx-auto">
+      <motion.div 
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={staggerContainer}
+        className="max-w-6xl mx-auto"
+      >
         {/* TITLE */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-semibold mb-4">Kamar Eksklusif</h2>
+        <motion.div variants={fadeUpVariant} className="text-center mb-16">
+          <h2 className="text-4xl font-semibold mb-4 font-playfair tracking-wide">Kamar Eksklusif</h2>
           <p className="text-gray-400">
             Nikmati pengalaman menginap yang nyaman & berkelas
           </p>
-        </div>
+        </motion.div>
 
         {/* GRID */}
         <div className="grid md:grid-cols-3 gap-10">
@@ -583,7 +631,8 @@ function HotelSection() {
             )}`;
 
             return (
-              <div
+              <motion.div
+                variants={fadeUpVariant}
                 key={i}
                 className="group overflow-hidden rounded-2xl bg-[#141414] border border-white/10 hover:border-white/20 transition duration-300"
               >
@@ -620,11 +669,11 @@ function HotelSection() {
                     Booking Sekarang
                   </a>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
@@ -737,30 +786,37 @@ function SekolahSection() {
 
   return (
     <section className="px-6 py-24 bg-[#0f172a]">
-      <div className="max-w-6xl mx-auto">
+      <motion.div 
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={staggerContainer}
+        className="max-w-6xl mx-auto"
+      >
         {/* TITLE */}
-        <div className="text-center mb-16">
+        <motion.div variants={fadeUpVariant} className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-3">Program Unggulan</h2>
           <p className="text-gray-400">
             Pendidikan berkualitas untuk masa depan yang lebih baik
           </p>
-        </div>
+        </motion.div>
 
         {/* PROGRAM */}
         <div className="grid md:grid-cols-3 gap-8">
           {programs.map((item, i) => (
-            <div
+            <motion.div
+              variants={fadeUpVariant}
               key={i}
-              className="bg-[#1e293b] p-6 rounded-2xl border border-white/10"
+              className="bg-[#1e293b] p-6 rounded-2xl border border-white/10 hover:border-white/30 transition shadow-lg hover:shadow-2xl hover:-translate-y-1"
             >
               <h3 className="text-xl font-semibold mb-2">{item.name}</h3>
               <p className="text-gray-400 text-sm">{item.desc}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
 
         {/* CTA */}
-        <div className="text-center mt-16">
+        <motion.div variants={fadeUpVariant} className="text-center mt-16">
           <a
             href={`https://wa.me/${phone}?text=${encodeURIComponent(
               "Halo, saya ingin informasi pendaftaran sekolah",
@@ -769,8 +825,8 @@ function SekolahSection() {
           >
             Daftar Sekarang
           </a>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 }

@@ -10,12 +10,12 @@ import { useLanguage } from "../context/LanguageContext";
 export default function ProjectDetail() {
   const { t } = useLanguage();
   const { id } = useParams();
-  const [project, setProject] = useState(null);
+
+  // Calculate directly during render instead of using state + effect
+  const project = realProjects.find((d) => d.id === id) || demos.find((d) => d.id === id);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    const foundProject = realProjects.find((d) => d.id === id) || demos.find((d) => d.id === id);
-    setProject(foundProject);
   }, [id]);
 
   if (!project) {
