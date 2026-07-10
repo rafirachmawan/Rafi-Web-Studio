@@ -120,6 +120,54 @@ export const realProjects = [
     ]
   },
   {
+    id: "jadwal-booking-shiningsun",
+    name: {
+      id: "Aplikasi Jadwal & Booking Class Shining Sun",
+      en: "Shining Sun Class Scheduling & Booking App"
+    },
+    path: "#",
+    desc: {
+      id: "Sistem PWA Multi-Tenant untuk Manajemen Jadwal, Booking, dan Administrasi Kelas",
+      en: "Multi-Tenant PWA for Class Schedule Management, Booking, and Administration"
+    },
+    icon: "📅",
+    category: "sistem berbasis web",
+    image: "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?auto=format&fit=crop&w=800&q=80",
+    client: "Yayasan Shining Sun School",
+    isReal: true,
+    fullDescription: {
+      id: "Sistem web berbasis PWA (Progressive Web App) multi-tenant yang dikembangkan khusus untuk Yayasan Shining Sun School guna mengotomatisasi dan menyederhanakan proses manajemen jadwal kelas dan booking siswa. Aplikasi ini memungkinkan admin cabang mengelola slot kelas, mendaftarkan siswa secara auto-booking berdasarkan jadwal berulang bulanan, serta memantau kehadiran dan status pembayaran siswa dalam satu dashboard terpadu. Dilengkapi dengan sistem notifikasi aktivitas, kontrol multi-cabang untuk Superadmin, serta mekanisme kunci slot (slot lock) untuk mencegah overbooking.",
+      en: "A multi-tenant Progressive Web App (PWA) developed specifically for Yayasan Shining Sun School to automate and simplify the class scheduling and student booking management process. The application allows branch admins to manage class slots, register students via auto-booking based on monthly recurring schedules, and monitor student attendance and payment status in a unified dashboard. Equipped with activity notification system, multi-branch control for Superadmin, and a slot-lock mechanism to prevent overbooking."
+    },
+    techStack: ["Next.js", "React JS", "Supabase", "PostgreSQL", "PWA", "Tailwind CSS", "Vercel"],
+    features: [
+      {
+        id: "Sistem Jadwal & Booking Kelas Multi-Cabang",
+        en: "Multi-Branch Class Scheduling & Booking System"
+      },
+      {
+        id: "Auto-Booking Berulang Bulanan untuk Siswa Reguler",
+        en: "Monthly Recurring Auto-Booking for Regular Students"
+      },
+      {
+        id: "Dashboard Multi-Tenant (Superadmin & Admin Cabang)",
+        en: "Multi-Tenant Dashboard (Superadmin & Branch Admin)"
+      },
+      {
+        id: "Manajemen Siswa Reguler & Coba Gratis (CG)",
+        en: "Regular & Free-Trial Student Management"
+      },
+      {
+        id: "Slot Lock untuk Pencegahan Overbooking",
+        en: "Slot Lock for Overbooking Prevention"
+      },
+      {
+        id: "Notifikasi Aktivitas Feed Real-Time",
+        en: "Real-Time Activity Feed Notifications"
+      }
+    ]
+  },
+  {
     id: "tamiya-race-tracker",
     name: {
       id: "Software Balapan Tamiya Jakarta",

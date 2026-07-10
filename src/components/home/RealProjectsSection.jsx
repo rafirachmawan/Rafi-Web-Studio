@@ -1,10 +1,15 @@
 import { Link } from "react-router-dom";
 import { realProjects } from "../../constants/realProjects";
-import { ArrowRight, Trophy } from "lucide-react";
+import { ArrowRight, Trophy, LayoutGrid } from "lucide-react";
 import { useLanguage } from "../../context/LanguageContext";
 
 export default function RealProjectsSection({ isStandalone = false }) {
   const { t } = useLanguage();
+
+  // Di homepage, tampilkan hanya 2 project pertama
+  const displayedProjects = isStandalone ? realProjects : realProjects.slice(0, 2);
+  const hiddenCount = realProjects.length - 2;
+
   return (
     <section 
       id="real-projects" 
@@ -34,7 +39,7 @@ export default function RealProjectsSection({ isStandalone = false }) {
 
         {/* PROJECTS GRID */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10">
-          {realProjects.map((project) => (
+          {displayedProjects.map((project) => (
             <div 
               key={project.id} 
               className="group flex flex-col bg-zinc-50 dark:bg-zinc-900/50 rounded-3xl overflow-hidden border border-zinc-200/60 dark:border-zinc-800/60 hover:border-amber-500/40 dark:hover:border-amber-500/40 transition-all duration-300 shadow-sm hover:shadow-xl hover:shadow-amber-500/5"
@@ -104,8 +109,32 @@ export default function RealProjectsSection({ isStandalone = false }) {
           ))}
         </div>
 
+        {/* LIHAT SEMUA — hanya tampil di homepage (bukan standalone) */}
+        {!isStandalone && hiddenCount > 0 && (
+          <div className="mt-12 flex flex-col items-center gap-4">
+            {/* Hint text */}
+            <p className="text-sm text-zinc-500 dark:text-zinc-400 font-medium">
+              {t(
+                `+${hiddenCount} project client lainnya menunggu untuk dieksplorasi`,
+                `+${hiddenCount} more client projects waiting to be explored`
+              )}
+            </p>
+
+            {/* CTA Button */}
+            <Link
+              to="/project#real-projects"
+              id="btn-lihat-semua-project-client"
+              className="group inline-flex items-center gap-3 px-8 py-4 rounded-full bg-zinc-900 dark:bg-white text-white dark:text-black text-sm font-bold hover:bg-amber-500 dark:hover:bg-amber-500 dark:hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-amber-500/25 hover:scale-[1.02] active:scale-95"
+            >
+              <LayoutGrid className="w-4 h-4" />
+              <span>{t("Lihat Semua Project Client", "View All Client Projects")}</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+            </Link>
+          </div>
+        )}
+
         {/* BOTTOM SECTION: STATS & CTA */}
-        <div className="mt-20 flex flex-col items-center gap-10">
+        <div className={`${!isStandalone ? "mt-16" : "mt-20"} flex flex-col items-center gap-10`}>
           {/* STATS HIGHLIGHT */}
           <div className="flex flex-wrap items-center justify-center gap-8 md:gap-16 py-6 md:py-8 px-8 w-full max-w-3xl mx-auto bg-zinc-50 dark:bg-zinc-900/50 rounded-3xl border border-zinc-200/60 dark:border-zinc-800/60 shadow-sm">
             <div className="flex flex-col items-center">
@@ -124,17 +153,18 @@ export default function RealProjectsSection({ isStandalone = false }) {
             </div>
           </div>
 
-          {/* BOTTOM CTA TO IMPLY MANY MORE PROJECTS */}
-          {/* BOTTOM CTA TO IMPLY MANY MORE PROJECTS */}
-          <div className="text-center">
-            <Link
-              to="/project"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-amber-500/30 bg-amber-500/5 text-amber-600 dark:text-amber-500 text-sm font-bold hover:bg-amber-500 hover:text-white transition-all duration-300 shadow-sm hover:shadow-lg hover:shadow-amber-500/20 group"
-            >
-              <span>{t("Eksplorasi 50+ Project Lainnya", "Explore 50+ Other Projects")}</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </div>
+          {/* BOTTOM CTA — hanya di halaman /project (standalone) */}
+          {isStandalone && (
+            <div className="text-center">
+              <Link
+                to="/project"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-amber-500/30 bg-amber-500/5 text-amber-600 dark:text-amber-500 text-sm font-bold hover:bg-amber-500 hover:text-white transition-all duration-300 shadow-sm hover:shadow-lg hover:shadow-amber-500/20 group"
+              >
+                <span>{t("Eksplorasi 50+ Project Lainnya", "Explore 50+ Other Projects")}</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </section>
