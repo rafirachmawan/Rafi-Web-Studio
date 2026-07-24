@@ -39,7 +39,29 @@ export default function ProcessSection() {
   ];
 
   return (
-    <section id="proses" className="relative py-24 bg-zinc-50 dark:bg-zinc-900/20 border-t border-black/5 dark:border-white/5">
+    <section id="proses" className="relative py-24 bg-transparent dark:bg-zinc-900/20 border-t border-b border-amber-500/10 dark:border-white/5">
+      {/* Light mode inner glow */}
+      <div className="absolute inset-0 bg-gradient-to-b from-amber-50/30 via-transparent to-orange-50/20 dark:opacity-0 pointer-events-none" />
+      {/* EDITORIAL SECTION NUMBER */}
+      <div className="absolute top-8 right-4 md:right-8 select-none pointer-events-none z-0 text-right">
+        <span 
+          className="text-[6rem] md:text-[9rem] font-black leading-none text-transparent"
+          style={{
+            WebkitTextStroke: "1px",
+            WebkitTextStrokeColor: "rgba(245,158,11,0.07)"
+          }}
+        >02</span>
+      </div>
+      {/* Decorative BG word */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 select-none pointer-events-none overflow-hidden">
+        <span 
+          className="text-[4rem] md:text-[7rem] font-black tracking-[0.3em] uppercase leading-none text-transparent whitespace-nowrap"
+          style={{
+            WebkitTextStroke: "1px",
+            WebkitTextStrokeColor: "rgba(245,158,11,0.05)"
+          }}
+        >PROCESS</span>
+      </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-12 gap-16 items-start">
           

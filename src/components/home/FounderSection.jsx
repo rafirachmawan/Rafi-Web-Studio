@@ -12,10 +12,10 @@ export default function FounderSection() {
   const linkedinUrl = "https://www.linkedin.com/in/rafi-rachmawan-2a8728233/";
 
   return (
-    <section id="founder" className="relative py-24 overflow-hidden border-t border-black/5 dark:border-white/5 bg-zinc-50/20 dark:bg-transparent">
+    <section id="founder" className="relative py-24 overflow-hidden border-t border-amber-500/10 dark:border-white/5 bg-transparent dark:bg-transparent">
       {/* Glow decorative background */}
-      <div className="absolute right-0 bottom-0 w-[400px] h-[400px] bg-amber-500/5 blur-[120px] rounded-full pointer-events-none" />
-      <div className="absolute left-0 top-0 w-[300px] h-[300px] bg-orange-500/5 blur-[100px] rounded-full pointer-events-none animate-pulse" />
+      <div className="absolute right-0 bottom-0 w-[400px] h-[400px] bg-amber-500/10 dark:bg-amber-500/5 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute left-0 top-0 w-[300px] h-[300px] bg-orange-400/10 dark:bg-orange-500/5 blur-[100px] rounded-full pointer-events-none" />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
         

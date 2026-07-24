@@ -10,6 +10,7 @@ import PricingSection from "../components/home/PricingSection";
 import TestimoniSection from "../components/home/TestimoniSection";
 import FounderSection from "../components/home/FounderSection";
 import BigCTASection from "../components/home/BigCTASection";
+import TextMarqueeDivider from "../components/common/TextMarqueeDivider";
 
 import { demos } from "../constants/demos";
 
@@ -37,11 +38,51 @@ export default function Home() {
       <HeroSection />
       <TechMarquee />
       <RealProjectsSection />
+
+      {/* Visual break: projects → demo */}
+      <TextMarqueeDivider
+        texts={["PORTOFOLIO", "CLIENT PROJECTS", "KARYA NYATA", "PRODUCTION READY"]}
+        direction="left"
+        speed={35}
+        size="lg"
+        className="my-2"
+      />
+
       <DemoSection filter={filter} setFilter={setFilter} filtered={filtered} />
+
+      {/* Visual break: demo → why us */}
+      <TextMarqueeDivider
+        texts={["KENAPA KAMI", "WHY GAPAI", "SOLUSI DIGITAL", "EKSKLUSIF"]}
+        direction="right"
+        speed={28}
+        size="lg"
+        className="my-2"
+      />
+
       <WhyUsSection />
       <ProcessSection />
+
+      {/* Visual break: process → pricing */}
+      <TextMarqueeDivider
+        texts={["HARGA TRANSPARAN", "PRICING", "PILIH PAKET", "MULAI SEKARANG"]}
+        direction="left"
+        speed={32}
+        size="md"
+        className="my-2"
+      />
+
       <PricingSection pricingTab={pricingTab} setPricingTab={setPricingTab} waLink={waLink} />
       <TestimoniSection />
+
+      {/* Visual break: testimoni → founder */}
+      <TextMarqueeDivider
+        texts={["KISAH SUKSES", "SUCCESS STORIES", "KLIEN PUAS", "5.0 RATING"]}
+        direction="right"
+        speed={25}
+        size="md"
+        className="mb-2"
+      />
+
       <FounderSection />
       <BigCTASection />
     </>

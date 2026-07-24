@@ -82,7 +82,7 @@ export default function HeroSection() {
             scale: [1, 1.1, 1]
           }}
           transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -top-40 -right-40 w-80 h-80 bg-amber-500/5 blur-[100px] rounded-full" 
+          className="absolute -top-40 -right-40 w-80 h-80 bg-amber-500/10 dark:bg-amber-500/5 blur-[100px] rounded-full" 
         />
         <motion.div 
           animate={{ 
@@ -91,8 +91,38 @@ export default function HeroSection() {
             scale: [1, 1.05, 1]
           }}
           transition={{ duration: 15, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className="absolute -bottom-40 -left-40 w-80 h-80 bg-orange-500/5 blur-[100px] rounded-full" 
+          className="absolute -bottom-40 -left-40 w-80 h-80 bg-orange-500/10 dark:bg-orange-500/5 blur-[100px] rounded-full" 
         />
+
+        {/* GIANT DECORATIVE BACKGROUND TEXT */}
+        <div className="absolute inset-0 flex flex-col justify-center items-center gap-0 overflow-hidden pointer-events-none">
+          <motion.span
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, delay: 0.3 }}
+            className="text-[5rem] sm:text-[8rem] md:text-[11rem] lg:text-[14rem] font-black uppercase tracking-tighter leading-none select-none text-transparent whitespace-nowrap"
+            style={{
+              WebkitTextStroke: "1px",
+              WebkitTextStrokeColor: "rgba(245,158,11,0.07)",
+              transform: "translateY(-5%)",
+            }}
+          >
+            GAPAI
+          </motion.span>
+          <motion.span
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, delay: 0.5 }}
+            className="text-[3.5rem] sm:text-[6rem] md:text-[8rem] lg:text-[10rem] font-black uppercase tracking-[0.2em] leading-none select-none text-transparent whitespace-nowrap"
+            style={{
+              WebkitTextStroke: "1px",
+              WebkitTextStrokeColor: "rgba(245,158,11,0.05)",
+              transform: "translateY(5%)",
+            }}
+          >
+            DIGITAL
+          </motion.span>
+        </div>
       </div>
 
       <div className="relative z-10 flex flex-col items-center">
@@ -164,7 +194,7 @@ export default function HeroSection() {
  
             <a
               href="#real-projects"
-              className="group/btn2 border border-zinc-200 dark:border-white/10 px-6 py-2.5 rounded-full text-xs md:text-sm font-bold text-zinc-800 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-white/5 transition-all duration-300 active:scale-95 flex items-center justify-center gap-2"
+              className="group/btn2 bg-white dark:bg-transparent border border-zinc-200 dark:border-white/10 px-6 py-2.5 rounded-full text-xs md:text-sm font-bold text-zinc-700 dark:text-zinc-200 hover:bg-zinc-50 hover:text-zinc-900 hover:border-zinc-300 dark:hover:bg-white/5 transition-all duration-300 active:scale-95 flex items-center justify-center gap-2 shadow-sm dark:shadow-none"
             >
               {t("Lihat Portofolio", "View Portfolio")}
             </a>
@@ -172,10 +202,14 @@ export default function HeroSection() {
         </div>
 
         {/* CINEMATIC VIDEO SHOWCASE - SHRUNK TO max-w-3xl */}
-        <motion.div 
-          style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-          className="relative w-full max-w-3xl mx-auto rounded-2xl md:rounded-[28px] border border-zinc-200/60 dark:border-white/10 bg-zinc-950 group shadow-[0_20px_50px_rgba(0,0,0,0.1)] dark:shadow-none"
-        >
+        <div className="relative w-full max-w-3xl mx-auto mt-4">
+          {/* Light Mode Soft Glow Behind Image */}
+          <div className="absolute -inset-10 bg-gradient-to-tr from-orange-200/40 via-amber-200/20 to-orange-100/40 blur-[80px] dark:opacity-0 pointer-events-none rounded-[100px] transition-opacity duration-700" />
+          
+          <motion.div 
+            style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+            className="relative rounded-2xl md:rounded-[28px] border border-zinc-200/80 dark:border-white/10 bg-zinc-950 group shadow-[0_30px_80px_-15px_rgba(0,0,0,0.25)] dark:shadow-none"
+          >
           {/* ASPECT RATIO HOLDER */}
           <div className="aspect-[16/9] w-full rounded-2xl md:rounded-[32px] overflow-hidden">
             {videoSrc ? (
@@ -201,7 +235,7 @@ export default function HeroSection() {
             style={{ transform: "translateZ(40px)" }}
             animate={{ y: [-8, 8, -8] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute -top-6 -left-6 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-xl border border-zinc-200/50 dark:border-white/10 p-4 rounded-2xl items-center gap-3.5 shadow-xl group/badge1 cursor-default hidden lg:flex"
+            className="absolute -top-6 -left-6 bg-white/70 dark:bg-zinc-900/90 backdrop-blur-2xl border border-white/60 dark:border-white/10 p-4 rounded-2xl items-center gap-3.5 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1)] dark:shadow-xl group/badge1 cursor-default hidden lg:flex ring-1 ring-black/5 dark:ring-0"
           >
             <div className="w-10 h-10 bg-amber-500 rounded-full flex items-center justify-center text-white shadow-lg shadow-amber-500/30 group-hover/badge1:scale-110 transition-transform">
               <Star className="w-5 h-5 fill-current" />
@@ -217,7 +251,7 @@ export default function HeroSection() {
             style={{ transform: "translateZ(30px)" }}
             animate={{ y: [8, -8, 8] }}
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-            className="absolute -bottom-6 -right-6 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-xl border border-zinc-200/50 dark:border-white/10 p-4 rounded-2xl items-center gap-3.5 shadow-xl group/badge2 cursor-default hidden lg:flex"
+            className="absolute -bottom-6 -right-6 bg-white/70 dark:bg-zinc-900/90 backdrop-blur-2xl border border-white/60 dark:border-white/10 p-4 rounded-2xl items-center gap-3.5 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1)] dark:shadow-xl group/badge2 cursor-default hidden lg:flex ring-1 ring-black/5 dark:ring-0"
           >
             <div className="w-10 h-10 bg-emerald-500 rounded-full flex items-center justify-center text-white shadow-lg shadow-emerald-500/30 group-hover/badge2:scale-110 transition-transform">
               <CheckCircle className="w-5 h-5" />
@@ -228,6 +262,7 @@ export default function HeroSection() {
             </div>
           </motion.div>
         </motion.div>
+        </div>
       </div>
     </div>
   );

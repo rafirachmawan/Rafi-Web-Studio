@@ -52,7 +52,7 @@ export default function DemoSection({ filter, setFilter, filtered, isStandalone 
   return (
     <section 
       id="demo" 
-      className={`${isStandalone ? "pb-20 md:pb-32" : "py-20 md:py-32"} bg-[#fafafc] dark:bg-[#050508] relative`}
+      className={`${isStandalone ? "pb-20 md:pb-32" : "py-20 md:py-32"} bg-transparent dark:bg-[#050508] relative`}
     >
       <div className="container mx-auto px-4 md:px-6 max-w-7xl">
         {/* HEADER */}

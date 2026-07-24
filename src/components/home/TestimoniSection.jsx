@@ -92,7 +92,7 @@ export default function TestimoniSection() {
           {duplicatedTestimonials.map((item, idx) => (
             <div
               key={idx}
-              className="w-[260px] md:w-[320px] shrink-0 bg-white dark:bg-[#0a0a0a] border border-zinc-200 dark:border-white/10 rounded-2xl p-5 md:p-6 flex flex-col justify-between group hover:border-amber-500/50 hover:shadow-[0_0_30px_rgba(245,158,11,0.15)] transition-all duration-300"
+              className="w-[260px] md:w-[320px] shrink-0 bg-white/80 dark:bg-[#0a0a0a] backdrop-blur-sm border border-zinc-200/80 dark:border-white/10 rounded-2xl p-5 md:p-6 flex flex-col justify-between group hover:border-amber-500/50 hover:shadow-[0_0_30px_rgba(245,158,11,0.12)] shadow-sm dark:shadow-none transition-all duration-300"
             >
               <div>
                 <Quote className="w-6 h-6 text-amber-500 mb-3 opacity-80" />

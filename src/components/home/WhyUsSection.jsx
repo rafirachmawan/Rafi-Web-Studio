@@ -45,9 +45,19 @@ export default function WhyUsSection() {
   ];
 
   return (
-    <section id="why-us" className="relative py-24 overflow-hidden bg-white dark:bg-[#050508]">
+    <section id="why-us" className="relative py-24 overflow-hidden bg-transparent dark:bg-[#050508]">
+      {/* EDITORIAL SECTION NUMBER */}
+      <div className="absolute top-8 left-4 md:left-8 select-none pointer-events-none z-0">
+        <span 
+          className="text-[6rem] md:text-[9rem] font-black leading-none text-transparent"
+          style={{
+            WebkitTextStroke: "1px",
+            WebkitTextStrokeColor: "rgba(245,158,11,0.08)"
+          }}
+        >01</span>
+      </div>
       {/* GLOW DECORATIVE */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-amber-500/5 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-amber-500/5 dark:bg-amber-500/5 blur-[120px] rounded-full pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
