@@ -1,13 +1,15 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { realProjects } from "../../constants/realProjects";
-import { ArrowRight, Trophy, LayoutGrid } from "lucide-react";
+import { ArrowRight, Trophy, LayoutGrid, ArrowUp } from "lucide-react";
 import { useLanguage } from "../../context/LanguageContext";
 
 export default function RealProjectsSection({ isStandalone = false }) {
   const { t } = useLanguage();
+  const [isExpanded, setIsExpanded] = useState(false);
 
-  // Di homepage, tampilkan hanya 2 project pertama
-  const displayedProjects = isStandalone ? realProjects : realProjects.slice(0, 2);
+  // Di homepage, tampilkan hanya 2 project pertama jika belum diexpand
+  const displayedProjects = isStandalone || isExpanded ? realProjects : realProjects.slice(0, 2);
   const hiddenCount = realProjects.length - 2;
 
   return (
@@ -109,27 +111,37 @@ export default function RealProjectsSection({ isStandalone = false }) {
           ))}
         </div>
 
-        {/* LIHAT SEMUA — hanya tampil di homepage (bukan standalone) */}
+        {/* LIHAT SEMUA / SEMBUNYIKAN — hanya tampil di homepage (bukan standalone) */}
         {!isStandalone && hiddenCount > 0 && (
           <div className="mt-12 flex flex-col items-center gap-4">
             {/* Hint text */}
-            <p className="text-sm text-zinc-500 dark:text-zinc-400 font-medium">
-              {t(
-                `+${hiddenCount} project client lainnya menunggu untuk dieksplorasi`,
-                `+${hiddenCount} more client projects waiting to be explored`
-              )}
-            </p>
+            {!isExpanded && (
+              <p className="text-sm text-zinc-500 dark:text-zinc-400 font-medium">
+                {t(
+                  `+${hiddenCount} project client lainnya menunggu untuk dieksplorasi`,
+                  `+${hiddenCount} more client projects waiting to be explored`
+                )}
+              </p>
+            )}
 
             {/* CTA Button */}
-            <Link
-              to="/project#real-projects"
+            <button
+              onClick={() => setIsExpanded(!isExpanded)}
               id="btn-lihat-semua-project-client"
-              className="group inline-flex items-center gap-3 px-8 py-4 rounded-full bg-zinc-900 dark:bg-white text-white dark:text-black text-sm font-bold hover:bg-amber-500 dark:hover:bg-amber-500 dark:hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-amber-500/25 hover:scale-[1.02] active:scale-95"
+              className="group inline-flex items-center gap-3 px-8 py-4 rounded-full bg-zinc-900 dark:bg-white text-white dark:text-black text-sm font-bold hover:bg-amber-500 dark:hover:bg-amber-500 dark:hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-amber-500/25 hover:scale-[1.02] active:scale-95 cursor-pointer"
             >
               <LayoutGrid className="w-4 h-4" />
-              <span>{t("Lihat Semua Project Client", "View All Client Projects")}</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-            </Link>
+              <span>
+                {isExpanded
+                  ? t("Tampilkan Lebih Sedikit", "Show Less Projects")
+                  : t("Lihat Semua Project Client", "View All Client Projects")}
+              </span>
+              {isExpanded ? (
+                <ArrowUp className="w-4 h-4 group-hover:-translate-y-1 transition-transform duration-300" />
+              ) : (
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+              )}
+            </button>
           </div>
         )}
 
