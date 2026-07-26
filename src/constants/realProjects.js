@@ -1,41 +1,53 @@
+import sppCover from "../assets/sppShiningsun/Login.png";
+import absensiCover from "../assets/absensiShiningsun/absensiShiningsun.jpg";
+import jadwalBookingCover from "../assets/jadwalBookingClassShiningsun/bookingClassShiningsun.jpg";
+
 export const realProjects = [
   {
-    id: "spp-shiningsun",
+    id: "jadwal-booking-shiningsun",
     name: {
-      id: "Aplikasi SPP Shining Sun",
-      en: "Shining Sun SPP App"
+      id: "Aplikasi Jadwal & Booking Class Shining Sun",
+      en: "Shining Sun Class Scheduling & Booking App"
     },
     path: "#",
     desc: {
-      id: "Aplikasi Mobile Android Pembayaran SPP Sekolah dengan Sync Otomatis Google Spreadsheet",
-      en: "Android Mobile App for School Tuition Payment with Automatic Google Spreadsheet Sync"
+      id: "Sistem PWA Multi-Tenant untuk Manajemen Jadwal, Booking, dan Administrasi Kelas",
+      en: "Multi-Tenant PWA for Class Schedule Management, Booking, and Administration"
     },
-    icon: "☀️",
-    category: "mobile app",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
+    icon: "📅",
+    category: "sistem berbasis web",
+    image: jadwalBookingCover,
     client: "Yayasan Shining Sun School",
     isReal: true,
     fullDescription: {
-      id: "Aplikasi mobile Android yang dikembangkan khusus untuk mempermudah administrasi pembayaran SPP siswa di Shining Sun School. Aplikasi ini menghubungkan pencatatan data transaksi secara real-time dan otomatis ke Google Spreadsheet sekolah menggunakan Google Sheets API, menyederhanakan pelacakan status pembayaran bulanan, serta menghilangkan proses rekapitulasi manual.",
-      en: "An Android mobile application developed specifically to simplify the school tuition payment administration at Shining Sun School. This app connects transaction logging in real-time and automatically to the school's Google Spreadsheet using Google Sheets API, simplifying monthly payment status tracking and eliminating manual recapitulation."
+      id: "Sistem web berbasis PWA (Progressive Web App) multi-tenant yang dikembangkan khusus untuk Yayasan Shining Sun School guna mengotomatisasi dan menyederhanakan proses manajemen jadwal kelas dan booking siswa. Aplikasi ini memungkinkan admin cabang mengelola slot kelas, mendaftarkan siswa secara auto-booking berdasarkan jadwal berulang bulanan, serta memantau kehadiran dan status pembayaran siswa dalam satu dashboard terpadu. Dilengkapi dengan sistem notifikasi aktivitas, kontrol multi-cabang untuk Superadmin, serta mekanisme kunci slot (slot lock) untuk mencegah overbooking.",
+      en: "A multi-tenant Progressive Web App (PWA) developed specifically for Yayasan Shining Sun School to automate and simplify the class scheduling and student booking management process. The application allows branch admins to manage class slots, register students via auto-booking based on monthly recurring schedules, and monitor student attendance and payment status in a unified dashboard. Equipped with activity notification system, multi-branch control for Superadmin, and a slot-lock mechanism to prevent overbooking."
     },
-    techStack: ["Android SDK", "Kotlin", "Google Sheets API", "Firebase Services"],
+    techStack: ["Next.js", "React JS", "Supabase", "PostgreSQL", "PWA", "Tailwind CSS", "Vercel"],
     features: [
       {
-        id: "Aplikasi Mobile Android (APK)",
-        en: "Android Mobile Application (APK)"
+        id: "Sistem Jadwal & Booking Kelas Multi-Cabang",
+        en: "Multi-Branch Class Scheduling & Booking System"
       },
       {
-        id: "Pencatatan Tagihan & Histori SPP Real-Time",
-        en: "Real-Time Bills & Tuition History Logging"
+        id: "Auto-Booking Berulang Bulanan untuk Siswa Reguler",
+        en: "Monthly Recurring Auto-Booking for Regular Students"
       },
       {
-        id: "Sinkronisasi Otomatis ke Google Spreadsheet Sekolah",
-        en: "Automatic Sync to School's Google Spreadsheet"
+        id: "Dashboard Multi-Tenant (Superadmin & Admin Cabang)",
+        en: "Multi-Tenant Dashboard (Superadmin & Branch Admin)"
       },
       {
-        id: "Generasi Bukti Kwitansi Slip Pembayaran Digital",
-        en: "Digital Receipt Slip Generation"
+        id: "Manajemen Siswa Reguler & Coba Gratis (CG)",
+        en: "Regular & Free-Trial Student Management"
+      },
+      {
+        id: "Slot Lock untuk Pencegahan Overbooking",
+        en: "Slot Lock for Overbooking Prevention"
+      },
+      {
+        id: "Notifikasi Aktivitas Feed Real-Time",
+        en: "Real-Time Activity Feed Notifications"
       }
     ]
   },
@@ -52,7 +64,7 @@ export const realProjects = [
     },
     icon: "📱",
     category: "mobile app",
-    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=800&q=80",
+    image: absensiCover,
     client: "Yayasan Shining Sun School",
     isReal: true,
     fullDescription: {
@@ -120,50 +132,42 @@ export const realProjects = [
     ]
   },
   {
-    id: "jadwal-booking-shiningsun",
+    id: "spp-shiningsun",
     name: {
-      id: "Aplikasi Jadwal & Booking Class Shining Sun",
-      en: "Shining Sun Class Scheduling & Booking App"
+      id: "Aplikasi SPP Shining Sun",
+      en: "Shining Sun SPP App"
     },
     path: "#",
     desc: {
-      id: "Sistem PWA Multi-Tenant untuk Manajemen Jadwal, Booking, dan Administrasi Kelas",
-      en: "Multi-Tenant PWA for Class Schedule Management, Booking, and Administration"
+      id: "Aplikasi Mobile Android Pembayaran SPP Sekolah dengan Sync Otomatis Google Spreadsheet",
+      en: "Android Mobile App for School Tuition Payment with Automatic Google Spreadsheet Sync"
     },
-    icon: "📅",
-    category: "sistem berbasis web",
-    image: "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?auto=format&fit=crop&w=800&q=80",
+    icon: "☀️",
+    category: "mobile app",
+    image: sppCover,
     client: "Yayasan Shining Sun School",
     isReal: true,
     fullDescription: {
-      id: "Sistem web berbasis PWA (Progressive Web App) multi-tenant yang dikembangkan khusus untuk Yayasan Shining Sun School guna mengotomatisasi dan menyederhanakan proses manajemen jadwal kelas dan booking siswa. Aplikasi ini memungkinkan admin cabang mengelola slot kelas, mendaftarkan siswa secara auto-booking berdasarkan jadwal berulang bulanan, serta memantau kehadiran dan status pembayaran siswa dalam satu dashboard terpadu. Dilengkapi dengan sistem notifikasi aktivitas, kontrol multi-cabang untuk Superadmin, serta mekanisme kunci slot (slot lock) untuk mencegah overbooking.",
-      en: "A multi-tenant Progressive Web App (PWA) developed specifically for Yayasan Shining Sun School to automate and simplify the class scheduling and student booking management process. The application allows branch admins to manage class slots, register students via auto-booking based on monthly recurring schedules, and monitor student attendance and payment status in a unified dashboard. Equipped with activity notification system, multi-branch control for Superadmin, and a slot-lock mechanism to prevent overbooking."
+      id: "Aplikasi mobile Android yang dikembangkan khusus untuk mempermudah administrasi pembayaran SPP siswa di Shining Sun School. Aplikasi ini menghubungkan pencatatan data transaksi secara real-time dan otomatis ke Google Spreadsheet sekolah menggunakan Google Sheets API, menyederhanakan pelacakan status pembayaran bulanan, serta menghilangkan proses rekapitulasi manual.",
+      en: "An Android mobile application developed specifically to simplify the school tuition payment administration at Shining Sun School. This app connects transaction logging in real-time and automatically to the school's Google Spreadsheet using Google Sheets API, simplifying monthly payment status tracking and eliminating manual recapitulation."
     },
-    techStack: ["Next.js", "React JS", "Supabase", "PostgreSQL", "PWA", "Tailwind CSS", "Vercel"],
+    techStack: ["Android SDK", "Kotlin", "Google Sheets API", "Firebase Services"],
     features: [
       {
-        id: "Sistem Jadwal & Booking Kelas Multi-Cabang",
-        en: "Multi-Branch Class Scheduling & Booking System"
+        id: "Aplikasi Mobile Android (APK)",
+        en: "Android Mobile Application (APK)"
       },
       {
-        id: "Auto-Booking Berulang Bulanan untuk Siswa Reguler",
-        en: "Monthly Recurring Auto-Booking for Regular Students"
+        id: "Pencatatan Tagihan & Histori SPP Real-Time",
+        en: "Real-Time Bills & Tuition History Logging"
       },
       {
-        id: "Dashboard Multi-Tenant (Superadmin & Admin Cabang)",
-        en: "Multi-Tenant Dashboard (Superadmin & Branch Admin)"
+        id: "Sinkronisasi Otomatis ke Google Spreadsheet Sekolah",
+        en: "Automatic Sync to School's Google Spreadsheet"
       },
       {
-        id: "Manajemen Siswa Reguler & Coba Gratis (CG)",
-        en: "Regular & Free-Trial Student Management"
-      },
-      {
-        id: "Slot Lock untuk Pencegahan Overbooking",
-        en: "Slot Lock for Overbooking Prevention"
-      },
-      {
-        id: "Notifikasi Aktivitas Feed Real-Time",
-        en: "Real-Time Activity Feed Notifications"
+        id: "Generasi Bukti Kwitansi Slip Pembayaran Digital",
+        en: "Digital Receipt Slip Generation"
       }
     ]
   },

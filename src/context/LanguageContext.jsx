@@ -4,12 +4,13 @@ const LanguageContext = createContext();
 
 export function LanguageProvider({ children }) {
   const [language, setLanguage] = useState(() => {
-    const saved = localStorage.getItem("language");
+    const saved = localStorage.getItem("app_lang");
     return saved === "en" ? "en" : "id";
   });
 
   useEffect(() => {
-    localStorage.setItem("language", language);
+    localStorage.setItem("app_lang", language);
+    document.documentElement.lang = language;
   }, [language]);
 
   // Translation helper
