@@ -74,8 +74,9 @@ export default function DemoSection({ filter, setFilter, filtered, isStandalone 
         </div>
 
         {/* FILTER TABS */}
-        <div className="flex justify-center mb-12">
-          <div className="inline-flex flex-wrap justify-center gap-2 max-w-full">
+        <div className="flex mb-12 overflow-x-auto -mx-4 px-4 md:mx-0 md:px-0 md:overflow-x-visible pb-2 md:pb-0 hide-scrollbar" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+          <style>{`.hide-scrollbar::-webkit-scrollbar { display: none; }`}</style>
+          <div className="flex flex-nowrap md:flex-wrap justify-start md:justify-center gap-2 md:gap-3 min-w-max md:min-w-0 w-full md:w-auto mx-auto">
             {categories.map((cat) => {
               const Icon = cat.icon;
               const isActive = filter === cat.id;
@@ -83,7 +84,7 @@ export default function DemoSection({ filter, setFilter, filtered, isStandalone 
                 <button
                   key={cat.id}
                   onClick={() => setFilter(cat.id)}
-                  className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-xs md:text-sm font-semibold transition-all duration-300 ${
+                  className={`shrink-0 flex items-center gap-2 px-5 py-2.5 rounded-full text-xs md:text-sm font-semibold transition-all duration-300 ${
                     isActive 
                       ? "bg-amber-500 text-white shadow-md shadow-amber-500/20 border border-amber-500" 
                       : "bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 hover:border-amber-500/50 hover:text-amber-600 dark:hover:text-amber-500"

@@ -130,45 +130,47 @@ export default function FounderSection() {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="md:col-span-7 space-y-6 text-left"
+            className="md:col-span-7"
           >
-            <h3 className="text-xl sm:text-2xl font-black text-zinc-900 dark:text-white">
-              "{t("Komitmen Kami Adalah", "Our Commitment Is")}{" "}<br className="xs:hidden" />
-              <span className="text-amber-500">{t("Kesuksesan Skala Bisnis Anda", "Your Business Scale's Success")}</span>."
-            </h3>
+            <div className="bg-white dark:bg-zinc-900/40 border border-zinc-200/80 dark:border-zinc-800/60 rounded-[2.5rem] p-6 sm:p-8 md:p-10 shadow-[0_8px_30px_rgba(0,0,0,0.06)] dark:shadow-none flex flex-col space-y-6 text-left relative overflow-hidden group transition-all duration-300 hover:border-amber-500/30">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-black text-zinc-900 dark:text-white leading-tight">
+                "{t("Komitmen Kami Adalah", "Our Commitment Is")}{" "}<br className="xs:hidden" />
+                <span className="text-amber-500">{t("Kesuksesan Skala Bisnis Anda", "Your Business Scale's Success")}</span>."
+              </h3>
 
-            <div className="space-y-4 text-zinc-600 dark:text-zinc-300 text-xs sm:text-sm font-semibold leading-relaxed">
-              <p>
-                {t("Halo! Saya Rafi Rachmawan, orang di balik layar GapaiDigital. Sejak awal membangun agensi ini, misi saya adalah memberikan solusi digital berkualitas kelas enterprise untuk bisnis lokal, UMKM, dan personal branding tanpa membebani anggaran Anda.", "Hello! I am Rafi Rachmawan, the person behind GapaiDigital. Since establishing this agency, my mission has been to provide enterprise-grade, high-quality digital solutions for local businesses, MSMEs, and personal branding without straining your budget.")}
-              </p>
-              <p>
-                {t("Setiap baris kode, arsitektur database, desain antarmuka, hingga performa SEO saya awasi dan kembangkan secara personal bersama tim untuk memastikan website dan aplikasi Anda memiliki kualitas terbaik—cepat, responsif, dan aman.", "Every line of code, database architecture, interface design, to SEO performance is personally supervised and developed by me alongside the team to ensure your website and app have the best quality—fast, responsive, and secure.")}
-              </p>
-              <p>
-                {t("Bagi saya, digitalisasi bukan sekadar memiliki website atau aplikasi, melainkan membangun sistem yang bekerja 24/7 untuk meningkatkan kredibilitas brand Anda dan mendatangkan konversi penjualan yang nyata.", "To me, digitalization is not just about having a website or an app, but building a system that works 24/7 to boost your brand credibility and drive real sales conversions.")}
-              </p>
-            </div>
+              <div className="space-y-4 text-zinc-600 dark:text-zinc-400 text-xs sm:text-sm md:text-base font-semibold leading-relaxed">
+                <p>
+                  {t("Halo! Saya Rafi Rachmawan, orang di balik layar GapaiDigital. Sejak awal membangun agensi ini, misi saya adalah memberikan solusi digital berkualitas kelas enterprise untuk bisnis lokal, UMKM, dan personal branding tanpa membebani anggaran Anda.", "Hello! I am Rafi Rachmawan, the person behind GapaiDigital. Since establishing this agency, my mission has been to provide enterprise-grade, high-quality digital solutions for local businesses, MSMEs, and personal branding without straining your budget.")}
+                </p>
+                <p>
+                  {t("Setiap baris kode, arsitektur database, desain antarmuka, hingga performa SEO saya awasi dan kembangkan secara personal bersama tim untuk memastikan website dan aplikasi Anda memiliki kualitas terbaik—cepat, responsif, dan aman.", "Every line of code, database architecture, interface design, to SEO performance is personally supervised and developed by me alongside the team to ensure your website and app have the best quality—fast, responsive, and secure.")}
+                </p>
+                <p>
+                  {t("Bagi saya, digitalisasi bukan sekadar memiliki website atau aplikasi, melainkan membangun sistem yang bekerja 24/7 untuk meningkatkan kredibilitas brand Anda dan mendatangkan konversi penjualan yang nyata.", "To me, digitalization is not just about having a website or an app, but building a system that works 24/7 to boost your brand credibility and drive real sales conversions.")}
+                </p>
+              </div>
 
-            <div className="pt-4 flex flex-wrap gap-4 items-center">
-              <a
-                href={portfolioUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-amber-500 hover:bg-amber-400 text-black font-black text-xs sm:text-sm shadow-lg shadow-amber-500/20 hover:scale-[1.02] transition-all"
-              >
-                {t("Kunjungi Portofolio Saya", "Visit My Portfolio")}
-                <ExternalLink size={16} />
-              </a>
+              <div className="pt-2 flex flex-col sm:flex-row flex-wrap gap-4 items-center">
+                <a
+                  href={portfolioUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-amber-500 hover:bg-amber-400 text-black font-black text-xs sm:text-sm shadow-lg shadow-amber-500/20 hover:scale-[1.02] transition-all"
+                >
+                  {t("Kunjungi Portofolio Saya", "Visit My Portfolio")}
+                  <ExternalLink size={16} />
+                </a>
 
-              <a
-                href="https://wa.me/6285707185783?text=Halo%20Rafi,%20saya%20ingin%20berdiskusi%20mengenai%20project%20custom"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl border border-black/10 dark:border-white/10 hover:border-amber-500/30 bg-black/[0.02] dark:bg-white/5 hover:bg-black/[0.05] dark:hover:bg-white/10 text-zinc-800 dark:text-white font-bold text-xs sm:text-sm hover:scale-[1.02] transition-all"
-              >
-                {t("Diskusi Langsung via WA", "Direct Discussion via WA")}
-                <Send size={14} className="text-amber-500" />
-              </a>
+                <a
+                  href="https://wa.me/6285707185783?text=Halo%20Rafi,%20saya%20ingin%20berdiskusi%20mengenai%20project%20custom"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl border border-zinc-200 dark:border-white/10 hover:border-amber-500/50 bg-zinc-50 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10 text-zinc-800 dark:text-white font-bold text-xs sm:text-sm hover:scale-[1.02] transition-all"
+                >
+                  {t("Diskusi Langsung via WA", "Direct Discussion via WA")}
+                  <Send size={14} className="text-amber-500" />
+                </a>
+              </div>
             </div>
           </motion.div>
 
