@@ -20,6 +20,7 @@ export default function TextMarqueeDivider({
   const repeated = [...texts, ...texts, ...texts, ...texts];
 
   const sizeClasses = {
+    xs: "text-[10px] md:text-xs tracking-wider",
     sm: "text-4xl md:text-5xl",
     md: "text-5xl md:text-7xl",
     lg: "text-6xl md:text-[5rem] lg:text-[7rem]",
@@ -47,24 +48,25 @@ export default function TextMarqueeDivider({
       >
         {repeated.map((text, i) => (
           <div key={i} className="flex items-center gap-8 md:gap-12 shrink-0">
-            {/* Text — stroke style (outline only) */}
+            {/* Text */}
             <span
               className={`
                 ${sizeClasses[size]}
-                font-black tracking-tight uppercase whitespace-nowrap
-                text-transparent
-                leading-none
+                uppercase whitespace-nowrap
+                ${size === "xs" 
+                  ? "font-bold text-zinc-400 dark:text-zinc-600" 
+                  : "font-black tracking-tight text-transparent leading-none"}
               `}
-              style={{
+              style={size !== "xs" ? {
                 WebkitTextStroke: "1.5px",
                 WebkitTextStrokeColor: "currentColor",
-              }}
+              } : {}}
             >
-              <span className="text-zinc-300 dark:text-zinc-700">{text}</span>
+              {size === "xs" ? text : <span className="text-zinc-300 dark:text-zinc-700">{text}</span>}
             </span>
 
             {/* Decorative diamond separator */}
-            <span className="text-amber-400/50 dark:text-amber-500/30 text-2xl md:text-3xl leading-none font-black">
+            <span className={`text-amber-400/50 dark:text-amber-500/30 leading-none ${size === "xs" ? "text-[10px] md:text-xs font-bold mx-2" : "text-2xl md:text-3xl font-black"}`}>
               ✦
             </span>
           </div>

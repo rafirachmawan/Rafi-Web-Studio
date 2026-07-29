@@ -1,6 +1,8 @@
 import sppCover from "../assets/sppShiningsun/Login.png";
 import absensiCover from "../assets/absensiShiningsun/absensiShiningsun.jpg";
 import jadwalBookingCover from "../assets/jadwalBookingClassShiningsun/bookingClassShiningsun.jpg";
+import antrianBriCover from "../assets/sistemAntrianBank/sistem antrian bank bri.jpg";
+import tamiyaCover from "../assets/softwareBalapanTamiya/Dashboard Tamiya.jpeg";
 
 export const realProjects = [
   {
@@ -104,7 +106,7 @@ export const realProjects = [
     },
     icon: "🏦",
     category: "software",
-    image: "https://images.unsplash.com/photo-1501167786227-4cba60f6d58f?auto=format&fit=crop&w=800&q=80",
+    image: antrianBriCover,
     client: "Bank BRI Kantor Cabang Surabaya",
     isReal: true,
     fullDescription: {
@@ -184,7 +186,7 @@ export const realProjects = [
     },
     icon: "🏎️",
     category: "software",
-    image: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=800&q=80",
+    image: tamiyaCover,
     client: "Komunitas Tamiya Indonesia Jakarta",
     isReal: true,
     fullDescription: {

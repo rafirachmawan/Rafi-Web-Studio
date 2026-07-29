@@ -39,12 +39,11 @@ export default function Home() {
       <TechMarquee />
       <RealProjectsSection />
 
-      {/* Visual break: projects → demo */}
       <TextMarqueeDivider
         texts={["PORTOFOLIO", "CLIENT PROJECTS", "KARYA NYATA", "PRODUCTION READY"]}
         direction="left"
         speed={35}
-        size="sm"
+        size="xs"
         className="my-2"
       />
 
@@ -55,7 +54,7 @@ export default function Home() {
         texts={["KENAPA KAMI", "WHY GAPAI", "SOLUSI DIGITAL", "EKSKLUSIF"]}
         direction="right"
         speed={28}
-        size="sm"
+        size="xs"
         className="my-2"
       />
 
@@ -67,7 +66,7 @@ export default function Home() {
         texts={["HARGA TRANSPARAN", "PRICING", "PILIH PAKET", "MULAI SEKARANG"]}
         direction="left"
         speed={32}
-        size="sm"
+        size="xs"
         className="my-2"
       />
 
@@ -79,7 +78,7 @@ export default function Home() {
         texts={["KISAH SUKSES", "SUCCESS STORIES", "KLIEN PUAS", "5.0 RATING"]}
         direction="right"
         speed={25}
-        size="sm"
+        size="xs"
         className="mb-2"
       />
 
