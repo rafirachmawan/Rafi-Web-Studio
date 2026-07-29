@@ -163,22 +163,30 @@ export default function DemoSection({ filter, setFilter, filtered, isStandalone 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-24 text-center px-4"
+          className="mt-20 md:mt-24 max-w-3xl mx-auto px-4"
         >
-          <p className="text-zinc-500 dark:text-zinc-400 text-sm md:text-base font-medium mb-8">
-            {t("Punya kebutuhan sistem khusus? Kami siap membantu mewujudkannya.", "Have specific system requirements? We are ready to help make it happen.")}
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <div className="h-px w-12 bg-zinc-200 dark:bg-white/10 hidden sm:block" />
-            <a 
-              href="https://wa.me/6285707185783?text=Halo%20saya%20ingin%20konsultasi%20project"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-center gap-2 text-black dark:text-white font-bold hover:text-amber-500 dark:hover:text-amber-400 transition-colors"
-            >
-              {t("Konsultasi Project", "Project Consultation")} <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </a>
-            <div className="h-px w-12 bg-zinc-200 dark:bg-white/10 hidden sm:block" />
+          <div className="bg-white dark:bg-zinc-900/50 rounded-[2rem] border border-zinc-200/80 dark:border-zinc-800/60 p-8 md:p-12 text-center shadow-xl shadow-zinc-200/20 dark:shadow-none hover:border-amber-500/30 transition-colors duration-500 relative overflow-hidden group">
+            {/* Ambient background glow */}
+            <div className="absolute inset-0 bg-gradient-to-b from-amber-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+            
+            <div className="relative z-10 flex flex-col items-center">
+              <div className="w-12 h-12 bg-amber-500/10 rounded-full flex items-center justify-center mb-6 text-amber-500">
+                <Sparkles className="w-6 h-6" />
+              </div>
+              <p className="text-zinc-600 dark:text-zinc-300 text-base md:text-lg font-medium mb-8">
+                {t("Punya kebutuhan sistem khusus? Kami siap membantu mewujudkannya.", "Have specific system requirements? We are ready to help make it happen.")}
+              </p>
+              
+              <a 
+                href="https://wa.me/6285707185783?text=Halo%20saya%20ingin%20konsultasi%20project"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 bg-zinc-900 dark:bg-white text-white dark:text-black px-8 py-4 rounded-full font-bold hover:bg-amber-500 dark:hover:bg-amber-500 hover:text-white dark:hover:text-white transition-all duration-300 shadow-md hover:shadow-xl hover:shadow-amber-500/20 active:scale-95 group/btn"
+              >
+                {t("Konsultasi Project", "Project Consultation")} 
+                <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+              </a>
+            </div>
           </div>
         </motion.div>
       </div>
