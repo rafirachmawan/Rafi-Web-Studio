@@ -1,8 +1,9 @@
-import { MessageCircle, Mail, ArrowRight, Code2, Smartphone, Globe } from "lucide-react";
+import { MessageCircle, Mail, ArrowRight, Code2, Smartphone, Globe, MapPin } from "lucide-react";
 import { useLanguage } from "../../context/LanguageContext";
+import { Link } from "react-router-dom";
 
 const InstagramIcon = ({ className }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
     <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
     <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
@@ -11,170 +12,179 @@ const InstagramIcon = ({ className }) => (
 
 export default function Footer() {
   const { t } = useLanguage();
-  return (
-    <div
-      id="contact"
-      className="relative mt-32 border-t border-black/10 dark:border-white/10 pt-16 pb-10 transition-colors duration-300 overflow-hidden"
-    >
-      {/* SUBTLE GLOW BACKGROUND */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-amber-500/5 dark:bg-amber-500/5 blur-[100px] rounded-full pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 md:px-6 relative z-10">
-        
-        {/* MINI CTA */}
-        <div className="mb-16 flex flex-col md:flex-row items-center justify-between gap-6 p-8 rounded-3xl bg-zinc-100 dark:bg-zinc-900 border border-black/5 dark:border-white/5">
-          <div>
-            <h3 className="text-xl md:text-2xl font-bold text-zinc-900 dark:text-white mb-2">
-              {t("Siap Mendigitalisasi Bisnis Anda?", "Ready to Digitalize Your Business?")}
-            </h3>
-            <p className="text-zinc-600 dark:text-zinc-400 text-sm md:text-base">
-              {t("Mari berdiskusi tentang bagaimana kami bisa membantu skala bisnis Anda berkembang.", "Let's discuss how we can help your business scale grow.")}
-            </p>
+  const services = [
+    { icon: Globe, label: t("Landing Page Premium", "Premium Landing Pages"), href: "/harga" },
+    { icon: Smartphone, label: t("Aplikasi Mobile (iOS/Android)", "Mobile Apps (iOS/Android)"), href: "/harga" },
+    { icon: Code2, label: t("Sistem Web Kustom", "Custom Web Systems"), href: "/harga" },
+  ];
+
+  const navLinks = [
+    { label: t("Home", "Home"), href: "/" },
+    { label: t("Project Client", "Client Projects"), href: "/project" },
+    { label: t("Demo Template", "Demo Template"), href: "/demo" },
+    { label: t("Alur Kerja", "Workflow"), href: "/proses" },
+    { label: t("Paket & Harga", "Packages & Pricing"), href: "/harga" },
+    { label: t("Testimoni", "Testimonials"), href: "/testimoni" },
+  ];
+
+  const contacts = [
+    { icon: MessageCircle, label: t("WhatsApp Resmi", "Official WhatsApp"), href: "https://wa.me/6285707185783", external: true },
+    { icon: InstagramIcon, label: "Instagram", href: "https://instagram.com/gapaidigital", external: true },
+    { icon: Mail, label: "gapaidigital@gmail.com", href: "mailto:gapaidigital@gmail.com", external: false },
+    { icon: MapPin, label: t("Tulungagung, Jawa Timur", "Tulungagung, East Java"), href: null, external: false },
+  ];
+
+  return (
+    <footer
+      id="contact"
+      className="relative mt-24 border-t border-black/10 dark:border-white/10 bg-zinc-50 dark:bg-zinc-950 overflow-hidden"
+    >
+      {/* Ambient glow */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[250px] bg-amber-500/5 blur-[100px] rounded-full pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 md:px-6 relative z-10 pt-12 md:pt-16 pb-8">
+
+        {/* MINI CTA CARD */}
+        <div className="mb-12 md:mb-16 rounded-[2rem] bg-gradient-to-br from-zinc-900 to-zinc-800 dark:from-zinc-900 dark:to-zinc-950 border border-white/5 p-6 md:p-10 shadow-xl shadow-black/10 relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-amber-500/10 blur-[80px] rounded-full pointer-events-none" />
+          <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+            <div className="flex-1">
+              <p className="text-amber-400 text-xs font-bold uppercase tracking-widest mb-2">
+                ✦ {t("Konsultasi 100% Gratis", "100% Free Consultation")}
+              </p>
+              <h3 className="text-xl md:text-2xl lg:text-3xl font-black text-white mb-2 leading-tight">
+                {t("Siap Mendigitalisasi Bisnis Anda?", "Ready to Digitalize Your Business?")}
+              </h3>
+              <p className="text-zinc-400 text-sm md:text-base font-medium max-w-lg">
+                {t("Mari berdiskusi tentang bagaimana kami bisa membantu bisnis Anda berkembang secara digital.", "Let's discuss how we can help your business grow digitally.")}
+              </p>
+            </div>
+            <a
+              href="https://wa.me/6285707185783?text=Halo%20saya%20ingin%20konsultasi%20project"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="shrink-0 w-full md:w-auto flex items-center justify-center gap-2 px-7 py-4 bg-amber-500 hover:bg-amber-400 text-black rounded-full font-black text-sm transition-all duration-300 hover:shadow-xl hover:shadow-amber-500/25 hover:scale-[1.02] active:scale-95 group"
+            >
+              {t("Konsultasi Gratis", "Free Consultation")}
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </a>
           </div>
-          <a
-            href="https://wa.me/6285707185783"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white rounded-full font-bold transition-all duration-300 hover:shadow-lg hover:shadow-amber-500/25 group whitespace-nowrap"
-          >
-            {t("Konsultasi Gratis", "Free Consultation")}
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </a>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 text-left">
-          {/* BRAND (LEFT) */}
-          <div className="space-y-4 lg:col-span-1">
-            <h2 className="text-2xl font-black text-black dark:text-white">
-              Gapai<span className="text-amber-500">Digital</span>
-            </h2>
+        {/* MAIN FOOTER GRID */}
+        <div className="rounded-[2rem] bg-white dark:bg-zinc-900 border border-zinc-200/80 dark:border-zinc-800/60 shadow-[0_4px_20px_rgba(0,0,0,0.04)] dark:shadow-none p-6 md:p-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 text-left">
 
-            <p className="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed font-medium">
-              {t("Partner digitalisasi tepercaya untuk pembuatan landing page premium, pengembangan aplikasi mobile, serta sistem web kustom guna mengotomatisasi operasional Anda.", "Trusted digitalization partner for creating premium landing pages, developing mobile apps, and custom web systems to automate your operations.")}
+          {/* BRAND */}
+          <div className="sm:col-span-2 lg:col-span-1 space-y-4">
+            <div>
+              <h2 className="text-2xl font-black text-black dark:text-white">
+                Gapai<span className="text-amber-500">Digital</span>
+              </h2>
+              <p className="text-zinc-500 dark:text-zinc-400 text-xs font-bold uppercase tracking-widest mt-1">
+                {t("Solusi Digital Indonesia", "Indonesia Digital Solutions")}
+              </p>
+            </div>
+            <p className="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed">
+              {t("Partner digitalisasi tepercaya untuk landing page premium, aplikasi mobile, dan sistem web kustom.", "Trusted digitalization partner for premium landing pages, mobile apps, and custom web systems.")}
             </p>
+            {/* Social Icons */}
+            <div className="flex gap-2 pt-1">
+              <a href="https://wa.me/6285707185783" target="_blank" rel="noopener noreferrer"
+                className="p-2.5 rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-amber-500 hover:text-white hover:border-amber-500 transition-all duration-200">
+                <MessageCircle className="w-4 h-4" />
+              </a>
+              <a href="https://instagram.com/gapaidigital" target="_blank" rel="noopener noreferrer"
+                className="p-2.5 rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-amber-500 hover:text-white hover:border-amber-500 transition-all duration-200">
+                <InstagramIcon className="w-4 h-4" />
+              </a>
+              <a href="mailto:gapaidigital@gmail.com"
+                className="p-2.5 rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-amber-500 hover:text-white hover:border-amber-500 transition-all duration-200">
+                <Mail className="w-4 h-4" />
+              </a>
+            </div>
           </div>
 
           {/* LAYANAN KAMI */}
           <div>
-            <h3 className="text-zinc-900 dark:text-white font-bold text-sm mb-5 uppercase tracking-wider">
+            <h3 className="text-zinc-900 dark:text-white font-bold text-xs uppercase tracking-widest mb-5 flex items-center gap-2">
+              <span className="w-4 h-px bg-amber-500 inline-block"></span>
               {t("Layanan Kami", "Our Services")}
             </h3>
-
-            <ul className="space-y-3 text-zinc-600 dark:text-zinc-400 text-sm font-medium">
-              <li>
-                <a href="#harga" className="group flex items-center gap-2 hover:text-amber-500 transition-colors duration-300">
-                  <Globe className="w-4 h-4" />
-                  <span className="group-hover:translate-x-1 transition-transform duration-300">{t("Landing Page Premium", "Premium Landing Pages")}</span>
-                </a>
-              </li>
-              <li>
-                <a href="#harga" className="group flex items-center gap-2 hover:text-amber-500 transition-colors duration-300">
-                  <Smartphone className="w-4 h-4" />
-                  <span className="group-hover:translate-x-1 transition-transform duration-300">{t("Aplikasi Mobile (iOS/Android)", "Mobile Apps (iOS/Android)")}</span>
-                </a>
-              </li>
-              <li>
-                <a href="#harga" className="group flex items-center gap-2 hover:text-amber-500 transition-colors duration-300">
-                  <Code2 className="w-4 h-4" />
-                  <span className="group-hover:translate-x-1 transition-transform duration-300">{t("Sistem Web Kustom", "Custom Web Systems")}</span>
-                </a>
-              </li>
+            <ul className="space-y-3">
+              {services.map(({ icon: Icon, label, href }) => (
+                <li key={label}>
+                  <Link to={href} className="group flex items-center gap-2.5 text-zinc-600 dark:text-zinc-400 hover:text-amber-500 dark:hover:text-amber-400 transition-colors text-sm font-medium">
+                    <Icon className="w-4 h-4 shrink-0 text-zinc-400 dark:text-zinc-600 group-hover:text-amber-500 transition-colors" />
+                    <span className="group-hover:translate-x-0.5 transition-transform">{label}</span>
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* MENU UTAMA */}
           <div>
-            <h3 className="text-zinc-900 dark:text-white font-bold text-sm mb-5 uppercase tracking-wider">
+            <h3 className="text-zinc-900 dark:text-white font-bold text-xs uppercase tracking-widest mb-5 flex items-center gap-2">
+              <span className="w-4 h-px bg-amber-500 inline-block"></span>
               {t("Menu Utama", "Main Menu")}
             </h3>
-
-            <ul className="space-y-3 text-zinc-600 dark:text-zinc-400 text-sm font-medium">
-              <li>
-                <a href="#home" className="group inline-flex items-center hover:text-amber-500 transition-colors duration-300">
-                  <span className="group-hover:translate-x-1 transition-transform duration-300">{t("Home", "Home")}</span>
-                </a>
-              </li>
-              <li>
-                <a href="#demo" className="group inline-flex items-center hover:text-amber-500 transition-colors duration-300">
-                  <span className="group-hover:translate-x-1 transition-transform duration-300">{t("Portofolio Demo", "Demo Portfolio")}</span>
-                </a>
-              </li>
-              <li>
-                <a href="#proses" className="group inline-flex items-center hover:text-amber-500 transition-colors duration-300">
-                  <span className="group-hover:translate-x-1 transition-transform duration-300">{t("Alur Kerja", "Workflow")}</span>
-                </a>
-              </li>
-              <li>
-                <a href="#harga" className="group inline-flex items-center hover:text-amber-500 transition-colors duration-300">
-                  <span className="group-hover:translate-x-1 transition-transform duration-300">{t("Paket Investasi", "Investment Packages")}</span>
-                </a>
-              </li>
-              <li>
-                <a href="#testimoni" className="group inline-flex items-center hover:text-amber-500 transition-colors duration-300">
-                  <span className="group-hover:translate-x-1 transition-transform duration-300">{t("Kisah Sukses Klien", "Client Success Stories")}</span>
-                </a>
-              </li>
+            <ul className="space-y-3">
+              {navLinks.map(({ label, href }) => (
+                <li key={label}>
+                  <Link to={href} className="group text-zinc-600 dark:text-zinc-400 hover:text-amber-500 dark:hover:text-amber-400 transition-colors text-sm font-medium flex items-center gap-1">
+                    <span className="group-hover:translate-x-0.5 transition-transform">{label}</span>
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* HUBUNGI KAMI */}
           <div>
-            <h3 className="text-zinc-900 dark:text-white font-bold text-sm mb-5 uppercase tracking-wider">
+            <h3 className="text-zinc-900 dark:text-white font-bold text-xs uppercase tracking-widest mb-5 flex items-center gap-2">
+              <span className="w-4 h-px bg-amber-500 inline-block"></span>
               {t("Hubungi Kami", "Contact Us")}
             </h3>
-
-            <ul className="space-y-4 text-zinc-600 dark:text-zinc-400 text-sm font-medium">
-              <li>
-                <a
-                  href="https://wa.me/6285707185783"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center gap-3 hover:text-amber-500 transition-colors duration-300"
-                >
-                  <div className="p-2 bg-zinc-100 dark:bg-zinc-800 rounded-full group-hover:bg-amber-500/10 group-hover:text-amber-500 transition-colors">
-                    <MessageCircle className="w-4 h-4" />
-                  </div>
-                  <span className="group-hover:translate-x-1 transition-transform duration-300">{t("WhatsApp Resmi", "Official WhatsApp")}</span>
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="https://instagram.com/gapaidigital"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center gap-3 hover:text-amber-500 transition-colors duration-300"
-                >
-                  <div className="p-2 bg-zinc-100 dark:bg-zinc-800 rounded-full group-hover:bg-amber-500/10 group-hover:text-amber-500 transition-colors">
-                    <InstagramIcon className="w-4 h-4" />
-                  </div>
-                  <span className="group-hover:translate-x-1 transition-transform duration-300">Instagram</span>
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="mailto:gapaidigital@gmail.com"
-                  className="group flex items-center gap-3 hover:text-amber-500 transition-colors duration-300"
-                >
-                  <div className="p-2 bg-zinc-100 dark:bg-zinc-800 rounded-full group-hover:bg-amber-500/10 group-hover:text-amber-500 transition-colors">
-                    <Mail className="w-4 h-4" />
-                  </div>
-                  <span className="group-hover:translate-x-1 transition-transform duration-300">gapaidigital@gmail.com</span>
-                </a>
-              </li>
+            <ul className="space-y-3">
+              {contacts.map(({ icon: Icon, label, href, external }) => (
+                <li key={label}>
+                  {href ? (
+                    <a
+                      href={href}
+                      {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                      className="group flex items-center gap-2.5 text-zinc-600 dark:text-zinc-400 hover:text-amber-500 dark:hover:text-amber-400 transition-colors text-sm font-medium"
+                    >
+                      <div className="p-1.5 bg-zinc-100 dark:bg-zinc-900 rounded-lg group-hover:bg-amber-500/10 group-hover:text-amber-500 transition-colors shrink-0">
+                        <Icon className="w-3.5 h-3.5" />
+                      </div>
+                      <span className="group-hover:translate-x-0.5 transition-transform">{label}</span>
+                    </a>
+                  ) : (
+                    <div className="flex items-center gap-2.5 text-zinc-600 dark:text-zinc-400 text-sm font-medium">
+                      <div className="p-1.5 bg-zinc-100 dark:bg-zinc-900 rounded-lg shrink-0">
+                        <Icon className="w-3.5 h-3.5" />
+                      </div>
+                      <span>{label}</span>
+                    </div>
+                  )}
+                </li>
+              ))}
             </ul>
           </div>
         </div>
+        </div>
 
-        {/* LINE & COPYRIGHT */}
-        <div className="mt-16 pt-8 border-t border-black/10 dark:border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-zinc-500 dark:text-zinc-500 text-xs font-medium">
-          <p>© {new Date().getFullYear()} GapaiDigital. All rights reserved.</p>
-          <p className="flex items-center gap-1.5">
-            {t("Solusi Website & Aplikasi Profesional untuk Bisnis Modern", "Professional Website & App Solutions for Modern Businesses")} 
+        {/* BOTTOM BAR */}
+        <div className="mt-8 pt-6 border-t border-black/10 dark:border-white/10 flex flex-col sm:flex-row justify-between items-center gap-3 text-zinc-400 dark:text-zinc-600 text-xs font-medium">
+          <p>© {new Date().getFullYear()} <span className="text-zinc-600 dark:text-zinc-400 font-bold">GapaiDigital</span>. All rights reserved.</p>
+          <p className="text-center sm:text-right">
+            {t("Solusi Website & Aplikasi Profesional untuk Bisnis Modern", "Professional Website & App Solutions for Modern Businesses")}
           </p>
         </div>
       </div>
-    </div>
+    </footer>
   );
 }
+

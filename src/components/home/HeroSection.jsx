@@ -196,13 +196,34 @@ export default function HeroSection() {
                   className="w-full h-full object-cover opacity-70 group-hover:opacity-85 transition-all duration-1000"
                 />
               ) : (
-                <div className="w-full h-full bg-gradient-to-br from-zinc-900 to-zinc-800 flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="w-16 h-16 bg-amber-500/20 rounded-full flex items-center justify-center mx-auto mb-3">
-                      <Sparkles className="w-8 h-8 text-amber-400" />
+                <div className="w-full h-full bg-gradient-to-br from-zinc-900 via-zinc-900 to-zinc-800 flex items-center justify-center px-6">
+                  {isMobile ? (
+                    /* Mobile: informative message */
+                    <div className="text-center max-w-xs">
+                      <div className="w-14 h-14 bg-amber-500/15 border border-amber-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <Sparkles className="w-7 h-7 text-amber-400" />
+                      </div>
+                      <p className="text-white font-bold text-sm mb-1">Preview Demo Video</p>
+                      <p className="text-zinc-400 text-[11px] leading-relaxed">
+                        {t(
+                          "Buka di laptop atau PC untuk menonton preview video demo interaktif kami.",
+                          "Open on a laptop or PC to watch our interactive demo preview video."
+                        )}
+                      </p>
+                      <div className="mt-3 inline-flex items-center gap-1.5 bg-amber-500/10 border border-amber-500/20 text-amber-400 text-[10px] font-bold px-3 py-1.5 rounded-full">
+                        <span>🖥️</span>
+                        <span>{t("Tersedia di Desktop", "Available on Desktop")}</span>
+                      </div>
                     </div>
-                    <span className="text-zinc-500 text-xs font-medium">{isMobile ? "GapaiDigital" : "Loading preview..."}</span>
-                  </div>
+                  ) : (
+                    /* Desktop: loading state */
+                    <div className="text-center">
+                      <div className="w-12 h-12 bg-zinc-800 rounded-xl flex items-center justify-center mx-auto mb-3 animate-pulse">
+                        <Sparkles className="w-6 h-6 text-zinc-600" />
+                      </div>
+                      <span className="text-zinc-500 text-xs font-medium">Loading preview...</span>
+                    </div>
+                  )}
                 </div>
               )}
             </div>
