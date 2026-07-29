@@ -1,12 +1,10 @@
-import { motion } from "framer-motion";
-
 /**
  * TextMarqueeDivider — large scrolling text used as a visual section divider.
  * Props:
- *   texts: string[]  — array of words to repeat (e.g. ["WEBSITE", "MOBILE APP", "SISTEM WEB"])
+ *   texts: string[]  — array of words to repeat
  *   direction: "left" | "right" — scroll direction (default "left")
  *   speed: number — duration in seconds per loop (default 30)
- *   size: "sm" | "md" | "lg" | "xl" — text size (default "lg")
+ *   size: "xs" | "sm" | "md" | "lg" | "xl" — text size (default "lg")
  *   className: string — extra wrapper classes
  */
 export default function TextMarqueeDivider({
@@ -16,7 +14,7 @@ export default function TextMarqueeDivider({
   size = "lg",
   className = "",
 }) {
-  // Triple repeat for seamless infinite loop
+  // Quadruple repeat for seamless infinite loop
   const repeated = [...texts, ...texts, ...texts, ...texts];
 
   const sizeClasses = {
@@ -27,9 +25,7 @@ export default function TextMarqueeDivider({
     xl: "text-[5rem] md:text-[8rem] lg:text-[11rem]",
   };
 
-  const animateX = direction === "left" 
-    ? ["0%", "-25%"] 
-    : ["-25%", "0%"];
+  const animationName = direction === "left" ? "marquee-left" : "marquee-right";
 
   return (
     <div className={`relative w-full overflow-hidden py-4 md:py-6 select-none border-y border-black/5 dark:border-white/5 bg-black/[0.01] dark:bg-white/[0.01] ${className}`}>
@@ -37,13 +33,12 @@ export default function TextMarqueeDivider({
       <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-[#fafafc] dark:from-[#050508] to-transparent z-10 pointer-events-none" />
       <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-[#fafafc] dark:from-[#050508] to-transparent z-10 pointer-events-none" />
 
-      <motion.div
-        className="flex w-max gap-8 md:gap-12 items-center will-change-transform"
-        animate={{ x: animateX }}
-        transition={{
-          repeat: Infinity,
-          ease: "linear",
-          duration: speed,
+      <div
+        className={`flex gap-8 md:gap-12 items-center`}
+        style={{
+          animation: `${animationName} ${speed}s linear infinite`,
+          willChange: "transform",
+          width: "max-content",
         }}
       >
         {repeated.map((text, i) => (
@@ -53,8 +48,8 @@ export default function TextMarqueeDivider({
               className={`
                 ${sizeClasses[size]}
                 uppercase whitespace-nowrap
-                ${size === "xs" 
-                  ? "font-bold text-zinc-400 dark:text-zinc-600" 
+                ${size === "xs"
+                  ? "font-bold text-zinc-400 dark:text-zinc-600"
                   : "font-black tracking-tight text-transparent leading-none"}
               `}
               style={size !== "xs" ? {
@@ -71,7 +66,18 @@ export default function TextMarqueeDivider({
             </span>
           </div>
         ))}
-      </motion.div>
+      </div>
+
+      <style>{`
+        @keyframes marquee-left {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        @keyframes marquee-right {
+          0% { transform: translateX(-50%); }
+          100% { transform: translateX(0); }
+        }
+      `}</style>
     </div>
   );
 }
