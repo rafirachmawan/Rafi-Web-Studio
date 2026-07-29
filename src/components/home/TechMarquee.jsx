@@ -19,7 +19,7 @@ export default function TechMarquee() {
       <div className="absolute right-0 top-0 w-24 h-full bg-gradient-to-l from-[#fafafc] dark:from-[#050508] to-transparent z-10 pointer-events-none" />
 
       <div className="flex overflow-hidden select-none w-full">
-        <div className="animate-marquee gap-8 md:gap-16 items-center px-4">
+        <div className="flex animate-marquee gap-8 md:gap-16 items-center px-4 will-change-transform">
           {/* First set of technologies */}
           {technologies.map((tech, i) => (
             <div

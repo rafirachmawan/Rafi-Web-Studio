@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="id" class="dark scroll-smooth scroll-pt-28">
+<html lang="id" class="scroll-smooth scroll-pt-28">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/jpeg" href="/favicon.jpg" />
@@ -22,10 +22,10 @@
     <script>
       (function() {
         const theme = localStorage.getItem("theme");
-        if (theme === "light") {
-          document.documentElement.classList.remove("dark");
-        } else {
+        if (theme === "dark") {
           document.documentElement.classList.add("dark");
+        } else {
+          document.documentElement.classList.remove("dark");
         }
       })();
     </script>

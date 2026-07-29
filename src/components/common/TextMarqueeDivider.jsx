@@ -38,7 +38,7 @@ export default function TextMarqueeDivider({
       <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-[#fafafc] dark:from-[#050508] to-transparent z-10 pointer-events-none" />
 
       <motion.div
-        className="flex w-max gap-8 md:gap-12 items-center"
+        className="flex w-max gap-8 md:gap-12 items-center will-change-transform"
         animate={{ x: animateX }}
         transition={{
           repeat: Infinity,
