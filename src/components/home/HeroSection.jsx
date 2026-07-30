@@ -123,9 +123,9 @@ export default function HeroSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-2xl sm:text-4xl md:text-5xl lg:text-[2.75rem] font-black tracking-tight leading-[1.1] text-zinc-900 dark:text-white flex flex-col items-center gap-1 text-center"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-black tracking-tight leading-[1.1] text-zinc-900 dark:text-white flex flex-col items-center gap-1 md:gap-1.5 text-center"
           >
-            <span className="opacity-90">{t("Digitalisasi Apapun", "Digitalize Anything In")}</span>
+            <span className="opacity-90">{t("Transformasi Digital", "Digital Transformation")}</span>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 pb-1 drop-shadow-sm font-black">
               {t("Bisnis Anda.", "Your Business.")}
             </span>
@@ -137,11 +137,11 @@ export default function HeroSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="mt-4 text-xs md:text-sm leading-relaxed text-zinc-600 dark:text-zinc-400 max-w-xl text-center font-medium"
+            className="mt-5 text-sm md:text-base leading-relaxed text-zinc-600 dark:text-zinc-400 max-w-2xl text-center font-medium"
           >
             {t(
-              "GapaiDigital adalah startup digitalisasi modern yang membantu membangun Landing Page, Aplikasi Mobile, hingga Sistem Web Custom untuk mempercepat pertumbuhan bisnis Anda.",
-              "GapaiDigital is a modern digitalization startup that helps build Landing Pages, Mobile Apps, and Custom Web Systems to accelerate your business growth."
+              "GapaiDigital hadir sebagai mitra strategis transformasi digital bisnis Anda. Kami merancang dan mengembangkan solusi teknologi komprehensif—mulai dari Landing Page, Aplikasi Mobile, hingga Sistem Web Custom—yang dirancang khusus untuk mengakselerasi efisiensi dan eskalasi bisnis Anda di era modern.",
+              "GapaiDigital is your strategic partner for business digital transformation. We design and develop comprehensive tech solutions—from Landing Pages, Mobile Apps, to Custom Web Systems—tailored to accelerate your business efficiency and scalability in the modern era."
             )}
           </motion.p>
 

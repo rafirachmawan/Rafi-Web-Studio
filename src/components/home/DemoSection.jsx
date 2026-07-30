@@ -52,24 +52,24 @@ export default function DemoSection({ filter, setFilter, filtered, isStandalone 
   return (
     <section 
       id="demo" 
-      className={`${isStandalone ? "pb-20 md:pb-32" : "py-20 md:py-32"} bg-transparent dark:bg-[#050508] relative`}
+      className={`${isStandalone ? "pb-20 md:pb-32" : "pt-8 pb-20 md:pt-12 md:pb-32"} bg-transparent dark:bg-[#050508] relative`}
     >
       <div className="container mx-auto px-4 md:px-6 max-w-7xl">
         {/* HEADER */}
         <div className="max-w-3xl mx-auto text-center mb-12 md:mb-16 flex flex-col items-center">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-600 dark:text-amber-400 text-xs font-bold mb-6 uppercase tracking-widest">
             <Sparkles className="w-4 h-4" />
-            <span>Demo Catalog</span>
+            <span>{t("Rebranding & Redesign", "Rebranding & Redesign")}</span>
           </div>
           
           <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-6">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-500">
-              {t("Katalog Demo & Template", "Demo & Template Catalog")}
+              {t("Evolusi Digital Bisnis Anda", "Your Business's Digital Evolution")}
             </span>
           </h2>
 
           <p className="text-zinc-600 dark:text-zinc-400 text-base md:text-lg leading-relaxed mx-auto max-w-2xl">
-            {getCategoryInfo(filter)} {t("Kami menyediakan opsi demo interaktif ini sebagai blueprint/katalog template yang siap dikustomisasi penuh sesuai dengan jenis usaha Anda.", "We provide these interactive demo options as a blueprint/catalog of templates ready for full customization according to your business type.")}
+            {getCategoryInfo(filter)} {t("Tinggalkan desain lama yang kaku. Kami siap me-rebrand dan mendesain ulang sistem atau website Anda menjadi lebih modern, memukau, dan berstandar tinggi seperti inspirasi di bawah ini.", "Leave the old, rigid design behind. We are ready to rebrand and redesign your system or website to be more modern, stunning, and high-standard like the inspirations below.")}
           </p>
         </div>
 

@@ -19,22 +19,22 @@ export default function RealProjectsSection({ isStandalone = false }) {
     >
       <div className="container mx-auto px-4 md:px-6 max-w-7xl">
         {/* HEADER */}
-        <div className="max-w-3xl mx-auto text-center mb-16 md:mb-24 flex flex-col items-center">
+        <div className="max-w-4xl mx-auto text-center mb-16 md:mb-24 flex flex-col items-center bg-white/40 dark:bg-zinc-900/40 border border-zinc-200/50 dark:border-white/5 backdrop-blur-xl p-8 md:p-12 rounded-[2rem] md:rounded-[3rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-none">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-600 dark:text-amber-400 text-xs font-bold mb-6 uppercase tracking-widest">
             <Trophy className="w-4 h-4" />
-            <span>{t("Siap Produksi", "Production Ready")}</span>
+            <span>{t("Bukti Nyata", "Proven Track Record")}</span>
           </div>
           
           <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-6">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-500">
-              {t("Project Client", "Client Projects")}
+              {t("Portofolio Eksklusif", "Exclusive Portfolio")}
             </span>
           </h2>
           
-          <p className="text-zinc-600 dark:text-zinc-400 text-base md:text-lg leading-relaxed mx-auto max-w-2xl mb-10">
+          <p className="text-zinc-600 dark:text-zinc-400 text-sm md:text-base leading-relaxed mx-auto max-w-2xl mb-4">
             {t(
-              "Ini bukan sekadar desain mockup atau template. Semua portofolio di bawah adalah 100% project asli yang telah kami rancang, kembangkan, dan kini aktif digunakan oleh klien-klien kami.",
-              "These are not just mockup designs or templates. All portfolios below are 100% real projects that we have designed, developed, and are now actively used by our clients."
+              "Kami tidak sekadar merancang konsep, tetapi merealisasikan solusi. Telusuri deretan karya digital nyata yang telah kami bangun dan kini sukses mengakselerasi pertumbuhan bisnis klien kami di berbagai industri.",
+              "We don't just design concepts, but realize solutions. Explore the array of real digital works we have built that are now successfully accelerating our clients' business growth across various industries."
             )}
           </p>
         </div>

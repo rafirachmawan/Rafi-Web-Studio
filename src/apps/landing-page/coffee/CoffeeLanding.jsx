@@ -13,6 +13,7 @@ import ecoCupImg from "./assets/eco_cup.jpg";
 import seasonalCupsImg from "./assets/seasonal_cups.jpg";
 import coffeeBeansBagImg from "./assets/coffee_beans_bag.jpg";
 import coffeeFarmersImg from "./assets/coffee_farmers.jpg";
+import starbucksNavLogo from "../../../assets/starbuck/starbuck icon.png";
 
 // New food & merch images
 import croissantImg from "./assets/croissant.jpg";
@@ -234,10 +235,8 @@ export default function CoffeeLanding() {
           justify-between
         ">
           <div className="flex items-center gap-3">
-            {/* Starbucks Siren Emblem SVG */}
-            <svg className="w-10 h-10 text-[#00704A] fill-current" viewBox="0 0 24 24">
-              <path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm0 1.5c4.76 0 8.78 3.2 10.05 7.55A10.45 10.45 0 0 0 12 6.5a10.45 10.45 0 0 0-10.05 2.55C3.22 4.7 7.24 1.5 12 1.5zm0 10c1.38 0 2.5 1.12 2.5 2.5s-1.12 2.5-2.5 2.5-2.5-1.12-2.5-2.5 1.12-2.5 2.5-2.5zm0-2c-2.48 0-4.5 2.02-4.5 4.5s2.02 4.5 4.5 4.5 4.5-2.02 4.5-4.5-2.02-4.5-4.5-4.5zm0-5c-5.79 0-10.5 4.71-10.5 10.5 0 2.21.68 4.26 1.84 5.97A10.4 10.4 0 0 1 12 11.5a10.4 10.4 0 0 1 8.66 9.47c1.16-1.71 1.84-3.76 1.84-5.97 0-5.79-4.71-10.5-10.5-10.5z"/>
-            </svg>
+            {/* Starbucks Logo */}
+            <img src={starbucksNavLogo} alt="Starbucks" className="w-10 h-10 object-contain" />
             <span className="text-xl font-black tracking-[0.2em] font-serif text-[#D4E9E2]">
               STARBUCKS
             </span>
