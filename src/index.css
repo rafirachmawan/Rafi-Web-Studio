@@ -15,7 +15,13 @@ html {
 }
 
 body {
-  background-color: #0a0a0a;
+  background-color: #fafafc;
+  color: #18181b;
+}
+
+.dark body {
+  background-color: #050508;
+  color: #f4f4f5;
 }
 
 /* Normalize font-weight: headings/bold text are bold, others are regular */
@@ -47,64 +53,30 @@ strong, b, [role="heading"] {
 }
 
 /* ═══════════════════════════════════════════════
-   LAZY SECTION — Smooth Per-Section Reveal
+   LAZY SECTION — Safe Per-Section Reveal
    ═══════════════════════════════════════════════ */
 .lazy-section {
-  opacity: 0;
-  transform: translate3d(0, 32px, 0);
-  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: opacity, transform;
-}
-
-.lazy-section--visible {
   opacity: 1;
-  transform: translate3d(0, 0, 0);
+  transition: opacity 0.4s ease-out;
 }
 
 /* ═══════════════════════════════════════════════
-   MOBILE PERFORMANCE — Disable heavy animations
-   on touch / low-power devices
+   MOBILE PERFORMANCE — Safe Optimization
    ═══════════════════════════════════════════════ */
 @media (pointer: coarse) {
-  /* Speed up lazy section reveal on mobile (no need for long animation) */
-  .lazy-section {
-    transform: translate3d(0, 20px, 0);
-    transition-duration: 0.45s;
-  }
-
-  /* Reduce blur effects (very GPU-intensive on low-end phones) */
+  /* Reduce heavy blur filters on low-end mobile GPUs */
   .blur-\[100px\],
   .blur-\[120px\],
   .blur-\[80px\],
   .blur-\[60px\] {
-    filter: blur(40px) !important;
+    filter: blur(30px) !important;
   }
 
-  /* Disable framer-motion's JavaScript-driven whileInView animations
-     by forcing all motion elements to be immediately visible */
-  [style*="opacity: 0"][style*="transform"] {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
-  }
-
-  /* Reduce backdrop-blur (expensive on mobile) */
+  /* Reduce heavy backdrop-blur filters */
   .backdrop-blur-xl,
   .backdrop-blur-2xl,
   .backdrop-blur-sm {
     -webkit-backdrop-filter: blur(8px) !important;
     backdrop-filter: blur(8px) !important;
-  }
-
-  /* Disable floating badge bounce animations */
-  [style*="translateZ"] {
-    animation: none !important;
-  }
-
-  /* Content visibility optimization — browser skips rendering off-screen sections */
-  .lazy-section {
-    content-visibility: auto;
-    contain-intrinsic-size: auto 400px;
   }
 }
