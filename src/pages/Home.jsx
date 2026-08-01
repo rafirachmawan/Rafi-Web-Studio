@@ -36,16 +36,16 @@ export default function Home() {
 
   return (
     <>
-      {/* Above the fold — loads immediately */}
+      {/* ─── Above the fold — renders immediately ─── */}
       <HeroSection />
       <TechMarquee />
 
-      {/* Below the fold — lazy loaded when scrolled near */}
-      <LazySection minHeight="400px">
+      {/* ─── Below the fold — each section lazy-loads & reveals smoothly ─── */}
+      <LazySection minHeight="400px" delay={0}>
         <RealProjectsSection />
       </LazySection>
 
-      <LazySection minHeight="60px">
+      <LazySection minHeight="50px" delay={50}>
         <TextMarqueeDivider
           texts={["PORTOFOLIO", "CLIENT PROJECTS", "KARYA NYATA", "PRODUCTION READY"]}
           direction="left"
@@ -55,12 +55,11 @@ export default function Home() {
         />
       </LazySection>
 
-      <LazySection minHeight="500px">
+      <LazySection minHeight="500px" delay={0}>
         <DemoSection filter={filter} setFilter={setFilter} filtered={filtered} />
       </LazySection>
 
-      {/* Visual break: demo → why us */}
-      <LazySection minHeight="60px">
+      <LazySection minHeight="50px" delay={50}>
         <TextMarqueeDivider
           texts={["KENAPA KAMI", "WHY GAPAI", "SOLUSI DIGITAL", "EKSKLUSIF"]}
           direction="right"
@@ -70,16 +69,15 @@ export default function Home() {
         />
       </LazySection>
 
-      <LazySection minHeight="500px">
+      <LazySection minHeight="500px" delay={0}>
         <WhyUsSection />
       </LazySection>
 
-      <LazySection minHeight="500px">
+      <LazySection minHeight="500px" delay={0}>
         <ProcessSection />
       </LazySection>
 
-      {/* Visual break: process → pricing */}
-      <LazySection minHeight="60px">
+      <LazySection minHeight="50px" delay={50}>
         <TextMarqueeDivider
           texts={["HARGA TRANSPARAN", "PRICING", "PILIH PAKET", "MULAI SEKARANG"]}
           direction="left"
@@ -89,16 +87,15 @@ export default function Home() {
         />
       </LazySection>
 
-      <LazySection minHeight="600px">
+      <LazySection minHeight="600px" delay={0}>
         <PricingSection pricingTab={pricingTab} setPricingTab={setPricingTab} waLink={waLink} />
       </LazySection>
 
-      <LazySection minHeight="400px">
+      <LazySection minHeight="400px" delay={0}>
         <TestimoniSection />
       </LazySection>
 
-      {/* Visual break: testimoni → founder */}
-      <LazySection minHeight="60px">
+      <LazySection minHeight="50px" delay={50}>
         <TextMarqueeDivider
           texts={["KISAH SUKSES", "SUCCESS STORIES", "KLIEN PUAS", "5.0 RATING"]}
           direction="right"
@@ -108,11 +105,11 @@ export default function Home() {
         />
       </LazySection>
 
-      <LazySection minHeight="400px">
+      <LazySection minHeight="400px" delay={0}>
         <FounderSection />
       </LazySection>
 
-      <LazySection minHeight="200px">
+      <LazySection minHeight="200px" delay={0}>
         <BigCTASection />
       </LazySection>
     </>

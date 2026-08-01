@@ -1,43 +1,44 @@
 import { useState, useEffect, useRef } from "react";
 
 /**
- * LazySection — only mounts/renders its children when the section
- * is near the viewport. This dramatically reduces initial render cost
- * on slow mobile devices by deferring heavy components (animations,
- * images, framer-motion, etc.) until they are actually needed.
- *
- * Props:
- *   rootMargin   — IntersectionObserver rootMargin (default "200px")
- *   minHeight    — minimum height placeholder before content loads (default "200px")
- *   className    — extra classes for the wrapper div
- *   as           — wrapper element type (default "div")
- *   children     — the section content to lazily render
+ * LazySection — defers rendering AND reveals with a smooth CSS
+ * fade-up animation. On slow mobile devices this means:
+ *   1. Section DOM + JS is NOT created until user scrolls near it
+ *   2. Once mounted the section glides in smoothly (GPU-accelerated)
+ *   3. No framer-motion overhead — pure CSS transform + opacity
  */
 export default function LazySection({
   children,
-  rootMargin = "300px",
+  rootMargin = "250px",
   minHeight = "200px",
   className = "",
-  as: Component = "div",
+  /** Stagger delay in ms — use to cascade adjacent sections */
+  delay = 0,
 }) {
-  const [isVisible, setIsVisible] = useState(false);
+  const [shouldRender, setShouldRender] = useState(false);
+  const [isRevealed, setIsRevealed] = useState(false);
   const ref = useRef(null);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
 
-    // If IntersectionObserver not supported, just show immediately
     if (!("IntersectionObserver" in window)) {
-      setIsVisible(true);
+      setShouldRender(true);
+      setIsRevealed(true);
       return;
     }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect(); // Once visible, never hide again
+          // Mount children first
+          setShouldRender(true);
+          // Then trigger CSS reveal after a micro-delay so the browser
+          // can paint the initial (hidden) state before animating
+          const timer = setTimeout(() => setIsRevealed(true), Math.max(30, delay));
+          observer.disconnect();
+          return () => clearTimeout(timer);
         }
       },
       { rootMargin }
@@ -45,15 +46,15 @@ export default function LazySection({
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, [rootMargin]);
+  }, [rootMargin, delay]);
 
   return (
-    <Component
+    <div
       ref={ref}
-      className={className}
-      style={!isVisible ? { minHeight } : undefined}
+      className={`lazy-section ${isRevealed ? "lazy-section--visible" : ""} ${className}`}
+      style={!shouldRender ? { minHeight } : undefined}
     >
-      {isVisible ? children : null}
-    </Component>
+      {shouldRender ? children : null}
+    </div>
   );
 }
