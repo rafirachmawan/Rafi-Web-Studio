@@ -11,6 +11,7 @@ import TestimoniSection from "../components/home/TestimoniSection";
 import FounderSection from "../components/home/FounderSection";
 import BigCTASection from "../components/home/BigCTASection";
 import TextMarqueeDivider from "../components/common/TextMarqueeDivider";
+import LazySection from "../components/common/LazySection";
 
 import { demos } from "../constants/demos";
 
@@ -35,55 +36,85 @@ export default function Home() {
 
   return (
     <>
+      {/* Above the fold — loads immediately */}
       <HeroSection />
       <TechMarquee />
-      <RealProjectsSection />
 
-      <TextMarqueeDivider
-        texts={["PORTOFOLIO", "CLIENT PROJECTS", "KARYA NYATA", "PRODUCTION READY"]}
-        direction="left"
-        speed={35}
-        size="xs"
-        className="my-2"
-      />
+      {/* Below the fold — lazy loaded when scrolled near */}
+      <LazySection minHeight="400px">
+        <RealProjectsSection />
+      </LazySection>
 
-      <DemoSection filter={filter} setFilter={setFilter} filtered={filtered} />
+      <LazySection minHeight="60px">
+        <TextMarqueeDivider
+          texts={["PORTOFOLIO", "CLIENT PROJECTS", "KARYA NYATA", "PRODUCTION READY"]}
+          direction="left"
+          speed={35}
+          size="xs"
+          className="my-2"
+        />
+      </LazySection>
+
+      <LazySection minHeight="500px">
+        <DemoSection filter={filter} setFilter={setFilter} filtered={filtered} />
+      </LazySection>
 
       {/* Visual break: demo → why us */}
-      <TextMarqueeDivider
-        texts={["KENAPA KAMI", "WHY GAPAI", "SOLUSI DIGITAL", "EKSKLUSIF"]}
-        direction="right"
-        speed={28}
-        size="xs"
-        className="my-2"
-      />
+      <LazySection minHeight="60px">
+        <TextMarqueeDivider
+          texts={["KENAPA KAMI", "WHY GAPAI", "SOLUSI DIGITAL", "EKSKLUSIF"]}
+          direction="right"
+          speed={28}
+          size="xs"
+          className="my-2"
+        />
+      </LazySection>
 
-      <WhyUsSection />
-      <ProcessSection />
+      <LazySection minHeight="500px">
+        <WhyUsSection />
+      </LazySection>
+
+      <LazySection minHeight="500px">
+        <ProcessSection />
+      </LazySection>
 
       {/* Visual break: process → pricing */}
-      <TextMarqueeDivider
-        texts={["HARGA TRANSPARAN", "PRICING", "PILIH PAKET", "MULAI SEKARANG"]}
-        direction="left"
-        speed={32}
-        size="xs"
-        className="my-2"
-      />
+      <LazySection minHeight="60px">
+        <TextMarqueeDivider
+          texts={["HARGA TRANSPARAN", "PRICING", "PILIH PAKET", "MULAI SEKARANG"]}
+          direction="left"
+          speed={32}
+          size="xs"
+          className="my-2"
+        />
+      </LazySection>
 
-      <PricingSection pricingTab={pricingTab} setPricingTab={setPricingTab} waLink={waLink} />
-      <TestimoniSection />
+      <LazySection minHeight="600px">
+        <PricingSection pricingTab={pricingTab} setPricingTab={setPricingTab} waLink={waLink} />
+      </LazySection>
+
+      <LazySection minHeight="400px">
+        <TestimoniSection />
+      </LazySection>
 
       {/* Visual break: testimoni → founder */}
-      <TextMarqueeDivider
-        texts={["KISAH SUKSES", "SUCCESS STORIES", "KLIEN PUAS", "5.0 RATING"]}
-        direction="right"
-        speed={25}
-        size="xs"
-        className="mb-2"
-      />
+      <LazySection minHeight="60px">
+        <TextMarqueeDivider
+          texts={["KISAH SUKSES", "SUCCESS STORIES", "KLIEN PUAS", "5.0 RATING"]}
+          direction="right"
+          speed={25}
+          size="xs"
+          className="mb-2"
+        />
+      </LazySection>
 
-      <FounderSection />
-      <BigCTASection />
+      <LazySection minHeight="400px">
+        <FounderSection />
+      </LazySection>
+
+      <LazySection minHeight="200px">
+        <BigCTASection />
+      </LazySection>
     </>
   );
 }
