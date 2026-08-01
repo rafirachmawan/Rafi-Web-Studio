@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef, lazy, Suspense } from "react";
+import { useEffect, useState, lazy, Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import { LanguageProvider } from "./context/LanguageContext";
 
@@ -16,7 +16,7 @@ const Testimoni = lazy(() => import("./pages/Testimoni"));
 const Contact = lazy(() => import("./pages/Contact"));
 const ProjectDetail = lazy(() => import("./pages/ProjectDetail"));
 
-// Landing Page Demos — heavy, only load on demand
+// Landing Page Demos
 const CoffeeLanding = lazy(() => import("./apps/landing-page/coffee/CoffeeLanding"));
 const RentalLanding = lazy(() => import("./apps/landing-page/rental/RentalLanding"));
 const HotelLanding = lazy(() => import("./apps/landing-page/hotel/HotelLanding"));
@@ -26,7 +26,7 @@ const LaundryLanding = lazy(() => import("./apps/landing-page/loundry/LaundryLan
 const UmrohLanding = lazy(() => import("./apps/landing-page/umroh/UmrohLanding"));
 const UNITALanding = lazy(() => import("./apps/landing-page/unita/UNITALanding"));
 
-// App Demos — heavy, only load on demand
+// App Demos
 const AkademikApp = lazy(() => import("./apps/sistem-web/akademik/AkademikApp"));
 const WarungOSApp = lazy(() => import("./apps/sistem-web/warungos/WarungOSApp"));
 const ExamOSApp = lazy(() => import("./apps/sistem-web/examos/ExamOSApp"));
@@ -43,14 +43,14 @@ function RouteWatcher() {
 
     if (!isAppInitialized) {
       isAppInitialized = true;
-      return; // Skip initial load
+      return;
     }
 
     setIsPageLoading(true);
     
     const timer = setTimeout(() => {
       setIsPageLoading(false);
-    }, 500); // Tampilkan loading selama 0.5 detik saat pindah halaman
+    }, 400);
 
     return () => clearTimeout(timer);
   }, [pathname]);
@@ -58,7 +58,7 @@ function RouteWatcher() {
   return <PageLoader isLoading={isPageLoading} />;
 }
 
-// Suspense fallback — minimal loading indicator
+// Suspense fallback
 function SuspenseFallback() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#fafafc] dark:bg-[#050508]">
@@ -77,11 +77,10 @@ export default function App() {
     <LanguageProvider>
       {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
       
-      {!showSplash && (
-        <Router>
-          <RouteWatcher />
-          <Suspense fallback={<SuspenseFallback />}>
-            <Routes>
+      <Router>
+        <RouteWatcher />
+        <Suspense fallback={<SuspenseFallback />}>
+          <Routes>
             {/* Main Website Routes */}
             <Route path="/" element={<MainLayout><Home /></MainLayout>} />
             <Route path="/project" element={<MainLayout><Project /></MainLayout>} />
@@ -109,9 +108,8 @@ export default function App() {
             <Route path="/examos/*" element={<ExamOSApp />} />
             <Route path="/absenos/*" element={<AbsenOSApp />} />
           </Routes>
-          </Suspense>
-        </Router>
-      )}
+        </Suspense>
+      </Router>
     </LanguageProvider>
   );
 }
