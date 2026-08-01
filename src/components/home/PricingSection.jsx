@@ -1,5 +1,6 @@
 import { Check, Flame, Sparkles, Zap } from "lucide-react";
 import { useLanguage } from "../../context/LanguageContext";
+import { motion } from "framer-motion";
 
 export default function PricingSection({ pricingTab, setPricingTab, waLink }) {
   const { t } = useLanguage();
