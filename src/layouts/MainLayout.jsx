@@ -14,11 +14,11 @@ export default function MainLayout({ children }) {
       <CustomCursor />
 
       {/* ==========================================
-          AMBIENT BACKGROUND LAYER (LIGHT MODE ONLY)
-          Blobs tersebar di seluruh halaman untuk 
-          memberi kedalaman visual antar-section
+          AMBIENT BACKGROUND LAYER (DESKTOP ONLY)
+          Heavy blur filters are disabled on mobile
+          to prevent GPU scroll lag and keep FPS high.
       ========================================== */}
-      <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden dark:hidden" aria-hidden="true">
+      <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden dark:hidden hidden md:block" aria-hidden="true">
         {/* Blob 1 - Hero area top center */}
         <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-gradient-to-br from-amber-300/25 to-orange-200/15 blur-[120px] rounded-full" />
 

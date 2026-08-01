@@ -1,6 +1,5 @@
 import { Check, Flame, Sparkles, Zap } from "lucide-react";
 import { useLanguage } from "../../context/LanguageContext";
-import { motion } from "framer-motion";
 
 export default function PricingSection({ pricingTab, setPricingTab, waLink }) {
   const { t } = useLanguage();
@@ -8,24 +7,21 @@ export default function PricingSection({ pricingTab, setPricingTab, waLink }) {
     <>
       <div
         id="harga"
-        className="mt-32 mb-24 max-w-6xl mx-auto text-center px-4 relative"
+        className="mt-16 md:mt-24 mb-16 md:mb-24 max-w-6xl mx-auto text-center px-4 relative"
       >
         {/* Background ambient light */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[350px] h-[350px] bg-amber-500/5 blur-[120px] rounded-full pointer-events-none animate-pulse" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[350px] h-[350px] bg-amber-500/5 blur-[80px] rounded-full pointer-events-none" />
 
         {/* GLOWING BADGE */}
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-500 text-[10px] sm:text-xs font-extrabold tracking-widest uppercase mb-5 animate-pulse"
+        <div
+          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-500 text-[10px] sm:text-xs font-extrabold tracking-widest uppercase mb-5"
         >
-          <Sparkles size={14} className="text-amber-400 animate-spin-slow" />
+          <Sparkles size={14} className="text-amber-400" />
           {t(
             "Promo Terbatas • Investasi Terbaik",
             "Limited Promo • Best Investment",
           )}
-        </motion.div>
+        </div>
 
         {/* TITLE */}
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-tight max-w-3xl mx-auto text-black dark:text-white mb-4">

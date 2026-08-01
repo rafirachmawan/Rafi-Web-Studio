@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
 import heroVideo from "../../assets/Video.mp4";
 import { Star, CheckCircle, Zap, Sparkles } from "lucide-react";
 import { useLanguage } from "../../context/LanguageContext";
@@ -11,73 +10,49 @@ export default function HeroSection() {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    // Detect mobile / touch device
-    const touch = navigator.maxTouchPoints > 0 || window.matchMedia("(pointer: coarse)").matches;
-    setIsMobile(touch);
+    // Check if device is mobile or has small screen/touch screen
+    const checkMobile = () => {
+      const mobile =
+        window.innerWidth < 768 ||
+        navigator.maxTouchPoints > 0 ||
+        window.matchMedia("(pointer: coarse)").matches;
+      setIsMobile(mobile);
 
-    if (!touch) {
-      // Only load video on desktop
-      const timer = setTimeout(() => {
+      // ONLY load video source on DESKTOP (non-mobile) to save bandwidth & memory on mobile!
+      if (!mobile) {
         setVideoSrc(heroVideo);
-      }, 800);
-      return () => clearTimeout(timer);
-    }
+      }
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
-
-  // Mouse Glow Position (desktop only)
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-
-  const handleMouseMove = (e) => {
-    if (isMobile || !containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    setMousePos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
-  };
-
-  const handleMouseLeave = () => {
-    setMousePos({ x: 0, y: 0 });
-  };
 
   return (
     <div
-      id="home"
       ref={containerRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      className="group relative overflow-hidden border border-zinc-200/50 dark:border-white/5 rounded-[32px] md:rounded-[40px] p-5 sm:p-6 md:p-10 bg-white/40 dark:bg-zinc-950/40 backdrop-blur-xl mb-16 shadow-[0_20px_50px_rgba(0,0,0,0.02)] dark:shadow-none transition-colors duration-500"
+      className="relative min-h-[85vh] md:min-h-[90vh] flex flex-col justify-center items-center px-4 sm:px-6 pt-6 md:pt-10 pb-16 md:pb-24 overflow-hidden bg-transparent"
     >
-      {/* MOUSE GLOW — desktop only */}
-      {!isMobile && (
-        <div
-          className="pointer-events-none absolute -inset-px rounded-[32px] md:rounded-[40px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0"
-          style={{
-            background: mousePos.x
-              ? `radial-gradient(600px circle at ${mousePos.x}px ${mousePos.y}px, rgba(245,158,11,0.04), transparent 80%)`
-              : "none",
-          }}
-        />
-      )}
-
-      {/* FLOATING BLOBS — simplified on mobile */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {/* FLOATING BLOBS — hidden on mobile */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none hidden md:block">
         <div
           className="absolute -top-40 -right-40 w-80 h-80 bg-amber-500/10 dark:bg-amber-500/5 blur-[100px] rounded-full"
-          style={isMobile ? {} : { animation: "blob-float-1 12s ease-in-out infinite", willChange: "transform" }}
+          style={{ animation: "blob-float-1 12s ease-in-out infinite", willChange: "transform" }}
         />
         <div
           className="absolute -bottom-40 -left-40 w-80 h-80 bg-orange-500/10 dark:bg-orange-500/5 blur-[100px] rounded-full"
-          style={isMobile ? {} : { animation: "blob-float-2 15s ease-in-out infinite", willChange: "transform" }}
+          style={{ animation: "blob-float-2 15s ease-in-out infinite", willChange: "transform" }}
         />
         <style>{`
           @keyframes blob-float-1 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(30px,15px) scale(1.1); } }
           @keyframes blob-float-2 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-15px,-30px) scale(1.05); } }
         `}</style>
 
-        {/* GIANT DECORATIVE BACKGROUND TEXT */}
+        {/* GIANT DECORATIVE BACKGROUND TEXT — desktop only */}
         <div className="absolute inset-0 flex flex-col justify-center items-center gap-0 overflow-hidden pointer-events-none">
-          <motion.span
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, delay: 0.3 }}
+          <span
             className="text-[5rem] sm:text-[8rem] md:text-[11rem] lg:text-[14rem] font-black uppercase tracking-tighter leading-none select-none text-transparent whitespace-nowrap"
             style={{
               WebkitTextStroke: "1px",
@@ -86,11 +61,8 @@ export default function HeroSection() {
             }}
           >
             GAPAI
-          </motion.span>
-          <motion.span
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, delay: 0.5 }}
+          </span>
+          <span
             className="text-[3.5rem] sm:text-[6rem] md:text-[8rem] lg:text-[10rem] font-black uppercase tracking-[0.2em] leading-none select-none text-transparent whitespace-nowrap"
             style={{
               WebkitTextStroke: "1px",
@@ -99,7 +71,7 @@ export default function HeroSection() {
             }}
           >
             DIGITAL
-          </motion.span>
+          </span>
         </div>
       </div>
 
@@ -107,50 +79,35 @@ export default function HeroSection() {
         {/* TEXT & CTA - CENTERED */}
         <div className="text-center max-w-3xl mx-auto flex flex-col items-center pb-8 md:pb-12">
           {/* BADGE */}
-          <motion.div 
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+          <div 
             className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-amber-500/20 bg-amber-500/5 text-amber-600 dark:text-amber-400 text-xs font-bold mb-5 shadow-sm group/badge relative overflow-hidden"
           >
             <Zap className="w-3.5 h-3.5 fill-amber-500/20 group-hover:scale-110 transition-transform" /> 
             <span>{t("Startup Digitalisasi Indonesia", "Indonesia Digitalization Startup")}</span>
-          </motion.div>
+          </div>
 
           {/* HEADLINE */}
-          <motion.h1 
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
+          <h1 
             className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-black tracking-tight leading-[1.1] text-zinc-900 dark:text-white flex flex-col items-center gap-1 md:gap-1.5 text-center"
           >
             <span className="opacity-90">{t("Transformasi Digital", "Digital Transformation")}</span>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 pb-1 drop-shadow-sm font-black">
               {t("Bisnis Anda.", "Your Business.")}
             </span>
-          </motion.h1>
+          </h1>
  
           {/* DESC */}
-          <motion.p 
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
+          <p 
             className="mt-5 text-sm md:text-base leading-relaxed text-zinc-600 dark:text-zinc-400 max-w-2xl text-center font-medium"
           >
             {t(
               "GapaiDigital hadir sebagai mitra strategis transformasi digital bisnis Anda. Kami merancang dan mengembangkan solusi teknologi komprehensif—mulai dari Landing Page, Aplikasi Mobile, hingga Sistem Web Custom—yang dirancang khusus untuk mengakselerasi efisiensi dan eskalasi bisnis Anda di era modern.",
               "GapaiDigital is your strategic partner for business digital transformation. We design and develop comprehensive tech solutions—from Landing Pages, Mobile Apps, to Custom Web Systems—tailored to accelerate your business efficiency and scalability in the modern era."
             )}
-          </motion.p>
+          </p>
 
           {/* CTA BUTTONS */}
-          <motion.div 
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3 }}
+          <div 
             className="flex flex-col sm:flex-row gap-3 mt-5 md:mt-7 justify-center w-full sm:w-auto"
           >
             <a
@@ -171,19 +128,12 @@ export default function HeroSection() {
             >
               {t("Lihat Portofolio", "View Portfolio")}
             </a>
-          </motion.div>
+          </div>
         </div>
 
         {/* CINEMATIC VIDEO SHOWCASE - SHRUNK TO max-w-3xl */}
         <div className="relative w-full max-w-3xl mx-auto mt-4">
-          {/* Light Mode Soft Glow Behind Image */}
-          <div className="absolute -inset-10 bg-gradient-to-tr from-orange-200/40 via-amber-200/20 to-orange-100/40 blur-[80px] dark:opacity-0 pointer-events-none rounded-[100px] transition-opacity duration-700" />
-          
-          {/* 3D tilt only on desktop */}
-          <div 
-            style={isMobile ? {} : { transform: "perspective(1000px)" }}
-            className="relative rounded-2xl md:rounded-[28px] border border-zinc-200/80 dark:border-white/10 bg-zinc-950 group shadow-[0_30px_80px_-15px_rgba(0,0,0,0.25)] dark:shadow-none"
-          >
+          <div className="relative rounded-2xl md:rounded-[28px] border border-zinc-200/80 dark:border-white/10 bg-zinc-950 group shadow-[0_30px_80px_-15px_rgba(0,0,0,0.25)] dark:shadow-none">
             {/* ASPECT RATIO HOLDER */}
             <div className="aspect-[16/9] w-full rounded-2xl md:rounded-[32px] overflow-hidden">
               {videoSrc ? (
@@ -193,24 +143,24 @@ export default function HeroSection() {
                   loop
                   muted
                   playsInline
-                  className="w-full h-full object-cover opacity-70 group-hover:opacity-85 transition-all duration-1000"
+                  className="w-full h-full object-cover opacity-70 group-hover:opacity-85 transition-all duration-700"
                 />
               ) : (
                 <div className="w-full h-full bg-gradient-to-br from-zinc-900 via-zinc-900 to-zinc-800 flex items-center justify-center px-6">
                   {isMobile ? (
                     /* Mobile: informative message */
                     <div className="text-center max-w-xs">
-                      <div className="w-14 h-14 bg-amber-500/15 border border-amber-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                        <Sparkles className="w-7 h-7 text-amber-400" />
+                      <div className="w-12 h-12 bg-amber-500/15 border border-amber-500/20 rounded-2xl flex items-center justify-center mx-auto mb-3">
+                        <Sparkles className="w-6 h-6 text-amber-400" />
                       </div>
-                      <p className="text-white font-bold text-sm mb-1">Preview Demo Video</p>
-                      <p className="text-zinc-400 text-[11px] leading-relaxed">
+                      <p className="text-white font-bold text-xs md:text-sm mb-1">Preview Demo Video</p>
+                      <p className="text-zinc-400 text-[10px] md:text-[11px] leading-relaxed">
                         {t(
                           "Buka di laptop atau PC untuk menonton preview video demo interaktif kami.",
                           "Open on a laptop or PC to watch our interactive demo preview video."
                         )}
                       </p>
-                      <div className="mt-3 inline-flex items-center gap-1.5 bg-amber-500/10 border border-amber-500/20 text-amber-400 text-[10px] font-bold px-3 py-1.5 rounded-full">
+                      <div className="mt-3 inline-flex items-center gap-1.5 bg-amber-500/10 border border-amber-500/20 text-amber-400 text-[10px] font-bold px-3 py-1 rounded-full">
                         <span>🖥️</span>
                         <span>{t("Tersedia di Desktop", "Available on Desktop")}</span>
                       </div>
@@ -231,11 +181,8 @@ export default function HeroSection() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/10 pointer-events-none rounded-2xl md:rounded-[32px]" />
 
             {/* Floating Badge 1 - Left */}
-            <motion.div 
-              style={{ transform: "translateZ(40px)" }}
-              animate={isMobile ? {} : { y: [-8, 8, -8] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -top-6 -left-6 bg-white/70 dark:bg-zinc-900/90 backdrop-blur-2xl border border-white/60 dark:border-white/10 p-4 rounded-2xl items-center gap-3.5 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1)] dark:shadow-xl group/badge1 cursor-default hidden lg:flex ring-1 ring-black/5 dark:ring-0"
+            <div 
+              className="absolute -top-6 -left-6 bg-white/70 dark:bg-zinc-900/90 border border-white/60 dark:border-white/10 p-4 rounded-2xl items-center gap-3.5 shadow-xl group/badge1 cursor-default hidden lg:flex"
             >
               <div className="w-10 h-10 bg-amber-500 rounded-full flex items-center justify-center text-white shadow-lg shadow-amber-500/30 group-hover/badge1:scale-110 transition-transform">
                 <Star className="w-5 h-5 fill-current" />
@@ -244,14 +191,11 @@ export default function HeroSection() {
                 <p className="text-zinc-900 dark:text-white font-black text-sm">Rating 5.0</p>
                 <p className="text-zinc-500 dark:text-zinc-400 text-[10px] font-bold uppercase tracking-wider">{t("Klien Puas", "Satisfied Clients")}</p>
               </div>
-            </motion.div>
+            </div>
  
             {/* Floating Badge 2 - Right */}
-            <motion.div 
-              style={{ transform: "translateZ(30px)" }}
-              animate={isMobile ? {} : { y: [8, -8, 8] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              className="absolute -bottom-6 -right-6 bg-white/70 dark:bg-zinc-900/90 backdrop-blur-2xl border border-white/60 dark:border-white/10 p-4 rounded-2xl items-center gap-3.5 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1)] dark:shadow-xl group/badge2 cursor-default hidden lg:flex ring-1 ring-black/5 dark:ring-0"
+            <div 
+              className="absolute -bottom-6 -right-6 bg-white/70 dark:bg-zinc-900/90 border border-white/60 dark:border-white/10 p-4 rounded-2xl items-center gap-3.5 shadow-xl group/badge2 cursor-default hidden lg:flex"
             >
               <div className="w-10 h-10 bg-emerald-500 rounded-full flex items-center justify-center text-white shadow-lg shadow-emerald-500/30 group-hover/badge2:scale-110 transition-transform">
                 <CheckCircle className="w-5 h-5" />
@@ -260,7 +204,7 @@ export default function HeroSection() {
                 <p className="text-zinc-900 dark:text-white font-black text-sm">{t("100+ Project", "100+ Projects")}</p>
                 <p className="text-zinc-500 dark:text-zinc-400 text-[10px] font-bold uppercase tracking-wider">{t("Tepat Waktu", "On Time")}</p>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>

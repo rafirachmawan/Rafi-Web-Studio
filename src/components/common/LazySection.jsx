@@ -1,18 +1,15 @@
 import { useState, useEffect, useRef } from "react";
 
 /**
- * LazySection — defers rendering AND reveals with a smooth CSS
- * fade-up animation. On slow mobile devices this means:
- *   1. Section DOM + JS is NOT created until user scrolls near it
- *   2. Once mounted the section glides in smoothly (GPU-accelerated)
- *   3. No framer-motion overhead — pure CSS transform + opacity
+ * LazySection — Ultra-lightweight IntersectionObserver section loader.
+ * Loads sections 350px before entering viewport so they mount silently off-screen
+ * and fade in with 60fps GPU animation without blocking JS main thread.
  */
 export default function LazySection({
   children,
-  rootMargin = "250px",
-  minHeight = "200px",
+  rootMargin = "350px 0px",
+  minHeight = "180px",
   className = "",
-  /** Stagger delay in ms — use to cascade adjacent sections */
   delay = 0,
 }) {
   const [shouldRender, setShouldRender] = useState(false);
@@ -32,11 +29,9 @@ export default function LazySection({
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          // Mount children first
           setShouldRender(true);
-          // Then trigger CSS reveal after a micro-delay so the browser
-          // can paint the initial (hidden) state before animating
-          const timer = setTimeout(() => setIsRevealed(true), Math.max(30, delay));
+          // Micro delay to ensure paint completes before triggering CSS transition
+          const timer = setTimeout(() => setIsRevealed(true), Math.max(20, delay));
           observer.disconnect();
           return () => clearTimeout(timer);
         }

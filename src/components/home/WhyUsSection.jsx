@@ -1,6 +1,5 @@
 import { Star, XCircle, CheckCircle2, ShieldCheck, AlertCircle } from "lucide-react";
 import { useLanguage } from "../../context/LanguageContext";
-import { motion } from "framer-motion";
 
 export default function WhyUsSection() {
   const { t } = useLanguage();
@@ -45,7 +44,7 @@ export default function WhyUsSection() {
   ];
 
   return (
-    <section id="why-us" className="relative py-24 overflow-hidden bg-transparent dark:bg-[#050508]">
+    <section id="why-us" className="relative py-16 md:py-24 overflow-hidden bg-transparent dark:bg-[#050508]">
       {/* EDITORIAL SECTION NUMBER */}
       <div className="absolute top-8 left-4 md:left-8 select-none pointer-events-none z-0">
         <span 
@@ -56,44 +55,25 @@ export default function WhyUsSection() {
           }}
         >01</span>
       </div>
-      {/* GLOW DECORATIVE */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-amber-500/5 dark:bg-amber-500/5 blur-[120px] rounded-full pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* HEADER SECTION - CENTERED */}
-        <div className="text-center max-w-3xl mx-auto mb-16 md:mb-20">
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-amber-500/20 bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold uppercase tracking-wider mb-6"
-          >
+        <div className="text-center max-w-3xl mx-auto mb-12 md:mb-20">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-amber-500/20 bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold uppercase tracking-wider mb-6">
             {t("⚡ Mitra Digital Anda", "⚡ Your Digital Partner")}
-          </motion.div>
+          </div>
 
-          <motion.h2
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight leading-[1.15] text-zinc-900 dark:text-white mb-6"
-          >
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight leading-[1.15] text-zinc-900 dark:text-white mb-6">
             {t("Standar Baru", "The New Standard")} <br className="hidden md:block" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600">
               {t("Ekosistem Digital", "of Digital Ecosystem")}
             </span>
-          </motion.h2>
+          </h2>
 
-          <motion.p
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="text-sm md:text-base leading-relaxed text-zinc-600 dark:text-zinc-400"
-          >
+          <p className="text-sm md:text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
             {t("Kami membantu bisnis lokal dan UMKM naik tingkat melalui digitalisasi yang dirancang secara matang, responsif, dan fokus pada peningkatan penjualan.", "We help local businesses and MSMEs scale up through carefully planned, responsive, and conversion-focused digitalization.")}
-          </motion.p>
+          </p>
         </div>
 
         {/* COMPARISON CARDS */}
@@ -102,17 +82,12 @@ export default function WhyUsSection() {
              const Icon = item.icon;
              const isGapai = item.type === "gapai";
              return (
-               <motion.div
+               <div
                   key={idx}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.2 }}
                   className={`p-8 md:p-10 rounded-3xl border transition-all duration-300 ${item.bgClass}`}
                >
                   {isGapai && (
                      <>
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-amber-500/10 blur-[80px] rounded-full pointer-events-none" />
                         <div className="absolute top-0 right-6 sm:right-10 bg-amber-500 text-black text-[10px] sm:text-xs font-black uppercase tracking-widest px-4 py-1.5 rounded-b-xl shadow-lg shadow-amber-500/20">
                            {t("Solusi Kami", "Our Solution")}
                         </div>
@@ -135,23 +110,18 @@ export default function WhyUsSection() {
                               <XCircle size={20} className="text-red-500/40 shrink-0 mt-0.5" />
                            )}
                            <span className={`text-sm md:text-base leading-relaxed ${isGapai ? 'text-zinc-300 font-medium' : 'text-zinc-500 line-through decoration-red-500/30'}`}>
-                              {point}
+                               {point}
                            </span>
                         </li>
                      ))}
                   </ul>
-               </motion.div>
+               </div>
              )
           })}
         </div>
 
         {/* STATS BANNER */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="grid grid-cols-3 divide-x divide-black/10 dark:divide-white/10 p-8 rounded-3xl border border-black/5 dark:border-white/5 bg-amber-500/5 dark:bg-amber-500/5"
-        >
+        <div className="grid grid-cols-3 divide-x divide-black/10 dark:divide-white/10 p-8 rounded-3xl border border-black/5 dark:border-white/5 bg-amber-500/5 dark:bg-amber-500/5">
           {stats.map((item, index) => (
             <div key={index} className="text-center px-2 md:px-4">
               <h3 className="text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-500 mb-2">
@@ -162,7 +132,7 @@ export default function WhyUsSection() {
               </p>
             </div>
           ))}
-        </motion.div>
+        </div>
 
       </div>
     </section>

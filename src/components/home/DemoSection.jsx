@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import DemoCard from "../cards/DemoCard";
 import {
   LayoutGrid,
@@ -16,12 +15,10 @@ export default function DemoSection({ filter, setFilter, filtered, isStandalone 
   const { t } = useLanguage();
   const [showAll, setShowAll] = useState(false);
 
-  // Reset showAll when filter category changes
   useEffect(() => {
     setShowAll(false);
   }, [filter]);
 
-  // CATEGORY CONFIG
   const categories = [
     { id: "all", label: t("Semua Karya", "All Works"), icon: LayoutGrid },
     { id: "landing page", label: t("Website", "Websites"), icon: Globe },
@@ -30,7 +27,6 @@ export default function DemoSection({ filter, setFilter, filtered, isStandalone 
     { id: "software", label: t("Software", "Software"), icon: Code2 },
   ];
 
-  // Helper for category descriptions
   const getCategoryInfo = (id) => {
     switch(id) {
       case "landing page": 
@@ -52,11 +48,11 @@ export default function DemoSection({ filter, setFilter, filtered, isStandalone 
   return (
     <section 
       id="demo" 
-      className={`${isStandalone ? "pb-20 md:pb-32" : "pt-8 pb-20 md:pt-12 md:pb-32"} bg-transparent dark:bg-[#050508] relative`}
+      className={`${isStandalone ? "pb-20 md:pb-32" : "pt-8 pb-16 md:pt-12 md:pb-24"} bg-transparent dark:bg-[#050508] relative`}
     >
       <div className="container mx-auto px-4 md:px-6 max-w-7xl">
         {/* HEADER */}
-        <div className="max-w-3xl mx-auto text-center mb-12 md:mb-16 flex flex-col items-center">
+        <div className="max-w-3xl mx-auto text-center mb-10 md:mb-16 flex flex-col items-center">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-600 dark:text-amber-400 text-xs font-bold mb-6 uppercase tracking-widest">
             <Sparkles className="w-4 h-4" />
             <span>{t("Rebranding & Redesign", "Rebranding & Redesign")}</span>
@@ -74,7 +70,7 @@ export default function DemoSection({ filter, setFilter, filtered, isStandalone 
         </div>
 
         {/* FILTER TABS */}
-        <div className="flex mb-12 overflow-x-auto -mx-4 px-4 md:mx-0 md:px-0 md:overflow-x-visible pb-2 md:pb-0 hide-scrollbar" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+        <div className="flex mb-10 md:mb-12 overflow-x-auto -mx-4 px-4 md:mx-0 md:px-0 md:overflow-x-visible pb-2 md:pb-0 hide-scrollbar">
           <style>{`.hide-scrollbar::-webkit-scrollbar { display: none; }`}</style>
           <div className="flex flex-nowrap md:flex-wrap justify-start md:justify-center gap-2 md:gap-3 min-w-max md:min-w-0 w-full md:w-auto mx-auto">
             {categories.map((cat) => {
@@ -99,55 +95,30 @@ export default function DemoSection({ filter, setFilter, filtered, isStandalone 
         </div>
 
         {/* PROJECTS GRID */}
-        <div className="px-4">
-          <AnimatePresence mode="wait">
-            {filter === "software" ? (
-              <motion.div
-                key="coming-soon"
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                className="max-w-2xl mx-auto py-20 px-8 rounded-[32px] border border-dashed border-zinc-200 dark:border-white/10 bg-zinc-50/50 dark:bg-white/[0.02] text-center"
-              >
-                <div className="w-20 h-20 bg-amber-500/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Code2 className="w-10 h-10 text-amber-500" />
-                </div>
-                <h3 className="text-2xl font-bold text-black dark:text-white mb-4">{t("Segera Hadir", "Coming Soon")}</h3>
-                <p className="text-zinc-500 dark:text-zinc-400">
-                  {t("Software custom & aplikasi desktop kami sedang dalam tahap kurasi untuk ditampilkan.", "Our custom software & desktop applications are currently being curated for display.")}
-                </p>
-              </motion.div>
-            ) : (
-              <motion.div
-                key={filter}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.5 }}
-                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
-              >
-                {displayItems.map((demo, i) => (
-                  <DemoCard key={demo.id || i} demo={demo} />
-                ))}
-                
-                {/* Special Section for Mobile App if filter matches */}
-                {(filter === "all" || filter === "mobile app") && (
-                   // Adding mock mobile apps if they are not in the 'filtered' prop
-                   // but based on the code provided, they were hardcoded before.
-                   // For a cleaner look, I'll only show what's in 'filtered' 
-                   // unless we want to keep those hardcoded ones.
-                   // The USER mentioned it's too crowded, so I'll stick to filtered data.
-                   null
-                )}
-              </motion.div>
-            )}
-          </AnimatePresence>
+        <div className="px-2 md:px-4">
+          {filter === "software" ? (
+            <div className="max-w-2xl mx-auto py-16 px-8 rounded-[32px] border border-dashed border-zinc-200 dark:border-white/10 bg-zinc-50/50 dark:bg-white/[0.02] text-center">
+              <div className="w-16 h-16 bg-amber-500/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Code2 className="w-8 h-8 text-amber-500" />
+              </div>
+              <h3 className="text-xl font-bold text-black dark:text-white mb-2">{t("Segera Hadir", "Coming Soon")}</h3>
+              <p className="text-zinc-500 dark:text-zinc-400 text-sm">
+                {t("Software custom & aplikasi desktop kami sedang dalam tahap kurasi untuk ditampilkan.", "Our custom software & desktop applications are currently being curated for display.")}
+              </p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+              {displayItems.map((demo, i) => (
+                <DemoCard key={demo.id || i} demo={demo} />
+              ))}
+            </div>
+          )}
 
           {filter !== "software" && filtered.length > initialItemsCount && (
-            <div className="flex justify-center mt-12 relative z-20">
+            <div className="flex justify-center mt-10 md:mt-12 relative z-20">
               <button
                 onClick={() => setShowAll(!showAll)}
-                className="group/btn relative px-8 py-3.5 rounded-full overflow-hidden border border-amber-500/20 bg-amber-500/5 dark:bg-amber-500/5 hover:border-amber-500/30 text-amber-600 dark:text-amber-400 hover:text-white dark:hover:text-white text-xs font-bold transition-all duration-300 shadow-md shadow-amber-500/5 hover:shadow-lg hover:shadow-amber-500/10 active:scale-95"
+                className="group/btn relative px-8 py-3.5 rounded-full overflow-hidden border border-amber-500/20 bg-amber-500/5 hover:border-amber-500/30 text-amber-600 dark:text-amber-400 hover:text-white dark:hover:text-white text-xs font-bold transition-all duration-300 shadow-md shadow-amber-500/5 active:scale-95"
               >
                 <span className="absolute inset-0 bg-gradient-to-r from-amber-500 to-orange-500 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300 -z-10" />
                 <span className="relative z-10 flex items-center gap-2">
@@ -160,16 +131,8 @@ export default function DemoSection({ filter, setFilter, filtered, isStandalone 
         </div>
 
         {/* BOTTOM CTA */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-20 md:mt-24 max-w-3xl mx-auto px-4"
-        >
-          <div className="bg-white dark:bg-zinc-900/50 rounded-[2rem] border border-zinc-200/80 dark:border-zinc-800/60 p-8 md:p-12 text-center shadow-xl shadow-zinc-200/20 dark:shadow-none hover:border-amber-500/30 transition-colors duration-500 relative overflow-hidden group">
-            {/* Ambient background glow */}
-            <div className="absolute inset-0 bg-gradient-to-b from-amber-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-            
+        <div className="mt-16 md:mt-24 max-w-3xl mx-auto px-4">
+          <div className="bg-white dark:bg-zinc-900/50 rounded-[2rem] border border-zinc-200/80 dark:border-zinc-800/60 p-8 md:p-12 text-center shadow-xl shadow-zinc-200/20 dark:shadow-none hover:border-amber-500/30 transition-colors duration-300 relative overflow-hidden group">
             <div className="relative z-10 flex flex-col items-center">
               <div className="w-12 h-12 bg-amber-500/10 rounded-full flex items-center justify-center mb-6 text-amber-500">
                 <Sparkles className="w-6 h-6" />
@@ -189,7 +152,7 @@ export default function DemoSection({ filter, setFilter, filtered, isStandalone 
               </a>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

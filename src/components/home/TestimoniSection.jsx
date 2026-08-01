@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { Quote, Star } from "lucide-react";
 import { useLanguage } from "../../context/LanguageContext";
 
@@ -47,13 +46,12 @@ const testimonials = [
 
 export default function TestimoniSection() {
   const { t } = useLanguage();
-  // Duplicate array multiple times for smooth infinite scrolling
-  const duplicatedTestimonials = [...testimonials, ...testimonials, ...testimonials];
+  const duplicatedTestimonials = [...testimonials, ...testimonials, ...testimonials, ...testimonials];
 
   return (
-    <div id="testimoni" className="mt-32 mb-24 w-full overflow-hidden">
+    <div id="testimoni" className="mt-16 md:mt-24 mb-16 md:mb-24 w-full overflow-hidden">
       {/* TITLE */}
-      <div className="text-center mb-16 px-4 md:px-8">
+      <div className="text-center mb-10 md:mb-16 px-4 md:px-8">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-black mb-3 leading-tight text-zinc-900 dark:text-white">
           {t("Kisah Sukses", "Success Stories of")}{" "}
           <span className="bg-gradient-to-r from-amber-500 to-yellow-400 bg-clip-text text-transparent">
@@ -65,34 +63,17 @@ export default function TestimoniSection() {
         </p>
       </div>
 
-      {/* MARQUEE SLIDER */}
-      <div className="relative w-full flex items-center">
-        {/* Left & Right gradient masks for smooth fade edges */}
-        <div className="absolute left-0 top-0 bottom-0 w-24 md:w-48 bg-gradient-to-r from-[#fafafc] dark:from-[#050508] to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-24 md:w-48 bg-gradient-to-l from-[#fafafc] dark:from-[#050508] to-transparent z-10 pointer-events-none" />
+      {/* MARQUEE SLIDER - Pure GPU CSS */}
+      <div className="relative w-full overflow-hidden flex items-center">
+        {/* Left & Right gradient masks */}
+        <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-[#fafafc] dark:from-[#050508] to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-[#fafafc] dark:from-[#050508] to-transparent z-10 pointer-events-none" />
 
-        <motion.div
-          className="flex gap-6 md:gap-8 px-4 py-8 cursor-grab active:cursor-grabbing"
-          animate={{ x: [0, -1000] }} // Will be adjusted by CSS or framer motion width tracking if needed, but a simple percentage translation is better.
-          // Wait, animating x: ["0%", "-50%"] is safer if we duplicate 2 times. We duplicated 3 times, so "-33.33%" is 1 full set.
-          // Since the flex container holds all items, we can use x: ["0%", "-33.33%"] or let Framer track the inner width.
-          style={{ width: "max-content" }}
-        />
-        
-        <motion.div
-          className="flex gap-6 md:gap-8 w-max pl-4 md:pl-8 hover:animation-pause"
-          animate={{ x: ["0%", "-33.333333%"] }}
-          transition={{ 
-            repeat: Infinity, 
-            ease: "linear", 
-            duration: 25 // Adjust speed here
-          }}
-          whileHover={{ animationPlayState: "paused" }} // Fallback approach
-        >
+        <div className="animate-marquee flex gap-6 md:gap-8 py-4">
           {duplicatedTestimonials.map((item, idx) => (
             <div
               key={idx}
-              className="w-[260px] md:w-[320px] shrink-0 bg-white/80 dark:bg-[#0a0a0a] backdrop-blur-sm border border-zinc-200/80 dark:border-white/10 rounded-2xl p-5 md:p-6 flex flex-col justify-between group hover:border-amber-500/50 hover:shadow-[0_0_30px_rgba(245,158,11,0.12)] shadow-sm dark:shadow-none transition-all duration-300"
+              className="w-[260px] md:w-[320px] shrink-0 bg-white/80 dark:bg-[#0a0a0a] border border-zinc-200/80 dark:border-white/10 rounded-2xl p-5 md:p-6 flex flex-col justify-between group hover:border-amber-500/50 shadow-sm dark:shadow-none transition-all duration-300"
             >
               <div>
                 <Quote className="w-6 h-6 text-amber-500 mb-3 opacity-80" />
@@ -126,7 +107,7 @@ export default function TestimoniSection() {
               </div>
             </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </div>
   );

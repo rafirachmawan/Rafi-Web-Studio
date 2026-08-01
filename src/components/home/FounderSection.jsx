@@ -1,73 +1,43 @@
 import { ExternalLink, Send } from "lucide-react";
 import { useLanguage } from "../../context/LanguageContext";
 import founderPortrait from "../../assets/foto formal.jpg";
-import { motion } from "framer-motion";
 
 export default function FounderSection() {
   const { t } = useLanguage();
-  // CONFIGURABLE LINKS - Silakan ubah URL di bawah ini sesuai keinginan Anda
   const portfolioUrl = "https://website-profile-react.vercel.app/?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQPOTM2NjE5NzQzMzkyNDU5AAGnUVJ8I1A5zVVGCgB5W7plomzM5RRp7ppn3IqwgT5QFrbQaI1jZmmVOwaB1As_aem_FeRrnkq3nQfVmpCoe8hsvw";
   const githubUrl = "https://github.com/rafirachmawan";
   const instagramUrl = "https://www.instagram.com/rrrafi.rachmawan/";
   const linkedinUrl = "https://www.linkedin.com/in/rafi-rachmawan-2a8728233/";
 
   return (
-    <section id="founder" className="relative py-24 overflow-hidden border-t border-amber-500/10 dark:border-white/5 bg-transparent dark:bg-transparent">
-      {/* Glow decorative background */}
-      <div className="absolute right-0 bottom-0 w-[400px] h-[400px] bg-amber-500/10 dark:bg-amber-500/5 blur-[120px] rounded-full pointer-events-none" />
-      <div className="absolute left-0 top-0 w-[300px] h-[300px] bg-orange-400/10 dark:bg-orange-500/5 blur-[100px] rounded-full pointer-events-none" />
-
+    <section id="founder" className="relative py-16 md:py-24 overflow-hidden border-t border-amber-500/10 dark:border-white/5 bg-transparent dark:bg-transparent">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-amber-500/20 bg-amber-500/5 text-amber-500 text-[10px] sm:text-xs font-extrabold uppercase tracking-widest mb-4"
-          >
+        <div className="text-center mb-12 md:mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-amber-500/20 bg-amber-500/5 text-amber-500 text-[10px] sm:text-xs font-extrabold uppercase tracking-widest mb-4">
             {t("👤 Di Balik Layar", "👤 Behind The Scenes")}
-          </motion.div>
-          <motion.h2
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-3xl sm:text-4xl font-black tracking-tight text-zinc-900 dark:text-white"
-          >
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-zinc-900 dark:text-white">
             Meet the <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600">Founder</span>
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="mt-3 text-zinc-600 dark:text-zinc-400 text-xs sm:text-sm font-semibold max-w-lg mx-auto"
-          >
+          </h2>
+          <p className="mt-3 text-zinc-600 dark:text-zinc-400 text-xs sm:text-sm font-semibold max-w-lg mx-auto">
             {t("Orang di balik layar yang memastikan kualitas, kecepatan, dan keberhasilan digitalisasi project bisnis Anda.", "The person behind the scenes ensuring the quality, speed, and success of your business project digitalization.")}
-          </motion.p>
+          </p>
         </div>
 
         {/* Content Layout */}
-        <div className="grid md:grid-cols-12 gap-10 md:gap-12 items-center">
+        <div className="grid md:grid-cols-12 gap-8 md:gap-12 items-center">
           
           {/* LEFT: Portrait & Profile Card */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="md:col-span-5 flex flex-col items-center"
-          >
-            <div className="relative group p-3 bg-white dark:bg-zinc-900/60 border border-black/5 dark:border-white/5 rounded-[2.5rem] shadow-xl hover:shadow-2xl dark:shadow-none transition-all duration-500 hover:scale-[1.01] max-w-[320px] w-full">
-              {/* Gold outer border glow on hover */}
-              <div className="absolute inset-0 rounded-[2.5rem] bg-gradient-to-r from-amber-500 to-orange-500 opacity-0 group-hover:opacity-10 blur-xl transition-opacity duration-500" />
-              
+          <div className="md:col-span-5 flex flex-col items-center">
+            <div className="relative group p-3 bg-white dark:bg-zinc-900/60 border border-black/5 dark:border-white/5 rounded-[2.5rem] shadow-xl hover:shadow-2xl dark:shadow-none transition-all duration-300 max-w-[320px] w-full">
               {/* Portrait container */}
               <div className="relative rounded-[2rem] overflow-hidden aspect-[4/5] border border-black/5 dark:border-white/5">
                 <img 
                   src={founderPortrait} 
                   alt="Rafi Rachmawan" 
+                  loading="lazy"
                   className="w-full h-full object-cover object-top grayscale-[20%] group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
                 />
                 
@@ -123,15 +93,10 @@ export default function FounderSection() {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* RIGHT: Biography & Message */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="md:col-span-7"
-          >
+          <div className="md:col-span-7">
             <div className="bg-white dark:bg-zinc-900/40 border border-zinc-200/80 dark:border-zinc-800/60 rounded-[2.5rem] p-6 sm:p-8 md:p-10 shadow-[0_8px_30px_rgba(0,0,0,0.06)] dark:shadow-none flex flex-col space-y-6 text-left relative overflow-hidden group transition-all duration-300 hover:border-amber-500/30">
               <h3 className="text-xl sm:text-2xl md:text-3xl font-black text-zinc-900 dark:text-white leading-tight">
                 "{t("Komitmen Kami Adalah", "Our Commitment Is")}{" "}<br className="xs:hidden" />
@@ -155,7 +120,7 @@ export default function FounderSection() {
                   href={portfolioUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-amber-500 hover:bg-amber-400 text-black font-black text-xs sm:text-sm shadow-lg shadow-amber-500/20 hover:scale-[1.02] transition-all"
+                  className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-amber-500 hover:bg-amber-400 text-black font-black text-xs sm:text-sm shadow-lg shadow-amber-500/20 transition-all"
                 >
                   {t("Kunjungi Portofolio Saya", "Visit My Portfolio")}
                   <ExternalLink size={16} />
@@ -165,14 +130,14 @@ export default function FounderSection() {
                   href="https://wa.me/6285707185783?text=Halo%20Rafi,%20saya%20ingin%20berdiskusi%20mengenai%20project%20custom"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl border border-zinc-200 dark:border-white/10 hover:border-amber-500/50 bg-zinc-50 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10 text-zinc-800 dark:text-white font-bold text-xs sm:text-sm hover:scale-[1.02] transition-all"
+                  className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl border border-zinc-200 dark:border-white/10 hover:border-amber-500/50 bg-zinc-50 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10 text-zinc-800 dark:text-white font-bold text-xs sm:text-sm transition-all"
                 >
                   {t("Diskusi Langsung via WA", "Direct Discussion via WA")}
                   <Send size={14} className="text-amber-500" />
                 </a>
               </div>
             </div>
-          </motion.div>
+          </div>
 
         </div>
       </div>
