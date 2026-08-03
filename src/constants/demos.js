@@ -1,7 +1,11 @@
 import starbucksCoverImg from "../assets/StarbucksCover.jpg";
 import hotelCoverImg from "../assets/HotelCover.jpg";
 import unitaCoverImg from "../assets/UNITACover.jpg";
-import aryaMotorCoverImg from "../assets/AryaMotorCover.jpg";
+import yamahaCoverImg from "../assets/Yamaha/image.png";
+import yamahaCopyImg from "../assets/Yamaha/image copy.png";
+import yamahaLogo from "../assets/Yamaha/yamahalogo.png";
+import iconYamaha from "../assets/Yamaha/iconyamaha.png";
+import heroYamaha from "../assets/Yamaha/heroyamaha.jpg";
 import nikoNikoCoverImg from "../assets/NikoNikoCover.jpg";
 import aioLaundryCoverImg from "../assets/AioLaundryCover.jpg";
 import umrohCoverImg from "../assets/UmrohCover.jpg";
@@ -50,38 +54,46 @@ export const demos = [
     ],
   },
   {
-    id: "aryamotor",
-    name: "UD Arya Motor",
+    id: "yamaha",
+    name: "Yamaha Motor Indonesia",
     path: "/rental",
     desc: {
-      id: "Jual Beli Motor Bekas Berkualitas di Tulungagung",
-      en: "Quality Used Motorcycle Dealership in Tulungagung",
+      id: "Portal Informasi Produk, Layanan & Aktivitas Resmi Yamaha Indonesia",
+      en: "Official Product Information, Service & Activity Portal of Yamaha Indonesia",
     },
-    icon: "🏍️",
+    icon: iconYamaha,
     category: "landing page",
-    image: aryaMotorCoverImg,
-    client: "UD Arya Motor",
+    image: yamahaCopyImg,
+    client: "PT Yamaha Indonesia Motor Manufacturing (YIMM)",
     fullDescription: {
-      id: "Sebuah portal digital yang berfokus pada katalog kendaraan bermotor roda dua (motor bekas). Platform ini memudahkan calon pembeli melihat inventaris, membandingkan spesifikasi motor, dan langsung menghubungi pihak showroom via WhatsApp.",
-      en: "A digital portal focusing on a two-wheeled vehicle (used motorcycle) catalog. This platform makes it easy for potential buyers to view inventory, compare bike specifications, and directly contact the showroom via WhatsApp.",
+      id: "Website resmi PT Yamaha Indonesia Motor Manufacturing (YIMM) yang berfungsi sebagai portal informasi produk, layanan, dan aktivitas Yamaha di Indonesia. Platform ini menyajikan katalog motor lengkap (MAXi, Classy, Matic, Sport, Off-Road, Moped), simulasi kredit pembelian, booking servis berkala, pencarian dealer resmi, hingga portal berita racing dan keanggotaan My Yamaha Motor.",
+      en: "Official website of PT Yamaha Indonesia Motor Manufacturing (YIMM) serving as a comprehensive information portal for Yamaha products, services, and activities in Indonesia. Features complete motorcycle catalogs (MAXi, Classy, Matic, Sport, Off-Road, Moped), credit simulation, periodic service booking, official dealer locator, racing news portal, and My Yamaha Motor membership.",
     },
-    techStack: ["React JS", "Tailwind CSS", "Lucide Icons"],
+    techStack: ["React JS", "Tailwind CSS", "Framer Motion", "Vite", "Lucide Icons"],
     features: [
       {
-        id: "Sistem filter kategori motor otomatis",
-        en: "Automatic motorcycle category filter system",
+        id: "Credit Simulation (Simulasi Kredit Pembelian Motor)",
+        en: "Credit Simulation for Motorcycle Purchases",
       },
       {
-        id: "Detail spesifikasi setiap kendaraan",
-        en: "Detailed specifications for each vehicle",
+        id: "Service Booking & Find Dealer Resmi Terdekat",
+        en: "Service Booking & Nearest Official Dealer Locator",
       },
       {
-        id: "Integrasi langsung ke WhatsApp Admin",
-        en: "Direct integration with Admin WhatsApp",
+        id: "Katalog Motor 6 Kategori (MAXi, Classy, Matic, Sport, Off-Road, Moped)",
+        en: "6 Category Motorcycle Catalog (MAXi, Classy, Matic, Sport, Off-Road, Moped)",
       },
       {
-        id: "SEO Friendly untuk pasar otomotif lokal",
-        en: "SEO Friendly for the local automotive market",
+        id: "My Yamaha Motor Members & Owners Manual Digital Online",
+        en: "My Yamaha Motor Members & Online Digital Owners Manual",
+      },
+      {
+        id: "WhatsApp Help ('Dapatkan Bantuan') & Portal Berita bLU cRU / Racing",
+        en: "WhatsApp Help & bLU cRU / Racing News Portal",
+      },
+      {
+        id: "Yamaha Genuine Parts (YGP) & Yamalube Apparel Showcase",
+        en: "Yamaha Genuine Parts (YGP) & Yamalube Apparel Showcase",
       },
     ],
   },

@@ -50,13 +50,13 @@ export default function DemoCard({ demo }) {
 
           {/* ICON & TITLE */}
           <div className="flex items-center gap-3 mb-3">
-            <div className="text-xl text-amber-600 dark:text-amber-500 bg-amber-500/10 w-8 h-8 flex items-center justify-center rounded-lg overflow-hidden">
-              {typeof demo.icon === 'string' && (demo.icon.includes('/') || demo.icon.includes('.')) ? (
-                <img src={demo.icon} alt={demo.name} className="w-full h-full object-cover" />
-              ) : (
-                demo.icon
-              )}
-            </div>
+            {typeof demo.icon === 'string' && (demo.icon.includes('/') || demo.icon.includes('.')) ? (
+              <img src={demo.icon} alt={demo.name} className="w-8 h-8 object-contain shrink-0" />
+            ) : (
+              <div className="text-xl text-amber-600 dark:text-amber-500 bg-amber-500/10 w-8 h-8 flex items-center justify-center rounded-lg overflow-hidden shrink-0">
+                {demo.icon}
+              </div>
+            )}
             <h3 className="text-xl font-bold text-zinc-900 dark:text-white group-hover:text-amber-500 dark:group-hover:text-amber-400 transition-colors duration-300">
               {demo.name}
             </h3>
