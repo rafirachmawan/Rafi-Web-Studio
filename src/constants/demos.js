@@ -20,6 +20,7 @@ import starbucksAfterImg from "../assets/starbuck/after.png";
 import crownAfterImg from "../assets/crown/after.png";
 import crownBeforeImg from "../assets/crown/before.png";
 import crownLogo from "../assets/crown/logoCrown.png";
+import gacoanAfterImg from "../assets/mieGacoan/after.png";
 import gacoanBeforeImg from "../assets/mieGacoan/before.png";
 import gacoanLogo from "../assets/mieGacoan/logoMieGacoan.png";
 
@@ -154,7 +155,7 @@ export const demos = [
     },
     icon: gacoanLogo,
     category: "landing page",
-    image: gacoanBeforeImg,
+    image: gacoanAfterImg,
     beforeImage: gacoanBeforeImg,
     client: "Mie Gacoan Tulungagung",
     fullDescription: {
