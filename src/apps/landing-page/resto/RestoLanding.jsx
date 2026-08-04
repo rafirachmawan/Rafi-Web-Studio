@@ -16,8 +16,14 @@ import {
   Users,
   Check,
   Sparkles,
-  RotateCcw
+  RotateCcw,
+  Briefcase,
+  ChevronRight,
+  Utensils
 } from "lucide-react";
+
+// Import Brand Logo
+import logoMieGacoan from "../../../assets/mieGacoan/logoMieGacoan.png";
 
 const FADE_UP = {
   hidden: { opacity: 0, y: 35 },
@@ -34,13 +40,13 @@ export default function RestoLanding() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const data = resto;
   
-  const phone = "6285707185783"; // Rafi's developer contact
+  const phone = "6285707185783"; // Rafi's developer/WhatsApp contact
 
-  // Interactive Ramen Builder States
-  const [broth, setBroth] = useState("Original Tonkotsu (Pork-free)");
-  const [noodle, setNoodle] = useState("Keriting (Curly)");
-  const [spicyLevel, setSpicyLevel] = useState(2);
-  const [extraToppings, setExtraToppings] = useState([]);
+  // Gacoan Order Customizer States
+  const [noodleType, setNoodleType] = useState("Mie Gacoan (Manis Pedas)");
+  const [spicyLevel, setSpicyLevel] = useState(3);
+  const [selectedDimsum, setSelectedDimsum] = useState(["pangsit_goreng"]);
+  const [selectedBeverage, setSelectedBeverage] = useState("es_gobak_sodor");
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -49,62 +55,74 @@ export default function RestoLanding() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const toppingsList = [
-    { id: "ajitama", name: "Ajitama Egg", price: 5000 },
-    { id: "beef", name: "Extra Beef Slice", price: 12000 },
-    { id: "nori", name: "Extra Nori (3 pcs)", price: 3000 },
-    { id: "corn", name: "Sweet Corn", price: 2000 },
+  const dimsumList = [
+    { id: "pangsit_goreng", name: "Pangsit Goreng (3 pcs)", price: 12000 },
+    { id: "udang_keju", name: "Udang Keju (3 pcs)", price: 12000 },
+    { id: "udang_rambutan", name: "Udang Rambutan (3 pcs)", price: 12000 },
+    { id: "siomay", name: "Siomay Dimsum (3 pcs)", price: 10000 },
   ];
 
-  const calculateCustomRamenPrice = () => {
-    let basePrice = 28000; // Base ramen price
-    if (broth === "Spicy Tantanmen") basePrice += 4000;
+  const beverageList = [
+    { id: "es_gobak_sodor", name: "Es Gobak Sodor", price: 12000 },
+    { id: "es_teklek", name: "Es Teklek", price: 10000 },
+    { id: "es_petak_sumpet", name: "Es Petak Sumpet", price: 10000 },
+    { id: "es_sluku_bathok", name: "Es Sluku Bathok", price: 10000 },
+    { id: "es_teh_manis", name: "Es Teh Manis", price: 5000 },
+  ];
+
+  const calculateCustomGacoanPrice = () => {
+    let noodlePrice = spicyLevel >= 8 ? 14000 : 10000;
     
-    const toppingsPrice = extraToppings.reduce((total, toppingId) => {
-      const topping = toppingsList.find(t => t.id === toppingId);
-      return total + (topping ? topping.price : 0);
+    const dimsumPrice = selectedDimsum.reduce((total, id) => {
+      const item = dimsumList.find(d => d.id === id);
+      return total + (item ? item.price : 0);
     }, 0);
 
-    return basePrice + toppingsPrice;
+    const bevItem = beverageList.find(b => b.id === selectedBeverage);
+    const bevPrice = bevItem ? bevItem.price : 0;
+
+    return noodlePrice + dimsumPrice + bevPrice;
   };
 
-  const handleToggleTopping = (toppingId) => {
-    if (extraToppings.includes(toppingId)) {
-      setExtraToppings(extraToppings.filter(id => id !== toppingId));
+  const handleToggleDimsum = (dimsumId) => {
+    if (selectedDimsum.includes(dimsumId)) {
+      setSelectedDimsum(selectedDimsum.filter(id => id !== dimsumId));
     } else {
-      setExtraToppings([...extraToppings, toppingId]);
+      setSelectedDimsum([...selectedDimsum, dimsumId]);
     }
   };
 
-  const handleOrderCustomRamen = () => {
-    const toppingsNames = extraToppings.map(id => toppingsList.find(t => t.id === id)?.name).join(", ") || "Tanpa Extra";
-    const totalPrice = calculateCustomRamenPrice();
-    const message = `Halo Niko-Niko Ramen Kediri, saya ingin memesan *Custom Ramen Bowl* racikan sendiri:
-- *Kuah Broth*: ${broth}
-- *Tipe Mie*: ${noodle}
+  const handleOrderCustomGacoan = () => {
+    const dimsumNames = selectedDimsum.map(id => dimsumList.find(d => d.id === id)?.name).join(", ") || "Tanpa Dimsum";
+    const bevName = beverageList.find(b => b.id === selectedBeverage)?.name || "Tanpa Minuman";
+    const totalPrice = calculateCustomGacoanPrice();
+
+    const message = `Halo Mie Gacoan Tulungagung, saya ingin pesan paket racikan online:
+- *Varian Mie*: ${noodleType}
 - *Level Pedas*: Level ${spicyLevel}
-- *Extra Toppings*: ${toppingsNames}
+- *Pilihan Dimsum*: ${dimsumNames}
+- *Minuman Segar*: ${bevName}
 - *Total Harga*: Rp ${totalPrice.toLocaleString("id-ID")}
 
-Mohon diproses untuk pengiriman. Terima kasih!`;
+Mohon diproses untuk pengiriman / take away. Terima kasih!`;
     window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, "_blank");
   };
 
   return (
-    <div className="bg-[#0b0909] text-stone-200 min-h-screen font-sans selection:bg-red-600/30 overflow-x-hidden">
+    <div className="bg-[#0b090a] text-zinc-200 min-h-screen font-sans selection:bg-rose-600/30 overflow-x-hidden">
       
-      {/* JAPANESE RED GLOWS */}
+      {/* VIBRANT GACOAN GLOW EFFECTS */}
       <div className="fixed inset-0 z-0 pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-red-600/10 blur-[130px]" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-amber-600/10 blur-[130px]" />
+        <div className="absolute top-[-10%] left-[-10%] w-[45%] h-[45%] rounded-full bg-rose-600/15 blur-[140px]" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[45%] h-[45%] rounded-full bg-amber-500/10 blur-[140px]" />
       </div>
 
       {/* NAVBAR */}
       <nav 
         className={`fixed top-0 w-full z-50 transition-all duration-300 ${
           isScrolled 
-            ? "bg-[#0b0909]/90 backdrop-blur-xl border-b border-white/5 py-4" 
-            : "bg-transparent py-6"
+            ? "bg-[#0b090a]/90 backdrop-blur-xl border-b border-white/10 py-3 shadow-2xl" 
+            : "bg-transparent py-5"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
@@ -113,37 +131,42 @@ Mohon diproses untuk pengiriman. Terima kasih!`;
             animate={{ opacity: 1, x: 0 }}
             className="flex items-center gap-3"
           >
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-red-600 to-amber-500 flex items-center justify-center shadow-lg shadow-red-600/25 font-black text-white text-base font-serif">
-              ニコ
+            <img 
+              src={logoMieGacoan} 
+              alt="Mie Gacoan Logo" 
+              className="h-10 w-auto object-contain shrink-0"
+            />
+            <div className="flex flex-col justify-center text-left">
+              <div className="flex items-center gap-1.5 leading-none">
+                <span className="text-xl font-black tracking-tight text-white uppercase font-serif">MIE GACOAN</span>
+              </div>
+              <span className="text-[10px] text-rose-400 font-extrabold tracking-widest uppercase mt-0.5">CABANG TULUNGAGUNG</span>
             </div>
-            <h1 className="text-xl md:text-2xl font-black tracking-tighter text-white font-serif">
-              NIKO-NIKO <span className="text-red-500">RAMEN</span>
-            </h1>
           </motion.div>
 
-          <div className="hidden md:flex items-center gap-8 text-xs tracking-widest uppercase font-bold text-stone-400">
-            <a href="#bestseller" className="hover:text-red-500 transition-colors">Bestsellers</a>
-            <a href="#customizer" className="hover:text-red-500 transition-colors">Custom Bowl</a>
-            <a href="#menu" className="hover:text-red-500 transition-colors">Menu Utama</a>
-            <a href="#about" className="hover:text-red-500 transition-colors">Tentang</a>
-            <a href="#location" className="hover:text-red-500 transition-colors">Outlet</a>
+          <div className="hidden lg:flex items-center gap-8 text-xs tracking-widest uppercase font-bold text-zinc-400">
+            <a href="#bestseller" className="hover:text-rose-500 transition-colors">Menu Favorit</a>
+            <a href="#customizer" className="hover:text-rose-500 transition-colors">Custom Level</a>
+            <a href="#menu" className="hover:text-rose-500 transition-colors">Daftar Menu</a>
+            <a href="#location" className="hover:text-rose-500 transition-colors">Cabang Tulungagung</a>
+            <a href="#karir" className="hover:text-rose-500 transition-colors">Info Karir</a>
           </div>
 
           <motion.a
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
-            href={`https://wa.me/${phone}?text=Halo%20Niko-Niko%20Ramen%20Kediri%2C%20saya%20tertarik%20memesan%20ramen.`}
+            href={`https://wa.me/${phone}?text=Halo%20Mie%20Gacoan%20Tulungagung%2C%20saya%20tertarik%20untuk%20pesan%20mie%20gacoan.`}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden md:flex items-center gap-2 bg-gradient-to-r from-red-600 to-amber-500 text-white px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest hover:shadow-lg hover:shadow-red-600/25 transition-all hover:scale-105 active:scale-95"
+            className="hidden md:flex items-center gap-2 bg-gradient-to-r from-rose-600 via-pink-600 to-amber-500 text-white px-6 py-2.5 rounded-full text-xs font-black uppercase tracking-wider hover:shadow-lg hover:shadow-rose-600/30 transition-all hover:scale-105 active:scale-95 border border-rose-400/30"
           >
             <ShoppingBag className="w-4 h-4" />
-            Order Now
+            Pesan Online
           </motion.a>
 
           {/* MOBILE TOGGLE */}
           <button 
-            className="md:hidden text-stone-300 hover:text-white relative z-50"
+            className="lg:hidden text-zinc-300 hover:text-white relative z-50 p-2 rounded-xl bg-zinc-900 border border-white/10"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -157,22 +180,22 @@ Mohon diproses untuk pengiriman. Terima kasih!`;
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "100vh" }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden absolute top-0 left-0 w-full bg-[#0b0909] flex flex-col pt-24 px-6 z-40 border-b border-white/5"
+              className="lg:hidden absolute top-0 left-0 w-full bg-[#0b090a]/98 backdrop-blur-2xl flex flex-col pt-24 px-6 z-40 border-b border-white/10"
             >
-              <div className="flex flex-col gap-6 text-lg font-bold uppercase tracking-widest">
-                <a href="#bestseller" onClick={() => setMobileMenuOpen(false)} className="text-stone-300 hover:text-red-500 border-b border-white/5 pb-4">Bestsellers</a>
-                <a href="#customizer" onClick={() => setMobileMenuOpen(false)} className="text-stone-300 hover:text-red-500 border-b border-white/5 pb-4">Custom Bowl</a>
-                <a href="#menu" onClick={() => setMobileMenuOpen(false)} className="text-stone-300 hover:text-red-500 border-b border-white/5 pb-4">Menu Utama</a>
-                <a href="#about" onClick={() => setMobileMenuOpen(false)} className="text-stone-300 hover:text-red-500 border-b border-white/5 pb-4">Tentang Kami</a>
-                <a href="#location" onClick={() => setMobileMenuOpen(false)} className="text-stone-300 hover:text-red-500 border-b border-white/5 pb-4">Outlet</a>
+              <div className="flex flex-col gap-5 text-base font-bold uppercase tracking-widest text-left">
+                <a href="#bestseller" onClick={() => setMobileMenuOpen(false)} className="text-zinc-300 hover:text-rose-500 border-b border-white/5 pb-3">Menu Favorit</a>
+                <a href="#customizer" onClick={() => setMobileMenuOpen(false)} className="text-zinc-300 hover:text-rose-500 border-b border-white/5 pb-3">Custom Level</a>
+                <a href="#menu" onClick={() => setMobileMenuOpen(false)} className="text-zinc-300 hover:text-rose-500 border-b border-white/5 pb-3">Daftar Menu</a>
+                <a href="#location" onClick={() => setMobileMenuOpen(false)} className="text-zinc-300 hover:text-rose-500 border-b border-white/5 pb-3">Cabang Tulungagung</a>
+                <a href="#karir" onClick={() => setMobileMenuOpen(false)} className="text-zinc-300 hover:text-rose-500 border-b border-white/5 pb-3">Info Karir</a>
                 <a
                   href={`https://wa.me/${phone}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 bg-gradient-to-r from-red-600 to-amber-500 text-white px-5 py-4 rounded-xl font-bold mt-4 text-xs tracking-widest uppercase"
+                  className="flex items-center justify-center gap-2 bg-gradient-to-r from-rose-600 to-amber-500 text-white px-5 py-4 rounded-xl font-black mt-2 text-xs tracking-widest uppercase shadow-xl shadow-rose-600/30"
                 >
                   <ShoppingBag className="w-5 h-5" />
-                  Order Sekarang
+                  Pesan Sekarang (WhatsApp)
                 </a>
               </div>
             </motion.div>
@@ -182,108 +205,118 @@ Mohon diproses untuk pengiriman. Terima kasih!`;
 
       <main className="relative z-10">
         {/* HERO */}
-        <section className="relative min-h-screen flex items-center pt-28 pb-12 px-6">
-          <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-12 gap-12 lg:gap-8 items-center text-left">
+        <section className="relative min-h-[92vh] flex items-center pt-28 pb-16 px-6">
+          <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-12 gap-12 items-center text-left">
             
             <motion.div 
               initial="hidden"
               animate="visible"
               variants={STAGGER}
-              className="relative z-10 lg:col-span-7 space-y-6"
+              className="lg:col-span-7 space-y-6"
             >
-              <motion.div variants={FADE_UP} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-600/10 border border-red-600/20 text-red-500 text-xs font-black uppercase tracking-widest">
-                <Flame className="w-3.5 h-3.5" />
-                Pare - Kediri Ramen Spot
+              <motion.div variants={FADE_UP} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-rose-600/10 border border-rose-600/20 text-rose-400 text-xs font-black uppercase tracking-widest">
+                <Flame className="w-4 h-4 text-rose-500" />
+                MIE GACOAN TULUNGAGUNG — RESMI & MODERN
               </motion.div>
 
-              <motion.h1 variants={FADE_UP} className="text-4xl sm:text-6xl md:text-7xl font-serif font-black leading-[1.1] text-white tracking-tighter">
-                {data.hero?.title}
+              <motion.h1 variants={FADE_UP} className="text-4xl sm:text-6xl lg:text-7xl font-serif font-black leading-[1.1] text-white tracking-tight">
+                Pedasnya Nendang — <br/>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-500 via-pink-500 to-amber-400">
+                  Harga Ramah!
+                </span>
               </motion.h1>
 
-              <motion.p variants={FADE_UP} className="text-sm md:text-base text-stone-400 max-w-xl leading-relaxed font-light">
-                {data.hero?.subtitle}
+              <motion.p variants={FADE_UP} className="text-base sm:text-lg text-zinc-300 max-w-xl leading-relaxed font-medium">
+                Satu-satunya tempat nongkrong seru dengan sajian Mie Pedas No. 1 di Indonesia. Nikmati varian Mie Gacoan, Mie Hompimpa, dimsum goreng renyah, dan aneka es segar legendaris!
               </motion.p>
 
               <motion.div variants={FADE_UP} className="flex flex-wrap gap-4 pt-2">
                 <a
                   href="#customizer"
-                  className="bg-gradient-to-r from-red-600 to-amber-500 text-white px-8 py-4 rounded-2xl font-bold text-xs tracking-widest uppercase hover:shadow-xl hover:shadow-red-600/20 transition-all hover:-translate-y-1 flex items-center gap-2"
+                  className="bg-gradient-to-r from-rose-600 via-pink-600 to-amber-500 text-white px-8 py-4 rounded-2xl font-black text-xs tracking-widest uppercase hover:shadow-2xl hover:shadow-rose-600/30 transition-all hover:scale-105 active:scale-95 flex items-center gap-2"
                 >
-                  Racik Ramenmu
+                  Pilih Level Pedasmu
                   <ArrowRight className="w-4 h-4" />
                 </a>
                 <a
-                  href="#menu"
+                  href="#location"
                   className="bg-white/5 border border-white/10 backdrop-blur-md text-white px-8 py-4 rounded-2xl font-bold text-xs tracking-widest uppercase hover:bg-white/10 transition-all flex items-center gap-2"
                 >
-                  Lihat Menu
+                  <MapPin className="w-4 h-4 text-rose-400" />
+                  Cabang Terdekat
                 </a>
               </motion.div>
 
-              <motion.div variants={FADE_UP} className="mt-8 flex items-center gap-6 text-xs font-bold text-stone-400">
-                <div className="flex -space-x-3">
-                  {[1, 2, 3].map((i) => (
-                    <img key={i} src={`https://randomuser.me/api/portraits/women/${30+i}.jpg`} className="w-10 h-10 rounded-full border-2 border-[#0b0909]" alt="Customer portrait" />
-                  ))}
-                  <div className="w-10 h-10 rounded-full border-2 border-[#0b0909] bg-stone-800 flex items-center justify-center text-white font-bold text-xs z-10">
-                    4k+
-                  </div>
+              {/* STATS BADGES (from mieGacoanTulungagung.md) */}
+              <motion.div variants={FADE_UP} className="pt-6 grid grid-cols-3 gap-4 border-t border-white/10 max-w-lg">
+                <div>
+                  <h3 className="text-2xl sm:text-3xl font-black text-rose-500 font-serif">100k+</h3>
+                  <p className="text-[10px] sm:text-xs font-bold text-zinc-400 uppercase tracking-wider">Pelanggan Puas</p>
                 </div>
                 <div>
-                  <div className="flex text-amber-500 mb-1">
-                    {[...Array(5)].map((_, i) => <Star key={i} className="w-3.5 h-3.5 fill-current" />)}
-                  </div>
-                  <p className="uppercase tracking-wider">Favorit Pecinta Kuliner pare</p>
+                  <h3 className="text-2xl sm:text-3xl font-black text-amber-400 font-serif">30+</h3>
+                  <p className="text-[10px] sm:text-xs font-bold text-zinc-400 uppercase tracking-wider">Kota Layanan</p>
+                </div>
+                <div>
+                  <h3 className="text-2xl sm:text-3xl font-black text-pink-400 font-serif">50+</h3>
+                  <p className="text-[10px] sm:text-xs font-bold text-zinc-400 uppercase tracking-wider">Menu Tersedia</p>
                 </div>
               </motion.div>
             </motion.div>
 
-            {/* RIGHT SIDE — HERO IMAGE */}
+            {/* RIGHT SIDE — HERO SHOWCASE */}
             <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="hidden lg:flex lg:col-span-5 relative items-center justify-center"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="lg:col-span-5 relative flex items-center justify-center"
             >
-              {/* Main ramen image */}
               <div className="relative w-full max-w-md">
-                <div className="absolute inset-0 bg-gradient-to-br from-red-600/20 to-amber-500/10 blur-[60px] rounded-full" />
-                <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
+                <div className="absolute inset-0 bg-gradient-to-tr from-rose-600/30 to-amber-500/20 blur-[80px] rounded-full pointer-events-none" />
+                <div className="relative rounded-3xl overflow-hidden border border-white/15 shadow-2xl bg-zinc-900">
                   <img
-                    src="https://images.unsplash.com/photo-1557872943-16a5ac26437e?auto=format&fit=crop&q=80&w=800"
-                    alt="Niko Niko Ramen Bowl"
-                    className="w-full h-[420px] object-cover brightness-90"
+                    src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&q=80&w=800"
+                    alt="Mie Gacoan Tulungagung Special Bowl"
+                    className="w-full h-[440px] object-cover brightness-90 hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0b0909]/70 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0b090a] via-transparent to-transparent opacity-80" />
+                  
+                  <div className="absolute bottom-6 left-6 right-6">
+                    <span className="text-[10px] uppercase font-black tracking-widest px-3 py-1 bg-rose-600 text-white rounded-full">
+                      🔥 Bestseller Level 8
+                    </span>
+                    <h4 className="text-xl font-serif font-black text-white mt-2">Mie Gacoan Super Pedas</h4>
+                    <p className="text-xs text-zinc-300 mt-1 font-medium">Lengkap dengan taburan ayam gurih & pangsit goreng krispi.</p>
+                  </div>
                 </div>
 
-                {/* Floating badge — Spicy Tantanmen */}
+                {/* Floating Badge 1 */}
                 <motion.div
                   animate={{ y: [-8, 8, -8] }}
                   transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute -top-5 -right-5 bg-[#161313]/90 backdrop-blur-xl border border-white/10 px-5 py-3 rounded-2xl flex items-center gap-3.5 z-20 shadow-2xl"
+                  className="absolute -top-5 -right-4 bg-[#141013]/90 backdrop-blur-xl border border-white/15 px-4 py-3 rounded-2xl flex items-center gap-3 z-20 shadow-2xl"
                 >
-                  <div className="w-10 h-10 bg-red-600/20 rounded-full flex items-center justify-center text-red-500">
-                    <Flame className="w-5 h-5" />
+                  <div className="w-9 h-9 bg-rose-600/20 rounded-full flex items-center justify-center text-rose-500 font-bold">
+                    🌶️
                   </div>
                   <div className="text-left">
-                    <p className="text-white font-bold text-xs">Spicy Tantanmen</p>
-                    <p className="text-[10px] text-stone-400">Kuah Kental & Gurih</p>
+                    <p className="text-white font-bold text-xs">Level 0 - 8</p>
+                    <p className="text-[10px] text-zinc-400">Pilih Kepedasanmu</p>
                   </div>
                 </motion.div>
 
-                {/* Floating badge bottom — rating */}
+                {/* Floating Badge 2 */}
                 <motion.div
                   animate={{ y: [6, -6, 6] }}
                   transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                  className="absolute -bottom-5 -left-5 bg-[#161313]/90 backdrop-blur-xl border border-white/10 px-5 py-3 rounded-2xl flex items-center gap-3 z-20 shadow-2xl"
+                  className="absolute -bottom-4 -left-4 bg-[#141013]/90 backdrop-blur-xl border border-white/15 px-4 py-3 rounded-2xl flex items-center gap-3 z-20 shadow-2xl"
                 >
                   <div className="text-left">
                     <div className="flex gap-0.5 text-amber-400 mb-0.5">
-                      {[...Array(5)].map((_,i) => <Star key={i} className="w-3 h-3 fill-current" />)}
+                      {[...Array(5)].map((_,i) => <Star key={i} className="w-3.5 h-3.5 fill-current" />)}
                     </div>
-                    <p className="text-white font-bold text-xs">4.8 / 5.0</p>
-                    <p className="text-[10px] text-stone-400">4k+ Pelanggan Puas</p>
+                    <p className="text-white font-bold text-xs">Es Gobak Sodor</p>
+                    <p className="text-[10px] text-rose-400 font-black">Hanya Rp 12.000</p>
                   </div>
                 </motion.div>
               </div>
@@ -291,40 +324,43 @@ Mohon diproses untuk pengiriman. Terima kasih!`;
           </div>
         </section>
 
-        {/* BEST SELLER LIST */}
-        <section id="bestseller" className="py-20 px-6 relative">
+        {/* BESTSELLERS SHOWCASE */}
+        <section id="bestseller" className="py-24 px-6 relative bg-zinc-950/60 border-y border-white/5">
           <div className="max-w-7xl mx-auto text-left">
             <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
               <div>
-                <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="flex items-center gap-2 text-red-500 text-xs font-bold tracking-widest uppercase mb-3">
-                  <Flame className="w-4 h-4" /> NIKO'S RECOMMENDATIONS
+                <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="flex items-center gap-2 text-rose-500 text-xs font-black tracking-widest uppercase mb-3">
+                  <Flame className="w-4 h-4" /> GACOAN RECOMMENDED
                 </motion.div>
-                <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-3xl md:text-5xl font-serif font-black tracking-tighter">
-                  Pare Outlet Best Sellers
+                <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-3xl md:text-5xl font-serif font-black tracking-tight text-white">
+                  Menu Favorit Pelanggan
                 </motion.h2>
               </div>
-              <p className="text-stone-400 text-sm max-w-sm leading-relaxed font-light">Tiga mangkuk legend yang selalu habis terjual setiap harinya. Diramu dengan kaldu gurih buatan Chef kami.</p>
+              <p className="text-zinc-400 text-sm max-w-sm leading-relaxed font-light">Sajian favorit jutaan masyarakat Indonesia dengan racikan mie pedas manis/gurih dan dimsum lezat dipadu es segar.</p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
               {[
                 { 
-                  img: "https://images.unsplash.com/photo-1557872943-16a5ac26437e?auto=format&fit=crop&q=80&w=800", 
-                  name: "Chicken Tantanmen", 
-                  price: "32.000",
-                  desc: "Ramen kaldu wijen pedas bertekstur kental, irisan daging ayam juicy, telur ajitama setengah matang, nori, dan daun bawang segar." 
-                },
-                { 
                   img: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&q=80&w=800", 
-                  name: "Gyudon Beef Donburi", 
-                  price: "36.000",
-                  desc: "Nasi pulen Jepang disajikan dengan irisan daging sapi premium tipis yang dimasak dengan bawang bombay dan saus shoyu manis gurih." 
+                  name: "Mie Gacoan (Lv. 1 - 8)", 
+                  price: "10.000",
+                  badge: "Must Try (Manis Pedas)",
+                  desc: "Mie manis pedas gurih khas Gacoan disajikan dengan taburan ayam cincang halus, daun bawang segar, dan 2 pangsit goreng krispi." 
                 },
                 { 
                   img: "https://images.unsplash.com/photo-1552611052-33e04de081de?auto=format&fit=crop&q=80&w=800", 
-                  name: "Original Shoyu Ramen", 
-                  price: "28.000",
-                  desc: "Ramen kuah kecap Jepang jernih aromatik klasik, chashu ayam panggang, irisan rebung bambu renyah, nori, dan telur rebus ajitama." 
+                  name: "Mie Hompimpa (Lv. 1 - 8)", 
+                  price: "10.000",
+                  badge: "Asin Pedas Gurih",
+                  desc: "Mie asin pedas nagih bertabur cabe asli, cincangan daging ayam pilihan, dan topping pangsit krispi super renyah." 
+                },
+                { 
+                  img: "https://images.unsplash.com/photo-1541696432-82c6da8ce7bf?auto=format&fit=crop&q=80&w=800", 
+                  name: "Pangsit Goreng & Udang Keju", 
+                  price: "12.000",
+                  badge: "Dimsum Favorit",
+                  desc: "Dimsum olahan udang keju lumer & pangsit goreng jumbo krispi renyah dengan isian daging gurih dipadu saus asam manis khas Gacoan." 
                 },
               ].map((item, i) => (
                 <motion.div
@@ -333,27 +369,27 @@ Mohon diproses untuk pengiriman. Terima kasih!`;
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.15 }}
-                  className="group bg-[#161313] border border-white/5 hover:border-red-500/30 rounded-3xl overflow-hidden flex flex-col transition-all duration-300"
+                  className="group bg-[#131013] border border-white/5 hover:border-rose-500/40 rounded-3xl overflow-hidden flex flex-col transition-all duration-300 shadow-xl"
                 >
                   <div className="relative h-60 overflow-hidden">
                     <img src={item.img} alt={item.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 brightness-[0.9]" />
-                    <div className="absolute top-4 left-4 bg-red-600 text-white text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-full">
-                      Must Try
+                    <div className="absolute top-4 left-4 bg-gradient-to-r from-rose-600 to-pink-600 text-white text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-full shadow-lg">
+                      {item.badge}
                     </div>
                   </div>
                   <div className="p-6 flex-1 flex flex-col justify-between">
                     <div>
                       <div className="flex justify-between items-center mb-3">
-                        <h3 className="text-xl font-bold text-white">{item.name}</h3>
-                        <span className="text-amber-500 font-serif font-black text-sm">Rp {item.price}</span>
+                        <h3 className="text-xl font-bold text-white group-hover:text-rose-400 transition-colors">{item.name}</h3>
+                        <span className="text-rose-400 font-serif font-black text-base">Rp {item.price}</span>
                       </div>
-                      <p className="text-stone-400 text-xs sm:text-sm font-light leading-relaxed mb-6">{item.desc}</p>
+                      <p className="text-zinc-400 text-xs sm:text-sm font-light leading-relaxed mb-6">{item.desc}</p>
                     </div>
                     <a 
-                      href={`https://wa.me/${phone}?text=${encodeURIComponent(`Halo Niko-Niko Ramen Kediri, saya ingin pesan Best Seller: *${item.name}* (Rp ${item.price}).`)}`}
+                      href={`https://wa.me/${phone}?text=${encodeURIComponent(`Halo Mie Gacoan Tulungagung, saya mau pesan menu favorit: *${item.name}* (Rp ${item.price}).`)}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full bg-white/5 group-hover:bg-red-600 text-white py-3 rounded-xl font-bold text-xs uppercase tracking-widest text-center border border-white/10 group-hover:border-transparent transition-all"
+                      className="w-full bg-white/5 group-hover:bg-rose-600 text-white py-3 rounded-xl font-bold text-xs uppercase tracking-widest text-center border border-white/10 group-hover:border-transparent transition-all shadow-md"
                     >
                       Pesan Sekarang
                     </a>
@@ -364,157 +400,166 @@ Mohon diproses untuk pengiriman. Terima kasih!`;
           </div>
         </section>
 
-        {/* ================= RAMEN BOWL CUSTOMIZER [NEW FEATURE] ================= */}
-        <section id="customizer" className="py-24 px-6 bg-[#0f0c0c] border-y border-white/5 relative">
-          <div className="absolute left-0 bottom-10 w-[300px] h-[300px] bg-red-500/5 blur-[100px] rounded-full pointer-events-none" />
+        {/* ================= GACOAN LEVEL & ORDER LAB ================= */}
+        <section id="customizer" className="py-24 px-6 bg-[#0f0c0f] border-y border-white/5 relative">
+          <div className="absolute left-0 bottom-10 w-[350px] h-[350px] bg-rose-600/10 blur-[120px] rounded-full pointer-events-none" />
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-xs text-red-500 uppercase tracking-[0.3em] font-extrabold mb-4">Ramen Lab</h2>
-              <h3 className="text-3xl md:text-5xl font-serif font-black text-white">Ramen Customizer</h3>
-              <p className="text-stone-400 text-xs sm:text-sm max-w-md mx-auto mt-4">
-                Racik semangkuk ramen idaman Anda! Tentukan kuah broth, bentuk mi, tingkat kepedasan, dan topping extra favorit Anda di bawah.
+              <h2 className="text-xs text-rose-500 uppercase tracking-[0.3em] font-extrabold mb-3">Interactive Order Lab</h2>
+              <h3 className="text-3xl md:text-5xl font-serif font-black text-white">Gacoan Level & Order Customizer</h3>
+              <p className="text-zinc-400 text-xs sm:text-sm max-w-md mx-auto mt-4">
+                Pilih racikan mi favorit Anda, tentukan tingkat kepedasan, serta tambahkan dimsum & es segar secara langsung!
               </p>
             </div>
 
             <div className="grid lg:grid-cols-12 gap-8 items-stretch">
               {/* Customizer Panel Left */}
-              <div className="lg:col-span-8 bg-[#161313] border border-white/5 rounded-3xl p-6 md:p-8 space-y-6 text-left">
-                {/* Broth Selector */}
+              <div className="lg:col-span-8 bg-[#151115] border border-white/10 rounded-3xl p-6 md:p-8 space-y-7 text-left">
+                
+                {/* 1. Noodle Type */}
                 <div>
-                  <label className="text-[10px] uppercase font-bold tracking-widest text-zinc-400 block mb-2">1. Pilih Kuah Broth:</label>
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                    {["Original Tonkotsu (Pork-free)", "Spicy Tantanmen", "Classic Shoyu", "Creamy Miso"].map(b => (
+                  <label className="text-[10px] uppercase font-bold tracking-widest text-zinc-400 block mb-3">1. Pilih Varian Mie Gacoan:</label>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    {[
+                      { name: "Mie Gacoan (Manis Pedas)", desc: "Kecap manis + cabai asli" },
+                      { name: "Mie Hompimpa (Asin Pedas)", desc: "Gurih asin + cabai segar" },
+                      { name: "Mie Suit (Gurih No Pedas)", desc: "Cocok untuk anak-anak & mild" }
+                    ].map(n => (
                       <button
-                        key={b}
-                        onClick={() => setBroth(b)}
-                        className={`py-3 px-2 rounded-xl text-[10px] font-bold transition-all border ${
-                          broth === b
-                            ? "bg-red-600 text-white border-transparent shadow-lg shadow-red-600/20"
-                            : "bg-black/30 text-stone-400 border-white/5 hover:bg-white/5"
+                        key={n.name}
+                        onClick={() => setNoodleType(n.name)}
+                        className={`p-3.5 rounded-2xl border text-left transition-all ${
+                          noodleType === n.name
+                            ? "bg-rose-600 text-white border-transparent shadow-lg shadow-rose-600/30"
+                            : "bg-black/40 text-zinc-400 border-white/5 hover:bg-white/5"
                         }`}
                       >
-                        {b.split(" ")[0]}
+                        <span className="text-xs font-bold block">{n.name.split(" ")[0]} {n.name.split(" ")[1]}</span>
+                        <span className="text-[10px] opacity-80 mt-0.5 block">{n.desc}</span>
                       </button>
                     ))}
                   </div>
                 </div>
 
-                {/* Noodle Selector */}
+                {/* 2. Spicy Level Selector */}
                 <div>
-                  <label className="text-[10px] uppercase font-bold tracking-widest text-zinc-400 block mb-2">2. Jenis Mie:</label>
-                  <div className="grid grid-cols-2 gap-2">
-                    {["Keriting (Curly)", "Lurus (Thin-Straight)"].map(n => (
+                  <div className="flex justify-between items-center mb-3">
+                    <label className="text-[10px] uppercase font-bold tracking-widest text-zinc-400">2. Tingkat Kepedasan:</label>
+                    <span className="text-sm text-rose-500 font-extrabold bg-rose-500/10 px-3 py-1 rounded-full border border-rose-500/20">
+                      🔥 Level {spicyLevel} {spicyLevel >= 8 && "(Super Pedas)"}
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-7 gap-2">
+                    {[0, 1, 2, 3, 4, 6, 8].map(lvl => (
                       <button
-                        key={n}
-                        onClick={() => setNoodle(n)}
-                        className={`py-3 px-2 rounded-xl text-[10px] font-bold transition-all border ${
-                          noodle === n
-                            ? "bg-red-600 text-white border-transparent"
-                            : "bg-black/30 text-stone-400 border-white/5 hover:bg-white/5"
+                        key={lvl}
+                        onClick={() => setSpicyLevel(lvl)}
+                        className={`py-3 rounded-xl font-black text-xs transition-all border ${
+                          spicyLevel === lvl
+                            ? "bg-gradient-to-r from-rose-600 to-pink-600 text-white border-transparent shadow-md scale-105"
+                            : "bg-black/30 text-zinc-400 border-white/5 hover:bg-white/5"
                         }`}
                       >
-                        {n}
+                        Lvl {lvl}
                       </button>
                     ))}
                   </div>
+                  <p className="text-[10px] text-zinc-500 mt-2 font-medium">Level 1 - 6 (Rp 10.000) | Level 8 (Rp 14.000)</p>
                 </div>
 
-                {/* Spicy Slider */}
+                {/* 3. Dimsum Multi-Selector */}
                 <div>
-                  <div className="flex justify-between items-center mb-2">
-                    <label className="text-[10px] uppercase font-bold tracking-widest text-zinc-400">3. Tingkat Kepedasan:</label>
-                    <span className="text-xs text-red-500 font-extrabold">Level {spicyLevel}</span>
-                  </div>
-                  <input
-                    type="range"
-                    min="0"
-                    max="5"
-                    value={spicyLevel}
-                    onChange={(e) => setSpicyLevel(parseInt(e.target.value))}
-                    className="w-full accent-red-600 h-1 bg-white/10 rounded-lg appearance-none cursor-pointer"
-                  />
-                  <div className="flex justify-between text-[9px] text-zinc-500 font-bold px-1 mt-1">
-                    <span>Lvl 0 (Mild)</span>
-                    <span>Lvl 2 (Medium)</span>
-                    <span>Lvl 5 (Extremely Spicy)</span>
-                  </div>
-                </div>
-
-                {/* Toppings Multi-selector */}
-                <div>
-                  <label className="text-[10px] uppercase font-bold tracking-widest text-zinc-400 block mb-2">4. Tambah Extra Topping:</label>
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                    {toppingsList.map(topping => {
-                      const isSelected = extraToppings.includes(topping.id);
+                  <label className="text-[10px] uppercase font-bold tracking-widest text-zinc-400 block mb-3">3. Tambah Pilihan Dimsum:</label>
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                    {dimsumList.map(dimsum => {
+                      const isSelected = selectedDimsum.includes(dimsum.id);
                       return (
                         <button
-                          key={topping.id}
-                          onClick={() => handleToggleTopping(topping.id)}
+                          key={dimsum.id}
+                          onClick={() => handleToggleDimsum(dimsum.id)}
                           className={`p-3 rounded-xl border text-left flex flex-col justify-between h-20 transition-all ${
                             isSelected
-                              ? "bg-red-600/10 border-red-600 text-white"
-                              : "bg-black/30 border-white/5 text-stone-400 hover:bg-white/5"
+                              ? "bg-rose-600/15 border-rose-500 text-white shadow-md"
+                              : "bg-black/30 border-white/5 text-zinc-400 hover:bg-white/5"
                           }`}
                         >
-                          <span className="text-[10px] font-bold block">{topping.name}</span>
-                          <span className="text-[9px] text-amber-500 font-black">+Rp {topping.price.toLocaleString("id-ID")}</span>
+                          <span className="text-[10px] font-bold block leading-tight">{dimsum.name}</span>
+                          <span className="text-[10px] text-amber-400 font-black">+Rp {dimsum.price.toLocaleString("id-ID")}</span>
                         </button>
                       );
                     })}
                   </div>
                 </div>
+
+                {/* 4. Beverage Selector */}
+                <div>
+                  <label className="text-[10px] uppercase font-bold tracking-widest text-zinc-400 block mb-3">4. Pilihan Minuman Segar:</label>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 flex-wrap">
+                    {beverageList.map(bev => (
+                      <button
+                        key={bev.id}
+                        onClick={() => setSelectedBeverage(bev.id)}
+                        className={`p-3 rounded-xl border text-left transition-all ${
+                          selectedBeverage === bev.id
+                            ? "bg-amber-500/20 border-amber-500 text-amber-300"
+                            : "bg-black/30 border-white/5 text-zinc-400 hover:bg-white/5"
+                        }`}
+                      >
+                        <span className="text-[10px] font-bold block">{bev.name}</span>
+                        <span className="text-[9px] text-zinc-400">Rp {bev.price.toLocaleString("id-ID")}</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
               </div>
 
-              {/* Price & Summary Checkout Right */}
-              <div className="lg:col-span-4 bg-[#161313] border border-white/5 rounded-3xl p-6 md:p-8 flex flex-col justify-between text-left">
+              {/* Order Summary Right */}
+              <div className="lg:col-span-4 bg-[#151115] border border-white/10 rounded-3xl p-6 md:p-8 flex flex-col justify-between text-left shadow-2xl">
                 <div className="space-y-6">
-                  <h4 className="text-lg font-bold text-white border-b border-white/5 pb-3 flex items-center gap-2">
-                    <Sparkles className="w-4 h-4 text-amber-500" />
-                    Custom Bowl Summary
+                  <h4 className="text-lg font-bold text-white border-b border-white/10 pb-4 flex items-center gap-2">
+                    <Sparkles className="w-5 h-5 text-rose-500" />
+                    Ringkasan Pesanan
                   </h4>
                   
-                  <div className="space-y-3.5 text-xs text-stone-300 font-medium">
-                    <div className="flex justify-between">
-                      <span className="text-zinc-500 font-bold">Ramen Base:</span>
-                      <span>Original Ramen (Rp 28.000)</span>
+                  <div className="space-y-4 text-xs text-zinc-300 font-medium">
+                    <div className="flex justify-between border-b border-white/5 pb-2">
+                      <span className="text-zinc-400 font-bold">Varian Mie:</span>
+                      <span className="text-white text-right font-bold">{noodleType.split(" ")[0]} {noodleType.split(" ")[1]}</span>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-zinc-500 font-bold">Kuah Broth:</span>
-                      <span className="text-white">{broth} {broth === "Spicy Tantanmen" && "(+Rp 4.000)"}</span>
+                    <div className="flex justify-between border-b border-white/5 pb-2">
+                      <span className="text-zinc-400 font-bold">Tingkat Pedas:</span>
+                      <span className="text-rose-400 font-black">Level {spicyLevel} ({spicyLevel >= 8 ? "Rp 14.000" : "Rp 10.000"})</span>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-zinc-500 font-bold">Jenis Mie:</span>
-                      <span className="text-white">{noodle}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-zinc-500 font-bold">Rasa Pedas:</span>
-                      <span className="text-red-500 font-bold">Level {spicyLevel}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-zinc-500 font-bold">Extra Toppings:</span>
-                      <span className="text-white text-right max-w-[150px] truncate">
-                        {extraToppings.map(id => toppingsList.find(t => t.id === id)?.name).join(", ") || "-"}
+                    <div className="flex justify-between border-b border-white/5 pb-2">
+                      <span className="text-zinc-400 font-bold">Dimsum:</span>
+                      <span className="text-white text-right max-w-[140px] truncate">
+                        {selectedDimsum.map(id => dimsumList.find(d => d.id === id)?.name.split(" ")[0]).join(", ") || "Tanpa Dimsum"}
                       </span>
+                    </div>
+                    <div className="flex justify-between border-b border-white/5 pb-2">
+                      <span className="text-zinc-400 font-bold">Minuman Segar:</span>
+                      <span className="text-amber-400 font-bold">{beverageList.find(b => b.id === selectedBeverage)?.name}</span>
                     </div>
                   </div>
                 </div>
 
                 <div className="mt-8 space-y-4">
-                  <div className="bg-[#0C0C0C] border border-white/5 rounded-2xl p-4 flex items-center justify-between">
+                  <div className="bg-[#0c0a0c] border border-white/10 rounded-2xl p-4 flex items-center justify-between">
                     <div>
-                      <p className="text-[10px] text-zinc-500 uppercase tracking-widest mb-1">Total Racikan</p>
-                      <h4 className="text-xl sm:text-2xl font-black text-amber-400">
-                        Rp {calculateCustomRamenPrice().toLocaleString("id-ID")}
+                      <p className="text-[10px] text-zinc-400 uppercase tracking-widest mb-1">Total Estimasi Harga</p>
+                      <h4 className="text-2xl font-black text-rose-400 font-serif">
+                        Rp {calculateCustomGacoanPrice().toLocaleString("id-ID")}
                       </h4>
                     </div>
                   </div>
 
                   <button
-                    onClick={handleOrderCustomRamen}
-                    className="w-full bg-gradient-to-r from-red-600 to-amber-500 text-white font-bold text-xs tracking-widest py-4 rounded-xl hover:shadow-lg hover:shadow-red-600/20 transition-all flex items-center justify-center gap-2"
+                    onClick={handleOrderCustomGacoan}
+                    className="w-full bg-gradient-to-r from-rose-600 via-pink-600 to-amber-500 text-white font-black text-xs tracking-widest py-4 rounded-xl hover:shadow-xl hover:shadow-rose-600/30 transition-all flex items-center justify-center gap-2 uppercase"
                   >
-                    <ShoppingBag size={14} />
-                    Order via WhatsApp
+                    <ShoppingBag size={16} />
+                    Pesan via WhatsApp
                   </button>
                 </div>
               </div>
@@ -522,190 +567,49 @@ Mohon diproses untuk pengiriman. Terima kasih!`;
           </div>
         </section>
 
-        {/* DETAILED MENU LIST WITH FILTER */}
+        {/* DETAILED MENU LIST */}
         <RestoSection phone={phone} />
 
-        {/* ABOUT / ATMOSPHERE SECTION */}
-        <section id="about" className="py-24 px-6 bg-[#0f0c0c] border-y border-white/5 relative overflow-hidden">
-          <div className="absolute right-0 top-0 w-[400px] h-[400px] bg-amber-500/5 blur-[120px] rounded-full pointer-events-none" />
-          <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-            {/* LEFT: Images collage */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="relative"
-            >
-              <div className="grid grid-cols-2 gap-3">
-                <div className="rounded-2xl overflow-hidden row-span-2">
-                  <img
-                    src="https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?auto=format&fit=crop&q=80&w=600"
-                    alt="Suasana Kedai Ramen"
-                    className="w-full h-full object-cover min-h-[320px] brightness-75"
-                  />
-                </div>
-                <div className="rounded-2xl overflow-hidden">
-                  <img
-                    src="https://images.unsplash.com/photo-1557872943-16a5ac26437e?auto=format&fit=crop&q=80&w=600"
-                    alt="Ramen Bowl"
-                    className="w-full h-[150px] object-cover brightness-75"
-                  />
-                </div>
-                <div className="rounded-2xl overflow-hidden">
-                  <img
-                    src="https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?auto=format&fit=crop&q=80&w=600"
-                    alt="Gyoza"
-                    className="w-full h-[150px] object-cover brightness-75"
-                  />
-                </div>
-              </div>
-              {/* Label overlay */}
-              <div className="absolute bottom-4 left-4 bg-[#0b0909]/80 backdrop-blur-md border border-white/10 px-4 py-2.5 rounded-xl">
-                <p className="text-white font-bold text-sm">Open Kitchen</p>
-                <p className="text-stone-400 text-[10px]">Lihat langsung proses pembuatan ramen Anda</p>
-              </div>
-            </motion.div>
-
-            {/* RIGHT: Content */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="space-y-6 text-left"
-            >
-              <div>
-                <p className="text-xs text-red-500 uppercase tracking-[0.3em] font-extrabold mb-3">Tentang Kami</p>
-                <h2 className="text-3xl md:text-4xl font-serif font-black tracking-tighter text-white leading-tight">
-                  Kedai Ramen Jepang
-                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-amber-400"> di Jantung Pare</span>
-                </h2>
-              </div>
-
-              <p className="text-stone-400 text-sm leading-relaxed">
-                Niko-Niko Ramen hadir dengan konsep kedai khas Jepang yang estetik dan cozy, dihiasi ornamen pohon sakura dan
-                area <strong className="text-white">open kitchen</strong> yang memukau. Cocok untuk makan santai, ngerjain tugas,
-                atau hangout bersama teman di Kampung Inggris, Pare, Kediri.
-              </p>
-
-              <div className="grid grid-cols-2 gap-3">
-                {[
-                  { icon: "🌸", title: "Dekorasi Sakura", desc: "Aesthetic & Instagrammable" },
-                  { icon: "🍜", title: "Kuah Kaldu Autentik", desc: "Tanpa MSG berlebihan" },
-                  { icon: "🪑", title: "Pilihan Tempat Duduk", desc: "Mini bar, lesehan & meja panjang" },
-                  { icon: "💰", title: "Harga Terjangkau", desc: "Mulai Rp 21.000 saja" },
-                ].map((f, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.1 }}
-                    className="bg-[#161313] border border-white/5 p-4 rounded-2xl"
-                  >
-                    <span className="text-2xl mb-2 block">{f.icon}</span>
-                    <p className="text-white font-bold text-xs">{f.title}</p>
-                    <p className="text-stone-500 text-[10px] mt-0.5">{f.desc}</p>
-                  </motion.div>
-                ))}
-              </div>
-
-              <div className="flex gap-6 pt-2">
-                {[
-                  { value: "4k+", label: "Pelanggan" },
-                  { value: "4.8★", label: "Rating" },
-                  { value: "15+", label: "Menu" },
-                ].map((s, i) => (
-                  <div key={i} className="text-left">
-                    <p className="text-2xl font-black text-white font-serif">{s.value}</p>
-                    <p className="text-[10px] text-stone-500 uppercase tracking-wider font-bold">{s.label}</p>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* TESTIMONIALS */}
-        <section id="reviews" className="py-24 px-6 relative overflow-hidden bg-[#161313]/30 border-y border-white/5">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-xs text-red-500 uppercase tracking-[0.3em] font-extrabold mb-4">Testimonials</h2>
-              <h3 className="text-3xl md:text-5xl font-serif font-black mb-4">Apa Kata Pecinta Ramen Kediri?</h3>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-6">
-              {[
-                { name: "Dimas Pratama", text: "Niko-Niko Pare ini beneran hidden gem. Kuah Chicken Tantanmen-nya kental gurih, pedasnya mantap. Mirip ramen mahal di mall kota besar!" },
-                { name: "Larasati Putri", text: "Rekomendasi banget buat anak Kampung Inggris. Harganya sangat bersahabat buat kantong pelajar, porsinya kenyang dan rasanya authentic Jepang." },
-                { name: "Wahyu Hidayat", text: "Daging sapinya di Beef Donburi manis gurih pas banget di lidah. Pelayanannya cepat dan ramah sekali. Sukses terus Niko-Niko Pare!" }
-              ].map((item, i) => (
-                <motion.div 
-                  key={i}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className="bg-[#161313] p-8 rounded-3xl border border-white/5 text-left"
-                >
-                  <div className="flex gap-1 text-amber-500 mb-6">
-                    {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 fill-current" />)}
-                  </div>
-                  <p className="text-zinc-400 text-xs sm:text-sm font-light italic leading-relaxed mb-8">"{item.text}"</p>
-                  <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 bg-gradient-to-br from-red-600 to-amber-500 rounded-full flex items-center justify-center font-bold text-white text-xs">
-                      {item.name[0]}
-                    </div>
-                    <div>
-                      <p className="font-bold text-xs sm:text-sm text-white">{item.name}</p>
-                      <p className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider">Local Guide Kediri</p>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* LOCATION Pare, Kediri */}
-        <section id="location" className="py-24 px-6 relative">
+        {/* CABANG & LOKASI TULUNGAGUNG */}
+        <section id="location" className="py-24 px-6 relative bg-zinc-950/70 border-t border-white/5">
           <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-stretch text-left">
             
             <motion.div 
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="bg-[#161313] p-10 lg:p-12 rounded-3xl border border-white/5 flex flex-col justify-center"
+              className="bg-[#131013] p-8 lg:p-12 rounded-3xl border border-white/10 flex flex-col justify-center shadow-2xl"
             >
-              <h2 className="text-xs text-red-500 uppercase tracking-[0.3em] font-extrabold mb-4">Pare Outlet</h2>
-              <h3 className="text-3xl md:text-4xl font-serif font-black mb-6 tracking-tighter text-white">Mampir ke Ramen Bar Kami</h3>
+              <h2 className="text-xs text-rose-500 uppercase tracking-[0.3em] font-extrabold mb-3">Cabang Resmi</h2>
+              <h3 className="text-3xl md:text-4xl font-serif font-black mb-6 tracking-tight text-white">Mie Gacoan Tulungagung</h3>
               <p className="text-zinc-400 text-xs sm:text-sm font-light leading-relaxed mb-8">
-                Nikmati atmosfer kedai ramen Jepang yang estetik dan cozy di pusat Pare, Kediri. Sangat cocok untuk makan malam santai bersama teman-teman.
+                Kunjungi outlet resmi kami di Tulungagung. Dilengkapi fasilitas area indoor AC, outdoor santai, musholla, parkiran luas, dan wifi gratis.
               </p>
               
-              <div className="space-y-4 mb-10">
-                <div className="flex items-center gap-4 bg-black/30 p-4 rounded-2xl">
-                  <MapPin className="text-red-500 w-5 h-5 shrink-0" />
+              <div className="space-y-4 mb-8">
+                <div className="flex items-center gap-4 bg-black/40 p-4 rounded-2xl border border-white/5">
+                  <MapPin className="text-rose-500 w-5 h-5 shrink-0" />
                   <div>
                     <p className="font-bold text-xs text-white">Alamat Outlet</p>
-                    <p className="text-[11px] text-zinc-400 leading-normal">Jl. Anyelir No. 18, Kec. Pare, Kabupaten Kediri, Jawa Timur</p>
+                    <p className="text-[11px] text-zinc-400 leading-normal">{data.address}</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-4 bg-black/30 p-4 rounded-2xl">
-                  <Clock className="text-red-500 w-5 h-5 shrink-0" />
+                <div className="flex items-center gap-4 bg-black/40 p-4 rounded-2xl border border-white/5">
+                  <Clock className="text-amber-400 w-5 h-5 shrink-0" />
                   <div>
                     <p className="font-bold text-xs text-white">Jam Operasional</p>
-                    <p className="text-[11px] text-zinc-400 leading-normal">Sen–Sab: 12.30 – 21.30 WIB <span className="text-red-400">(Minggu Tutup)</span></p>
+                    <p className="text-[11px] text-zinc-400 leading-normal">{data.hours}</p>
                   </div>
                 </div>
               </div>
 
               <a
-                href="https://maps.google.com/maps?q=Niko%20Niko%20Ramen%20Pare%20Kediri"
+                href="https://maps.google.com/maps?q=Mie%20Gacoan%20Tulungagung"
                 target="_blank"
                 rel="noreferrer"
-                className="w-full bg-white text-stone-950 text-xs font-bold uppercase tracking-widest text-center py-4 rounded-xl hover:bg-stone-200 transition-colors"
+                className="w-full bg-white text-zinc-950 text-xs font-black uppercase tracking-widest text-center py-4 rounded-xl hover:bg-rose-500 hover:text-white transition-all shadow-md"
               >
-                Buka Petunjuk Arah Google Maps
+                Petunjuk Arah Google Maps
               </a>
             </motion.div>
 
@@ -713,11 +617,11 @@ Mohon diproses untuk pengiriman. Terima kasih!`;
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="relative h-[400px] md:h-auto rounded-3xl overflow-hidden border border-white/5 group"
+              className="relative h-[380px] md:h-auto rounded-3xl overflow-hidden border border-white/10 group shadow-2xl"
             >
               <iframe
                 className="absolute inset-0 w-full h-full grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
-                src="https://maps.google.com/maps?q=Niko%20Niko%20Ramen%20Pare%20Kediri&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                src="https://maps.google.com/maps?q=Mie%20Gacoan%20Tulungagung&t=&z=15&ie=UTF8&iwloc=&output=embed"
                 loading="lazy"
               />
             </motion.div>
@@ -725,28 +629,65 @@ Mohon diproses untuk pengiriman. Terima kasih!`;
           </div>
         </section>
 
+        {/* INFO KARIR (KARIR SECTION) */}
+        <section id="karir" className="py-24 px-6 bg-[#0c0a0c] relative border-t border-white/5">
+          <div className="max-w-7xl mx-auto text-left">
+            <div className="bg-gradient-to-r from-rose-950/50 via-[#151115] to-zinc-900 border border-rose-500/20 p-8 sm:p-12 rounded-3xl relative overflow-hidden shadow-2xl">
+              <div className="grid lg:grid-cols-12 gap-8 items-center">
+                <div className="lg:col-span-8 space-y-4">
+                  <span className="text-rose-500 text-xs font-bold uppercase tracking-widest bg-rose-500/10 px-3 py-1 rounded-full border border-rose-500/20">
+                    Join Our Dynamic Team
+                  </span>
+                  <h2 className="text-3xl sm:text-4xl font-serif font-black text-white">Karir & Lowongan Kerja Gacoan</h2>
+                  <p className="text-zinc-300 text-xs sm:text-sm leading-relaxed max-w-2xl">
+                    Tertarik mengembangkan karir di industri F&B terbesar di Indonesia? Mie Gacoan Tulungagung rutin membuka kesempatan lowongan pekerjaan untuk posisi Crew Resto, Kasir, Kitchen, dan Supervisor.
+                  </p>
+                  <div className="flex flex-wrap gap-3 pt-2">
+                    {["Crew Resto / Stand", "Kasir & Floor", "Kitchen Staff", "Store Supervisor"].map((job, idx) => (
+                      <span key={idx} className="bg-white/5 border border-white/10 text-xs text-zinc-300 px-3 py-1.5 rounded-lg font-bold">
+                        💼 {job}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="lg:col-span-4 flex flex-col gap-3 shrink-0">
+                  <a
+                    href={`https://wa.me/${phone}?text=${encodeURIComponent("Halo Tim HRD Mie Gacoan Tulungagung, saya bermaksud menanyakan info lowongan kerja / karir yang tersedia.")}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="w-full bg-gradient-to-r from-rose-600 to-amber-500 text-white font-black text-xs uppercase tracking-widest py-4 px-6 rounded-xl hover:shadow-lg hover:shadow-rose-600/30 transition-all text-center flex items-center justify-center gap-2"
+                  >
+                    <Briefcase className="w-4 h-4" />
+                    Kirim Lamaran (WA HRD)
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
       </main>
 
       {/* FOOTER */}
-      <footer className="bg-black border-t border-white/5 pt-16 pb-8 px-6">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-red-600 to-amber-500 flex items-center justify-center font-serif text-white text-xs font-black">
-              ニコ
-            </div>
-            <span className="text-base font-black tracking-tighter text-white">
-              NIKO-NIKO RAMEN KEDIRI
+      <footer className="bg-black border-t border-white/10 pt-16 pb-8 px-6 text-left">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="flex items-center gap-3">
+            <img src={logoMieGacoan} alt="Mie Gacoan Logo" className="h-8 w-auto object-contain" />
+            <span className="text-base font-black tracking-tight text-white font-serif">
+              MIE GACOAN TULUNGAGUNG
             </span>
           </div>
           
-          <div className="flex gap-6 text-[10px] tracking-widest uppercase font-bold text-stone-500">
-            <a href="#bestseller" className="hover:text-white transition-colors">Bestsellers</a>
-            <a href="#customizer" className="hover:text-white transition-colors">Custom Bowl</a>
-            <a href="#menu" className="hover:text-white transition-colors">Menu Utama</a>
+          <div className="flex gap-6 text-[10px] tracking-widest uppercase font-bold text-zinc-500">
+            <a href="#bestseller" className="hover:text-white transition-colors">Menu Favorit</a>
+            <a href="#customizer" className="hover:text-white transition-colors">Custom Level</a>
+            <a href="#location" className="hover:text-white transition-colors">Cabang</a>
+            <a href="#karir" className="hover:text-white transition-colors">Karir</a>
           </div>
           
-          <div className="text-stone-600 text-xs font-bold uppercase tracking-wider">
-            © {new Date().getFullYear()} Niko-Niko Ramen Pare. Website Developed by GapaiDigital.
+          <div className="text-zinc-600 text-xs font-bold uppercase tracking-wider">
+            © {new Date().getFullYear()} Mie Gacoan Tulungagung. Redesign by GapaiDigital.
           </div>
         </div>
       </footer>
@@ -755,7 +696,7 @@ Mohon diproses untuk pengiriman. Terima kasih!`;
 }
 
 /* ========================= */
-/* 🍽️ MENU SECTION */
+/* 🍽️ MENU SECTION FILTER */
 /* ========================= */
 
 function RestoSection({ phone }) {
@@ -763,194 +704,164 @@ function RestoSection({ phone }) {
 
   const categories = [
     { id: "semua", label: "Semua Menu" },
-    { id: "ramen", label: "Signature Ramen" },
-    { id: "donburi", label: "Rice Bowl" },
-    { id: "camilan", label: "Snacks / Gyoza" },
-    { id: "minuman", label: "Japanese Drinks" },
+    { id: "mie", label: "Mie Pedas" },
+    { id: "dimsum", label: "Dimsum Renyah" },
+    { id: "es", label: "Es Segar" },
   ];
 
   const menus = [
     {
-      name: "Chicken Tantanmen",
-      price: "32.000",
-      category: "ramen",
-      img: "https://images.unsplash.com/photo-1557872943-16a5ac26437e?auto=format&fit=crop&q=80&w=800",
-      tags: ["Pedas Gurih", "Bestseller"]
-    },
-    {
-      name: "Beef Tantanmen Special",
-      price: "38.000",
-      category: "ramen",
+      name: "Mie Gacoan Level 1 - 6",
+      price: "10.000",
+      category: "mie",
       img: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&q=80&w=800",
-      tags: ["Daging Sapi Slice", "Recommended"]
+      tags: ["Manis Pedas", "Best Seller"]
     },
     {
-      name: "Original Shoyu Ramen",
-      price: "28.000",
-      category: "ramen",
+      name: "Mie Gacoan Level 8",
+      price: "14.000",
+      category: "mie",
+      img: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&q=80&w=800",
+      tags: ["Super Pedas Cabai Asli"]
+    },
+    {
+      name: "Mie Hompimpa Level 1 - 6",
+      price: "10.000",
+      category: "mie",
       img: "https://images.unsplash.com/photo-1552611052-33e04de081de?auto=format&fit=crop&q=80&w=800",
-      tags: ["Kuah Shoyu Jernih"]
+      tags: ["Asin Pedas Gurih"]
     },
     {
-      name: "Chicken Shio Ramen",
-      price: "25.000",
-      category: "ramen",
-      img: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&q=80&w=800",
-      tags: ["Ringan & Segar"]
+      name: "Mie Suit (No Pedas)",
+      price: "10.000",
+      category: "mie",
+      img: "https://images.unsplash.com/photo-1552611052-33e04de081de?auto=format&fit=crop&q=80&w=800",
+      tags: ["Gurih Mild", "Anak & Remaja"]
     },
     {
-      name: "Gyudon (Beef Donburi)",
-      price: "35.000",
-      category: "donburi",
-      img: "https://images.unsplash.com/photo-1582450871972-ab5ca641643d?auto=format&fit=crop&q=80&w=800",
-      tags: ["Nasi Jepang", "Recommended"]
-    },
-    {
-      name: "Oyakodon",
-      price: "28.000",
-      category: "donburi",
-      img: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&q=80&w=800",
-      tags: ["Ayam & Telur"]
-    },
-    {
-      name: "Chicken Donburi",
-      price: "25.000",
-      category: "donburi",
-      img: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&q=80&w=800",
-      tags: ["Hemat & Kenyang"]
-    },
-    {
-      name: "Pan-Fried Gyoza (5 pcs)",
-      price: "20.000",
-      category: "camilan",
+      name: "Pangsit Goreng (3 Pcs)",
+      price: "12.000",
+      category: "dimsum",
       img: "https://images.unsplash.com/photo-1541696432-82c6da8ce7bf?auto=format&fit=crop&q=80&w=800",
-      tags: ["Garing Gurih"]
+      tags: ["Krispi Renyah", "Favorit"]
     },
     {
-      name: "Crispy Takoyaki (6 pcs)",
-      price: "18.000",
-      category: "camilan",
-      img: "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&q=80&w=800",
-      tags: ["Topping Katsuobushi"]
-    },
-    {
-      name: "Edamame Salted",
+      name: "Udang Keju (3 Pcs)",
       price: "12.000",
-      category: "camilan",
-      img: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&q=80&w=800",
-      tags: ["Light Snack"]
+      category: "dimsum",
+      img: "https://images.unsplash.com/photo-1541696432-82c6da8ce7bf?auto=format&fit=crop&q=80&w=800",
+      tags: ["Keju Lumer", "Recommended"]
     },
     {
-      name: "Iced Matcha Latte",
-      price: "15.000",
-      category: "minuman",
-      img: "https://images.unsplash.com/photo-1536256263959-770b48d82b0a?auto=format&fit=crop&q=80&w=800",
-      tags: ["Creamy Matcha"]
-    },
-    {
-      name: "Traditional Ocha Iced",
-      price: "6.000",
-      category: "minuman",
-      img: "https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&q=80&w=800",
-      tags: ["Free Refill"]
-    },
-    {
-      name: "Japanese Lemonade",
+      name: "Udang Rambutan (3 Pcs)",
       price: "12.000",
-      category: "minuman",
-      img: "https://images.unsplash.com/photo-1523371054106-bbf80586c38c?auto=format&fit=crop&q=80&w=800",
-      tags: ["Segar & Asam"]
+      category: "dimsum",
+      img: "https://images.unsplash.com/photo-1541696432-82c6da8ce7bf?auto=format&fit=crop&q=80&w=800",
+      tags: ["Olahan Udang Gurih"]
+    },
+    {
+      name: "Siomay Dimsum (3 Pcs)",
+      price: "10.000",
+      category: "dimsum",
+      img: "https://images.unsplash.com/photo-1541696432-82c6da8ce7bf?auto=format&fit=crop&q=80&w=800",
+      tags: ["Kukus Lembut"]
+    },
+    {
+      name: "Es Gobak Sodor",
+      price: "12.000",
+      category: "es",
+      img: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&q=80&w=800",
+      tags: ["Buah & Jelly", "Segar Pedas Loss"]
+    },
+    {
+      name: "Es Teklek",
+      price: "10.000",
+      category: "es",
+      img: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&q=80&w=800",
+      tags: ["Segar Manis"]
+    },
+    {
+      name: "Es Petak Sumpet",
+      price: "10.000",
+      category: "es",
+      img: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&q=80&w=800",
+      tags: ["Susu Segar Jelly"]
+    },
+    {
+      name: "Es Sluku Bathok",
+      price: "10.000",
+      category: "es",
+      img: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&q=80&w=800",
+      tags: ["Moka & Susu"]
     },
   ];
 
   const filteredMenus = activeCategory === "semua" 
     ? menus 
-    : menus.filter((menu) => menu.category === activeCategory);
+    : menus.filter(m => m.category === activeCategory);
 
   return (
-    <section id="menu" className="py-24 px-6 relative z-10 text-left">
-      <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-8">
-          <div>
-            <h2 className="text-xs text-red-500 uppercase tracking-[0.3em] font-extrabold mb-4">Our Menu</h2>
-            <h3 className="text-3xl md:text-5xl font-serif font-black text-white">Eksplor Menu Niko-Niko</h3>
-          </div>
-
-          <div className="flex flex-wrap gap-2 p-1.5 bg-[#161313] border border-white/5 rounded-2xl">
-            {categories.map((cat) => (
-              <button
-                key={cat.id}
-                onClick={() => setActiveCategory(cat.id)}
-                className={`relative px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-colors ${
-                  activeCategory === cat.id ? "text-white" : "text-stone-400 hover:text-white"
-                }`}
-              >
-                {activeCategory === cat.id && (
-                  <motion.div
-                    layoutId="activeCategoryResto"
-                    className="absolute inset-0 bg-gradient-to-r from-red-600 to-amber-500 rounded-xl shadow-md"
-                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                  />
-                )}
-                <span className="relative z-10">{cat.label}</span>
-              </button>
-            ))}
-          </div>
+    <section id="menu" className="py-24 px-6 bg-[#0b090a] relative">
+      <div className="max-w-7xl mx-auto text-left">
+        <div className="text-center mb-12">
+          <p className="text-xs text-rose-500 uppercase tracking-[0.3em] font-extrabold mb-3">Katalog Lengkap</p>
+          <h2 className="text-3xl md:text-5xl font-serif font-black tracking-tight text-white">Daftar Menu Gacoan</h2>
         </div>
 
-        <motion.div layout className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <AnimatePresence mode="popLayout">
-            {filteredMenus.map((menu) => {
-              const wa = `https://wa.me/${phone}?text=${encodeURIComponent(`Halo Niko-Niko Ramen Pare Kediri, saya ingin pesan: *${menu.name}* (Rp ${menu.price}).`)}`;
+        {/* CATEGORY TABS */}
+        <div className="flex flex-wrap justify-center gap-2 mb-12">
+          {categories.map((cat) => (
+            <button
+              key={cat.id}
+              onClick={() => setActiveCategory(cat.id)}
+              className={`px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
+                activeCategory === cat.id
+                  ? "bg-rose-600 text-white shadow-lg shadow-rose-600/30 scale-105"
+                  : "bg-white/5 text-zinc-400 hover:text-white hover:bg-white/10 border border-white/5"
+              }`}
+            >
+              {cat.label}
+            </button>
+          ))}
+        </div>
 
-              return (
-                <motion.div
-                  layout
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.3 }}
-                  key={menu.name}
-                  className="group bg-[#161313] border border-white/5 hover:border-red-500/30 rounded-3xl overflow-hidden transition-all duration-300 flex flex-col justify-between"
-                >
-                  <div>
-                    <div className="relative h-56 overflow-hidden">
-                      <img
-                        src={menu.img}
-                        alt={menu.name}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 brightness-[0.9]"
-                      />
-                      <div className="absolute top-4 left-4 flex gap-2">
-                        {menu.tags.map((tag, idx) => (
-                          <span key={idx} className="bg-black/75 backdrop-blur-md text-white text-[10px] font-bold px-3 py-1.5 rounded-full border border-white/10">
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="p-6">
-                      <h3 className="text-lg font-bold text-white mb-2">{menu.name}</h3>
-                      <p className="text-amber-500 font-serif font-black text-xl">Rp {menu.price}</p>
-                    </div>
+        {/* MENU GRID */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {filteredMenus.map((item, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.05 }}
+              className="bg-[#131013] border border-white/5 hover:border-rose-500/30 rounded-2xl overflow-hidden flex flex-col justify-between p-4 transition-all group"
+            >
+              <div>
+                <div className="h-44 rounded-xl overflow-hidden mb-4 relative">
+                  <img src={item.img} alt={item.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 brightness-90" />
+                  <div className="absolute top-2 left-2 flex gap-1">
+                    {item.tags.map((t, idx) => (
+                      <span key={idx} className="bg-black/75 backdrop-blur-md text-amber-400 text-[9px] font-bold px-2 py-0.5 rounded-md border border-white/10">
+                        {t}
+                      </span>
+                    ))}
                   </div>
+                </div>
+                <h3 className="font-bold text-base text-white group-hover:text-rose-400 transition-colors mb-1">{item.name}</h3>
+                <p className="text-rose-400 font-serif font-black text-sm mb-4">Rp {item.price}</p>
+              </div>
 
-                  <div className="p-6 pt-0">
-                    <a
-                      href={wa}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-2 w-full bg-white/5 hover:bg-red-600 text-white border border-white/10 hover:border-transparent py-3.5 rounded-xl font-bold text-xs uppercase tracking-widest transition-all duration-300"
-                    >
-                      <ShoppingBag className="w-4 h-4" />
-                      Order Sekarang
-                    </a>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </AnimatePresence>
-        </motion.div>
+              <a
+                href={`https://wa.me/${phone}?text=${encodeURIComponent(`Halo Mie Gacoan Tulungagung, saya mau pesan: *${item.name}* (Rp ${item.price}).`)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full bg-white/5 hover:bg-rose-600 text-white text-xs font-bold py-2.5 rounded-xl uppercase tracking-wider text-center transition-colors border border-white/10"
+              >
+                Pesan Menu
+              </a>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

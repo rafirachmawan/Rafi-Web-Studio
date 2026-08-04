@@ -1,26 +1,26 @@
 export const resto = {
-  name: "Niko-Niko Ramen",
-  tagline: "Ramen Autentik Jepang di Jantung Kampung Inggris",
+  name: "Mie Gacoan Tulungagung",
+  tagline: "Pedasnya Nendang — Harga Ramah",
   hero: {
-    title: "Mangkuk Kehangatan\nAutentik Jepang",
+    title: "Mie Pedas No.1 di Indonesia",
     subtitle:
-      "Nikmati ramen kaldu gurih, mi kenyal, dan racikan bumbu khas Jepang di kedai cozy kami. Hadir di jantung Kampung Inggris, Pare, Kediri.",
+      "Nikmati sensasi mie pedas legendaris, dimsum renyah gurih, dan es segar favorit di Mie Gacoan Tulungagung. Tempat nongkrong asyik dengan harga serba ramah!",
   },
-  address: "Jl. Anyelir No. 18, Kec. Pare, Kabupaten Kediri, Jawa Timur",
-  hours: "Setiap Hari (kecuali Minggu): 12.30 – 21.30 WIB",
+  address: "Jl. Supriadi No. 42, Jepun, Kec. Tulungagung, Kabupaten Tulungagung, Jawa Timur 66218",
+  hours: "Setiap Hari: 09.00 – 22.30 WIB",
   phone: "6285707185783",
   concept:
-    "Kedai ramen bergaya Jepang dengan ornamen pohon sakura, area open kitchen, dan pilihan tempat duduk: mini bar, lesehan, hingga meja panjang. Cocok untuk makan santai, ngerjain tugas, atau hangout bareng teman.",
+    "Restoran mie pedas modern berkonsep tempat nongkrong santai yang luas dan bersih. Menyajikan berbagai varian mie pedas berlevel, dimsum goreng/kukus, dan minuman manis segar dengan harga yang sangat terjangkau.",
   stats: [
-    { value: "4k+", label: "Happy Customers" },
-    { value: "4.8★", label: "Rata-rata Rating" },
-    { value: "15+", label: "Pilihan Menu" },
-    { value: "Rp 21rb", label: "Harga Mulai Dari" },
+    { value: "100k+", label: "Pelanggan Puas" },
+    { value: "30+", label: "Kota Layanan" },
+    { value: "50+", label: "Menu Tersedia" },
+    { value: "4.9★", label: "Rating Favorit" },
   ],
   features: [
-    { icon: "🌸", title: "Suasana Ala Jepang", desc: "Dekorasi sakura dan open kitchen yang aesthetic & Instagrammable." },
-    { icon: "🍜", title: "Kuah Kaldu Autentik", desc: "Broth dimasak berlapis dari bahan pilihan tanpa MSG berlebihan." },
-    { icon: "📍", title: "Di Jantung Pare", desc: "Lokasi strategis di Jl. Anyelir, sangat dekat dari kampung Inggris." },
-    { icon: "💰", title: "Harga Mahasiswa", desc: "Menu lezat mulai Rp 21.000, cocok untuk kantong pelajar & karyawan." },
+    { icon: "🌶️", title: "Level Kepedasan Khusus", desc: "Tersedia pilihan Mie Gacoan & Hompimpa dari Level 0 hingga Level 8." },
+    { icon: "🥟", title: "Dimsum Renyah & Gurih", desc: "Pangsit goreng, udang keju, udang rambutan, dan siomay lembut khas Gacoan." },
+    { icon: "🥤", title: "Es Segar Tradisional", desc: "Nikmati Es Gobak Sodor, Es Teklek, Es Petak Sumpet, dan Es Sluku Bathok." },
+    { icon: "💰", title: "Harga Sangat Ramah", desc: "Menu lezat serba murah meriah mulai Rp 10.000 cocok untuk pelajar & keluarga." },
   ],
 };

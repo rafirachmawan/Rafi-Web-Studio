@@ -17,6 +17,11 @@ import posMobileCoverImg from "../assets/POSMobileCover.jpg";
 import starbucksIcon from "../assets/starbuck/starbuck icon.png";
 import starbucksBeforeImg from "../assets/starbuck/before.png";
 import starbucksAfterImg from "../assets/starbuck/after.png";
+import crownAfterImg from "../assets/crown/after.png";
+import crownBeforeImg from "../assets/crown/before.png";
+import crownLogo from "../assets/crown/logoCrown.png";
+import gacoanBeforeImg from "../assets/mieGacoan/before.png";
+import gacoanLogo from "../assets/mieGacoan/logoMieGacoan.png";
 
 export const demos = [
   {
@@ -105,9 +110,10 @@ export const demos = [
       id: "Website Hotel Bintang 4 Tulungagung + Planner Event",
       en: "4-Star Hotel Website in Tulungagung + Event Planner",
     },
-    icon: "🏨",
+    icon: crownLogo,
     category: "landing page",
-    image: hotelCoverImg,
+    image: crownAfterImg,
+    beforeImage: crownBeforeImg,
     client: "Crown Victoria Hotel",
     fullDescription: {
       id: "Website ofisial mewah untuk Crown Victoria Hotel, menampilkan tipe-tipe kamar premium, ballroom megah, dan fasilitas standar internasional. Bertujuan meningkatkan booking reservasi secara langsung serta memberikan citra hotel bintang 4 yang eksklusif.",
@@ -140,29 +146,39 @@ export const demos = [
   },
   {
     id: "nikoniko",
-    name: "Niko-Niko Ramen",
+    name: "Mie Gacoan Tulungagung",
     path: "/resto",
     desc: {
-      id: "Website Ramen Jepang Kediri + Custom Order",
-      en: "Japanese Ramen Website in Kediri + Custom Order",
+      id: "Website Mie Gacoan Tulungagung — Pedasnya Nendang, Harga Ramah",
+      en: "Mie Gacoan Tulungagung Website — Kickin' Spicy, Friendly Prices",
     },
-    icon: "🍜",
+    icon: gacoanLogo,
     category: "landing page",
-    image: nikoNikoCoverImg,
-    client: "Niko-Niko Ramen",
+    image: gacoanBeforeImg,
+    beforeImage: gacoanBeforeImg,
+    client: "Mie Gacoan Tulungagung",
     fullDescription: {
-      id: "Landing page modern dengan tema Jepang untuk sebuah restoran Ramen di Kediri. Fokus pada penempatan menu yang menggugah selera dan memudahkan proses reservasi atau pemesanan secara online.",
-      en: "Modern Japanese-themed landing page for a Ramen restaurant in Kediri. Focused on mouth-watering menu placement and simplifying online reservations or ordering.",
+      id: "Redesign website interaktif Mie Gacoan Tulungagung yang menyajikan katalog menu mie pedas (Mie Gacoan, Mie Hompimpa, Mie Suit), dimsum gurih (Pangsit Goreng, Udang Keju), dan minuman es tradisional (Es Gobak Sodor). Dilengkapi fitur custom level pedas, kalkulator pemesanan, dan lokasi cabang.",
+      en: "Interactive website redesign for Mie Gacoan Tulungagung featuring spicy noodles catalog, savory dimsum, traditional ice beverages with level customizer and branch locator.",
     },
-    techStack: ["React JS", "Tailwind CSS", "Vite"],
+    techStack: ["React JS", "Tailwind CSS", "Framer Motion", "Vite", "Lucide Icons"],
     features: [
-      { id: "Katalog Menu Digital", en: "Digital Menu Catalog" },
-      { id: "Integrasi Pemesanan Online", en: "Online Ordering Integration" },
       {
-        id: "Theme Estetika Khas Jepang",
-        en: "Signature Japanese Theme Aesthetic",
+        id: "Katalog Menu Mie Pedas & Dimsum Interaktif",
+        en: "Interactive Spicy Noodle & Dimsum Catalog",
       },
-      { id: "Testimoni Pelanggan", en: "Customer Testimonials" },
+      {
+        id: "Customizer Level Kepedasan (Level 0 - 8)",
+        en: "Spiciness Level Customizer (Level 0 - 8)",
+      },
+      {
+        id: "Fitur Kalkulator Pemesanan & WA Checkout",
+        en: "Order Calculator & WA Checkout Feature",
+      },
+      {
+        id: "Informasi Cabang Tulungagung & Jam Buka",
+        en: "Tulungagung Branch Info & Opening Hours",
+      },
     ],
   },
   {

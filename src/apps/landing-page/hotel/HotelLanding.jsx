@@ -23,6 +23,7 @@ import {
 } from "lucide-react";
 
 // Import Local Images
+import logoCrown from "../../../assets/crown/logoCrown.png";
 import hotelHeroImg from "./assets/hotel_hero.jpg";
 import roomSuperiorImg from "./assets/room_superior.jpg";
 import roomDeluxeImg from "./assets/room_deluxe.jpg";
@@ -121,14 +122,17 @@ Mohon info harga paket dan tanggal kosong terdekat. Terima kasih.`;
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-          <motion.h1 
+          <motion.div 
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-lg md:text-xl tracking-[0.25em] font-light uppercase"
+            className="flex items-center gap-3"
           >
-            <span className="text-purple-400 font-bold">CROWN VICTORIA</span> <span className="hidden sm:inline">HOTEL</span>
-          </motion.h1>
+            <img src={logoCrown} alt="Crown Victoria Logo" className="h-8 w-auto object-contain shrink-0" />
+            <h1 className="text-lg md:text-xl tracking-[0.25em] font-light uppercase">
+              <span className="text-purple-400 font-bold">CROWN VICTORIA</span> <span className="hidden sm:inline">HOTEL</span>
+            </h1>
+          </motion.div>
 
           <div className="hidden md:flex items-center gap-10 text-xs tracking-widest uppercase font-semibold text-zinc-400">
             <a href="#experience" className="hover:text-purple-400 transition-colors">Experience</a>
@@ -659,9 +663,12 @@ Mohon info harga paket dan tanggal kosong terdekat. Terima kasih.`;
       {/* FOOTER */}
       <footer className="bg-[#050505] border-t border-white/5 pt-20 pb-8 px-6">
         <div className="max-w-7xl mx-auto flex flex-col items-center justify-center text-center">
-          <h2 className="text-lg tracking-[0.25em] font-light uppercase text-white mb-6">
-            <span className="text-purple-400 font-bold">CROWN VICTORIA</span> HOTEL
-          </h2>
+          <div className="flex items-center gap-3 mb-6">
+            <img src={logoCrown} alt="Crown Victoria Logo" className="h-8 w-auto object-contain shrink-0" />
+            <h2 className="text-lg tracking-[0.25em] font-light uppercase text-white">
+              <span className="text-purple-400 font-bold">CROWN VICTORIA</span> HOTEL
+            </h2>
+          </div>
           <div className="flex gap-8 mb-12 text-[10px] tracking-widest uppercase font-bold text-zinc-500">
             <a href="#experience" className="hover:text-white transition-colors">Experience</a>
             <a href="#room" className="hover:text-white transition-colors">Rooms</a>
