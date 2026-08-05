@@ -11,6 +11,8 @@ import iconYamaha from "../assets/Yamaha/iconyamaha.png";
 import heroYamaha from "../assets/Yamaha/heroyamaha.jpg";
 import nikoNikoCoverImg from "../assets/NikoNikoCover.jpg";
 import aioLaundryCoverImg from "../assets/AioLaundryCover.jpg";
+import aioLaundryLogo from "../assets/loundry/logoLoundry.png";
+import aioLaundryAfterImg from "../assets/loundry/after.png";
 import umrohCoverImg from "../assets/UmrohCover.jpg";
 import akademikCoverImg from "../assets/AkademikCover.jpg";
 import warungOSCoverImg from "../assets/WarungOSCover.jpg";
@@ -230,9 +232,10 @@ export const demos = [
       id: "Aio Laundry Express Antar Jemput Tulungagung",
       en: "Aio Laundry Express Pickup & Delivery Tulungagung",
     },
-    icon: "🧺",
+    icon: aioLaundryLogo,
     category: "landing page",
-    image: aioLaundryCoverImg,
+    image: aioLaundryAfterImg,
+    beforeImage: aioLaundryCoverImg,
     client: "Aio Laundry",
     fullDescription: {
       id: "Website pelayanan jasa laundry yang efisien dengan layanan antar-jemput. Platform ini menjelaskan secara detail tentang layanan kiloan, dry clean, dan setrika, lengkap dengan perhitungan harga estimasi.",

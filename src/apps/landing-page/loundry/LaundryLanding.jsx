@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import logoLoundry from "../../../assets/loundry/logoLoundry.png";
 import {
   Shirt,
   Wind,
@@ -65,8 +66,8 @@ export default function LaundryLanding() {
             animate={{ opacity: 1, x: 0 }}
             className="flex items-center gap-3"
           >
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center shadow-lg shadow-blue-500/30 text-white">
-              <Droplets className="w-6 h-6 fill-current" />
+            <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center shadow-md p-1 border border-slate-100">
+              <img src={logoLoundry} alt="Aio Laundry" className="w-full h-full object-contain" />
             </div>
             <h1 className="text-2xl font-black tracking-tight text-slate-900">
               Aio<span className="text-blue-600">Laundry</span>
@@ -366,7 +367,7 @@ export default function LaundryLanding() {
         <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-10 mb-12">
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <Droplets className="text-blue-600 w-6 h-6" />
+              <img src={logoLoundry} alt="Aio Laundry" className="w-7 h-7 object-contain" />
               <span className="text-xl font-black text-slate-900">Aio Laundry</span>
             </div>
             <p className="text-slate-500 font-medium leading-relaxed">Solusi cerdas untuk pakaian bersih, wangi, dan rapi tanpa perlu membuang waktu berharga Anda.</p>
