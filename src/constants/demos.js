@@ -1,6 +1,9 @@
 import starbucksCoverImg from "../assets/StarbucksCover.jpg";
 import hotelCoverImg from "../assets/HotelCover.jpg";
-import unitaCoverImg from "../assets/UNITACover.jpg";
+import unitaCoverImg from "../assets/universitasTulungagung/heroUnita.jpeg";
+import unitaLogo from "../assets/universitasTulungagung/logoUnita.jpg";
+import unitaBeforeImg from "../assets/universitasTulungagung/before.png";
+import unitaAfterImg from "../assets/universitasTulungagung/after.png";
 import yamahaCoverImg from "../assets/Yamaha/image.png";
 import yamahaCopyImg from "../assets/Yamaha/image copy.png";
 import yamahaLogo from "../assets/Yamaha/yamahalogo.png";
@@ -187,29 +190,36 @@ export const demos = [
     name: "Universitas Tulungagung",
     path: "/unita",
     desc: {
-      id: "Landing page kampus UNITA — Akreditasi B, Est. 1984",
-      en: "UNITA Campus Landing Page — B Accreditation, Est. 1984",
+      id: "Landing Page Resmi UNITA — Akreditasi B BAN-PT, Est. 1984",
+      en: "Official UNITA Campus Landing Page — B Accreditation, Est. 1984",
     },
-    icon: "🎓",
+    icon: unitaLogo,
     category: "landing page",
-    image: unitaCoverImg,
+    image: unitaAfterImg,
+    beforeImage: unitaBeforeImg,
     client: "Universitas Tulungagung",
     fullDescription: {
-      id: "Profil digital untuk Universitas Tulungagung yang menyajikan informasi akademik, penerimaan mahasiswa baru (PMB), fasilitas kampus, dan direktori dosen. Desain menekankan aspek akademik, formal, dan mudah dinavigasi.",
-      en: "Digital profile for Universitas Tulungagung presenting academic information, new student admissions (PMB), campus facilities, and lecturer directories. Design emphasizes academic, formal, and easy navigation aspects.",
+      id: "Portal digital resmi Universitas Tulungagung (UNITA), perguruan tinggi swasta terakreditasi B BAN-PT di Jawa Timur (Est. 18 Mei 1984). Menyajikan struktur navigasi terintegrasi untuk 5 Fakultas & 8 Prodi, E-Services Kampus (SIAKAD, Edlink E-Learning, E-Library, SISTER, PDDIKTI, KarirLink), serta Pendaftaran Mahasiswa Baru (PMB).",
+      en: "Official digital portal of Universitas Tulungagung (UNITA), B BAN-PT accredited private university in East Java (Est. May 18, 1984). Featuring integrated navigation for 5 Faculties & 8 Study Programs, Campus E-Services (SIAKAD, Edlink E-Learning, E-Library, SISTER, PDDIKTI, KarirLink), and New Student Admissions (PMB).",
     },
-    techStack: ["React JS", "Tailwind CSS", "Framer Motion"],
+    techStack: ["React JS", "Tailwind CSS", "Framer Motion", "Vite", "Lucide Icons"],
     features: [
       {
-        id: "Informasi Fakultas & Program Studi",
-        en: "Faculty & Study Program Information",
+        id: "5 Fakultas & 8 Program Studi Terakreditasi BAN-PT",
+        en: "5 Faculties & 8 Study Programs Accredited by BAN-PT",
       },
       {
-        id: "Alur Pendaftaran Mahasiswa Baru (PMB)",
-        en: "New Student Admission Workflow (PMB)",
+        id: "Integrasi E-Services (SIAKAD, Edlink, SISTER, PDDIKTI, SINTA)",
+        en: "E-Services Integration (SIAKAD, Edlink, SISTER, PDDIKTI, SINTA)",
       },
-      { id: "Berita & Pengumuman Kampus", en: "Campus News & Announcements" },
-      { id: "Sistem Navigasi Responsif", en: "Responsive Navigation System" },
+      {
+        id: "Portal PMB Online (Penerimaan Mahasiswa Baru)",
+        en: "Online New Student Admission Portal (PMB)",
+      },
+      {
+        id: "E-Library, Repository, Jurnal & KarirLink Alumni",
+        en: "E-Library, Repository, Journals & Alumni CareerLink Portal",
+      },
     ],
   },
   {
