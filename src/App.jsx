@@ -1,11 +1,13 @@
 import { useEffect, useState, lazy, Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import { LanguageProvider } from "./context/LanguageContext";
+import { ConsultationProvider } from "./context/ConsultationContext";
 
 import MainLayout from "./layouts/MainLayout";
 import Home from "./pages/Home";
 import SplashScreen from "./components/common/SplashScreen";
 import PageLoader from "./components/common/PageLoader";
+import ConsultationModal from "./components/common/ConsultationModal";
 
 // Lazy-loaded pages — only fetched when the route is visited
 const Project = lazy(() => import("./pages/Project"));
@@ -15,6 +17,9 @@ const Harga = lazy(() => import("./pages/Harga"));
 const Testimoni = lazy(() => import("./pages/Testimoni"));
 const Contact = lazy(() => import("./pages/Contact"));
 const ProjectDetail = lazy(() => import("./pages/ProjectDetail"));
+const FAQ = lazy(() => import("./pages/FAQ"));
+const Terms = lazy(() => import("./pages/Terms"));
+const Privacy = lazy(() => import("./pages/Privacy"));
 
 // Landing Page Demos
 const CoffeeLanding = lazy(() => import("./apps/landing-page/coffee/CoffeeLanding"));
@@ -75,41 +80,48 @@ export default function App() {
 
   return (
     <LanguageProvider>
-      {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
-      
-      <Router>
-        <RouteWatcher />
-        <Suspense fallback={<SuspenseFallback />}>
-          <Routes>
-            {/* Main Website Routes */}
-            <Route path="/" element={<MainLayout><Home /></MainLayout>} />
-            <Route path="/project" element={<MainLayout><Project /></MainLayout>} />
-            <Route path="/demo" element={<MainLayout><Demo /></MainLayout>} />
-            <Route path="/proses" element={<MainLayout><Proses /></MainLayout>} />
-            <Route path="/harga" element={<MainLayout><Harga /></MainLayout>} />
-            <Route path="/testimoni" element={<MainLayout><Testimoni /></MainLayout>} />
-            <Route path="/contact" element={<MainLayout><Contact /></MainLayout>} />
+      <ConsultationProvider>
+        {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
+        <ConsultationModal />
+        
+        <Router>
+          <RouteWatcher />
+          <Suspense fallback={<SuspenseFallback />}>
+            <Routes>
+              {/* Main Website Routes */}
+              <Route path="/" element={<MainLayout><Home /></MainLayout>} />
+              <Route path="/project" element={<MainLayout><Project /></MainLayout>} />
+              <Route path="/demo" element={<MainLayout><Demo /></MainLayout>} />
+              <Route path="/proses" element={<MainLayout><Proses /></MainLayout>} />
+              <Route path="/harga" element={<MainLayout><Harga /></MainLayout>} />
+              <Route path="/testimoni" element={<MainLayout><Testimoni /></MainLayout>} />
+              <Route path="/contact" element={<MainLayout><Contact /></MainLayout>} />
+              <Route path="/faq" element={<MainLayout><FAQ /></MainLayout>} />
+              <Route path="/terms" element={<MainLayout><Terms /></MainLayout>} />
+              <Route path="/privacy" element={<MainLayout><Privacy /></MainLayout>} />
 
-            <Route path="/portfolio/:id" element={<ProjectDetail />} />
-            
-            {/* Landing Page Demos */}
-            <Route path="/coffee" element={<CoffeeLanding />} />
-            <Route path="/rental" element={<RentalLanding />} />
-            <Route path="/hotel" element={<HotelLanding />} />
-            <Route path="/resto" element={<RestoLanding />} />
-            <Route path="/sekolah" element={<SekolahLanding />} />
-            <Route path="/laundry" element={<LaundryLanding />} />
-            <Route path="/umroh" element={<UmrohLanding />} />
-            <Route path="/unita" element={<UNITALanding />} />
-            
-            {/* App Demos */}
-            <Route path="/akademik/*" element={<AkademikApp />} />
-            <Route path="/warungos/*" element={<WarungOSApp />} />
-            <Route path="/examos/*" element={<ExamOSApp />} />
-            <Route path="/absenos/*" element={<AbsenOSApp />} />
-          </Routes>
-        </Suspense>
-      </Router>
+              <Route path="/portfolio/:id" element={<ProjectDetail />} />
+              
+              {/* Landing Page Demos */}
+              <Route path="/coffee" element={<CoffeeLanding />} />
+              <Route path="/rental" element={<RentalLanding />} />
+              <Route path="/hotel" element={<HotelLanding />} />
+              <Route path="/resto" element={<RestoLanding />} />
+              <Route path="/sekolah" element={<SekolahLanding />} />
+              <Route path="/laundry" element={<LaundryLanding />} />
+              <Route path="/umroh" element={<UmrohLanding />} />
+              <Route path="/unita" element={<UNITALanding />} />
+              
+              {/* App Demos */}
+              <Route path="/akademik/*" element={<AkademikApp />} />
+              <Route path="/warungos/*" element={<WarungOSApp />} />
+              <Route path="/examos/*" element={<ExamOSApp />} />
+              <Route path="/absenos/*" element={<AbsenOSApp />} />
+            </Routes>
+          </Suspense>
+        </Router>
+      </ConsultationProvider>
     </LanguageProvider>
   );
 }
+

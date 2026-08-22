@@ -2,9 +2,11 @@ import { useEffect, useRef, useState } from "react";
 import heroVideo from "../../assets/Video.mp4";
 import { Star, CheckCircle, Zap, Sparkles } from "lucide-react";
 import { useLanguage } from "../../context/LanguageContext";
+import { useConsultation } from "../../context/ConsultationContext";
 
 export default function HeroSection() {
   const { t } = useLanguage();
+  const { openConsultation } = useConsultation();
   const containerRef = useRef(null);
   const [videoSrc, setVideoSrc] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
@@ -110,17 +112,16 @@ export default function HeroSection() {
           <div 
             className="flex flex-col sm:flex-row gap-3 mt-5 md:mt-7 justify-center w-full sm:w-auto"
           >
-            <a
-              href="https://wa.me/6285707185783?text=Halo%20saya%20ingin%20konsultasi"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group/btn relative bg-gradient-to-r from-amber-500 to-orange-500 text-white px-6 py-2.5 rounded-full text-xs md:text-sm font-bold transition-all duration-300 hover:scale-[1.03] shadow-lg shadow-amber-500/15 active:scale-95 overflow-hidden flex items-center justify-center gap-2"
+            <button
+              onClick={() => openConsultation()}
+              className="group/btn relative bg-gradient-to-r from-amber-500 to-orange-500 text-white px-6 py-2.5 rounded-full text-xs md:text-sm font-bold transition-all duration-300 hover:scale-[1.03] shadow-lg shadow-amber-500/15 active:scale-95 overflow-hidden flex items-center justify-center gap-2 cursor-pointer"
             >
               <span className="relative z-10 flex items-center gap-2">
                 {t("Konsultasi Gratis", "Free Consultation")} <Sparkles className="w-3.5 h-3.5" />
               </span>
               <div className="absolute inset-0 bg-white/20 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300" />
-            </a>
+            </button>
+
  
             <a
               href="#real-projects"

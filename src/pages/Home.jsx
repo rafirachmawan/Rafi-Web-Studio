@@ -8,6 +8,7 @@ import WhyUsSection from "../components/home/WhyUsSection";
 import ProcessSection from "../components/home/ProcessSection";
 import PricingSection from "../components/home/PricingSection";
 import TestimoniSection from "../components/home/TestimoniSection";
+import FAQSection from "../components/home/FAQSection";
 import FounderSection from "../components/home/FounderSection";
 import BigCTASection from "../components/home/BigCTASection";
 import TextMarqueeDivider from "../components/common/TextMarqueeDivider";
@@ -106,6 +107,10 @@ export default function Home() {
       </LazySection>
 
       <LazySection minHeight="400px" delay={0}>
+        <FAQSection />
+      </LazySection>
+
+      <LazySection minHeight="400px" delay={0}>
         <FounderSection />
       </LazySection>
 
@@ -115,3 +120,4 @@ export default function Home() {
     </>
   );
 }
+

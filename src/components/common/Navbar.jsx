@@ -3,9 +3,11 @@ import { Menu, X, Sun, Moon } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
 import { useLanguage } from "../../context/LanguageContext";
+import { useConsultation } from "../../context/ConsultationContext";
 
 export default function Navbar() {
   const { language, setLanguage, t } = useLanguage();
+  const { isOpen } = useConsultation();
   const location = useLocation();
   const [darkMode, setDarkMode] = useState(() => {
     const saved = localStorage.getItem("theme");
@@ -14,8 +16,8 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const navRef = useRef(null);
-
   useEffect(() => {
+
     if (darkMode) {
       document.documentElement.classList.add("dark");
       localStorage.setItem("theme", "dark");
@@ -59,7 +61,7 @@ export default function Navbar() {
     { label: t("Demo Template", "Demo Catalog"), href: "/demo" },
     { label: t("Proses", "Process"), href: "/proses" },
     { label: t("Harga", "Pricing"), href: "/harga" },
-    { label: t("Testimoni", "Testimonials"), href: "/testimoni" },
+    { label: t("FAQ", "FAQ"), href: "/faq" },
     { label: t("Contact", "Contact"), href: "/contact" }
   ];
 
@@ -67,6 +69,9 @@ export default function Navbar() {
   useEffect(() => {
     setActiveSection(location.pathname);
   }, [location.pathname]);
+
+  if (isOpen) return null;
+
 
   return (
     <div ref={navRef} className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-6xl flex flex-col gap-2">

@@ -1,5 +1,6 @@
 import { MessageCircle, Mail, ArrowRight, Code2, Smartphone, Globe, MapPin } from "lucide-react";
 import { useLanguage } from "../../context/LanguageContext";
+import { useConsultation } from "../../context/ConsultationContext";
 import { Link } from "react-router-dom";
 
 const InstagramIcon = ({ className }) => (
@@ -12,6 +13,7 @@ const InstagramIcon = ({ className }) => (
 
 export default function Footer() {
   const { t } = useLanguage();
+  const { openConsultation } = useConsultation();
 
   const services = [
     { icon: Globe, label: t("Landing Page Premium", "Premium Landing Pages"), href: "/harga" },
@@ -26,6 +28,13 @@ export default function Footer() {
     { label: t("Alur Kerja", "Workflow"), href: "/proses" },
     { label: t("Paket & Harga", "Packages & Pricing"), href: "/harga" },
     { label: t("Testimoni", "Testimonials"), href: "/testimoni" },
+    { label: t("FAQ", "FAQ"), href: "/faq" },
+  ];
+
+  const legalLinks = [
+    { label: t("Syarat & Ketentuan", "Terms of Service"), href: "/terms" },
+    { label: t("Kebijakan Privasi", "Privacy Policy"), href: "/privacy" },
+    { label: t("Tanya Jawab (FAQ)", "FAQ"), href: "/faq" },
   ];
 
   const contacts = [
@@ -60,24 +69,22 @@ export default function Footer() {
                 {t("Mari berdiskusi tentang bagaimana kami bisa membantu bisnis Anda berkembang secara digital.", "Let's discuss how we can help your business grow digitally.")}
               </p>
             </div>
-            <a
-              href="https://wa.me/6285707185783?text=Halo%20saya%20ingin%20konsultasi%20project"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="shrink-0 w-full md:w-auto flex items-center justify-center gap-2 px-7 py-4 bg-amber-500 hover:bg-amber-400 text-black rounded-full font-black text-sm transition-all duration-300 hover:shadow-xl hover:shadow-amber-500/25 hover:scale-[1.02] active:scale-95 group"
+            <button
+              onClick={() => openConsultation()}
+              className="shrink-0 w-full md:w-auto flex items-center justify-center gap-2 px-7 py-4 bg-amber-500 hover:bg-amber-400 text-black rounded-full font-black text-sm transition-all duration-300 hover:shadow-xl hover:shadow-amber-500/25 hover:scale-[1.02] active:scale-95 group cursor-pointer"
             >
               {t("Konsultasi Gratis", "Free Consultation")}
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </a>
+            </button>
           </div>
         </div>
 
         {/* MAIN FOOTER GRID */}
         <div className="rounded-[2rem] bg-white dark:bg-zinc-900 border border-zinc-200/80 dark:border-zinc-800/60 shadow-[0_4px_20px_rgba(0,0,0,0.04)] dark:shadow-none p-6 md:p-10">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 text-left">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 md:gap-10 text-left">
 
           {/* BRAND */}
-          <div className="sm:col-span-2 lg:col-span-1 space-y-4">
+          <div className="sm:col-span-2 lg:col-span-2 space-y-4">
             <div>
               <h2 className="text-2xl font-black text-black dark:text-white">
                 Gapai<span className="text-amber-500">Digital</span>
@@ -86,7 +93,7 @@ export default function Footer() {
                 {t("Solusi Digital Indonesia", "Indonesia Digital Solutions")}
               </p>
             </div>
-            <p className="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed">
+            <p className="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed max-w-sm">
               {t("Partner digitalisasi tepercaya untuk landing page premium, aplikasi mobile, dan sistem web kustom.", "Trusted digitalization partner for premium landing pages, mobile apps, and custom web systems.")}
             </p>
             {/* Social Icons */}
@@ -124,14 +131,14 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* MENU UTAMA */}
+          {/* LEGAL & FAQ */}
           <div>
             <h3 className="text-zinc-900 dark:text-white font-bold text-xs uppercase tracking-widest mb-5 flex items-center gap-2">
               <span className="w-4 h-px bg-amber-500 inline-block"></span>
-              {t("Menu Utama", "Main Menu")}
+              {t("Informasi & Legal", "Legal & Support")}
             </h3>
             <ul className="space-y-3">
-              {navLinks.map(({ label, href }) => (
+              {legalLinks.map(({ label, href }) => (
                 <li key={label}>
                   <Link to={href} className="group text-zinc-600 dark:text-zinc-400 hover:text-amber-500 dark:hover:text-amber-400 transition-colors text-sm font-medium flex items-center gap-1">
                     <span className="group-hover:translate-x-0.5 transition-transform">{label}</span>
@@ -179,12 +186,14 @@ export default function Footer() {
         {/* BOTTOM BAR */}
         <div className="mt-8 pt-6 border-t border-black/10 dark:border-white/10 flex flex-col sm:flex-row justify-between items-center gap-3 text-zinc-400 dark:text-zinc-600 text-xs font-medium">
           <p>© {new Date().getFullYear()} <span className="text-zinc-600 dark:text-zinc-400 font-bold">GapaiDigital</span>. All rights reserved.</p>
-          <p className="text-center sm:text-right">
-            {t("Solusi Website & Aplikasi Profesional untuk Bisnis Modern", "Professional Website & App Solutions for Modern Businesses")}
-          </p>
+          <div className="flex gap-4">
+            <Link to="/terms" className="hover:text-amber-500 transition">{t("Syarat & Ketentuan", "Terms")}</Link>
+            <Link to="/privacy" className="hover:text-amber-500 transition">{t("Kebijakan Privasi", "Privacy")}</Link>
+          </div>
         </div>
       </div>
     </footer>
   );
 }
+
 
