@@ -1,40 +1,59 @@
-import { useState, useEffect, useRef } from "react";
-import { X, Send, CheckCircle2, Sparkles, Phone, ArrowRight, ChevronDown, Check } from "lucide-react";
+import { useState, useEffect, useRef, useCallback } from "react";
+import { X, Send, CheckCircle2, Sparkles, Phone, ChevronDown, Check, ShieldCheck } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "../../context/LanguageContext";
 import { useConsultation } from "../../context/ConsultationContext";
+
+const DEFAULT_FORM = {
+  name: "",
+  businessName: "",
+  whatsapp: "",
+  email: "",
+  serviceType: "Landing Page Standard",
+  budget: "1-3juta",
+  timeline: "1-2minggu",
+  notes: "",
+};
 
 export default function ConsultationModal() {
   const { t, language } = useLanguage();
   const { isOpen, closeConsultation, initialPackage } = useConsultation();
 
-  const [formData, setFormData] = useState({
-    name: "",
-    businessName: "",
-    whatsapp: "",
-    email: "",
-    serviceType: "Landing Page Standard",
-    budget: "1-3juta",
-    timeline: "1-2minggu",
-    notes: "",
-  });
-
+  const [formData, setFormData] = useState(DEFAULT_FORM);
+  const [errors, setErrors] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   useEffect(() => {
     if (initialPackage) {
-      setFormData((prev) => ({
-        ...prev,
-        serviceType: initialPackage,
-      }));
+      setFormData((prev) => ({ ...prev, serviceType: initialPackage }));
     }
   }, [initialPackage]);
 
-  if (!isOpen) return null;
+  const resetAndClose = useCallback(() => {
+    setIsSubmitted(false);
+    setErrors({});
+    setFormData(DEFAULT_FORM);
+    closeConsultation();
+  }, [closeConsultation]);
+
+  // Escape to close + lock background scroll while open
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKey = (e) => {
+      if (e.key === "Escape") resetAndClose();
+    };
+    document.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [isOpen, resetAndClose]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    if (errors[name]) setErrors((prev) => ({ ...prev, [name]: "" }));
   };
 
   const handleSelectChange = (fieldName, val) => {
@@ -74,28 +93,20 @@ Please assist with proposal details. Thank you!`;
 
   const handleSendWA = (e) => {
     e.preventDefault();
-    if (!formData.name || !formData.whatsapp) {
-      alert(t("Mohon isi Nama Lengkap dan Nomor WhatsApp Anda.", "Please fill in your Name and WhatsApp number."));
+    const nextErrors = {};
+    if (!formData.name.trim()) nextErrors.name = t("Nama lengkap wajib diisi.", "Full name is required.");
+    if (!formData.whatsapp.trim()) {
+      nextErrors.whatsapp = t("Nomor WhatsApp wajib diisi.", "WhatsApp number is required.");
+    } else if (!/^[0-9+\-\s]{8,16}$/.test(formData.whatsapp.trim())) {
+      nextErrors.whatsapp = t("Format nomor tidak valid (8-16 digit).", "Invalid number format (8-16 digits).");
+    }
+    if (Object.keys(nextErrors).length) {
+      setErrors(nextErrors);
       return;
     }
     const waUrl = generateWAMessage();
     window.open(waUrl, "_blank");
     setIsSubmitted(true);
-  };
-
-  const handleResetAndClose = () => {
-    setIsSubmitted(false);
-    setFormData({
-      name: "",
-      businessName: "",
-      whatsapp: "",
-      email: "",
-      serviceType: "Landing Page Standard",
-      budget: "1-3juta",
-      timeline: "1-2minggu",
-      notes: "",
-    });
-    closeConsultation();
   };
 
   // OPTIONS DATA
@@ -121,225 +132,301 @@ Please assist with proposal details. Thank you!`;
     { value: "fleksibel", label: t("Fleksibel / Diskusi", "Flexible / Discussion") },
   ];
 
+  const inputClass = (hasError) =>
+    `w-full px-3.5 py-2.5 rounded-xl border text-sm font-medium bg-zinc-50 dark:bg-zinc-900/60 text-zinc-900 dark:text-white placeholder:font-normal placeholder:text-zinc-400 dark:placeholder:text-zinc-600 focus:outline-none focus:ring-2 transition ${
+      hasError
+        ? "border-red-400 dark:border-red-500/70 focus:border-red-500 focus:ring-red-500/25"
+        : "border-zinc-200 dark:border-zinc-800 focus:border-amber-500 focus:ring-amber-500/30 focus:bg-white dark:focus:bg-zinc-900"
+    }`;
+
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5">
-        {/* BACKDROP */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          onClick={handleResetAndClose}
-          className="fixed inset-0 bg-black/80 backdrop-blur-md"
-        />
+      {isOpen && (
+        <div className="fixed inset-0 z-[70] flex items-end justify-center sm:items-center sm:p-5">
+          {/* BACKDROP */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={resetAndClose}
+            className="fixed inset-0 bg-zinc-950/60 backdrop-blur-sm"
+          />
 
-        {/* ELEGANT AGENCY MODAL CARD */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.96, y: 15 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.96, y: 15 }}
-          transition={{ type: "spring", duration: 0.35 }}
-          className="relative w-full max-w-xl md:max-w-2xl bg-white dark:bg-[#0c0c0e] text-zinc-900 dark:text-zinc-100 border border-zinc-200 dark:border-zinc-800/90 rounded-3xl shadow-2xl overflow-hidden z-10 flex flex-col my-auto max-h-[92vh]"
-        >
-          {/* RAPI & TIDY HEADER */}
-          <div className="relative shrink-0 border-b border-zinc-100 dark:border-zinc-800/80 px-6 py-4 text-center bg-zinc-50/50 dark:bg-zinc-900/40">
-            <button
-              onClick={handleResetAndClose}
-              className="absolute top-4 right-4 w-8 h-8 rounded-full bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-500 dark:text-zinc-400 flex items-center justify-center transition-colors cursor-pointer"
-              aria-label="Close modal"
-            >
-              <X size={16} />
-            </button>
-
-            <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-600 dark:text-amber-400 text-[10px] font-bold uppercase tracking-wider mb-1">
-              <Sparkles size={11} className="text-amber-500" />
-              <span>{t("Konsultasi & Brief Proyek", "Project Brief & Consultation")}</span>
+          {/* MODAL CARD — bottom sheet on mobile, centered dialog on desktop */}
+          <motion.div
+            initial={{ opacity: 0, y: 48, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 48, scale: 0.98 }}
+            transition={{ type: "spring", duration: 0.4, bounce: 0.15 }}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="consultation-title"
+            className="relative z-10 flex w-full max-w-2xl flex-col overflow-hidden rounded-t-3xl border border-zinc-200 bg-white text-zinc-900 shadow-2xl shadow-zinc-950/20 sm:max-h-[88dvh] sm:rounded-3xl dark:border-zinc-800 dark:bg-[#0c0c0e] dark:text-zinc-100 max-h-[94dvh]"
+          >
+            {/* Mobile sheet handle */}
+            <div className="shrink-0 pt-2.5 sm:hidden" aria-hidden="true">
+              <div className="mx-auto h-1 w-10 rounded-full bg-zinc-200 dark:bg-zinc-700" />
             </div>
 
-            <h2 className="text-lg sm:text-xl font-black tracking-tight text-zinc-900 dark:text-white">
-              {t("Mulai Proyek Digital Anda", "Start Your Digital Project")}
-            </h2>
-            <p className="text-zinc-500 dark:text-zinc-400 text-xs mt-0.5 font-medium leading-normal max-w-md mx-auto">
-              {t(
-                "Isi detail kebutuhan di bawah. Tim GapaiDigital akan menganalisis & menghubungi Anda via WhatsApp.",
-                "Fill in requirements below. The GapaiDigital team will reach out via WhatsApp."
-              )}
-            </p>
-          </div>
+            {/* HEADER */}
+            <div className="relative shrink-0 border-b border-zinc-100 px-5 pb-4 pt-4 sm:px-8 sm:pb-5 sm:pt-6 dark:border-zinc-800/80">
+              <button
+                onClick={resetAndClose}
+                className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full bg-zinc-100 text-zinc-500 transition-colors hover:bg-zinc-200 hover:text-zinc-700 sm:right-5 sm:top-5 dark:bg-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-700 dark:hover:text-zinc-200 cursor-pointer"
+                aria-label={t("Tutup", "Close")}
+              >
+                <X size={16} />
+              </button>
 
-          {/* BODY WITH HIDDEN SCROLLBAR & COMPACT PADDING */}
-          <div className="flex-1 overflow-y-auto px-5 py-4 sm:px-7 sm:py-5 space-y-3.5 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
-            {isSubmitted ? (
-              /* SUCCESS STATE */
-              <div className="py-4 text-center flex flex-col items-center">
-                <div className="w-12 h-12 bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 rounded-full flex items-center justify-center mb-3">
-                  <CheckCircle2 size={28} />
+              <div className="inline-flex items-center gap-1.5 rounded-full border border-amber-500/20 bg-amber-500/10 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-amber-600 dark:text-amber-400">
+                <Sparkles size={11} className="text-amber-500" />
+                <span>{t("Konsultasi & Brief Proyek", "Project Brief & Consultation")}</span>
+              </div>
+
+              <h2 id="consultation-title" className="mt-2 pr-10 text-xl font-extrabold tracking-tight text-zinc-900 sm:text-2xl dark:text-white">
+                {t("Mulai Proyek Digital Anda", "Start Your Digital Project")}
+              </h2>
+              <p className="mt-1 max-w-[52ch] text-sm font-medium leading-relaxed text-zinc-500 dark:text-zinc-400">
+                {t(
+                  "Isi detail kebutuhan di bawah. Tim GapaiDigital akan menganalisis & menghubungi Anda via WhatsApp.",
+                  "Fill in your requirements below. The GapaiDigital team will analyze them and reach out via WhatsApp."
+                )}
+              </p>
+            </div>
+
+            {/* SCROLLABLE BODY */}
+            <div className="flex-1 overflow-y-auto overscroll-contain px-5 py-5 sm:px-8 sm:py-6 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+              {isSubmitted ? (
+                /* SUCCESS STATE */
+                <div className="flex flex-col items-center py-2 text-center">
+                  <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-full border border-emerald-500/20 bg-emerald-500/10 text-emerald-500">
+                    <CheckCircle2 size={30} />
+                  </div>
+                  <h3 className="mb-1.5 text-lg font-extrabold text-zinc-900 dark:text-white">
+                    {t("Brief Siap Dikirim ke WhatsApp!", "Brief Ready to Send to WhatsApp!")}
+                  </h3>
+                  <p className="mb-5 max-w-md text-sm font-medium leading-relaxed text-zinc-500 dark:text-zinc-400">
+                    {t(
+                      "Terima kasih! Jika tab WhatsApp tidak terbuka otomatis, klik tombol di bawah untuk melanjutkan chat.",
+                      "Thank you! If WhatsApp didn't open automatically, click the button below to continue the chat."
+                    )}
+                  </p>
+
+                  <dl className="mb-5 w-full space-y-2 rounded-2xl border border-zinc-200 bg-zinc-50 p-4 text-left text-xs dark:border-zinc-800 dark:bg-zinc-900/60">
+                    <div className="flex justify-between gap-4">
+                      <dt className="shrink-0 font-bold text-zinc-500 dark:text-zinc-400">{t("Nama", "Name")}</dt>
+                      <dd className="text-right font-semibold text-zinc-800 dark:text-zinc-200">
+                        {formData.name}
+                        {formData.businessName ? ` · ${formData.businessName}` : ""}
+                      </dd>
+                    </div>
+                    <div className="flex justify-between gap-4">
+                      <dt className="shrink-0 font-bold text-zinc-500 dark:text-zinc-400">WhatsApp</dt>
+                      <dd className="text-right font-semibold text-zinc-800 dark:text-zinc-200">{formData.whatsapp}</dd>
+                    </div>
+                    <div className="flex justify-between gap-4">
+                      <dt className="shrink-0 font-bold text-zinc-500 dark:text-zinc-400">{t("Layanan", "Service")}</dt>
+                      <dd className="text-right font-semibold text-zinc-800 dark:text-zinc-200">{formData.serviceType}</dd>
+                    </div>
+                    <div className="flex justify-between gap-4">
+                      <dt className="shrink-0 font-bold text-zinc-500 dark:text-zinc-400">{t("Budget", "Budget")}</dt>
+                      <dd className="text-right font-semibold text-zinc-800 dark:text-zinc-200">
+                        {getBudgetLabel(formData.budget, language)}
+                      </dd>
+                    </div>
+                  </dl>
+
+                  <div className="flex w-full flex-col gap-2.5 sm:flex-row">
+                    <a
+                      href={generateWAMessage()}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 px-4 py-3 text-sm font-extrabold text-white shadow-md shadow-amber-500/20 transition hover:from-amber-400 hover:to-orange-400 active:scale-[0.98]"
+                    >
+                      <Phone size={15} />
+                      {t("Buka WhatsApp Chat", "Open WhatsApp Chat")}
+                    </a>
+                    <button
+                      onClick={resetAndClose}
+                      className="rounded-xl bg-zinc-100 px-6 py-3 text-sm font-bold text-zinc-700 transition hover:bg-zinc-200 active:scale-[0.98] dark:bg-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-700 cursor-pointer"
+                    >
+                      {t("Tutup", "Close")}
+                    </button>
+                  </div>
                 </div>
-                <h3 className="text-lg font-black text-zinc-900 dark:text-white mb-1.5">
-                  {t("Brief Siap Dikirim ke WhatsApp!", "Brief Ready to Send to WhatsApp!")}
-                </h3>
-                <p className="text-zinc-600 dark:text-zinc-400 text-xs max-w-md mx-auto mb-4 leading-relaxed font-medium">
+              ) : (
+                /* FORM STATE */
+                <form id="consultation-form" onSubmit={handleSendWA} noValidate className="space-y-6 text-left">
+                  {/* SECTION 1 — CONTACT */}
+                  <section className="space-y-4">
+                    <SectionTitle step="1">{t("Informasi Kontak", "Contact Information")}</SectionTitle>
+
+                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                      <div>
+                        <label htmlFor="cf-name" className="mb-1.5 block text-xs font-bold text-zinc-700 dark:text-zinc-300">
+                          {t("Nama Lengkap", "Full Name")} <span className="text-amber-500">*</span>
+                        </label>
+                        <input
+                          id="cf-name"
+                          type="text"
+                          name="name"
+                          value={formData.name}
+                          onChange={handleChange}
+                          placeholder={t("Ahmad Rafi", "John Doe")}
+                          aria-invalid={!!errors.name}
+                          className={inputClass(!!errors.name)}
+                        />
+                        {errors.name && <FieldError message={errors.name} />}
+                      </div>
+
+                      <div>
+                        <label htmlFor="cf-business" className="mb-1.5 block text-xs font-bold text-zinc-700 dark:text-zinc-300">
+                          {t("Nama Bisnis / Perusahaan", "Business / Company Name")}
+                        </label>
+                        <input
+                          id="cf-business"
+                          type="text"
+                          name="businessName"
+                          value={formData.businessName}
+                          onChange={handleChange}
+                          placeholder={t("PT Kopi Nusantara", "e.g. Acme Corp")}
+                          className={inputClass(false)}
+                        />
+                      </div>
+
+                      <div>
+                        <label htmlFor="cf-wa" className="mb-1.5 block text-xs font-bold text-zinc-700 dark:text-zinc-300">
+                          {t("Nomor WhatsApp", "WhatsApp Number")} <span className="text-amber-500">*</span>
+                        </label>
+                        <input
+                          id="cf-wa"
+                          type="tel"
+                          name="whatsapp"
+                          inputMode="tel"
+                          value={formData.whatsapp}
+                          onChange={handleChange}
+                          placeholder="0857xxxxxxxx"
+                          aria-invalid={!!errors.whatsapp}
+                          className={inputClass(!!errors.whatsapp)}
+                        />
+                        {errors.whatsapp && <FieldError message={errors.whatsapp} />}
+                      </div>
+
+                      <div>
+                        <label htmlFor="cf-email" className="mb-1.5 block text-xs font-bold text-zinc-700 dark:text-zinc-300">
+                          {t("Alamat Email", "Email Address")} <span className="font-medium text-zinc-400 dark:text-zinc-500">{t("(Opsional)", "(Optional)")}</span>
+                        </label>
+                        <input
+                          id="cf-email"
+                          type="email"
+                          name="email"
+                          value={formData.email}
+                          onChange={handleChange}
+                          placeholder="email@bisnis.com"
+                          className={inputClass(false)}
+                        />
+                      </div>
+                    </div>
+                  </section>
+
+                  {/* SECTION 2 — PROJECT DETAILS */}
+                  <section className="space-y-4">
+                    <SectionTitle step="2">{t("Detail Proyek", "Project Details")}</SectionTitle>
+
+                    <CustomDropdown
+                      label={t("Jenis Layanan", "Service Type")}
+                      value={formData.serviceType}
+                      options={serviceOptions}
+                      onChange={(val) => handleSelectChange("serviceType", val)}
+                    />
+
+                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                      <CustomDropdown
+                        label={t("Estimasi Budget", "Estimated Budget")}
+                        value={formData.budget}
+                        options={budgetOptions}
+                        onChange={(val) => handleSelectChange("budget", val)}
+                      />
+                      <CustomDropdown
+                        label={t("Target Pengerjaan", "Target Timeline")}
+                        value={formData.timeline}
+                        options={timelineOptions}
+                        onChange={(val) => handleSelectChange("timeline", val)}
+                      />
+                    </div>
+
+                    <div>
+                      <label htmlFor="cf-notes" className="mb-1.5 block text-xs font-bold text-zinc-700 dark:text-zinc-300">
+                        {t("Detail Brief / Catatan Kebutuhan", "Brief Details / Notes")}
+                      </label>
+                      <textarea
+                        id="cf-notes"
+                        name="notes"
+                        rows={3}
+                        value={formData.notes}
+                        onChange={handleChange}
+                        placeholder={t(
+                          "Jelaskan ide website, fitur khusus, atau referensi contoh website yang Anda sukai...",
+                          "Describe your website idea, custom features, or reference links you like..."
+                        )}
+                        className={`${inputClass(false)} resize-none leading-relaxed`}
+                      />
+                    </div>
+                  </section>
+                </form>
+              )}
+            </div>
+
+            {/* STICKY FOOTER CTA (form state only) */}
+            {!isSubmitted && (
+              <div className="shrink-0 border-t border-zinc-100 bg-zinc-50/80 px-5 py-4 sm:px-8 dark:border-zinc-800/80 dark:bg-zinc-900/40">
+                <button
+                  type="submit"
+                  form="consultation-form"
+                  className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 px-5 py-3 text-sm font-extrabold text-white shadow-lg shadow-amber-500/20 transition-all hover:from-amber-400 hover:to-orange-400 hover:shadow-amber-500/30 active:scale-[0.98] cursor-pointer"
+                >
+                  <Send size={15} />
+                  <span>{t("Kirim Brief via WhatsApp", "Send Brief via WhatsApp")}</span>
+                </button>
+                <p className="mt-2.5 flex items-center justify-center gap-1.5 text-center text-[11px] font-medium text-zinc-400 dark:text-zinc-500">
+                  <ShieldCheck size={12} className="shrink-0 text-emerald-500" />
                   {t(
-                    "Terima kasih! Jika tab WhatsApp tidak terbuka secara otomatis, silakan klik tombol di bawah untuk melanjutkan chat.",
-                    "Thank you! If WhatsApp didn't open automatically, please click the button below to continue chat."
+                    "Konsultasi gratis & tanpa komitmen. Data Anda hanya digunakan untuk menghubungi Anda.",
+                    "Free consultation, no commitment. Your data is only used to contact you."
                   )}
                 </p>
-
-                <div className="w-full bg-zinc-50 dark:bg-zinc-900/60 p-3.5 rounded-2xl text-left border border-zinc-200 dark:border-zinc-800 text-xs space-y-1.5 mb-4">
-                  <p className="font-bold text-amber-500 uppercase tracking-wider text-[10px]">
-                    {t("Ringkasan Pengajuan:", "Submission Summary:")}
-                  </p>
-                  <p className="text-zinc-700 dark:text-zinc-300"><strong>{t("Nama:", "Name:")}</strong> {formData.name} ({formData.businessName || "-"})</p>
-                  <p className="text-zinc-700 dark:text-zinc-300"><strong>WhatsApp:</strong> {formData.whatsapp}</p>
-                  <p className="text-zinc-700 dark:text-zinc-300"><strong>{t("Layanan:", "Service:")}</strong> {formData.serviceType}</p>
-                  <p className="text-zinc-700 dark:text-zinc-300"><strong>{t("Budget:", "Budget:")}</strong> {getBudgetLabel(formData.budget, language)}</p>
-                </div>
-
-                <div className="flex flex-col sm:flex-row gap-2.5 w-full">
-                  <a
-                    href={generateWAMessage()}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 py-2.5 px-4 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-white rounded-xl text-xs sm:text-sm font-extrabold flex items-center justify-center gap-2 transition shadow-md shadow-amber-500/20"
-                  >
-                    <Phone size={15} />
-                    {t("Buka WhatsApp Chat", "Open WhatsApp Chat")}
-                  </a>
-                  <button
-                    onClick={handleResetAndClose}
-                    className="py-2.5 px-5 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-700 dark:text-zinc-300 rounded-xl text-xs sm:text-sm font-bold transition cursor-pointer"
-                  >
-                    {t("Tutup", "Close")}
-                  </button>
-                </div>
               </div>
-            ) : (
-              /* FORM STATE */
-              <form onSubmit={handleSendWA} className="space-y-3 text-left">
-                {/* ROW 1: NAMA & BISNIS */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <div>
-                    <label className="block text-[11px] font-bold text-zinc-700 dark:text-zinc-300 mb-1">
-                      {t("Nama Lengkap *", "Full Name *")}
-                    </label>
-                    <input
-                      type="text"
-                      name="name"
-                      required
-                      value={formData.name}
-                      onChange={handleChange}
-                      placeholder={t("Ahmad Rafi", "John Doe")}
-                      className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/60 text-zinc-900 dark:text-white text-xs focus:outline-none focus:ring-2 focus:ring-amber-500/40 focus:border-amber-500 transition"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-[11px] font-bold text-zinc-700 dark:text-zinc-300 mb-1">
-                      {t("Nama Bisnis / Perusahaan", "Business / Company Name")}
-                    </label>
-                    <input
-                      type="text"
-                      name="businessName"
-                      value={formData.businessName}
-                      onChange={handleChange}
-                      placeholder={t("PT Kopi Nusantara / Startup", "e.g. Acme Corp")}
-                      className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/60 text-zinc-900 dark:text-white text-xs focus:outline-none focus:ring-2 focus:ring-amber-500/40 focus:border-amber-500 transition"
-                    />
-                  </div>
-                </div>
-
-                {/* ROW 2: WHATSAPP & EMAIL */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <div>
-                    <label className="block text-[11px] font-bold text-zinc-700 dark:text-zinc-300 mb-1">
-                      {t("Nomor WhatsApp *", "WhatsApp Number *")}
-                    </label>
-                    <input
-                      type="tel"
-                      name="whatsapp"
-                      required
-                      value={formData.whatsapp}
-                      onChange={handleChange}
-                      placeholder="0857xxxxxxxx"
-                      className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/60 text-zinc-900 dark:text-white text-xs focus:outline-none focus:ring-2 focus:ring-amber-500/40 focus:border-amber-500 transition"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-[11px] font-bold text-zinc-700 dark:text-zinc-300 mb-1">
-                      {t("Alamat Email (Opsional)", "Email Address (Optional)")}
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      placeholder="email@bisnis.com"
-                      className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/60 text-zinc-900 dark:text-white text-xs focus:outline-none focus:ring-2 focus:ring-amber-500/40 focus:border-amber-500 transition"
-                    />
-                  </div>
-                </div>
-
-                {/* ROW 3: CUSTOM DROPDOWNS */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                  <CustomDropdown
-                    label={t("Jenis Layanan", "Service Type")}
-                    value={formData.serviceType}
-                    options={serviceOptions}
-                    onChange={(val) => handleSelectChange("serviceType", val)}
-                  />
-
-                  <CustomDropdown
-                    label={t("Estimasi Budget", "Estimated Budget")}
-                    value={formData.budget}
-                    options={budgetOptions}
-                    onChange={(val) => handleSelectChange("budget", val)}
-                  />
-
-                  <CustomDropdown
-                    label={t("Target Pengerjaan", "Target Timeline")}
-                    value={formData.timeline}
-                    options={timelineOptions}
-                    onChange={(val) => handleSelectChange("timeline", val)}
-                  />
-                </div>
-
-                {/* ROW 4: BRIEF NOTES */}
-                <div>
-                  <label className="block text-[11px] font-bold text-zinc-700 dark:text-zinc-300 mb-1">
-                    {t("Detail Brief / Catatan Kebutuhan", "Brief Details / Notes")}
-                  </label>
-                  <textarea
-                    name="notes"
-                    rows={2}
-                    value={formData.notes}
-                    onChange={handleChange}
-                    placeholder={t("Jelaskan ide website, fitur khusus, atau referensi contoh website yang Anda sukai...", "Describe your website idea, custom features, or reference links you like...")}
-                    className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/60 text-zinc-900 dark:text-white text-xs focus:outline-none focus:ring-2 focus:ring-amber-500/40 focus:border-amber-500 transition resize-none leading-relaxed"
-                  />
-                </div>
-
-                {/* SUBMIT BUTTON */}
-                <div className="pt-1">
-                  <button
-                    type="submit"
-                    className="w-full py-3 px-5 bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 hover:from-amber-400 hover:to-orange-400 text-white rounded-xl text-xs sm:text-sm font-black flex items-center justify-center gap-2 shadow-lg shadow-amber-500/20 hover:shadow-amber-500/35 hover:scale-[1.005] active:scale-98 transition-all duration-200 cursor-pointer"
-                  >
-                    <Send size={14} />
-                    <span>{t("Kirim Brief via WhatsApp Direct", "Send Brief via WhatsApp Direct")}</span>
-                    <ArrowRight size={14} />
-                  </button>
-                </div>
-              </form>
             )}
-          </div>
-        </motion.div>
-      </div>
+          </motion.div>
+        </div>
+      )}
     </AnimatePresence>
   );
 }
 
-// SLEEK CUSTOM DROPDOWN COMPONENT (COMPACT, READABLE & NO SCROLL CUT-OFF)
+/* NUMBERED SECTION DIVIDER */
+function SectionTitle({ step, children }) {
+  return (
+    <div className="flex items-center gap-2.5">
+      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-amber-500/10 text-[11px] font-extrabold text-amber-600 dark:text-amber-400">
+        {step}
+      </span>
+      <h3 className="text-[11px] font-extrabold uppercase tracking-[0.14em] text-zinc-500 dark:text-zinc-400">{children}</h3>
+      <div className="h-px flex-1 bg-zinc-200/80 dark:bg-zinc-800" />
+    </div>
+  );
+}
+
+/* INLINE VALIDATION MESSAGE */
+function FieldError({ message }) {
+  return (
+    <p role="alert" className="mt-1.5 text-[11px] font-semibold text-red-500">
+      {message}
+    </p>
+  );
+}
+
+/* CUSTOM DROPDOWN — menu constrained to trigger width so it never overflows on mobile */
 function CustomDropdown({ label, value, options, onChange }) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -364,61 +451,63 @@ function CustomDropdown({ label, value, options, onChange }) {
 
   return (
     <div className={`relative text-left ${isOpen ? "z-40" : "z-10"}`} ref={dropdownRef}>
-      <label className="block text-[11px] font-bold text-zinc-700 dark:text-zinc-300 mb-1">
-        {label}
-      </label>
+      <label className="mb-1.5 block text-xs font-bold text-zinc-700 dark:text-zinc-300">{label}</label>
 
-      {/* TRIGGER BUTTON */}
+      {/* TRIGGER */}
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className={`w-full px-3 py-2 rounded-xl border text-xs font-medium flex items-center justify-between transition-all duration-200 cursor-pointer ${
+        aria-haspopup="listbox"
+        aria-expanded={isOpen}
+        className={`flex w-full items-center justify-between rounded-xl border px-3.5 py-2.5 text-sm font-semibold text-zinc-900 transition-all duration-200 dark:text-white cursor-pointer ${
           isOpen
-            ? "border-amber-500 ring-2 ring-amber-500/20 bg-white dark:bg-zinc-900"
-            : "border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/60 hover:bg-zinc-100/80 dark:hover:bg-zinc-800/60"
-        } text-zinc-900 dark:text-white`}
+            ? "border-amber-500 bg-white ring-2 ring-amber-500/20 dark:bg-zinc-900"
+            : "border-zinc-200 bg-zinc-50 hover:bg-zinc-100/80 dark:border-zinc-800 dark:bg-zinc-900/60 dark:hover:bg-zinc-800/60"
+        }`}
       >
-        <span className="truncate font-semibold">{selectedOption?.label}</span>
+        <span className="truncate pr-2">{selectedOption?.label}</span>
         <ChevronDown
-          size={14}
-          className={`text-zinc-400 shrink-0 transition-transform duration-200 ml-1 ${
-            isOpen ? "rotate-180 text-amber-500" : ""
-          }`}
+          size={15}
+          className={`shrink-0 text-zinc-400 transition-transform duration-200 ${isOpen ? "rotate-180 text-amber-500" : ""}`}
         />
       </button>
 
-      {/* DROPDOWN MENU POPOVER */}
+      {/* MENU */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
+          <motion.ul
+            role="listbox"
             initial={{ opacity: 0, y: -4, scale: 0.98 }}
-            animate={{ opacity: 1, y: 4, scale: 1 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -4, scale: 0.98 }}
             transition={{ duration: 0.15 }}
-            className="absolute left-0 min-w-full w-max max-w-[280px] sm:max-w-[320px] z-50 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl shadow-2xl py-1.5 px-1 max-h-56 overflow-y-auto space-y-0.5 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+            className="absolute left-0 right-0 top-full z-50 mt-1.5 max-h-56 overflow-y-auto rounded-xl border border-zinc-200 bg-white p-1 shadow-xl shadow-zinc-950/10 dark:border-zinc-800 dark:bg-zinc-900 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
           >
             {options.map((opt) => {
               const isSelected = opt.value === value;
               return (
-                <button
-                  key={opt.value}
-                  type="button"
-                  onClick={() => {
-                    onChange(opt.value);
-                    setIsOpen(false);
-                  }}
-                  className={`w-full px-3 py-1.5 rounded-xl text-xs text-left flex items-center justify-between transition cursor-pointer ${
-                    isSelected
-                      ? "bg-amber-500/10 text-amber-600 dark:text-amber-400 font-bold"
-                      : "text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800/70"
-                  }`}
-                >
-                  <span className="whitespace-normal leading-snug pr-2">{opt.label}</span>
-                  {isSelected && <Check size={13} className="text-amber-500 shrink-0 ml-1.5" />}
-                </button>
+                <li key={opt.value}>
+                  <button
+                    type="button"
+                    role="option"
+                    aria-selected={isSelected}
+                    onClick={() => {
+                      onChange(opt.value);
+                      setIsOpen(false);
+                    }}
+                    className={`flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-[13px] transition cursor-pointer ${
+                      isSelected
+                        ? "bg-amber-500/10 font-bold text-amber-600 dark:text-amber-400"
+                        : "font-medium text-zinc-700 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800/70"
+                    }`}
+                  >
+                    <span className="pr-2 leading-snug">{opt.label}</span>
+                    {isSelected && <Check size={14} className="ml-1.5 shrink-0 text-amber-500" />}
+                  </button>
+                </li>
               );
             })}
-          </motion.div>
+          </motion.ul>
         )}
       </AnimatePresence>
     </div>
@@ -439,7 +528,7 @@ function getTimelineLabel(timeline, lang) {
   const map = {
     "1minggu": lang === "en" ? "< 1 Week (Urgent)" : "< 1 Minggu (Cepat / Urgent)",
     "1-2minggu": lang === "en" ? "1 - 2 Weeks" : "1 - 2 Minggu (Standar)",
-    "1bulan": lang === "en" ? "1 Month" : "1 Bulan (Kompleks)",
+    "1bulan": lang === "en" ? "1 Month" : "1 Month (Complex)",
     fleksibel: lang === "en" ? "Flexible / Discussion First" : "Fleksibel / Diskusi Dulu",
   };
   return map[timeline] || timeline;
