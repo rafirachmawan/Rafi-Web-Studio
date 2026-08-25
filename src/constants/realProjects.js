@@ -1,5 +1,6 @@
 import sppCover from "../assets/sppShiningsun/Login.png";
-import absensiCover from "../assets/absensiShiningsun/absensiShiningsun.jpg";
+import absensiLogin from "../assets/absensiShiningsun/login.jpeg";
+import absensiDashboard from "../assets/absensiShiningsun/dashboard.jpeg";
 import jadwalBookingCover from "../assets/jadwalBookingClassShiningsun/Aplikasi Booking2.jpeg";
 import jadwalBookingImg1 from "../assets/jadwalBookingClassShiningsun/1.jpeg";
 import jadwalBookingImg2 from "../assets/jadwalBookingClassShiningsun/2.jpeg";
@@ -69,7 +70,8 @@ export const realProjects = [
     },
     icon: "📱",
     category: "mobile app",
-    image: absensiCover,
+    image: absensiLogin,
+    gallery: [absensiLogin, absensiDashboard],
     client: "Yayasan Shining Sun School",
     isReal: true,
     fullDescription: {
