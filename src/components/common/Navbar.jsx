@@ -70,11 +70,15 @@ export default function Navbar() {
     setActiveSection(location.pathname);
   }, [location.pathname]);
 
-  // Handle smooth scroll to top when clicking Home while already on home page
+  // Handle smooth scroll to top when clicking Home
   const handleNavClick = (href, e) => {
     if (href === "/" && location.pathname === "/") {
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
     }
   };
 

@@ -37,6 +37,10 @@ const WarungOSApp = lazy(() => import("./apps/sistem-web/warungos/WarungOSApp"))
 const ExamOSApp = lazy(() => import("./apps/sistem-web/examos/ExamOSApp"));
 const AbsenOSApp = lazy(() => import("./apps/mobile-app/absenos/AbsenOSApp"));
 
+if (typeof window !== "undefined" && "scrollRestoration" in window.history) {
+  window.history.scrollRestoration = "manual";
+}
+
 let isAppInitialized = false;
 
 function RouteWatcher() {
@@ -45,6 +49,8 @@ function RouteWatcher() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
 
     if (!isAppInitialized) {
       isAppInitialized = true;
@@ -55,6 +61,9 @@ function RouteWatcher() {
     
     const timer = setTimeout(() => {
       setIsPageLoading(false);
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
     }, 400);
 
     return () => clearTimeout(timer);
