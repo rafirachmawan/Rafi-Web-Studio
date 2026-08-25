@@ -39,8 +39,8 @@ export default function Footer() {
 
   const contacts = [
     { icon: MessageCircle, label: t("WhatsApp Resmi", "Official WhatsApp"), href: "https://wa.me/6285707185783", external: true },
-    { icon: InstagramIcon, label: "Instagram", href: "https://instagram.com/gapaidigital", external: true },
-    { icon: Mail, label: "gapaidigital@gmail.com", href: "mailto:gapaidigital@gmail.com", external: false },
+    { icon: InstagramIcon, label: "Instagram", href: "https://www.instagram.com/rrrafi.rachmawan/", external: true },
+    { icon: Mail, label: "rafirachmawan1987@gmail.com", href: "mailto:rafirachmawan1987@gmail.com", external: false },
     { icon: MapPin, label: t("Tulungagung, Jawa Timur", "Tulungagung, East Java"), href: null, external: false },
   ];
 
@@ -81,12 +81,12 @@ export default function Footer() {
 
         {/* MAIN FOOTER GRID */}
         <div className="rounded-[2rem] bg-white dark:bg-zinc-900 border border-zinc-200/80 dark:border-zinc-800/60 shadow-[0_4px_20px_rgba(0,0,0,0.04)] dark:shadow-none p-6 md:p-10">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 md:gap-10 text-left">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 md:gap-8 text-left">
 
           {/* BRAND */}
-          <div className="sm:col-span-2 lg:col-span-2 space-y-4">
+          <div className="sm:col-span-2 lg:col-span-4 space-y-4">
             <div>
-              <h2 className="text-2xl font-black text-black dark:text-white">
+              <h2 className="text-2xl font-black text-black dark:text-white font-heading">
                 Gapai<span className="text-amber-500">Digital</span>
               </h2>
               <p className="text-zinc-500 dark:text-zinc-400 text-xs font-bold uppercase tracking-widest mt-1">
@@ -102,11 +102,11 @@ export default function Footer() {
                 className="p-2.5 rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-amber-500 hover:text-white hover:border-amber-500 transition-all duration-200">
                 <MessageCircle className="w-4 h-4" />
               </a>
-              <a href="https://instagram.com/gapaidigital" target="_blank" rel="noopener noreferrer"
+              <a href="https://www.instagram.com/rrrafi.rachmawan/" target="_blank" rel="noopener noreferrer"
                 className="p-2.5 rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-amber-500 hover:text-white hover:border-amber-500 transition-all duration-200">
                 <InstagramIcon className="w-4 h-4" />
               </a>
-              <a href="mailto:gapaidigital@gmail.com"
+              <a href="mailto:rafirachmawan1987@gmail.com"
                 className="p-2.5 rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-amber-500 hover:text-white hover:border-amber-500 transition-all duration-200">
                 <Mail className="w-4 h-4" />
               </a>
@@ -114,8 +114,8 @@ export default function Footer() {
           </div>
 
           {/* LAYANAN KAMI */}
-          <div>
-            <h3 className="text-zinc-900 dark:text-white font-bold text-xs uppercase tracking-widest mb-5 flex items-center gap-2">
+          <div className="sm:col-span-1 lg:col-span-3">
+            <h3 className="text-zinc-900 dark:text-white font-bold text-xs uppercase tracking-widest mb-5 flex items-center gap-2 font-heading">
               <span className="w-4 h-px bg-amber-500 inline-block"></span>
               {t("Layanan Kami", "Our Services")}
             </h3>
@@ -132,8 +132,8 @@ export default function Footer() {
           </div>
 
           {/* LEGAL & FAQ */}
-          <div>
-            <h3 className="text-zinc-900 dark:text-white font-bold text-xs uppercase tracking-widest mb-5 flex items-center gap-2">
+          <div className="sm:col-span-1 lg:col-span-2">
+            <h3 className="text-zinc-900 dark:text-white font-bold text-xs uppercase tracking-widest mb-5 flex items-center gap-2 font-heading">
               <span className="w-4 h-px bg-amber-500 inline-block"></span>
               {t("Informasi & Legal", "Legal & Support")}
             </h3>
@@ -149,8 +149,8 @@ export default function Footer() {
           </div>
 
           {/* HUBUNGI KAMI */}
-          <div>
-            <h3 className="text-zinc-900 dark:text-white font-bold text-xs uppercase tracking-widest mb-5 flex items-center gap-2">
+          <div className="sm:col-span-2 lg:col-span-3">
+            <h3 className="text-zinc-900 dark:text-white font-bold text-xs uppercase tracking-widest mb-5 flex items-center gap-2 font-heading">
               <span className="w-4 h-px bg-amber-500 inline-block"></span>
               {t("Hubungi Kami", "Contact Us")}
             </h3>
@@ -161,15 +161,15 @@ export default function Footer() {
                     <a
                       href={href}
                       {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                      className="group flex items-center gap-2.5 text-zinc-600 dark:text-zinc-400 hover:text-amber-500 dark:hover:text-amber-400 transition-colors text-sm font-medium"
+                      className="group flex items-center gap-2.5 text-zinc-600 dark:text-zinc-400 hover:text-amber-500 dark:hover:text-amber-400 transition-colors text-xs sm:text-sm font-medium"
                     >
                       <div className="p-1.5 bg-zinc-100 dark:bg-zinc-900 rounded-lg group-hover:bg-amber-500/10 group-hover:text-amber-500 transition-colors shrink-0">
                         <Icon className="w-3.5 h-3.5" />
                       </div>
-                      <span className="group-hover:translate-x-0.5 transition-transform">{label}</span>
+                      <span className="group-hover:translate-x-0.5 transition-transform break-all sm:break-normal">{label}</span>
                     </a>
                   ) : (
-                    <div className="flex items-center gap-2.5 text-zinc-600 dark:text-zinc-400 text-sm font-medium">
+                    <div className="flex items-center gap-2.5 text-zinc-600 dark:text-zinc-400 text-xs sm:text-sm font-medium">
                       <div className="p-1.5 bg-zinc-100 dark:bg-zinc-900 rounded-lg shrink-0">
                         <Icon className="w-3.5 h-3.5" />
                       </div>
