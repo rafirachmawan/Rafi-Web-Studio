@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
@@ -8,11 +8,93 @@ import {
   Tag,
   ExternalLink,
   Sparkles,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 import { demos } from "../constants/demos";
 import { realProjects } from "../constants/realProjects";
 import Footer from "../components/common/Footer";
 import { useLanguage } from "../context/LanguageContext";
+
+function ProjectDetailGallery({ gallery, name }) {
+  const [activeIdx, setActiveIdx] = useState(0);
+
+  const prevImage = () => {
+    setActiveIdx((prev) => (prev === 0 ? gallery.length - 1 : prev - 1));
+  };
+
+  const nextImage = () => {
+    setActiveIdx((prev) => (prev === gallery.length - 1 ? 0 : prev + 1));
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.2 }}
+      className="space-y-4"
+    >
+      {/* MAIN CAROUSEL IMAGE */}
+      <div className="relative w-full rounded-3xl overflow-hidden shadow-2xl border border-zinc-200/50 dark:border-white/10 bg-zinc-100 dark:bg-zinc-900 group">
+        <img
+          src={gallery[activeIdx]}
+          alt={`${name} - preview ${activeIdx + 1}`}
+          className="w-full h-auto block transition-all duration-300"
+        />
+
+        {gallery.length > 1 && (
+          <>
+            {/* Index Badge */}
+            <div className="absolute top-4 right-4 bg-black/70 backdrop-blur-md text-white text-xs font-bold px-3 py-1.5 rounded-full border border-white/20">
+              {activeIdx + 1} / {gallery.length}
+            </div>
+
+            {/* Prev Arrow */}
+            <button
+              onClick={prevImage}
+              aria-label="Previous image"
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-black/60 hover:bg-amber-500 text-white backdrop-blur-md border border-white/20 flex items-center justify-center transition-all duration-200 shadow-xl hover:scale-110 active:scale-95 cursor-pointer"
+            >
+              <ChevronLeft size={24} />
+            </button>
+
+            {/* Next Arrow */}
+            <button
+              onClick={nextImage}
+              aria-label="Next image"
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-black/60 hover:bg-amber-500 text-white backdrop-blur-md border border-white/20 flex items-center justify-center transition-all duration-200 shadow-xl hover:scale-110 active:scale-95 cursor-pointer"
+            >
+              <ChevronRight size={24} />
+            </button>
+          </>
+        )}
+      </div>
+
+      {/* THUMBNAIL SELECTOR */}
+      {gallery.length > 1 && (
+        <div className="flex items-center gap-3 overflow-x-auto pb-2 scrollbar-none">
+          {gallery.map((img, idx) => (
+            <button
+              key={idx}
+              onClick={() => setActiveIdx(idx)}
+              className={`relative rounded-xl overflow-hidden border-2 transition-all duration-300 shrink-0 w-24 aspect-[16/10] cursor-pointer ${
+                activeIdx === idx
+                  ? "border-amber-500 ring-2 ring-amber-500/30 scale-105"
+                  : "border-transparent opacity-60 hover:opacity-100"
+              }`}
+            >
+              <img
+                src={img}
+                alt={`Thumbnail ${idx + 1}`}
+                className="w-full h-full object-cover"
+              />
+            </button>
+          ))}
+        </div>
+      )}
+    </motion.div>
+  );
+}
 
 export default function ProjectDetail() {
   const { t } = useLanguage();
@@ -212,20 +294,24 @@ export default function ProjectDetail() {
 
           {/* Right Column (Scrollable Content) */}
           <div className="lg:col-span-7 space-y-12 md:space-y-16">
-            {/* Main Image (Only show if there is no before/after comparison) */}
-            {!project.beforeImage && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-                className="w-full rounded-3xl overflow-hidden shadow-2xl border border-zinc-200/50 dark:border-white/10 bg-zinc-100 dark:bg-zinc-900"
-              >
-                <img
-                  src={project.image}
-                  alt={project.name}
-                  className="w-full h-auto block"
-                />
-              </motion.div>
+            {/* Main Image or Gallery Carousel */}
+            {project.gallery && project.gallery.length > 0 ? (
+              <ProjectDetailGallery gallery={project.gallery} name={t(project.name)} />
+            ) : (
+              !project.beforeImage && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                  className="w-full rounded-3xl overflow-hidden shadow-2xl border border-zinc-200/50 dark:border-white/10 bg-zinc-100 dark:bg-zinc-900"
+                >
+                  <img
+                    src={project.image}
+                    alt={t(project.name)}
+                    className="w-full h-auto block"
+                  />
+                </motion.div>
+              )
             )}
 
             {/* Before/After Laptop Mockup Comparison */}

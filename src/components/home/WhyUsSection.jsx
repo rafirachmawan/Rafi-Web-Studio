@@ -5,40 +5,40 @@ export default function WhyUsSection() {
   const { t } = useLanguage();
 
   const stats = [
-    { value: "50+", label: t("Project Selesai", "Projects Delivered") },
-    { value: "99%", label: t("Kepuasan Klien", "Client Satisfaction") },
-    { value: "24/7", label: t("Dukungan Teknis", "Technical Support") },
+    { value: "50+", label: t("Proyek Bisnis Sukses", "Successful Business Projects") },
+    { value: "99%", label: t("Klien Puas & Kembali", "Client Satisfaction Rate") },
+    { value: "24/7", label: t("Bantuan & Garansi Tim", "Support & Team Warranty") },
   ];
 
   const comparisons = [
     {
       type: "biasa",
-      title: t("Website Biasa", "Ordinary Website"),
+      title: t("Website Konvensional", "Ordinary Website"),
       icon: AlertCircle,
       iconColor: "text-red-500",
       bgClass: "bg-zinc-50 dark:bg-zinc-900/30 border-black/5 dark:border-white/5 opacity-80",
       titleClass: "text-zinc-500 dark:text-zinc-400",
       points: [
-        t("Template kaku, pasaran, dan membosankan", "Rigid, generic, and boring templates"),
-        t("Kinerja lambat & skor SEO rendah", "Slow performance & low SEO scores"),
-        t("Sistem berdiri sendiri (tidak terintegrasi)", "Standalone system (not integrated)"),
-        t("Pengelolaan data manual dan rumit", "Manual and complicated data management"),
-        t("Tanpa dukungan teknis purna jual", "No after-sales technical support"),
+        t("Desain kaku, umum, dan kurang terlihat profesional", "Rigid, generic, and unprofessional design"),
+        t("Lambat diakses & kurang optimal ditemukan di Google", "Slow loading speed & poor Google visibility"),
+        t("Sistem terpisah (tidak bisa dihubungkan ke aplikasi lain)", "Standalone system (cannot connect to other apps)"),
+        t("Pengelolaan data masih manual & membingungkan", "Manual & confusing data management"),
+        t("Tanpa bantuan teknis dan garansi setelah website selesai", "No technical support & warranty after delivery"),
       ]
     },
     {
       type: "gapai",
-      title: t("GapaiDigital", "GapaiDigital"),
+      title: t("Solusi GapaiDigital", "GapaiDigital Solution"),
       icon: ShieldCheck,
       iconColor: "text-amber-500",
       bgClass: "bg-[#0a0a0a] border-amber-500/30 shadow-2xl shadow-amber-500/10 z-10 relative overflow-hidden",
       titleClass: "text-white",
       points: [
-        t("Desain UI/UX eksklusif, dinamis & premium", "Exclusive, dynamic & premium UI/UX design"),
-        t("Super kilat dengan optimasi performa 99%", "Super fast with 99% performance optimization"),
-        t("Ekosistem terintegrasi (Web, App, Dashboard)", "Integrated ecosystem (Web, App, Dashboard)"),
-        t("Manajemen terpusat otomatis via cloud", "Automated centralized management via cloud"),
-        t("Garansi maintenance & dukungan 24/7", "Maintenance warranty & 24/7 support"),
+        t("Desain eksklusif, mewah & disesuaikan dengan identitas bisnis Anda", "Exclusive, modern design tailored to your brand identity"),
+        t("Super cepat, responsif di HP & optimal untuk SEO Google", "Super fast, mobile responsive & optimized for Google SEO"),
+        t("Ekosistem terintegrasi (Website, Aplikasi Mobile & Dashboard)", "Fully integrated ecosystem (Website, Mobile App & Dashboard)"),
+        t("Sistem otomatis yang praktis & sangat mudah dioperasikan", "Practical automated system that is easy to operate"),
+        t("Garansi pemeliharaan & tim bantuan yang selalu siap merespons", "Maintenance warranty & responsive technical support team"),
       ]
     }
   ];
@@ -61,18 +61,19 @@ export default function WhyUsSection() {
         {/* HEADER SECTION - CENTERED */}
         <div className="text-center max-w-3xl mx-auto mb-12 md:mb-20">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-amber-500/20 bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold uppercase tracking-wider mb-6">
-            {t("⚡ Mitra Digital Anda", "⚡ Your Digital Partner")}
+            {t("⚡ ALASAN MEMILIH KAMI", "⚡ WHY CHOOSE US")}
           </div>
 
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight leading-[1.15] text-zinc-900 dark:text-white mb-6">
-            {t("Standar Baru", "The New Standard")} <br className="hidden md:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600">
-              {t("Ekosistem Digital", "of Digital Ecosystem")}
+          <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-6 font-heading leading-[1.15]">
+            <span>{t("Standar Kualitas Terbaik ", "Highest Quality Standard ")}</span>
+            <br className="hidden sm:inline" />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-500">
+              {t("Untuk Website & Aplikasi Anda", "For Your Website & Applications")}
             </span>
           </h2>
 
           <p className="text-sm md:text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
-            {t("Kami membantu bisnis lokal dan UMKM naik tingkat melalui digitalisasi yang dirancang secara matang, responsif, dan fokus pada peningkatan penjualan.", "We help local businesses and MSMEs scale up through carefully planned, responsive, and conversion-focused digitalization.")}
+            {t("Kami tidak sekadar membuat website, tetapi membangun sistem digital yang modern, cepat, aman, dan mudah digunakan untuk mendukung pertumbuhan bisnis Anda.", "We don't just build websites; we create modern, fast, secure, and user-friendly digital systems to power your business growth.")}
           </p>
         </div>
 
@@ -89,7 +90,7 @@ export default function WhyUsSection() {
                   {isGapai && (
                      <>
                         <div className="absolute top-0 right-6 sm:right-10 bg-amber-500 text-black text-[10px] sm:text-xs font-black uppercase tracking-widest px-4 py-1.5 rounded-b-xl shadow-lg shadow-amber-500/20">
-                           {t("Solusi Kami", "Our Solution")}
+                           {t("Solusi Kami", "Our Standard")}
                         </div>
                      </>
                   )}

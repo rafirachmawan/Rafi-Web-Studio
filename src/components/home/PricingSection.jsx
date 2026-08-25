@@ -25,9 +25,9 @@ export default function PricingSection({ pricingTab, setPricingTab, waLink }) {
         </div>
 
         {/* TITLE */}
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-tight max-w-3xl mx-auto text-black dark:text-white mb-4">
-          {t("Investasi Bisnis dengan", "Business Investment with")} <br />
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.15] max-w-3xl mx-auto text-black dark:text-white mb-4 font-heading">
+          {t("Investasi Bisnis dengan ", "Business Investment with ")} <br className="hidden sm:inline" />
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 font-extrabold">
             {t("Paket Website & Aplikasi", "Website & App Packages")}
           </span>
         </h2>

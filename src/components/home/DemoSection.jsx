@@ -58,9 +58,11 @@ export default function DemoSection({ filter, setFilter, filtered, isStandalone 
             <span>{t("Rebranding & Redesign", "Rebranding & Redesign")}</span>
           </div>
           
-          <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-6">
+          <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-6 font-heading leading-[1.15]">
+            <span>{t("Evolusi Digital ", "Digital Evolution & ")}</span>
+            <br className="hidden sm:inline" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-500">
-              {t("Evolusi Digital Bisnis Anda", "Your Business's Digital Evolution")}
+              {t("Bisnis Anda", "Rebranding for Your Business")}
             </span>
           </h2>
 

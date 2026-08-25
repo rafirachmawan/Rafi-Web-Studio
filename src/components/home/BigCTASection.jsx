@@ -14,10 +14,10 @@ export default function BigCTASection() {
         {/* CONTENT */}
         <div className="relative z-10 max-w-3xl mx-auto">
           {/* TITLE */}
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-black text-black dark:text-white leading-tight">
-            {t("Bisnis Kamu Sudah Siap", "Is Your Business Ready to")}{" "}
-            <span className="italic text-gray-500 dark:text-gray-400">
-              {t("Naik Level?", "Scale Up?")}
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-black dark:text-white leading-tight font-heading">
+            {t("Siap Membawa Bisnis Anda ", "Ready to Take Your Business ")}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 font-extrabold">
+              {t("ke Tingkat Berikutnya?", "to the Next Level?")}
             </span>
           </h2>
 

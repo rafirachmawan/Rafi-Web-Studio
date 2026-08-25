@@ -62,9 +62,9 @@ export default function ProcessSection() {
                {t("Cara Kami Bekerja", "How We Work")}
             </div>
 
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black leading-[1.15] text-zinc-900 dark:text-white">
-              {t("Proses yang", "A Process That Is")} <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-500">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-[1.15] text-zinc-900 dark:text-white font-heading">
+              {t("Proses Kerja ", "A Process That Is ")} <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-500 font-extrabold">
                 {t("Transparan & Cepat", "Transparent & Fast")}
               </span>
             </h2>

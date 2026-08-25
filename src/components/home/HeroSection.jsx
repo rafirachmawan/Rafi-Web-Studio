@@ -77,66 +77,66 @@ export default function HeroSection() {
         </div>
       </div>
 
-      <div className="relative z-10 flex flex-col items-center">
+      <div className="relative z-10 flex flex-col items-center w-full">
         {/* TEXT & CTA - CENTERED */}
-        <div className="text-center max-w-3xl mx-auto flex flex-col items-center pb-8 md:pb-12">
+        <div className="text-center max-w-4xl mx-auto flex flex-col items-center pb-8 md:pb-12">
           {/* BADGE */}
           <div 
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-amber-500/20 bg-amber-500/5 text-amber-600 dark:text-amber-400 text-xs font-bold mb-5 shadow-sm group/badge relative overflow-hidden"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-amber-500/30 bg-gradient-to-r from-amber-500/10 via-orange-500/10 to-amber-500/10 text-amber-600 dark:text-amber-400 text-xs sm:text-sm font-semibold mb-6 shadow-sm backdrop-blur-md"
           >
-            <Zap className="w-3.5 h-3.5 fill-amber-500/20 group-hover:scale-110 transition-transform" /> 
-            <span>{t("Startup Digitalisasi Indonesia", "Indonesia Digitalization Startup")}</span>
+            <Zap className="w-4 h-4 text-amber-500 animate-pulse" /> 
+            <span>{t("Mitra Digitalisasi Bisnis Terpercaya", "Trusted Business Digitalization Partner")}</span>
           </div>
 
           {/* HEADLINE */}
           <h1 
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-black tracking-tight leading-[1.1] text-zinc-900 dark:text-white flex flex-col items-center gap-1 md:gap-1.5 text-center"
+            className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.15] text-zinc-900 dark:text-white max-w-3xl text-center font-heading"
           >
-            <span className="opacity-90">{t("Transformasi Digital", "Digital Transformation")}</span>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 pb-1 drop-shadow-sm font-black">
-              {t("Bisnis Anda.", "Your Business.")}
+            <span>{t("Solusi Digital Profesional", "Professional Digital Solutions")} </span>
+            <br className="hidden sm:inline" />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 font-extrabold">
+              {t("Untuk Mengembangkan Bisnis Anda.", "To Scale Your Business.")}
             </span>
           </h1>
  
           {/* DESC */}
           <p 
-            className="mt-5 text-sm md:text-base leading-relaxed text-zinc-600 dark:text-zinc-400 max-w-2xl text-center font-medium"
+            className="mt-6 text-sm sm:text-base md:text-lg leading-relaxed text-zinc-600 dark:text-zinc-400 max-w-2xl text-center font-normal"
           >
             {t(
-              "GapaiDigital hadir sebagai mitra strategis transformasi digital bisnis Anda. Kami merancang dan mengembangkan solusi teknologi komprehensif—mulai dari Landing Page, Aplikasi Mobile, hingga Sistem Web Custom—yang dirancang khusus untuk mengakselerasi efisiensi dan eskalasi bisnis Anda di era modern.",
-              "GapaiDigital is your strategic partner for business digital transformation. We design and develop comprehensive tech solutions—from Landing Pages, Mobile Apps, to Custom Web Systems—tailored to accelerate your business efficiency and scalability in the modern era."
+              "GapaiDigital membantu bisnis Anda tampil lebih profesional dan modern. Kami merancang Website, Aplikasi Mobile, dan Sistem Web Kustom yang cepat, responsif, serta dirancang khusus untuk meningkatkan kredibilitas dan penjualan Anda.",
+              "GapaiDigital helps your business look more professional and modern. We design fast, responsive Websites, Mobile Apps, and Custom Web Systems tailored to boost your credibility and sales."
             )}
           </p>
 
           {/* CTA BUTTONS */}
           <div 
-            className="flex flex-col sm:flex-row gap-3 mt-5 md:mt-7 justify-center w-full sm:w-auto"
+            className="flex flex-col sm:flex-row items-center gap-3.5 mt-8 justify-center w-full sm:w-auto"
           >
             <button
               onClick={() => openConsultation()}
-              className="group/btn relative bg-gradient-to-r from-amber-500 to-orange-500 text-white px-6 py-2.5 rounded-full text-xs md:text-sm font-bold transition-all duration-300 hover:scale-[1.03] shadow-lg shadow-amber-500/15 active:scale-95 overflow-hidden flex items-center justify-center gap-2 cursor-pointer"
+              className="group/btn relative bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 hover:from-amber-400 hover:to-orange-500 text-white px-7 py-3 rounded-full text-xs md:text-sm font-extrabold transition-all duration-300 hover:scale-[1.03] shadow-lg shadow-amber-500/20 active:scale-95 overflow-hidden flex items-center justify-center gap-2 cursor-pointer w-full sm:w-auto"
             >
               <span className="relative z-10 flex items-center gap-2">
-                {t("Konsultasi Gratis", "Free Consultation")} <Sparkles className="w-3.5 h-3.5" />
+                {t("Konsultasi Gratis Sekarang", "Free Consultation Now")} <Sparkles className="w-4 h-4" />
               </span>
               <div className="absolute inset-0 bg-white/20 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300" />
             </button>
 
- 
             <a
               href="#real-projects"
-              className="group/btn2 bg-white dark:bg-transparent border border-zinc-200 dark:border-white/10 px-6 py-2.5 rounded-full text-xs md:text-sm font-bold text-zinc-700 dark:text-zinc-200 hover:bg-zinc-50 hover:text-zinc-900 hover:border-zinc-300 dark:hover:bg-white/5 transition-all duration-300 active:scale-95 flex items-center justify-center gap-2 shadow-sm dark:shadow-none"
+              className="group/btn2 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md border border-zinc-200 dark:border-white/10 px-7 py-3 rounded-full text-xs md:text-sm font-bold text-zinc-800 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-white/10 transition-all duration-300 active:scale-95 flex items-center justify-center gap-2 shadow-sm w-full sm:w-auto"
             >
               {t("Lihat Portofolio", "View Portfolio")}
             </a>
           </div>
         </div>
 
-        {/* CINEMATIC VIDEO SHOWCASE - SHRUNK TO max-w-3xl */}
-        <div className="relative w-full max-w-3xl mx-auto mt-4">
-          <div className="relative rounded-2xl md:rounded-[28px] border border-zinc-200/80 dark:border-white/10 bg-zinc-950 group shadow-[0_30px_80px_-15px_rgba(0,0,0,0.25)] dark:shadow-none">
+        {/* CINEMATIC VIDEO SHOWCASE */}
+        <div className="relative w-full max-w-3xl mx-auto mt-2">
+          <div className="relative rounded-2xl md:rounded-[28px] border border-zinc-200/80 dark:border-white/10 bg-zinc-950 group shadow-[0_25px_60px_-15px_rgba(0,0,0,0.2)] dark:shadow-none">
             {/* ASPECT RATIO HOLDER */}
-            <div className="aspect-[16/9] w-full rounded-2xl md:rounded-[32px] overflow-hidden">
+            <div className="aspect-[16/9] w-full rounded-2xl md:rounded-[28px] overflow-hidden">
               {videoSrc ? (
                 <video
                   src={videoSrc}
@@ -144,7 +144,7 @@ export default function HeroSection() {
                   loop
                   muted
                   playsInline
-                  className="w-full h-full object-cover opacity-70 group-hover:opacity-85 transition-all duration-700"
+                  className="w-full h-full object-cover opacity-75 group-hover:opacity-90 transition-all duration-700"
                 />
               ) : (
                 <div className="w-full h-full bg-gradient-to-br from-zinc-900 via-zinc-900 to-zinc-800 flex items-center justify-center px-6">
@@ -179,31 +179,31 @@ export default function HeroSection() {
               )}
             </div>
 
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/10 pointer-events-none rounded-2xl md:rounded-[32px]" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/10 pointer-events-none rounded-2xl md:rounded-[28px]" />
 
             {/* Floating Badge 1 - Left */}
             <div 
-              className="absolute -top-6 -left-6 bg-white/70 dark:bg-zinc-900/90 border border-white/60 dark:border-white/10 p-4 rounded-2xl items-center gap-3.5 shadow-xl group/badge1 cursor-default hidden lg:flex"
+              className="absolute -top-5 -left-4 sm:-left-6 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-xl border border-zinc-200/80 dark:border-white/10 p-3.5 rounded-2xl items-center gap-3 shadow-xl group/badge1 cursor-default hidden lg:flex"
             >
-              <div className="w-10 h-10 bg-amber-500 rounded-full flex items-center justify-center text-white shadow-lg shadow-amber-500/30 group-hover/badge1:scale-110 transition-transform">
-                <Star className="w-5 h-5 fill-current" />
+              <div className="w-9 h-9 bg-amber-500 rounded-xl flex items-center justify-center text-white shadow-md shadow-amber-500/30 group-hover/badge1:scale-105 transition-transform">
+                <Star className="w-4.5 h-4.5 fill-current" />
               </div>
               <div>
-                <p className="text-zinc-900 dark:text-white font-black text-sm">Rating 5.0</p>
-                <p className="text-zinc-500 dark:text-zinc-400 text-[10px] font-bold uppercase tracking-wider">{t("Klien Puas", "Satisfied Clients")}</p>
+                <p className="text-zinc-900 dark:text-white font-extrabold text-xs sm:text-sm">{t("Rating 5.0 / 5.0", "5.0 / 5.0 Rating")}</p>
+                <p className="text-zinc-500 dark:text-zinc-400 text-[10px] font-bold uppercase tracking-wider">{t("Klien Puas & Terpercaya", "Satisfied Clients")}</p>
               </div>
             </div>
  
             {/* Floating Badge 2 - Right */}
             <div 
-              className="absolute -bottom-6 -right-6 bg-white/70 dark:bg-zinc-900/90 border border-white/60 dark:border-white/10 p-4 rounded-2xl items-center gap-3.5 shadow-xl group/badge2 cursor-default hidden lg:flex"
+              className="absolute -bottom-5 -right-4 sm:-right-6 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-xl border border-zinc-200/80 dark:border-white/10 p-3.5 rounded-2xl items-center gap-3 shadow-xl group/badge2 cursor-default hidden lg:flex"
             >
-              <div className="w-10 h-10 bg-emerald-500 rounded-full flex items-center justify-center text-white shadow-lg shadow-emerald-500/30 group-hover/badge2:scale-110 transition-transform">
-                <CheckCircle className="w-5 h-5" />
+              <div className="w-9 h-9 bg-emerald-500 rounded-xl flex items-center justify-center text-white shadow-md shadow-emerald-500/30 group-hover/badge2:scale-105 transition-transform">
+                <CheckCircle className="w-4.5 h-4.5" />
               </div>
               <div>
-                <p className="text-zinc-900 dark:text-white font-black text-sm">{t("100+ Project", "100+ Projects")}</p>
-                <p className="text-zinc-500 dark:text-zinc-400 text-[10px] font-bold uppercase tracking-wider">{t("Tepat Waktu", "On Time")}</p>
+                <p className="text-zinc-900 dark:text-white font-extrabold text-xs sm:text-sm">{t("100+ Proyek Selesai", "100+ Delivered Projects")}</p>
+                <p className="text-zinc-500 dark:text-zinc-400 text-[10px] font-bold uppercase tracking-wider">{t("Tepat Waktu & Bergaransi", "On Time & Guaranteed")}</p>
               </div>
             </div>
           </div>

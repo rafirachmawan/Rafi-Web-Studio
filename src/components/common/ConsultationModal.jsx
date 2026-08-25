@@ -61,31 +61,31 @@ export default function ConsultationModal() {
   };
 
   const generateWAMessage = () => {
-    const textID = `Halo GapaiDigital! Saya ingin konsultasi & pengajuan brief proyek:
+    const textID = `Halo Tim GapaiDigital! Saya berminat untuk berkonsultasi & mengajukan brief proyek digital untuk bisnis saya:
 
 👤 *Nama:* ${formData.name || "-"}
-🏢 *Nama Bisnis:* ${formData.businessName || "-"}
+🏢 *Nama Bisnis / Perusahaan:* ${formData.businessName || "-"}
 📱 *WhatsApp:* ${formData.whatsapp || "-"}
 📧 *Email:* ${formData.email || "-"}
-🚀 *Layanan:* ${formData.serviceType}
+🚀 *Layanan Kebutuhan:* ${formData.serviceType}
 💰 *Estimasi Budget:* ${getBudgetLabel(formData.budget, "id")}
 ⏱️ *Target Timeline:* ${getTimelineLabel(formData.timeline, "id")}
-📝 *Detail Brief:* ${formData.notes || "Belum ada catatan khusus."}
+📝 *Catatan / Detail Brief:* ${formData.notes || "Belum ada catatan khusus."}
 
-Mohon dapat dibantu proses penawarannya. Terima kasih!`;
+Mohon bantuannya untuk informasi dan diskusi lebih lanjut. Terima kasih!`;
 
-    const textEN = `Hello GapaiDigital! I'd like to consult & submit a project brief:
+    const textEN = `Hello GapaiDigital Team! I would like to consult & submit a digital project brief:
 
 👤 *Name:* ${formData.name || "-"}
-🏢 *Business Name:* ${formData.businessName || "-"}
+🏢 *Company / Business:* ${formData.businessName || "-"}
 📱 *WhatsApp:* ${formData.whatsapp || "-"}
 📧 *Email:* ${formData.email || "-"}
-🚀 *Service:* ${formData.serviceType}
+🚀 *Service Required:* ${formData.serviceType}
 💰 *Estimated Budget:* ${getBudgetLabel(formData.budget, "en")}
 ⏱️ *Target Timeline:* ${getTimelineLabel(formData.timeline, "en")}
-📝 *Brief Details:* ${formData.notes || "No special notes provided."}
+📝 *Brief Details / Notes:* ${formData.notes || "No special notes provided."}
 
-Please assist with proposal details. Thank you!`;
+Please let me know the next steps for discussion. Thank you!`;
 
     const message = language === "en" ? textEN : textID;
     return `https://wa.me/6285707185783?text=${encodeURIComponent(message)}`;
@@ -111,11 +111,11 @@ Please assist with proposal details. Thank you!`;
 
   // OPTIONS DATA
   const serviceOptions = [
-    { value: "Landing Page Standard", label: t("Landing Page Standard", "Landing Page Standard") },
-    { value: "Landing Page Pro", label: t("Landing Page Pro", "Landing Page Pro") },
-    { value: "Aplikasi Mobile (Android/iOS)", label: t("Aplikasi Mobile (iOS / Android)", "Mobile App (iOS / Android)") },
-    { value: "Sistem Web Custom / Kasir", label: t("Sistem Web / ERP Custom", "Custom Web / ERP System") },
-    { value: "Custom Project / Re-Design", label: t("Custom Project / Re-Design", "Custom Project / Re-Design") },
+    { value: "Landing Page Standard", label: t("Landing Page Promosi (Cepat & Menjual)", "High-Converting Landing Page") },
+    { value: "Landing Page Pro", label: t("Website Company Profile / Pro", "Professional Company Profile Website") },
+    { value: "Aplikasi Mobile (Android/iOS)", label: t("Aplikasi Mobile (Android & iOS)", "Mobile App (Android & iOS)") },
+    { value: "Sistem Web Custom / Kasir", label: t("Sistem Web Kustom / Kasir & ERP", "Custom Web / POS & ERP System") },
+    { value: "Custom Project / Re-Design", label: t("Custom Project / Redesain Website", "Custom Project / Website Redesign") },
   ];
 
   const budgetOptions = [
@@ -184,12 +184,12 @@ Please assist with proposal details. Thank you!`;
               </div>
 
               <h2 id="consultation-title" className="mt-2 pr-10 text-xl font-extrabold tracking-tight text-zinc-900 sm:text-2xl dark:text-white">
-                {t("Mulai Proyek Digital Anda", "Start Your Digital Project")}
+                {t("Diskusikan Proyek Digital Anda", "Discuss Your Digital Project")}
               </h2>
               <p className="mt-1 max-w-[52ch] text-sm font-medium leading-relaxed text-zinc-500 dark:text-zinc-400">
                 {t(
-                  "Isi detail kebutuhan di bawah. Tim GapaiDigital akan menganalisis & menghubungi Anda via WhatsApp.",
-                  "Fill in your requirements below. The GapaiDigital team will analyze them and reach out via WhatsApp."
+                  "Isi detail kebutuhan bisnis Anda di bawah ini. Tim kami akan mempelajari kebutuhan Anda dan menghubungi via WhatsApp.",
+                  "Fill in your project requirements below. Our team will review them and reach out via WhatsApp."
                 )}
               </p>
             </div>
@@ -386,13 +386,13 @@ Please assist with proposal details. Thank you!`;
                   className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 px-5 py-3 text-sm font-extrabold text-white shadow-lg shadow-amber-500/20 transition-all hover:from-amber-400 hover:to-orange-400 hover:shadow-amber-500/30 active:scale-[0.98] cursor-pointer"
                 >
                   <Send size={15} />
-                  <span>{t("Kirim Brief via WhatsApp", "Send Brief via WhatsApp")}</span>
+                  <span>{t("Kirim Brief & Jadwalkan Konsultasi", "Submit Brief & Schedule Consultation")}</span>
                 </button>
                 <p className="mt-2.5 flex items-center justify-center gap-1.5 text-center text-[11px] font-medium text-zinc-400 dark:text-zinc-500">
                   <ShieldCheck size={12} className="shrink-0 text-emerald-500" />
                   {t(
-                    "Konsultasi gratis & tanpa komitmen. Data Anda hanya digunakan untuk menghubungi Anda.",
-                    "Free consultation, no commitment. Your data is only used to contact you."
+                    "Konsultasi gratis & tanpa komitmen. Data perusahaan Anda dijamin kerahasiaannya.",
+                    "Free consultation with no commitment. Your corporate data remains strictly confidential."
                   )}
                 </p>
               </div>

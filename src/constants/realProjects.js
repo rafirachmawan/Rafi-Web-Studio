@@ -1,6 +1,8 @@
 import sppCover from "../assets/sppShiningsun/Login.png";
 import absensiCover from "../assets/absensiShiningsun/absensiShiningsun.jpg";
-import jadwalBookingCover from "../assets/jadwalBookingClassShiningsun/bookingClassShiningsun.jpg";
+import jadwalBookingCover from "../assets/jadwalBookingClassShiningsun/Aplikasi Booking2.jpeg";
+import jadwalBookingImg1 from "../assets/jadwalBookingClassShiningsun/1.jpeg";
+import jadwalBookingImg2 from "../assets/jadwalBookingClassShiningsun/2.jpeg";
 import antrianBriCover from "../assets/sistemAntrianBank/sistem antrian bank bri.jpg";
 import tamiyaCover from "../assets/softwareBalapanTamiya/Dashboard Tamiya.jpeg";
 
@@ -18,7 +20,8 @@ export const realProjects = [
     },
     icon: "📅",
     category: "sistem berbasis web",
-    image: jadwalBookingCover,
+    image: jadwalBookingImg1,
+    gallery: [jadwalBookingImg1, jadwalBookingImg2, jadwalBookingCover],
     client: "Yayasan Shining Sun School",
     isReal: true,
     fullDescription: {

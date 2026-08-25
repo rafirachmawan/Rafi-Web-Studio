@@ -1,8 +1,139 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { realProjects } from "../../constants/realProjects";
-import { ArrowRight, Trophy, LayoutGrid, ArrowUp } from "lucide-react";
+import { ArrowRight, Trophy, LayoutGrid, ArrowUp, ChevronLeft, ChevronRight } from "lucide-react";
 import { useLanguage } from "../../context/LanguageContext";
+
+function ProjectCardItem({ project, t }) {
+  const gallery = project.gallery && project.gallery.length > 0 ? project.gallery : [project.image];
+  const [activeIdx, setActiveIdx] = useState(0);
+
+  const prevImage = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setActiveIdx((prev) => (prev === 0 ? gallery.length - 1 : prev - 1));
+  };
+
+  const nextImage = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setActiveIdx((prev) => (prev === gallery.length - 1 ? 0 : prev + 1));
+  };
+
+  const goToImage = (e, index) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setActiveIdx(index);
+  };
+
+  return (
+    <div className="group flex flex-col bg-zinc-50 dark:bg-zinc-900/50 rounded-3xl overflow-hidden border border-zinc-200/60 dark:border-zinc-800/60 hover:border-amber-500/40 dark:hover:border-amber-500/40 transition-all duration-300 shadow-sm hover:shadow-xl hover:shadow-amber-500/5">
+      {/* IMAGE / CAROUSEL CONTAINER */}
+      <div className="relative overflow-hidden aspect-[16/10] bg-zinc-200 dark:bg-black/50 group/slider">
+        <Link to={`/portfolio/${project.id}`} className="block w-full h-full">
+          <img
+            src={gallery[activeIdx]}
+            alt={`${project.name} - slide ${activeIdx + 1}`}
+            loading="lazy"
+            className="w-full h-full object-contain transition-all duration-500 ease-out group-hover:scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-60 pointer-events-none" />
+        </Link>
+
+        {/* GALLERY CONTROLS IF MULTIPLE IMAGES */}
+        {gallery.length > 1 && (
+          <>
+            {/* Slide Index Badge */}
+            <div className="absolute top-3 right-3 bg-black/70 backdrop-blur-md text-white text-[10px] font-extrabold px-2.5 py-1 rounded-full border border-white/20 pointer-events-none z-10">
+              {activeIdx + 1} / {gallery.length}
+            </div>
+
+            {/* Prev Button */}
+            <button
+              onClick={prevImage}
+              aria-label="Previous Slide"
+              className="absolute left-2.5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/60 hover:bg-amber-500 text-white backdrop-blur-md border border-white/20 flex items-center justify-center transition-all duration-200 opacity-90 sm:opacity-0 group-hover/slider:opacity-100 z-20 cursor-pointer shadow-lg hover:scale-110 active:scale-95"
+            >
+              <ChevronLeft size={20} />
+            </button>
+
+            {/* Next Button */}
+            <button
+              onClick={nextImage}
+              aria-label="Next Slide"
+              className="absolute right-2.5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/60 hover:bg-amber-500 text-white backdrop-blur-md border border-white/20 flex items-center justify-center transition-all duration-200 opacity-90 sm:opacity-0 group-hover/slider:opacity-100 z-20 cursor-pointer shadow-lg hover:scale-110 active:scale-95"
+            >
+              <ChevronRight size={20} />
+            </button>
+
+            {/* Navigation Dots */}
+            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5 z-20 bg-black/50 backdrop-blur-md px-3 py-1 rounded-full border border-white/10">
+              {gallery.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={(e) => goToImage(e, idx)}
+                  className={`transition-all duration-300 rounded-full cursor-pointer ${
+                    activeIdx === idx
+                      ? "w-5 h-1.5 bg-amber-400"
+                      : "w-1.5 h-1.5 bg-white/50 hover:bg-white"
+                  }`}
+                  aria-label={`Go to slide ${idx + 1}`}
+                />
+              ))}
+            </div>
+          </>
+        )}
+      </div>
+
+      {/* DETAILS */}
+      <div className="flex flex-col flex-grow p-6 md:p-8">
+        <div className="flex items-center gap-3 mb-4">
+          <span className="px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-amber-600 dark:text-amber-400 bg-amber-500/10 rounded-full border border-amber-500/20">
+            {project.category}
+          </span>
+          <span className="w-1.5 h-1.5 rounded-full bg-zinc-300 dark:bg-zinc-700"></span>
+          <span className="text-xs font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">
+            {project.client}
+          </span>
+        </div>
+
+        <h3 className="text-2xl font-bold text-zinc-900 dark:text-white mb-3 group-hover:text-amber-500 dark:group-hover:text-amber-400 transition-colors duration-300">
+          {t(project.name)}
+        </h3>
+
+        <p className="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed mb-8 flex-grow">
+          {t(project.desc)}
+        </p>
+
+        {/* TECH STACK & LINK */}
+        <div className="flex items-center justify-between border-t border-zinc-200 dark:border-zinc-800/80 pt-5 mt-auto">
+          <div className="flex flex-wrap gap-2">
+            {project.techStack.slice(0, 3).map((tech, idx) => (
+              <span
+                key={idx}
+                className="text-[10px] font-bold text-zinc-700 dark:text-zinc-300 bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 px-2 py-1 rounded-md"
+              >
+                {tech}
+              </span>
+            ))}
+            {project.techStack.length > 3 && (
+              <span className="text-[10px] font-bold text-zinc-500 dark:text-zinc-500 bg-transparent border border-dashed border-zinc-300 dark:border-zinc-700 px-2 py-1 rounded-md">
+                +{project.techStack.length - 3}
+              </span>
+            )}
+          </div>
+
+          <Link
+            to={`/portfolio/${project.id}`}
+            className="w-10 h-10 flex items-center justify-center rounded-full bg-zinc-900 dark:bg-white text-white dark:text-black group-hover:bg-amber-500 group-hover:text-white dark:group-hover:bg-amber-500 dark:group-hover:text-white transition-all duration-300 shrink-0"
+          >
+            <ArrowRight size={18} className="-rotate-45 group-hover:rotate-0 transition-transform duration-300" />
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function RealProjectsSection({ isStandalone = false }) {
   const { t } = useLanguage();
@@ -25,9 +156,11 @@ export default function RealProjectsSection({ isStandalone = false }) {
             <span>{t("Bukti Nyata", "Proven Track Record")}</span>
           </div>
           
-          <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-6">
+          <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-6 font-heading leading-[1.15]">
+            <span>{t("Portofolio Proyek ", "Digital Project ")}</span>
+            <br className="hidden sm:inline" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-500">
-              {t("Portofolio Eksklusif", "Exclusive Portfolio")}
+              {t("Digital Terbaru", "Latest Portfolio")}
             </span>
           </h2>
           
@@ -42,72 +175,7 @@ export default function RealProjectsSection({ isStandalone = false }) {
         {/* PROJECTS GRID */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10">
           {displayedProjects.map((project) => (
-            <div 
-              key={project.id} 
-              className="group flex flex-col bg-zinc-50 dark:bg-zinc-900/50 rounded-3xl overflow-hidden border border-zinc-200/60 dark:border-zinc-800/60 hover:border-amber-500/40 dark:hover:border-amber-500/40 transition-all duration-300 shadow-sm hover:shadow-xl hover:shadow-amber-500/5"
-            >
-              {/* IMAGE */}
-              <Link 
-                to={`/portfolio/${project.id}`}
-                className="block relative overflow-hidden aspect-[16/10] bg-zinc-200 dark:bg-black/50"
-              >
-                <img
-                  src={project.image}
-                  alt={project.name}
-                  loading="lazy"
-                  className="w-full h-full object-contain transition-transform duration-700 ease-out group-hover:scale-105"
-                />
-                {/* Overlay gradient on hover */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </Link>
-
-              {/* DETAILS */}
-              <div className="flex flex-col flex-grow p-6 md:p-8">
-                <div className="flex items-center gap-3 mb-4">
-                  <span className="px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-amber-600 dark:text-amber-400 bg-amber-500/10 rounded-full border border-amber-500/20">
-                    {project.category}
-                  </span>
-                  <span className="w-1.5 h-1.5 rounded-full bg-zinc-300 dark:bg-zinc-700"></span>
-                  <span className="text-xs font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">
-                    {project.client}
-                  </span>
-                </div>
-
-                <h3 className="text-2xl font-bold text-zinc-900 dark:text-white mb-3 group-hover:text-amber-500 dark:group-hover:text-amber-400 transition-colors duration-300">
-                  {t(project.name)}
-                </h3>
-
-                <p className="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed mb-8 flex-grow">
-                  {t(project.desc)}
-                </p>
-
-                {/* TECH STACK & LINK */}
-                <div className="flex items-center justify-between border-t border-zinc-200 dark:border-zinc-800/80 pt-5 mt-auto">
-                  <div className="flex flex-wrap gap-2">
-                    {project.techStack.slice(0, 3).map((tech, idx) => (
-                      <span
-                        key={idx}
-                        className="text-[10px] font-bold text-zinc-700 dark:text-zinc-300 bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 px-2 py-1 rounded-md"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                    {project.techStack.length > 3 && (
-                      <span className="text-[10px] font-bold text-zinc-500 dark:text-zinc-500 bg-transparent border border-dashed border-zinc-300 dark:border-zinc-700 px-2 py-1 rounded-md">
-                        +{project.techStack.length - 3}
-                      </span>
-                    )}
-                  </div>
-
-                  <Link
-                    to={`/portfolio/${project.id}`}
-                    className="w-10 h-10 flex items-center justify-center rounded-full bg-zinc-900 dark:bg-white text-white dark:text-black group-hover:bg-amber-500 group-hover:text-white dark:group-hover:bg-amber-500 dark:group-hover:text-white transition-all duration-300 shrink-0"
-                  >
-                    <ArrowRight size={18} className="-rotate-45 group-hover:rotate-0 transition-transform duration-300" />
-                  </Link>
-                </div>
-              </div>
-            </div>
+            <ProjectCardItem key={project.id} project={project} t={t} />
           ))}
         </div>
 

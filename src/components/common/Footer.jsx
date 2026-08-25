@@ -63,17 +63,17 @@ export default function Footer() {
                 ✦ {t("Konsultasi 100% Gratis", "100% Free Consultation")}
               </p>
               <h3 className="text-xl md:text-2xl lg:text-3xl font-black text-white mb-2 leading-tight">
-                {t("Siap Mendigitalisasi Bisnis Anda?", "Ready to Digitalize Your Business?")}
+                {t("Siap Membawa Bisnis Anda ke Tingkat Berikutnya?", "Ready to Take Your Business to the Next Level?")}
               </h3>
               <p className="text-zinc-400 text-sm md:text-base font-medium max-w-lg">
-                {t("Mari berdiskusi tentang bagaimana kami bisa membantu bisnis Anda berkembang secara digital.", "Let's discuss how we can help your business grow digitally.")}
+                {t("Mari berdiskusi bersama tim kami untuk merancang solusi digital terbaik bagi pertumbuhan bisnis Anda.", "Let's discuss with our team to create the best digital solutions for your business growth.")}
               </p>
             </div>
             <button
               onClick={() => openConsultation()}
               className="shrink-0 w-full md:w-auto flex items-center justify-center gap-2 px-7 py-4 bg-amber-500 hover:bg-amber-400 text-black rounded-full font-black text-sm transition-all duration-300 hover:shadow-xl hover:shadow-amber-500/25 hover:scale-[1.02] active:scale-95 group cursor-pointer"
             >
-              {t("Konsultasi Gratis", "Free Consultation")}
+              {t("Konsultasi Gratis Sekarang", "Free Consultation Now")}
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
@@ -90,11 +90,11 @@ export default function Footer() {
                 Gapai<span className="text-amber-500">Digital</span>
               </h2>
               <p className="text-zinc-500 dark:text-zinc-400 text-xs font-bold uppercase tracking-widest mt-1">
-                {t("Solusi Digital Indonesia", "Indonesia Digital Solutions")}
+                {t("Mitra Solusi Digital Indonesia", "Indonesia Digital Solutions Partner")}
               </p>
             </div>
             <p className="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed max-w-sm">
-              {t("Partner digitalisasi tepercaya untuk landing page premium, aplikasi mobile, dan sistem web kustom.", "Trusted digitalization partner for premium landing pages, mobile apps, and custom web systems.")}
+              {t("GapaiDigital membantu berbagai bisnis dan UMKM membangun Website, Aplikasi Mobile, dan Sistem Web Kustom yang profesional, cepat, dan terpercaya.", "GapaiDigital helps businesses and MSMEs build professional, fast, and trusted Websites, Mobile Apps, and Custom Web Systems.")}
             </p>
             {/* Social Icons */}
             <div className="flex gap-2 pt-1">
