@@ -70,6 +70,14 @@ export default function Navbar() {
     setActiveSection(location.pathname);
   }, [location.pathname]);
 
+  // Handle smooth scroll to top when clicking Home while already on home page
+  const handleNavClick = (href, e) => {
+    if (href === "/" && location.pathname === "/") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   if (isOpen) return null;
 
 
@@ -77,9 +85,13 @@ export default function Navbar() {
     <div ref={navRef} className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-6xl flex flex-col gap-2">
       {/* MAIN BAR */}
       <div className="backdrop-blur-xl bg-white/70 dark:bg-zinc-950/70 border border-black/10 dark:border-white/10 rounded-full px-4 md:px-6 py-3 flex justify-between items-center shadow-lg transition-colors duration-300">
-        <h1 className="font-heading font-extrabold text-base tracking-tight text-black dark:text-white">
+        <Link 
+          to="/" 
+          onClick={(e) => handleNavClick("/", e)} 
+          className="font-heading font-extrabold text-base tracking-tight text-black dark:text-white cursor-pointer hover:opacity-90 transition"
+        >
           Gapai<span className="text-amber-500">Digital</span>
-        </h1>
+        </Link>
 
         {/* MENU */}
         <div className="hidden md:flex gap-6 text-sm text-gray-700 dark:text-gray-300 font-semibold">
@@ -87,6 +99,7 @@ export default function Navbar() {
             <Link 
               key={link.label} 
               to={link.href} 
+              onClick={(e) => handleNavClick(link.href, e)}
               className={`transition ${
                 activeSection === link.href 
                   ? "text-amber-500" 
@@ -159,7 +172,10 @@ export default function Navbar() {
               <Link
                 key={link.label}
                 to={link.href}
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={(e) => {
+                  setMobileMenuOpen(false);
+                  handleNavClick(link.href, e);
+                }}
                 className={`px-4 py-2.5 text-sm font-semibold rounded-xl transition ${
                   activeSection === link.href
                     ? "text-amber-500 bg-amber-500/10 dark:text-amber-400 dark:bg-amber-500/10"
