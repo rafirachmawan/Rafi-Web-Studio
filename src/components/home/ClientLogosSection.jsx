@@ -5,11 +5,13 @@ import crownLogo from "../../assets/crown/logoCrown.png";
 import gacoanLogo from "../../assets/mieGacoan/logoMieGacoan.png";
 import aioLaundryLogo from "../../assets/loundry/logoLoundry.png";
 import iconYamaha from "../../assets/Yamaha/iconyamaha.png";
+import briLogo from "../../assets/BRI/logoBRI.png";
+import logoTamiya from "../../assets/softwareBalapanTamiya/logoTamiya.svg";
 
 const clients = [
   { name: "Yayasan Shining Sun School", type: "Lembaga Pendidikan", logo: unitaLogo },
-  { name: "Bank BRI Surabaya", type: "BUMN Perbankan", logo: null, textLogo: "BANK BRI" },
-  { name: "Komunitas Tamiya Indonesia", type: "Komunitas & Event", logo: null, textLogo: "TAMIYA ID" },
+  { name: "Bank BRI Surabaya", type: "BUMN Perbankan", logo: briLogo },
+  { name: "Komunitas Tamiya Indonesia", type: "Komunitas & Event", logo: logoTamiya },
   { name: "Universitas Tulungagung", type: "Perguruan Tinggi", logo: unitaLogo },
   { name: "Crown Victoria Hotel", type: "Hotel Bintang 4", logo: crownLogo },
   { name: "Mie Gacoan Tulungagung", type: "Restoran F&B", logo: gacoanLogo },
