@@ -1,12 +1,8 @@
 import Navbar from "../components/common/Navbar";
 import Footer from "../components/common/Footer";
-import FloatingWAButton from "../components/common/FloatingWAButton";
 import CustomCursor from "../components/common/CustomCursor";
 
 export default function MainLayout({ children }) {
-  const waLink =
-    "https://wa.me/6285707185783?text=Halo%20saya%20tertarik%20dengan%20paket%20website";
-
   return (
     <div className="min-h-screen bg-[#fafafc] text-zinc-900 dark:bg-[#050508] dark:text-zinc-100 font-sans relative overflow-x-hidden transition-colors duration-300">
       
@@ -41,9 +37,6 @@ export default function MainLayout({ children }) {
 
       {/* FOOTER */}
       <Footer />
-      
-      {/* FLOATING WA BUTTON */}
-      <FloatingWAButton waLink={waLink} />
     </div>
   );
 }

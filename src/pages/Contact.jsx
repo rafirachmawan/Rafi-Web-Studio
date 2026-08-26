@@ -27,9 +27,9 @@ export default function Contact() {
     {
       icon: Mail,
       title: "Email",
-      value: "gapaidigital.id@gmail.com",
+      value: "rafirachmawan1987@gmail.com",
       desc: t("Untuk penawaran resmi, proposal, & kerjasama", "For official quotes, proposals, & partnerships"),
-      href: "mailto:gapaidigital.id@gmail.com",
+      href: "mailto:rafirachmawan1987@gmail.com",
       btnText: t("Kirim Email", "Send Email")
     },
     {

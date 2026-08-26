@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import SplashScreen from "./components/common/SplashScreen";
 import PageLoader from "./components/common/PageLoader";
 import ConsultationModal from "./components/common/ConsultationModal";
+import FloatingWidgets from "./components/common/FloatingWidgets";
 
 import ErrorBoundary from "./components/common/ErrorBoundary";
 
@@ -96,6 +97,7 @@ export default function App() {
         <ConsultationProvider>
           {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
           <ConsultationModal />
+          <FloatingWidgets />
           
           <Router>
             <RouteWatcher />
