@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import heroVideo from "../../assets/Video.mp4";
 import { Star, CheckCircle, Zap, Sparkles } from "lucide-react";
 import { useLanguage } from "../../context/LanguageContext";
 import { useConsultation } from "../../context/ConsultationContext";
+
+const heroVideo = "/Video.mp4";
 
 export default function HeroSection() {
   const { t } = useLanguage();
@@ -129,6 +130,15 @@ export default function HeroSection() {
             >
               {t("Lihat Portofolio", "View Portfolio")}
             </a>
+          </div>
+
+          {/* MOBILE SOCIAL PROOF */}
+          <div className="flex sm:hidden items-center justify-center gap-2.5 mt-5 text-[11px] font-bold text-zinc-500 dark:text-zinc-400 bg-white/60 dark:bg-zinc-900/60 px-4 py-2 rounded-full border border-zinc-200/50 dark:border-white/5 backdrop-blur-sm">
+            <span className="flex items-center gap-1 text-amber-500"><Star size={12} className="fill-amber-500" /> 5.0 Rating</span>
+            <span className="text-zinc-300 dark:text-zinc-700">•</span>
+            <span>100+ Proyek</span>
+            <span className="text-zinc-300 dark:text-zinc-700">•</span>
+            <span>4+ Thn Exp</span>
           </div>
         </div>
 

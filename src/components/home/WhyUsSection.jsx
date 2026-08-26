@@ -1,13 +1,14 @@
 import { Star, XCircle, CheckCircle2, ShieldCheck, AlertCircle } from "lucide-react";
 import { useLanguage } from "../../context/LanguageContext";
+import AnimatedCounter from "../common/AnimatedCounter";
 
 export default function WhyUsSection() {
   const { t } = useLanguage();
 
   const stats = [
-    { value: "50+", label: t("Proyek Bisnis Sukses", "Successful Business Projects") },
-    { value: "99%", label: t("Klien Puas & Kembali", "Client Satisfaction Rate") },
-    { value: "24/7", label: t("Bantuan & Garansi Tim", "Support & Team Warranty") },
+    { target: 50, suffix: "+", label: t("Proyek Bisnis Sukses", "Successful Business Projects") },
+    { target: 99, suffix: "%", label: t("Klien Puas & Kembali", "Client Satisfaction Rate") },
+    { staticVal: "24/7", label: t("Bantuan & Garansi Tim", "Support & Team Warranty") },
   ];
 
   const comparisons = [
@@ -126,7 +127,11 @@ export default function WhyUsSection() {
           {stats.map((item, index) => (
             <div key={index} className="text-center px-2 md:px-4">
               <h3 className="text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-500 mb-2">
-                {item.value}
+                {item.staticVal ? (
+                  item.staticVal
+                ) : (
+                  <AnimatedCounter value={item.target} suffix={item.suffix} />
+                )}
               </h3>
               <p className="text-[10px] md:text-xs text-zinc-600 dark:text-zinc-400 font-bold uppercase tracking-widest">
                 {item.label}

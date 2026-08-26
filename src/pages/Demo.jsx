@@ -1,9 +1,15 @@
 import { useState } from "react";
 import DemoSection from "../components/home/DemoSection";
 import { demos } from "../constants/demos";
+import usePageMeta from "../hooks/usePageMeta";
 
 export default function Demo() {
   const [filter, setFilter] = useState("all");
+
+  usePageMeta({
+    title: "Katalog Demo & Rebranding Template",
+    description: "Eksplorasi koleksi template landing page, aplikasi mobile, dan sistem berbasis web dari GapaiDigital."
+  });
 
   const filtered =
     filter === "all"
@@ -20,6 +26,7 @@ export default function Demo() {
       filter={filter}
       setFilter={setFilter}
       filtered={filtered}
+      isStandalone={true}
     />
   );
 }

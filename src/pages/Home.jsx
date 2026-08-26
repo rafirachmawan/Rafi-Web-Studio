@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import HeroSection from "../components/home/HeroSection";
 import TechMarquee from "../components/home/TechMarquee";
+import ClientLogosSection from "../components/home/ClientLogosSection";
 import RealProjectsSection from "../components/home/RealProjectsSection";
 import DemoSection from "../components/home/DemoSection";
 import WhyUsSection from "../components/home/WhyUsSection";
@@ -40,6 +41,7 @@ export default function Home() {
       {/* ─── Above the fold — renders immediately ─── */}
       <HeroSection />
       <TechMarquee />
+      <ClientLogosSection />
 
       {/* ─── Below the fold — each section lazy-loads & reveals smoothly ─── */}
       <LazySection minHeight="400px" delay={0}>

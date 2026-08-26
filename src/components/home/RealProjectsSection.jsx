@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { realProjects } from "../../constants/realProjects";
 import { ArrowRight, Trophy, LayoutGrid, ArrowUp, ChevronLeft, ChevronRight } from "lucide-react";
 import { useLanguage } from "../../context/LanguageContext";
+import AnimatedCounter from "../common/AnimatedCounter";
 
 function ProjectCardItem({ project, t }) {
   const gallery = project.gallery && project.gallery.length > 0 ? project.gallery : [project.image];
@@ -218,17 +219,23 @@ export default function RealProjectsSection({ isStandalone = false }) {
           {/* STATS HIGHLIGHT */}
           <div className="flex flex-wrap items-center justify-center gap-8 md:gap-16 py-6 md:py-8 px-8 w-full max-w-3xl mx-auto bg-zinc-50 dark:bg-zinc-900/50 rounded-3xl border border-zinc-200/60 dark:border-zinc-800/60 shadow-sm">
             <div className="flex flex-col items-center">
-              <span className="text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-500">50+</span>
+              <span className="text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-500">
+                <AnimatedCounter value={50} suffix="+" />
+              </span>
               <span className="text-xs font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-widest mt-1">{t("Project Selesai", "Projects Completed")}</span>
             </div>
             <div className="w-px h-12 bg-zinc-200 dark:bg-zinc-800 hidden md:block"></div>
             <div className="flex flex-col items-center">
-              <span className="text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-500">40+</span>
+              <span className="text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-500">
+                <AnimatedCounter value={40} suffix="+" />
+              </span>
               <span className="text-xs font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-widest mt-1">{t("Klien Aktif", "Active Clients")}</span>
             </div>
             <div className="w-px h-12 bg-zinc-200 dark:bg-zinc-800 hidden md:block"></div>
             <div className="flex flex-col items-center">
-              <span className="text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-500">4+</span>
+              <span className="text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-500">
+                <AnimatedCounter value={4} suffix="+" />
+              </span>
               <span className="text-xs font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-widest mt-1">{t("Tahun Pengalaman", "Years Experience")}</span>
             </div>
           </div>

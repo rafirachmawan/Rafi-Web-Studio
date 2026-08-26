@@ -1,9 +1,11 @@
 import { Check, Flame, Sparkles, Zap } from "lucide-react";
 import { useLanguage } from "../../context/LanguageContext";
+import { useConsultation } from "../../context/ConsultationContext";
 import { motion } from "framer-motion";
 
 export default function PricingSection({ pricingTab, setPricingTab, waLink }) {
   const { t } = useLanguage();
+  const { openConsultation } = useConsultation();
   return (
     <>
       <div
@@ -157,14 +159,12 @@ export default function PricingSection({ pricingTab, setPricingTab, waLink }) {
                     </li>
                   </ul>
                 </div>
-                <a
-                  href={`${waLink}%20Landing%20Page%20Starter`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block text-center bg-zinc-100 dark:bg-white/5 hover:bg-black hover:text-white dark:hover:bg-white/10 text-black dark:text-white py-3.5 rounded-2xl text-xs sm:text-sm font-black transition-all"
+                <button
+                  onClick={() => openConsultation("Landing Page Starter")}
+                  className="w-full text-center bg-zinc-100 dark:bg-white/5 hover:bg-black hover:text-white dark:hover:bg-white/10 text-black dark:text-white py-3.5 rounded-2xl text-xs sm:text-sm font-black transition-all cursor-pointer"
                 >
                   {t("Pilih Starter", "Choose Starter")}
-                </a>
+                </button>
               </motion.div>
 
               {/* PRO LANDING */}
@@ -290,14 +290,12 @@ export default function PricingSection({ pricingTab, setPricingTab, waLink }) {
                     </li>
                   </ul>
                 </div>
-                <a
-                  href={`${waLink}%20Landing%20Page%20Pro`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="relative z-10 block text-center bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-white py-4 rounded-2xl text-xs sm:text-sm font-black transition-all shadow-lg hover:shadow-amber-500/25 hover:scale-[1.02]"
+                <button
+                  onClick={() => openConsultation("Landing Page Pro")}
+                  className="w-full text-center bg-gradient-to-r from-amber-500 to-orange-500 text-white py-4 rounded-2xl text-xs sm:text-sm font-black transition-all shadow-lg hover:scale-[1.02] cursor-pointer"
                 >
                   {t("Mulai Buat Sekarang", "Get Started Now")}
-                </a>
+                </button>
               </motion.div>
             </>
           )}
@@ -413,12 +411,12 @@ export default function PricingSection({ pricingTab, setPricingTab, waLink }) {
                     </li>
                   </ul>
                 </div>
-                <a
-                  href={`${waLink}%20Mobile%20Apps%20Starter`}
-                  className="block text-center bg-zinc-100 dark:bg-white/5 hover:bg-black hover:text-white dark:hover:bg-white/10 text-black dark:text-white py-3.5 rounded-2xl text-xs sm:text-sm font-black transition-all"
+                <button
+                  onClick={() => openConsultation("Mobile Apps Starter")}
+                  className="w-full text-center bg-zinc-100 dark:bg-white/5 hover:bg-black hover:text-white dark:hover:bg-white/10 text-black dark:text-white py-3.5 rounded-2xl text-xs sm:text-sm font-black transition-all cursor-pointer"
                 >
                   {t("Pilih Starter Mobile", "Choose Starter Mobile")}
-                </a>
+                </button>
               </motion.div>
 
               {/* PRO MOBILE APP */}
@@ -531,12 +529,12 @@ export default function PricingSection({ pricingTab, setPricingTab, waLink }) {
                     </li>
                   </ul>
                 </div>
-                <a
-                  href={`${waLink}%20Mobile%20Apps%20Pro`}
-                  className="block text-center bg-gradient-to-r from-amber-500 to-orange-500 text-white py-4 rounded-2xl text-xs sm:text-sm font-black transition-all shadow-lg hover:scale-[1.02]"
+                <button
+                  onClick={() => openConsultation("Mobile Apps Pro")}
+                  className="w-full text-center bg-gradient-to-r from-amber-500 to-orange-500 text-white py-4 rounded-2xl text-xs sm:text-sm font-black transition-all shadow-lg hover:scale-[1.02] cursor-pointer"
                 >
                   {t("Mulai Buat Sekarang", "Get Started Now")}
-                </a>
+                </button>
               </motion.div>
             </>
           )}
@@ -652,12 +650,12 @@ export default function PricingSection({ pricingTab, setPricingTab, waLink }) {
                     </li>
                   </ul>
                 </div>
-                <a
-                  href={`${waLink}%20Web%20System%20Basic`}
-                  className="block text-center bg-zinc-100 dark:bg-white/5 hover:bg-black hover:text-white dark:hover:bg-white/10 text-black dark:text-white py-3.5 rounded-2xl text-xs sm:text-sm font-black transition-all"
+                <button
+                  onClick={() => openConsultation("Web System Basic")}
+                  className="w-full text-center bg-zinc-100 dark:bg-white/5 hover:bg-black hover:text-white dark:hover:bg-white/10 text-black dark:text-white py-3.5 rounded-2xl text-xs sm:text-sm font-black transition-all cursor-pointer"
                 >
                   {t("Pilih System Basic", "Choose System Basic")}
-                </a>
+                </button>
               </motion.div>
 
               {/* WEB SYSTEM CUSTOM / PRO */}
@@ -770,12 +768,12 @@ export default function PricingSection({ pricingTab, setPricingTab, waLink }) {
                     </li>
                   </ul>
                 </div>
-                <a
-                  href={`${waLink}%20Web%20System%20Custom`}
-                  className="block text-center bg-gradient-to-r from-amber-500 to-orange-500 text-white py-4 rounded-2xl text-xs sm:text-sm font-black transition-all shadow-lg hover:scale-[1.02]"
+                <button
+                  onClick={() => openConsultation("Web System Custom")}
+                  className="w-full text-center bg-gradient-to-r from-amber-500 to-orange-500 text-white py-4 rounded-2xl text-xs sm:text-sm font-black transition-all shadow-lg hover:scale-[1.02] cursor-pointer"
                 >
                   {t("Mulai Buat Sekarang", "Get Started Now")}
-                </a>
+                </button>
               </motion.div>
             </>
           )}
@@ -847,14 +845,12 @@ export default function PricingSection({ pricingTab, setPricingTab, waLink }) {
                     {t("Fleksibel", "Flexible")}
                   </h2>
                 </div>
-                <a
-                  href="https://wa.me/6285707185783?text=Halo%20Rafi,%20saya%20tertarik%20untuk%20diskusi%20lebih%20lanjut%20mengenai%20pembuatan%20Custom%20Project"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full sm:w-auto text-center bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-white px-8 py-4 rounded-2xl text-sm font-black transition-all shadow-lg hover:shadow-amber-500/25 hover:scale-[1.05]"
+                <button
+                  onClick={() => openConsultation("Custom Project")}
+                  className="w-full sm:w-auto text-center bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-white px-8 py-4 rounded-2xl text-sm font-black transition-all shadow-lg hover:shadow-amber-500/25 hover:scale-[1.05] cursor-pointer"
                 >
-                  {t("Konsultasi Custom via WA", "Custom Consultation via WA")}
-                </a>
+                  {t("Konsultasi Custom", "Custom Consultation")}
+                </button>
                 <span className="text-[10px] text-zinc-500 mt-3 font-semibold">
                   {t("*Konsultasi 100% Gratis", "*100% Free Consultation")}
                 </span>

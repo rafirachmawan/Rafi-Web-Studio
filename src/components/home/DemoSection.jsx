@@ -10,9 +10,11 @@ import {
   Sparkles
 } from "lucide-react";
 import { useLanguage } from "../../context/LanguageContext";
+import { useConsultation } from "../../context/ConsultationContext";
 
 export default function DemoSection({ filter, setFilter, filtered, isStandalone = false }) {
   const { t } = useLanguage();
+  const { openConsultation } = useConsultation();
   const [showAll, setShowAll] = useState(false);
 
   useEffect(() => {
@@ -143,15 +145,13 @@ export default function DemoSection({ filter, setFilter, filtered, isStandalone 
                 {t("Punya kebutuhan sistem khusus? Kami siap membantu mewujudkannya.", "Have specific system requirements? We are ready to help make it happen.")}
               </p>
               
-              <a 
-                href="https://wa.me/6285707185783?text=Halo%20saya%20ingin%20konsultasi%20project"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 bg-zinc-900 dark:bg-white text-white dark:text-black px-8 py-4 rounded-full font-bold hover:bg-amber-500 dark:hover:bg-amber-500 hover:text-white dark:hover:text-white transition-all duration-300 shadow-md hover:shadow-xl hover:shadow-amber-500/20 active:scale-95 group/btn"
+              <button 
+                onClick={() => openConsultation("Custom System")}
+                className="inline-flex items-center gap-3 bg-zinc-900 dark:bg-white text-white dark:text-black px-8 py-4 rounded-full font-bold hover:bg-amber-500 dark:hover:bg-amber-500 hover:text-white dark:hover:text-white transition-all duration-300 shadow-md hover:shadow-xl hover:shadow-amber-500/20 active:scale-95 group/btn cursor-pointer"
               >
                 {t("Konsultasi Project", "Project Consultation")} 
                 <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-              </a>
+              </button>
             </div>
           </div>
         </div>

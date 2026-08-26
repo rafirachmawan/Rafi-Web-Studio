@@ -1,24 +1,133 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Core Site Routes -->
   <url>
-    <loc>https://gapaidigital.vercel.app/</loc>
-    <lastmod>2026-05-30</lastmod>
+    <loc>https://www.gapaidigital.my.id/</loc>
+    <lastmod>2026-08-26</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://gapaidigital.vercel.app/portfolio/starbucks</loc>
+    <loc>https://www.gapaidigital.my.id/project</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.gapaidigital.my.id/demo</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.gapaidigital.my.id/harga</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.gapaidigital.my.id/proses</loc>
+    <lastmod>2026-08-26</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://gapaidigital.vercel.app/portfolio/akademik</loc>
+    <loc>https://www.gapaidigital.my.id/testimoni</loc>
+    <lastmod>2026-08-26</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://gapaidigital.vercel.app/portfolio/hotel</loc>
+    <loc>https://www.gapaidigital.my.id/contact</loc>
+    <lastmod>2026-08-26</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://gapaidigital.vercel.app/portfolio/ramen</loc>
+    <loc>https://www.gapaidigital.my.id/faq</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.gapaidigital.my.id/terms</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://www.gapaidigital.my.id/privacy</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.4</priority>
+  </url>
+
+  <!-- Real Client Portfolios -->
+  <url>
+    <loc>https://www.gapaidigital.my.id/portfolio/jadwal-booking-shiningsun</loc>
+    <lastmod>2026-08-26</lastmod>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.gapaidigital.my.id/portfolio/absensi-shiningsun</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.gapaidigital.my.id/portfolio/antrian-bri</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.gapaidigital.my.id/portfolio/spp-shiningsun</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.gapaidigital.my.id/portfolio/tamiya-race-tracker</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Rebranding & Demo Cases -->
+  <url>
+    <loc>https://www.gapaidigital.my.id/portfolio/starbucks</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.gapaidigital.my.id/portfolio/yamaha</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.gapaidigital.my.id/portfolio/hotel</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.gapaidigital.my.id/portfolio/nikoniko</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.gapaidigital.my.id/portfolio/unita</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.gapaidigital.my.id/portfolio/aiolaundry</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.gapaidigital.my.id/portfolio/akademik</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.gapaidigital.my.id/portfolio/warungos</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.gapaidigital.my.id/portfolio/examos</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.gapaidigital.my.id/portfolio/absenos</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.7</priority>
   </url>
 </urlset>

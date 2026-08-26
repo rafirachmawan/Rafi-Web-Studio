@@ -3,43 +3,68 @@ import { useLanguage } from "../../context/LanguageContext";
 
 import unitaImg from "../../assets/UNITACover.jpg";
 import nikoImg from "../../assets/NikoNikoCover.jpg";
-import starbucksImg from "../../assets/StarbucksCover.jpg";
+import antrianBriCover from "../../assets/sistemAntrianBank/sistem antrian bank bri.jpg";
+import tamiyaCover from "../../assets/softwareBalapanTamiya/Dashboard Tamiya.jpeg";
 
 const testimonials = [
   {
-    name: "Universitas Tulungagung",
+    name: "Yayasan Shining Sun School",
     role: {
-      id: "Institusi Pendidikan",
-      en: "Educational Institution"
+      id: "Institusi Pendidikan & Kursus",
+      en: "Education & Course Institution"
     },
     image: unitaImg,
     text: {
-      id: "Sistem informasi akademik dan landing page yang dibangun sangat modern dan responsif. Sangat membantu digitalisasi kampus kami menjadi lebih profesional dan mudah diakses.",
-      en: "The academic information system and landing page built are highly modern and responsive. It greatly helps digitalize our campus to be more professional and easily accessible."
+      id: "Sistem PWA jadwal booking & absensi siswa yang dibangun sangat membantu efisiensi operasional cabang kami. Sinkronisasi data real-time dan fitur auto-bookingnya luar biasa bermanfaat!",
+      en: "The PWA class scheduling & attendance system built really helped our branch operational efficiency. Real-time data sync and auto-booking features are exceptionally useful!"
     },
   },
   {
-    name: "Niko Niko Ramen",
+    name: "Bank BRI Kantor Cabang Surabaya",
     role: {
-      id: "F&B / Restoran",
-      en: "F&B / Restaurant"
+      id: "Perbankan & Keuangan",
+      en: "Banking & Finance"
+    },
+    image: antrianBriCover,
+    text: {
+      id: "Software antrian digital dengan pemanggilan suara otomatis yang dikembangkan sangat stabil. Antrean teller dan customer service menjadi jauh lebih tertib dan profesional.",
+      en: "The digital queue software with automatic voice calling developed is extremely stable. Teller and customer service queues have become much more orderly and professional."
+    },
+  },
+  {
+    name: "Komunitas Tamiya Indonesia",
+    role: {
+      id: "Komunitas & Event Organizer",
+      en: "Community & Event Organizer"
+    },
+    image: tamiyaCover,
+    text: {
+      id: "Software turnamen balap dengan bracket double-elimination dan cetak ID card otomatis membuat event balap Tamiya kami naik kelas. Peserta dan penonton sangat terkesan!",
+      en: "The tournament software with double-elimination bracket and auto ID card printing elevated our Tamiya race event. Participants and spectators were deeply impressed!"
+    },
+  },
+  {
+    name: "Universitas Tulungagung",
+    role: {
+      id: "Institusi Pendidikan Tinggi",
+      en: "Higher Education Institution"
+    },
+    image: unitaImg,
+    text: {
+      id: "Sistem informasi akademik dan portal digital kampus yang dibangun sangat modern dan responsif. Membantu digitalisasi kampus kami menjadi lebih profesional dan mudah diakses.",
+      en: "The academic information system and digital campus portal built are highly modern and responsive. It greatly helps digitalize our campus to be more professional and accessible."
+    },
+  },
+  {
+    name: "Mie Gacoan Tulungagung",
+    role: {
+      id: "F&B / Restoran Kuliner",
+      en: "F&B / Culinary Restaurant"
     },
     image: nikoImg,
     text: {
-      id: "Tampilan website sangat menggugah selera dan sistem pemesanan online berjalan mulus. Visibilitas brand dan interaksi pelanggan kami meningkat pesat sejak web baru diluncurkan!",
-      en: "The website visual is highly appetizing and the online ordering system works flawlessly. Our brand visibility and customer interaction have risen dramatically since the new web launched!"
-    },
-  },
-  {
-    name: "Starbucks",
-    role: {
-      id: "Coffee Shop & Lifestyle",
-      en: "Coffee Shop & Lifestyle"
-    },
-    image: starbucksImg,
-    text: {
-      id: "Desain UI/UX yang elegan, dinamis, dan sangat merepresentasikan brand premium kami. Pengalaman pelanggan dalam melihat katalog menu menjadi jauh lebih interaktif dan berkelas.",
-      en: "Elegant, dynamic UI/UX design that truly represents our premium brand. The customer experience in viewing the menu catalog has become much more interactive and classy."
+      id: "Tampilan website visualnya sangat menarik dan sistem kalkulator pemesanan berjalan mulus. Visibilitas brand dan daya tarik pelanggan kami meningkat pesat sejak web rilis!",
+      en: "The visual website design is highly captivating and the order calculator works flawlessly. Our brand visibility and customer pull have increased significantly since launch!"
     },
   }
 ];
