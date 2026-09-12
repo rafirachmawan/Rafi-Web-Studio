@@ -34,7 +34,7 @@ export function HotelBallroomSection() {
 - *Kapasitas*: ${getCapacityDetails(activeBallroom, activeLayout)}
 
 Mohon info harga paket dan tanggal kosong terdekat. Terima kasih.`;
-    window.open(`https://wa.me/6285707185783?text=${encodeURIComponent(message)}`, "_blank");
+    window.open(`https://wa.me/085196221716?text=${encodeURIComponent(message)}`, "_blank");
   };
 
   const ballrooms = ["Victoria Grand Ballroom", "Victoria Ballroom A", "Victoria Ballroom B"];

@@ -127,7 +127,7 @@ export default function FounderSection() {
                 </a>
 
                 <a
-                  href="https://wa.me/6285707185783?text=Halo%20Rafi,%20saya%20ingin%20berdiskusi%20mengenai%20project%20custom"
+                  href="https://wa.me/085196221716?text=Halo%20Rafi,%20saya%20ingin%20berdiskusi%20mengenai%20project%20custom"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl border border-zinc-200 dark:border-white/10 hover:border-amber-500/50 bg-zinc-50 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10 text-zinc-800 dark:text-white font-bold text-xs sm:text-sm transition-all"

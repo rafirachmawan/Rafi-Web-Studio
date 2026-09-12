@@ -8,7 +8,7 @@ import { RestoOrderCustomizer } from "../../../components/landing/resto/RestoOrd
 import { RestoMenuGrid } from "../../../components/landing/resto/RestoMenuGrid";
 
 export default function RestoLanding() {
-  const phone = "6285707185783";
+  const phone = "085196221716";
   const waLink = `https://wa.me/${phone}?text=Halo%20Mie%20Gacoan!`;
 
   return (

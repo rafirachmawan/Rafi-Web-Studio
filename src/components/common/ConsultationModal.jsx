@@ -88,7 +88,7 @@ Mohon bantuannya untuk informasi dan diskusi lebih lanjut. Terima kasih!`;
 Please let me know the next steps for discussion. Thank you!`;
 
     const message = language === "en" ? textEN : textID;
-    return `https://wa.me/6285707185783?text=${encodeURIComponent(message)}`;
+    return `https://wa.me/085196221716?text=${encodeURIComponent(message)}`;
   };
 
   const handleSendWA = (e) => {

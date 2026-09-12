@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 import HeroSection from "../components/home/HeroSection";
-import TechMarquee from "../components/home/TechMarquee";
 import ClientLogosSection from "../components/home/ClientLogosSection";
 import RealProjectsSection from "../components/home/RealProjectsSection";
 import DemoSection from "../components/home/DemoSection";
@@ -22,7 +21,7 @@ export default function Home() {
   const [pricingTab, setPricingTab] = useState("landingpage");
 
   const waLink =
-    "https://wa.me/6285707185783?text=Halo%20saya%20tertarik%20dengan%20paket%20website";
+    "https://wa.me/085196221716?text=Halo%20saya%20tertarik%20dengan%20paket%20website";
 
   const filtered =
     filter === "all"
@@ -40,7 +39,6 @@ export default function Home() {
     <>
       {/* ─── Above the fold — renders immediately ─── */}
       <HeroSection />
-      <TechMarquee />
       <ClientLogosSection />
 
       {/* ─── Below the fold — each section lazy-loads & reveals smoothly ─── */}

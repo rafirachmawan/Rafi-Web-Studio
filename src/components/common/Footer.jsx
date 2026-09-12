@@ -38,7 +38,7 @@ export default function Footer() {
   ];
 
   const contacts = [
-    { icon: MessageCircle, label: t("WhatsApp Resmi", "Official WhatsApp"), href: "https://wa.me/6285707185783", external: true },
+    { icon: MessageCircle, label: t("WhatsApp Resmi", "Official WhatsApp"), href: "https://wa.me/085196221716", external: true },
     { icon: InstagramIcon, label: "Instagram", href: "https://www.instagram.com/rrrafi.rachmawan/", external: true },
     { icon: Mail, label: "rafirachmawan1987@gmail.com", href: "mailto:rafirachmawan1987@gmail.com", external: false },
     { icon: MapPin, label: t("Tulungagung, Jawa Timur", "Tulungagung, East Java"), href: null, external: false },
@@ -98,7 +98,7 @@ export default function Footer() {
             </p>
             {/* Social Icons */}
             <div className="flex gap-2 pt-1">
-              <a href="https://wa.me/6285707185783" target="_blank" rel="noopener noreferrer"
+              <a href="https://wa.me/085196221716" target="_blank" rel="noopener noreferrer"
                 className="p-2.5 rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-amber-500 hover:text-white hover:border-amber-500 transition-all duration-200">
                 <MessageCircle className="w-4 h-4" />
               </a>

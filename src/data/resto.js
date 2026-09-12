@@ -8,7 +8,7 @@ export const resto = {
   },
   address: "Jl. Supriadi No. 42, Jepun, Kec. Tulungagung, Kabupaten Tulungagung, Jawa Timur 66218",
   hours: "Setiap Hari: 09.00 – 22.30 WIB",
-  phone: "6285707185783",
+  phone: "085196221716",
   concept:
     "Restoran mie pedas modern berkonsep tempat nongkrong santai yang luas dan bersih. Menyajikan berbagai varian mie pedas berlevel, dimsum goreng/kukus, dan minuman manis segar dengan harga yang sangat terjangkau.",
   stats: [

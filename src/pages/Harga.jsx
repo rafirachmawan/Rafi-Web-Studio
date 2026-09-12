@@ -4,7 +4,7 @@ import usePageMeta from "../hooks/usePageMeta";
 
 export default function Harga() {
   const [pricingTab, setPricingTab] = useState("landingpage");
-  const waLink = "https://wa.me/6285707185783?text=Halo%20saya%20tertarik%20dengan%20paket%20website";
+  const waLink = "https://wa.me/085196221716?text=Halo%20saya%20tertarik%20dengan%20paket%20website";
 
   usePageMeta({
     title: "Paket & Harga Pembuatan Website & Aplikasi",

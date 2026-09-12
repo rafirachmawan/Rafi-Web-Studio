@@ -14,7 +14,7 @@ import { HotelLocationSection } from "../../../components/landing/hotel/HotelLoc
 
 export default function HotelLanding() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const phone = "6285707185783";
+  const phone = "085196221716";
 
   return (
     <div className="bg-[#050505] text-[#e5e5e5] min-h-screen">
