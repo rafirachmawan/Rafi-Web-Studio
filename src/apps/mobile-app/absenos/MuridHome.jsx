@@ -1,4 +1,31 @@
-import { formatTime, formatDate } from "../../utils/timeFormat";
+// Import disabled temporarily to fix build issue
+// import { formatTime, formatDate } from "../../utils/timeFormat";
+
+const formatTime = (date) => {
+  if (!date) return "--:--";
+  const d = new Date(date);
+  const hours = String(d.getHours()).padStart(2, "0");
+  const minutes = String(d.getMinutes()).padStart(2, "0");
+  return `${hours}:${minutes}`;
+};
+
+const formatDate = (date, option = "local") => {
+  if (!date) return "--/--/----";
+  const d = new Date(date);
+  const months = [
+    "Januari", "Februari", "Maret", "April", "Mei", "Juni",
+    "Juli", "Agustus", "September", "Oktober", "November", "Desember"
+  ];
+  const day = d.getDate();
+  const month = months[d.getMonth()];
+  const year = d.getFullYear();
+  if (option === "long") {
+    return `${day} ${month} ${year}`;
+  } else if (option === "short") {
+    return `${day}/${d.getMonth() + 1}/${year}`;
+  }
+  return `${day} ${month} ${year}`;
+};
 
 export function MuridHome({ currentTime, onCheckIn, todayLog, phoneTheme }) {
   return (
