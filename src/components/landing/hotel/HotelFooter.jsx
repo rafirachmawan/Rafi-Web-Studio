@@ -47,7 +47,7 @@ export function HotelFooter({ name = "Crown Victoria Hotel", waLink }) {
         <div>
           <h3 className="font-semibold mb-4 text-white">Contact Us</h3>
           <p className="text-gray-400 text-sm mb-2">📍 Jl. Dr. Soetomo No.143, Tulungagung</p>
-          <p className="text-gray-400 text-sm mb-4">📞 +62 857-0718-5783</p>
+          <p className="text-gray-400 text-sm mb-4">📞 +62 851-9622-1716</p>
           
           <a
             href={waLink}

@@ -18,7 +18,7 @@ export default function Contact() {
     {
       icon: MessageSquare,
       title: "WhatsApp Chat",
-      value: "+62 857-0718-5783",
+      value: "+62 851-9622-1716",
       desc: t("Respon cepat untuk diskusi proyek & konsultasi", "Fast response for project discussions & consultations"),
       action: () => openConsultation("Konsultasi via Contact"),
       btnText: t("Mulai Chat", "Start Chat"),

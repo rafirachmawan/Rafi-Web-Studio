@@ -8,16 +8,6 @@ export default function CustomCursor() {
   const mouseX = useMotionValue(-100);
   const mouseY = useMotionValue(-100);
 
-  // Orb follows with spring (laggy, feels heavy)
-  const springConfig = { stiffness: 120, damping: 20, mass: 0.8 };
-  const orbX = useSpring(mouseX, springConfig);
-  const orbY = useSpring(mouseY, springConfig);
-
-  // Dot follows faster (almost instant)
-  const dotSpring = { stiffness: 500, damping: 35 };
-  const dotX = useSpring(mouseX, dotSpring);
-  const dotY = useSpring(mouseY, dotSpring);
-
   const [isHovering, setIsHovering] = useState(false);
   const [isClicking, setIsClicking] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
@@ -90,13 +80,13 @@ export default function CustomCursor() {
         body { cursor: none !important; }
       `}</style>
 
-      {/* OUTER ORB — laggy amber circle */}
+      {/* OUTER ORB — no lag */}
       <motion.div
         ref={cursorRef}
         className="fixed top-0 left-0 pointer-events-none z-[9999] rounded-full mix-blend-multiply dark:mix-blend-screen"
         style={{
-          x: orbX,
-          y: orbY,
+          x: mouseX,
+          y: mouseY,
           translateX: "-50%",
           translateY: "-50%",
         }}
@@ -114,13 +104,13 @@ export default function CustomCursor() {
         transition={{ duration: 0.15, ease: "easeOut" }}
       />
 
-      {/* INNER DOT — fast, crisp */}
+      {/* INNER DOT — no lag */}
       <motion.div
         ref={dotRef}
         className="fixed top-0 left-0 pointer-events-none z-[9999] rounded-full bg-amber-500"
         style={{
-          x: dotX,
-          y: dotY,
+          x: mouseX,
+          y: mouseY,
           translateX: "-50%",
           translateY: "-50%",
         }}
