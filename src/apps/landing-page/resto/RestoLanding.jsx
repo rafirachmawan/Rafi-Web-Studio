@@ -1,25 +1,24 @@
 import { useState } from "react";
-import { resto } from "../../../data/resto";
 import { RestoNavbar } from "../../../components/landing/RestoNavbar";
 import { RestoFooter } from "../../../components/landing/resto/RestoFooter";
-import { RestoHeroSection } from "../../../components/landing/resto/RestoHeroSection";
-import { RestoFeaturesSection } from "../../../components/landing/resto/RestoFeaturesSection";
-import { RestoOrderCustomizer } from "../../../components/landing/resto/RestoOrderCustomizer";
-import { RestoMenuGrid } from "../../../components/landing/resto/RestoMenuGrid";
+import { RestoHero } from "../../../sections/resto/RestoHero";
+import { RestoFeatures } from "../../../sections/resto/RestoFeatures";
+import { RestoMenu } from "../../../sections/resto/RestoMenu";
+import { RestoCTA } from "../../../sections/resto/RestoCTA";
 
 export default function RestoLanding() {
   const phone = "085196221716";
   const waLink = `https://wa.me/${phone}?text=Halo%20Mie%20Gacoan!`;
 
   return (
-    <div className="bg-white text-slate-900 min-h-screen">
+    <div className="bg-white min-h-screen font-sans selection:bg-red-500/20">
       <RestoNavbar waLink={waLink} />
       
       <main>
-        <RestoHeroSection data={resto} />
-        <RestoFeaturesSection />
-        <RestoOrderCustomizer phone={phone} />
-        <RestoMenuGrid phone={phone} />
+        <RestoHero />
+        <RestoFeatures />
+        <RestoMenu phone={phone} />
+        <RestoCTA phone={phone} />
       </main>
 
       <RestoFooter />
