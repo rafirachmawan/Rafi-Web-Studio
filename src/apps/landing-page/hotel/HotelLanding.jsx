@@ -1,36 +1,30 @@
 import { useState } from "react";
 import { LandingNavbarHotel } from "../../../components/landing/LandingNavbar";
 import { HotelFooter } from "../../../components/landing/hotel/HotelFooter";
-import { HotelHeroSection } from "../../../components/landing/hotel/HotelHeroSection";
-import { HotelBookingWidget } from "../../../components/landing/hotel/HotelBookingWidget";
-import { HotelExperienceSection } from "../../../components/landing/hotel/HotelExperienceSection";
-import { HotelRoomsCard } from "../../../components/landing/hotel/HotelRoomsCard";
-import { HotelBallroomSection } from "../../../components/landing/hotel/HotelBallroomSection";
-import { HotelFacilitiesSection } from "../../../components/landing/hotel/HotelFacilitiesSection";
-import { HotelGallerySection } from "../../../components/landing/hotel/HotelGallerySection";
-import { HotelPromoTourismSection } from "../../../components/landing/hotel/HotelPromoTourismSection";
-import { HotelTestimonialsSection } from "../../../components/landing/hotel/HotelTestimonialsSection";
-import { HotelLocationSection } from "../../../components/landing/hotel/HotelLocationSection";
+import { HotelHero } from "../../../sections/hotel/HotelHero";
+import { HotelRooms } from "../../../sections/hotel/HotelRooms";
+import { HotelFacilities } from "../../../sections/hotel/HotelFacilities";
+import { HotelGallery } from "../../../sections/hotel/HotelGallery";
+import { HotelTestimonials } from "../../../sections/hotel/HotelTestimonials";
+import { HotelStats } from "../../../sections/hotel/HotelStats";
+import { HotelCTA } from "../../../sections/hotel/HotelCTA";
 
 export default function HotelLanding() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const phone = "085196221716";
 
   return (
-    <div className="bg-[#050505] text-[#e5e5e5] min-h-screen">
+    <div className="bg-[#0a0a0c] text-zinc-200 min-h-screen font-sans selection:bg-amber-500/30">
       <LandingNavbarHotel waLink={`https://wa.me/${phone}`} />
       
       <main>
-        <HotelHeroSection />
-        <HotelBookingWidget />
-        <HotelExperienceSection />
-        <HotelRoomsCard phone={phone} />
-        <HotelBallroomSection />
-        <HotelFacilitiesSection />
-        <HotelGallerySection />
-        <HotelPromoTourismSection />
-        <HotelTestimonialsSection />
-        <HotelLocationSection />
+        <HotelHero />
+        <HotelStats />
+        <HotelRooms phone={phone} />
+        <HotelFacilities />
+        <HotelGallery />
+        <HotelTestimonials />
+        <HotelCTA />
       </main>
 
       <HotelFooter waLink={`https://wa.me/${phone}`} />
