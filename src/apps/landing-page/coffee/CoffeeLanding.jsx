@@ -5,6 +5,10 @@
 import { CoffeeNavigation } from '../../../components/molecules/Navigation/CoffeeNavigation';
 import { CoffeeHero } from '../../../sections/coffee/CoffeeHero';
 import { CoffeeMenu } from '../../../sections/coffee/CoffeeMenu';
+import { CoffeeSection } from '../../../sections/coffee/CoffeeSection';
+import { RewardsSection } from '../../../sections/coffee/RewardsSection';
+import { ResponsibilitySection } from '../../../sections/coffee/ResponsibilitySection';
+import { AboutSection } from '../../../sections/coffee/AboutSection';
 import bgHero from './assets/bgHero_starbucks.jpg';
 
 export default function CoffeeLanding() {
@@ -19,11 +23,19 @@ export default function CoffeeLanding() {
       {/* Menu Section */}
       <CoffeeMenu />
       
-      {/* Placeholder for other sections:
-          <CoffeeEducation />
-          <RewardsSection />
-          <ResponsibilitySection />
-          <AboutSection />
+      {/* COFFEE SECTION */}
+      <CoffeeSection />
+      
+      {/* REWARDS SECTION */}
+      <RewardsSection />
+      
+      {/* RESPONSIBILITY SECTION */}
+      <ResponsibilitySection />
+      
+      {/* ABOUT SECTION */}
+      <AboutSection />
+      
+      {/* FOOTER WOULD GO HERE
           <CoffeeFooter />
       */}
       
@@ -34,9 +46,10 @@ export default function CoffeeLanding() {
         ✅ Navigation (80 lines → Clean component)
         ✅ Hero Section (100 lines → Framer Motion only)
         ✅ Menu Section (149 lines → Data-driven)
-        ⏳ Education Section (TODO)
-        ⏳ Rewards Section (TODO)
-        ⏳ Footer Section (TODO)
+        ✅ Coffee Section (NEW - Product Showcase)
+        ✅ Rewards Section (NEW - Program Features)
+        ✅ Responsibility Section (NEW - Sustainability)
+        ✅ About Section (NEW - Our Story)
         
         Total original: 974 lines
         New structure: ~100 lines main + reusable components

@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { RentalNavbar } from "../../../components/landing/RentalNavbar";
-import { RentalHeroSection } from "../../../components/landing/RentalHeroSection";
-import { RentalInventoryGrid } from "../../../components/landing/RentalInventoryGrid";
-import { RentalFeaturesSection } from "../../../components/landing/RentalFeaturesSection";
-import { RentalTestimonialsSection } from "../../../components/landing/RentalTestimonialsSection";
+import { RentalHero } from "../../../sections/rental/RentalHero";
+import { RentalInventory } from "../../../sections/rental/RentalInventory";
+import { RentalFeatures } from "../../../sections/rental/RentalFeatures";
+import { RentalStats } from "../../../sections/rental/RentalStats";
+import { RentalTestimonials } from "../../../sections/rental/RentalTestimonials";
+import { RentalCTA } from "../../../sections/rental/RentalCTA";
 import { RentalFooter } from "../../../components/landing/RentalFooter";
 import { rental } from "../../../data/rental";
 
@@ -13,15 +15,31 @@ export default function RentalLanding() {
 
   return (
     <div className="bg-[#0b0b0e] text-zinc-200 min-h-screen font-sans selection:bg-red-500/30 overflow-x-hidden">
+      {/* Navigation */}
       <RentalNavbar waLink={waLink} />
       
+      {/* Main Content */}
       <main>
-        <RentalHeroSection data={rental} />
-        <RentalInventoryGrid phone={phone} />
-        <RentalFeaturesSection />
-        <RentalTestimonialsSection />
+        {/* Hero Section */}
+        <RentalHero />
+        
+        {/* Inventory Showcase */}
+        <RentalInventory />
+        
+        {/* Features */}
+        <RentalFeatures />
+        
+        {/* Stats & Achievement */}
+        <RentalStats />
+        
+        {/* Testimonials */}
+        <RentalTestimonials />
+        
+        {/* Call to Action */}
+        <RentalCTA />
       </main>
 
+      {/* Footer */}
       <RentalFooter />
     </div>
   );
