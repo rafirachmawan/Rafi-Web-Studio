@@ -97,13 +97,25 @@ export function CoffeeMenu() {
                   </span>
                 </div>
 
-                {/* Item Image */}
-                <div className="h-[200px] bg-[#0B1512] border border-white/5 mb-6 rounded-2xl relative overflow-hidden relative z-20">
+                {/* Item Image Placeholder */}
+                <div className="h-[200px] bg-gradient-to-br from-zinc-800 to-zinc-900 border border-white/5 mb-6 rounded-2xl relative overflow-hidden relative z-20">
+                  <div className="absolute inset-0 flex items-center justify-center p-4">
+                    <div className="text-center">
+                      <Coffee className="w-12 h-12 text-zinc-600 mx-auto mb-3" />
+                      <p className="text-zinc-500 text-xs font-medium uppercase tracking-wider">
+                        {item.name} Image
+                      </p>
+                      <p className="text-zinc-600 text-[10px]">Product photo placeholder</p>
+                    </div>
+                  </div>
+                  
+                  {/* Disabled img tag for future use */}
                   <img
-                    src={item.image}
+                    src=""
                     alt={item.name}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     loading="lazy"
+                    style={{ display: 'none' }}
                   />
                 </div>
 

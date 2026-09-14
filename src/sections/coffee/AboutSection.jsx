@@ -61,11 +61,19 @@ export function AboutSection() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              className="aspect-[3/4] bg-gradient-to-br from-zinc-800 to-zinc-900 rounded-2xl overflow-hidden border border-white/5 group"
+              className="aspect-[3/4] bg-gradient-to-br from-zinc-800 to-zinc-900 rounded-2xl overflow-hidden border border-white/5 group relative"
             >
-              <span className="absolute top-4 left-4 text-zinc-500 text-xs font-medium uppercase tracking-widest z-10">
-                Story Image 1
-              </span>
+              <div className="absolute inset-0 flex items-center justify-center p-6">
+                <div className="text-center">
+                  <BookOpen className="w-16 h-16 text-zinc-600 mx-auto mb-4" />
+                  <p className="text-zinc-500 text-sm font-medium uppercase tracking-wider mb-2">
+                    Heritage Image
+                  </p>
+                  <p className="text-zinc-600 text-xs">Historical story photo</p>
+                </div>
+              </div>
+              
+              {/* Disabled img tag */}
               <img 
                 src="" 
                 alt="Our Story" 
@@ -82,11 +90,19 @@ export function AboutSection() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.4 + num * 0.1 }}
-                className={`aspect-square bg-gradient-to-br from-zinc-800 to-zinc-900 rounded-2xl overflow-hidden border border-white/5 group ${num === 2 ? 'translate-y-8' : ''}`}
+                className={`aspect-square bg-gradient-to-br from-zinc-800 to-zinc-900 rounded-2xl overflow-hidden border border-white/5 group relative ${num === 2 ? 'translate-y-8' : ''}`}
               >
-                <span className="absolute top-4 left-4 text-zinc-500 text-xs font-medium uppercase tracking-widest z-10">
-                  Story Image {num + 1}
-                </span>
+                <div className="absolute inset-0 flex items-center justify-center p-6">
+                  <div className="text-center">
+                    <BookOpen className="w-10 h-10 text-zinc-600 mx-auto mb-3" />
+                    <p className="text-zinc-500 text-xs font-medium uppercase tracking-wider mb-1">
+                      Story Image {num + 1}
+                    </p>
+                    <p className="text-zinc-600 text-[10px]">Coffee culture photo</p>
+                  </div>
+                </div>
+                
+                {/* Disabled img tag */}
                 <img 
                   src="" 
                   alt={`Story Image ${num + 1}`} 

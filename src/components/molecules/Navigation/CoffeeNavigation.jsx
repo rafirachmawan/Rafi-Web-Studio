@@ -18,41 +18,40 @@ export function CoffeeNavigation() {
   ];
 
   return (
-    <nav
-      className="fixed top-0 left-1/2 -translate-x-1/2 z-50 w-full max-w-[1400px]"
-      aria-label="Main Navigation"
-    >
-      <div className="w-full border-b border-white/5 backdrop-blur-xl bg-[#0B1512]/80">
-        <div className="max-w-7xl mx-auto px-6 h-[90px] flex items-center justify-between">
-          {/* Logo */}
+    <nav className="fixed top-0 left-0 z-50 w-full" aria-label="Main Navigation">
+      {/* Full width background */}
+      <div className="w-full border-b border-white/10 backdrop-blur-xl bg-[#0B1512]/90 transition-all duration-300">
+        {/* Centered content container */}
+        <div className="max-w-[1600px] mx-auto px-6 h-[80px] flex justify-between items-center">
+          {/* Logo - Left aligned */}
           <a href="#" className="flex items-center gap-3 group" aria-label="Starbucks Home">
             <img 
               src={starbucksLogo} 
               alt="Starbucks Logo" 
-              className="w-10 h-10 object-contain group-hover:scale-105 transition-transform"
+              className="w-9 h-9 object-contain transition-transform duration-300 group-hover:scale-105"
             />
-            <span className="text-xl font-black tracking-[0.2em] font-serif text-[#D4E9E2]">
+            <span className="text-lg font-black tracking-[0.25em] font-serif text-[#D4E9E2] transition-colors duration-300">
               STARBUCKS
             </span>
           </a>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-10">
+          {/* Desktop Navigation - Center aligned */}
+          <div className="hidden md:flex items-center gap-8 flex-1 justify-center">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm font-bold text-zinc-300 hover:text-emerald-400 transition-colors relative group"
+                className="text-sm font-bold text-zinc-300 hover:text-emerald-400 transition-all duration-300 relative group"
               >
                 {link.label}
-                <span className="absolute bottom-[-4px] left-0 w-0 h-0.5 bg-emerald-400 transition-all group-hover:w-full" />
+                <span className="absolute bottom-[-4px] left-0 w-0 h-0.5 bg-emerald-400 transition-all duration-300 ease-out group-hover:w-full" />
               </a>
             ))}
           </div>
 
-          {/* CTA Button */}
-          <div className="hidden md:block">
-            <Button variant="outline" size="md" className="border-[#00704A] text-[#D4E9E2] hover:bg-[#00704A]">
+          {/* CTA Button - Right aligned */}
+          <div className="hidden md:block ml-8">
+            <Button variant="outline" size="md" className="border border-transparent bg-[#0B1512]/80 backdrop-blur-sm text-[#D4E9E2] hover:bg-[#00704A]/90 hover:text-white transition-all duration-300 rounded-full px-6 py-2.5">
               Explore Menu
             </Button>
           </div>
@@ -60,7 +59,7 @@ export function CoffeeNavigation() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden text-white p-2"
+            className="md:hidden text-white p-2 hover:bg-[#00704A]/10 rounded-full transition-all duration-300 hover:text-emerald-400"
             aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -71,7 +70,7 @@ export function CoffeeNavigation() {
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div 
-          className="md:hidden bg-[#0B1512] border-t border-white/10 px-6 py-6 flex flex-col gap-5"
+          className="md:hidden bg-[#0B1512]/95 border-t border-white/10 backdrop-blur-xl px-6 py-6 flex flex-col gap-4 animate-fade-in"
           role="dialog"
           aria-modal="true"
         >
@@ -80,13 +79,13 @@ export function CoffeeNavigation() {
               key={link.href}
               href={link.href}
               onClick={() => setIsMobileMenuOpen(false)}
-              className="text-sm font-semibold text-zinc-300 hover:text-emerald-400 transition-colors"
+              className="text-sm font-semibold text-zinc-300 hover:text-emerald-400 transition-all duration-300 py-2 rounded-lg hover:bg-[#00704A]/10 px-3 -mx-3"
             >
               {link.label}
             </a>
           ))}
           
-          <Button variant="outline" fullWidth className="border-[#00704A] text-[#D4E9E2] hover:bg-[#00704A]">
+          <Button variant="outline" fullWidth className="border border-transparent bg-[#00704A] text-white hover:bg-[#00704A]/90 transition-all duration-300 rounded-full">
             Explore Menu
           </Button>
         </div>
