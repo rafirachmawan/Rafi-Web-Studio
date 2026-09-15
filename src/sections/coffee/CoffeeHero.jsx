@@ -5,7 +5,7 @@ import { useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Sparkles } from 'lucide-react';
 import { Button } from '../../components/atoms/Button/Button';
-import bgHero from '../../apps/landing-page/coffee/assets/bgHero_starbucks.jpg';
+import bgHero from '../../assets/AmbienceCoffe.jpg';
 
 export function CoffeeHero() {
   const heroRef = useRef(null);

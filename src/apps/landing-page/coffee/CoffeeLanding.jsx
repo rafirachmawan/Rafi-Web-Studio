@@ -9,7 +9,12 @@ import { CoffeeSection } from '../../../sections/coffee/CoffeeSection';
 import { RewardsSection } from '../../../sections/coffee/RewardsSection';
 import { ResponsibilitySection } from '../../../sections/coffee/ResponsibilitySection';
 import { AboutSection } from '../../../sections/coffee/AboutSection';
-import bgHero from './assets/bgHero_starbucks.jpg';
+import { CoffeeFooter } from '../../../components/landing/coffee/CoffeeFooter';
+import bgHero from '../../../assets/AmbienceCoffe.jpg';
+
+const phone = "6285196221716";
+const message = encodeURIComponent("Halo, saya tertarik dengan Starbucks Rewards.");
+const waLink = `https://wa.me/${phone}?text=${message}`;
 
 export default function CoffeeLanding() {
   return (
@@ -35,9 +40,8 @@ export default function CoffeeLanding() {
       {/* ABOUT SECTION */}
       <AboutSection />
       
-      {/* FOOTER WOULD GO HERE
-          <CoffeeFooter />
-      */}
+      {/* FOOTER */}
+      <CoffeeFooter waLink={waLink} />
       
       {/* 
         ==========================================

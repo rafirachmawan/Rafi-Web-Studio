@@ -35,7 +35,7 @@ export default function FloatingWidgets() {
         <button
           onClick={scrollToTop}
           aria-label="Scroll to top"
-          className="w-11 h-11 rounded-full bg-white dark:bg-zinc-800 text-zinc-700 dark:text-zinc-200 border border-zinc-200 dark:border-zinc-700 shadow-lg hover:shadow-xl hover:bg-amber-500 hover:text-white dark:hover:bg-amber-500 dark:hover:text-white flex items-center justify-center transition-all duration-300 transform hover:scale-110 active:scale-95 cursor-pointer"
+          className="w-11 h-11 rounded-full bg-white dark:bg-zinc-800 text-zinc-700 dark:text-zinc-200 border border-zinc-200 dark:border-zinc-700 shadow-lg hover:shadow-xl hover:bg-[#00704A] hover:text-white dark:hover:bg-[#00704A] dark:hover:text-white flex items-center justify-center transition-all duration-300 transform hover:scale-110 active:scale-95 cursor-pointer"
         >
           <ArrowUp size={18} />
         </button>
