@@ -214,12 +214,12 @@ export default function ProjectDetail() {
                 >
                   <p className="text-sm font-bold text-amber-700 dark:text-amber-500 mb-1 flex items-center gap-2">
                     <Sparkles size={16} className="text-amber-500" />{" "}
-                    {t("Template Landing Page", "Landing Page Template")}
+                    {t("Template Universitas/Sekolah", "University/School Template")}
                   </p>
                   <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
                     {t(
-                      "Template landing page profesional yang dapat disesuaikan untuk berbagai kebutuhan bisnis. Desain modern dan fungsional dengan fitur-fitur lengkap.",
-                      "Professional landing page template that can be customized for various business needs. Modern and functional design with complete features.",
+                      "Template landing page profesional universitas/sekolah yang siap digunakan. Desain modern dan fungsional dengan fitur-fitur lengkap untuk institusi pendidikan.",
+                      "Professional university/school landing page template ready to use. Modern and functional design with complete features for educational institutions.",
                     )}
                   </p>
                 </motion.div>
@@ -232,12 +232,12 @@ export default function ProjectDetail() {
                 >
                   <p className="text-sm font-bold text-amber-700 dark:text-amber-500 mb-1 flex items-center gap-2">
                     <Sparkles size={16} className="text-amber-500" />{" "}
-                    {t("Template Landing Page", "Landing Page Template")}
+                    {t("Template Universitas/Sekolah", "University/School Template")}
                   </p>
                   <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
                     {t(
-                      "Template landing page profesional yang dapat disesuaikan untuk berbagai kebutuhan bisnis. Desain modern dan fungsional dengan fitur-fitur lengkap.",
-                      "Professional landing page template that can be customized for various business needs. Modern and functional design with complete features.",
+                      "Template landing page profesional universitas/sekolah yang siap digunakan. Desain modern dan fungsional dengan fitur-fitur lengkap untuk institusi pendidikan.",
+                      "Professional university/school landing page template ready to use. Modern and functional design with complete features for educational institutions.",
                     )}
                   </p>
                 </motion.div>
@@ -250,12 +250,12 @@ export default function ProjectDetail() {
                 >
                   <p className="text-sm font-bold text-amber-700 dark:text-amber-500 mb-1 flex items-center gap-2">
                     <span>💡</span>{" "}
-                    {t("Konsep Rebranding", "Rebranding Concept")}
+                    {t("Template Universitas/Sekolah", "University/School Template")}
                   </p>
                   <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
                     {t(
-                      "Ini adalah showcase hasil desain ulang (redesign). Kami menggunakan brand ini sebagai studi kasus untuk mendemonstrasikan standar visual dan fungsionalitas modern yang kami tawarkan.",
-                      "This is a redesign showcase. We use this brand as a case study to demonstrate the modern visual standards and functionality we offer.",
+                      "Template landing page profesional universitas/sekolah yang siap digunakan. Desain modern dan fungsional dengan fitur-fitur lengkap untuk institusi pendidikan.",
+                      "Professional university/school landing page template ready to use. Modern and functional design with complete features for educational institutions.",
                     )}
                   </p>
                 </motion.div>
@@ -330,93 +330,25 @@ export default function ProjectDetail() {
 
           {/* Right Column (Scrollable Content) */}
           <div className="lg:col-span-7 space-y-12 md:space-y-16">
-            {/* Main Image or Gallery Carousel */}
+            {/* Main Image Showcase - Full Width for Template */}
             {project.gallery && project.gallery.length > 0 ? (
               <ProjectDetailGallery gallery={project.gallery} name={t(project.name)} />
             ) : (
-              !project.beforeImage && (
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2 }}
-                  className="w-full rounded-3xl overflow-hidden shadow-2xl border border-zinc-200/50 dark:border-white/10 bg-zinc-100 dark:bg-zinc-900"
-                >
-                  <img
-                    src={project.image}
-                    alt={t(project.name)}
-                    className="w-full h-auto block"
-                  />
-                </motion.div>
-              )
-            )}
-
-            {/* Before/After Laptop Mockup Comparison - Only show if beforeImage exists */}
-            {project.beforeImage && (
-              <motion.section
+              <motion.div
                 initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                className="space-y-6"
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="w-full rounded-3xl overflow-hidden shadow-2xl border border-zinc-200/50 dark:border-white/10 bg-zinc-100 dark:bg-zinc-900"
               >
-                {/* Section Header */}
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full bg-amber-500/10 flex items-center justify-center">
-                    <Sparkles size={15} className="text-amber-500" />
-                  </div>
-                  <div>
-                    <h2 className="text-2xl font-bold text-black dark:text-white leading-tight">
-                      {t("Gambaran Project", "Project Overview")}
-                    </h2>
-                    <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-0.5">
-                      {t("Hasil desain template landing page profesional dengan tampilan modern dan fungsional.", "Professional landing page template design with modern and functional appearance.")}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Side-by-Side Grid for Comparison */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-
-                  {/* BEFORE — Laptop Mockup */}
-                  <div className="flex flex-col gap-3">
-                    <div className="flex items-center gap-2">
-                      <span className="px-3 py-1 rounded-full bg-zinc-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 text-xs font-bold uppercase tracking-wider">
-                        {t("Sebelum", "Before")}
-                      </span>
-                      <span className="text-xs text-zinc-400">{t("Website Asli", "Original Website")}</span>
-                    </div>
-                    {/* Clean Image Container */}
-                    <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-zinc-200/80 dark:border-white/5 shadow-md bg-zinc-100 dark:bg-zinc-900 group">
-                      <img
-                        src={project.beforeImage}
-                        alt={`${project.name} - Before`}
-                        className="absolute inset-0 w-full h-full object-cover object-top transition-all duration-500 group-hover:scale-105"
-                      />
-                    </div>
-                  </div>
-
-                  {/* AFTER — Laptop Mockup */}
-                  <div className="flex flex-col gap-3">
-                    <div className="flex items-center gap-2">
-                      <span className="px-3 py-1 rounded-full bg-amber-500 text-white text-xs font-bold uppercase tracking-wider">
-                        {t("Sesudah", "After")}
-                      </span>
-                      <span className="text-xs text-zinc-400">{t("Hasil Redesign", "Redesign Result")}</span>
-                    </div>
-                    {/* Clean Image Container with Amber Glow */}
-                    <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-amber-500/20 shadow-md shadow-amber-500/5 bg-zinc-100 dark:bg-zinc-900 ring-1 ring-amber-500/20 group">
-                      <img
-                        src={project.image}
-                        alt={`${project.name} - After`}
-                        className="absolute inset-0 w-full h-full object-cover object-top transition-all duration-500 group-hover:scale-105"
-                      />
-                    </div>
-                  </div>
-
-                </div>
-              </motion.section>
+                <img
+                  src={project.image}
+                  alt={t(project.name)}
+                  className="w-full h-auto block"
+                />
+              </motion.div>
             )}
 
-            {/* Description */}
+              {/* Description */}
             <motion.section
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
