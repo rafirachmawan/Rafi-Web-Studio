@@ -9,6 +9,7 @@ import yamahaCopyImg from "../assets/Yamaha/image copy.png";
 import yamahaLogo from "../assets/Yamaha/yamahalogo.png";
 import iconYamaha from "../assets/Yamaha/iconyamaha.png";
 import heroYamaha from "../assets/Yamaha/heroyamaha.jpg";
+import homeRentalMotor from "../assets/Yamaha/HomeRentalMontor.png";
 import nikoNikoCoverImg from "../assets/NikoNikoCover.jpg";
 import aioLaundryCoverImg from "../assets/AioLaundryCover.jpg";
 import aioLaundryLogo from "../assets/loundry/logoLoundry.png";
@@ -74,6 +75,7 @@ export const demos = [
     icon: iconYamaha,
     category: "landing page",
     image: yamahaCopyImg,
+    gallery: [homeRentalMotor],
     client: "PT Yamaha Indonesia Motor Manufacturing (YIMM)",
     fullDescription: {
       id: "Website resmi PT Yamaha Indonesia Motor Manufacturing (YIMM) yang berfungsi sebagai portal informasi produk, layanan, dan aktivitas Yamaha di Indonesia. Platform ini menyajikan katalog motor lengkap (MAXi, Classy, Matic, Sport, Off-Road, Moped), simulasi kredit pembelian, booking servis berkala, pencarian dealer resmi, hingga portal berita racing dan keanggotaan My Yamaha Motor.",
