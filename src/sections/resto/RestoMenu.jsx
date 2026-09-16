@@ -80,7 +80,7 @@ export function RestoMenu({ phone }) {
   };
 
   return (
-    <section id="menu" className="py-24 px-6 bg-gradient-to-b from-[#0a0a0a] to-[#0f0f0f]">
+    <section id="menu" className="py-24 px-6 bg-gradient-to-b from-stone-100 to-stone-50">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <motion.div
@@ -89,14 +89,14 @@ export function RestoMenu({ phone }) {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-red-500/30 bg-red-500/10 mb-6">
-            <Flame className="w-3 h-3 text-red-500 fill-current" />
-            <span className="text-red-500 text-xs font-bold uppercase tracking-widest">Menu Andalan</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-red-500/20 bg-red-5 mb-6">
+            <Flame className="w-3 h-3 text-red-600 fill-current" />
+            <span className="text-red-600 text-xs font-bold uppercase tracking-widest">Menu Andalan</span>
           </div>
-          <h2 className="text-3xl md:text-5xl font-black text-white mb-4 tracking-tight">
+          <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4 tracking-tight">
             Mie Pedas & Favorit
           </h2>
-          <p className="text-zinc-400 text-sm max-w-2xl mx-auto leading-relaxed">
+          <p className="text-zinc-600 text-sm max-w-2xl mx-auto leading-relaxed">
             Pilih tingkat kepedasan sesuai kemampuanmu! Dari level 1-10, kita punya semua.
           </p>
         </motion.div>
@@ -110,13 +110,13 @@ export function RestoMenu({ phone }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="group bg-[#1a1a1a] border border-zinc-800 rounded-xl overflow-hidden hover:border-red-500/40 transition-all duration-300"
+              className="group bg-white border border-zinc-200 rounded-xl overflow-hidden hover:border-red-500/40 transition-all duration-300 shadow-sm hover:shadow-lg"
             >
               {/* Image Placeholder */}
-              <div className="aspect-video bg-gradient-to-br from-zinc-800 to-zinc-900 relative overflow-hidden">
+              <div className="aspect-video bg-gradient-to-br from-stone-200 to-stone-100 relative overflow-hidden">
                 <div className="absolute inset-0 flex items-center justify-center p-4">
                   <div className="text-center">
-                    <ShoppingCart className="w-12 h-12 text-zinc-600 mx-auto mb-3" />
+                    <ShoppingCart className="w-12 h-12 text-zinc-400 mx-auto mb-3" />
                     <p className="text-zinc-500 text-xs font-medium uppercase tracking-wider">
                       {item.name} Image
                     </p>
@@ -138,23 +138,23 @@ export function RestoMenu({ phone }) {
               <div className="p-4">
                 {/* Name & Price */}
                 <div className="flex justify-between items-start mb-2">
-                  <h3 className="text-white font-bold text-sm leading-snug">{item.name}</h3>
-                  <p className="text-red-500 font-bold text-sm ml-2">Rp {item.price}</p>
+                  <h3 className="text-slate-900 font-bold text-sm leading-snug">{item.name}</h3>
+                  <p className="text-red-600 font-bold text-sm ml-2">Rp {item.price}</p>
                 </div>
 
                 {/* Description */}
-                <p className="text-zinc-500 text-xs leading-relaxed mb-3 line-clamp-2">
+                <p className="text-zinc-600 text-xs leading-relaxed mb-3 line-clamp-2">
                   {item.description}
                 </p>
 
                 {/* Spicy Level */}
-                <div className="flex items-center justify-between pt-3 border-t border-zinc-800">
+                <div className="flex items-center justify-between pt-3 border-t border-zinc-200">
                   <div className={`inline-flex items-center gap-1 px-2 py-1 rounded border ${getSpicyLevelColor(item.spicyLevel)}`}>
                     <Flame className="w-3 h-3" />
                     <span className="text-[10px] font-bold uppercase">Level {item.spicyLevel}</span>
                   </div>
                   
-                  <button className="text-zinc-400 hover:text-red-500 transition-colors">
+                  <button className="text-zinc-500 hover:text-red-600 transition-colors">
                     <ShoppingCart className="w-4 h-4" />
                   </button>
                 </div>
@@ -170,12 +170,12 @@ export function RestoMenu({ phone }) {
           viewport={{ once: true }}
           className="mt-12 text-center"
         >
-          <p className="text-zinc-500 text-sm mb-4">Ada pertanyaan atau ingin order dalam jumlah besar?</p>
+          <p className="text-zinc-600 text-sm mb-4">Ada pertanyaan atau ingin order dalam jumlah besar?</p>
           <a
             href={`https://wa.me/${phone}?text=${encodeURIComponent('Halo Mie Gacoan, saya ingin menanyakan tentang menu.')}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-transparent border border-zinc-700 text-zinc-300 text-sm font-medium rounded-lg transition-all hover:border-red-500 hover:text-red-500 hover:bg-red-500/5"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-transparent border border-zinc-300 text-slate-700 text-sm font-medium rounded-lg transition-all hover:border-red-500 hover:text-red-600 hover:bg-red-500/5"
           >
             Contact Us
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

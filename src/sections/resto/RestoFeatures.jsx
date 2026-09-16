@@ -29,7 +29,7 @@ const FEATURES = [
 
 export function RestoFeatures() {
   return (
-    <section className="py-24 px-6 bg-[#0f0f0f]">
+    <section className="py-24 px-6 bg-stone-50">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <motion.div
@@ -38,14 +38,14 @@ export function RestoFeatures() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-red-500/30 bg-red-500/10 mb-6">
-            <Flame className="w-3 h-3 text-red-500 fill-current" />
-            <span className="text-red-500 text-xs font-bold uppercase tracking-widest">Why Choose Us</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-red-500/20 bg-red-50 mb-6">
+            <Flame className="w-3 h-3 text-red-600 fill-current" />
+            <span className="text-red-600 text-xs font-bold uppercase tracking-widest">Why Choose Us</span>
           </div>
-          <h2 className="text-3xl md:text-5xl font-black text-white mb-4 tracking-tight">
+          <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4 tracking-tight">
             The Gacoan Experience
           </h2>
-          <p className="text-zinc-400 text-sm max-w-2xl mx-auto leading-relaxed">
+          <p className="text-zinc-600 text-sm max-w-2xl mx-auto leading-relaxed">
             Kami berkomitmen memberikan pengalaman makan terbaik dengan kualitas terbaik
           </p>
         </motion.div>
@@ -59,16 +59,16 @@ export function RestoFeatures() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.15 }}
-              className="group p-6 bg-[#1a1a1a] border border-zinc-800 rounded-xl hover:border-red-500/40 transition-all duration-300"
+              className="group p-6 bg-white border border-zinc-200 rounded-xl hover:border-red-500/40 transition-all duration-300 shadow-sm hover:shadow-lg"
             >
               {/* Icon container */}
-              <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-red-500/10 to-transparent flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                <feature.icon className="w-7 h-7 text-red-500" />
+              <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-red-500/15 to-transparent flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                <feature.icon className="w-7 h-7 text-red-600" />
               </div>
 
               {/* Content */}
-              <h3 className="text-white font-bold text-base mb-2">{feature.title}</h3>
-              <p className="text-zinc-500 text-sm leading-relaxed">{feature.description}</p>
+              <h3 className="text-slate-900 font-bold text-base mb-2">{feature.title}</h3>
+              <p className="text-zinc-600 text-sm leading-relaxed">{feature.description}</p>
             </motion.div>
           ))}
         </div>

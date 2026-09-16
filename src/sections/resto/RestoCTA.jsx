@@ -6,25 +6,25 @@ import { Flame, ShoppingCart, MessageCircle } from 'lucide-react';
 
 export function RestoCTA({ phone }) {
   return (
-    <section className="py-24 px-6 bg-gradient-to-r from-red-700 via-orange-600 to-red-700">
+    <section className="py-24 px-6 bg-gradient-to-r from-red-50 via-pink-50 to-red-50">
       <div className="max-w-5xl mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl md:text-5xl font-black text-white mb-6 tracking-tight">
+          <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight">
             Ready for Spicy Adventure?
           </h2>
           
-          <p className="text-white/90 text-base md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
+          <p className="text-zinc-700 text-base md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
             Segera rasakan sensasi mie pedas legendaris yang bikin nagih! Order sekarang dan nikmati promo spesial.
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href="#menu"
-              className="group inline-flex items-center gap-2 px-8 py-4 bg-white text-red-600 font-bold rounded-lg transition-all shadow-xl hover:shadow-2xl transform hover:-translate-y-0.5"
+              className="group inline-flex items-center gap-2 px-8 py-4 bg-[#db2777] text-white font-bold rounded-lg transition-all shadow-md hover:shadow-xl transform hover:-translate-y-0.5 border border-[#db2777]"
             >
               Browse Menu
               <ShoppingCart className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -34,7 +34,7 @@ export function RestoCTA({ phone }) {
               href={`https://wa.me/${phone}?text=${encodeURIComponent('Halo Mie Gacoan, saya ingin melakukan pemesanan.')}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-lg transition-all hover:bg-white/10"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-transparent border-2 border-[#db2777] text-[#db2777] font-bold rounded-lg transition-all hover:bg-[#db2777] hover:text-white"
             >
               <MessageCircle className="w-5 h-5" />
               Chat via WhatsApp
@@ -42,20 +42,20 @@ export function RestoCTA({ phone }) {
           </div>
 
           {/* Quick info */}
-          <div className="mt-12 pt-8 border-t border-white/20">
-            <div className="flex flex-wrap items-center justify-center gap-6 text-white/80 text-sm">
+          <div className="mt-12 pt-8 border-t border-stone-200">
+            <div className="flex flex-wrap items-center justify-center gap-6 text-zinc-600 text-sm">
               <div className="flex items-center gap-2">
-                <Flame className="w-4 h-4" />
+                <Flame className="w-4 h-4 text-red-600" />
                 <span>Available Level 1-10</span>
               </div>
-              <div className="hidden sm:inline text-white/40">|</div>
+              <div className="hidden sm:inline text-zinc-400">|</div>
               <div className="flex items-center gap-2">
-                <ShoppingCart className="w-4 h-4" />
+                <ShoppingCart className="w-4 h-4 text-[#db2777]" />
                 <span>Fast Delivery Available</span>
               </div>
-              <div className="hidden sm:inline text-white/40">|</div>
+              <div className="hidden sm:inline text-zinc-400">|</div>
               <div className="flex items-center gap-2">
-                <Star className="w-4 h-4" />
+                <Star className="w-4 h-4 text-yellow-500" />
                 <span>Best Quality Ingredients</span>
               </div>
             </div>

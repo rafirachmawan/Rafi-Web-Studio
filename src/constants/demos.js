@@ -161,11 +161,10 @@ export const demos = [
     icon: gacoanLogo,
     category: "landing page",
     image: gacoanAfterImg,
-    beforeImage: gacoanBeforeImg,
     client: "Mie Gacoan Tulungagung",
     fullDescription: {
-      id: "Redesign website interaktif Mie Gacoan Tulungagung yang menyajikan katalog menu mie pedas (Mie Gacoan, Mie Hompimpa, Mie Suit), dimsum gurih (Pangsit Goreng, Udang Keju), dan minuman es tradisional (Es Gobak Sodor). Dilengkapi fitur custom level pedas, kalkulator pemesanan, dan lokasi cabang.",
-      en: "Interactive website redesign for Mie Gacoan Tulungagung featuring spicy noodles catalog, savory dimsum, traditional ice beverages with level customizer and branch locator.",
+      id: "Template landing page profesional untuk restoran makanan dengan tampilan modern dan interaktif, menampilkan katalog menu mie pedas, dimsum, dan minuman segar. Dilengkapi fitur custom level kepedasan, kalkulator pemesanan, dan lokasi cabang.",
+      en: "Professional landing page template for food restaurant with modern interactive appearance, featuring spicy noodle catalog, dimsum, and fresh beverages. Equipped with spiciness level customizer, order calculator, and branch locator features.",
     },
     techStack: ["React JS", "Tailwind CSS", "Framer Motion", "Vite", "Lucide Icons"],
     features: [
