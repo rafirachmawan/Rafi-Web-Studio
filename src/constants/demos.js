@@ -35,17 +35,16 @@ export const demos = [
     name: "Starbucks",
     path: "/coffee",
     desc: {
-      id: "Landing Page Informasi & Galeri Coffee Shop",
-      en: "Coffee Shop Information & Gallery Landing Page",
+      id: "Template Landing Page Coffee Shop Premium",
+      en: "Premium Coffee Shop Landing Page Template",
     },
     icon: starbucksIcon,
     category: "landing page",
     image: starbucksAfterImg,
-    beforeImage: starbucksBeforeImg,
     client: "Starbucks",
     fullDescription: {
-      id: "Pembuatan landing page interaktif untuk menampilkan profil brand, lokasi gerai, dan katalog menu premium Starbucks. Website ini didesain khusus untuk memberikan pengalaman visual yang memanjakan mata, mengundang pelanggan untuk merasakan atmosfer kedai kopi langsung dari layar mereka.",
-      en: "Interactive landing page creation to display the brand profile, outlet locations, and premium menu catalog of Starbucks. This website is specifically designed to provide an eye-catching visual experience, inviting customers to feel the coffee shop atmosphere directly from their screens.",
+      id: "Template landing page interaktif untuk coffee shop dengan tampilan premium dan modern. Website ini menampilkan profil brand, atmosfer kedai kopi, katalog menu yang menarik, serta fitur-fitur unggulan seperti desain responsif dan navigasi yang halus. Cocok untuk bisnis coffee shop yang ingin memiliki kehadiran digital yang profesional.",
+      en: "Interactive landing page template for coffee shop with premium and modern appearance. This website displays brand profile, coffee shop atmosphere, attractive menu catalog, and flagship features such as responsive design and smooth navigation. Suitable for coffee shop businesses that want a professional digital presence.",
     },
     techStack: ["React JS", "Tailwind CSS", "Framer Motion", "Vite"],
     features: [
