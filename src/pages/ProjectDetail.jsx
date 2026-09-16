@@ -223,6 +223,24 @@ export default function ProjectDetail() {
                     )}
                   </p>
                 </motion.div>
+              ) : !project.beforeImage ? (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.15 }}
+                  className="pl-4 border-l-2 border-amber-500/50"
+                >
+                  <p className="text-sm font-bold text-amber-700 dark:text-amber-500 mb-1 flex items-center gap-2">
+                    <Sparkles size={16} className="text-amber-500" />{" "}
+                    {t("Template Landing Page", "Landing Page Template")}
+                  </p>
+                  <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                    {t(
+                      "Template landing page profesional yang dapat disesuaikan untuk berbagai kebutuhan bisnis. Desain modern dan fungsional dengan fitur-fitur lengkap.",
+                      "Professional landing page template that can be customized for various business needs. Modern and functional design with complete features.",
+                    )}
+                  </p>
+                </motion.div>
               ) : (
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
@@ -347,10 +365,10 @@ export default function ProjectDetail() {
                   </div>
                   <div>
                     <h2 className="text-2xl font-bold text-black dark:text-white leading-tight">
-                      {t("Transformasi Desain", "Design Transformation")}
+                      {t("Gambaran Project", "Project Overview")}
                     </h2>
                     <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-0.5">
-                      {t("Perbandingan tampilan website asli vs hasil redesign kami.", "Original website vs. our redesign result.")}
+                      {t("Hasil desain template landing page profesional dengan tampilan modern dan fungsional.", "Professional landing page template design with modern and functional appearance.")}
                     </p>
                   </div>
                 </div>

@@ -120,11 +120,10 @@ export const demos = [
     icon: crownLogo,
     category: "landing page",
     image: crownAfterImg,
-    beforeImage: crownBeforeImg,
     client: "Crown Victoria Hotel",
     fullDescription: {
-      id: "Website ofisial mewah untuk Crown Victoria Hotel, menampilkan tipe-tipe kamar premium, ballroom megah, dan fasilitas standar internasional. Bertujuan meningkatkan booking reservasi secara langsung serta memberikan citra hotel bintang 4 yang eksklusif.",
-      en: "Luxury official website for Crown Victoria Hotel, displaying premium room types, magnificent ballroom, and international standard facilities. Aimed at increasing direct booking reservations and providing an exclusive 4-star hotel image.",
+      id: "Template landing page profesional untuk hotel bintang 4 dengan tampilan mewah dan modern, menampilkan tipe-tipe kamar premium, ballroom megah, dan fasilitas standar internasional. Dapat disesuaikan untuk berbagai kebutuhan bisnis perhotelan.",
+      en: "Professional landing page template for 4-star hotel with luxurious modern appearance, displaying premium room types, magnificent ballroom, and international standard facilities. Can be customized for various hotel business needs.",
     },
     techStack: [
       "React JS",
