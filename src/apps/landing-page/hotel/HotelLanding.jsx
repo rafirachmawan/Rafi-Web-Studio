@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { LandingNavbarHotel } from "../../../components/landing/LandingNavbar";
+import { LandingNavbar } from "../../../components/landing/LandingNavbar";
 import { HotelFooter } from "../../../components/landing/hotel/HotelFooter";
 import { HotelHero } from "../../../sections/hotel/HotelHero";
 import { HotelRooms } from "../../../sections/hotel/HotelRooms";
@@ -15,8 +15,8 @@ export default function HotelLanding() {
 
   return (
     <div className="bg-[#0a0a0c] text-zinc-200 min-h-screen font-sans selection:bg-amber-500/30">
-      <LandingNavbarHotel waLink={`https://wa.me/${phone}`} />
-      
+      <LandingNavbar category="hotel" waLink={`https://wa.me/${phone}`} />
+
       <main>
         <HotelHero />
         <HotelStats />
@@ -31,4 +31,3 @@ export default function HotelLanding() {
     </div>
   );
 }
-
