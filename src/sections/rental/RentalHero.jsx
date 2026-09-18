@@ -4,9 +4,10 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { rental } from "../../data/rental";
+import yamahaImage1 from "../../assets/Yamaha/gambar1.png";
 
 const slides = [
-  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1920' height='1080'%3E%3Cdefs%3E%3ClinearGradient id='grad1' x1='50%25' y1='0%25' x2='50%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23FEE2E2;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23FCA5A5;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='1920' height='1080' fill='url(%23grad1)'/%3E%3Cg font-family='Arial, sans-serif'%3E%3Ctext x='50%25' y='50%25' font-size='14' text-anchor='middle' fill='%23991B1B' opacity='0.3' font-style='italic'%3EPlaceholder%3C/text%3E%3C/g%3E%3C/svg%3E",
+  yamahaImage1,
   "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1920' height='1080'%3E%3Cdefs%3E%3ClinearGradient id='grad2' x1='50%25' y1='0%25' x2='50%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23DBEAFE;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%2360A5FA;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='1920' height='1080' fill='url(%23grad2)'/%3E%3Cg font-family='Arial, sans-serif'%3E%3Ctext x='50%25' y='50%25' font-size='14' text-anchor='middle' fill='%231E3A8A' opacity='0.3' font-style='italic'%3EPlaceholder%3C/text%3E%3C/g%3E%3C/svg%3E",
   "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1920' height='1080'%3E%3Cdefs%3E%3ClinearGradient id='grad3' x1='50%25' y1='0%25' x2='50%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23D1FAE5;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%2334D399;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='1920' height='1080' fill='url(%23grad3)'/%3E%3Cg font-family='Arial, sans-serif'%3E%3Ctext x='50%25' y='50%25' font-size='14' text-anchor='middle' fill='%23064E3B' opacity='0.3' font-style='italic'%3EPlaceholder%3C/text%3E%3C/g%3E%3C/svg%3E",
 ];

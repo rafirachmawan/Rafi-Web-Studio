@@ -5,7 +5,7 @@ import unitaLogo from "../assets/universitasTulungagung/logoUnita.jpg";
 import unitaBeforeImg from "../assets/universitasTulungagung/before.png";
 import unitaAfterImg from "../assets/universitasTulungagung/after.png";
 import yamahaCoverImg from "../assets/Yamaha/image.png";
-import yamahaCopyImg from "../assets/Yamaha/image copy.png";
+import yamahaImage1 from "../assets/Yamaha/gambar1.png";
 import yamahaLogo from "../assets/Yamaha/yamahalogo.png";
 import iconYamaha from "../assets/Yamaha/iconyamaha.png";
 import heroYamaha from "../assets/Yamaha/heroyamaha.jpg";
@@ -74,14 +74,20 @@ export const demos = [
     },
     icon: iconYamaha,
     category: "landing page",
-    image: yamahaCopyImg,
-    gallery: [homeRentalMotor],
+    image: yamahaImage1,
+    gallery: [yamahaImage1],
     client: "PT Yamaha Indonesia Motor Manufacturing (YIMM)",
     fullDescription: {
       id: "Website resmi PT Yamaha Indonesia Motor Manufacturing (YIMM) yang berfungsi sebagai portal informasi produk, layanan, dan aktivitas Yamaha di Indonesia. Platform ini menyajikan katalog motor lengkap (MAXi, Classy, Matic, Sport, Off-Road, Moped), simulasi kredit pembelian, booking servis berkala, pencarian dealer resmi, hingga portal berita racing dan keanggotaan My Yamaha Motor.",
       en: "Official website of PT Yamaha Indonesia Motor Manufacturing (YIMM) serving as a comprehensive information portal for Yamaha products, services, and activities in Indonesia. Features complete motorcycle catalogs (MAXi, Classy, Matic, Sport, Off-Road, Moped), credit simulation, periodic service booking, official dealer locator, racing news portal, and My Yamaha Motor membership.",
     },
-    techStack: ["React JS", "Tailwind CSS", "Framer Motion", "Vite", "Lucide Icons"],
+    techStack: [
+      "React JS",
+      "Tailwind CSS",
+      "Framer Motion",
+      "Vite",
+      "Lucide Icons",
+    ],
     features: [
       {
         id: "Credit Simulation (Simulasi Kredit Pembelian Motor)",
@@ -166,7 +172,13 @@ export const demos = [
       id: "Template landing page profesional untuk restoran makanan dengan tampilan modern dan interaktif, menampilkan katalog menu mie pedas, dimsum, dan minuman segar. Dilengkapi fitur custom level kepedasan, kalkulator pemesanan, dan lokasi cabang.",
       en: "Professional landing page template for food restaurant with modern interactive appearance, featuring spicy noodle catalog, dimsum, and fresh beverages. Equipped with spiciness level customizer, order calculator, and branch locator features.",
     },
-    techStack: ["React JS", "Tailwind CSS", "Framer Motion", "Vite", "Lucide Icons"],
+    techStack: [
+      "React JS",
+      "Tailwind CSS",
+      "Framer Motion",
+      "Vite",
+      "Lucide Icons",
+    ],
     features: [
       {
         id: "Katalog Menu Mie Pedas & Dimsum Interaktif",
@@ -203,7 +215,13 @@ export const demos = [
       id: "Portal digital resmi Universitas Tulungagung (UNITA), perguruan tinggi swasta terakreditasi B BAN-PT di Jawa Timur (Est. 18 Mei 1984). Menyajikan struktur navigasi terintegrasi untuk 5 Fakultas & 8 Prodi, E-Services Kampus (SIAKAD, Edlink E-Learning, E-Library, SISTER, PDDIKTI, KarirLink), serta Pendaftaran Mahasiswa Baru (PMB).",
       en: "Official digital portal of Universitas Tulungagung (UNITA), B BAN-PT accredited private university in East Java (Est. May 18, 1984). Featuring integrated navigation for 5 Faculties & 8 Study Programs, Campus E-Services (SIAKAD, Edlink E-Learning, E-Library, SISTER, PDDIKTI, KarirLink), and New Student Admissions (PMB).",
     },
-    techStack: ["React JS", "Tailwind CSS", "Framer Motion", "Vite", "Lucide Icons"],
+    techStack: [
+      "React JS",
+      "Tailwind CSS",
+      "Framer Motion",
+      "Vite",
+      "Lucide Icons",
+    ],
     features: [
       {
         id: "5 Fakultas & 8 Program Studi Terakreditasi BAN-PT",
