@@ -1,11 +1,12 @@
 // src/components/landing/LandingNavbar.jsx
-// Clean navbar for multiple landing pages
+// Clean navbar for multiple landing pages with hover effect
 
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 
 export function LandingNavbar({ category = "rental", waLink }) {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   // Different configurations based on category
   const getConfig = () => {
@@ -34,7 +35,6 @@ export function LandingNavbar({ category = "rental", waLink }) {
         };
 
       case "rental":
-      default:
         return {
           logo: (
             <div className="flex items-center gap-2">
@@ -51,22 +51,41 @@ export function LandingNavbar({ category = "rental", waLink }) {
             { href: "#racing", label: "Racing" },
           ],
           ctaText: "Contact",
-          bgColor: "bg-white/95",
-          textColor: "text-zinc-700",
+          textColor: "text-white",
           hoverColor: "hover:text-blue-500",
-          buttonBg: "bg-blue-500 hover:bg-blue-600",
+        };
+
+      default:
+        return {
+          logo: null,
+          navLinks: [],
+          ctaText: "",
+          textColor: "text-white",
+          hoverColor: "hover:text-blue-500",
         };
     }
   };
 
   const config = getConfig();
 
+  // Dynamic button style for rental when hovered
+  const getButtonClassName = () => {
+    if (category === "rental") {
+      return isHovered
+        ? "bg-blue-500 hover:bg-blue-600 text-black"
+        : "bg-white hover:bg-gray-100 text-zinc-900";
+    }
+    return category === "hotel"
+      ? "bg-amber-500 hover:bg-amber-600"
+      : "bg-blue-500 hover:bg-blue-600";
+  };
+
   return (
     <nav
-      className={`fixed top-0 w-full z-50 border-b ${category === "hotel" ? "border-white/10" : ""}`}
+      className="fixed top-0 w-full z-50 border-b border-zinc-200/50 bg-white/95 backdrop-blur-md shadow-sm"
       aria-label="Main Navigation"
     >
-      <div className={`${config.bgColor} backdrop-blur-md`}>
+      <div className="bg-white/95 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             {/* Logo */}
@@ -80,7 +99,7 @@ export function LandingNavbar({ category = "rental", waLink }) {
                 <a
                   key={link.href}
                   href={link.href}
-                  className={`text-sm font-medium ${category === "hotel" ? "text-zinc-300" : config.textColor} ${config.hoverColor} transition-colors`}
+                  className="text-sm font-medium text-zinc-700 hover:text-blue-500 transition-colors"
                 >
                   {link.label}
                 </a>
@@ -88,7 +107,7 @@ export function LandingNavbar({ category = "rental", waLink }) {
 
               <a
                 href={waLink}
-                className={`px-5 py-2.5 ${config.buttonBg} text-black font-semibold rounded-lg text-sm transition-colors`}
+                className="px-5 py-2.5 bg-blue-500 hover:bg-blue-600 text-black font-semibold rounded-lg text-sm transition-colors"
               >
                 {config.ctaText}
               </a>
@@ -97,7 +116,7 @@ export function LandingNavbar({ category = "rental", waLink }) {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileOpen(!isMobileOpen)}
-              className={`md:hidden p-2 ${category === "hotel" ? "text-zinc-300 hover:text-amber-500" : config.textColor} ${config.hoverColor}`}
+              className="md:hidden p-2 text-zinc-700 hover:text-blue-500"
               aria-label="Toggle menu"
             >
               {isMobileOpen ? <X size={20} /> : <Menu size={20} />}
@@ -106,16 +125,14 @@ export function LandingNavbar({ category = "rental", waLink }) {
 
           {/* Mobile Navigation */}
           {isMobileOpen && (
-            <div
-              className={`md:hidden mt-4 pb-4 border-t ${category === "hotel" ? "border-white/10" : ""}`}
-            >
+            <div className="md:hidden mt-4 pb-4 border-t border-zinc-200/50">
               <div className="flex flex-col gap-3 pt-4">
                 {config.navLinks.map((link) => (
                   <a
                     key={link.href}
                     href={link.href}
                     onClick={() => setIsMobileOpen(false)}
-                    className={`text-sm font-medium ${category === "hotel" ? "text-zinc-300" : config.textColor} ${config.hoverColor} py-2`}
+                    className="text-sm font-medium text-zinc-700 hover:text-blue-500 py-2"
                   >
                     {link.label}
                   </a>
@@ -124,7 +141,7 @@ export function LandingNavbar({ category = "rental", waLink }) {
                 <a
                   href={waLink}
                   onClick={() => setIsMobileOpen(false)}
-                  className={`px-5 py-2.5 ${config.buttonBg} text-black font-semibold rounded-lg text-sm text-center`}
+                  className="px-5 py-2.5 bg-blue-500 hover:bg-blue-600 text-black font-semibold rounded-lg text-sm text-center transition-colors"
                 >
                   {config.ctaText}
                 </a>
