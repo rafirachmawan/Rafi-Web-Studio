@@ -1,42 +1,38 @@
 import { useState } from "react";
-import { RentalNavbar } from "../../../components/landing/RentalNavbar";
+import { LandingNavbar } from "../../../components/landing/LandingNavbar";
 import { RentalHero } from "../../../sections/rental/RentalHero";
-import { RentalInventory } from "../../../sections/rental/RentalInventory";
-import { RentalFeatures } from "../../../sections/rental/RentalFeatures";
-import { RentalStats } from "../../../sections/rental/RentalStats";
-import { RentalTestimonials } from "../../../sections/rental/RentalTestimonials";
-import { RentalCTA } from "../../../sections/rental/RentalCTA";
+import { RentalInventoryGrid } from "../../../components/landing/RentalInventoryGrid";
+import { RentalService } from "../../../sections/rental/RentalService";
+import { RentalDealers } from "../../../sections/rental/RentalDealers";
+import { RentalRacing } from "../../../sections/rental/RentalRacing";
 import { RentalFooter } from "../../../components/landing/RentalFooter";
 import { rental } from "../../../data/rental";
 
 export default function RentalLanding() {
   const phone = rental.wa;
-  const waLink = `https://wa.me/${phone}?text=${encodeURIComponent("Halo Rental Jaya, saya ingin informasi booking mobil.")}`;
+  const waLink = `https://wa.me/${phone}?text=${encodeURIComponent("Halo Yamaha, saya ingin informasi produk.")}`;
 
   return (
-    <div className="bg-[#0b0b0e] text-zinc-200 min-h-screen font-sans selection:bg-red-500/30 overflow-x-hidden">
+    <div className="bg-white text-zinc-900 min-h-screen overflow-x-hidden">
       {/* Navigation */}
-      <RentalNavbar waLink={waLink} />
-      
+      <LandingNavbar category="rental" waLink={waLink} />
+
       {/* Main Content */}
       <main>
         {/* Hero Section */}
         <RentalHero />
-        
-        {/* Inventory Showcase */}
-        <RentalInventory />
-        
-        {/* Features */}
-        <RentalFeatures />
-        
-        {/* Stats & Achievement */}
-        <RentalStats />
-        
-        {/* Testimonials */}
-        <RentalTestimonials />
-        
-        {/* Call to Action */}
-        <RentalCTA />
+
+        {/* Products Grid */}
+        <RentalInventoryGrid />
+
+        {/* Service Section */}
+        <RentalService />
+
+        {/* Dealers Section */}
+        <RentalDealers />
+
+        {/* Racing Section */}
+        <RentalRacing />
       </main>
 
       {/* Footer */}
