@@ -1,9 +1,9 @@
 import sppCover from "../assets/sppShiningsun/Login.png";
-import gambar1 from "../assets/absensiShiningsun/gambar1.png";
-import gambar2 from "../assets/absensiShiningsun/gambar2.png";
-import jadwalBookingCover from "../assets/jadwalBookingClassShiningsun/Aplikasi Booking2.jpeg";
-import jadwalBookingImg1 from "../assets/jadwalBookingClassShiningsun/1.jpeg";
-import jadwalBookingImg2 from "../assets/jadwalBookingClassShiningsun/2.jpeg";
+import gambar1Absensi from "../assets/absensiShiningsun/gambar1.png";
+import gambar2Absensi from "../assets/absensiShiningsun/gambar2.png";
+import gambar1 from "../assets/jadwalBookingClassShiningsun/gambar1.png";
+import gambar2 from "../assets/jadwalBookingClassShiningsun/gambar2.png";
+import gambar3 from "../assets/jadwalBookingClassShiningsun/gambar3.png";
 import antrianBriCover from "../assets/sistemAntrianBank/sistem antrian bank bri.jpg";
 import tamiyaCover from "../assets/softwareBalapanTamiya/Dashboard Tamiya.jpeg";
 
@@ -21,8 +21,8 @@ export const realProjects = [
     },
     icon: "📅",
     category: "sistem berbasis web",
-    image: jadwalBookingImg1,
-    gallery: [jadwalBookingImg1, jadwalBookingImg2, jadwalBookingCover],
+    image: gambar1,
+    gallery: [gambar1, gambar2, gambar3],
     client: "Yayasan Shining Sun School",
     isReal: true,
     fullDescription: {
@@ -78,8 +78,8 @@ export const realProjects = [
     },
     icon: "📱",
     category: "mobile app",
-    image: gambar1,
-    gallery: [gambar1, gambar2],
+    image: gambar1Absensi,
+    gallery: [gambar1Absensi, gambar2Absensi],
     client: "Yayasan Shining Sun School",
     isReal: true,
     fullDescription: {
