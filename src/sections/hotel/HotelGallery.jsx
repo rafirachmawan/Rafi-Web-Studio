@@ -18,8 +18,16 @@ const GALLERY_ITEMS = [
 
 export function HotelGallery() {
   return (
-    <section id="gallery" className="py-24 px-6 bg-[#0f0f13]">
-      <div className="max-w-7xl mx-auto">
+    <section id="gallery" className="py-24 px-6 bg-gradient-to-br from-purple-50 via-violet-50 to-fuchsia-50">
+      {/* Subtle Background Pattern */}
+      <div 
+        className="absolute inset-0 opacity-40"
+        style={{
+          backgroundImage: "radial-gradient(circle at 20% 50%, rgba(147, 51, 234, 0.15) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(168, 85, 247, 0.15) 0%, transparent 50%)"
+        }}
+      />
+      
+      <div className="relative z-10 max-w-7xl mx-auto">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -27,14 +35,14 @@ export function HotelGallery() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-amber-500/30 bg-amber-500/10 mb-6">
-            <Camera className="w-3 h-3 text-amber-500" />
-            <span className="text-amber-500 text-xs font-bold uppercase tracking-widest">Visual Tour</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-purple-500/30 bg-purple-500/10 mb-6">
+            <Camera className="w-3 h-3 text-purple-600" />
+            <span className="text-purple-600 text-xs font-bold uppercase tracking-widest">Visual Tour</span>
           </div>
-          <h2 className="text-3xl md:text-5xl font-serif font-black text-white mb-4 tracking-tight">
+          <h2 className="text-3xl md:text-5xl font-black text-zinc-900 mb-4 tracking-tight">
             Photo Gallery
           </h2>
-          <p className="text-zinc-400 text-sm max-w-2xl mx-auto leading-relaxed">
+          <p className="text-zinc-600 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
             Jelajahi keindahan arsitektur Victorian dan fasilitas modern kami melalui galeri foto ini.
           </p>
         </motion.div>
@@ -48,24 +56,24 @@ export function HotelGallery() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="group relative bg-[#0a0a0c] border border-zinc-800 rounded-xl overflow-hidden hover:border-amber-500/40 transition-all duration-300"
+              className="group relative bg-white border border-zinc-200 rounded-xl overflow-hidden hover:border-purple-500/40 transition-all duration-300 shadow-sm hover:shadow-lg"
             >
               {/* Image Placeholder */}
-              <div className="aspect-[4/3] flex items-center justify-center p-6 bg-gradient-to-br from-zinc-800/50 to-zinc-900/50 group-hover:from-zinc-700/50 group-hover:to-zinc-800/50 transition-all duration-300">
+              <div className="aspect-[4/3] flex items-center justify-center p-6 bg-gradient-to-br from-zinc-100 to-zinc-200 group-hover:from-zinc-200 group-hover:to-zinc-300 transition-all duration-300">
                 <div className="text-center">
-                  <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-zinc-700/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <Camera className="w-8 h-8 text-zinc-500 group-hover:text-amber-500/80 transition-colors" />
+                  <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-white/70 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <Camera className="w-8 h-8 text-purple-600/40 group-hover:text-purple-600 transition-colors" />
                   </div>
                   <p className="text-zinc-400 text-xs font-medium uppercase tracking-wider mb-1">
                     {item.label}
                   </p>
-                  <p className="text-zinc-600 text-[10px]">Image placeholder</p>
+                  <p className="text-zinc-500 text-[10px]">Image placeholder</p>
                 </div>
               </div>
 
               {/* Label on hover */}
-              <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/90 via-black/70 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                <p className="text-white text-sm font-medium">{item.label}</p>
+              <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-white/95 via-white/80 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                <p className="text-zinc-900 text-sm font-medium">{item.label}</p>
               </div>
 
               {/* Disabled img tag */}
@@ -85,12 +93,12 @@ export function HotelGallery() {
           viewport={{ once: true }}
           className="mt-12 text-center"
         >
-          <p className="text-zinc-500 text-xs mb-4">Want to see more?</p>
+          <p className="text-zinc-500 text-xs sm:text-sm mb-4">Want to see more?</p>
           <a
             href="https://wa.me/085196221716?text=${encodeURIComponent('Halo Crown Victoria Hotel, saya ingin meminta katalog lengkap foto-foto hotel.')}"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-transparent border border-zinc-700 text-zinc-300 text-sm font-medium rounded-lg transition-all hover:border-amber-500/50 hover:text-amber-500 hover:bg-amber-500/5"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-white border border-zinc-300 text-zinc-700 text-sm font-medium rounded-lg transition-all hover:border-purple-600 hover:text-purple-600 hover:shadow-md"
           >
             Request Full Catalog
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

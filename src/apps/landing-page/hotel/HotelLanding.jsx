@@ -14,7 +14,7 @@ export default function HotelLanding() {
   const phone = "085196221716";
 
   return (
-    <div className="bg-[#0a0a0c] text-zinc-200 min-h-screen font-sans selection:bg-amber-500/30">
+    <div className="bg-white text-zinc-800 min-h-screen font-sans selection:bg-purple-500/30">
       <LandingNavbar category="hotel" waLink={`https://wa.me/${phone}`} />
 
       <main>

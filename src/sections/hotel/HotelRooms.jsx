@@ -37,8 +37,16 @@ const ROOMS_DATA = [
 
 export function HotelRooms({ phone }) {
   return (
-    <section id="rooms" className="py-24 px-6 bg-[#0f0f13]">
-      <div className="max-w-7xl mx-auto">
+    <section id="rooms" className="py-24 px-6 bg-gradient-to-br from-purple-50 via-violet-50 to-fuchsia-50">
+      {/* Subtle Background Pattern */}
+      <div 
+        className="absolute inset-0 opacity-40"
+        style={{
+          backgroundImage: "radial-gradient(circle at 20% 50%, rgba(147, 51, 234, 0.15) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(168, 85, 247, 0.15) 0%, transparent 50%)"
+        }}
+      />
+      
+      <div className="relative z-10 max-w-7xl mx-auto">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -46,14 +54,14 @@ export function HotelRooms({ phone }) {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-amber-500/30 bg-amber-500/10 mb-6">
-            <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-            <span className="text-amber-500 text-xs font-bold uppercase tracking-widest">Accommodations</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-purple-500/30 bg-purple-500/10 mb-6">
+            <span className="w-2 h-2 rounded-full bg-purple-600" />
+            <span className="text-purple-600 text-xs font-bold uppercase tracking-widest">Accommodations</span>
           </div>
-          <h2 className="text-3xl md:text-5xl font-serif font-black text-white mb-4 tracking-tight">
+          <h2 className="text-3xl md:text-5xl font-black text-zinc-900 mb-4 tracking-tight">
             Signature Rooms
           </h2>
-          <p className="text-zinc-400 text-sm max-w-2xl mx-auto leading-relaxed">
+          <p className="text-zinc-600 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
             Desain kamar klasik yang hangat dan menenangkan, disempurnakan dengan furnitur kayu mewah dan ornamen Victorian yang menakjubkan.
           </p>
         </motion.div>
@@ -67,29 +75,29 @@ export function HotelRooms({ phone }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.15 }}
-              className="group bg-[#0a0a0c] border border-zinc-800 rounded-2xl overflow-hidden hover:border-amber-500/30 transition-all duration-300"
+              className="group bg-white border border-zinc-200 rounded-2xl overflow-hidden hover:border-purple-500/40 transition-all duration-300 shadow-sm hover:shadow-lg"
             >
               {/* Image Placeholder */}
-              <div className="relative aspect-[4/3] bg-gradient-to-br from-zinc-800 to-zinc-900 overflow-hidden">
+              <div className="relative aspect-[4/3] bg-gradient-to-br from-zinc-100 to-zinc-200 overflow-hidden">
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="text-center px-6">
-                    <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-zinc-700/30 flex items-center justify-center">
-                      <svg className="w-8 h-8 text-zinc-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-white/70 flex items-center justify-center">
+                      <svg className="w-8 h-8 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                       </svg>
                     </div>
                     <p className="text-zinc-500 text-xs font-medium uppercase tracking-widest mb-2">
                       {room.name} Image
                     </p>
-                    <p className="text-zinc-600 text-[10px]">
+                    <p className="text-zinc-400 text-[10px]">
                       Replace with actual room photo
                     </p>
                   </div>
                 </div>
                 
                 {/* Size Badge */}
-                <div className="absolute top-4 right-4 px-3 py-1.5 rounded-lg bg-[#0a0a0c]/90 backdrop-blur-md border border-zinc-700/50">
-                  <span className="text-amber-500 text-xs font-bold uppercase tracking-wider">{room.size}</span>
+                <div className="absolute top-4 right-4 px-3 py-1.5 rounded-lg bg-white/90 backdrop-blur-md border border-zinc-200/50">
+                  <span className="text-purple-600 text-xs font-bold uppercase tracking-wider">{room.size}</span>
                 </div>
 
                 {/* Disabled img tag for future use */}
@@ -103,27 +111,27 @@ export function HotelRooms({ phone }) {
               {/* Content */}
               <div className="p-6">
                 <div className="flex justify-between items-start mb-4">
-                  <h3 className="text-xl font-bold text-white font-serif">{room.name}</h3>
+                  <h3 className="text-xl font-bold text-zinc-900 font-serif">{room.name}</h3>
                   <div className="text-right">
-                    <p className="text-amber-500 text-lg font-bold">Rp {room.price}</p>
-                    <p className="text-zinc-600 text-[10px] uppercase tracking-wider">per night</p>
+                    <p className="text-purple-600 text-lg font-bold">Rp {room.price}</p>
+                    <p className="text-zinc-500 text-[10px] uppercase tracking-wider">per night</p>
                   </div>
                 </div>
 
                 {/* Features */}
                 <div className="flex flex-wrap gap-2 mb-4">
                   {room.features.slice(0, 3).map((feature, idx) => (
-                    <span key={idx} className="inline-flex items-center gap-1 px-2 py-1 rounded bg-zinc-800/50 border border-zinc-700/50">
-                      <Check className="w-3 h-3 text-amber-500" />
-                      <span className="text-zinc-400 text-[10px]">{feature}</span>
+                    <span key={idx} className="inline-flex items-center gap-1 px-2 py-1 rounded bg-zinc-100 border border-zinc-200">
+                      <Check className="w-3 h-3 text-purple-600" />
+                      <span className="text-zinc-600 text-[10px]">{feature}</span>
                     </span>
                   ))}
                 </div>
 
                 {/* Amenities */}
-                <div className="flex flex-wrap gap-2 mb-4 pt-4 border-t border-zinc-800">
+                <div className="flex flex-wrap gap-2 mb-4 pt-4 border-t border-zinc-200">
                   {room.amenities.map((amenity, idx) => (
-                    <span key={idx} className="text-zinc-500 text-[10px] bg-zinc-900 px-2 py-1 rounded">
+                    <span key={idx} className="text-zinc-600 text-[10px] bg-zinc-50 px-2 py-1 rounded border border-zinc-200">
                       {amenity}
                     </span>
                   ))}
@@ -134,7 +142,7 @@ export function HotelRooms({ phone }) {
                   href={`https://wa.me/${phone}?text=${encodeURIComponent(`Halo Crown Victoria Hotel, saya ingin reservasi ${room.name}. Mohon informasikan ketersediaan dan harga.`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-3 bg-amber-600 text-white text-sm font-bold rounded-lg transition-all hover:bg-amber-500 w-full justify-center group/btn"
+                  className="inline-flex items-center gap-2 px-4 py-3 bg-purple-600 text-white text-sm font-bold rounded-lg transition-all hover:bg-purple-700 w-full justify-center group/btn"
                 >
                   Book Now
                   <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />

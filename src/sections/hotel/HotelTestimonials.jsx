@@ -27,8 +27,16 @@ const TESTIMONIALS = [
 
 export function HotelTestimonials() {
   return (
-    <section className="py-24 px-6 bg-[#0a0a0c]">
-      <div className="max-w-7xl mx-auto">
+    <section className="py-24 px-6 bg-gradient-to-br from-purple-50 via-violet-50 to-fuchsia-50">
+      {/* Subtle Background Pattern */}
+      <div 
+        className="absolute inset-0 opacity-40"
+        style={{
+          backgroundImage: "radial-gradient(circle at 20% 50%, rgba(147, 51, 234, 0.15) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(168, 85, 247, 0.15) 0%, transparent 50%)"
+        }}
+      />
+      
+      <div className="relative z-10 max-w-7xl mx-auto">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -36,15 +44,15 @@ export function HotelTestimonials() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-amber-500/30 bg-amber-500/10 mb-6">
-            <Star className="w-3 h-3 text-amber-500 fill-current" />
-            <span className="text-amber-500 text-xs font-bold uppercase tracking-widest">Guest Reviews</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-purple-500/30 bg-purple-500/10 mb-6">
+            <Star className="w-3 h-3 text-purple-600 fill-current" />
+            <span className="text-purple-600 text-xs font-bold uppercase tracking-widest">Guest Reviews</span>
           </div>
-          <h2 className="text-3xl md:text-5xl font-serif font-black text-white mb-4 tracking-tight">
+          <h2 className="text-3xl md:text-5xl font-black text-zinc-900 mb-4 tracking-tight">
             What Guests Say
           </h2>
-          <p className="text-zinc-400 text-sm max-w-2xl mx-auto leading-relaxed">
-            Kehidupan nyata dari tamu yang telahExperience Crown Victoria Hotel
+          <p className="text-zinc-600 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
+            Kehidupan nyata dari tamu yang telah Experience Crown Victoria Hotel
           </p>
         </motion.div>
 
@@ -57,31 +65,31 @@ export function HotelTestimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.15 }}
-              className="group bg-[#0f0f13] border border-zinc-800 rounded-xl p-6 hover:border-amber-500/30 transition-all duration-300"
+              className="group bg-white border border-zinc-200 rounded-xl p-6 hover:border-purple-500/40 transition-all duration-300 shadow-sm hover:shadow-lg"
             >
               {/* Stars */}
               <div className="flex gap-1 mb-4">
                 {[...Array(item.rating)].map((_, i) => (
-                  <Star key={i} size={14} className="text-amber-500 fill-current" />
+                  <Star key={i} size={14} className="text-purple-600 fill-current" />
                 ))}
               </div>
 
               {/* Quote */}
-              <p className="text-zinc-300 text-sm leading-relaxed mb-6 italic group-hover:text-zinc-200 transition-colors">
+              <p className="text-zinc-700 text-sm sm:text-base leading-relaxed mb-6 italic group-hover:text-zinc-800 transition-colors">
                 "{item.text}"
               </p>
 
               {/* Author */}
-              <div className="flex items-center gap-3 pt-4 border-t border-zinc-800">
+              <div className="flex items-center gap-3 pt-4 border-t border-zinc-200">
                 {/* Avatar placeholder */}
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-amber-600/20 to-zinc-800 flex items-center justify-center border border-amber-500/20">
-                  <span className="text-amber-500 font-bold text-sm">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-100 to-zinc-100 flex items-center justify-center border border-purple-200">
+                  <span className="text-purple-600 font-bold text-sm">
                     {item.name.split(' ').map(n => n[0]).join('').toUpperCase()}
                   </span>
                 </div>
                 
                 <div>
-                  <div className="font-bold text-white text-sm">{item.name}</div>
+                  <div className="font-bold text-zinc-900 text-sm">{item.name}</div>
                   <div className="text-zinc-500 text-[10px] uppercase tracking-wider">{item.role}</div>
                 </div>
               </div>

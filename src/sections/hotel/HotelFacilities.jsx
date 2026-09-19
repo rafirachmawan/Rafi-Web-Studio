@@ -66,8 +66,16 @@ const FACILITIES = [
 
 export function HotelFacilities() {
   return (
-    <section id="facilities" className="py-24 px-6 bg-[#0a0a0c]">
-      <div className="max-w-7xl mx-auto">
+    <section id="facilities" className="py-24 px-6 bg-gradient-to-br from-purple-50 via-violet-50 to-fuchsia-50">
+      {/* Subtle Background Pattern */}
+      <div 
+        className="absolute inset-0 opacity-40"
+        style={{
+          backgroundImage: "radial-gradient(circle at 20% 50%, rgba(147, 51, 234, 0.15) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(168, 85, 247, 0.15) 0%, transparent 50%)"
+        }}
+      />
+      
+      <div className="relative z-10 max-w-7xl mx-auto">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -75,14 +83,14 @@ export function HotelFacilities() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-amber-500/30 bg-amber-500/10 mb-6">
-            <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-            <span className="text-amber-500 text-xs font-bold uppercase tracking-widest">Amenities</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-purple-500/30 bg-purple-500/10 mb-6">
+            <span className="w-2 h-2 rounded-full bg-purple-600" />
+            <span className="text-purple-600 text-xs font-bold uppercase tracking-widest">Amenities</span>
           </div>
-          <h2 className="text-3xl md:text-5xl font-serif font-black text-white mb-4 tracking-tight">
+          <h2 className="text-3xl md:text-5xl font-black text-zinc-900 mb-4 tracking-tight">
             Hotel Facilities
           </h2>
-          <p className="text-zinc-400 text-sm max-w-2xl mx-auto leading-relaxed">
+          <p className="text-zinc-600 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
             Kami menyediakan fasilitas lengkap kelas atas untuk mengoptimalkan pengalaman Anda selama di Tulungagung.
           </p>
         </motion.div>
@@ -96,15 +104,15 @@ export function HotelFacilities() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="group relative bg-[#0f0f13] border border-zinc-800 rounded-xl overflow-hidden hover:border-amber-500/30 transition-all duration-300"
+              className="group relative bg-white border border-zinc-200 rounded-xl overflow-hidden hover:border-purple-500/40 transition-all duration-300 shadow-sm hover:shadow-lg"
             >
               {/* Image Placeholder Area */}
-              <div className="aspect-video bg-gradient-to-br from-zinc-800 to-zinc-900 flex items-center justify-center relative group-hover:bg-gradient-to-br from-zinc-700 to-zinc-800 transition-all">
+              <div className="aspect-video bg-gradient-to-br from-zinc-100 to-zinc-200 flex items-center justify-center relative group-hover:bg-gradient-to-br from-zinc-200 to-zinc-300 transition-all">
                 <div className="text-center px-4">
                   <facility.icon 
-                    className={`w-12 h-12 mx-auto mb-3 opacity-50 group-hover:opacity-100 transition-opacity`} 
+                    className={`w-12 h-12 mx-auto mb-3 opacity-40 text-purple-600 group-hover:opacity-100 transition-opacity`} 
                   />
-                  <p className="text-zinc-500 text-[10px] font-medium uppercase tracking-widest">
+                  <p className="text-zinc-400 text-[10px] font-medium uppercase tracking-widest">
                     Facility Image
                   </p>
                 </div>
@@ -119,10 +127,10 @@ export function HotelFacilities() {
 
               {/* Content */}
               <div className="p-4">
-                <h3 className="text-white font-bold text-sm mb-2 group-hover:text-amber-500 transition-colors">
+                <h3 className="text-zinc-900 font-bold text-sm mb-2 group-hover:text-purple-600 transition-colors">
                   {facility.title}
                 </h3>
-                <p className="text-zinc-500 text-xs leading-relaxed">
+                <p className="text-zinc-600 text-xs sm:text-sm leading-relaxed">
                   {facility.desc}
                 </p>
               </div>
@@ -135,22 +143,22 @@ export function HotelFacilities() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-12 p-6 bg-gradient-to-r from-zinc-900/50 to-zinc-800/30 border border-zinc-800/50 rounded-xl"
+          className="mt-12 p-6 bg-white border border-zinc-200 rounded-xl shadow-sm"
         >
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="text-center md:text-left">
-              <h4 className="text-white font-bold text-sm mb-1">Need More Information?</h4>
-              <p className="text-zinc-500 text-xs">Our concierge team is available 24/7</p>
+              <h4 className="text-zinc-900 font-bold text-sm sm:text-base mb-1">Need More Information?</h4>
+              <p className="text-zinc-600 text-xs sm:text-sm">Our concierge team is available 24/7</p>
             </div>
             <div className="flex items-center gap-3">
-              <div className="flex items-center gap-2 text-zinc-400 text-xs">
-                <Clock className="w-4 h-4 text-amber-500" />
+              <div className="flex items-center gap-2 text-zinc-600 text-xs">
+                <Clock className="w-4 h-4 text-purple-600" />
                 <span>Open 24 hours</span>
               </div>
-              <div className="h-4 w-px bg-zinc-700" />
+              <div className="h-4 w-px bg-zinc-300" />
               <a 
                 href="#contact"
-                className="text-amber-500 text-xs font-bold hover:text-amber-400 transition-colors"
+                className="text-purple-600 text-xs sm:text-sm font-bold hover:text-purple-700 transition-colors"
               >
                 Contact Concierge →
               </a>

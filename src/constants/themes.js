@@ -105,8 +105,9 @@ export const themes = {
   },
   
   hotel: {
-    // Luxury Hotel Theme
-    primary: '#F59E0B',
+    // Luxury Hotel Theme with Purple Accent
+    primary: '#9333ea',          // Purple-600
+    primaryLight: '#a855f7',     // Purple-500
     secondary: '#18181B',
     background: '#0B0B0B',
     surface: '#141414',

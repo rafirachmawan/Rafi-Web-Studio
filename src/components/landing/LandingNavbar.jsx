@@ -25,9 +25,9 @@ export function LandingNavbar({ category = "rental", waLink }) {
         return {
           logo: (
             <div className="flex items-center gap-2">
-              <span className="text-amber-500 font-black text-xl">HOTEL</span>
+              <span className="text-purple-600 font-black text-xl">CROWN VICTORIA</span>
               <span className="text-zinc-900 text-xs font-semibold tracking-widest uppercase hidden sm:block">
-                LUXURY
+                HOTEL
               </span>
             </div>
           ),
@@ -35,13 +35,12 @@ export function LandingNavbar({ category = "rental", waLink }) {
             { href: "#rooms", label: "Rooms" },
             { href: "#facilities", label: "Facilities" },
             { href: "#gallery", label: "Gallery" },
-            { href: "#testimonials", label: "Reviews" },
+            { href: "#reviews", label: "Reviews" },
           ],
           ctaText: "Book Now",
-          bgColor: "bg-[#0a0a0c]/95",
-          textColor: "text-zinc-300",
-          hoverColor: "hover:text-amber-500",
-          buttonBg: "bg-amber-500 hover:bg-amber-600",
+          textColor: "text-zinc-800",
+          hoverColor: "hover:text-purple-600",
+          buttonBg: "bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800",
         };
 
       case "rental":
@@ -89,24 +88,20 @@ export function LandingNavbar({ category = "rental", waLink }) {
 
   const config = getConfig();
 
-  // Dynamic button style for rental when hovered
-  const getButtonClassName = () => {
-    if (category === "rental") {
-      return isHovered
-        ? "bg-blue-500 hover:bg-blue-600 text-black"
-        : "bg-white hover:bg-gray-100 text-zinc-900";
+  // Dynamic navbar behavior based on category
+  const getNavBackground = () => {
+    if (category === "rental" || category === "hotel") {
+      return scrolled 
+        ? 'bg-white shadow-lg' 
+        : 'bg-white/95 backdrop-blur-md';
     }
-    return category === "hotel"
-      ? "bg-amber-500 hover:bg-amber-600"
-      : "bg-blue-500 hover:bg-blue-600";
+    return 'bg-transparent';
   };
 
   return (
     // Navbar - Clean Minimalist Design
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? "bg-white shadow-lg" : "bg-white/95 backdrop-blur-md"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${getNavBackground()}`}
     >
       <div className="flex items-center justify-between h-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         {/* Logo */}
@@ -142,7 +137,11 @@ export function LandingNavbar({ category = "rental", waLink }) {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileOpen(!isMobileOpen)}
-            className="md:hidden p-2 text-zinc-700 hover:text-blue-600 rounded-lg hover:bg-zinc-100 transition-all duration-300"
+            className={`md:hidden p-2 rounded-lg hover:bg-zinc-100 transition-all duration-300 ${
+              category === 'rental' || category === 'hotel'
+                ? 'text-zinc-700 hover:text-zinc-900'
+                : 'text-white hover:text-zinc-300'
+            }`}
             aria-label="Toggle menu"
           >
             {isMobileOpen ? <X size={20} /> : <Menu size={20} />}
