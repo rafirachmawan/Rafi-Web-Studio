@@ -25,7 +25,9 @@ export function LandingNavbar({ category = "rental", waLink }) {
         return {
           logo: (
             <div className="flex items-center gap-2">
-              <span className="text-purple-600 font-black text-xl">CROWN VICTORIA</span>
+              <span className="text-purple-600 font-black text-xl">
+                CROWN VICTORIA
+              </span>
               <span className="text-zinc-900 text-xs font-semibold tracking-widest uppercase hidden sm:block">
                 HOTEL
               </span>
@@ -40,7 +42,8 @@ export function LandingNavbar({ category = "rental", waLink }) {
           ctaText: "Book Now",
           textColor: "text-zinc-800",
           hoverColor: "hover:text-purple-600",
-          buttonBg: "bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800",
+          buttonBg:
+            "bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800",
         };
 
       case "rental":
@@ -91,11 +94,9 @@ export function LandingNavbar({ category = "rental", waLink }) {
   // Dynamic navbar behavior based on category
   const getNavBackground = () => {
     if (category === "rental" || category === "hotel") {
-      return scrolled 
-        ? 'bg-white shadow-lg' 
-        : 'bg-white/95 backdrop-blur-md';
+      return scrolled ? "bg-white shadow-lg" : "bg-white/95 backdrop-blur-md";
     }
-    return 'bg-transparent';
+    return "bg-transparent";
   };
 
   return (
@@ -138,9 +139,9 @@ export function LandingNavbar({ category = "rental", waLink }) {
           <button
             onClick={() => setIsMobileOpen(!isMobileOpen)}
             className={`md:hidden p-2 rounded-lg hover:bg-zinc-100 transition-all duration-300 ${
-              category === 'rental' || category === 'hotel'
-                ? 'text-zinc-700 hover:text-zinc-900'
-                : 'text-white hover:text-zinc-300'
+              category === "rental" || category === "hotel"
+                ? "text-zinc-700 hover:text-zinc-900"
+                : "text-white hover:text-zinc-300"
             }`}
             aria-label="Toggle menu"
           >

@@ -1,19 +1,20 @@
 // src/sections/hotel/HotelHero.jsx
 // Clean Minimalist Hero Section for Crown Victoria Hotel
 
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 
 export function HotelHero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-50 via-violet-50 to-fuchsia-50 overflow-hidden">
       {/* Subtle Background Pattern */}
-      <div 
+      <div
         className="absolute inset-0 opacity-50"
         style={{
-          backgroundImage: "radial-gradient(circle at 20% 50%, rgba(147, 51, 234, 0.2) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(168, 85, 247, 0.2) 0%, transparent 50%)"
+          backgroundImage:
+            "radial-gradient(circle at 20% 50%, rgba(147, 51, 234, 0.2) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(168, 85, 247, 0.2) 0%, transparent 50%)",
         }}
       />
-      
+
       {/* Decorative Elements */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-400/20 rounded-full blur-3xl" />
       <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-violet-400/20 rounded-full blur-3xl" />
@@ -40,8 +41,10 @@ export function HotelHero() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-zinc-900 mb-6 leading-tight"
         >
-          Where Victorian<br />
-          <span className="text-purple-600">Elegance Meets</span><br />
+          Where Victorian
+          <br />
+          <span className="text-purple-600">Elegance Meets</span>
+          <br />
           Modern Luxury
         </motion.h1>
 
@@ -52,7 +55,8 @@ export function HotelHero() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-zinc-600 text-base sm:text-lg max-w-2xl mx-auto mb-12 leading-relaxed"
         >
-          Nikmati fasilitas bintang 4 terbaik dengan pesona arsitektur khas Victorian yang klasik dan layanan ramah di pusat kota Tulungagung.
+          Nikmati fasilitas bintang 4 terbaik dengan pesona arsitektur khas
+          Victorian yang klasik dan layanan ramah di pusat kota Tulungagung.
         </motion.p>
 
         {/* CTA Buttons */}
@@ -82,7 +86,9 @@ export function HotelHero() {
             className="group px-8 py-4 bg-white border-2 border-zinc-200 hover:border-purple-600 text-zinc-800 hover:text-purple-600 font-bold rounded-full text-sm sm:text-base transition-all duration-300 hover:shadow-xl hover:scale-105 active:scale-95 inline-flex items-center gap-2"
           >
             <span>View Facilities</span>
-            <span className="group-hover:translate-x-1 transition-transform">→</span>
+            <span className="group-hover:translate-x-1 transition-transform">
+              →
+            </span>
           </a>
         </motion.div>
       </div>
