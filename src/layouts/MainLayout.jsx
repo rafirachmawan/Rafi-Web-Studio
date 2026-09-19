@@ -1,16 +1,33 @@
+import { useLocation } from "react-router-dom";
 import Navbar from "../components/common/Navbar";
 import Footer from "../components/common/Footer";
 import CustomCursor from "../components/common/CustomCursor";
 
 export default function MainLayout({ children }) {
+  const location = useLocation();
+
+  // Landing pages have their own navbar
+  const isLandingPage = [
+    "/rental",
+    "/hotel",
+    "/coffee",
+    "/resto",
+    "/sekolah",
+    "/loundry",
+    "/umroh",
+    "/unita",
+  ].includes(location.pathname);
+
   return (
     <div className="min-h-screen bg-[#fafafc] text-zinc-900 dark:bg-[#050508] dark:text-zinc-100 font-sans relative overflow-x-hidden transition-colors duration-300">
-      
       {/* CUSTOM CURSOR */}
       <CustomCursor />
 
       {/* AMBIENT BACKGROUND LAYER (DESKTOP ONLY) */}
-      <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden dark:hidden hidden md:block" aria-hidden="true">
+      <div
+        className="pointer-events-none fixed inset-0 z-0 overflow-hidden dark:hidden hidden md:block"
+        aria-hidden="true"
+      >
         {/* Blob 1 */}
         <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-gradient-to-br from-amber-300/25 to-orange-200/15 blur-[120px] rounded-full" />
         {/* Blob 2 */}
@@ -28,15 +45,15 @@ export default function MainLayout({ children }) {
       {/* Dark mode glow */}
       <div className="absolute top-[-200px] left-1/2 -translate-x-1/2 w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-amber-500/10 blur-[100px] rounded-full hidden dark:block pointer-events-none" />
 
-      {/* NAVBAR */}
-      <Navbar />
+      {/* NAVBAR - Hide on landing pages */}
+      {!isLandingPage && <Navbar />}
 
       <main className="relative z-10 min-h-screen w-full flex flex-col pt-20 md:pt-24">
         {children}
       </main>
 
-      {/* FOOTER */}
-      <Footer />
+      {/* FOOTER - Hide on landing pages */}
+      {!isLandingPage && <Footer />}
     </div>
   );
 }

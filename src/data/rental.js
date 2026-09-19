@@ -14,8 +14,7 @@ export const rental = {
   metaDescription:
     "PT Yamaha Indonesia Motor Manufacturing dipercaya masyarakat dalam memilih kendaraan roda dua terbaik, dengan info spesifikasi, fitur & harga motor Yamaha terbaru 2026.",
 
-  tagline:
-    "Revs Your Heart — Portal Informasi Produk, Layanan & Aktivitas Yamaha Indonesia",
+  tagline: "Portal Informasi Produk, Layanan & Aktivitas Yamaha Indonesia",
   established: "1974",
 
   // Contact Information

@@ -1,13 +1,22 @@
 // src/components/landing/LandingNavbar.jsx
 // Clean navbar for multiple landing pages with hover effect
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import yamahaIcon from "../../assets/Yamaha/iconyamaha.png";
 
 export function LandingNavbar({ category = "rental", waLink }) {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  // Track scroll for navbar background change
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // Different configurations based on category
   const getConfig = () => {
@@ -39,10 +48,19 @@ export function LandingNavbar({ category = "rental", waLink }) {
         return {
           logo: (
             <div className="flex items-center gap-2">
-              <span className="text-blue-500 font-black text-xl">YAMAHA</span>
-              <span className="text-zinc-900 text-xs font-semibold tracking-widest uppercase hidden sm:block">
-                Indonesia
-              </span>
+              <img
+                src={yamahaIcon}
+                alt="Yamaha Logo"
+                className="w-12 h-12 md:w-14 md:h-14 object-contain"
+              />
+              <div className="flex flex-col">
+                <span className="text-zinc-900 font-black text-sm tracking-widest uppercase">
+                  YAMAHA
+                </span>
+                <span className="text-zinc-600 text-[10px] font-medium tracking-wide uppercase hidden sm:block">
+                  Motor Indonesia
+                </span>
+              </div>
             </div>
           ),
           navLinks: [
@@ -52,8 +70,10 @@ export function LandingNavbar({ category = "rental", waLink }) {
             { href: "#racing", label: "Racing" },
           ],
           ctaText: "Contact",
-          textColor: "text-white",
-          hoverColor: "hover:text-blue-500",
+          textColor: "text-zinc-800",
+          hoverColor: "hover:text-blue-600",
+          buttonBg:
+            "bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800",
         };
 
       default:
@@ -82,39 +102,39 @@ export function LandingNavbar({ category = "rental", waLink }) {
   };
 
   return (
-    <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-auto min-w-[700px]">
-      <div className="bg-white/80 backdrop-blur-xl rounded-full px-6 py-3 shadow-[0_8px_32px_rgba(0,0,0,0.1)] border border-white/40 transition-all duration-300 hover:shadow-[0_12px_40px_rgba(59,130,246,0.2)] hover:border-blue-200">
-        <div className="flex items-center justify-between gap-2">
-          {/* Logo */}
-          <a
-            href="#"
-            className="flex-shrink-0 transition-transform duration-300 hover:scale-105"
-          >
-            {/* Yamaha Logo */}
-            <img
-              src={yamahaIcon}
-              alt="Yamaha Logo"
-              className="w-8 h-8 object-contain"
-            />
-          </a>
+    // Navbar - Clean Minimalist Design
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled ? "bg-white shadow-lg" : "bg-white/95 backdrop-blur-md"
+      }`}
+    >
+      <div className="flex items-center justify-between h-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        {/* Logo */}
+        <a
+          href="#"
+          className="flex-shrink-0 transition-transform duration-300 hover:scale-105"
+        >
+          {config.logo}
+        </a>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-1">
-            {config.navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-sm font-medium text-zinc-700 hover:text-blue-500 px-4 py-2 rounded-lg transition-all duration-300 hover:bg-blue-50 hover:translate-y-[-2px]"
-              >
-                {link.label}
-              </a>
-            ))}
-          </div>
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex items-center gap-1">
+          {config.navLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className={`text-sm font-semibold ${config.textColor} ${config.hoverColor} px-4 py-2.5 rounded-lg transition-all duration-300 relative after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-0.5 after:bg-current after:rounded-full hover:after:w-full after:transition-all after:duration-300`}
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
 
+        <div className="flex items-center gap-3">
           {/* Contact Button */}
           <a
             href={waLink}
-            className="flex-shrink-0 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold px-6 py-2.5 rounded-full text-sm shadow-lg shadow-blue-500/30 transition-all duration-300 hover:shadow-blue-500/50 hover:scale-105 active:scale-95"
+            className={`flex-shrink-0 ${config.buttonBg} text-white font-semibold px-6 py-2.5 rounded-full text-sm shadow-md transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95`}
           >
             {config.ctaText}
           </a>
@@ -122,39 +142,39 @@ export function LandingNavbar({ category = "rental", waLink }) {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileOpen(!isMobileOpen)}
-            className="md:hidden p-2 text-zinc-700 hover:text-blue-500 rounded-lg hover:bg-blue-50 transition-all duration-300"
+            className="md:hidden p-2 text-zinc-700 hover:text-blue-600 rounded-lg hover:bg-zinc-100 transition-all duration-300"
             aria-label="Toggle menu"
           >
             {isMobileOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
-
-        {/* Mobile Navigation */}
-        {isMobileOpen && (
-          <div className="md:hidden mt-4 pb-4 border-t border-zinc-200/50 pt-4 animate-in slide-in-from-top-2 duration-300">
-            <div className="flex flex-col gap-2">
-              {config.navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setIsMobileOpen(false)}
-                  className="text-sm font-medium text-zinc-700 hover:text-blue-500 hover:bg-blue-50 px-4 py-3 rounded-lg transition-all duration-300"
-                >
-                  {link.label}
-                </a>
-              ))}
-
-              <a
-                href={waLink}
-                onClick={() => setIsMobileOpen(false)}
-                className="mt-2 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold px-6 py-3 rounded-full text-sm shadow-lg shadow-blue-500/30 transition-all duration-300 hover:shadow-blue-500/50 hover:scale-105 text-center"
-              >
-                {config.ctaText}
-              </a>
-            </div>
-          </div>
-        )}
       </div>
+
+      {/* Mobile Navigation */}
+      {isMobileOpen && (
+        <div className="md:hidden border-t border-zinc-200 bg-white animate-in slide-in-from-top-2 duration-300">
+          <div className="flex flex-col p-4 gap-2">
+            {config.navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={() => setIsMobileOpen(false)}
+                className={`${config.textColor} font-medium px-4 py-3 rounded-lg transition-all duration-300 ${config.hoverColor} hover:bg-zinc-50`}
+              >
+                {link.label}
+              </a>
+            ))}
+
+            <a
+              href={waLink}
+              onClick={() => setIsMobileOpen(false)}
+              className={`mt-2 ${config.buttonBg} text-white font-semibold px-6 py-3 rounded-full text-sm shadow-md text-center`}
+            >
+              {config.ctaText}
+            </a>
+          </div>
+        </div>
+      )}
     </nav>
   );
 }
