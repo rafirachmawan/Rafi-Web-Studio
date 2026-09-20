@@ -1,95 +1,123 @@
-import logoMieGacoan from "../../../assets/mieGacoan/logoMieGacoan.png";
-import { Heart, MapPin, Phone } from "lucide-react";
+import { MapPin, Phone, Clock, MessageCircle, Heart, UtensilsCrossed } from "lucide-react";
+import { restoInfo } from "../data/resto";
 
 export function RestoFooter() {
   return (
-    <footer className="bg-white border-t border-stone-200 pt-16 pb-8 px-6">
+    <footer className="bg-slate-900 text-slate-300 border-t border-purple-950/60 pt-16 pb-8 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-14">
           {/* Brand Column */}
-          <div className="md:col-span-2">
-            <img src={logoMieGacoan} alt="Mie Gacoan" className="h-16 w-auto object-contain mb-6" />
-            <p className="text-zinc-600 text-sm leading-relaxed mb-6 max-w-md">
-              Mie Gacoan Tulungagung - Mie pedas no.1 Indonesia dengan bumbu rahasia yang otentik dan menggugah selera.
+          <div className="md:col-span-2 space-y-4">
+            <div className="flex items-center gap-3">
+              <img
+                src={restoInfo.logo}
+                alt="Mie Gacoan"
+                className="h-12 w-auto object-contain bg-white rounded-lg p-1"
+                onError={(e) => {
+                  e.target.style.display = 'none';
+                }}
+              />
+              <div>
+                <span className="font-black text-xl tracking-tight text-white block">
+                  MIE GACOAN
+                </span>
+                <span className="text-xs text-violet-400 font-semibold tracking-wider uppercase">
+                  Mojokerto • Jawa Timur
+                </span>
+              </div>
+            </div>
+
+            <p className="text-slate-400 text-xs sm:text-sm leading-relaxed max-w-md">
+              Mie pedas no.1 di Indonesia dengan bumbu rahasia otentik, dimsum gurih renyah, dan aneka minuman segar. Buka 24 Jam melayani seluruh pecinta kuliner pedas.
             </p>
-            <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 rounded-lg bg-stone-100 flex items-center justify-center hover:bg-[#db2777] transition-all group">
-                <Heart className="w-5 h-5 text-zinc-600 group-hover:text-white" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-lg bg-stone-100 flex items-center justify-center hover:bg-[#db2777] transition-all group">
-                <MapPin className="w-5 h-5 text-zinc-600 group-hover:text-white" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-lg bg-stone-100 flex items-center justify-center hover:bg-[#db2777] transition-all group">
-                <Phone className="w-5 h-5 text-zinc-600 group-hover:text-white" />
+
+            <div className="flex gap-2.5 pt-2">
+              <a
+                href={restoInfo.waOrderUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-violet-600/30 hover:bg-violet-600 text-violet-300 hover:text-white text-xs font-semibold transition-all border border-violet-500/30"
+              >
+                <MessageCircle className="w-4 h-4" />
+                <span>Order WA ({restoInfo.phoneDisplay})</span>
               </a>
             </div>
           </div>
 
           {/* Quick Links Column */}
           <div>
-            <h4 className="font-black text-slate-900 text-xs uppercase tracking-widest mb-6">Quick Links</h4>
-            <ul className="space-y-3">
+            <h4 className="font-bold text-white text-xs uppercase tracking-widest mb-4 text-violet-300">
+              Navigasi
+            </h4>
+            <ul className="space-y-2.5 text-xs sm:text-sm">
               <li>
-                <a href="#menu" className="text-zinc-600 text-sm hover:text-[#db2777] transition-colors">
-                  Menu
+                <a href="#menu" className="text-slate-400 hover:text-violet-400 transition-colors flex items-center gap-2">
+                  <span className="text-violet-500">›</span> Daftar Menu (46 Item)
                 </a>
               </li>
               <li>
-                <a href="#customizer" className="text-zinc-600 text-sm hover:text-[#db2777] transition-colors">
-                  Custom Order
+                <a href="#features" className="text-slate-400 hover:text-violet-400 transition-colors flex items-center gap-2">
+                  <span className="text-violet-500">›</span> Keunggulan Kami
                 </a>
               </li>
               <li>
-                <a href="#locations" className="text-zinc-600 text-sm hover:text-[#db2777] transition-colors">
-                  Locations
+                <a href="#info" className="text-slate-400 hover:text-violet-400 transition-colors flex items-center gap-2">
+                  <span className="text-violet-500">›</span> Jam Operasional
                 </a>
               </li>
               <li>
-                <a href="#franchise" className="text-zinc-600 text-sm hover:text-[#db2777] transition-colors">
-                  Franchise
+                <a href="#cta" className="text-slate-400 hover:text-violet-400 transition-colors flex items-center gap-2">
+                  <span className="text-violet-500">›</span> Reservasi Rombongan
                 </a>
               </li>
             </ul>
           </div>
 
-          {/* Contact Column */}
+          {/* Contact & Location Column */}
           <div>
-            <h4 className="font-black text-slate-900 text-xs uppercase tracking-widest mb-6">Contact Us</h4>
-            <ul className="space-y-3">
-              <li className="flex items-start gap-2 text-zinc-600 text-sm">
-                <MapPin className="w-4 h-4 text-[#db2777] shrink-0 mt-0.5" />
-                <span>Tulungagung, Jawa Timur</span>
+            <h4 className="font-bold text-white text-xs uppercase tracking-widest mb-4 text-violet-300">
+              Lokasi & Kontak
+            </h4>
+            <ul className="space-y-3 text-xs sm:text-sm">
+              <li className="flex items-start gap-2.5 text-slate-400">
+                <MapPin className="w-4 h-4 text-violet-400 shrink-0 mt-0.5" />
+                <span className="leading-snug">{restoInfo.address}</span>
               </li>
-              <li className="flex items-center gap-2 text-zinc-600 text-sm">
-                <Phone className="w-4 h-4 text-[#db2777] shrink-0" />
-                <span>+62 812-3456-7890</span>
+              <li className="flex items-center gap-2.5 text-slate-400">
+                <Clock className="w-4 h-4 text-violet-400 shrink-0" />
+                <span>{restoInfo.hours}</span>
               </li>
-              <li className="flex items-center gap-2 text-zinc-600 text-sm">
-                <Phone className="w-4 h-4 text-[#db2777] shrink-0" />
-                <a href="tel:+6281234567890" className="hover:text-[#db2777] transition-colors">
-                  +62 812-3456-7890
+              <li className="flex items-center gap-2.5 text-slate-400">
+                <Phone className="w-4 h-4 text-violet-400 shrink-0" />
+                <a
+                  href={restoInfo.waOrderUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-violet-400 transition-colors font-medium text-white"
+                >
+                  {restoInfo.phoneDisplay} (WA)
                 </a>
+              </li>
+              <li className="text-[11px] text-slate-500 pl-6.5">
+                Reservasi: {restoInfo.reservationContact}
               </li>
             </ul>
           </div>
         </div>
 
         {/* Divider */}
-        <div className="w-full h-px bg-stone-200 mb-8" />
-        
+        <div className="w-full h-px bg-slate-800 mb-6" />
+
         {/* Copyright Bar */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-zinc-500 text-xs">
-            © {new Date().getFullYear()} Mie Gacoan Tulungagung. All rights reserved.
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
+          <p>
+            © {new Date().getFullYear()} {restoInfo.name}. All rights reserved.
           </p>
-          <div className="flex items-center gap-6">
-            <a href="#" className="text-zinc-500 text-xs hover:text-[#db2777] transition-colors">Privacy Policy</a>
-            <a href="#" className="text-zinc-500 text-xs hover:text-[#db2777] transition-colors">Terms of Service</a>
-            <span className="text-zinc-300">|</span>
-            <a href="#" className="text-zinc-500 text-xs hover:text-[#db2777] transition-colors">
-              Website by GapaiDigital 🚀
-            </a>
+          <div className="flex items-center gap-4">
+            <span>Pedas Mantap, Harga Bersahabat</span>
+            <span>•</span>
+            <span className="text-violet-400">Digitalized with GapaiDigital 🚀</span>
           </div>
         </div>
       </div>

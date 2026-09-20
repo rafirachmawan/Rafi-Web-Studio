@@ -1,63 +1,74 @@
-// src/sections/resto/RestoCTA.jsx
-// Call to action section for Mie Gacoan
-
 import { motion } from "framer-motion";
-import { Flame, ShoppingCart, MessageCircle } from "lucide-react";
+import { MessageCircle, Clock, MapPin, CalendarCheck, UtensilsCrossed } from "lucide-react";
+import { restoInfo } from "../data/resto";
 
-export function RestoCTA({ phone }) {
+export function RestoCTA() {
   return (
-    <section className="py-24 px-6 bg-gradient-to-r from-red-50 via-pink-50 to-red-50">
-      <div className="max-w-5xl mx-auto text-center">
+    <section id="cta" className="py-20 px-4 sm:px-6 bg-gradient-to-br from-violet-900 via-purple-900 to-indigo-950 text-white relative overflow-hidden">
+      {/* Glow Orbs */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-violet-500/20 blur-3xl" />
+        <div className="absolute -bottom-24 -right-24 w-96 h-96 rounded-full bg-purple-500/20 blur-3xl" />
+      </div>
+
+      <div className="relative z-10 max-w-4xl mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight">
-            Ready for Spicy Adventure?
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-violet-400/30 bg-violet-500/10 text-violet-200 text-xs font-bold uppercase tracking-wider mb-6">
+            <Clock className="w-3.5 h-3.5 text-violet-300" />
+            <span>Buka 24 Jam Setiap Hari</span>
+          </div>
+
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight mb-4 text-white">
+            Lapar? Langsung Pesan di Mie Gacoan Mojokerto!
           </h2>
-          
-          <p className="text-zinc-700 text-base md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
-            Segera rasakan sensasi mie pedas legendaris yang bikin nagih! Order sekarang dan nikmati promo spesial.
+
+          <p className="text-violet-200 text-sm sm:text-base max-w-2xl mx-auto mb-8 leading-relaxed">
+            Melayani pesanan online via WhatsApp, dine-in, takeaway, serta reservasi rombongan & acara.
           </p>
-          
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+
+          {/* Action Buttons */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
+            {/* WhatsApp Order */}
             <a
-              href="#menu"
-              className="group inline-flex items-center gap-2 px-8 py-4 bg-[#db2777] text-white font-bold rounded-lg transition-all shadow-md hover:shadow-xl transform hover:-translate-y-0.5 border border-[#db2777]"
-            >
-              Browse Menu
-              <ShoppingCart className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </a>
-            
-            <a
-              href={`https://wa.me/${phone}?text=${encodeURIComponent('Halo Mie Gacoan, saya ingin melakukan pemesanan.')}`}
+              href={restoInfo.waOrderUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-transparent border-2 border-[#db2777] text-[#db2777] font-bold rounded-lg transition-all hover:bg-[#db2777] hover:text-white"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-white hover:bg-violet-50 text-violet-900 font-black rounded-xl text-sm uppercase tracking-wider shadow-lg shadow-black/20 hover:shadow-xl transition-all transform hover:-translate-y-0.5"
             >
-              <MessageCircle className="w-5 h-5" />
-              Chat via WhatsApp
+              <MessageCircle className="w-5 h-5 text-violet-700" />
+              <span>Order WhatsApp</span>
+            </a>
+
+            {/* Reservation Contact */}
+            <a
+              href="https://wa.me/6285708428376?text=Halo%20Kak%20Kartika%2C%20saya%20ingin%20reservasi%20meja%20di%20Mie%20Gacoan%20Mojokerto."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-violet-800/60 hover:bg-violet-800/90 border border-violet-400/40 text-white font-bold rounded-xl text-sm uppercase tracking-wider transition-all"
+            >
+              <CalendarCheck className="w-5 h-5 text-violet-300" />
+              <span>Reservasi (A.N Kartika)</span>
             </a>
           </div>
 
-          {/* Quick info */}
-          <div className="mt-12 pt-8 border-t border-stone-200">
-            <div className="flex flex-wrap items-center justify-center gap-6 text-zinc-600 text-sm">
-              <div className="flex items-center gap-2">
-                <Flame className="w-4 h-4 text-red-600" />
-                <span>Available Level 1-10</span>
-              </div>
-              <div className="hidden sm:inline text-zinc-400">|</div>
-              <div className="flex items-center gap-2">
-                <ShoppingCart className="w-4 h-4 text-[#db2777]" />
-                <span>Fast Delivery Available</span>
-              </div>
-              <div className="hidden sm:inline text-zinc-400">|</div>
-              <div className="flex items-center gap-2">
-                <Star className="w-4 h-4 text-yellow-500" />
-                <span>Best Quality Ingredients</span>
-              </div>
+          {/* Quick Info Grid */}
+          <div id="info" className="pt-8 border-t border-violet-800/60 grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs text-violet-200">
+            <div className="flex items-center justify-center gap-2 p-3 rounded-xl bg-violet-950/40 border border-violet-800/40">
+              <Clock className="w-4 h-4 text-violet-400 shrink-0" />
+              <span>24 Jam Non-Stop</span>
+            </div>
+            <div className="flex items-center justify-center gap-2 p-3 rounded-xl bg-violet-950/40 border border-violet-800/40">
+              <MapPin className="w-4 h-4 text-violet-400 shrink-0" />
+              <span className="truncate">Jl. Jenderal Sudirman, Mojokerto</span>
+            </div>
+            <div className="flex items-center justify-center gap-2 p-3 rounded-xl bg-violet-950/40 border border-violet-800/40">
+              <UtensilsCrossed className="w-4 h-4 text-violet-400 shrink-0" />
+              <span>46 Menu Pilihan</span>
             </div>
           </div>
         </motion.div>
@@ -65,20 +76,3 @@ export function RestoCTA({ phone }) {
     </section>
   );
 }
-
-// Import Star icon at top
-const Star = ({ size = 16, className }) => (
-  <svg 
-    width={size} 
-    height={size} 
-    viewBox="0 0 24 24" 
-    fill="none" 
-    stroke="currentColor" 
-    strokeWidth="2" 
-    strokeLinecap="round" 
-    strokeLinejoin="round" 
-    className={className}
-  >
-    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-  </svg>
-);
