@@ -14,15 +14,24 @@ import {
   Layers,
   ShieldCheck,
   MessageCircle,
+  Smartphone,
+  LayoutDashboard,
 } from "lucide-react";
 import { demos } from "../constants/demos";
 import { realProjects } from "../constants/realProjects";
 import Footer from "../components/common/Footer";
+import CleanPlaceholder from "../components/common/CleanPlaceholder";
 import { useLanguage } from "../context/LanguageContext";
 
 function ProjectDetailGallery({ gallery, name, project }) {
   const { t } = useLanguage();
   const [activeIdx, setActiveIdx] = useState(0);
+
+  const isMobileApp = project.category === "mobile app";
+  const isWebSystem =
+    project.category === "sistem berbasis web" || project.category === "sistem";
+  const isSystemOrMobileDemo = isMobileApp || isWebSystem;
+
   const images =
     gallery && gallery.length > 0
       ? gallery
@@ -59,7 +68,7 @@ function ProjectDetailGallery({ gallery, name, project }) {
           </div>
 
           {/* Slide Indicator */}
-          {images.length > 1 ? (
+          {!isSystemOrMobileDemo && images.length > 1 ? (
             <div className="text-xs font-mono font-bold text-zinc-500 dark:text-zinc-400 bg-zinc-200/70 dark:bg-zinc-800 px-2.5 py-1 rounded-full">
               {activeIdx + 1} / {images.length}
             </div>
@@ -69,7 +78,7 @@ function ProjectDetailGallery({ gallery, name, project }) {
         </div>
 
         {/* Screen Image Display or Dedicated UI Mockup Placeholder */}
-        {project.id === "antrian-bri" || project.isPlaceholder ? (
+        {project.id === "antrian-bri" ? (
           <div className="relative w-full aspect-[16/10] sm:aspect-[16/9] bg-gradient-to-br from-[#06182c] via-[#092244] to-[#041224] p-5 sm:p-8 flex flex-col justify-between select-none overflow-hidden text-white font-sans">
             {/* Ambient blue bank glow */}
             <div className="absolute -top-10 -right-10 w-80 h-80 bg-blue-500/15 rounded-full blur-3xl pointer-events-none" />
@@ -171,6 +180,33 @@ function ProjectDetailGallery({ gallery, name, project }) {
               </div>
             </div>
           </div>
+        ) : isSystemOrMobileDemo ? (
+          <div className="relative w-full aspect-[16/10] sm:aspect-[16/9] min-h-[380px] sm:min-h-[460px] md:min-h-[500px] bg-zinc-50 dark:bg-zinc-950 flex items-center justify-center p-4 sm:p-8 overflow-hidden">
+            <CleanPlaceholder
+              width={isMobileApp ? 1080 : 1920}
+              height={isMobileApp ? 1920 : 1080}
+              ratio={isMobileApp ? "9:16" : "16:9"}
+              label={project.name}
+              sublabel={
+                isMobileApp
+                  ? t(
+                      "Mockup Demo Aplikasi Mobile (Android & iOS)",
+                      "Mobile App Demo Mockup (Android & iOS)"
+                    )
+                  : t(
+                      "Mockup Demo Dashboard Sistem Berbasis Web",
+                      "Web-based Dashboard System Demo Mockup"
+                    )
+              }
+              badge={
+                isMobileApp
+                  ? "Mobile App • Android / iOS"
+                  : "Sistem Web • Dashboard"
+              }
+              icon={isMobileApp ? Smartphone : LayoutDashboard}
+              className="w-full h-full max-w-2xl max-h-full shadow-inner"
+            />
+          </div>
         ) : (
           <div className="relative w-full aspect-[16/10] sm:aspect-[16/9] bg-zinc-900 flex items-center justify-center overflow-hidden">
             <img
@@ -206,7 +242,7 @@ function ProjectDetailGallery({ gallery, name, project }) {
       </div>
 
       {/* THUMBNAIL STRIP */}
-      {images.length > 1 && (
+      {!isSystemOrMobileDemo && images.length > 1 && (
         <div className="flex items-center justify-center gap-3 overflow-x-auto py-2 scrollbar-none">
           {images.map((img, idx) => (
             <button

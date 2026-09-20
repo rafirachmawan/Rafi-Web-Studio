@@ -5,6 +5,7 @@ import ProblemSection from "../components/home/ProblemSection";
 import GrowthSection from "../components/home/GrowthSection";
 import RealProjectsSection from "../components/home/RealProjectsSection";
 import DemoSection from "../components/home/DemoSection";
+import DigitalProductsSection from "../components/home/DigitalProductsSection";
 import WhyUsSection from "../components/home/WhyUsSection";
 import ProcessSection from "../components/home/ProcessSection";
 import PricingSection from "../components/home/PricingSection";
@@ -72,8 +73,22 @@ export default function Home() {
 
       <LazySection minHeight="50px" delay={50}>
         <TextMarqueeDivider
-          texts={["KENAPA KAMI", "WHY GAPAI", "SOLUSI DIGITAL", "EKSKLUSIF"]}
+          texts={["PRODUK DIGITAL", "READY APPS", "LYNK.ID STORE", "INSTANT DOWNLOAD"]}
           direction="right"
+          speed={30}
+          size="xs"
+          className="my-2"
+        />
+      </LazySection>
+
+      <LazySection minHeight="450px" delay={0}>
+        <DigitalProductsSection />
+      </LazySection>
+
+      <LazySection minHeight="50px" delay={50}>
+        <TextMarqueeDivider
+          texts={["KENAPA KAMI", "WHY GAPAI", "SOLUSI DIGITAL", "EKSKLUSIF"]}
+          direction="left"
           speed={28}
           size="xs"
           className="my-2"

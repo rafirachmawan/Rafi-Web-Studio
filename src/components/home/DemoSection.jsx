@@ -33,28 +33,28 @@ export default function DemoSection({ filter, setFilter, filtered, isStandalone 
     switch (id) {
       case "landing page":
         return t(
-          "Referensi redesign landing page yang lebih rapi, modern, dan memikat calon pembeli.",
-          "Landing page redesign references that look clean, modern, and attractive to buyers."
+          "Referensi redesign website & landing page yang lebih rapi, modern, dan memikat calon pelanggan.",
+          "Website & landing page redesign references that look clean, modern, and attractive to clients."
         );
       case "mobile app":
         return t(
-          "Referensi tampilan aplikasi mobile & PWA yang simpel, cepat, dan nyaman di ponsel.",
-          "Mobile & PWA UI references that are simple, fast, and smooth on phones."
+          "Demo antarmuka aplikasi mobile & PWA yang responsif, cepat, dan nyaman di ponsel.",
+          "Mobile & PWA UI demos that are responsive, fast, and smooth on phones."
         );
       case "sistem berbasis web":
         return t(
-          "Referensi redesign dashboard dan sistem web agar pengelolaan data terasa lebih mudah.",
-          "Dashboard & web system redesign references for effortless data management."
+          "Demo interaktif dashboard dan sistem web untuk otomatisasi operasional dan manajemen data.",
+          "Interactive dashboard & web system demos for business operational automation."
         );
       case "software":
         return t(
-          "Referensi tampilan software desktop dengan desain antarmuka yang bersih dan intuitif.",
-          "Desktop software UI references with a clean and intuitive layout."
+          "Demo tampilan software desktop dengan desain antarmuka yang bersih dan intuitif.",
+          "Desktop software UI demos with a clean and intuitive layout."
         );
       default:
         return t(
-          "Punya website tapi tampilannya sudah membosankan? Temukan berbagai referensi redesign modern di bawah ini untuk gambaran website baru bisnis Anda.",
-          "Have an existing website with an outdated look? Explore our modern redesign references below for your business inspiration."
+          "Temukan referensi redesign website dan demo interaktif aplikasi (web, mobile, hingga sistem) sebagai gambaran nyata sebelum memulai proyek Anda.",
+          "Explore our modern redesign references and interactive app demos (web, mobile, to systems) to visualize your project before building."
         );
     }
   };
@@ -74,18 +74,18 @@ export default function DemoSection({ filter, setFilter, filtered, isStandalone 
         <div className="max-w-3xl mx-auto text-center mb-10 md:mb-16 flex flex-col items-center">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-600 dark:text-amber-400 text-xs font-bold mb-5 uppercase tracking-widest">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>{t("Inspirasi & Referensi Redesign", "Redesign Inspirations & References")}</span>
+            <span>{t("Katalog Redesign & Demo Template", "Redesign Catalog & Demo Templates")}</span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 font-heading leading-[1.18] text-zinc-900 dark:text-white">
-            <span>{t("Mau Redesign Website?", "Want to Redesign Your Website?")}</span>{" "}
+            <span>{t("Mau Redesign atau Butuh Demo?", "Need a Redesign or Live Demo?")}</span>{" "}
             <br className="hidden sm:inline" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-500">
-              {t("Jadikan Desain Ini Referensi Anda.", "Use These Designs as Your Reference.")}
+              {t("Jadikan Redesign & Demo Ini Referensi Anda.", "Use Our Redesigns & Demos as Reference.")}
             </span>
           </h2>
 
-          <p className="text-zinc-600 dark:text-zinc-400 text-base sm:text-lg leading-relaxed mx-auto max-w-xl">
+          <p className="text-zinc-600 dark:text-zinc-400 text-base sm:text-lg leading-relaxed mx-auto max-w-2xl">
             {getCategoryInfo(filter)}
           </p>
         </div>
