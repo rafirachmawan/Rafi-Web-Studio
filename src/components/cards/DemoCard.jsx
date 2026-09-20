@@ -63,10 +63,6 @@ export default function DemoCard({ demo }) {
             </h3>
           </div>
 
-          {/* DESC */}
-          <p className="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed flex-grow">
-            {t(demo.desc)}
-          </p>
           
           {/* LINK */}
           <div className="mt-6 flex items-center gap-1.5 text-sm font-semibold text-zinc-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-500 transition-colors">

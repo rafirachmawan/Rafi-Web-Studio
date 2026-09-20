@@ -1,61 +1,113 @@
 // src/sections/coffee/ResponsibilitySection.jsx
-// Starbucks Sustainability & Social Responsibility Placeholder
+// Starbucks Sustainability & Social Responsibility with CleanPlaceholder
 
-import { motion } from 'framer-motion';
-import { Leaf, Globe, Heart } from 'lucide-react';
+import { motion } from "framer-motion";
+import { Leaf, Users, Recycle, Heart, CheckCircle2 } from "lucide-react";
+import CleanPlaceholder from "../../components/common/CleanPlaceholder";
+
+const initiatives = [
+  {
+    id: "ethical-sourcing",
+    title: "Farmer Support Center (Berastagi)",
+    subtitle: "Dukungan Nyata Petani Kopi Sumatra",
+    desc: "Melalui Farmer Support Center di Sumatra Utara, Starbucks menyediakan bibit pohon kopi gratis dan pelatihan agronomi untuk meningkatkan kesejahteraan petani kopi lokal.",
+    stat: "99% Etis",
+    statLabel: "C.A.F.E. Practices",
+    icon: Leaf,
+    badge: "Ethical Sourcing",
+  },
+  {
+    id: "tumbler-day",
+    title: "Bring Your Own Tumbler",
+    subtitle: "Gerakan Bebas Sampah Plastik",
+    desc: "Bawa tumbler resmi Starbucks dan nikmati potongan harga Rp 5.000 untuk minuman apa saja setiap hari, serta diskon spesial Tumbler Day setiap tanggal 22 setiap bulan.",
+    stat: "Rp 5.000",
+    statLabel: "Hemat Setiap Hari",
+    icon: Recycle,
+    badge: "Eco Habit",
+  },
+  {
+    id: "community-support",
+    title: "Community & Ayo Inklusif",
+    subtitle: "Pemberdayaan Pemuda & Disabilitas",
+    desc: "Gerai Signing Store pertama di Kotabaru & Jakarta memberdayakan mitra tuli (Deaf partners) serta program pelatihan kerja pemuda melalui Starbucks Foundation.",
+    stat: "5.000+",
+    statLabel: "Jam Volunteering",
+    icon: Users,
+    badge: "Community",
+  },
+];
 
 export function ResponsibilitySection() {
   return (
-    <section id="responsibility" className="relative py-24 px-6 bg-[#0B1512]">
-      <div className="max-w-7xl mx-auto">
+    <section id="responsibility" className="relative py-28 px-6 bg-[#0B1512] border-t border-white/5 overflow-hidden">
+      <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl md:text-5xl font-serif font-black text-white mb-4">
-            Our Commitment to the World
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#00704A]/20 border border-[#00704A]/30 text-emerald-400 text-xs font-extrabold uppercase tracking-widest mb-4">
+            <Heart size={14} className="fill-current" />
+            <span>People & Planet Positive</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-black text-white mb-4">
+            Committed to Our Community & Earth
           </h2>
-          <p className="text-zinc-400 text-sm md:text-base max-w-2xl mx-auto">
-            Building a sustainable future through coffee
+          <p className="text-zinc-400 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
+            Menyajikan kopi dengan integritas moral. Kami berjanji untuk memberi kembali lebih banyak kepada bumi dan komunitas dari apa yang kami ambil.
           </p>
-        </motion.div>
+        </div>
 
-        {/* Responsibility Cards - PLACEHOLDER IMAGES */}
+        {/* Responsibility Cards with CleanPlaceholder */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {[
-            { icon: Globe, title: "Environmental Stewardship", desc: "Protecting our planet for future generations" },
-            { icon: Heart, title: "Community Support", desc: "Empowering communities around the world" },
-            { icon: Leaf, title: "Ethical Sourcing", desc: "Sourcing coffee with integrity and respect" }
-          ].map((item, index) => (
-            <motion.div 
-              key={index}
+          {initiatives.map((item, index) => (
+            <motion.div
+              key={item.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.15 }}
-              className="bg-[#1A2722] rounded-2xl overflow-hidden border border-white/5 hover:border-emerald-500/50 transition-all group"
+              transition={{ delay: index * 0.1 }}
+              className="bg-[#101C18] rounded-3xl p-6 border border-white/10 hover:border-[#00704A]/50 transition-all flex flex-col justify-between group"
             >
-              {/* Image Area Placeholder */}
-              <div className="aspect-video bg-gradient-to-br from-zinc-800 to-zinc-900 flex items-center justify-center relative group-hover:bg-gradient-to-br from-emerald-900/20 to-zinc-900 transition-all">
-                <item.icon size={64} className="text-zinc-600 group-hover:text-emerald-500 transition-colors" />
-                <span className="absolute bottom-4 left-4 text-zinc-500 text-xs font-medium uppercase tracking-widest">
-                  Responsibility Image {index + 1}
-                </span>
-                <img 
-                  src="" 
-                  alt={`Responsibility ${index + 1}`} 
-                  className="absolute inset-0 w-full h-full object-cover"
-                  style={{ display: 'none' }}
-                />
+              <div>
+                {/* Visual Placeholder */}
+                <div className="h-48 mb-6 rounded-2xl overflow-hidden relative">
+                  <CleanPlaceholder
+                    width={700}
+                    height={450}
+                    ratio="16:10"
+                    label={item.title}
+                    sublabel={item.subtitle}
+                    badge={item.badge}
+                    icon={item.icon}
+                    className="w-full h-full !p-3"
+                  />
+                </div>
+
+                <div className="flex items-center gap-2 text-emerald-400 text-xs font-bold uppercase tracking-wider mb-2">
+                  <item.icon size={15} />
+                  <span>{item.badge}</span>
+                </div>
+
+                <h3 className="text-xl font-bold font-serif text-white mb-2">
+                  {item.title}
+                </h3>
+                <p className="text-xs text-zinc-400 leading-relaxed mb-6">
+                  {item.desc}
+                </p>
               </div>
-              
-              <div className="p-6">
-                <item.icon className="w-8 h-8 text-emerald-500 mb-4" />
-                <h3 className="text-lg font-bold text-white mb-2">{item.title}</h3>
-                <p className="text-sm text-zinc-400">{item.desc}</p>
+
+              {/* Stat Bottom Box */}
+              <div className="pt-4 border-t border-white/5 flex items-center justify-between">
+                <div>
+                  <span className="block text-xl font-extrabold text-white font-mono">
+                    {item.stat}
+                  </span>
+                  <span className="text-[10px] text-zinc-500 uppercase tracking-wider">
+                    {item.statLabel}
+                  </span>
+                </div>
+                <div className="w-8 h-8 rounded-full bg-[#00704A]/20 flex items-center justify-center text-emerald-400">
+                  <CheckCircle2 size={16} />
+                </div>
               </div>
             </motion.div>
           ))}

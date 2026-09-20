@@ -12,8 +12,9 @@ export function CoffeeNavigation() {
 
   const navLinks = [
     { href: "#menu", label: "Menu" },
-    { href: "#coffee", label: "Coffee" },
+    { href: "#coffee", label: "Coffee Mastery" },
     { href: "#rewards", label: "Rewards" },
+    { href: "#dewata", label: "Dewata Sanctuary" },
     { href: "#responsibility", label: "Responsibility" },
     { href: "#about", label: "About Us" },
   ];

@@ -1,116 +1,108 @@
 // src/sections/coffee/AboutSection.jsx
-// Starbucks About Us / Our Story Placeholder
+// Starbucks Indonesia Heritage & Story Section with CleanPlaceholder
 
-import { motion } from 'framer-motion';
-import { BookOpen } from 'lucide-react';
+import { motion } from "framer-motion";
+import { Building2, Calendar, ShieldCheck, MapPin, Award } from "lucide-react";
+import CleanPlaceholder from "../../components/common/CleanPlaceholder";
 
 export function AboutSection() {
+  const stats = [
+    { value: "2002", label: "Hadir di Indonesia", sub: "Plaza Indonesia" },
+    { value: "500+", label: "Gerai di Indonesia", sub: "40+ Kota" },
+    { value: "5.000+", label: "Mitra Barista", sub: "Coffee Masters" },
+    { value: "100%", label: "Halal Certified", sub: "BPJPH & MUI" },
+  ];
+
   return (
-    <section id="about" className="relative py-24 px-6 bg-gradient-to-b from-[#0B1512] to-[#0F1F1A]">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
-          <div>
-            {/* Section Header */}
-            <motion.div 
+    <section id="about" className="relative py-28 px-6 bg-gradient-to-b from-[#0B1512] to-[#080E0C] border-t border-white/5 overflow-hidden">
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="grid lg:grid-cols-12 gap-12 items-center">
+          {/* Left Column: Heritage Story */}
+          <div className="lg:col-span-6">
+            <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-3xl md:text-5xl font-serif font-black text-white mb-6">
-                Our Story & Heritage
-              </h2>
-              <p className="text-zinc-400 text-sm md:text-base leading-relaxed mb-6">
-                Since 1971, we've been committed to inspiring and nurturing the human spirit 
-                through the power of connection and coffee. Our journey began in Seattle's 
-                Pike Place Market, and we've grown into a global community of over 350 million 
-                members worldwide.
-              </p>
-              <p className="text-zinc-400 text-sm md:text-base leading-relaxed">
-                We source, roast, and retail premium-quality coffee with an unwavering dedication 
-                to sustainability, social responsibility, and the pursuit of excellence.
-              </p>
-            </motion.div>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#00704A]/20 border border-[#00704A]/30 text-emerald-400 text-xs font-extrabold uppercase tracking-widest mb-4">
+                <Calendar size={14} />
+                <span>Our Heritage in Indonesia</span>
+              </div>
 
-            {/* Stats - PLACEHOLDER AREA */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="mt-10 grid grid-cols-3 gap-6"
-            >
-              {[
-                { value: "30+", label: "Countries" },
-                { value: "35K+", label: "Stores" },
-                { value: "350M+", label: "Members" }
-              ].map((stat, index) => (
-                <div key={index} className="bg-[#1A2722] p-4 rounded-xl border border-white/5">
-                  <div className="text-2xl md:text-3xl font-black text-emerald-400 mb-1">{stat.value}</div>
-                  <div className="text-xs text-zinc-400 uppercase tracking-widest">{stat.label}</div>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-black text-white leading-tight mb-6">
+                24+ Tahun Menginspirasi Lewat Secangkir Kopi
+              </h2>
+
+              <p className="text-zinc-400 text-sm md:text-base leading-relaxed mb-6">
+                Perjalanan Starbucks di Indonesia dimulai pada <strong>17 Mei 2002</strong> di Plaza Indonesia, Jakarta, di bawah naungan PT Sari Coffee Indonesia (bagian dari MAP Group). 
+              </p>
+
+              <p className="text-zinc-400 text-sm md:text-base leading-relaxed mb-8">
+                Hingga kini, Starbucks telah menjadi <em>Third Place</em> yang hangat bagi jutaan masyarakat Indonesia di lebih dari 500 gerai—menghubungkan petani kopi lokal Sumatra dan Aceh dengan para pecinta kopi dunia. Seluruh gerai dan produk Starbucks di Indonesia telah mengantongi sertifikasi <strong>Halal Resmi (BPJPH / MUI)</strong> dan standar mutu ISO.
+              </p>
+
+              {/* Certifications Badge Row */}
+              <div className="flex flex-wrap items-center gap-4 pt-6 border-t border-white/10">
+                <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#121F1A] border border-emerald-500/20 text-xs text-emerald-300 font-semibold">
+                  <ShieldCheck size={16} className="text-emerald-400" />
+                  <span>Halal Certified (BPJPH / MUI)</span>
                 </div>
-              ))}
+
+                <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#121F1A] border border-emerald-500/20 text-xs text-emerald-300 font-semibold">
+                  <Award size={16} className="text-emerald-400" />
+                  <span>ISO Standards Certified</span>
+                </div>
+              </div>
             </motion.div>
           </div>
 
-          {/* Right - Image Gallery - PLACEHOLDER AREAS */}
-          <div className="grid grid-cols-2 gap-4">
-            {/* Main Image */}
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-              className="aspect-[3/4] bg-gradient-to-br from-zinc-800 to-zinc-900 rounded-2xl overflow-hidden border border-white/5 group relative"
-            >
-              <div className="absolute inset-0 flex items-center justify-center p-6">
-                <div className="text-center">
-                  <BookOpen className="w-16 h-16 text-zinc-600 mx-auto mb-4" />
-                  <p className="text-zinc-500 text-sm font-medium uppercase tracking-wider mb-2">
-                    Heritage Image
-                  </p>
-                  <p className="text-zinc-600 text-xs">Historical story photo</p>
-                </div>
-              </div>
-              
-              {/* Disabled img tag */}
-              <img 
-                src="" 
-                alt="Our Story" 
-                className="absolute inset-0 w-full h-full object-cover"
-                style={{ display: 'none' }}
-              />
-            </motion.div>
-
-            {/* Secondary Images Stack */}
-            {[1, 2].map((num) => (
-              <motion.div 
-                key={num}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.4 + num * 0.1 }}
-                className={`aspect-square bg-gradient-to-br from-zinc-800 to-zinc-900 rounded-2xl overflow-hidden border border-white/5 group relative ${num === 2 ? 'translate-y-8' : ''}`}
-              >
-                <div className="absolute inset-0 flex items-center justify-center p-6">
-                  <div className="text-center">
-                    <BookOpen className="w-10 h-10 text-zinc-600 mx-auto mb-3" />
-                    <p className="text-zinc-500 text-xs font-medium uppercase tracking-wider mb-1">
-                      Story Image {num + 1}
-                    </p>
-                    <p className="text-zinc-600 text-[10px]">Coffee culture photo</p>
-                  </div>
-                </div>
-                
-                {/* Disabled img tag */}
-                <img 
-                  src="" 
-                  alt={`Story Image ${num + 1}`} 
-                  className="absolute inset-0 w-full h-full object-cover"
-                  style={{ display: 'none' }}
+          {/* Right Column: Heritage Visuals & Stats with CleanPlaceholder */}
+          <div className="lg:col-span-6 space-y-6">
+            {/* Heritage Photos Grid with CleanPlaceholder */}
+            <div className="grid grid-cols-2 gap-4">
+              <div className="h-44 sm:h-52 rounded-2xl overflow-hidden relative shadow-lg">
+                <CleanPlaceholder
+                  width={600}
+                  height={450}
+                  ratio="4:3"
+                  label="Gerai Pertama 2002"
+                  sublabel="Plaza Indonesia, Jakarta"
+                  badge="Heritage"
+                  icon={Building2}
+                  className="w-full h-full !p-3"
                 />
-              </motion.div>
-            ))}
+              </div>
+
+              <div className="h-44 sm:h-52 rounded-2xl overflow-hidden relative shadow-lg">
+                <CleanPlaceholder
+                  width={600}
+                  height={450}
+                  ratio="4:3"
+                  label="Barista Championship"
+                  sublabel="Indonesia Coffee Masters"
+                  badge="Excellence"
+                  icon={Award}
+                  className="w-full h-full !p-3"
+                />
+              </div>
+            </div>
+
+            {/* Indonesia Numbers Grid */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              {stats.map((stat, idx) => (
+                <div key={idx} className="p-4 rounded-2xl bg-[#121E1A] border border-white/5 text-center">
+                  <span className="block text-2xl sm:text-3xl font-black text-emerald-400 font-mono mb-0.5">
+                    {stat.value}
+                  </span>
+                  <span className="block text-[11px] font-bold text-white mb-0.5">
+                    {stat.label}
+                  </span>
+                  <span className="block text-[9px] text-zinc-500">
+                    {stat.sub}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

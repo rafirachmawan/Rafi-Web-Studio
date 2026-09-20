@@ -7,6 +7,7 @@ import { CoffeeHero } from '../../../sections/coffee/CoffeeHero';
 import { CoffeeMenu } from '../../../sections/coffee/CoffeeMenu';
 import { CoffeeSection } from '../../../sections/coffee/CoffeeSection';
 import { RewardsSection } from '../../../sections/coffee/RewardsSection';
+import { DewataSection } from '../../../sections/coffee/DewataSection';
 import { ResponsibilitySection } from '../../../sections/coffee/ResponsibilitySection';
 import { AboutSection } from '../../../sections/coffee/AboutSection';
 import { CoffeeFooter } from '../../../components/landing/coffee/CoffeeFooter';
@@ -33,6 +34,9 @@ export default function CoffeeLanding() {
       
       {/* REWARDS SECTION */}
       <RewardsSection />
+      
+      {/* DEWATA BALI SANCTUARY SECTION */}
+      <DewataSection />
       
       {/* RESPONSIBILITY SECTION */}
       <ResponsibilitySection />

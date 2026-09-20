@@ -381,6 +381,61 @@ export const coffeeMenu = {
       types: ["Essentials Brewer", "Verismo System", "Presoya System"],
     },
   ],
+
+  wholeBean: [
+    {
+      id: "sumatra-whole-bean",
+      name: "Starbucks® Sumatra Dark Roast",
+      description:
+        "Full, buttery body with virtually no acidity and lingering herbal notes. Employee and customer favorite.",
+      basePrice: 135000,
+      badge: "Dark Roast",
+      tag: "Single Origin",
+      weight: "250g",
+      available: true,
+      notes: "Earthy & Herbal",
+      roastLevel: "Dark",
+    },
+    {
+      id: "caffe-verona",
+      name: "Caffè Verona® Whole Bean",
+      description:
+        "Well-balanced and rich with a dark cocoa texture. A classic blend crafted for romance.",
+      basePrice: 135000,
+      badge: "Dark Roast",
+      tag: "Signature Blend",
+      weight: "250g",
+      available: true,
+      notes: "Roasty Sweet & Dark Cocoa",
+      roastLevel: "Dark",
+    },
+    {
+      id: "colombia-medium",
+      name: "Single-Origin Colombia",
+      description:
+        "Medium roast with a round body, juicy mouthfeel, and signature nutty herbal finish.",
+      basePrice: 135000,
+      badge: "Medium Roast",
+      tag: "Single Origin",
+      weight: "250g",
+      available: true,
+      notes: "Juicy & Nutty",
+      roastLevel: "Medium",
+    },
+    {
+      id: "via-italian-roast",
+      name: "Starbucks VIA® Ready Brew Italian Roast",
+      description:
+        "Microground instant coffee delivering sweet, smoky dark roast flavors without brewing machines.",
+      basePrice: 95000,
+      badge: "Instant VIA®",
+      tag: "12 Packets",
+      weight: "12 sticks",
+      available: true,
+      notes: "Roasty & Sweet",
+      roastLevel: "Dark",
+    },
+  ],
 };
 
 // Helper functions
