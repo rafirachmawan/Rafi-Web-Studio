@@ -8,14 +8,13 @@ import {
   Tag,
   ExternalLink,
   Sparkles,
-  ChevronLeft,
-  ChevronRight,
   Building2,
   Layers,
   ShieldCheck,
   MessageCircle,
   Smartphone,
   LayoutDashboard,
+  Globe,
 } from "lucide-react";
 import { demos } from "../features/home/data/demos";
 import { realProjects } from "../features/home/data/realProjects";
@@ -24,27 +23,54 @@ import CleanPlaceholder from "../components/ui/CleanPlaceholder";
 import { useLanguage } from "../context/LanguageContext";
 
 function ProjectDetailGallery({ gallery, name, project }) {
-  const { t } = useLanguage();
-  const [activeIdx, setActiveIdx] = useState(0);
+  const { t, language } = useLanguage();
 
   const isMobileApp = project.category === "mobile app";
   const isWebSystem =
     project.category === "sistem berbasis web" || project.category === "sistem";
-  const isSystemOrMobileDemo = isMobileApp || isWebSystem;
+  const isSoftware = project.category === "software";
 
-  const images =
-    gallery && gallery.length > 0
-      ? gallery
-      : project.image
-        ? [project.image]
-        : [];
+  const resolvedName =
+    typeof project.name === "object"
+      ? project.name[language] || project.name.id || project.name.en
+      : project.name || name;
 
-  const prevImage = () => {
-    setActiveIdx((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+  const getSublabel = () => {
+    if (isMobileApp) {
+      return t(
+        "Mockup Demo Aplikasi Mobile (Android & iOS)",
+        "Mobile App Demo Mockup (Android & iOS)"
+      );
+    }
+    if (isWebSystem) {
+      return t(
+        "Mockup Demo Dashboard Sistem Berbasis Web",
+        "Web-based Dashboard System Demo Mockup"
+      );
+    }
+    if (isSoftware) {
+      return t(
+        "Mockup Demo Software & Aplikasi Desktop",
+        "Desktop Application & Software Demo Mockup"
+      );
+    }
+    return t(
+      "Mockup Demo Website & Landing Page Responsif",
+      "Responsive Website & Landing Page Demo Mockup"
+    );
   };
 
-  const nextImage = () => {
-    setActiveIdx((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+  const getBadge = () => {
+    if (isMobileApp) return "Mobile App • Android / iOS";
+    if (isWebSystem) return "Sistem Web • Dashboard";
+    if (isSoftware) return "Software • Desktop";
+    return "Website • 1920 × 1080 px";
+  };
+
+  const getIcon = () => {
+    if (isMobileApp) return Smartphone;
+    if (isWebSystem || isSoftware) return LayoutDashboard;
+    return Globe;
   };
 
   return (
@@ -67,14 +93,8 @@ function ProjectDetailGallery({ gallery, name, project }) {
             </span>
           </div>
 
-          {/* Slide Indicator */}
-          {!isSystemOrMobileDemo && images.length > 1 ? (
-            <div className="text-xs font-mono font-bold text-zinc-500 dark:text-zinc-400 bg-zinc-200/70 dark:bg-zinc-800 px-2.5 py-1 rounded-full">
-              {activeIdx + 1} / {images.length}
-            </div>
-          ) : (
-            <div className="w-10" />
-          )}
+          {/* Slide Indicator Spacer */}
+          <div className="w-10" />
         </div>
 
         {/* Screen Image Display or Dedicated UI Mockup Placeholder */}
@@ -180,89 +200,21 @@ function ProjectDetailGallery({ gallery, name, project }) {
               </div>
             </div>
           </div>
-        ) : isSystemOrMobileDemo ? (
+        ) : (
           <div className="relative w-full aspect-[16/10] sm:aspect-[16/9] min-h-[380px] sm:min-h-[460px] md:min-h-[500px] bg-zinc-50 dark:bg-zinc-950 flex items-center justify-center p-4 sm:p-8 overflow-hidden">
             <CleanPlaceholder
               width={isMobileApp ? 1080 : 1920}
               height={isMobileApp ? 1920 : 1080}
               ratio={isMobileApp ? "9:16" : "16:9"}
-              label={project.name}
-              sublabel={
-                isMobileApp
-                  ? t(
-                      "Mockup Demo Aplikasi Mobile (Android & iOS)",
-                      "Mobile App Demo Mockup (Android & iOS)"
-                    )
-                  : t(
-                      "Mockup Demo Dashboard Sistem Berbasis Web",
-                      "Web-based Dashboard System Demo Mockup"
-                    )
-              }
-              badge={
-                isMobileApp
-                  ? "Mobile App • Android / iOS"
-                  : "Sistem Web • Dashboard"
-              }
-              icon={isMobileApp ? Smartphone : LayoutDashboard}
+              label={resolvedName}
+              sublabel={getSublabel()}
+              badge={getBadge()}
+              icon={getIcon()}
               className="w-full h-full max-w-2xl max-h-full shadow-inner"
             />
           </div>
-        ) : (
-          <div className="relative w-full aspect-[16/10] sm:aspect-[16/9] bg-zinc-900 flex items-center justify-center overflow-hidden">
-            <img
-              key={activeIdx}
-              src={images[activeIdx]}
-              alt={`${name} - preview ${activeIdx + 1}`}
-              className="w-full h-full object-contain p-2 sm:p-4 transition-all duration-300 select-none"
-            />
-
-            {images.length > 1 && (
-              <>
-                {/* Prev Arrow */}
-                <button
-                  onClick={prevImage}
-                  aria-label="Previous image"
-                  className="absolute left-4 top-1/2 -translate-y-1/2 w-11 sm:w-12 h-11 sm:h-12 rounded-full bg-black/60 hover:bg-amber-500 text-white backdrop-blur-md border border-white/20 flex items-center justify-center transition-all duration-300 shadow-xl hover:scale-110 active:scale-95 cursor-pointer z-20 opacity-35 sm:opacity-40 group-hover:opacity-85 hover:!opacity-100"
-                >
-                  <ChevronLeft size={24} />
-                </button>
-
-                {/* Next Arrow */}
-                <button
-                  onClick={nextImage}
-                  aria-label="Next image"
-                  className="absolute right-4 top-1/2 -translate-y-1/2 w-11 sm:w-12 h-11 sm:h-12 rounded-full bg-black/60 hover:bg-amber-500 text-white backdrop-blur-md border border-white/20 flex items-center justify-center transition-all duration-300 shadow-xl hover:scale-110 active:scale-95 cursor-pointer z-20 opacity-35 sm:opacity-40 group-hover:opacity-85 hover:!opacity-100"
-                >
-                  <ChevronRight size={24} />
-                </button>
-              </>
-            )}
-          </div>
         )}
       </div>
-
-      {/* THUMBNAIL STRIP */}
-      {!isSystemOrMobileDemo && images.length > 1 && (
-        <div className="flex items-center justify-center gap-3 overflow-x-auto py-2 scrollbar-none">
-          {images.map((img, idx) => (
-            <button
-              key={idx}
-              onClick={() => setActiveIdx(idx)}
-              className={`relative rounded-2xl overflow-hidden border-2 transition-all duration-300 shrink-0 w-24 sm:w-28 aspect-[16/10] cursor-pointer bg-white dark:bg-zinc-900 ${
-                activeIdx === idx
-                  ? "border-amber-500 ring-4 ring-amber-500/20 scale-105 shadow-md"
-                  : "border-zinc-200 dark:border-zinc-800 opacity-60 hover:opacity-100 hover:border-zinc-400"
-              }`}
-            >
-              <img
-                src={img}
-                alt={`Thumbnail ${idx + 1}`}
-                className="w-full h-full object-cover"
-              />
-            </button>
-          ))}
-        </div>
-      )}
     </div>
   );
 }
@@ -437,6 +389,8 @@ export default function ProjectDetail() {
                 {project.path.startsWith("/") ? (
                   <Link
                     to={project.path}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-gradient-to-r from-amber-500 to-orange-500 text-white font-bold text-sm sm:text-base shadow-lg shadow-amber-500/25 hover:shadow-amber-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all group"
                   >
                     <span>{t("Kunjungi Website", "Visit Website")}</span>
