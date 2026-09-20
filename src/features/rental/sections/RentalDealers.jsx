@@ -1,144 +1,144 @@
-// src/sections/rental/RentalDealers.jsx
-// Dealers Section for Yamaha Motor Indonesia
-
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { MapPin, Search, Phone } from "lucide-react";
+import { MapPin, Search, Phone, Clock, Compass, ExternalLink, ShieldCheck } from "lucide-react";
+import { rental } from "../data/rental";
 
 export function RentalDealers() {
-  const dealers = [
-    {
-      name: "Yamaha Motor Dealer Jakarta",
-      location: "Jakarta Timur",
-      address: "Jl. Raya Husein Mutahar No. 123",
-      phone: "(021) 1234-5678",
-      services: ["Service", "Parts", "Test Drive"],
-    },
-    {
-      name: "Yamaha Motor Dealer Bogor",
-      location: "Bogor",
-      address: "Jl. Pajajaran No. 456",
-      phone: "(0251) 2345-6789",
-      services: ["Service", "Parts", "Showroom"],
-    },
-    {
-      name: "Yamaha Motor Dealer Depok",
-      location: "Depok",
-      address: "Jl. Margonda No. 789",
-      phone: "(021) 3456-7890",
-      services: ["Service", "Parts"],
-    },
-    {
-      name: "Yamaha Motor Dealer Tangerang",
-      location: "Tangerang",
-      address: "Jl. HR Rasuna Said No. 321",
-      phone: "(021) 4567-8901",
-      services: ["Service", "Parts", "Showroom", "Test Drive"],
-    },
-  ];
+  const [cityFilter, setCityFilter] = useState("all");
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const dealers = rental.dealers || [];
+
+  const cities = ["all", "Jakarta", "Depok", "Yogyakarta", "Surabaya"];
+
+  const filteredDealers = dealers.filter((d) => {
+    const matchCity = cityFilter === "all" || d.city.toLowerCase().includes(cityFilter.toLowerCase());
+    const matchSearch =
+      d.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      d.address.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      d.city.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchCity && matchSearch;
+  });
 
   return (
-    <section id="dealers" className="py-24 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-6">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-blue-500 text-xs font-semibold tracking-widest uppercase mb-4">
-            Network Kami
+    <section id="dealers" className="py-24 sm:py-32 bg-zinc-50 dark:bg-zinc-950 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-900 text-blue-700 dark:text-blue-300 text-xs font-bold uppercase tracking-wider mb-4">
+            <MapPin size={14} />
+            <span>Jaringan 3.000+ Dealer Resmi se-Indonesia</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-zinc-900 dark:text-white font-heading tracking-tight mb-4">
+            Temukan Dealer & Bengkel Yamaha Terdekat
           </h2>
-          <h3 className="text-3xl md:text-4xl font-bold text-zinc-900 mb-6">
-            Cari Dealer Yamaha Terdekat
-          </h3>
-          <p className="text-zinc-600 max-w-2xl mx-auto">
-            Temukan dealer dan service center Yamaha resmi di seluruh Indonesia
+          <p className="text-zinc-600 dark:text-zinc-400 text-sm sm:text-base leading-relaxed">
+            Dapatkan pelayanan sales terbaik, ketersediaan suku cadang resmi 100% YGP, serta fasilitas servis profesional bersertifikasi standar Yamaha Motor.
           </p>
-        </motion.div>
+        </div>
 
-        {/* Search Box */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="max-w-2xl mx-auto mb-12"
-        >
-          <div className="bg-white rounded-xl shadow-lg p-4 flex items-center gap-3 border border-gray-200">
-            <Search className="text-zinc-400" size={24} />
+        {/* Filter Toolbar */}
+        <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 p-4 rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200/80 dark:border-zinc-800 shadow-sm mb-10">
+          <div className="relative w-full sm:max-w-md">
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-400" size={18} />
             <input
               type="text"
-              placeholder="Masukkan kota atau alamat..."
-              className="flex-1 outline-none text-zinc-900 placeholder-zinc-400"
+              placeholder="Cari nama dealer, jalan, atau kota..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full py-2.5 pl-10 pr-4 rounded-xl bg-zinc-50 dark:bg-zinc-800 border border-zinc-200/80 dark:border-zinc-700 text-xs sm:text-sm text-zinc-800 dark:text-zinc-100 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
-            <button className="px-6 py-3 bg-red-500 hover:bg-red-600 text-black font-bold rounded-lg transition-colors">
-              Cari
-            </button>
           </div>
-        </motion.div>
+
+          <div className="flex items-center gap-2 overflow-x-auto w-full sm:w-auto scrollbar-none">
+            {cities.map((c) => (
+              <button
+                key={c}
+                onClick={() => setCityFilter(c)}
+                className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all capitalize whitespace-nowrap ${
+                  cityFilter === c
+                    ? "bg-blue-600 text-white shadow-xs"
+                    : "bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200"
+                }`}
+              >
+                {c === "all" ? "Semua Kota" : c}
+              </button>
+            ))}
+          </div>
+        </div>
 
         {/* Dealers Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 mb-12">
-          {dealers.map((dealer, i) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto">
+          {filteredDealers.map((d, i) => (
             <motion.div
-              key={i}
+              key={d.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.05 }}
-              className="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow border border-gray-200"
+              transition={{ duration: 0.4, delay: i * 0.05 }}
+              className="p-6 sm:p-7 rounded-3xl bg-white dark:bg-zinc-900 border border-zinc-200/80 dark:border-zinc-800 shadow-sm hover:shadow-xl hover:border-blue-500/40 transition-all flex flex-col justify-between"
             >
-              <div className="flex items-start justify-between mb-4">
-                <div className="flex items-center gap-3">
-                  <MapPin className="text-blue-500" size={24} />
-                  <div>
-                    <h4 className="font-bold text-zinc-900">{dealer.name}</h4>
-                    <p className="text-sm text-zinc-600">{dealer.location}</p>
-                  </div>
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-blue-50 dark:bg-blue-950 text-blue-600 dark:text-blue-300">
+                    {d.city}
+                  </span>
+                  <span className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
+                    <ShieldCheck size={14} />
+                    <span>{d.type}</span>
+                  </span>
                 </div>
-              </div>
 
-              <div className="space-y-2 mb-4">
-                <p className="text-sm text-zinc-600">📍 {dealer.address}</p>
-                <p className="text-sm text-zinc-600">☎️ {dealer.phone}</p>
-              </div>
+                <h3 className="text-lg font-bold text-zinc-900 dark:text-white font-heading">
+                  {d.name}
+                </h3>
 
-              <div className="border-t border-gray-200 pt-4">
-                <p className="text-xs text-zinc-500 uppercase tracking-wide mb-2">
-                  Layanan:
+                <p className="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed flex items-start gap-2">
+                  <MapPin size={15} className="text-blue-600 shrink-0 mt-0.5" />
+                  <span>{d.address}</span>
                 </p>
-                <div className="flex flex-wrap gap-2">
-                  {dealer.services.map((service, idx) => (
+
+                <p className="text-xs text-zinc-500 dark:text-zinc-400 flex items-center gap-2">
+                  <Clock size={15} className="text-amber-500 shrink-0" />
+                  <span>{d.openHours}</span>
+                </p>
+
+                {/* Facilities Badges */}
+                <div className="flex flex-wrap gap-1.5 pt-2">
+                  {d.facilities?.map((f, fIdx) => (
                     <span
-                      key={idx}
-                      className="px-3 py-1 bg-blue-50 text-blue-500 text-xs font-medium rounded-full"
+                      key={fIdx}
+                      className="text-[10px] font-medium px-2 py-0.5 rounded-md bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 border border-zinc-200/60 dark:border-zinc-700/60"
                     >
-                      {service}
+                      {f}
                     </span>
                   ))}
                 </div>
               </div>
+
+              {/* CTAs */}
+              <div className="grid grid-cols-2 gap-3 pt-6 mt-4 border-t border-zinc-100 dark:border-zinc-800">
+                <a
+                  href={`tel:${d.phone.replace(/[^0-9]/g, "")}`}
+                  className="py-2.5 px-3 rounded-xl bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-800 dark:text-white text-xs font-bold transition-colors flex items-center justify-center gap-1.5"
+                >
+                  <Phone size={14} />
+                  <span>{d.phone}</span>
+                </a>
+
+                <a
+                  href={`https://maps.google.com/?q=${encodeURIComponent(d.name + " " + d.address)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="py-2.5 px-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold transition-all shadow-sm shadow-blue-600/20 flex items-center justify-center gap-1.5"
+                >
+                  <span>Google Maps</span>
+                  <ExternalLink size={13} />
+                </a>
+              </div>
             </motion.div>
           ))}
         </div>
-
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center"
-        >
-          <a
-            href={`https://wa.me/6281212345678?text=${encodeURIComponent(`Halo, saya ingin informasi dealer Yamaha terdekat`)}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-blue-500 hover:bg-blue-600 text-black font-bold rounded-lg transition-colors"
-          >
-            <Phone size={20} />
-            Tanya Lokasi Dealer via WhatsApp
-          </a>
-        </motion.div>
       </div>
     </section>
   );

@@ -66,10 +66,11 @@ export function LandingNavbar({ category = "rental", waLink }) {
             </div>
           ),
           navLinks: [
-            { href: "#products", label: "Products" },
-            { href: "#service", label: "Service" },
-            { href: "#dealers", label: "Dealers" },
-            { href: "#racing", label: "Racing" },
+            { href: "#products", label: "Produk" },
+            { href: "#calculator", label: "Simulasi Kredit" },
+            { href: "#service", label: "Layanan" },
+            { href: "#dealers", label: "Dealer" },
+            { href: "#racing", label: "Racing & Event" },
           ],
           ctaText: "Contact",
           textColor: "text-zinc-800",
