@@ -1,5 +1,5 @@
 import { useState } from "react";
-import PricingSection from "../components/home/PricingSection";
+import PricingSection from "../features/home/sections/PricingSection";
 import usePageMeta from "../hooks/usePageMeta";
 
 export default function Harga() {

@@ -1,0 +1,177 @@
+import { useState, useEffect } from "react";
+import DemoCard from "../../../components/shared/DemoCard";
+import {
+  LayoutGrid,
+  Smartphone,
+  Globe,
+  MonitorSmartphone,
+  Code2,
+  ArrowRight,
+  Sparkles
+} from "lucide-react";
+import { useLanguage } from "../../../context/LanguageContext";
+import { useConsultation } from "../../../context/ConsultationContext";
+
+export default function DemoSection({ filter, setFilter, filtered, isStandalone = false }) {
+  const { t } = useLanguage();
+  const { openConsultation } = useConsultation();
+  const [showAll, setShowAll] = useState(false);
+
+  useEffect(() => {
+    setShowAll(false);
+  }, [filter]);
+
+  const categories = [
+    { id: "all", label: t("Semua Karya", "All Works"), icon: LayoutGrid },
+    { id: "landing page", label: t("Website", "Websites"), icon: Globe },
+    { id: "mobile app", label: t("Aplikasi Mobile", "Mobile Apps"), icon: Smartphone },
+    { id: "sistem berbasis web", label: t("Sistem Web", "Web Systems"), icon: MonitorSmartphone },
+    { id: "software", label: t("Software", "Software"), icon: Code2 },
+  ];
+
+  const getCategoryInfo = (id) => {
+    switch (id) {
+      case "landing page":
+        return t(
+          "Referensi redesign website & landing page yang lebih rapi, modern, dan memikat calon pelanggan.",
+          "Website & landing page redesign references that look clean, modern, and attractive to clients."
+        );
+      case "mobile app":
+        return t(
+          "Demo antarmuka aplikasi mobile & PWA yang responsif, cepat, dan nyaman di ponsel.",
+          "Mobile & PWA UI demos that are responsive, fast, and smooth on phones."
+        );
+      case "sistem berbasis web":
+        return t(
+          "Demo interaktif dashboard dan sistem web untuk otomatisasi operasional dan manajemen data.",
+          "Interactive dashboard & web system demos for business operational automation."
+        );
+      case "software":
+        return t(
+          "Demo tampilan software desktop dengan desain antarmuka yang bersih dan intuitif.",
+          "Desktop software UI demos with a clean and intuitive layout."
+        );
+      default:
+        return t(
+          "Temukan referensi redesign website dan demo interaktif aplikasi (web, mobile, hingga sistem) sebagai gambaran nyata sebelum memulai proyek Anda.",
+          "Explore our modern redesign references and interactive app demos (web, mobile, to systems) to visualize your project before building."
+        );
+    }
+  };
+
+  const initialItemsCount = 6;
+  const displayItems = showAll ? filtered : filtered.slice(0, initialItemsCount);
+
+  return (
+    <section
+      id="demo"
+      className={`${
+        isStandalone ? "pb-20 md:pb-32" : "pt-8 pb-16 md:pt-12 md:pb-24"
+      } bg-transparent dark:bg-[#050508] relative`}
+    >
+      <div className="container mx-auto px-4 md:px-6 max-w-7xl">
+        {/* HEADER */}
+        <div className="max-w-3xl mx-auto text-center mb-10 md:mb-16 flex flex-col items-center">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-600 dark:text-amber-400 text-xs font-bold mb-5 uppercase tracking-widest">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>{t("Katalog Redesign & Demo Template", "Redesign Catalog & Demo Templates")}</span>
+          </div>
+
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 font-heading leading-[1.18] text-zinc-900 dark:text-white">
+            <span>{t("Mau Redesign atau Butuh Demo?", "Need a Redesign or Live Demo?")}</span>{" "}
+            <br className="hidden sm:inline" />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-500">
+              {t("Jadikan Redesign & Demo Ini Referensi Anda.", "Use Our Redesigns & Demos as Reference.")}
+            </span>
+          </h2>
+
+          <p className="text-zinc-600 dark:text-zinc-400 text-base sm:text-lg leading-relaxed mx-auto max-w-2xl">
+            {getCategoryInfo(filter)}
+          </p>
+        </div>
+
+        {/* FILTER TABS */}
+        <div className="flex justify-center mb-10 md:mb-12">
+          <div className="flex flex-wrap justify-center gap-2 md:gap-3 w-full max-w-lg md:max-w-none mx-auto">
+            {categories.map((cat) => {
+              const Icon = cat.icon;
+              const isActive = filter === cat.id;
+              return (
+                <button
+                  key={cat.id}
+                  onClick={() => setFilter(cat.id)}
+                  className={`flex items-center gap-1.5 px-4 py-2 md:px-5 md:py-2.5 rounded-full text-xs md:text-sm font-semibold transition-all duration-300 ${
+                    isActive 
+                      ? "bg-amber-500 text-white shadow-md shadow-amber-500/20 border border-amber-500" 
+                      : "bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 hover:border-amber-500/50 hover:text-amber-600 dark:hover:text-amber-500"
+                  }`}
+                >
+                  <Icon size={14} className="md:w-4 md:h-4" />
+                  <span className="capitalize">{cat.label}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* PROJECTS GRID */}
+        <div className="px-2 md:px-4">
+          {filter === "software" ? (
+            <div className="max-w-2xl mx-auto py-16 px-8 rounded-[32px] border border-dashed border-zinc-200 dark:border-white/10 bg-zinc-50/50 dark:bg-white/[0.02] text-center">
+              <div className="w-16 h-16 bg-amber-500/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Code2 className="w-8 h-8 text-amber-500" />
+              </div>
+              <h3 className="text-xl font-bold text-black dark:text-white mb-2">{t("Segera Hadir", "Coming Soon")}</h3>
+              <p className="text-zinc-500 dark:text-zinc-400 text-sm">
+                {t("Software custom & aplikasi desktop kami sedang dalam tahap kurasi untuk ditampilkan.", "Our custom software & desktop applications are currently being curated for display.")}
+              </p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+              {displayItems.map((demo, i) => (
+                <DemoCard key={demo.id || i} demo={demo} />
+              ))}
+            </div>
+          )}
+
+          {filter !== "software" && filtered.length > initialItemsCount && (
+            <div className="flex justify-center mt-10 md:mt-12 relative z-20">
+              <button
+                onClick={() => setShowAll(!showAll)}
+                className="group/btn relative px-8 py-3.5 rounded-full overflow-hidden border border-amber-500/20 bg-amber-500/5 hover:border-amber-500/30 text-amber-600 dark:text-amber-400 hover:text-white dark:hover:text-white text-xs font-bold transition-all duration-300 shadow-md shadow-amber-500/5 active:scale-95"
+              >
+                <span className="absolute inset-0 bg-gradient-to-r from-amber-500 to-orange-500 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300 -z-10" />
+                <span className="relative z-10 flex items-center gap-2">
+                  {showAll ? t("Tampilkan Lebih Sedikit", "Show Less") : `${t("Lihat Semua Portofolio", "View All Portfolio")} (${filtered.length})`}
+                  <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
+                </span>
+              </button>
+            </div>
+          )}
+        </div>
+
+        {/* BOTTOM CTA */}
+        <div className="mt-16 md:mt-24 max-w-3xl mx-auto px-4">
+          <div className="bg-white dark:bg-zinc-900/50 rounded-[2rem] border border-zinc-200/80 dark:border-zinc-800/60 p-8 md:p-12 text-center shadow-xl shadow-zinc-200/20 dark:shadow-none hover:border-amber-500/30 transition-colors duration-300 relative overflow-hidden group">
+            <div className="relative z-10 flex flex-col items-center">
+              <div className="w-12 h-12 bg-amber-500/10 rounded-full flex items-center justify-center mb-6 text-amber-500">
+                <Sparkles className="w-6 h-6" />
+              </div>
+              <p className="text-zinc-600 dark:text-zinc-300 text-base md:text-lg font-medium mb-8">
+                {t("Punya kebutuhan sistem khusus? Kami siap membantu mewujudkannya.", "Have specific system requirements? We are ready to help make it happen.")}
+              </p>
+              
+              <button 
+                onClick={() => openConsultation("Custom System")}
+                className="inline-flex items-center gap-3 bg-zinc-900 dark:bg-white text-white dark:text-black px-8 py-4 rounded-full font-bold hover:bg-amber-500 dark:hover:bg-amber-500 hover:text-white dark:hover:text-white transition-all duration-300 shadow-md hover:shadow-xl hover:shadow-amber-500/20 active:scale-95 group/btn cursor-pointer"
+              >
+                {t("Konsultasi Project", "Project Consultation")} 
+                <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

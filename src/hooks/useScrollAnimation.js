@@ -1,7 +1,7 @@
 // src/hooks/useScrollAnimation.js
 // Custom hook for scroll-based animations (Intersection Observer)
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from "react";
 
 export function useScrollAnimation(options = {}) {
   const [isInView, setIsInView] = useState(false);

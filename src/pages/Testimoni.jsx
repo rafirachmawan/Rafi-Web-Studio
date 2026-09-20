@@ -1,4 +1,4 @@
-import TestimoniSection from "../components/home/TestimoniSection";
+import TestimoniSection from "../features/home/sections/TestimoniSection";
 import usePageMeta from "../hooks/usePageMeta";
 
 export default function Testimoni() {

@@ -17,10 +17,10 @@ import {
   Smartphone,
   LayoutDashboard,
 } from "lucide-react";
-import { demos } from "../constants/demos";
-import { realProjects } from "../constants/realProjects";
-import Footer from "../components/common/Footer";
-import CleanPlaceholder from "../components/common/CleanPlaceholder";
+import { demos } from "../features/home/data/demos";
+import { realProjects } from "../features/home/data/realProjects";
+import Footer from "../components/layout/Footer";
+import CleanPlaceholder from "../components/ui/CleanPlaceholder";
 import { useLanguage } from "../context/LanguageContext";
 
 function ProjectDetailGallery({ gallery, name, project }) {

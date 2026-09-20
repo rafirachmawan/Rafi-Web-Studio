@@ -1,6 +1,6 @@
 import { useState } from "react";
-import DemoSection from "../components/home/DemoSection";
-import { demos } from "../constants/demos";
+import DemoSection from "../features/home/sections/DemoSection";
+import { demos } from "../features/home/data/demos";
 import usePageMeta from "../hooks/usePageMeta";
 
 export default function Demo() {

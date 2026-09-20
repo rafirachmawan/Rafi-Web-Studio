@@ -1,5 +1,5 @@
-import FAQSection from "../components/home/FAQSection";
-import BigCTASection from "../components/home/BigCTASection";
+import FAQSection from "../features/home/sections/FAQSection";
+import BigCTASection from "../features/home/sections/BigCTASection";
 import usePageMeta from "../hooks/usePageMeta";
 
 export default function FAQ() {

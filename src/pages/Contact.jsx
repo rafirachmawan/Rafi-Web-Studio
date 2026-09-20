@@ -1,5 +1,5 @@
-import FounderSection from "../components/home/FounderSection";
-import BigCTASection from "../components/home/BigCTASection";
+import FounderSection from "../features/home/sections/FounderSection";
+import BigCTASection from "../features/home/sections/BigCTASection";
 import usePageMeta from "../hooks/usePageMeta";
 import { useLanguage } from "../context/LanguageContext";
 import { useConsultation } from "../context/ConsultationContext";

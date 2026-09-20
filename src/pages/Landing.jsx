@@ -2,9 +2,9 @@
 // REFACTORED LANDING PAGE - Now ~100 lines instead of 833!
 // All sections are separated into reusable components
 
-import { useState } from 'react';
-import { LandingNavbarCoffee, LandingNavbarRental, LandingNavbarHotel } from '../components/landing/LandingNavbar';
-import { LandingFooterGeneric, LandingFooterSchool } from '../components/landing/LandingFooter';
+import { useState } from "react";
+import { LandingNavbarCoffee, LandingNavbarRental, LandingNavbarHotel } from "../components/shared/LandingNavbar";
+import { LandingFooterGeneric, LandingFooterSchool } from "../components/shared/LandingFooter";
 
 export default function Landing({ data }) {
   const phone = "628123456789";

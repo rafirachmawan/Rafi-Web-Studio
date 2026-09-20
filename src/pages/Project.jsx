@@ -1,4 +1,4 @@
-import RealProjectsSection from "../components/home/RealProjectsSection";
+import RealProjectsSection from "../features/home/sections/RealProjectsSection";
 import usePageMeta from "../hooks/usePageMeta";
 
 export default function Project() {

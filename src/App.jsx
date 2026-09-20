@@ -3,14 +3,14 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from "react-route
 import { LanguageProvider } from "./context/LanguageContext";
 import { ConsultationProvider } from "./context/ConsultationContext";
 
-import MainLayout from "./layouts/MainLayout";
+import MainLayout from "./components/layout/MainLayout";
 import Home from "./pages/Home";
-import SplashScreen from "./components/common/SplashScreen";
-import PageLoader from "./components/common/PageLoader";
-import ConsultationModal from "./components/common/ConsultationModal";
-import FloatingWidgets from "./components/common/FloatingWidgets";
+import SplashScreen from "./components/shared/SplashScreen";
+import PageLoader from "./components/shared/PageLoader";
+import ConsultationModal from "./components/shared/ConsultationModal";
+import FloatingWidgets from "./components/layout/FloatingWidgets";
 
-import ErrorBoundary from "./components/common/ErrorBoundary";
+import ErrorBoundary from "./components/shared/ErrorBoundary";
 
 // Lazy-loaded pages — only fetched when the route is visited
 const Project = lazy(() => import("./pages/Project"));
@@ -25,15 +25,15 @@ const Terms = lazy(() => import("./pages/Terms"));
 const Privacy = lazy(() => import("./pages/Privacy"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
-// Landing Page Demos
-const CoffeeLanding = lazy(() => import("./apps/landing-page/coffee/CoffeeLanding"));
-const RentalLanding = lazy(() => import("./apps/landing-page/rental/RentalLanding"));
-const HotelLanding = lazy(() => import("./apps/landing-page/hotel/HotelLanding"));
-const RestoLanding = lazy(() => import("./apps/landing-page/resto/RestoLanding"));
-const SekolahLanding = lazy(() => import("./apps/landing-page/sekolah/SekolahLanding"));
-const LaundryLanding = lazy(() => import("./apps/landing-page/loundry/LaundryLanding"));
-const UmrohLanding = lazy(() => import("./apps/landing-page/umroh/UmrohLanding"));
-const UNITALanding = lazy(() => import("./apps/landing-page/unita/UNITALanding"));
+// Landing Page Demos (Features)
+const CoffeeLanding = lazy(() => import("./features/coffee/CoffeeLanding"));
+const RentalLanding = lazy(() => import("./features/rental/RentalLanding"));
+const HotelLanding = lazy(() => import("./features/hotel/HotelLanding"));
+const RestoLanding = lazy(() => import("./features/resto/RestoLanding"));
+const SekolahLanding = lazy(() => import("./features/sekolah/SekolahLanding"));
+const LaundryLanding = lazy(() => import("./features/laundry/LaundryLanding"));
+const UmrohLanding = lazy(() => import("./features/umroh/UmrohLanding"));
+const UNITALanding = lazy(() => import("./features/unita/UNITALanding"));
 
 // App Demos
 const AkademikApp = lazy(() => import("./apps/sistem-web/akademik/AkademikApp"));

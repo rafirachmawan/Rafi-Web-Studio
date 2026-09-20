@@ -1,22 +1,22 @@
 import { useState } from "react";
 
-import HeroSection from "../components/home/HeroSection";
-import ProblemSection from "../components/home/ProblemSection";
-import GrowthSection from "../components/home/GrowthSection";
-import RealProjectsSection from "../components/home/RealProjectsSection";
-import DemoSection from "../components/home/DemoSection";
-import DigitalProductsSection from "../components/home/DigitalProductsSection";
-import WhyUsSection from "../components/home/WhyUsSection";
-import ProcessSection from "../components/home/ProcessSection";
-import PricingSection from "../components/home/PricingSection";
-import TestimoniSection from "../components/home/TestimoniSection";
-import FAQSection from "../components/home/FAQSection";
-import FounderSection from "../components/home/FounderSection";
-import BigCTASection from "../components/home/BigCTASection";
-import TextMarqueeDivider from "../components/common/TextMarqueeDivider";
-import LazySection from "../components/common/LazySection";
+import HeroSection from "../features/home/sections/HeroSection";
+import ProblemSection from "../features/home/sections/ProblemSection";
+import GrowthSection from "../features/home/sections/GrowthSection";
+import RealProjectsSection from "../features/home/sections/RealProjectsSection";
+import DemoSection from "../features/home/sections/DemoSection";
+import DigitalProductsSection from "../features/home/sections/DigitalProductsSection";
+import WhyUsSection from "../features/home/sections/WhyUsSection";
+import ProcessSection from "../features/home/sections/ProcessSection";
+import PricingSection from "../features/home/sections/PricingSection";
+import TestimoniSection from "../features/home/sections/TestimoniSection";
+import FAQSection from "../features/home/sections/FAQSection";
+import FounderSection from "../features/home/sections/FounderSection";
+import BigCTASection from "../features/home/sections/BigCTASection";
+import TextMarqueeDivider from "../components/shared/TextMarqueeDivider";
+import LazySection from "../components/ui/LazySection";
 
-import { demos } from "../constants/demos";
+import { demos } from "../features/home/data/demos";
 
 export default function Home() {
   const [filter, setFilter] = useState("all");
