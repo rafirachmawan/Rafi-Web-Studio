@@ -1,83 +1,76 @@
-// src/sections/hotel/HotelCTA.jsx
-// Call to action section
+// src/features/hotel/sections/HotelCTA.jsx
+// Final luxury call-to-action section for Crown Victoria Hotel Tulungagung (Purple Theme)
 
 import { motion } from "framer-motion";
-import { ArrowRight, Phone } from "lucide-react";
+import { PhoneCall, Calendar, ShieldCheck, Sparkles, CheckCircle2 } from "lucide-react";
+import { HOTEL_INFO } from "../data/hotelData";
 
-export function HotelCTA() {
+export function HotelCTA({ phone = "085196221716" }) {
+  const handleBooking = () => {
+    const text = encodeURIComponent(
+      `Halo Crown Victoria Hotel Tulungagung, saya ingin reservasi kamar untuk rencana menginap saya. Mohon informasi ketersediaan kamar dan promo terbaiknya. Terima kasih.`
+    );
+    window.open(`https://wa.me/${phone}?text=${text}`, "_blank");
+  };
+
   return (
-    <section className="py-24 px-6 bg-gradient-to-br from-purple-50 via-violet-50 to-fuchsia-50">
-      {/* Subtle Background Pattern */}
-      <div
-        className="absolute inset-0 opacity-40"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle at 20% 50%, rgba(147, 51, 234, 0.15) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(168, 85, 247, 0.15) 0%, transparent 50%)",
-        }}
-      />
+    <section className="py-20 px-4 sm:px-6 bg-white">
+      <div className="max-w-6xl mx-auto">
+        <div className="relative rounded-3xl bg-gradient-to-br from-zinc-950 via-zinc-900 to-purple-950 text-white p-8 sm:p-14 overflow-hidden shadow-2xl border border-purple-500/30">
+          {/* Ambient radial glows */}
+          <div className="absolute -right-20 -bottom-20 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -left-20 -top-20 w-96 h-96 bg-purple-600/15 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="relative z-10 max-w-5xl mx-auto text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="text-3xl md:text-5xl font-black text-zinc-900 mb-6 tracking-tight">
-            Ready for an Unforgettable Experience?
-          </h2>
+          <div className="relative z-10 max-w-2xl mx-auto text-center">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-500/20 border border-purple-400/30 text-purple-300 text-xs font-bold uppercase tracking-widest mb-6">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>Garansi Harga Terbaik Terjamin</span>
+            </div>
 
-          <p className="text-zinc-600 text-base sm:text-lg max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed">
-            Book your stay at Crown Victoria Hotel and experience the perfect
-            blend of Victorian elegance and modern luxury.
-          </p>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white mb-4">
+              Rencanakan Menginap Berkelas di Tulungagung
+            </h2>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a
-              href="#rooms"
-              className="group inline-flex items-center gap-2 px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-lg transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
-            >
-              View Available Rooms
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </a>
+            <p className="text-sm sm:text-base text-zinc-300 leading-relaxed mb-8">
+              Pesan langsung tanpa perantara untuk mendapatkan jaminan tarif terendah,
+              prioritas pemilihan kamar, serta layanan personal staf kami selama 24 jam.
+            </p>
 
-            <a
-              href="https://wa.me/085196221716?text=${encodeURIComponent('Halo Crown Victoria Hotel, saya ingin melakukan reservasi. Mohon bantuannya.')}"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white border-2 border-zinc-300 hover:border-purple-600 text-zinc-800 hover:text-purple-600 font-bold rounded-lg transition-all shadow-md hover:shadow-lg"
-            >
-              <Phone className="w-5 h-5 text-purple-600" />
-              Book via WhatsApp
-            </a>
-          </div>
+            {/* Action buttons */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
+              <button
+                onClick={handleBooking}
+                className="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-purple-600 via-purple-500 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-bold text-sm sm:text-base shadow-xl shadow-purple-500/30 hover:shadow-2xl hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer"
+              >
+                <PhoneCall className="w-4 h-4" />
+                <span>Reservasi Cepat via WhatsApp</span>
+              </button>
 
-          {/* Quick contact info */}
-          <div className="mt-12 pt-8 border-t border-zinc-200">
-            <div className="flex flex-wrap items-center justify-center gap-6 text-zinc-600 text-sm">
-              <div className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-purple-600" />
-                <span>+62 851-9622-1716</span>
+              <a
+                href={`tel:${HOTEL_INFO.phone}`}
+                className="w-full sm:w-auto px-8 py-4 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold text-sm sm:text-base transition-all flex items-center justify-center gap-2 cursor-pointer"
+              >
+                <span>Hubungi Hotline: {HOTEL_INFO.phone}</span>
+              </a>
+            </div>
+
+            {/* Perks Underneath */}
+            <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs text-zinc-300">
+              <div className="flex items-center gap-1.5">
+                <CheckCircle2 className="w-4 h-4 text-purple-400" />
+                <span>Tanpa Biaya Reservasi Tambahan</span>
               </div>
-              <div className="hidden sm:inline text-zinc-400">|</div>
-              <div className="flex items-center gap-2">
-                <svg
-                  className="w-4 h-4 text-purple-600"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                <span>Open 24 Hours</span>
+              <div className="flex items-center gap-1.5">
+                <CheckCircle2 className="w-4 h-4 text-purple-400" />
+                <span>Gratis Akses Kolam Indoor & Gym</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <CheckCircle2 className="w-4 h-4 text-purple-400" />
+                <span>Staf 24 Jam Siaga Melayani</span>
               </div>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

@@ -1,176 +1,160 @@
-// src/sections/hotel/HotelFacilities.jsx
-// Clean facilities showcase with image placeholders
+// src/features/hotel/sections/HotelFacilities.jsx
+// Authentic facilities showcase for Crown Victoria Hotel Tulungagung (Purple Theme)
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Waves,
-  Utensils,
-  Coffee,
-  Wifi,
+  UtensilsCrossed,
+  Wine,
   Dumbbell,
-  Clock,
-  Car,
+  Sparkles,
   Calendar,
+  Briefcase,
+  Gamepad2,
+  Clock,
+  MapPin,
+  Check,
 } from "lucide-react";
-
-const FACILITIES = [
-  {
-    icon: Waves,
-    title: "Swimming Pool",
-    desc: "Outdoor infinity pool with city view",
-    color: "blue",
-  },
-  {
-    icon: Utensils,
-    title: "Sultan Cafe & Resto",
-    desc: "Fine dining with international cuisine",
-    color: "amber",
-  },
-  {
-    icon: Coffee,
-    title: "Venezia Bar",
-    desc: "Premium cocktails and live music",
-    color: "purple",
-  },
-  {
-    icon: Wifi,
-    title: "High-Speed WiFi",
-    desc: "Complimentary fiber optic internet",
-    color: "green",
-  },
-  {
-    icon: Dumbbell,
-    title: "Fitness Center",
-    desc: "Modern equipment and personal training",
-    color: "red",
-  },
-  {
-    icon: Clock,
-    title: "24-Hour Room Service",
-    desc: "Round-the-clock in-room dining",
-    color: "orange",
-  },
-  {
-    icon: Car,
-    title: "Airport Transfer",
-    desc: "Luxury shuttle service available",
-    color: "blue",
-  },
-  {
-    icon: Calendar,
-    title: "Event Spaces",
-    desc: "Ballroom for weddings and conferences",
-    color: "amber",
-  },
-];
+import { FACILITIES_DATA } from "../data/hotelData";
 
 export function HotelFacilities() {
+  const [activeTab, setActiveTab] = useState("all");
+
+  const tabs = [
+    { id: "all", label: "Semua Fasilitas" },
+    { id: "recreation", label: "Kolam & Hiburan" },
+    { id: "dining", label: "Kuliner & Dining" },
+    { id: "wellness", label: "Spa & Kebugaran" },
+    { id: "events", label: "Ballroom & MICE" },
+  ];
+
+  const filteredFacilities = activeTab === "all"
+    ? FACILITIES_DATA
+    : FACILITIES_DATA.filter((f) => f.category === activeTab);
+
+  const getIcon = (id) => {
+    switch (id) {
+      case "indoor-pool":
+        return Waves;
+      case "sultan-resto":
+        return UtensilsCrossed;
+      case "venezia-bar":
+        return Wine;
+      case "fitness-gym":
+        return Dumbbell;
+      case "spa-wellness":
+        return Sparkles;
+      case "grand-ballroom":
+        return Calendar;
+      case "meeting-rooms":
+        return Briefcase;
+      case "kids-playroom":
+        return Gamepad2;
+      default:
+        return Sparkles;
+    }
+  };
+
   return (
-    <section
-      id="facilities"
-      className="py-24 px-6 bg-gradient-to-br from-purple-50 via-violet-50 to-fuchsia-50"
-    >
-      {/* Subtle Background Pattern */}
-      <div
-        className="absolute inset-0 opacity-40"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle at 20% 50%, rgba(147, 51, 234, 0.15) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(168, 85, 247, 0.15) 0%, transparent 50%)",
-        }}
-      />
-
-      <div className="relative z-10 max-w-7xl mx-auto">
+    <section id="facilities" className="py-24 px-4 sm:px-6 bg-white border-t border-zinc-200">
+      <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-purple-500/30 bg-purple-500/10 mb-6">
-            <span className="w-2 h-2 rounded-full bg-purple-600" />
-            <span className="text-purple-600 text-xs font-bold uppercase tracking-widest">
-              Amenities
-            </span>
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-100 border border-purple-300 text-purple-900 text-xs font-bold uppercase tracking-widest mb-4">
+            <Sparkles className="w-3.5 h-3.5 text-purple-700" />
+            <span>Fasilitas Bintang 4 Lengkap</span>
           </div>
-          <h2 className="text-3xl md:text-5xl font-black text-zinc-900 mb-4 tracking-tight">
-            Hotel Facilities
+
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-zinc-950 tracking-tight mb-4">
+            Pengalaman Rekreasi, Kuliner & Relaksasi
           </h2>
-          <p className="text-zinc-600 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
-            Kami menyediakan fasilitas lengkap kelas atas untuk mengoptimalkan
-            pengalaman Anda selama di Tulungagung.
+
+          <p className="text-zinc-600 text-sm sm:text-base leading-relaxed">
+            Dari keseruan kolam renang indoor dengan water slide hingga kenikmatan sarapan live cooking di Sultan Resto, nikmati kenyamanan tanpa batas dalam satu tempat.
           </p>
-        </motion.div>
+        </div>
 
-        {/* Facilities Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {FACILITIES.map((facility, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="group relative bg-white border border-zinc-200 rounded-xl overflow-hidden hover:border-purple-500/40 transition-all duration-300 shadow-sm hover:shadow-lg"
+        {/* Filter Tabs */}
+        <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+                activeTab === tab.id
+                  ? "bg-purple-600 text-white shadow-md shadow-purple-600/30"
+                  : "bg-zinc-100 text-zinc-700 hover:bg-zinc-200"
+              }`}
             >
-              {/* Image Placeholder Area */}
-              <div className="aspect-video bg-gradient-to-br from-zinc-100 to-zinc-200 flex items-center justify-center relative group-hover:bg-gradient-to-br from-zinc-200 to-zinc-300 transition-all">
-                <div className="text-center px-4">
-                  <facility.icon
-                    className={`w-12 h-12 mx-auto mb-3 opacity-40 text-purple-600 group-hover:opacity-100 transition-opacity`}
-                  />
-                  <p className="text-zinc-400 text-[10px] font-medium uppercase tracking-widest">
-                    Facility Image
-                  </p>
-                </div>
-
-                {/* Disabled img tag */}
-                <img src="" alt={facility.title} style={{ display: "none" }} />
-              </div>
-
-              {/* Content */}
-              <div className="p-4">
-                <h3 className="text-zinc-900 font-bold text-sm mb-2 group-hover:text-purple-600 transition-colors">
-                  {facility.title}
-                </h3>
-                <p className="text-zinc-600 text-xs sm:text-sm leading-relaxed">
-                  {facility.desc}
-                </p>
-              </div>
-            </motion.div>
+              {tab.label}
+            </button>
           ))}
         </div>
 
-        {/* Secondary Info */}
+        {/* Facilities Grid */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-12 p-6 bg-white border border-zinc-200 rounded-xl shadow-sm"
+          layout
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
         >
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="text-center md:text-left">
-              <h4 className="text-zinc-900 font-bold text-sm sm:text-base mb-1">
-                Need More Information?
-              </h4>
-              <p className="text-zinc-600 text-xs sm:text-sm">
-                Our concierge team is available 24/7
-              </p>
-            </div>
-            <div className="flex items-center gap-3">
-              <div className="flex items-center gap-2 text-zinc-600 text-xs">
-                <Clock className="w-4 h-4 text-purple-600" />
-                <span>Open 24 hours</span>
-              </div>
-              <div className="h-4 w-px bg-zinc-300" />
-              <a
-                href="#contact"
-                className="text-purple-600 text-xs sm:text-sm font-bold hover:text-purple-700 transition-colors"
-              >
-                Contact Concierge →
-              </a>
-            </div>
-          </div>
+          <AnimatePresence>
+            {filteredFacilities.map((facility) => {
+              const IconComponent = getIcon(facility.id);
+              return (
+                <motion.div
+                  layout
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.25 }}
+                  key={facility.id}
+                  className="p-6 rounded-3xl bg-[#FAF9FC] border border-zinc-200 hover:border-purple-500/40 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
+                >
+                  <div>
+                    {/* Top Icon & Tag */}
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="w-12 h-12 rounded-2xl bg-purple-100 border border-purple-200 flex items-center justify-center text-purple-700 group-hover:scale-110 transition-transform">
+                        <IconComponent className="w-6 h-6 stroke-[2]" />
+                      </div>
+                      <span className="text-[11px] font-bold text-purple-800 bg-purple-50 px-2.5 py-1 rounded-full border border-purple-200">
+                        {facility.tag}
+                      </span>
+                    </div>
+
+                    <h3 className="text-lg font-black text-zinc-950 mb-2 group-hover:text-purple-700 transition-colors">
+                      {facility.title}
+                    </h3>
+
+                    <p className="text-xs text-zinc-600 leading-relaxed mb-4">
+                      {facility.desc}
+                    </p>
+
+                    {/* Features list */}
+                    <ul className="space-y-1.5 text-xs text-zinc-600 mb-6">
+                      {facility.features.map((item, idx) => (
+                        <li key={idx} className="flex items-start gap-1.5">
+                          <Check className="w-3.5 h-3.5 text-purple-600 shrink-0 mt-0.5" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Hours & Location Footer */}
+                  <div className="pt-4 border-t border-zinc-200/60 text-[11px] text-zinc-500 space-y-1">
+                    <div className="flex items-center gap-1.5">
+                      <Clock className="w-3 h-3 text-zinc-400" />
+                      <span>{facility.hours}</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <MapPin className="w-3 h-3 text-zinc-400" />
+                      <span>{facility.location}</span>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </AnimatePresence>
         </motion.div>
       </div>
     </section>

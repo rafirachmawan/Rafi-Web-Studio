@@ -1,111 +1,77 @@
-// src/sections/hotel/HotelTestimonials.jsx
-// Clean testimonial section
+// src/features/hotel/sections/HotelTestimonials.jsx
+// Authentic verified guest reviews for Crown Victoria Hotel Tulungagung (Purple Theme)
 
 import { motion } from "framer-motion";
-import { Star } from "lucide-react";
-
-const TESTIMONIALS = [
-  {
-    name: "James Richardson",
-    role: "Business Traveler",
-    text: "Pengalaman menginap yang luar biasa! Desain Victorian yang elegan dipadukan dengan layanan modern yang sangat profesional. Lokasi sangat strategis di pusat kota.",
-    rating: 5,
-  },
-  {
-    name: "Sari Pratama",
-    role: "Wedding Organizer",
-    text: "Melaksanakan acara wedding di ballroom Victoria Grand. Pelayanan sangat memuaskan, staff responsif, dan fasilitas lengkap. Highly recommended!",
-    rating: 5,
-  },
-  {
-    name: "Michael Chen",
-    role: "Tourism Blogger",
-    text: "One of the best hotels in East Java. The Victorian architecture is beautifully preserved while offering all modern amenities. Sultan Cafe has excellent cuisine.",
-    rating: 5,
-  },
-];
+import { Star, Quote, CheckCircle2, Award, Sparkles } from "lucide-react";
+import { GUEST_REVIEWS } from "../data/hotelData";
 
 export function HotelTestimonials() {
   return (
-    <section className="py-24 px-6 bg-gradient-to-br from-purple-50 via-violet-50 to-fuchsia-50">
-      {/* Subtle Background Pattern */}
-      <div
-        className="absolute inset-0 opacity-40"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle at 20% 50%, rgba(147, 51, 234, 0.15) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(168, 85, 247, 0.15) 0%, transparent 50%)",
-        }}
-      />
-
-      <div className="relative z-10 max-w-7xl mx-auto">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-purple-500/30 bg-purple-500/10 mb-6">
-            <Star className="w-3 h-3 text-purple-600 fill-current" />
-            <span className="text-purple-600 text-xs font-bold uppercase tracking-widest">
-              Guest Reviews
-            </span>
+    <section id="reviews" className="py-24 px-4 sm:px-6 bg-white border-t border-zinc-200">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-100 border border-purple-300 text-purple-900 text-xs font-bold uppercase tracking-widest mb-4">
+            <Star className="w-3.5 h-3.5 text-purple-700 fill-purple-700" />
+            <span>Ulasan & Testimonial Tamu</span>
           </div>
-          <h2 className="text-3xl md:text-5xl font-black text-zinc-900 mb-4 tracking-tight">
-            What Guests Say
-          </h2>
-          <p className="text-zinc-600 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
-            Kehidupan nyata dari tamu yang telah Experience Crown Victoria Hotel
-          </p>
-        </motion.div>
 
-        {/* Testimonial Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {TESTIMONIALS.map((item, index) => (
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-zinc-950 tracking-tight mb-4">
+            Pengalaman Berkesan Bersama Kami
+          </h2>
+
+          <p className="text-zinc-600 text-sm sm:text-base leading-relaxed">
+            Kepercayaan lebih dari 90+ ulasan terverifikasi membuktikan kenyamanan,
+            keramahan layanan, dan cita rasa kuliner terbaik di Tulungagung.
+          </p>
+        </div>
+
+        {/* Reviews Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+          {GUEST_REVIEWS.map((review, idx) => (
             <motion.div
-              key={index}
+              key={review.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.15 }}
-              className="group bg-white border border-zinc-200 rounded-xl p-6 hover:border-purple-500/40 transition-all duration-300 shadow-sm hover:shadow-lg"
+              transition={{ delay: idx * 0.1 }}
+              className="p-8 rounded-3xl bg-[#FAF9FC] border border-zinc-200 hover:border-purple-500/40 hover:shadow-xl transition-all flex flex-col justify-between"
             >
-              {/* Stars */}
-              <div className="flex gap-1 mb-4">
-                {[...Array(item.rating)].map((_, i) => (
-                  <Star
-                    key={i}
-                    size={14}
-                    className="text-purple-600 fill-current"
-                  />
-                ))}
-              </div>
-
-              {/* Quote */}
-              <p className="text-zinc-700 text-sm sm:text-base leading-relaxed mb-6 italic group-hover:text-zinc-800 transition-colors">
-                "{item.text}"
-              </p>
-
-              {/* Author */}
-              <div className="flex items-center gap-3 pt-4 border-t border-zinc-200">
-                {/* Avatar placeholder */}
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-100 to-zinc-100 flex items-center justify-center border border-purple-200">
-                  <span className="text-purple-600 font-bold text-sm">
-                    {item.name
-                      .split(" ")
-                      .map((n) => n[0])
-                      .join("")
-                      .toUpperCase()}
+              <div>
+                {/* Rating score badge & stars */}
+                <div className="flex items-center justify-between gap-2 mb-6">
+                  <div className="flex items-center gap-1">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 text-purple-600 fill-purple-600" />
+                    ))}
+                  </div>
+                  <span className="text-xs font-black text-purple-900 bg-purple-100 px-2.5 py-1 rounded-full">
+                    {review.rating} / 10
                   </span>
                 </div>
 
+                <h4 className="text-base font-black text-zinc-950 mb-3 leading-snug">
+                  "{review.title}"
+                </h4>
+
+                <p className="text-xs sm:text-sm text-zinc-600 leading-relaxed mb-6 italic">
+                  "{review.comment}"
+                </p>
+              </div>
+
+              <div className="pt-4 border-t border-zinc-200/80 flex items-center justify-between">
                 <div>
-                  <div className="font-bold text-zinc-900 text-sm">
-                    {item.name}
+                  <div className="text-xs sm:text-sm font-bold text-zinc-900">
+                    {review.name}
                   </div>
-                  <div className="text-zinc-500 text-[10px] uppercase tracking-wider">
-                    {item.role}
+                  <div className="text-[11px] text-zinc-500">
+                    {review.role}
                   </div>
+                </div>
+
+                <div className="flex items-center gap-1 text-[11px] text-purple-700 font-semibold">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-purple-600" />
+                  <span>Verified</span>
                 </div>
               </div>
             </motion.div>

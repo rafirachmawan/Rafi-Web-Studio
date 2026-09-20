@@ -24,26 +24,38 @@ export function LandingNavbar({ category = "rental", waLink }) {
       case "hotel":
         return {
           logo: (
-            <div className="flex items-center gap-2">
-              <span className="text-purple-600 font-black text-xl">
-                CROWN VICTORIA
-              </span>
-              <span className="text-zinc-900 text-xs font-semibold tracking-widest uppercase hidden sm:block">
-                HOTEL
-              </span>
+            <div className="flex items-center gap-2.5">
+              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-purple-500 to-purple-700 flex items-center justify-center text-white font-black shadow-md shadow-purple-500/25">
+                👑
+              </div>
+              <div className="flex flex-col">
+                <div className="flex items-center gap-1.5">
+                  <span className="text-zinc-950 font-black text-base sm:text-lg tracking-tight">
+                    CROWN VICTORIA
+                  </span>
+                  <span className="text-[10px] font-bold text-purple-700 bg-purple-100 px-1.5 py-0.5 rounded">
+                    ★★★★
+                  </span>
+                </div>
+                <span className="text-zinc-500 text-[10px] font-bold tracking-widest uppercase">
+                  HOTEL TULUNGAGUNG
+                </span>
+              </div>
             </div>
           ),
           navLinks: [
-            { href: "#rooms", label: "Rooms" },
-            { href: "#facilities", label: "Facilities" },
-            { href: "#gallery", label: "Gallery" },
-            { href: "#reviews", label: "Reviews" },
+            { href: "#rooms", label: "Kamar & Suites" },
+            { href: "#facilities", label: "Fasilitas" },
+            { href: "#dining", label: "Resto & Dining" },
+            { href: "#mice", label: "Ballroom & MICE" },
+            { href: "#location", label: "Lokasi" },
+            { href: "#reviews", label: "Ulasan" },
           ],
-          ctaText: "Book Now",
+          ctaText: "Reservasi Kamar",
           textColor: "text-zinc-800",
           hoverColor: "hover:text-purple-600",
           buttonBg:
-            "bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800",
+            "bg-gradient-to-r from-purple-600 via-purple-500 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-bold shadow-md shadow-purple-500/25",
         };
 
       case "rental":
