@@ -127,6 +127,7 @@ export const realProjects = [
     image: antrianBriCover,
     client: "Bank BRI Kantor Cabang Surabaya",
     isReal: true,
+    isPlaceholder: true,
     fullDescription: {
       id: "Software aplikasi antrean digital desktop yang dirancang khusus untuk memperlancar antrean nasabah di kantor cabang Bank BRI Surabaya. Software ini secara otomatis mengelola nomor antrean teller dan customer service, serta terintegrasi dengan modul suara otomatis (Text-to-Speech) untuk melakukan pemanggilan nomor antrean nasabah secara real-time.",
       en: "A desktop digital queue application software designed specifically to streamline customer queues at the Bank BRI Surabaya branch office. The software automatically manages teller and customer service queue numbers, and integrates with an automatic Text-to-Speech voice module to perform real-time customer calls.",

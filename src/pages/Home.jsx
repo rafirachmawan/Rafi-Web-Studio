@@ -1,7 +1,8 @@
 import { useState } from "react";
 
 import HeroSection from "../components/home/HeroSection";
-import ClientLogosSection from "../components/home/ClientLogosSection";
+import ProblemSection from "../components/home/ProblemSection";
+import GrowthSection from "../components/home/GrowthSection";
 import RealProjectsSection from "../components/home/RealProjectsSection";
 import DemoSection from "../components/home/DemoSection";
 import WhyUsSection from "../components/home/WhyUsSection";
@@ -39,7 +40,16 @@ export default function Home() {
     <>
       {/* ─── Above the fold — renders immediately ─── */}
       <HeroSection />
-      <ClientLogosSection />
+
+      {/* ─── Problem Section — pain points ─── */}
+      <LazySection minHeight="400px" delay={0}>
+        <ProblemSection />
+      </LazySection>
+
+      {/* ─── Growth Section — value & benefits ─── */}
+      <LazySection minHeight="400px" delay={0}>
+        <GrowthSection />
+      </LazySection>
 
       {/* ─── Below the fold — each section lazy-loads & reveals smoothly ─── */}
       <LazySection minHeight="400px" delay={0}>

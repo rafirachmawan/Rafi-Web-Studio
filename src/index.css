@@ -1,5 +1,73 @@
 @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Outfit:wght@400;500;600;700;800;900&display=swap");
 
+/* ═══════════════════════════════════════════════
+   HELVENA GROTESK — 100% COVERAGE FOR ALL WEIGHTS (100–900)
+   ═══════════════════════════════════════════════ */
+@font-face {
+  font-family: 'Helvena Grotesk';
+  src: url('/fonts/Helvena-Semibold.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Helvena Grotesk';
+  src: url('/fonts/Helvena-Semibold.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Helvena Grotesk';
+  src: url('/fonts/Helvena-Semibold.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Helvena Grotesk';
+  src: url('/fonts/Helvena-Semibold.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Helvena Grotesk';
+  src: url('/fonts/Helvena-Semibold.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Helvena Grotesk';
+  src: url('/fonts/Helvena-Semibold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Helvena Grotesk';
+  src: url('/fonts/Helvena-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Helvena Grotesk';
+  src: url('/fonts/Helvena-Bold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Helvena Grotesk';
+  src: url('/fonts/Helvena-Bold.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -9,9 +77,32 @@ html {
   scroll-behavior: smooth;
 }
 
-/* GLOBAL FONT SYSTEM */
+/* GLOBAL FONT SYSTEM — 100% HELVENA GROTESK FOR ALL ELEMENTS */
+*,
+*::before,
+*::after,
+html,
+body,
+button,
+input,
+select,
+textarea,
+a,
+p,
+span,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+li,
+label {
+  font-family: 'Helvena Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+}
+
 body {
-  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   background-color: #fafafc;
   color: #18181b;
   -webkit-font-smoothing: antialiased;
@@ -23,8 +114,8 @@ body {
   color: #f4f4f5;
 }
 
-h1, h2, h3, .font-heading {
-  font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+code, kbd, samp, pre, .font-mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
 }
 
 /* HIGH-PERFORMANCE INFINITE MARQUEE */

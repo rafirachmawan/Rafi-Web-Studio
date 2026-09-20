@@ -30,17 +30,32 @@ export default function DemoSection({ filter, setFilter, filtered, isStandalone 
   ];
 
   const getCategoryInfo = (id) => {
-    switch(id) {
-      case "landing page": 
-        return t("Landing pages modern dengan desain profesional, responsive, dan fokus pada konversi.", "Modern landing pages with professional design, responsive layout, and focus on conversions.");
+    switch (id) {
+      case "landing page":
+        return t(
+          "Referensi redesign landing page yang lebih rapi, modern, dan memikat calon pembeli.",
+          "Landing page redesign references that look clean, modern, and attractive to buyers."
+        );
       case "mobile app":
-        return t("Aplikasi mobile & PWA untuk operasional bisnis, inventory, dan monitoring.", "Mobile apps & PWA for business operations, inventory, and monitoring.");
+        return t(
+          "Referensi tampilan aplikasi mobile & PWA yang simpel, cepat, dan nyaman di ponsel.",
+          "Mobile & PWA UI references that are simple, fast, and smooth on phones."
+        );
       case "sistem berbasis web":
-        return t("Dashboard interaktif, ERP, CRM, dan sistem manajemen internal perusahaan.", "Interactive dashboard, ERP, CRM, and company internal management system.");
+        return t(
+          "Referensi redesign dashboard dan sistem web agar pengelolaan data terasa lebih mudah.",
+          "Dashboard & web system redesign references for effortless data management."
+        );
       case "software":
-        return t("Software custom & aplikasi desktop untuk solusi otomatisasi bisnis spesifik.", "Custom software & desktop applications for specific business automation solutions.");
+        return t(
+          "Referensi tampilan software desktop dengan desain antarmuka yang bersih dan intuitif.",
+          "Desktop software UI references with a clean and intuitive layout."
+        );
       default:
-        return t("Koleksi karya digital terbaik kami dari berbagai industri dan platform.", "Our best digital collection across various industries and platforms.");
+        return t(
+          "Punya website tapi tampilannya sudah membosankan? Temukan berbagai referensi redesign modern di bawah ini untuk gambaran website baru bisnis Anda.",
+          "Have an existing website with an outdated look? Explore our modern redesign references below for your business inspiration."
+        );
     }
   };
 
@@ -48,35 +63,36 @@ export default function DemoSection({ filter, setFilter, filtered, isStandalone 
   const displayItems = showAll ? filtered : filtered.slice(0, initialItemsCount);
 
   return (
-    <section 
-      id="demo" 
-      className={`${isStandalone ? "pb-20 md:pb-32" : "pt-8 pb-16 md:pt-12 md:pb-24"} bg-transparent dark:bg-[#050508] relative`}
+    <section
+      id="demo"
+      className={`${
+        isStandalone ? "pb-20 md:pb-32" : "pt-8 pb-16 md:pt-12 md:pb-24"
+      } bg-transparent dark:bg-[#050508] relative`}
     >
       <div className="container mx-auto px-4 md:px-6 max-w-7xl">
         {/* HEADER */}
         <div className="max-w-3xl mx-auto text-center mb-10 md:mb-16 flex flex-col items-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-600 dark:text-amber-400 text-xs font-bold mb-6 uppercase tracking-widest">
-            <Sparkles className="w-4 h-4" />
-            <span>{t("Rebranding & Redesign", "Rebranding & Redesign")}</span>
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-600 dark:text-amber-400 text-xs font-bold mb-5 uppercase tracking-widest">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>{t("Inspirasi & Referensi Redesign", "Redesign Inspirations & References")}</span>
           </div>
-          
-          <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-6 font-heading leading-[1.15]">
-            <span>{t("Evolusi Digital ", "Digital Evolution & ")}</span>
+
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 font-heading leading-[1.18] text-zinc-900 dark:text-white">
+            <span>{t("Mau Redesign Website?", "Want to Redesign Your Website?")}</span>{" "}
             <br className="hidden sm:inline" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-500">
-              {t("Bisnis Anda", "Rebranding for Your Business")}
+              {t("Jadikan Desain Ini Referensi Anda.", "Use These Designs as Your Reference.")}
             </span>
           </h2>
 
-          <p className="text-zinc-600 dark:text-zinc-400 text-base md:text-lg leading-relaxed mx-auto max-w-2xl">
-            {getCategoryInfo(filter)} {t("Tinggalkan desain lama yang kaku. Kami siap me-rebrand dan mendesain ulang sistem atau website Anda menjadi lebih modern, memukau, dan berstandar tinggi seperti inspirasi di bawah ini.", "Leave the old, rigid design behind. We are ready to rebrand and redesign your system or website to be more modern, stunning, and high-standard like the inspirations below.")}
+          <p className="text-zinc-600 dark:text-zinc-400 text-base sm:text-lg leading-relaxed mx-auto max-w-xl">
+            {getCategoryInfo(filter)}
           </p>
         </div>
 
         {/* FILTER TABS */}
-        <div className="flex mb-10 md:mb-12 overflow-x-auto -mx-4 px-4 md:mx-0 md:px-0 md:overflow-x-visible pb-2 md:pb-0 hide-scrollbar">
-          <style>{`.hide-scrollbar::-webkit-scrollbar { display: none; }`}</style>
-          <div className="flex flex-nowrap md:flex-wrap justify-start md:justify-center gap-2 md:gap-3 min-w-max md:min-w-0 w-full md:w-auto mx-auto">
+        <div className="flex justify-center mb-10 md:mb-12">
+          <div className="flex flex-wrap justify-center gap-2 md:gap-3 w-full max-w-lg md:max-w-none mx-auto">
             {categories.map((cat) => {
               const Icon = cat.icon;
               const isActive = filter === cat.id;
@@ -84,13 +100,13 @@ export default function DemoSection({ filter, setFilter, filtered, isStandalone 
                 <button
                   key={cat.id}
                   onClick={() => setFilter(cat.id)}
-                  className={`shrink-0 flex items-center gap-2 px-5 py-2.5 rounded-full text-xs md:text-sm font-semibold transition-all duration-300 ${
+                  className={`flex items-center gap-1.5 px-4 py-2 md:px-5 md:py-2.5 rounded-full text-xs md:text-sm font-semibold transition-all duration-300 ${
                     isActive 
                       ? "bg-amber-500 text-white shadow-md shadow-amber-500/20 border border-amber-500" 
                       : "bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 hover:border-amber-500/50 hover:text-amber-600 dark:hover:text-amber-500"
                   }`}
                 >
-                  <Icon size={16} />
+                  <Icon size={14} className="md:w-4 md:h-4" />
                   <span className="capitalize">{cat.label}</span>
                 </button>
               );

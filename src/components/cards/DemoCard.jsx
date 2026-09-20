@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useLanguage } from "../../context/LanguageContext";
 import { ArrowRight } from "lucide-react";
+import CleanPlaceholder from "../common/CleanPlaceholder";
 
 export default function DemoCard({ demo }) {
   const { t } = useLanguage();
@@ -16,19 +17,19 @@ export default function DemoCard({ demo }) {
     <div className="group flex flex-col bg-zinc-50 dark:bg-zinc-900/50 rounded-3xl overflow-hidden border border-zinc-200/60 dark:border-zinc-800/60 hover:border-amber-500/40 dark:hover:border-amber-500/40 transition-all duration-300 shadow-sm hover:shadow-xl hover:shadow-amber-500/5">
       <Link
         to={`/portfolio/${demo.id}`}
-        className="block w-full text-left relative flex flex-col flex-grow"
+        className="w-full text-left relative flex flex-col flex-grow"
       >
-        {/* IMAGE */}
-        <div className="h-52 md:h-64 overflow-hidden relative bg-zinc-200 dark:bg-black/50">
-          <img
-            src={demo.image}
-            alt={demo.name}
-            loading="lazy"
-            className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+        {/* PLACEHOLDER MOCKUP AREA */}
+        <div className="h-52 md:h-60 overflow-hidden relative p-3.5 bg-zinc-100/50 dark:bg-zinc-950/40 flex items-center justify-center border-b border-zinc-200/60 dark:border-zinc-800/60">
+          <CleanPlaceholder
+            width={800}
+            height={500}
+            ratio="16:10"
+            label={demo.name}
+            sublabel={categoryNames[demo.category] || demo.category}
+            badge={categoryNames[demo.category] || demo.category}
+            className="h-full w-full"
           />
-          
-          {/* Overlay gradient on hover */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         </div>
 
         {/* CONTENT */}

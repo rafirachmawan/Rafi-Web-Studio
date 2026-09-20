@@ -1,257 +1,166 @@
-import { useState } from "react";
+import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { realProjects } from "../../constants/realProjects";
-import { ArrowRight, Trophy, LayoutGrid, ArrowUp, ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Tag, ArrowRight, Eye } from "lucide-react";
 import { useLanguage } from "../../context/LanguageContext";
 import AnimatedCounter from "../common/AnimatedCounter";
-
-function ProjectCardItem({ project, t }) {
-  const gallery = project.gallery && project.gallery.length > 0 ? project.gallery : [project.image];
-  const [activeIdx, setActiveIdx] = useState(0);
-
-  const prevImage = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setActiveIdx((prev) => (prev === 0 ? gallery.length - 1 : prev - 1));
-  };
-
-  const nextImage = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setActiveIdx((prev) => (prev === gallery.length - 1 ? 0 : prev + 1));
-  };
-
-  const goToImage = (e, index) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setActiveIdx(index);
-  };
-
-  return (
-    <div className="group flex flex-col bg-zinc-50 dark:bg-zinc-900/50 rounded-3xl overflow-hidden border border-zinc-200/60 dark:border-zinc-800/60 hover:border-amber-500/40 dark:hover:border-amber-500/40 transition-all duration-300 shadow-sm hover:shadow-xl hover:shadow-amber-500/5">
-      {/* IMAGE / CAROUSEL CONTAINER */}
-      <div className="relative overflow-hidden aspect-[16/10] bg-zinc-200 dark:bg-black/50 group/slider">
-        <Link to={`/portfolio/${project.id}`} className="block w-full h-full">
-          <img
-            src={gallery[activeIdx]}
-            alt={`${project.name} - slide ${activeIdx + 1}`}
-            loading="lazy"
-            className="w-full h-full object-contain transition-all duration-500 ease-out group-hover:scale-105"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-60 pointer-events-none" />
-        </Link>
-
-        {/* GALLERY CONTROLS IF MULTIPLE IMAGES */}
-        {gallery.length > 1 && (
-          <>
-            {/* Slide Index Badge */}
-            <div className="absolute top-3 right-3 bg-black/70 backdrop-blur-md text-white text-[10px] font-extrabold px-2.5 py-1 rounded-full border border-white/20 pointer-events-none z-10">
-              {activeIdx + 1} / {gallery.length}
-            </div>
-
-            {/* Prev Button */}
-            <button
-              onClick={prevImage}
-              aria-label="Previous Slide"
-              className="absolute left-2.5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/60 hover:bg-amber-500 text-white backdrop-blur-md border border-white/20 flex items-center justify-center transition-all duration-200 opacity-90 sm:opacity-0 group-hover/slider:opacity-100 z-20 cursor-pointer shadow-lg hover:scale-110 active:scale-95"
-            >
-              <ChevronLeft size={20} />
-            </button>
-
-            {/* Next Button */}
-            <button
-              onClick={nextImage}
-              aria-label="Next Slide"
-              className="absolute right-2.5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/60 hover:bg-amber-500 text-white backdrop-blur-md border border-white/20 flex items-center justify-center transition-all duration-200 opacity-90 sm:opacity-0 group-hover/slider:opacity-100 z-20 cursor-pointer shadow-lg hover:scale-110 active:scale-95"
-            >
-              <ChevronRight size={20} />
-            </button>
-
-            {/* Navigation Dots */}
-            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5 z-20 bg-black/50 backdrop-blur-md px-3 py-1 rounded-full border border-white/10">
-              {gallery.map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={(e) => goToImage(e, idx)}
-                  className={`transition-all duration-300 rounded-full cursor-pointer ${
-                    activeIdx === idx
-                      ? "w-5 h-1.5 bg-amber-400"
-                      : "w-1.5 h-1.5 bg-white/50 hover:bg-white"
-                  }`}
-                  aria-label={`Go to slide ${idx + 1}`}
-                />
-              ))}
-            </div>
-          </>
-        )}
-      </div>
-
-      {/* DETAILS */}
-      <div className="flex flex-col flex-grow p-6 md:p-8">
-        <div className="flex items-center gap-3 mb-4">
-          <span className="px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-amber-600 dark:text-amber-400 bg-amber-500/10 rounded-full border border-amber-500/20">
-            {project.category}
-          </span>
-          <span className="w-1.5 h-1.5 rounded-full bg-zinc-300 dark:bg-zinc-700"></span>
-          <span className="text-xs font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">
-            {project.client}
-          </span>
-        </div>
-
-        <h3 className="text-2xl font-bold text-zinc-900 dark:text-white mb-3 group-hover:text-amber-500 dark:group-hover:text-amber-400 transition-colors duration-300">
-          {t(project.name)}
-        </h3>
-
-        <p className="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed mb-8 flex-grow">
-          {t(project.desc)}
-        </p>
-
-        {/* TECH STACK & LINK */}
-        <div className="flex items-center justify-between border-t border-zinc-200 dark:border-zinc-800/80 pt-5 mt-auto">
-          <div className="flex flex-wrap gap-2">
-            {project.techStack.slice(0, 3).map((tech, idx) => (
-              <span
-                key={idx}
-                className="text-[10px] font-bold text-zinc-700 dark:text-zinc-300 bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 px-2 py-1 rounded-md"
-              >
-                {tech}
-              </span>
-            ))}
-            {project.techStack.length > 3 && (
-              <span className="text-[10px] font-bold text-zinc-500 dark:text-zinc-500 bg-transparent border border-dashed border-zinc-300 dark:border-zinc-700 px-2 py-1 rounded-md">
-                +{project.techStack.length - 3}
-              </span>
-            )}
-          </div>
-
-          <Link
-            to={`/portfolio/${project.id}`}
-            className="w-10 h-10 flex items-center justify-center rounded-full bg-zinc-900 dark:bg-white text-white dark:text-black group-hover:bg-amber-500 group-hover:text-white dark:group-hover:bg-amber-500 dark:group-hover:text-white transition-all duration-300 shrink-0"
-          >
-            <ArrowRight size={18} className="-rotate-45 group-hover:rotate-0 transition-transform duration-300" />
-          </Link>
-        </div>
-      </div>
-    </div>
-  );
-}
+import CleanPlaceholder from "../common/CleanPlaceholder";
 
 export default function RealProjectsSection({ isStandalone = false }) {
   const { t } = useLanguage();
-  const [isExpanded, setIsExpanded] = useState(false);
+  const sliderRef = useRef(null);
 
-  // Di homepage, tampilkan hanya 2 project pertama jika belum diexpand
-  const displayedProjects = isStandalone || isExpanded ? realProjects : realProjects.slice(0, 2);
-  const hiddenCount = realProjects.length - 2;
+  const scroll = (direction) => {
+    if (sliderRef.current) {
+      const card = sliderRef.current.querySelector(".snap-center");
+      const cardWidth = card ? card.offsetWidth + 24 : 400;
+      const scrollAmount = direction === "left" ? -cardWidth : cardWidth;
+      sliderRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    }
+  };
 
   return (
-    <section 
-      id="real-projects" 
-      className={`${isStandalone ? "pb-20 md:pb-32" : "pt-8 pb-20 md:pt-12 md:pb-32"} relative bg-transparent dark:bg-[#050508]`}
+    <section
+      id="real-projects"
+      className={`${
+        isStandalone ? "pb-20 md:pb-32" : "pt-8 pb-20 md:pt-14 md:pb-28"
+      } relative bg-transparent dark:bg-[#050508] scroll-mt-24`}
     >
       <div className="container mx-auto px-4 md:px-6 max-w-7xl">
-        {/* HEADER */}
-        <div className="max-w-4xl mx-auto text-center mb-16 md:mb-24 flex flex-col items-center bg-white/40 dark:bg-zinc-900/40 border border-zinc-200/50 dark:border-white/5 backdrop-blur-xl p-8 md:p-12 rounded-[2rem] md:rounded-[3rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-none">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-600 dark:text-amber-400 text-xs font-bold mb-6 uppercase tracking-widest">
-            <Trophy className="w-4 h-4" />
-            <span>{t("Bukti Nyata", "Proven Track Record")}</span>
-          </div>
-          
-          <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-6 font-heading leading-[1.15]">
-            <span>{t("Portofolio Proyek ", "Digital Project ")}</span>
-            <br className="hidden sm:inline" />
+        {/* HEADER CLEAN & MINIMALIS */}
+        <div className="max-w-3xl mx-auto text-center mb-10 md:mb-14">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 font-heading leading-tight text-zinc-900 dark:text-white">
+            {t("Hasil Nyata.", "Real Results.")}{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-500">
-              {t("Digital Terbaru", "Latest Portfolio")}
+              {t("Bukan Sekadar Janji.", "Not Just Promises.")}
             </span>
           </h2>
-          
-          <p className="text-zinc-600 dark:text-zinc-400 text-sm md:text-base leading-relaxed mx-auto max-w-2xl mb-4">
+          <p className="text-zinc-600 dark:text-zinc-400 text-sm md:text-base leading-relaxed max-w-2xl mx-auto">
             {t(
-              "Kami tidak sekadar merancang konsep, tetapi merealisasikan solusi. Telusuri deretan karya digital nyata yang telah kami bangun dan kini sukses mengakselerasi pertumbuhan bisnis klien kami di berbagai industri.",
-              "We don't just design concepts, but realize solutions. Explore the array of real digital works we have built that are now successfully accelerating our clients' business growth across various industries."
+              "Setiap detail dirancang untuk meningkatkan kredibilitas, performa, dan pertumbuhan bisnis Anda.",
+              "Every detail is crafted to enhance credibility, performance, and your business growth."
             )}
           </p>
         </div>
 
-        {/* PROJECTS GRID */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10">
-          {displayedProjects.map((project) => (
-            <ProjectCardItem key={project.id} project={project} t={t} />
-          ))}
+        {/* SLIDER CAROUSEL WRAPPER DENGAN TOMBOL NAVIGASI */}
+        <div className="relative max-w-7xl mx-auto group/carousel">
+          {/* Tombol Panah Kiri */}
+          <button
+            onClick={() => scroll("left")}
+            aria-label="Previous Slide"
+            className="absolute -left-2 sm:-left-5 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-zinc-900/80 hover:bg-amber-500 text-white backdrop-blur-md border border-zinc-700/50 flex items-center justify-center transition-all duration-300 cursor-pointer shadow-lg hover:shadow-xl hover:scale-110 active:scale-95 z-30 opacity-35 sm:opacity-35 group-hover/carousel:opacity-85 hover:!opacity-100"
+          >
+            <ChevronLeft size={24} />
+          </button>
+
+          {/* Tombol Panah Kanan */}
+          <button
+            onClick={() => scroll("right")}
+            aria-label="Next Slide"
+            className="absolute -right-2 sm:-right-5 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-zinc-900/80 hover:bg-amber-500 text-white backdrop-blur-md border border-zinc-700/50 flex items-center justify-center transition-all duration-300 cursor-pointer shadow-lg hover:shadow-xl hover:scale-110 active:scale-95 z-30 opacity-35 sm:opacity-35 group-hover/carousel:opacity-85 hover:!opacity-100"
+          >
+            <ChevronRight size={24} />
+          </button>
+
+          {/* SLIDER CONTAINER */}
+          <div
+            ref={sliderRef}
+            className="flex items-center gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory py-4 px-2 sm:px-4 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+          >
+            {realProjects.map((project) => (
+              <div
+                key={project.id}
+                className="snap-center shrink-0 w-[85vw] sm:w-[340px] md:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] h-[480px] md:h-[510px] rounded-[2rem] md:rounded-[2.5rem] relative overflow-hidden group cursor-pointer border border-zinc-200/80 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/60 shadow-sm hover:shadow-2xl hover:border-amber-500/40 dark:hover:border-amber-500/40 hover:-translate-y-2 transition-all duration-500"
+              >
+                <Link
+                  to={`/portfolio/${project.id}`}
+                  className="w-full h-full flex flex-col justify-between p-6 sm:p-7 select-none"
+                >
+                  {/* TOP BADGE */}
+                  <div className="flex justify-center z-10">
+                    <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-zinc-100 dark:bg-zinc-800/90 text-zinc-700 dark:text-zinc-300 text-xs font-semibold border border-zinc-200/80 dark:border-zinc-700/80 shadow-sm">
+                      <Tag size={12} className="text-amber-500" />
+                      <span className="capitalize">{project.category}</span>
+                    </span>
+                  </div>
+
+                  {/* PLACEHOLDER MOCKUP PROYEK DENGAN OVERLAY HOVER */}
+                  <div className="relative flex-1 flex flex-col items-center justify-center my-3 overflow-hidden rounded-2xl p-1 group/img w-full min-h-[220px]">
+                    <CleanPlaceholder
+                      width={800}
+                      height={500}
+                      ratio="16:10"
+                      label={t("Placeholder Portofolio", "Portfolio Placeholder")}
+                      sublabel={project.client}
+                      badge={project.category}
+                      className="min-h-[210px] aspect-[16/10]"
+                    />
+
+                    {/* OVERLAY BUTTON SAAT KURSOR DI AREA PROJECT */}
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 bg-black/40 backdrop-blur-[2px] rounded-2xl z-20 pointer-events-none">
+                      <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-amber-500 text-white font-bold text-xs sm:text-sm shadow-xl shadow-amber-500/30 transform translate-y-3 group-hover:translate-y-0 transition-transform duration-300 ease-out">
+                        <Eye size={16} />
+                        <span>{t("Lihat Project", "View Project")}</span>
+                        <ArrowRight size={15} />
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* BOTTOM TITLE & CLIENT */}
+                  <div className="z-10 text-center pt-2 pb-1">
+                    <h3 className="text-zinc-900 dark:text-white font-extrabold text-sm sm:text-base md:text-lg tracking-tight line-clamp-2 min-h-[2.5rem] flex items-center justify-center group-hover:text-amber-500 dark:group-hover:text-amber-400 transition-colors">
+                      {t(project.name)}
+                    </h3>
+                    <p className="text-zinc-500 dark:text-zinc-400 text-xs sm:text-sm font-medium mt-1 line-clamp-1">
+                      {project.client}
+                    </p>
+                  </div>
+                </Link>
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* LIHAT SEMUA / SEMBUNYIKAN — hanya tampil di homepage (bukan standalone) */}
-        {!isStandalone && hiddenCount > 0 && (
-          <div className="mt-12 flex flex-col items-center gap-4">
-            {/* Hint text */}
-            {!isExpanded && (
-              <p className="text-sm text-zinc-500 dark:text-zinc-400 font-medium">
-                {t(
-                  `+${hiddenCount} project client lainnya menunggu untuk dieksplorasi`,
-                  `+${hiddenCount} more client projects waiting to be explored`
-                )}
-              </p>
-            )}
+        {/* BOTTOM LINK & STATS */}
+        <div className="mt-12 flex flex-col items-center gap-8">
+          <Link
+            to="/project"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-zinc-900 dark:bg-white text-white dark:text-black hover:bg-amber-500 dark:hover:bg-amber-500 dark:hover:text-white text-xs sm:text-sm font-bold transition-all shadow-md hover:shadow-xl hover:shadow-amber-500/20 group cursor-pointer"
+          >
+            <span>{t("Eksplorasi Semua Portofolio", "Explore All Portfolio")}</span>
+            <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+          </Link>
 
-            {/* CTA Button */}
-            <button
-              onClick={() => setIsExpanded(!isExpanded)}
-              id="btn-lihat-semua-project-client"
-              className="group inline-flex items-center gap-3 px-8 py-4 rounded-full bg-zinc-900 dark:bg-white text-white dark:text-black text-sm font-bold hover:bg-amber-500 dark:hover:bg-amber-500 dark:hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-amber-500/25 hover:scale-[1.02] active:scale-95 cursor-pointer"
-            >
-              <LayoutGrid className="w-4 h-4" />
-              <span>
-                {isExpanded
-                  ? t("Tampilkan Lebih Sedikit", "Show Less Projects")
-                  : t("Lihat Semua Project Client", "View All Client Projects")}
-              </span>
-              {isExpanded ? (
-                <ArrowUp className="w-4 h-4 group-hover:-translate-y-1 transition-transform duration-300" />
-              ) : (
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-              )}
-            </button>
-          </div>
-        )}
-
-        {/* BOTTOM SECTION: STATS & CTA */}
-        <div className={`${!isStandalone ? "mt-16" : "mt-20"} flex flex-col items-center gap-10`}>
           {/* STATS HIGHLIGHT */}
-          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-16 py-6 md:py-8 px-8 w-full max-w-3xl mx-auto bg-zinc-50 dark:bg-zinc-900/50 rounded-3xl border border-zinc-200/60 dark:border-zinc-800/60 shadow-sm">
+          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-16 py-6 px-8 w-full max-w-3xl mx-auto bg-zinc-50 dark:bg-zinc-900/50 rounded-3xl border border-zinc-200/60 dark:border-zinc-800/60 shadow-sm">
             <div className="flex flex-col items-center">
               <span className="text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-500">
                 <AnimatedCounter value={50} suffix="+" />
               </span>
-              <span className="text-xs font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-widest mt-1">{t("Project Selesai", "Projects Completed")}</span>
+              <span className="text-xs font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-widest mt-1">
+                {t("Project Selesai", "Projects Completed")}
+              </span>
             </div>
             <div className="w-px h-12 bg-zinc-200 dark:bg-zinc-800 hidden md:block"></div>
             <div className="flex flex-col items-center">
               <span className="text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-500">
                 <AnimatedCounter value={40} suffix="+" />
               </span>
-              <span className="text-xs font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-widest mt-1">{t("Klien Aktif", "Active Clients")}</span>
+              <span className="text-xs font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-widest mt-1">
+                {t("Klien Aktif", "Active Clients")}
+              </span>
             </div>
             <div className="w-px h-12 bg-zinc-200 dark:bg-zinc-800 hidden md:block"></div>
             <div className="flex flex-col items-center">
               <span className="text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-500">
                 <AnimatedCounter value={4} suffix="+" />
               </span>
-              <span className="text-xs font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-widest mt-1">{t("Tahun Pengalaman", "Years Experience")}</span>
+              <span className="text-xs font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-widest mt-1">
+                {t("Tahun Pengalaman", "Years Experience")}
+              </span>
             </div>
           </div>
-
-          {/* BOTTOM CTA — hanya di halaman /project (standalone) */}
-          {isStandalone && (
-            <div className="text-center">
-              <Link
-                to="/project"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-amber-500/30 bg-amber-500/5 text-amber-600 dark:text-amber-500 text-sm font-bold hover:bg-amber-500 hover:text-white transition-all duration-300 shadow-sm hover:shadow-lg hover:shadow-amber-500/20 group"
-              >
-                <span>{t("Eksplorasi 50+ Project Lainnya", "Explore 50+ Other Projects")}</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </div>
-          )}
         </div>
       </div>
     </section>

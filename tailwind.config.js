@@ -37,10 +37,11 @@ export default {
       
       // Typography
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
-        heading: ['Inter', 'sans-serif'],
+        sans: ['"Helvena Grotesk"', 'sans-serif'],
+        heading: ['"Helvena Grotesk"', 'sans-serif'],
+        helvena: ['"Helvena Grotesk"', 'sans-serif'],
+        inter: ['"Helvena Grotesk"', 'sans-serif'],
         playfair: ['Playfair Display', 'serif'],
-        inter: ['Inter', 'sans-serif'],
       },
       
       // Shadows
