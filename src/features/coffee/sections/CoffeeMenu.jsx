@@ -10,34 +10,36 @@ import {
 } from "../data/menu";
 import { fadeBetween } from "../../../utils/animations";
 import CleanPlaceholder from "../../../components/ui/CleanPlaceholder";
+import { useLanguage } from "../../../context/LanguageContext";
 
 export function CoffeeMenu() {
   const [activeTab, setActiveTab] = useState("beverages");
+  const { t } = useLanguage();
   const menuItems = getMenuItems(activeTab);
 
   const tabs = [
     {
       id: "beverages",
-      label: "Beverages",
-      icon: <Coffee size={16} />,
+      label: t("Minuman", "Beverages"),
+      icon: <Coffee size={15} />,
       count: getMenuItems("beverages").length,
     },
     {
       id: "food",
-      label: "Food & Pastries",
-      icon: <UtensilsCrossed size={16} />,
+      label: t("Makanan & Pastry", "Food & Pastries"),
+      icon: <UtensilsCrossed size={15} />,
       count: getMenuItems("food").length,
     },
     {
       id: "wholeBean",
-      label: "Whole Bean & VIA®",
-      icon: <Package size={16} />,
+      label: t("Biji Kopi & VIA®", "Whole Bean & VIA®"),
+      icon: <Package size={15} />,
       count: getMenuItems("wholeBean").length,
     },
     {
       id: "merchandise",
-      label: "Merchandise",
-      icon: <ShoppingBag size={16} />,
+      label: t("Merchandise", "Merchandise"),
+      icon: <ShoppingBag size={15} />,
       count: getMenuItems("merchandise").length,
     },
   ];
@@ -45,7 +47,7 @@ export function CoffeeMenu() {
   return (
     <section
       id="menu"
-      className="py-28 px-6 bg-[#09100E] border-y border-white/5 relative overflow-hidden"
+      className="py-16 sm:py-28 px-4 sm:px-6 bg-[#09100E] border-y border-white/5 relative overflow-hidden"
       aria-label="Starbucks Menu"
     >
       {/* Ambient Background Glow */}
@@ -54,34 +56,45 @@ export function CoffeeMenu() {
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#00704A]/20 border border-[#00704A]/30 text-[#D4E9E2] text-xs font-extrabold uppercase tracking-widest mb-3">
-            Handcrafted With Passion
+        <div className="text-center mb-8 sm:mb-16">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#00704A]/20 border border-[#00704A]/30 text-[#D4E9E2] text-[10px] sm:text-xs font-extrabold uppercase tracking-widest mb-3">
+            {t("Dibuat Sepenuh Hati", "Handcrafted With Passion")}
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-black text-white mb-4">
-            Our Signature Menu
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-serif font-black text-white mb-3 sm:mb-4">
+            {t("Menu Khas Pilihan", "Our Signature Menu")}
           </h2>
-          <p className="text-zinc-400 text-sm md:text-base max-w-xl mx-auto leading-relaxed">
-            Dari espresso racikan barista, cold brew nikmat, sajian pastry hangat, hingga biji kopi utuh sangrai etis Sumatra dan merchandise edisi spesial.
+          <p className="text-zinc-400 text-xs sm:text-sm md:text-base max-w-xl mx-auto leading-relaxed px-2">
+            {t(
+              "Dari espresso racikan barista, cold brew nikmat, sajian pastry hangat, hingga biji kopi utuh sangrai etis Sumatra dan merchandise edisi spesial.",
+              "From handcrafted barista espresso and cold brew, warm artisanal pastries, to ethically sourced Sumatra whole beans and limited edition merchandise."
+            )}
           </p>
         </div>
 
-        {/* Tab Navigation */}
-        <div className="flex justify-center gap-3 mb-14 flex-wrap">
+        {/* Tab Navigation - Symmetrical 2x2 grid on mobile, flex row on desktop */}
+        <div className="grid grid-cols-2 md:flex md:flex-wrap md:justify-center gap-2 sm:gap-3 mb-8 sm:mb-14 max-w-lg md:max-w-none mx-auto">
           {tabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`flex items-center gap-2 px-6 py-3 rounded-full text-xs sm:text-sm font-bold transition-all border cursor-pointer ${
+              className={`flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-6 py-2.5 sm:py-3 rounded-xl sm:rounded-full text-xs sm:text-sm font-bold transition-all border cursor-pointer ${
                 activeTab === tab.id
-                  ? "bg-[#00704A] text-white border-[#00704A] shadow-lg shadow-[#00704A]/25 scale-105"
+                  ? "bg-[#00704A] text-white border-[#00704A] shadow-lg shadow-[#00704A]/25 scale-[1.02] sm:scale-105"
                   : "bg-[#111C18] text-zinc-400 border-white/10 hover:border-white/30 hover:text-white"
               }`}
               aria-pressed={activeTab === tab.id}
             >
-              {tab.icon}
-              <span>{tab.label}</span>
-              <span className="text-xs opacity-75 ml-1">({tab.count})</span>
+              <span className="shrink-0">{tab.icon}</span>
+              <span className="truncate">{tab.label}</span>
+              <span
+                className={`text-[10px] sm:text-xs px-1.5 py-0.5 rounded-full font-semibold shrink-0 ml-0.5 ${
+                  activeTab === tab.id
+                    ? "bg-white/20 text-white"
+                    : "bg-white/5 text-zinc-400"
+                }`}
+              >
+                {tab.count}
+              </span>
             </button>
           ))}
         </div>

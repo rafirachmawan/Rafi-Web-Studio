@@ -10,7 +10,7 @@ export default function DemoCard({ demo }) {
     "landing page": t("Website", "Website"),
     "mobile app": t("Aplikasi Mobile", "Mobile App"),
     "sistem berbasis web": t("Sistem Web", "Web System"),
-    "software": t("Software", "Software")
+    software: t("Software", "Software"),
   };
 
   return (
@@ -50,24 +50,31 @@ export default function DemoCard({ demo }) {
           </div>
 
           {/* ICON & TITLE */}
-          <div className="flex items-center gap-3 mb-3">
-            {typeof demo.icon === 'string' && (demo.icon.includes('/') || demo.icon.includes('.')) ? (
-              <img src={demo.icon} alt={demo.name} className="w-8 h-8 object-contain shrink-0" />
+          <div className="flex items-center gap-2.5 mb-3">
+            {typeof demo.icon === "string" &&
+            (demo.icon.includes("/") || demo.icon.includes(".")) ? (
+              <img
+                src={demo.icon}
+                alt={demo.name}
+                className="w-7 h-7 object-contain shrink-0"
+              />
             ) : (
-              <div className="text-xl text-amber-600 dark:text-amber-500 bg-amber-500/10 w-8 h-8 flex items-center justify-center rounded-lg overflow-hidden shrink-0">
+              <div className="text-base text-amber-600 dark:text-amber-500 bg-amber-500/10 w-7 h-7 flex items-center justify-center rounded-lg overflow-hidden shrink-0">
                 {demo.icon}
               </div>
             )}
-            <h3 className="text-xl font-bold text-zinc-900 dark:text-white group-hover:text-amber-500 dark:group-hover:text-amber-400 transition-colors duration-300">
+            <h3 className="text-sm md:text-base font-bold leading-snug text-zinc-900 dark:text-white group-hover:text-amber-500 dark:group-hover:text-amber-400 transition-colors duration-300">
               {demo.name}
             </h3>
           </div>
 
-          
           {/* LINK */}
           <div className="mt-6 flex items-center gap-1.5 text-sm font-semibold text-zinc-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-500 transition-colors">
-             {t("Lihat Demo", "View Demo")}
-             <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            {t("Lihat Demo", "View Demo")}
+            <ArrowRight
+              size={16}
+              className="group-hover:translate-x-1 transition-transform"
+            />
           </div>
         </div>
       </Link>

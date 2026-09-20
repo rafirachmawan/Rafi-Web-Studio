@@ -328,7 +328,14 @@ export default function ProjectDetail() {
   );
 
   return (
-    <div className="min-h-screen bg-[#fafafc] dark:bg-[#050508] text-zinc-900 dark:text-zinc-100 font-sans selection:bg-amber-500/30">
+    <div className="min-h-screen bg-[#fafafc] dark:bg-[#050508] text-zinc-900 dark:text-zinc-100 font-sans selection:bg-amber-500/30 relative overflow-hidden">
+      {/* Ambient Top Glow Effects */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[650px] pointer-events-none -z-0 overflow-hidden">
+        <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] sm:w-[950px] h-[400px] bg-gradient-to-b from-amber-500/12 via-orange-500/6 to-transparent blur-3xl rounded-full" />
+        <div className="absolute top-24 -left-24 w-[350px] h-[350px] bg-amber-500/8 blur-3xl rounded-full" />
+        <div className="absolute top-36 -right-24 w-[350px] h-[350px] bg-orange-500/8 blur-3xl rounded-full" />
+      </div>
+
       {/* NAVBAR STICKY */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/85 dark:bg-[#050508]/85 backdrop-blur-xl border-b border-zinc-200/80 dark:border-white/5 px-4 py-3.5 sm:px-8">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
@@ -347,7 +354,7 @@ export default function ProjectDetail() {
       </nav>
 
       {/* MAIN CONTENT AREA */}
-      <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20 md:pt-36 md:pb-28">
+      <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20 md:pt-36 md:pb-28 relative z-10">
         {/* ─── 1. HERO HEADER (FULL-WIDTH CENTERPIECE) ─── */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -356,31 +363,31 @@ export default function ProjectDetail() {
           className="mb-10 sm:mb-12"
         >
           {/* Breadcrumbs */}
-          <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-zinc-500 dark:text-zinc-400 mb-5">
+          <div className="flex items-center gap-2 text-xs sm:text-sm font-medium text-zinc-500 dark:text-zinc-400 mb-5">
             <Link to="/" className="hover:text-amber-500 transition-colors">
               {t("Beranda", "Home")}
             </Link>
-            <span>/</span>
+            <span className="text-zinc-300 dark:text-zinc-700">/</span>
             <Link
               to="/#real-projects"
               className="hover:text-amber-500 transition-colors"
             >
               {t("Portofolio", "Portfolio")}
             </Link>
-            <span>/</span>
-            <span className="text-zinc-900 dark:text-white truncate max-w-[200px] sm:max-w-none">
+            <span className="text-zinc-300 dark:text-zinc-700">/</span>
+            <span className="text-zinc-900 dark:text-white font-semibold truncate max-w-[200px] sm:max-w-none">
               {t(project.name)}
             </span>
           </div>
 
           {/* Category & Status Badges */}
-          <div className="flex flex-wrap items-center gap-3 mb-4">
+          <div className="flex flex-wrap items-center gap-2.5 mb-5">
             <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold border border-amber-500/20 tracking-wide uppercase">
               <Tag size={12} />
               <span>{categoryLabel}</span>
             </span>
 
-            {project.isReal ? (
+            {project.isReal && (
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-semibold border border-emerald-500/20">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
@@ -388,35 +395,79 @@ export default function ProjectDetail() {
                 </span>
                 <span>{t("Project Rilis (Live)", "Live Project")}</span>
               </span>
-            ) : (
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 text-xs font-semibold border border-blue-500/20">
-                <Sparkles size={12} />
-                <span>{t("Template Siap Pakai", "Ready Template")}</span>
-              </span>
             )}
           </div>
 
-          {/* Project Title */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold text-zinc-900 dark:text-white tracking-tight font-heading leading-[1.12] mb-5">
-            {t(project.name)}
-          </h1>
+          {/* Title Row with Brand Logo & Action CTA Button */}
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-5">
+            <div className="flex items-center gap-4 sm:gap-5">
+              {/* Brand Logo Container */}
+              {project.icon && (
+                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl p-2.5 sm:p-3 bg-white dark:bg-zinc-900 border border-zinc-200/80 dark:border-zinc-800 shadow-md shadow-zinc-950/5 dark:shadow-black/30 flex items-center justify-center shrink-0">
+                  {typeof project.icon === "string" &&
+                  (project.icon.includes("/") || project.icon.includes(".")) ? (
+                    <img
+                      src={project.icon}
+                      alt={t(project.name)}
+                      className="w-full h-full object-contain"
+                    />
+                  ) : (
+                    <div className="text-3xl text-amber-500 flex items-center justify-center">
+                      {project.icon}
+                    </div>
+                  )}
+                </div>
+              )}
+              <div>
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-zinc-900 dark:text-white tracking-tight font-heading leading-tight">
+                  {t(project.name)}
+                </h1>
+                {project.client && (
+                  <p className="text-xs sm:text-sm font-semibold text-zinc-500 dark:text-zinc-400 mt-1 flex items-center gap-1.5">
+                    <Building2 size={13} className="text-amber-500" />
+                    <span>{project.client}</span>
+                  </p>
+                )}
+              </div>
+            </div>
 
-          {/* Project Summary Subtitle */}
-          <p className="text-base sm:text-lg md:text-xl text-zinc-600 dark:text-zinc-400 max-w-3xl leading-relaxed">
-            {t(project.desc)}
-          </p>
+            {/* Primary Action Button */}
+            {project.path && project.path !== "#" && (
+              <div className="shrink-0 flex items-center">
+                {project.path.startsWith("/") ? (
+                  <Link
+                    to={project.path}
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-gradient-to-r from-amber-500 to-orange-500 text-white font-bold text-sm sm:text-base shadow-lg shadow-amber-500/25 hover:shadow-amber-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all group"
+                  >
+                    <span>{t("Kunjungi Website", "Visit Website")}</span>
+                    <ExternalLink size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  </Link>
+                ) : (
+                  <a
+                    href={project.path}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-gradient-to-r from-amber-500 to-orange-500 text-white font-bold text-sm sm:text-base shadow-lg shadow-amber-500/25 hover:shadow-amber-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all group"
+                  >
+                    <span>{t("Kunjungi Website", "Visit Website")}</span>
+                    <ExternalLink size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  </a>
+                )}
+              </div>
+            )}
+          </div>
         </motion.div>
 
-        {/* ─── 2. META INFO BAR (HORIZONTAL GLASS GRID) ─── */}
+        {/* ─── 2. META INFO BAR (HORIZONTAL GLASS TILES GRID) ─── */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-5 sm:p-6 rounded-3xl bg-white/80 dark:bg-zinc-900/60 backdrop-blur-xl border border-zinc-200/80 dark:border-zinc-800/80 shadow-sm mb-12 sm:mb-16"
+          className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 p-3.5 sm:p-4 rounded-3xl bg-white/70 dark:bg-zinc-900/60 backdrop-blur-xl border border-zinc-200/80 dark:border-zinc-800/80 shadow-sm mb-12 sm:mb-16"
         >
           {/* Client */}
-          <div className="space-y-1">
-            <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500 flex items-center gap-1.5">
+          <div className="p-3.5 sm:p-4 rounded-2xl bg-zinc-50/80 dark:bg-zinc-800/30 border border-zinc-100 dark:border-zinc-800/50 flex flex-col justify-between">
+            <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500 flex items-center gap-1.5 mb-2">
               <Building2 size={13} className="text-amber-500" />
               <span>{t("Klien", "Client")}</span>
             </span>
@@ -426,8 +477,8 @@ export default function ProjectDetail() {
           </div>
 
           {/* Category */}
-          <div className="space-y-1">
-            <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500 flex items-center gap-1.5">
+          <div className="p-3.5 sm:p-4 rounded-2xl bg-zinc-50/80 dark:bg-zinc-800/30 border border-zinc-100 dark:border-zinc-800/50 flex flex-col justify-between">
+            <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500 flex items-center gap-1.5 mb-2">
               <Tag size={13} className="text-amber-500" />
               <span>{t("Kategori", "Category")}</span>
             </span>
@@ -437,8 +488,8 @@ export default function ProjectDetail() {
           </div>
 
           {/* Solution Type */}
-          <div className="space-y-1">
-            <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500 flex items-center gap-1.5">
+          <div className="p-3.5 sm:p-4 rounded-2xl bg-zinc-50/80 dark:bg-zinc-800/30 border border-zinc-100 dark:border-zinc-800/50 flex flex-col justify-between">
+            <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500 flex items-center gap-1.5 mb-2">
               <Layers size={13} className="text-amber-500" />
               <span>{t("Tipe Solusi", "Solution Type")}</span>
             </span>
@@ -454,28 +505,14 @@ export default function ProjectDetail() {
           </div>
 
           {/* Access / Link */}
-          <div className="space-y-1">
-            <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500 flex items-center gap-1.5">
+          <div className="p-3.5 sm:p-4 rounded-2xl bg-zinc-50/80 dark:bg-zinc-800/30 border border-zinc-100 dark:border-zinc-800/50 flex flex-col justify-between">
+            <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500 flex items-center gap-1.5 mb-2">
               <ShieldCheck size={13} className="text-amber-500" />
               <span>{t("Status Akses", "Access")}</span>
             </span>
-            <div>
-              {project.path && project.path !== "#" ? (
-                <a
-                  href={project.path}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-amber-600 dark:text-amber-400 hover:text-orange-500 transition-colors"
-                >
-                  <span>{t("Buka Website", "Open Website")}</span>
-                  <ExternalLink size={13} />
-                </a>
-              ) : (
-                <span className="inline-flex items-center gap-1 text-[11px] sm:text-xs font-semibold text-zinc-600 dark:text-zinc-400 bg-zinc-100 dark:bg-zinc-800 px-2.5 py-0.5 rounded-full border border-zinc-200 dark:border-zinc-700">
-                  🔒 {t("Sistem Internal", "Internal System")}
-                </span>
-              )}
-            </div>
+            <p className="text-sm sm:text-base font-bold text-zinc-900 dark:text-white">
+              {project.path && project.path !== "#" ? t("UMUM", "PUBLIC") : t("Internal", "Internal")}
+            </p>
           </div>
         </motion.div>
 

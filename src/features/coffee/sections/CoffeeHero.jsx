@@ -1,38 +1,15 @@
-// src/sections/coffee/CoffeeHero.jsx
+// src/features/coffee/sections/CoffeeHero.jsx
 // Starbucks Hero Section with Framer Motion animations
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Sparkles, Globe, ShieldCheck } from "lucide-react";
 import { Button } from "../../../components/ui/Button";
+import { useLanguage } from "../../../context/LanguageContext";
 import bgHero from "../../../assets/AmbienceCoffe.jpg";
-
-const coffee = {
-  hero: {
-    tagline: "EVERYDAY PREMIUM COFFEE RITUAL",
-    title: "To Inspire & Nurture The Human Spirit",
-    subtitle:
-      "One person, one cup, and one neighborhood at a time. Experience Starbucks' signature crafting and ethically sourced Arabica beans.",
-    ctaText: "Explore Our Menu",
-  },
-  socialMedia: {
-    instagram: "https://www.instagram.com/starbucksindonesia/",
-    facebook: "https://www.facebook.com/StarbucksIndonesia",
-    twitter: "https://twitter.com/SbuxIndonesia",
-  },
-  certifications: [
-    {
-      name: "ISO CERTIFIED",
-      link: "/about-us/our-heritage/starbucks-in-indonesia",
-    },
-    {
-      name: "HALAL CERTIFIED",
-      link: "/about-us/our-heritage/starbucks-in-indonesia",
-    },
-  ],
-};
 
 export function CoffeeHero() {
   const heroRef = useRef(null);
+  const { t } = useLanguage();
 
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 500], [0, 200]);
@@ -41,7 +18,7 @@ export function CoffeeHero() {
   return (
     <section
       ref={heroRef}
-      className="relative min-h-screen overflow-hidden flex items-center justify-center bg-[#0B1512]"
+      className="relative min-h-[100dvh] overflow-hidden flex items-center justify-center bg-[#0B1512] py-20 sm:py-24"
       aria-label="Starbucks Hero Section"
     >
       {/* Background Image with Parallax */}
@@ -61,16 +38,16 @@ export function CoffeeHero() {
       </motion.div>
 
       {/* Content Container */}
-      <div className="relative z-10 text-center px-6 pt-28 max-w-7xl mx-auto">
+      <div className="relative z-10 text-center px-4 sm:px-6 max-w-7xl mx-auto w-full flex flex-col items-center">
         {/* Subtitle Badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#00704A]/30 bg-[#00704A]/10 text-[#D4E9E2] text-xs font-extrabold uppercase tracking-[4px] mb-8"
+          className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 rounded-full border border-[#00704A]/30 bg-[#00704A]/10 text-[#D4E9E2] text-[10px] sm:text-xs font-extrabold uppercase tracking-[2px] sm:tracking-[4px] mb-4 sm:mb-8"
         >
           <Sparkles size={12} className="text-emerald-400 animate-pulse" />
-          {coffee.hero.tagline || "EVERYDAY PREMIUM COFFEE RITUAL"}
+          {t("RITUAL KOPI PREMIUM SETIAP HARI", "EVERYDAY PREMIUM COFFEE RITUAL")}
         </motion.div>
 
         {/* Main Heading */}
@@ -78,17 +55,13 @@ export function CoffeeHero() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-serif font-black leading-[1.05] max-w-4xl mx-auto text-white"
+          className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-serif font-black leading-[1.1] max-w-4xl mx-auto text-white"
         >
-          {coffee.hero.title.split("&").map((part, idx) => (
-            <span key={idx}>
-              {part.trim()}
-              {idx < coffee.hero.title.split("&").length - 1 && " & "}
-              <br />
-            </span>
-          ))}
+          {t("Menginspirasi & Memupuk", "To Inspire & Nurture The")}
+          <br />
+          {t("Semangat ", "Human ")}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-200 to-[#D4E9E2]">
-            Spirit
+            {t("Jiwa", "Spirit")}
           </span>
         </motion.h1>
 
@@ -97,9 +70,12 @@ export function CoffeeHero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="mt-6 text-zinc-400 max-w-xl mx-auto text-sm leading-relaxed"
+          className="mt-4 sm:mt-6 text-zinc-400 max-w-xl mx-auto text-xs sm:text-sm leading-relaxed px-2 sm:px-0"
         >
-          {coffee.hero.subtitle}
+          {t(
+            "Satu orang, satu cangkir, dan satu lingkungan di setiap saat. Nikmati racikan kopi khas Starbucks dengan biji Arabika pilihan yang dipanen secara etis.",
+            "One person, one cup, and one neighborhood at a time. Experience Starbucks' signature crafting and ethically sourced Arabica beans."
+          )}
         </motion.p>
 
         {/* Social Media & Certifications Badges */}
@@ -107,31 +83,26 @@ export function CoffeeHero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8 }}
-          className="flex justify-center gap-4 mt-8 text-[10px] text-zinc-500 font-semibold uppercase tracking-wider"
+          className="flex justify-center items-center flex-wrap gap-3 sm:gap-4 mt-5 sm:mt-8 text-[9px] sm:text-[10px] text-zinc-400 font-semibold uppercase tracking-wider"
         >
-          {coffee.certifications?.map((cert, idx) => (
-            <div key={idx} className="flex items-center gap-2">
-              <ShieldCheck size={12} className="text-[#00704A]" />
-              <a
-                href={cert.link}
-                className="hover:text-[#00704A] transition-colors"
-              >
-                {cert.name}
-              </a>
-            </div>
-          ))}
+          <div className="flex items-center gap-1.5">
+            <ShieldCheck size={13} className="text-emerald-400" />
+            <span>{t("BERSERTIFIKAT ISO", "ISO CERTIFIED")}</span>
+          </div>
+          <div className="flex items-center gap-1.5">
+            <ShieldCheck size={13} className="text-emerald-400" />
+            <span>{t("BERSERTIFIKAT HALAL", "HALAL CERTIFIED")}</span>
+          </div>
 
-          {coffee.socialMedia?.instagram && (
-            <a
-              href={coffee.socialMedia.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 hover:text-[#00704A] transition-colors"
-            >
-              <Globe size={12} />
-              Instagram
-            </a>
-          )}
+          <a
+            href="https://www.instagram.com/starbucksindonesia/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 hover:text-emerald-400 transition-colors"
+          >
+            <Globe size={13} />
+            <span>Instagram</span>
+          </a>
         </motion.div>
 
         {/* CTA Buttons */}
@@ -139,15 +110,17 @@ export function CoffeeHero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8 }}
-          className="flex justify-center mt-10"
+          className="flex justify-center mt-6 sm:mt-10"
         >
-          <Button
-            variant="primary"
-            size="lg"
-            className="bg-[#00704A] hover:bg-[#00875a] px-10 py-4"
-          >
-            {coffee.hero.ctaText || "Explore Our Menu"}
-          </Button>
+          <a href="#menu">
+            <Button
+              variant="primary"
+              size="lg"
+              className="bg-[#00704A] hover:bg-[#00875a] px-8 sm:px-10 py-3.5 sm:py-4 font-bold rounded-full shadow-lg shadow-[#00704A]/30 text-sm sm:text-base"
+            >
+              {t("Jelajahi Menu Kami", "Explore Our Menu")}
+            </Button>
+          </a>
         </motion.div>
       </div>
 
