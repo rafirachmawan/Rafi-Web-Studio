@@ -1,6 +1,7 @@
 // src/features/coffee/components/CoffeeFooter.jsx
 // Starbucks Premium Footer Component with Bilingual Support & Responsive Spacing
 
+import { motion } from "framer-motion";
 import { ShieldCheck, ArrowRight, ExternalLink } from "lucide-react";
 import { Button } from "../../../components/ui/Button";
 import { useLanguage } from "../../../context/LanguageContext";
@@ -95,7 +96,13 @@ export function CoffeeFooter({ waLink }) {
       {/* Subtle Glow Accent */}
       <div className="absolute top-0 left-1/4 w-[500px] h-[150px] bg-[#00704A]/5 blur-[120px] pointer-events-none" />
 
-      <div className="max-w-[1600px] mx-auto relative z-10">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.15 }}
+        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        className="max-w-[1600px] mx-auto relative z-10"
+      >
         {/* Main 4-Column Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10 mb-12">
           {/* Column 1: Brand & Socials (Span 4) */}
@@ -263,7 +270,7 @@ export function CoffeeFooter({ waLink }) {
             ))}
           </div>
         </div>
-      </div>
+      </motion.div>
     </footer>
   );
 }

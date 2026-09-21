@@ -43,7 +43,13 @@ export function ResponsibilitySection() {
     <section id="responsibility" className="relative py-28 px-6 bg-[#0B1512] border-t border-white/5 overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center mb-16"
+        >
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#00704A]/20 border border-[#00704A]/30 text-emerald-400 text-xs font-extrabold uppercase tracking-widest mb-4">
             <Heart size={14} className="fill-current" />
             <span>People & Planet Positive</span>
@@ -54,17 +60,17 @@ export function ResponsibilitySection() {
           <p className="text-zinc-400 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
             Menyajikan kopi dengan integritas moral. Kami berjanji untuk memberi kembali lebih banyak kepada bumi dan komunitas dari apa yang kami ambil.
           </p>
-        </div>
+        </motion.div>
 
         {/* Responsibility Cards with CleanPlaceholder */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {initiatives.map((item, index) => (
             <motion.div
               key={item.id}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 35 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.75, delay: index * 0.15, ease: [0.22, 1, 0.36, 1] }}
               className="bg-[#101C18] rounded-3xl p-6 border border-white/10 hover:border-[#00704A]/50 transition-all flex flex-col justify-between group"
             >
               <div>

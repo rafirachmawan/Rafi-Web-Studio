@@ -78,7 +78,13 @@ export function CoffeeSection() {
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-20">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center mb-20"
+        >
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#00704A]/20 border border-[#00704A]/30 text-[#D4E9E2] text-xs font-extrabold uppercase tracking-widest mb-3">
             <Sparkles size={14} className="text-emerald-400" />
             <span>Coffee Mastery & Craft</span>
@@ -89,23 +95,29 @@ export function CoffeeSection() {
           <p className="text-zinc-400 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
             Setiap cangkir kopi Starbucks adalah perjalanan dari biji arabika terbaik dunia, disangrai dengan presisi spektrum roast eksklusif, dan diseduh dengan metode sempurna.
           </p>
-        </div>
+        </motion.div>
 
         {/* 1. ROAST SPECTRUM CARDS */}
         <div className="mb-20">
-          <h3 className="text-xl font-bold font-serif text-white mb-8 text-center flex items-center justify-center gap-2">
+          <motion.h3
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="text-xl font-bold font-serif text-white mb-8 text-center flex items-center justify-center gap-2"
+          >
             <Flame className="text-amber-500" size={20} />
             <span>Starbucks Roast Spectrum</span>
-          </h3>
+          </motion.h3>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {roastSpectrums.map((roast, index) => (
               <motion.div
                 key={roast.id}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 35 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.75, delay: index * 0.15, ease: [0.22, 1, 0.36, 1] }}
                 className="bg-[#101C18] rounded-3xl p-6 border border-white/10 hover:border-[#00704A]/50 transition-all flex flex-col justify-between group"
               >
                 <div>
@@ -150,7 +162,13 @@ export function CoffeeSection() {
         </div>
 
         {/* 2. HOW TO BREW GREAT COFFEE */}
-        <div className="bg-[#101C18]/80 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-white/10">
+        <motion.div
+          initial={{ opacity: 0, y: 35 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="bg-[#101C18]/80 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-white/10"
+        >
           <div className="max-w-3xl mb-10 text-center md:text-left">
             <h3 className="text-2xl font-bold font-serif text-white mb-2 flex items-center gap-2 justify-center md:justify-start">
               <Droplets className="text-cyan-400" size={24} />
@@ -163,9 +181,13 @@ export function CoffeeSection() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {brewingMethods.map((method, idx) => (
-              <div
+              <motion.div
                 key={method.id}
-                className="p-6 rounded-2xl bg-[#09110F] border border-white/5 flex flex-col justify-between"
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.1 + idx * 0.12, ease: [0.22, 1, 0.36, 1] }}
+                className="p-6 rounded-2xl bg-[#09110F] border border-white/5 flex flex-col justify-between hover:border-emerald-500/30 transition-all duration-300"
               >
                 <div>
                   <div className="h-36 mb-4 rounded-xl overflow-hidden relative">
@@ -199,10 +221,10 @@ export function CoffeeSection() {
                     <span>Waktu: {method.time}</span>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

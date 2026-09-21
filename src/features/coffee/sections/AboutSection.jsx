@@ -20,9 +20,10 @@ export function AboutSection() {
           {/* Left Column: Heritage Story */}
           <div className="lg:col-span-6">
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              initial={{ opacity: 0, y: 35 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
             >
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#00704A]/20 border border-[#00704A]/30 text-emerald-400 text-xs font-extrabold uppercase tracking-widest mb-4">
                 <Calendar size={14} />
@@ -57,7 +58,13 @@ export function AboutSection() {
           </div>
 
           {/* Right Column: Heritage Visuals & Stats with CleanPlaceholder */}
-          <div className="lg:col-span-6 space-y-6">
+          <motion.div
+            initial={{ opacity: 0, y: 35 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.85, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-6 space-y-6"
+          >
             {/* Heritage Photos Grid with CleanPlaceholder */}
             <div className="grid grid-cols-2 gap-4">
               <div className="h-44 sm:h-52 rounded-2xl overflow-hidden relative shadow-lg">
@@ -90,7 +97,14 @@ export function AboutSection() {
             {/* Indonesia Numbers Grid */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
               {stats.map((stat, idx) => (
-                <div key={idx} className="p-4 rounded-2xl bg-[#121E1A] border border-white/5 text-center">
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.25 + idx * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                  className="p-4 rounded-2xl bg-[#121E1A] border border-white/5 text-center"
+                >
                   <span className="block text-2xl sm:text-3xl font-black text-emerald-400 font-mono mb-0.5">
                     {stat.value}
                   </span>
@@ -100,10 +114,10 @@ export function AboutSection() {
                   <span className="block text-[9px] text-zinc-500">
                     {stat.sub}
                   </span>
-                </div>
+                </motion.div>
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

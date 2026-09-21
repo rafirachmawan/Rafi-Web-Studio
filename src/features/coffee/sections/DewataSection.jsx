@@ -14,7 +14,13 @@ export function DewataSection() {
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid lg:grid-cols-12 gap-12 items-center">
           {/* Left Column: Story & Highlights */}
-          <div className="lg:col-span-6">
+          <motion.div
+            initial={{ opacity: 0, y: 35 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-6"
+          >
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#CBA258]/20 border border-[#CBA258]/40 text-[#CBA258] text-xs font-extrabold uppercase tracking-widest mb-6">
               <Sun size={14} />
               <span>Bali Coffee Sanctuary</span>
@@ -55,10 +61,16 @@ export function DewataSection() {
               <span>Jelajahi Starbucks Dewata</span>
               <ExternalLink size={14} />
             </a>
-          </div>
+          </motion.div>
 
           {/* Right Column: Visual Mockup with CleanPlaceholder */}
-          <div className="lg:col-span-6 space-y-4">
+          <motion.div
+            initial={{ opacity: 0, y: 35 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-6 space-y-4"
+          >
             {/* Main Sanctuary Mockup */}
             <div className="h-64 sm:h-80 rounded-3xl overflow-hidden relative shadow-2xl border border-[#CBA258]/30">
               <CleanPlaceholder
@@ -101,7 +113,7 @@ export function DewataSection() {
                 />
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

@@ -1,6 +1,6 @@
 // src/features/coffee/sections/CoffeeHero.jsx
-// Starbucks Hero Section with Framer Motion animations
-import { useRef } from "react";
+// Starbucks Hero Section — smooth staggered entrance after splash screen
+import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Sparkles, Globe, ShieldCheck } from "lucide-react";
 import { Button } from "../../../components/ui/Button";
@@ -11,9 +11,25 @@ export function CoffeeHero() {
   const heroRef = useRef(null);
   const { t } = useLanguage();
 
+  // Wait until splash screen is gone, then start animations
+  const [startAnim, setStartAnim] = useState(false);
+  useEffect(() => {
+    // Splash screen lasts ~1800ms + 400ms exit = ~2200ms
+    // Wait a bit extra so the animation starts after splash fully fades out
+    const timer = setTimeout(() => setStartAnim(true), 2300);
+    return () => clearTimeout(timer);
+  }, []);
+
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 500], [0, 200]);
-  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+  const bgOpacity = useTransform(scrollY, [0, 300], [1, 0]);
+
+  // Animation helper
+  const fadeUp = (delay = 0) => ({
+    initial: { opacity: 0, y: 35 },
+    animate: startAnim ? { opacity: 1, y: 0 } : { opacity: 0, y: 35 },
+    transition: { duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] },
+  });
 
   return (
     <section
@@ -21,29 +37,38 @@ export function CoffeeHero() {
       className="relative min-h-[100dvh] overflow-hidden flex items-center justify-center bg-[#0B1512] py-20 sm:py-24"
       aria-label="Starbucks Hero Section"
     >
-      {/* Background Image with Parallax */}
+      {/* Background Image with Parallax + Breathing Zoom */}
       <motion.div
-        style={{ y: y1, opacity }}
+        style={{ y: y1, opacity: bgOpacity }}
         className="absolute inset-0 w-full h-full"
       >
         <img
           src={bgHero}
           alt="Starbucks Reserve Vibe - Premium coffee shop atmosphere"
-          className="w-full h-full object-cover opacity-45 scale-105"
+          className="w-full h-full object-cover opacity-55"
           loading="eager"
+          style={{
+            animation: "heroBreathZoom 18s ease-in-out infinite alternate",
+          }}
         />
 
         {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0B1512]/90 via-[#0B1512]/70 to-[#0B1512]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0B1512]/80 via-[#0B1512]/60 to-[#0B1512]" />
       </motion.div>
+
+      {/* Keyframes for breathing zoom */}
+      <style>{`
+        @keyframes heroBreathZoom {
+          0%   { transform: scale(1);    }
+          100% { transform: scale(1.15); }
+        }
+      `}</style>
 
       {/* Content Container */}
       <div className="relative z-10 text-center px-4 sm:px-6 max-w-7xl mx-auto w-full flex flex-col items-center">
         {/* Subtitle Badge */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          {...fadeUp(0)}
           className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 rounded-full border border-[#00704A]/30 bg-[#00704A]/10 text-[#D4E9E2] text-[10px] sm:text-xs font-extrabold uppercase tracking-[2px] sm:tracking-[4px] mb-4 sm:mb-8"
         >
           <Sparkles size={12} className="text-emerald-400 animate-pulse" />
@@ -52,9 +77,7 @@ export function CoffeeHero() {
 
         {/* Main Heading */}
         <motion.h1
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          {...fadeUp(0.15)}
           className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-serif font-black leading-[1.1] max-w-4xl mx-auto text-white"
         >
           {t("Menginspirasi & Memupuk", "To Inspire & Nurture The")}
@@ -67,9 +90,7 @@ export function CoffeeHero() {
 
         {/* Description */}
         <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
+          {...fadeUp(0.3)}
           className="mt-4 sm:mt-6 text-zinc-400 max-w-xl mx-auto text-xs sm:text-sm leading-relaxed px-2 sm:px-0"
         >
           {t(
@@ -80,9 +101,7 @@ export function CoffeeHero() {
 
         {/* Social Media & Certifications Badges */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
+          {...fadeUp(0.45)}
           className="flex justify-center items-center flex-wrap gap-3 sm:gap-4 mt-5 sm:mt-8 text-[9px] sm:text-[10px] text-zinc-400 font-semibold uppercase tracking-wider"
         >
           <div className="flex items-center gap-1.5">
@@ -107,9 +126,7 @@ export function CoffeeHero() {
 
         {/* CTA Buttons */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
+          {...fadeUp(0.55)}
           className="flex justify-center mt-6 sm:mt-10"
         >
           <a href="#menu">
@@ -126,7 +143,7 @@ export function CoffeeHero() {
 
       {/* Cinematic Transition Divider */}
       <motion.div
-        style={{ opacity }}
+        style={{ opacity: bgOpacity }}
         className="absolute bottom-0 left-0 w-full h-[220px] pointer-events-none"
       >
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0B1512] to-[#0B1512]" />

@@ -21,7 +21,13 @@ export function RewardsSection() {
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center mb-16"
+        >
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-extrabold uppercase tracking-widest mb-4">
             <Star size={14} className="fill-current" />
             <span>Starbucks® Rewards Indonesia</span>
@@ -32,12 +38,18 @@ export function RewardsSection() {
           <p className="text-zinc-400 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
             Dapatkan 1 Star setiap pembelian Rp 10.000 dengan Starbucks Card atau aplikasi. Tukarkan Stars dengan minuman dan makanan favorit gratis.
           </p>
-        </div>
+        </motion.div>
 
         {/* 1. INTERACTIVE STARS CALCULATOR & DIGITAL CARD */}
         <div className="grid lg:grid-cols-12 gap-8 items-center mb-20">
           {/* Left: Spending Calculator Widget */}
-          <div className="lg:col-span-7 bg-[#101C18]/90 backdrop-blur-md rounded-3xl p-8 md:p-10 border border-white/10 shadow-2xl">
+          <motion.div
+            initial={{ opacity: 0, y: 35 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-7 bg-[#101C18]/90 backdrop-blur-md rounded-3xl p-8 md:p-10 border border-white/10 shadow-2xl"
+          >
             <h3 className="text-xl font-bold font-serif text-white mb-2 flex items-center gap-2">
               <Sparkles size={20} className="text-amber-400" />
               <span>Simulasi Perolehan Stars Anda</span>
@@ -101,10 +113,16 @@ export function RewardsSection() {
                 </span>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right: Digital Starbucks Card Mockup with CleanPlaceholder */}
-          <div className="lg:col-span-5 flex flex-col items-center">
+          <motion.div
+            initial={{ opacity: 0, y: 35 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-5 flex flex-col items-center"
+          >
             <div className="w-full max-w-sm">
               <div className="h-56 rounded-2xl overflow-hidden relative shadow-2xl border border-amber-500/30">
                 <CleanPlaceholder
@@ -143,13 +161,19 @@ export function RewardsSection() {
                 </button>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* 2. MEMBERSHIP TIERS HIGHLIGHT */}
         <div className="grid md:grid-cols-2 gap-8">
           {/* Green Level */}
-          <div className="p-8 rounded-3xl bg-[#101C18] border border-white/10 flex flex-col justify-between">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+            className="p-8 rounded-3xl bg-[#101C18] border border-white/10 flex flex-col justify-between"
+          >
             <div>
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 font-bold text-xs uppercase tracking-wider mb-4">
                 Level 01
@@ -176,10 +200,16 @@ export function RewardsSection() {
                 </li>
               </ul>
             </div>
-          </div>
+          </motion.div>
 
           {/* Gold Level */}
-          <div className="p-8 rounded-3xl bg-gradient-to-br from-[#101C18] to-[#1F2718] border border-amber-500/30 flex flex-col justify-between relative overflow-hidden">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.75, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+            className="p-8 rounded-3xl bg-gradient-to-br from-[#101C18] to-[#1F2718] border border-amber-500/30 flex flex-col justify-between relative overflow-hidden"
+          >
             <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/10 blur-2xl rounded-full pointer-events-none" />
 
             <div>
@@ -209,7 +239,7 @@ export function RewardsSection() {
                 </li>
               </ul>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

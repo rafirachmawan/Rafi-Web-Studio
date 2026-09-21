@@ -75,7 +75,13 @@ export function CoffeeMenu() {
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
-        <div className="text-center mb-8 sm:mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center mb-8 sm:mb-16"
+        >
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#00704A]/20 border border-[#00704A]/30 text-[#D4E9E2] text-[10px] sm:text-xs font-extrabold uppercase tracking-widest mb-3">
             {t("Dibuat Sepenuh Hati", "Handcrafted With Passion")}
           </div>
@@ -88,11 +94,15 @@ export function CoffeeMenu() {
               "From handcrafted barista espresso and cold brew, warm artisanal pastries, to ethically sourced Sumatra whole beans and limited edition merchandise."
             )}
           </p>
-        </div>
+        </motion.div>
 
         {/* Tab Navigation - Symmetrical 2x2 grid on mobile, flex row on desktop */}
-        <div
+        <motion.div
           ref={tabsRef}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
           className="grid grid-cols-2 md:flex md:flex-wrap md:justify-center gap-2 sm:gap-3 mb-8 sm:mb-14 max-w-lg md:max-w-none mx-auto"
         >
           {tabs.map((tab) => (
@@ -120,19 +130,22 @@ export function CoffeeMenu() {
               </span>
             </button>
           ))}
-        </div>
+        </motion.div>
 
         {/* Menu Grid with Smooth Fade Animation & Stable Min-Height */}
         <motion.div
           key={activeTab}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.25, ease: "easeOut" }}
+          transition={{ duration: 0.35, ease: "easeOut" }}
           className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 min-h-[480px]"
         >
-          {menuItems.map((item) => (
-            <div
+          {menuItems.map((item, idx) => (
+            <motion.div
               key={item.id}
+              initial={{ opacity: 0, y: 25 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: idx * 0.05, ease: [0.22, 1, 0.36, 1] }}
               className="group border border-white/10 bg-[#0E1815]/90 backdrop-blur-md rounded-3xl p-5 hover:border-[#00704A]/50 hover:shadow-[0_12px_32px_rgba(0,112,74,0.15)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between relative overflow-hidden"
               aria-labelledby={`${item.id}-name`}
             >
@@ -208,7 +221,7 @@ export function CoffeeMenu() {
                     </span>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </motion.div>
       </div>

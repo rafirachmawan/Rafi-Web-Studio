@@ -1,6 +1,7 @@
 // src/features/coffee/CoffeeLanding.jsx
 // Coffee Landing Page Orchestrator
 
+import { useEffect } from "react";
 import { CoffeeNavigation } from "./components/CoffeeNavigation";
 import { CoffeeHero } from "./sections/CoffeeHero";
 import { CoffeeMenu } from "./sections/CoffeeMenu";
@@ -17,6 +18,11 @@ const message = encodeURIComponent("Halo, saya tertarik dengan Starbucks Rewards
 const waLink = `https://wa.me/${phone}?text=${message}`;
 
 export default function CoffeeLanding() {
+  // Scroll to top on mount/refresh so hero animation always replays
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="bg-[#0B1512] text-zinc-100 overflow-hidden font-sans selection:bg-[#00704A]/30">
       {/* Navigation */}
