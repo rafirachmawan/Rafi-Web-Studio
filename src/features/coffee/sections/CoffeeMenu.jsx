@@ -1,21 +1,40 @@
 // src/sections/coffee/CoffeeMenu.jsx
 // Starbucks Menu Section using centralized data & CleanPlaceholder
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useRef } from "react";
+import { motion } from "framer-motion";
 import { Coffee, UtensilsCrossed, ShoppingBag, Package } from "lucide-react";
 import {
   getMenuItems,
   formatPrice,
 } from "../data/menu";
-import { fadeBetween } from "../../../utils/animations";
 import CleanPlaceholder from "../../../components/ui/CleanPlaceholder";
 import { useLanguage } from "../../../context/LanguageContext";
 
 export function CoffeeMenu() {
   const [activeTab, setActiveTab] = useState("beverages");
+  const tabsRef = useRef(null);
   const { t } = useLanguage();
   const menuItems = getMenuItems(activeTab);
+
+  const handleTabChange = (tabId) => {
+    if (tabId === activeTab) return;
+
+    if (tabsRef.current) {
+      const rect = tabsRef.current.getBoundingClientRect();
+      const navbarOffset = 90; // sticky navbar offset
+      // If user scrolled down past the tabs, smoothly bring the tabs back into view
+      if (rect.top < navbarOffset) {
+        const targetScroll = window.scrollY + rect.top - navbarOffset;
+        window.scrollTo({
+          top: Math.max(0, targetScroll),
+          behavior: "smooth",
+        });
+      }
+    }
+
+    setActiveTab(tabId);
+  };
 
   const tabs = [
     {
@@ -72,11 +91,15 @@ export function CoffeeMenu() {
         </div>
 
         {/* Tab Navigation - Symmetrical 2x2 grid on mobile, flex row on desktop */}
-        <div className="grid grid-cols-2 md:flex md:flex-wrap md:justify-center gap-2 sm:gap-3 mb-8 sm:mb-14 max-w-lg md:max-w-none mx-auto">
+        <div
+          ref={tabsRef}
+          className="grid grid-cols-2 md:flex md:flex-wrap md:justify-center gap-2 sm:gap-3 mb-8 sm:mb-14 max-w-lg md:max-w-none mx-auto"
+        >
           {tabs.map((tab) => (
             <button
               key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
+              type="button"
+              onClick={() => handleTabChange(tab.id)}
               className={`flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-6 py-2.5 sm:py-3 rounded-xl sm:rounded-full text-xs sm:text-sm font-bold transition-all border cursor-pointer ${
                 activeTab === tab.id
                   ? "bg-[#00704A] text-white border-[#00704A] shadow-lg shadow-[#00704A]/25 scale-[1.02] sm:scale-105"
@@ -99,27 +122,20 @@ export function CoffeeMenu() {
           ))}
         </div>
 
-        {/* Menu Grid with Animation */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeTab}
-            initial="initial"
-            animate="active"
-            exit="exit"
-            variants={fadeBetween}
-            transition={{ duration: 0.3 }}
-            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
-          >
-            {menuItems.map((item, index) => (
-              <motion.div
-                key={item.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.3, delay: index * 0.05 }}
-                className="group border border-white/10 bg-[#0E1815]/90 backdrop-blur-md rounded-3xl p-5 hover:border-[#00704A]/50 hover:shadow-[0_12px_32px_rgba(0,112,74,0.15)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between relative overflow-hidden"
-                aria-labelledby={`${item.id}-name`}
-              >
+        {/* Menu Grid with Smooth Fade Animation & Stable Min-Height */}
+        <motion.div
+          key={activeTab}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.25, ease: "easeOut" }}
+          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 min-h-[480px]"
+        >
+          {menuItems.map((item) => (
+            <div
+              key={item.id}
+              className="group border border-white/10 bg-[#0E1815]/90 backdrop-blur-md rounded-3xl p-5 hover:border-[#00704A]/50 hover:shadow-[0_12px_32px_rgba(0,112,74,0.15)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between relative overflow-hidden"
+              aria-labelledby={`${item.id}-name`}
+            >
                 {/* Clean Placeholder Mockup */}
                 <div className="h-[200px] mb-5 rounded-2xl overflow-hidden relative flex items-center justify-center">
                   <CleanPlaceholder
@@ -192,10 +208,9 @@ export function CoffeeMenu() {
                     </span>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </motion.div>
-        </AnimatePresence>
       </div>
     </section>
   );
