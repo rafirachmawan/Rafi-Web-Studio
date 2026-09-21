@@ -47,7 +47,7 @@ export function RestoFooter() {
 
           {/* Quick Links Column */}
           <div>
-            <h4 className="font-bold text-white text-xs uppercase tracking-widest mb-4 text-violet-300">
+            <h4 className="font-bold text-violet-300 text-xs uppercase tracking-widest mb-4">
               Navigasi
             </h4>
             <ul className="space-y-2.5 text-xs sm:text-sm">
@@ -76,7 +76,7 @@ export function RestoFooter() {
 
           {/* Contact & Location Column */}
           <div>
-            <h4 className="font-bold text-white text-xs uppercase tracking-widest mb-4 text-violet-300">
+            <h4 className="font-bold text-violet-300 text-xs uppercase tracking-widest mb-4">
               Lokasi & Kontak
             </h4>
             <ul className="space-y-3 text-xs sm:text-sm">
