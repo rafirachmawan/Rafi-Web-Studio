@@ -17,7 +17,6 @@ export default function Navbar() {
   const [activeSection, setActiveSection] = useState("");
   const navRef = useRef(null);
   useEffect(() => {
-
     if (darkMode) {
       document.documentElement.classList.add("dark");
       localStorage.setItem("theme", "dark");
@@ -59,10 +58,11 @@ export default function Navbar() {
     { label: t("Home", "Home"), href: "/" },
     { label: t("Project", "Projects"), href: "/project" },
     { label: t("Demo Template", "Demo Catalog"), href: "/demo" },
+    { label: t("Android Apps", "Android Apps"), href: "/android-apps" },
     { label: t("Proses", "Process"), href: "/proses" },
     { label: t("Harga", "Pricing"), href: "/harga" },
     { label: t("FAQ", "FAQ"), href: "/faq" },
-    { label: t("Contact", "Contact"), href: "/contact" }
+    { label: t("Contact", "Contact"), href: "/contact" },
   ];
 
   // Track active section from URL
@@ -84,14 +84,16 @@ export default function Navbar() {
 
   if (isOpen) return null;
 
-
   return (
-    <div ref={navRef} className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-6xl flex flex-col gap-2">
+    <div
+      ref={navRef}
+      className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-6xl flex flex-col gap-2"
+    >
       {/* MAIN BAR */}
       <div className="backdrop-blur-xl bg-white/70 dark:bg-zinc-950/70 border border-black/10 dark:border-white/10 rounded-full px-4 md:px-6 py-3 flex justify-between items-center shadow-lg transition-colors duration-300">
-        <Link 
-          to="/" 
-          onClick={(e) => handleNavClick("/", e)} 
+        <Link
+          to="/"
+          onClick={(e) => handleNavClick("/", e)}
           className="font-heading font-extrabold text-base tracking-tight text-black dark:text-white cursor-pointer hover:opacity-90 transition"
         >
           Gapai<span className="text-amber-500">Digital</span>
@@ -100,13 +102,13 @@ export default function Navbar() {
         {/* MENU */}
         <div className="hidden md:flex gap-6 text-sm text-gray-700 dark:text-gray-300 font-semibold">
           {navLinks.map((link) => (
-            <Link 
-              key={link.label} 
-              to={link.href} 
+            <Link
+              key={link.label}
+              to={link.href}
               onClick={(e) => handleNavClick(link.href, e)}
               className={`transition ${
-                activeSection === link.href 
-                  ? "text-amber-500" 
+                activeSection === link.href
+                  ? "text-amber-500"
                   : "hover:text-amber-400"
               }`}
             >
@@ -121,7 +123,11 @@ export default function Navbar() {
           <button
             onClick={() => setLanguage(language === "id" ? "en" : "id")}
             className="w-10 h-8 rounded-full border border-black/10 dark:border-white/10 bg-black/[0.03] dark:bg-white/[0.05] flex items-center justify-center text-[10px] font-black tracking-wider text-zinc-700 dark:text-zinc-300 hover:scale-105 transition cursor-pointer"
-            title={language === "id" ? "Ganti ke Bahasa Inggris" : "Switch to Indonesian"}
+            title={
+              language === "id"
+                ? "Ganti ke Bahasa Inggris"
+                : "Switch to Indonesian"
+            }
           >
             {language === "id" ? "ID" : "EN"}
           </button>

@@ -42,6 +42,9 @@ const UNITALanding = lazy(() => import("./features/unita/UNITALanding"));
 const MarasatiSnackCompany = lazy(
   () => import("./features/marasati-snack-company/MarasatiSnackCompanyLanding"),
 );
+const AndroidAppsLanding = lazy(
+  () => import("./features/android-apps-landing/AndroidAppsLanding"),
+);
 
 // App Demos
 const AkademikApp = lazy(
@@ -228,6 +231,9 @@ export default function App() {
                   path="/marasati-snack-company"
                   element={<MarasatiSnackCompany />}
                 />
+
+                {/* Android Apps Landing */}
+                <Route path="/android-apps" element={<AndroidAppsLanding />} />
 
                 {/* Wildcard 404 Route */}
                 <Route
