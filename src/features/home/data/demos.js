@@ -29,6 +29,8 @@ import crownLogo from "../../../assets/crown/logoCrown.png";
 import gacoanAfterImg from "../../../assets/mieGacoan/after.png";
 import gacoanBeforeImg from "../../../assets/mieGacoan/before.png";
 import gacoanLogo from "../../../assets/mieGacoan/logoMieGacoan.png";
+// Using WarungOS cover as placeholder for Marasati Snack
+import warungsCoverImg from "../../../assets/WarungOSCover.jpg";
 
 export const demos = [
   {
@@ -464,6 +466,90 @@ export const demos = [
         en: "Product Catalog & Variation Management",
       },
       { id: "Rekapitulasi Omset Cepat", en: "Fast Turnover Recapitulation" },
+    ],
+  },
+  {
+    id: "marasati-snack",
+    name: "Marasati Snack System",
+    path: "/marasati-snack",
+    desc: {
+      id: "Sistem POS & Stok Terintegrasi untuk 8 Outlet + Pusat Produksi",
+      en: "Integrated POS & Stock System for 8 Outlets + Central Production",
+    },
+    icon: "🍪",
+    category: "sistem berbasis web",
+    image: warungsCoverImg,
+    client: "Marasati Snack",
+    fullDescription: {
+      id: "Sistem terintegrasi untuk manajemen snack dengan 8 outlet dan rumah produksi pusat. Platform ini mencakup modul POS kasir untuk transaksi cepat outlet, manajemen produksi & distribusi stok dari pusat, serta dashboard owner untuk memantau performa seluruh cabang secara real-time. Dilengkapi dengan notifikasi stok kritis dan pelaporan otomatis.",
+      en: "An integrated system for snack management with 8 outlets and central production house. This platform includes cashier POS modules for fast outlet transactions, stock production & distribution management from the center, and owner dashboard to monitor all branch performance in real-time. Equipped with critical stock notifications and automated reporting.",
+    },
+    techStack: ["React JS", "Tailwind CSS", "Lucide Icons", "Vite"],
+    features: [
+      {
+        id: "Dashboard Owner - Pantau Semua Outlet",
+        en: "Owner Dashboard - Monitor All Outlets",
+      },
+      {
+        id: "Modul Produksi & Distribusi Stok",
+        en: "Production & Stock Distribution Module",
+      },
+      {
+        id: "POS Kasir Responsif dengan Alert Stok",
+        en: "Responsive Cashier POS with Stock Alerts",
+      },
+      {
+        id: "8 Outlet Terintegrasi (Data Real-Time)",
+        en: "8 Integrated Outlets (Real-Time Data)",
+      },
+      {
+        id: "Notifikasi Stok Kritis Otomatis",
+        en: "Automatic Critical Stock Notifications",
+      },
+      {
+        id: "Rekap Penjualan & Produk Terlaris",
+        en: "Sales Recap & Best-Selling Products",
+      },
+    ],
+  },
+  {
+    id: "marasati-company",
+    name: "Marasati Snack Company",
+    path: "/marasati-snack-company",
+    desc: {
+      id: "Landing Page Profile Perusahaan Snack Premium Indonesia",
+      en: "Landing Page for Premium Indonesian Snack Company Profile",
+    },
+    icon: "",
+    category: "landing page",
+    image: warungsCoverImg,
+    client: "Marasati Snack Co.",
+    fullDescription: {
+      id: "Landing page profesional untuk profil perusahaan Marasati Snack, menampilkan sejarah perusahaan, produk unggulan, jaringan 8 outlet, dan informasi kontak. Dibangun dengan desain modern yang responsive dan navigasi intuitif.",
+      en: "Professional landing page for Marasati Snack company profile, featuring company history, flagship products, 8-outlet network, and contact information. Built with modern responsive design and intuitive navigation.",
+    },
+    techStack: ["React JS", "Tailwind CSS", "Lucide Icons"],
+    features: [
+      {
+        id: "Hero Section dengan Brand Identity",
+        en: "Hero Section with Brand Identity",
+      },
+      {
+        id: "About Section - Sejarah & Milestone",
+        en: "About Section - History & Milestones",
+      },
+      {
+        id: "Product Showcase (3 Varian Utama)",
+        en: "Product Showcase (3 Main Variants)",
+      },
+      {
+        id: "Outlet Locator Network (8 Locations)",
+        en: "Outlet Locator Network (8 Locations)",
+      },
+      {
+        id: "Contact Form & Social Media Integration",
+        en: "Contact Form & Social Media Integration",
+      },
     ],
   },
 ];

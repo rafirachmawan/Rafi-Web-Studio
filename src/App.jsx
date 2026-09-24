@@ -1,5 +1,10 @@
 import { useEffect, useState, lazy, Suspense } from "react";
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import { LanguageProvider } from "./context/LanguageContext";
 import { ConsultationProvider } from "./context/ConsultationContext";
 
@@ -34,12 +39,22 @@ const SekolahLanding = lazy(() => import("./features/sekolah/SekolahLanding"));
 const LaundryLanding = lazy(() => import("./features/laundry/LaundryLanding"));
 const UmrohLanding = lazy(() => import("./features/umroh/UmrohLanding"));
 const UNITALanding = lazy(() => import("./features/unita/UNITALanding"));
+const MarasatiSnackCompany = lazy(
+  () => import("./features/marasati-snack-company/MarasatiSnackCompanyLanding"),
+);
 
 // App Demos
-const AkademikApp = lazy(() => import("./apps/sistem-web/akademik/AkademikApp"));
-const WarungOSApp = lazy(() => import("./apps/sistem-web/warungos/WarungOSApp"));
+const AkademikApp = lazy(
+  () => import("./apps/sistem-web/akademik/AkademikApp"),
+);
+const WarungOSApp = lazy(
+  () => import("./apps/sistem-web/warungos/WarungOSApp"),
+);
 const ExamOSApp = lazy(() => import("./apps/sistem-web/examos/ExamOSApp"));
 const AbsenOSApp = lazy(() => import("./apps/mobile-app/absenos/AbsenOSApp"));
+const MarasatiSnackApp = lazy(
+  () => import("./features/marasati-snack/MarasatiSnackLanding"),
+);
 
 if (typeof window !== "undefined" && "scrollRestoration" in window.history) {
   window.history.scrollRestoration = "manual";
@@ -62,7 +77,7 @@ function RouteWatcher() {
     }
 
     setIsPageLoading(true);
-    
+
     const timer = setTimeout(() => {
       setIsPageLoading(false);
       window.scrollTo(0, 0);
@@ -82,7 +97,9 @@ function SuspenseFallback() {
     <div className="min-h-screen flex items-center justify-center bg-[#fafafc] dark:bg-[#050508]">
       <div className="flex flex-col items-center gap-4">
         <div className="w-10 h-10 border-3 border-amber-500/30 border-t-amber-500 rounded-full animate-spin" />
-        <span className="text-xs font-bold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest">Loading...</span>
+        <span className="text-xs font-bold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest">
+          Loading...
+        </span>
       </div>
     </div>
   );
@@ -95,28 +112,100 @@ export default function App() {
     <ErrorBoundary>
       <LanguageProvider>
         <ConsultationProvider>
-          {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
+          {showSplash && (
+            <SplashScreen onComplete={() => setShowSplash(false)} />
+          )}
           <ConsultationModal />
           <FloatingWidgets />
-          
+
           <Router>
             <RouteWatcher />
             <Suspense fallback={<SuspenseFallback />}>
               <Routes>
                 {/* Main Website Routes */}
-                <Route path="/" element={<MainLayout><Home /></MainLayout>} />
-                <Route path="/project" element={<MainLayout><Project /></MainLayout>} />
-                <Route path="/demo" element={<MainLayout><Demo /></MainLayout>} />
-                <Route path="/proses" element={<MainLayout><Proses /></MainLayout>} />
-                <Route path="/harga" element={<MainLayout><Harga /></MainLayout>} />
-                <Route path="/testimoni" element={<MainLayout><Testimoni /></MainLayout>} />
-                <Route path="/contact" element={<MainLayout><Contact /></MainLayout>} />
-                <Route path="/faq" element={<MainLayout><FAQ /></MainLayout>} />
-                <Route path="/terms" element={<MainLayout><Terms /></MainLayout>} />
-                <Route path="/privacy" element={<MainLayout><Privacy /></MainLayout>} />
+                <Route
+                  path="/"
+                  element={
+                    <MainLayout>
+                      <Home />
+                    </MainLayout>
+                  }
+                />
+                <Route
+                  path="/project"
+                  element={
+                    <MainLayout>
+                      <Project />
+                    </MainLayout>
+                  }
+                />
+                <Route
+                  path="/demo"
+                  element={
+                    <MainLayout>
+                      <Demo />
+                    </MainLayout>
+                  }
+                />
+                <Route
+                  path="/proses"
+                  element={
+                    <MainLayout>
+                      <Proses />
+                    </MainLayout>
+                  }
+                />
+                <Route
+                  path="/harga"
+                  element={
+                    <MainLayout>
+                      <Harga />
+                    </MainLayout>
+                  }
+                />
+                <Route
+                  path="/testimoni"
+                  element={
+                    <MainLayout>
+                      <Testimoni />
+                    </MainLayout>
+                  }
+                />
+                <Route
+                  path="/contact"
+                  element={
+                    <MainLayout>
+                      <Contact />
+                    </MainLayout>
+                  }
+                />
+                <Route
+                  path="/faq"
+                  element={
+                    <MainLayout>
+                      <FAQ />
+                    </MainLayout>
+                  }
+                />
+                <Route
+                  path="/terms"
+                  element={
+                    <MainLayout>
+                      <Terms />
+                    </MainLayout>
+                  }
+                />
+                <Route
+                  path="/privacy"
+                  element={
+                    <MainLayout>
+                      <Privacy />
+                    </MainLayout>
+                  }
+                />
 
                 <Route path="/portfolio/:id" element={<ProjectDetail />} />
-                
+
                 {/* Landing Page Demos */}
                 <Route path="/coffee" element={<CoffeeLanding />} />
                 <Route path="/rental" element={<RentalLanding />} />
@@ -126,15 +215,29 @@ export default function App() {
                 <Route path="/laundry" element={<LaundryLanding />} />
                 <Route path="/umroh" element={<UmrohLanding />} />
                 <Route path="/unita" element={<UNITALanding />} />
-                
+
                 {/* App Demos */}
                 <Route path="/akademik/*" element={<AkademikApp />} />
                 <Route path="/warungos/*" element={<WarungOSApp />} />
                 <Route path="/examos/*" element={<ExamOSApp />} />
                 <Route path="/absenos/*" element={<AbsenOSApp />} />
+                <Route path="/marasati-snack" element={<MarasatiSnackApp />} />
+
+                {/* Company Landing Pages */}
+                <Route
+                  path="/marasati-snack-company"
+                  element={<MarasatiSnackCompany />}
+                />
 
                 {/* Wildcard 404 Route */}
-                <Route path="*" element={<MainLayout><NotFound /></MainLayout>} />
+                <Route
+                  path="*"
+                  element={
+                    <MainLayout>
+                      <NotFound />
+                    </MainLayout>
+                  }
+                />
               </Routes>
             </Suspense>
           </Router>
@@ -143,4 +246,3 @@ export default function App() {
     </ErrorBoundary>
   );
 }
-
