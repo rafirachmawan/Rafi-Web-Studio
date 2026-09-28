@@ -85,17 +85,30 @@ export default function RealProjectsSection({ isStandalone = false }) {
                     </span>
                   </div>
 
-                  {/* PLACEHOLDER MOCKUP PROYEK DENGAN OVERLAY HOVER */}
+                  {/* IMAGE / PLACEHOLDER MOCKUP PROYEK DENGAN OVERLAY HOVER */}
                   <div className="relative flex-1 flex flex-col items-center justify-center my-3 overflow-hidden rounded-2xl p-1 group/img w-full min-h-[220px]">
-                    <CleanPlaceholder
-                      width={800}
-                      height={500}
-                      ratio="16:10"
-                      label={t("Placeholder Portofolio", "Portfolio Placeholder")}
-                      sublabel={project.client}
-                      badge={project.category}
-                      className="min-h-[210px] aspect-[16/10]"
-                    />
+                    {["jadwal-booking-shiningsun", "absensi-shiningsun", "antrian-bri"].includes(project.id) && project.image ? (
+                      <img
+                        src={project.image}
+                        alt={typeof project.name === "string" ? project.name : project.client}
+                        className={
+                          project.category === "mobile app"
+                            ? "w-full min-h-[210px] aspect-[16/10] object-contain bg-white rounded-2xl border border-zinc-200/80 dark:border-zinc-700/60 p-2"
+                            : "w-full min-h-[210px] aspect-[16/10] object-cover rounded-2xl border border-zinc-200/80 dark:border-zinc-700/60"
+                        }
+                        loading="lazy"
+                      />
+                    ) : (
+                      <CleanPlaceholder
+                        width={800}
+                        height={500}
+                        ratio="16:10"
+                        label={t("Placeholder Portofolio", "Portfolio Placeholder")}
+                        sublabel={project.client}
+                        badge={project.category}
+                        className="min-h-[210px] aspect-[16/10]"
+                      />
+                    )}
 
                     {/* OVERLAY BUTTON SAAT KURSOR DI AREA PROJECT */}
                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 bg-black/40 backdrop-blur-[2px] rounded-2xl z-20 pointer-events-none">

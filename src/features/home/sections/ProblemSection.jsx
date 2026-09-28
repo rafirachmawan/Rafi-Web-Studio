@@ -1,6 +1,6 @@
-import { X, AlertCircle } from "lucide-react";
+import { X } from "lucide-react";
 import { useLanguage } from "../../../context/LanguageContext";
-import CleanPlaceholder from "../../../components/ui/CleanPlaceholder";
+import ilustrasiMasalah from "../../../assets/ilustrasiMasalah.jpg";
 
 const problems = [
   {
@@ -47,17 +47,13 @@ export default function ProblemSection() {
           {/* RIGHT — IMAGE + PROBLEM LIST CARD */}
           <div className="flex-1 w-full max-w-md">
             <div className="rounded-3xl overflow-hidden bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800/80 shadow-lg">
-              {/* Clean Placeholder Image */}
+              {/* Image */}
               <div className="p-3 bg-zinc-100/40 dark:bg-zinc-950/40 border-b border-zinc-200/80 dark:border-zinc-800/80">
-                <CleanPlaceholder
-                  width={800}
-                  height={500}
-                  ratio="16:10"
-                  label={t("Placeholder Ilustrasi Masalah", "Problem Illustration Placeholder")}
-                  sublabel={t("Grafik / visual website belum optimal", "Visual of unoptimized website")}
-                  icon={AlertCircle}
-                  badge="Visual"
-                  className="aspect-[16/10]"
+                <img
+                  src={ilustrasiMasalah}
+                  alt={t("Ilustrasi masalah website belum optimal", "Illustration of unoptimized website")}
+                  className="w-full aspect-[16/10] object-cover rounded-2xl"
+                  loading="lazy"
                 />
               </div>
 

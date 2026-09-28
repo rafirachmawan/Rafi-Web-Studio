@@ -98,7 +98,7 @@ function ProjectDetailGallery({ gallery, name, project }) {
         </div>
 
         {/* Screen Image Display or Dedicated UI Mockup Placeholder */}
-        {project.id === "antrian-bri" ? (
+        {project.id === "antrian-bri" && !project.image ? (
           <div className="relative w-full aspect-[16/10] sm:aspect-[16/9] bg-gradient-to-br from-[#06182c] via-[#092244] to-[#041224] p-5 sm:p-8 flex flex-col justify-between select-none overflow-hidden text-white font-sans">
             {/* Ambient blue bank glow */}
             <div className="absolute -top-10 -right-10 w-80 h-80 bg-blue-500/15 rounded-full blur-3xl pointer-events-none" />
@@ -199,6 +199,33 @@ function ProjectDetailGallery({ gallery, name, project }) {
                 <span>{t("Mockup Sistem • 1920 × 1080 px (16:9)", "System Mockup • 1920 × 1080 px (16:9)")}</span>
               </div>
             </div>
+          </div>
+        ) : project.id === "antrian-bri" && project.image ? (
+          <div className="relative w-full bg-zinc-50 dark:bg-zinc-950 flex items-center justify-center p-4 sm:p-8 overflow-hidden">
+            <img
+              src={project.image}
+              alt={resolvedName}
+              className="w-full h-auto object-contain rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 shadow-md"
+              loading="lazy"
+            />
+          </div>
+        ) : project.id === "jadwal-booking-shiningsun" && project.image ? (
+          <div className="relative w-full bg-zinc-50 dark:bg-zinc-950 flex items-center justify-center p-4 sm:p-8 overflow-hidden">
+            <img
+              src={project.image}
+              alt={resolvedName}
+              className="w-full h-auto object-contain rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 shadow-md"
+              loading="lazy"
+            />
+          </div>
+        ) : project.id === "absensi-shiningsun" && project.image ? (
+          <div className="relative w-full bg-zinc-50 dark:bg-zinc-950 flex items-center justify-center p-4 sm:p-8 overflow-hidden">
+            <img
+              src={project.image}
+              alt={resolvedName}
+              className="w-auto max-w-full max-h-[560px] object-contain rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 shadow-md mx-auto"
+              loading="lazy"
+            />
           </div>
         ) : (
           <div className="relative w-full aspect-[16/10] sm:aspect-[16/9] min-h-[380px] sm:min-h-[460px] md:min-h-[500px] bg-zinc-50 dark:bg-zinc-950 flex items-center justify-center p-4 sm:p-8 overflow-hidden">
@@ -420,34 +447,34 @@ export default function ProjectDetail() {
           className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 p-3.5 sm:p-4 rounded-3xl bg-white/70 dark:bg-zinc-900/60 backdrop-blur-xl border border-zinc-200/80 dark:border-zinc-800/80 shadow-sm mb-12 sm:mb-16"
         >
           {/* Client */}
-          <div className="p-3.5 sm:p-4 rounded-2xl bg-zinc-50/80 dark:bg-zinc-800/30 border border-zinc-100 dark:border-zinc-800/50 flex flex-col justify-between">
+          <div className="p-3.5 sm:p-4 rounded-2xl bg-zinc-50/80 dark:bg-zinc-800/30 border border-zinc-100 dark:border-zinc-800/50 flex flex-col justify-between min-w-0">
             <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500 flex items-center gap-1.5 mb-2">
-              <Building2 size={13} className="text-amber-500" />
+              <Building2 size={13} className="text-amber-500 shrink-0" />
               <span>{t("Klien", "Client")}</span>
             </span>
-            <p className="text-sm sm:text-base font-bold text-zinc-900 dark:text-white truncate">
+            <p className="text-sm sm:text-base font-bold text-zinc-900 dark:text-white break-words leading-snug">
               {project.client || "GapaiDigital Showcase"}
             </p>
           </div>
 
           {/* Category */}
-          <div className="p-3.5 sm:p-4 rounded-2xl bg-zinc-50/80 dark:bg-zinc-800/30 border border-zinc-100 dark:border-zinc-800/50 flex flex-col justify-between">
+          <div className="p-3.5 sm:p-4 rounded-2xl bg-zinc-50/80 dark:bg-zinc-800/30 border border-zinc-100 dark:border-zinc-800/50 flex flex-col justify-between min-w-0">
             <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500 flex items-center gap-1.5 mb-2">
-              <Tag size={13} className="text-amber-500" />
+              <Tag size={13} className="text-amber-500 shrink-0" />
               <span>{t("Kategori", "Category")}</span>
             </span>
-            <p className="text-sm sm:text-base font-bold text-zinc-900 dark:text-white capitalize truncate">
+            <p className="text-sm sm:text-base font-bold text-zinc-900 dark:text-white capitalize break-words leading-snug">
               {categoryLabel}
             </p>
           </div>
 
           {/* Solution Type */}
-          <div className="p-3.5 sm:p-4 rounded-2xl bg-zinc-50/80 dark:bg-zinc-800/30 border border-zinc-100 dark:border-zinc-800/50 flex flex-col justify-between">
+          <div className="p-3.5 sm:p-4 rounded-2xl bg-zinc-50/80 dark:bg-zinc-800/30 border border-zinc-100 dark:border-zinc-800/50 flex flex-col justify-between min-w-0">
             <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500 flex items-center gap-1.5 mb-2">
-              <Layers size={13} className="text-amber-500" />
+              <Layers size={13} className="text-amber-500 shrink-0" />
               <span>{t("Tipe Solusi", "Solution Type")}</span>
             </span>
-            <p className="text-sm sm:text-base font-bold text-zinc-900 dark:text-white truncate">
+            <p className="text-sm sm:text-base font-bold text-zinc-900 dark:text-white break-words leading-snug">
               {project.category === "sistem berbasis web"
                 ? "Progressive Web App"
                 : project.category === "mobile app"

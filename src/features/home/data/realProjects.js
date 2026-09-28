@@ -1,10 +1,12 @@
 import sppCover from "../../../assets/sppShiningsun/Login.png";
+import absensiShiningsunCover from "../../../assets/absensiShiningsun/absensiShiningsun.png";
 import gambar1Absensi from "../../../assets/absensiShiningsun/gambar1.png";
 import gambar2Absensi from "../../../assets/absensiShiningsun/gambar2.png";
 import gambar1 from "../../../assets/jadwalBookingClassShiningsun/gambar1.png";
 import gambar2 from "../../../assets/jadwalBookingClassShiningsun/gambar2.png";
 import gambar3 from "../../../assets/jadwalBookingClassShiningsun/gambar3.png";
-import antrianBriCover from "../../../assets/sistemAntrianBank/sistem antrian bank bri.jpg";
+import aplikasiShiningsunJadwalBooking from "../../../assets/jadwalBookingClassShiningsun/aplikasiShiningsunJadwal&Booking.png";
+import antrianBriCover from "../../../assets/BRI/sistemantrianbri.jpg";
 import tamiyaCover from "../../../assets/softwareBalapanTamiya/Dashboard Tamiya.jpeg";
 
 export const realProjects = [
@@ -21,7 +23,7 @@ export const realProjects = [
     },
     icon: "📅",
     category: "sistem berbasis web",
-    image: gambar1,
+    image: aplikasiShiningsunJadwalBooking,
     gallery: [gambar1, gambar2, gambar3],
     client: "Yayasan Shining Sun School",
     isReal: true,
@@ -78,8 +80,8 @@ export const realProjects = [
     },
     icon: "📱",
     category: "mobile app",
-    image: gambar1Absensi,
-    gallery: [gambar1Absensi, gambar2Absensi],
+    image: absensiShiningsunCover,
+    gallery: [absensiShiningsunCover, gambar1Absensi, gambar2Absensi],
     client: "Yayasan Shining Sun School",
     isReal: true,
     fullDescription: {
@@ -127,7 +129,6 @@ export const realProjects = [
     image: antrianBriCover,
     client: "Bank BRI Kantor Cabang Surabaya",
     isReal: true,
-    isPlaceholder: true,
     fullDescription: {
       id: "Software aplikasi antrean digital desktop yang dirancang khusus untuk memperlancar antrean nasabah di kantor cabang Bank BRI Surabaya. Software ini secara otomatis mengelola nomor antrean teller dan customer service, serta terintegrasi dengan modul suara otomatis (Text-to-Speech) untuk melakukan pemanggilan nomor antrean nasabah secara real-time.",
       en: "A desktop digital queue application software designed specifically to streamline customer queues at the Bank BRI Surabaya branch office. The software automatically manages teller and customer service queue numbers, and integrates with an automatic Text-to-Speech voice module to perform real-time customer calls.",

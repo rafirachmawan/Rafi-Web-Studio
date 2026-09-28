@@ -1,6 +1,6 @@
-import { ShieldCheck, Network, TrendingUp, Globe, Laptop } from "lucide-react";
+import { ShieldCheck, Network, TrendingUp, Globe } from "lucide-react";
 import { useLanguage } from "../../../context/LanguageContext";
-import CleanPlaceholder from "../../../components/ui/CleanPlaceholder";
+import ilustrasiEkosistem from "../../../assets/ilustrasiEkosistem.jpg";
 
 const benefits = [
   {
@@ -43,15 +43,11 @@ export default function GrowthSection() {
           {/* LEFT — VISUAL / ILLUSTRATION PLACEHOLDER */}
           <div className="flex-1 w-full max-w-lg order-2 lg:order-1">
             <div className="relative rounded-3xl overflow-hidden bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800/80 shadow-lg p-3 sm:p-4">
-              <CleanPlaceholder
-                width={800}
-                height={550}
-                ratio="16:11"
-                label={t("Placeholder Ilustrasi Ekosistem", "Ecosystem Illustration Placeholder")}
-                sublabel={t("Grafik arsitektur pertumbuhan & konversi digital", "Digital growth & conversion architecture visual")}
-                icon={Laptop}
-                badge="Architecture"
-                className="aspect-[16/11]"
+              <img
+                src={ilustrasiEkosistem}
+                alt={t("Ilustrasi ekosistem pertumbuhan digital", "Digital growth ecosystem illustration")}
+                className="w-full aspect-[16/11] object-cover rounded-2xl"
+                loading="lazy"
               />
             </div>
           </div>
