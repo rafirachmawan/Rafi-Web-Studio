@@ -93,10 +93,10 @@ export default function HeroSection() {
           <h1 
             className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.15] text-zinc-900 dark:text-white max-w-3xl text-center font-heading"
           >
-            <span>{t("Solusi Digital Profesional", "Professional Digital Solutions")} </span>
+            <span>{t("Kembangkan Bisnis Anda", "Grow Your Business")} </span>
             <br className="hidden sm:inline" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 font-extrabold">
-              {t("Untuk Mengembangkan Bisnis Anda.", "To Scale Your Business.")}
+              {t("dengan Solusi Digital.", "with Digital Solutions.")}
             </span>
           </h1>
  
@@ -105,8 +105,8 @@ export default function HeroSection() {
             className="mt-6 text-sm sm:text-base md:text-lg leading-relaxed text-zinc-600 dark:text-zinc-400 max-w-2xl text-center font-normal"
           >
             {t(
-              "GapaiDigital membantu bisnis Anda tampil lebih profesional dan modern. Kami merancang Website, Aplikasi Mobile, dan Sistem Web Kustom yang cepat, responsif, serta dirancang khusus untuk meningkatkan kredibilitas dan penjualan Anda.",
-              "GapaiDigital helps your business look more professional and modern. We design fast, responsive Websites, Mobile Apps, and Custom Web Systems tailored to boost your credibility and sales."
+              "GapaiDigital merancang Website, Aplikasi Mobile, dan Sistem Kustom yang cepat dan responsif — untuk meningkatkan kredibilitas dan penjualan bisnis Anda.",
+              "GapaiDigital designs fast, responsive Websites, Mobile Apps, and Custom Systems — to boost your business credibility and sales."
             )}
           </p>
 

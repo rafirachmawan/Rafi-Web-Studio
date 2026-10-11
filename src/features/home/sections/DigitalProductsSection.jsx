@@ -79,23 +79,20 @@ export default function DigitalProductsSection() {
 
       <div className="container mx-auto px-4 md:px-6 max-w-7xl relative z-10">
         {/* HEADER SECTION */}
-        <div className="max-w-3xl mx-auto text-center mb-12 md:mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-600 dark:text-amber-400 text-xs font-semibold tracking-wider uppercase mb-4">
+        <div className="max-w-3xl mx-auto text-center mb-10 md:mb-14">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-600 dark:text-amber-400 text-[11px] font-bold tracking-widest uppercase mb-5">
             <ShoppingBag size={14} />
             <span>{t("Produk Siap Pakai", "Ready-to-Use Products")}</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 font-heading leading-tight text-zinc-900 dark:text-white">
-            {t("Aplikasi & Template.", "Ready-to-Use Apps.")}{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-500">
-              {t("Siap Pakai & Download.", "Instant Access & Run.")}
-            </span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 font-heading leading-tight text-zinc-900 dark:text-white text-balance">
+            {t("Aplikasi Siap Pakai.", "Ready-to-Use Apps.")}
           </h2>
 
-          <p className="text-zinc-600 dark:text-zinc-400 text-sm md:text-base leading-relaxed max-w-2xl mx-auto">
+          <p className="text-zinc-600 dark:text-zinc-400 text-sm md:text-base leading-relaxed max-w-xl mx-auto">
             {t(
-              "Butuh solusi cepat tanpa harus membuat dari nol? Dapatkan aplikasi Android & template siap pakai karya Rafi Rachmawan dengan harga terjangkau langsung di Lynk.id.",
-              "Need a fast solution without building from scratch? Get ready-to-run Android applications and templates crafted by Rafi Rachmawan at affordable prices on Lynk.id."
+              "4 aplikasi Android siap download — POS, keuangan, dan edukasi anak via Lynk.id.",
+              "4 ready-to-download Android apps — POS, finance, and kids education via Lynk.id."
             )}
           </p>
         </div>

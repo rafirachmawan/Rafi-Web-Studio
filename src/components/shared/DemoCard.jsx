@@ -14,22 +14,32 @@ export default function DemoCard({ demo }) {
   };
 
   return (
-    <div className="group flex flex-col bg-white dark:bg-zinc-900/60 rounded-3xl overflow-hidden border border-zinc-200/80 dark:border-zinc-800/80 hover:border-amber-500/50 dark:hover:border-amber-500/50 transition-all duration-300 shadow-sm hover:shadow-xl hover:shadow-amber-500/5">
+    <div className="group flex flex-col bg-white dark:bg-zinc-900/60 rounded-3xl overflow-hidden border border-zinc-200/80 dark:border-zinc-800/80 hover:border-amber-500/50 dark:hover:border-amber-500/50 hover:-translate-y-1 focus-within:ring-2 focus-within:ring-amber-500 focus-within:border-amber-500/50 transition-all duration-300 shadow-sm hover:shadow-xl hover:shadow-amber-500/5 h-full">
       <Link
         to={`/portfolio/${demo.id}`}
-        className="w-full text-left relative flex flex-col flex-grow"
+        aria-label={`${demo.name} — ${categoryNames[demo.category] || demo.category}`}
+        className="w-full text-left relative flex flex-col flex-grow focus-visible:outline-none rounded-3xl"
       >
-        {/* PLACEHOLDER MOCKUP AREA */}
-        <div className="h-52 md:h-60 overflow-hidden relative p-3.5 bg-zinc-50 dark:bg-zinc-950/40 flex items-center justify-center border-b border-zinc-200/70 dark:border-zinc-800/70">
-          <CleanPlaceholder
-            width={800}
-            height={500}
-            ratio="16:10"
-            label={demo.name}
-            sublabel={categoryNames[demo.category] || demo.category}
-            badge={categoryNames[demo.category] || demo.category}
-            className="h-full w-full"
-          />
+        {/* COVER AREA — pakai image asli bila ada */}
+        <div className="h-48 sm:h-52 md:h-56 overflow-hidden relative p-2.5 bg-zinc-50 dark:bg-zinc-950/40 flex items-center justify-center border-b border-zinc-200/70 dark:border-zinc-800/70">
+          {demo.image ? (
+            <img
+              src={demo.image}
+              alt={demo.name}
+              loading="lazy"
+              className="h-full w-full object-cover rounded-2xl border border-zinc-200/80 dark:border-zinc-700/60 group-hover:scale-[1.02] transition-transform duration-500"
+            />
+          ) : (
+            <CleanPlaceholder
+              width={800}
+              height={500}
+              ratio="16:10"
+              label={demo.name}
+              sublabel={categoryNames[demo.category] || demo.category}
+              badge={categoryNames[demo.category] || demo.category}
+              className="h-full w-full"
+            />
+          )}
         </div>
 
         {/* CONTENT */}
@@ -59,20 +69,29 @@ export default function DemoCard({ demo }) {
                   (demo.icon.includes("/") || demo.icon.includes(".")) ? (
                     <img
                       src={demo.icon}
-                      alt={demo.name}
+                      alt=""
+                      aria-hidden="true"
+                      loading="lazy"
                       className="w-full h-full object-contain"
                     />
                   ) : (
                     <div className="text-base sm:text-lg font-black text-amber-600 dark:text-amber-400">
-                      {demo.icon}
+                      {demo.icon || demo.name?.charAt(0) || "•"}
                     </div>
                   )}
                 </div>
 
-                {/* Brand Name Only */}
-                <h3 className="text-sm sm:text-base font-bold text-zinc-900 dark:text-white leading-tight truncate group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
-                  {demo.name}
-                </h3>
+                {/* Brand Name + Desc */}
+                <div className="min-w-0">
+                  <h3 className="text-sm sm:text-[15px] font-bold text-zinc-900 dark:text-white leading-tight truncate group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                    {demo.name}
+                  </h3>
+                  {demo.desc && (
+                    <p className="text-[11px] text-zinc-500 dark:text-zinc-400 leading-snug mt-0.5 line-clamp-1">
+                      {t(demo.desc)}
+                    </p>
+                  )}
+                </div>
               </div>
 
               {/* Arrow Indicator */}
@@ -83,6 +102,25 @@ export default function DemoCard({ demo }) {
                 />
               </div>
             </div>
+
+            {/* Tech stack */}
+            {demo.techStack && demo.techStack.length > 0 && (
+              <div className="flex flex-wrap gap-1.5 mt-3">
+                {demo.techStack.slice(0, 3).map((tech) => (
+                  <span
+                    key={tech}
+                    className="px-2 py-1 rounded-md bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 text-[10px] font-semibold border border-zinc-200/60 dark:border-zinc-700/60"
+                  >
+                    {tech}
+                  </span>
+                ))}
+                {demo.techStack.length > 3 && (
+                  <span className="px-2 py-1 rounded-md text-zinc-500 dark:text-zinc-500 text-[10px] font-bold">
+                    +{demo.techStack.length - 3}
+                  </span>
+                )}
+              </div>
+            )}
           </div>
 
           {/* SIMPLE ACTION LINK */}

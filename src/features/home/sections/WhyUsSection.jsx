@@ -60,21 +60,17 @@ export default function WhyUsSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* HEADER SECTION - CENTERED */}
-        <div className="text-center max-w-3xl mx-auto mb-12 md:mb-20">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-amber-500/20 bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold uppercase tracking-wider mb-6">
-            {t("⚡ ALASAN MEMILIH KAMI", "⚡ WHY CHOOSE US")}
+        <div className="text-center max-w-3xl mx-auto mb-10 md:mb-14">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-amber-500/20 bg-amber-500/10 text-amber-600 dark:text-amber-400 text-[11px] font-bold uppercase tracking-widest mb-5">
+            {t("Alasan Memilih Kami", "Why Choose Us")}
           </div>
 
-          <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-6 font-heading leading-[1.15]">
-            <span>{t("Standar Kualitas Terbaik ", "Highest Quality Standard ")}</span>
-            <br className="hidden sm:inline" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-500">
-              {t("Untuk Website & Aplikasi Anda", "For Your Website & Applications")}
-            </span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 font-heading leading-tight text-zinc-900 dark:text-white text-balance">
+            {t("Standar Kualitas Kami.", "Our Quality Standard.")}
           </h2>
 
-          <p className="text-sm md:text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
-            {t("Kami tidak sekadar membuat website, tetapi membangun sistem digital yang modern, cepat, aman, dan mudah digunakan untuk mendukung pertumbuhan bisnis Anda.", "We don't just build websites; we create modern, fast, secure, and user-friendly digital systems to power your business growth.")}
+          <p className="text-zinc-600 dark:text-zinc-400 text-sm md:text-base leading-relaxed max-w-xl mx-auto">
+            {t("Website cepat, aman, dan mudah dipakai untuk dukung bisnis Anda.", "Fast, secure websites that are easy to use for your business.")}
           </p>
         </div>
 
