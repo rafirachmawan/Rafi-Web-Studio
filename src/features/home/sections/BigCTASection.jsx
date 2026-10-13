@@ -7,9 +7,7 @@ export default function BigCTASection() {
 
   return (
     <div className="mb-24 px-4">
-      <div className="max-w-6xl mx-auto rounded-[30px] md:rounded-[40px] bg-gradient-to-br from-white via-[#f8f6ef] to-[#f3f3f3] dark:from-[#111] dark:via-[#0a0a0a] dark:to-black border border-black/10 dark:border-amber-400/10 py-16 md:py-20 px-6 text-center relative overflow-hidden transition-colors duration-300">
-        {/* GLOW */}
-        <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[400px] h-[400px] bg-amber-500/10 blur-[120px] rounded-full"></div>
+      <div className="max-w-6xl mx-auto rounded-[30px] md:rounded-[40px] bg-white dark:bg-zinc-900 border border-black/10 dark:border-white/10 shadow-[0_4px_20px_rgba(0,0,0,0.04)] dark:shadow-none py-16 md:py-20 px-6 text-center relative overflow-hidden transition-colors duration-300">
 
         {/* CONTENT */}
         <div className="relative z-10 max-w-3xl mx-auto">

@@ -233,7 +233,14 @@ export default function App() {
                 />
 
                 {/* Android Apps Landing */}
-                <Route path="/android-apps" element={<AndroidAppsLanding />} />
+                <Route
+                  path="/android-apps"
+                  element={
+                    <MainLayout>
+                      <AndroidAppsLanding />
+                    </MainLayout>
+                  }
+                />
 
                 {/* Wildcard 404 Route */}
                 <Route
