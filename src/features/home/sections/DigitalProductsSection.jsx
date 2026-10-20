@@ -1,5 +1,6 @@
 import { ShoppingBag, ExternalLink, Smartphone, Download, Sparkles, CheckCircle2 } from "lucide-react";
 import { useLanguage } from "../../../context/LanguageContext";
+import { useScrollAnimation } from "../../../hooks/useScrollAnimation";
 import CleanPlaceholder from "../../../components/ui/CleanPlaceholder";
 
 const digitalProducts = [
@@ -69,6 +70,11 @@ export default function DigitalProductsSection() {
   const { t } = useLanguage();
   const lynkUrl = "https://lynk.id/rafirachmawan";
 
+  // Scroll-reveal deterministik (sekali trigger, tetap tampil) — same pattern DemoSection
+  const { ref: headerRef, isInView: headerInView } = useScrollAnimation({ threshold: 0.2 });
+  const { ref: gridRef, isInView: gridInView } = useScrollAnimation({ threshold: 0.05 });
+  const { ref: bannerRef, isInView: bannerInView } = useScrollAnimation({ threshold: 0.25 });
+
   return (
     <section
       id="digital-products"
@@ -78,18 +84,33 @@ export default function DigitalProductsSection() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="container mx-auto px-4 md:px-6 max-w-7xl relative z-10">
-        {/* HEADER SECTION */}
-        <div className="max-w-3xl mx-auto text-center mb-10 md:mb-14">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-600 dark:text-amber-400 text-[11px] font-bold tracking-widest uppercase mb-5">
+        {/* HEADER — badge + judul + divider + deskripsi (reveal saat di-scroll) */}
+        <div
+          ref={headerRef}
+          className={`scroll-unit max-w-3xl mx-auto text-center mb-10 md:mb-14 ${
+            headerInView ? "scroll-reveal-item" : ""
+          }`}
+        >
+          {/* Badge / eyebrow */}
+          <div className="scroll-sub scroll-d1 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-600 dark:text-amber-400 text-[11px] font-bold tracking-widest uppercase mb-5">
             <ShoppingBag size={14} />
             <span>{t("Produk Siap Pakai", "Ready-to-Use Products")}</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 font-heading leading-tight text-zinc-900 dark:text-white text-balance">
+          {/* Judul section */}
+          <h2 className="scroll-sub scroll-d2 text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight font-heading leading-tight text-zinc-900 dark:text-white text-balance">
             {t("Aplikasi Siap Pakai.", "Ready-to-Use Apps.")}
           </h2>
 
-          <p className="text-zinc-600 dark:text-zinc-400 text-sm md:text-base leading-relaxed max-w-xl mx-auto">
+          {/* Pembeda: garis gradasi pendek pemisah judul & deskripsi */}
+          <div aria-hidden="true" className="scroll-sub scroll-d3 flex items-center justify-center gap-2 my-4 md:my-5">
+            <span className="h-px w-10 bg-gradient-to-r from-transparent to-amber-500/70 rounded-full" />
+            <span className="w-2 h-2 rotate-45 rounded-[2px] bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.6)]" />
+            <span className="h-px w-10 bg-gradient-to-l from-transparent to-amber-500/70 rounded-full" />
+          </div>
+
+          {/* Deskripsi section */}
+          <p className="scroll-sub scroll-d4 text-zinc-600 dark:text-zinc-400 text-sm md:text-base leading-relaxed max-w-xl mx-auto">
             {t(
               "4 aplikasi Android siap download — POS, keuangan, dan edukasi anak via Lynk.id.",
               "4 ready-to-download Android apps — POS, finance, and kids education via Lynk.id."
@@ -97,13 +118,21 @@ export default function DigitalProductsSection() {
           </p>
         </div>
 
-        {/* PRODUCTS GRID */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          {digitalProducts.map((prod) => (
+        {/* PRODUCTS GRID — kartu muncul 1 per 1 (delay bertingkat) */}
+        <div
+          ref={gridRef}
+          className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12 ${
+            gridInView ? "" : "scroll-reveal-until"
+          }`}
+        >
+          {digitalProducts.map((prod, i) => (
             <div
               key={prod.id}
-              className="group relative flex flex-col h-full rounded-2xl bg-white dark:bg-zinc-900/80 border border-zinc-200 dark:border-zinc-800/80 hover:border-amber-500/40 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden"
+              className={`scroll-unit h-full ${gridInView ? "scroll-reveal-now" : ""}`}
+              style={gridInView ? { transitionDelay: `${i * 100}ms` } : undefined}
             >
+              {/* CARD */}
+              <div className="group relative flex flex-col h-full rounded-2xl bg-white dark:bg-zinc-900/80 border border-zinc-200 dark:border-zinc-800/80 hover:border-amber-500/40 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden">
               {/* Popular / Best Value Badge */}
               {prod.popular && (
                 <div className="absolute top-3 right-3 z-20 flex items-center gap-1 px-2.5 py-1 rounded-full bg-amber-500 text-zinc-950 font-bold text-[10px] tracking-wider uppercase shadow-md">
@@ -192,12 +221,16 @@ export default function DigitalProductsSection() {
                   </a>
                 </div>
               </div>
+              </div>
             </div>
           ))}
         </div>
 
         {/* BOTTOM BANNER / CTA TO LYNK.ID */}
-        <div className="relative rounded-2xl bg-gradient-to-r from-amber-500/10 via-amber-500/5 to-transparent border border-amber-500/20 p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 overflow-hidden">
+        <div
+          ref={bannerRef}
+          className={`reveal-standalone ${bannerInView ? "is-revealed" : ""} relative rounded-2xl bg-gradient-to-r from-amber-500/10 via-amber-500/5 to-transparent border border-amber-500/20 p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 overflow-hidden`}
+        >
           <div className="flex items-center gap-4 text-center md:text-left">
             <div className="w-12 h-12 rounded-xl bg-amber-500 text-zinc-950 flex items-center justify-center font-bold text-xl flex-shrink-0 shadow-lg shadow-amber-500/20">
               <Download size={24} />

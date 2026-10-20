@@ -9,14 +9,27 @@ import {
   ArrowRight,
   Sparkles
 } from "lucide-react";
+import { motion } from "framer-motion";
+import { useScrollAnimation } from "../../../hooks/useScrollAnimation";
 import { useLanguage } from "../../../context/LanguageContext";
 import { useConsultation } from "../../../context/ConsultationContext";
 import { demos as allDemos } from "../data/demos";
+
+/* ===== Animasi scroll-reveal =====
+   Grid demo memakai pendekatan deterministik (hook useInView + class reveal)
+   alih-alih stagger-variant framer-motion. Alasan: saat user mengganti filter tab,
+   hook useInView sudah aktif (sekali trigger, tetap true), sehingga kartu baru
+   langsung tampil — tidak pernah stuck di opacity:0. */
 
 export default function DemoSection({ filter, setFilter, filtered, isStandalone = false }) {
   const { t } = useLanguage();
   const { openConsultation } = useConsultation();
   const [showAll, setShowAll] = useState(false);
+
+  // Scroll-reveal header (sekali trigger, lalu tetap tampil — deterministik)
+  const { ref: headerRef, isInView: headerInView } = useScrollAnimation({ threshold: 0.2 });
+  // Scroll-reveal grid kartu (sekali trigger, lalu tetap tampil)
+  const { ref: gridRef, isInView: gridInView } = useScrollAnimation({ threshold: 0.05 });
 
   useEffect(() => {
     setShowAll(false);
@@ -79,18 +92,33 @@ export default function DemoSection({ filter, setFilter, filtered, isStandalone 
       } bg-transparent dark:bg-[#050508] relative`}
     >
       <div className="container mx-auto px-4 md:px-6 max-w-7xl">
-        {/* HEADER */}
-        <div className="max-w-3xl mx-auto text-center mb-8 md:mb-12 flex flex-col items-center">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-600 dark:text-amber-400 text-[11px] font-bold mb-5 uppercase tracking-widest">
+        {/* HEADER — badge + judul + divider + deskripsi (reveal saat di-scroll) */}
+        <div
+          ref={headerRef}
+          className={`scroll-unit max-w-3xl mx-auto text-center mb-8 md:mb-12 flex flex-col items-center ${
+            headerInView ? "scroll-reveal-item" : ""
+          }`}
+        >
+          {/* Badge / eyebrow */}
+          <div className="scroll-sub scroll-d1 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-600 dark:text-amber-400 text-[11px] font-bold mb-5 uppercase tracking-widest">
             <Sparkles className="w-3.5 h-3.5" />
             <span>{t("Demo & Redesign", "Demo & Redesign")}</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 font-heading leading-tight text-zinc-900 dark:text-white text-balance">
+          {/* Judul section */}
+          <h2 className="scroll-sub scroll-d2 text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight font-heading leading-tight text-zinc-900 dark:text-white text-balance">
             {t("Katalog Demo & Redesign.", "Demo & Redesign Catalog.")}
           </h2>
 
-          <p className="text-zinc-600 dark:text-zinc-400 text-sm md:text-base leading-relaxed mx-auto max-w-xl">
+          {/* Pembeda: garis gradasi pendek pemisah judul & deskripsi */}
+          <div aria-hidden="true" className="scroll-sub scroll-d3 flex items-center justify-center gap-2 my-4 md:my-5">
+            <span className="h-px w-10 bg-gradient-to-r from-transparent to-amber-500/70 rounded-full" />
+            <span className="w-2 h-2 rotate-45 rounded-[2px] bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.6)]" />
+            <span className="h-px w-10 bg-gradient-to-l from-transparent to-amber-500/70 rounded-full" />
+          </div>
+
+          {/* Deskripsi section */}
+          <p className="scroll-sub scroll-d4 text-zinc-600 dark:text-zinc-400 text-sm md:text-base leading-relaxed mx-auto max-w-xl">
             {t(
               "14+ demo website, aplikasi mobile, dan sistem web yang bisa dicoba langsung sebelum mulai proyek.",
               "14+ website, mobile app, and web system demos you can try live before starting your project."
@@ -150,9 +178,22 @@ export default function DemoSection({ filter, setFilter, filtered, isStandalone 
               </p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-7 items-stretch">
+            /* Grid deterministik: sekali gridInView aktif, SEMUA kartu (termasuk yang
+               baru dirender karena ganti filter / "Lihat Semua") langsung tampil. */
+            <div
+              ref={gridRef}
+              className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-7 items-stretch ${
+                gridInView ? "" : "scroll-reveal-until"
+              }`}
+            >
               {displayItems.map((demo, i) => (
-                <DemoCard key={demo.id || i} demo={demo} />
+                <div
+                  key={demo.id || i}
+                  className={`scroll-unit h-full ${gridInView ? "scroll-reveal-now" : ""}`}
+                  style={gridInView ? { transitionDelay: `${Math.min(i, 6) * 90}ms` } : undefined}
+                >
+                  <DemoCard demo={demo} />
+                </div>
               ))}
             </div>
           )}

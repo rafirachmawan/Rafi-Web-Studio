@@ -119,7 +119,7 @@ export default function WhyUsSection() {
         </div>
 
         {/* STATS BANNER */}
-        <div className="grid grid-cols-3 divide-x divide-black/10 dark:divide-white/10 p-8 rounded-3xl border border-black/5 dark:border-white/5 bg-amber-500/5 dark:bg-amber-500/5">
+        <div className="grid grid-cols-3 divide-x divide-black/10 dark:divide-white/10 p-8 rounded-3xl border border-black/5 dark:border-white/10 bg-white shadow-sm dark:bg-white/5">
           {stats.map((item, index) => (
             <div key={index} className="text-center px-2 md:px-4">
               <h3 className="text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-500 mb-2">

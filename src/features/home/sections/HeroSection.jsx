@@ -91,22 +91,22 @@ export default function HeroSection() {
 
           {/* HEADLINE */}
           <h1 
-            className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.15] text-zinc-900 dark:text-white max-w-3xl text-center font-heading"
+            className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.15] text-zinc-900 dark:text-white max-w-4xl text-center font-heading text-balance"
           >
-            <span>{t("Kembangkan Bisnis Anda", "Grow Your Business")} </span>
+            <span className="whitespace-nowrap">{t("Membangun Ekosistem Digital", "Building Your Digital Ecosystem")} </span>
             <br className="hidden sm:inline" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 font-extrabold">
-              {t("dengan Solusi Digital.", "with Digital Solutions.")}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 font-extrabold whitespace-nowrap">
+              {t("untuk Bisnis Anda.", "for Your Business.")}
             </span>
           </h1>
  
           {/* DESC */}
           <p 
-            className="mt-6 text-sm sm:text-base md:text-lg leading-relaxed text-zinc-600 dark:text-zinc-400 max-w-2xl text-center font-normal"
+            className="mt-6 text-sm sm:text-base md:text-lg leading-relaxed text-zinc-600 dark:text-zinc-400 max-w-2xl text-center font-normal text-pretty"
           >
             {t(
-              "GapaiDigital merancang Website, Aplikasi Mobile, dan Sistem Kustom yang cepat dan responsif — untuk meningkatkan kredibilitas dan penjualan bisnis Anda.",
-              "GapaiDigital designs fast, responsive Websites, Mobile Apps, and Custom Systems — to boost your business credibility and sales."
+              "GapaiDigital merancang Website & Aplikasi kustom sesuai kebutuhan bisnis Anda — cepat dan responsif. Tersedia juga aplikasi dan sistem siap pakai untuk mulai lebih cepat.",
+              "GapaiDigital designs custom Websites & Apps for your business needs — fast and responsive. Ready-to-use apps and systems are also available to start even faster."
             )}
           </p>
 

@@ -136,6 +136,62 @@ code, kbd, samp, pre, .font-mono {
 }
 
 /* ═══════════════════════════════════════════════
+   DETERMINISTIC SCROLL-REVEAL (DemoSection & konsisten)
+   — Trigger via hook useInView, bukan variant framer-motion.
+   Alasan bug lama: whileInView+once membuat kartu baru yang dirender
+   SETELAH trigger (ganti filter / "Lihat Semua") stuck di opacity 0.
+   ═══════════════════════════════════════════════ */
+
+/* Sebelum terpicu: langsung sembunyikan (hilang sekaligus, seperti lazy-load) */
+.scroll-reveal-until > * {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+/* Saat terpicu: semua langsung tampil (kartu baru juga, karena class
+   scroll-reveal-until langsung hilang — tidak bisa "tertinggal" state lama) */
+.scroll-reveal-now {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Reveal beruntun untuk elemen-elemen header sub */
+.scroll-unit > .scroll-sub {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.scroll-unit.scroll-reveal-item > .scroll-sub {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-unit.scroll-reveal-item > .scroll-sub.scroll-d1 { transition-delay: 0ms; }
+.scroll-unit.scroll-reveal-item > .scroll-sub.scroll-d2 { transition-delay: 120ms; }
+.scroll-unit.scroll-reveal-item > .scroll-sub.scroll-d3 { transition-delay: 240ms; }
+.scroll-unit.scroll-reveal-item > .scroll-sub.scroll-d4 { transition-delay: 360ms; }
+.scroll-unit.scroll-reveal-item {
+  transition: opacity 0.4s ease-out;
+}
+
+/* Reveal untuk elemen tunggal (banner CTA, dsb.) */
+.reveal-standalone {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-standalone.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ═══════════════════════════════════════════════
    LAZY SECTION — Safe Per-Section Reveal
    ═══════════════════════════════════════════════ */
 .lazy-section {
